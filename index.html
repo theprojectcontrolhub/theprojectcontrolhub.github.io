@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Project Control Hub</title>
+    <!-- Modern Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="logo">
+                <i class='bx bx-hive'></i>
+                <span>THE PROJECT CONTROL HUB</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="discussions.html">Discussions</a>
+                <a href="courses.html">Courses</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="about.html">About</a>
+            </div>
+            <div class="nav-actions">
+                <button class="btn btn-primary" onclick="openMembershipModal()"><i class='bx bx-user-plus'></i> Join Community</button>
+            </div>
+        </nav>
+
+        <!-- Hero Content -->
+        <div class="hero-container">
+            <div class="hero-left">
+                <div class="pill-badge">
+                    <span class="dot"></span> PROFESSIONAL COMMUNITY — PROJECT CONTROLS
+                </div>
+                <h1>Where Project Control <br><span class="text-green">Professionals Connect.</span></h1>
+                <p class="hero-desc">
+                    A members-only community for planners, project controls engineers, and construction managers. Discuss Primavera P6, FIDIC, delay analysis, EVM — with people who actually understand the work.
+                </p>
+                
+                <div class="tags-group">
+                    <span class="tag-dark">Primavera P6</span>
+                    <span class="tag-dark">FIDIC Contracts</span>
+                    <span class="tag-dark">Delay Analysis</span>
+                    <span class="tag-dark">Earned Value</span>
+                    <span class="tag-dark">Risk Management</span>
+                </div>
+
+                <div class="hero-buttons">
+                    <a href="discussions.html" class="btn btn-primary-large"><i class='bx bx-message-square-dots'></i> Browse Discussions</a>
+                </div>
+            </div>
+
+            <div class="hero-right">
+                <div class="latest-header">
+                    <h3>LATEST DISCUSSIONS</h3>
+                    <span class="live-badge"><span class="dot-green"></span> Live</span>
+                </div>
+
+                <div class="discussion-list">
+                    <!-- Item 1 -->
+                    <div class="discussion-list-item">
+                        <span class="category-text text-green">PRIMAVERA P6</span>
+                        <h4>Best practices for baseline management — multiple baselines on a live project?</h4>
+                        <div class="item-meta">
+                            <span><i class='bx bx-message-rounded'></i> 24 replies</span>
+                            <span><i class='bx bx-show'></i> 1.8K views</span>
+                            <i class='bx bx-right-arrow-alt arrow-icon'></i>
+                        </div>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="discussion-list-item">
+                        <span class="category-text text-yellow">FIDIC CONTRACTS</span>
+                        <h4>Clause 20.1 time bar — contractor missed 28-day notice. What are the options?</h4>
+                        <div class="item-meta">
+                            <span><i class='bx bx-message-rounded'></i> 32 replies</span>
+                            <span><i class='bx bx-show'></i> 3.2K views</span>
+                            <i class='bx bx-right-arrow-alt arrow-icon'></i>
+                        </div>
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="discussion-list-item">
+                        <span class="category-text text-red">DELAY ANALYSIS</span>
+                        <h4>Concurrent delays — how do you handle compensation in a split-responsibility window?</h4>
+                        <div class="item-meta">
+                            <span><i class='bx bx-message-rounded'></i> 41 replies</span>
+                            <span><i class='bx bx-show'></i> 4.6K views</span>
+                            <i class='bx bx-right-arrow-alt arrow-icon'></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="join-promo">
+                    <i class='bx bx-lock-alt'></i>
+                    <p>Join the community to participate in discussions, leave comments, and connect with professionals.</p>
+                    <a href="#" class="btn btn-primary-small">Join Free</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DISCUSSIONS SECTION -->
+    <section class="discussions-section">
+        <div class="container">
+            <div class="section-header">
+                <div>
+                    <span class="subtitle">COMMUNITY DISCUSSIONS</span>
+                    <h2>Join the Conversation</h2>
+                    <p>Real discussions from professionals working on real projects. Ask questions, share experience, and learn from the community.</p>
+                </div>
+                <a href="#" class="btn btn-primary"><i class='bx bx-plus'></i> Start a Discussion</a>
+            </div>
+
+            <!-- Search and Filters -->
+            <div class="search-bar-container">
+                <i class='bx bx-search'></i>
+                <input type="text" placeholder="Search discussions by title, tag, author, or keyword...">
+            </div>
+
+            <div class="filter-pills">
+                <button class="filter-pill active">All Topics</button>
+                <button class="filter-pill">Primavera P6</button>
+                <button class="filter-pill">FIDIC Contracts</button>
+                <button class="filter-pill">Delay Analysis</button>
+                <button class="filter-pill">MS Project</button>
+                <button class="filter-pill">Earned Value</button>
+                <button class="filter-pill">Risk Management</button>
+            </div>
+
+            <!-- Cards Grid -->
+            <div class="cards-grid">
+                
+                <!-- Card 1 -->
+                <div class="discussion-card">
+                    <div class="card-header">
+                        <div class="card-tags">
+                            <span class="tag tag-light-green">Primavera P6</span>
+                            <span class="tag tag-pinned"><i class='bx bx-pin'></i> Pinned</span>
+                        </div>
+                        <div class="card-stats">
+                            <span><i class='bx bx-message-rounded'></i> 24</span>
+                            <span><i class='bx bx-show'></i> 1.840</span>
+                        </div>
+                    </div>
+                    <h3>Best practices for baseline management in P6 — multiple baselines on a live project?</h3>
+                    <p class="card-excerpt">Our project is 8 months in with 3 approved scope changes. We now maintain 4 baselines and the schedule is getting cluttered. Looking for advice on how experienced planners...</p>
+                    <div class="hashtag-group">
+                        <span class="hashtag">#P6</span>
+                        <span class="hashtag">#Baseline</span>
+                        <span class="hashtag">#Best Practice</span>
+                    </div>
+                    <div class="card-footer">
+                        <div class="author-info">
+                            <img src="https://i.pravatar.cc/150?img=11" alt="Barış Emre Özçelik">
+                            <div>
+                                <strong>Barış Emre Özçelik</strong>
+                                <span>Apr 21, 2026</span>
+                            </div>
+                        </div>
+                        <a href="discussion-detail.html" class="view-comments">View 2 comments <i class='bx bx-chevron-down'></i></a>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="discussion-card">
+                    <div class="card-header">
+                        <div class="card-tags">
+                            <span class="tag tag-light-yellow">FIDIC Contracts</span>
+                        </div>
+                        <div class="card-stats">
+                            <span><i class='bx bx-message-rounded'></i> 32</span>
+                            <span><i class='bx bx-show'></i> 3.210</span>
+                        </div>
+                    </div>
+                    <h3>FIDIC Clause 20.1 time bar — contractor missed 28-day notice, what are the options?</h3>
+                    <p class="card-excerpt">We have a contractor who clearly has a valid delay event but failed to submit the notice within 28 days. The employer is now rejecting the claim on time bar grounds. Has anyone...</p>
+                    <div class="hashtag-group">
+                        <span class="hashtag">#FIDIC</span>
+                        <span class="hashtag">#Clause 20</span>
+                        <span class="hashtag">#Claims</span>
+                        <span class="hashtag">#Time Bar</span>
+                    </div>
+                    <div class="card-footer">
+                        <div class="author-info">
+                            <img src="https://i.pravatar.cc/150?img=12" alt="James Okafor">
+                            <div>
+                                <strong>James Okafor</strong>
+                                <span>Apr 19, 2026</span>
+                            </div>
+                        </div>
+                        <a href="discussion-detail.html" class="view-comments">View 2 comments <i class='bx bx-chevron-down'></i></a>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="discussion-card">
+                    <div class="card-header">
+                        <div class="card-tags">
+                            <span class="tag tag-light-red">Delay Analysis</span>
+                        </div>
+                        <div class="card-stats">
+                            <span><i class='bx bx-message-rounded'></i> 41</span>
+                            <span><i class='bx bx-show'></i> 4.580</span>
+                        </div>
+                    </div>
+                    <h3>Concurrent delays — how do you handle compensation in a concurrent delay scenario?</h3>
+                    <p class="card-excerpt">Working on a $200M port project where both employer and contractor caused delays in the same window. The contract is silent on concurrent delays. Time Impact Analysis gives us ...</p>
+                    <div class="hashtag-group">
+                        <span class="hashtag">#Delay Analysis</span>
+                        <span class="hashtag">#TIA</span>
+                        <span class="hashtag">#Concurrent Delay</span>
+                    </div>
+                    <div class="card-footer">
+                        <div class="author-info">
+                            <img src="https://i.pravatar.cc/150?img=5" alt="Priya Nair">
+                            <div>
+                                <strong>Priya Nair</strong>
+                                <span>Apr 17, 2026</span>
+                            </div>
+                        </div>
+                        <a href="discussion-detail.html" class="view-comments">View 1 comment <i class='bx bx-chevron-down'></i></a>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="discussion-card">
+                    <div class="card-header">
+                        <div class="card-tags">
+                            <span class="tag tag-light-blue">Earned Value</span>
+                        </div>
+                        <div class="card-stats">
+                            <span><i class='bx bx-message-rounded'></i> 19</span>
+                            <span><i class='bx bx-show'></i> 2.140</span>
+                        </div>
+                    </div>
+                    <h3>EVM on lump sum contracts — how to define BCWP without a BOQ?</h3>
+                    <p class="card-excerpt">Our client wants full EVM reporting on a design-build lump sum contract. There is no BOQ breakdown. I'm trying to figure out how to assign BCWP when percentage complete is...</p>
+                    <div class="hashtag-group">
+                        <span class="hashtag">#EVM</span>
+                        <span class="hashtag">#Lump Sum</span>
+                        <span class="hashtag">#BCWP</span>
+                        <span class="hashtag">#Reporting</span>
+                    </div>
+                    <div class="card-footer">
+                        <div class="author-info">
+                            <img src="https://i.pravatar.cc/150?img=8" alt="Carlos Mendes">
+                            <div>
+                                <strong>Carlos Mendes</strong>
+                                <span>Apr 15, 2026</span>
+                            </div>
+                        </div>
+                        <a href="#" class="view-comments">View 1 comment <i class='bx bx-chevron-down'></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- FEATURES SECTION -->
+    <section class="features-section">
+        <div class="container">
+            <div class="features-header">
+                <span class="subtitle">WHY JOIN US</span>
+                <h2>Everything a Project Control Professional Needs</h2>
+                <p>From free templates to structured courses — all in one place, built by someone who's been in the field.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class='bx bx-file'></i></div>
+                    <h3>Free Templates</h3>
+                    <p>Daily reports, weekly progress, EVM spreadsheets, risk registers — download and use immediately on your project.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class='bx bx-conversation'></i></div>
+                    <h3>Real Discussions</h3>
+                    <p>Ask questions and get answers from practicing engineers — not textbooks. P6, FIDIC, delay analysis, EVM.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class='bx bx-bar-chart-alt-2'></i></div>
+                    <h3>Power BI Dashboards</h3>
+                    <p>Ready-to-use dashboards. Connect your P6 data and impress your client in minutes.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class='bx bx-book-open'></i></div>
+                    <h3>Structured Courses</h3>
+                    <p>Deep-dive courses on P6, EVM, FIDIC, and delay analysis. Learn at your own pace, apply immediately.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class='bx bx-globe'></i></div>
+                    <h3>Global Network</h3>
+                    <p>Connect with project control professionals from the Middle East, Europe, Africa, and beyond.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class='bx bx-trending-up'></i></div>
+                    <h3>Career Growth</h3>
+                    <p>Build your profile, share your expertise, and get noticed by firms hiring senior planning engineers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS SECTION -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-block">
+                    <span class="stat-big-number">500+</span>
+                    <span class="stat-big-label">Templates Downloaded</span>
+                </div>
+                <div class="stat-block">
+                    <span class="stat-big-number">120+</span>
+                    <span class="stat-big-label">Community Members</span>
+                </div>
+                <div class="stat-block">
+                    <span class="stat-big-number">40+</span>
+                    <span class="stat-big-label">Active Discussions</span>
+                </div>
+                <div class="stat-block">
+                    <span class="stat-big-number">15+</span>
+                    <span class="stat-big-label">Countries Represented</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER SECTION -->
+    <section class="newsletter-section-home">
+        <div class="container">
+            <div class="newsletter-box">
+                <div class="newsletter-left">
+                    <span class="subtitle">WEEKLY NEWSLETTER</span>
+                    <h2>One email. One template.<br>Every week. Free.</h2>
+                    <p>Get a new project control template, tip, or framework every week. No spam. Unsubscribe anytime.</p>
+                </div>
+                <div class="newsletter-right">
+                    <div class="newsletter-form-home">
+                        <input type="email" placeholder="your@email.com" id="newsletterEmail">
+                        <button class="btn btn-primary" onclick="subscribeNewsletter()">Subscribe Free</button>
+                    </div>
+                    <p class="newsletter-note">Join professionals from 15+ countries already subscribed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Membership Modal -->
+    <div class="modal-overlay" id="membershipModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>Exclusive Community Access</h3>
+                <button class="close-modal" onclick="closeMembershipModal()"><i class='bx bx-x'></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-icon-wrapper">
+                    <i class='bx bx-lock-alt'></i>
+                </div>
+                <h4>Join The Project Control Hub</h4>
+                <p>Join our professional network to start participating in discussions, sharing insights, and expanding your career in project controls.</p>
+                
+                <div class="social-login-container">
+                    <button class="btn-social btn-linkedin" onclick="submitMembership(event)">
+                        <i class='bx bxl-linkedin-square'></i> Continue with LinkedIn
+                    </button>
+                    <button class="btn-social btn-google" onclick="submitMembership(event)">
+                        <i class='bx bxl-google'></i> Continue with Google
+                    </button>
+                </div>
+
+                <div class="sso-divider">
+                    <span>or continue with email</span>
+                </div>
+
+                <form class="membership-form" onsubmit="submitMembership(event)">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" placeholder="e.g. Barış Emre Özçelik" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Job Title / Role</label>
+                        <input type="text" placeholder="e.g. Planning Engineer" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Current Project Name</label>
+                        <input type="text" placeholder="e.g. Airport Terminal 3 Expansion" required>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary-large full-width">Join Community</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <div class="logo">
+                    <i class='bx bx-hive'></i>
+                    <span>THE PROJECT CONTROL<br>HUB</span>
+                </div>
+                <p>A members-only discussion community for project planners, controls engineers, and construction managers worldwide.</p>
+                <div class="social-links">
+                    <a href="https://linkedin.com" target="_blank"><i class='bx bxl-linkedin'></i></a>
+                    <a href="https://youtube.com" target="_blank"><i class='bx bxl-youtube'></i></a>
+                    <a href="https://twitter.com" target="_blank"><i class='bx bxl-twitter'></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h4>DISCUSSIONS</h4>
+                <ul>
+                    <li><a href="discussions.html">Primavera P6</a></li>
+                    <li><a href="discussions.html">FIDIC Contracts</a></li>
+                    <li><a href="discussions.html">Delay Analysis</a></li>
+                    <li><a href="discussions.html">Earned Value (EVM)</a></li>
+                    <li><a href="discussions.html">Risk Management</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>COURSES</h4>
+                <ul>
+                    <li><a href="courses.html">Primavera P6 Masterclass</a></li>
+                    <li><a href="courses.html">FIDIC Contracts</a></li>
+                    <li><a href="courses.html">Delay Analysis Methods</a></li>
+                    <li><a href="courses.html">EVM Bootcamp</a></li>
+                    <li><a href="courses.html">Risk Management</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>RESOURCES</h4>
+                <ul>
+                    <li><a href="coming-soon.html">Blog Articles</a></li>
+                    <li><a href="coming-soon.html">Case Studies</a></li>
+                    <li><a href="coming-soon.html">Tools & Templates</a></li>
+                    <li><a href="coming-soon.html">Community Guidelines</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>COMPANY</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="coming-soon.html">Contact</a></li>
+                    <li><a href="coming-soon.html">Terms of Service</a></li>
+                    <li><a href="coming-soon.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 The Project Control Hub. All rights reserved.</p>
+            <p>Made for construction professionals worldwide <i class='bx bx-world' style="color: #10b981;"></i></p>
+        </div>
+    </footer>
+
+    <script>
+        function openMembershipModal() {
+            document.getElementById('membershipModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMembershipModal() {
+            document.getElementById('membershipModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function subscribeNewsletter() {
+            const email = document.getElementById("newsletterEmail").value;
+            if (email && email.includes("@")) {
+                const btn = document.querySelector(".newsletter-form-home button");
+                btn.textContent = "✓ Subscribed!";
+                btn.style.backgroundColor = "#059669";
+                document.getElementById("newsletterEmail").value = "";
+                setTimeout(() => { btn.textContent = "Subscribe Free"; btn.style.backgroundColor = ""; }, 3000);
+            } else {
+                document.getElementById("newsletterEmail").style.borderColor = "#ef4444";
+                setTimeout(() => { document.getElementById("newsletterEmail").style.borderColor = ""; }, 2000);
+            }
+        }
+
+        function submitMembership(e) {
+            e.preventDefault();
+            alert("Your request has been submitted. Our team will verify your details before granting access.");
+            closeMembershipModal();
+        }
+
+        // Close on outside click
+        document.getElementById('membershipModal').addEventListener('click', function(e) {
+            if(e.target === this) {
+                closeMembershipModal();
+            }
+        });
+    </script>
+</body>
+</html>
+
