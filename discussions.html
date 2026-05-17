@@ -369,12 +369,12 @@
             cursor: pointer;
             color: var(--text-muted);
             transition: var(--transition);
-            font-size: 16px;
+            font-size: 18px;
         }
 
         .vote-btn:hover {
-            border-color: var(--primary-green);
-            color: var(--primary-green);
+            border-color: #ef4444;
+            color: #ef4444;
         }
 
         .vote-count {
@@ -636,14 +636,14 @@
                             </div>
                         </div>
                         <div style="display:flex;align-items:center;gap:10px;">
-                            <img src="https://i.pravatar.cc/150?img=32" style="width:32px;height:32px;border-radius:50%;" alt="">
+                            <img src="https://i.pravatar.cc/150?img=33" style="width:32px;height:32px;border-radius:50%;" alt="">
                             <div>
                                 <div style="font-size:13px;font-weight:600;color:var(--text-dark);">Ahmed Al-Rashidi</div>
                                 <div style="font-size:12px;color:var(--text-muted);">3 discussions</div>
                             </div>
                         </div>
                         <div style="display:flex;align-items:center;gap:10px;">
-                            <img src="https://i.pravatar.cc/150?img=8" style="width:32px;height:32px;border-radius:50%;" alt="">
+                            <img src="https://i.pravatar.cc/150?img=57" style="width:32px;height:32px;border-radius:50%;" alt="">
                             <div>
                                 <div style="font-size:13px;font-weight:600;color:var(--text-dark);">Carlos Mendes</div>
                                 <div style="font-size:12px;color:var(--text-muted);">2 discussions</div>
@@ -658,8 +658,8 @@
                 <div class="discussions-topbar">
                     <p class="discussions-count"><strong id="shownCount">12</strong> discussions</p>
                     <select class="sort-select" onchange="sortDiscussions(this.value)">
-                        <option value="latest">Latest</option>
                         <option value="popular">Most Popular</option>
+                        <option value="latest">Latest</option>
                         <option value="replies">Most Replies</option>
                     </select>
                 </div>
@@ -746,72 +746,72 @@
             {
                 id: 1, pinned: true,
                 category: "Primavera P6", tagClass: "disc-tag-green",
-                title: "Best practices for baseline management — multiple baselines on a live project?",
-                excerpt: "Our project is 8 months in with 3 approved scope changes. We now maintain 4 baselines and the schedule is getting cluttered. Looking for advice on how experienced planners handle this without losing traceability.",
-                tags: ["#P6", "#Baseline", "#BestPractice"],
+                title: "Primavera P6'da çoklu baseline yönetimi — canlı projede en iyi yaklaşım nedir?",
+                excerpt: "Projemiz 8 aydır devam ediyor ve 3 onaylı kapsam değişikliği ile birlikte 4 farklı baseline tutuyoruz. Program giderek karmaşık hale geliyor. Deneyimli planlama mühendisleri bu durumu nasıl yönetiyor?",
+                tags: ["#P6", "#Baseline", "#ProgramYönetimi"],
                 author: "Barış Emre Özçelik", avatar: "https://i.pravatar.cc/150?img=11",
                 date: "May 14, 2026", replies: 24, views: 1840, votes: 47
             },
             {
                 id: 2, pinned: false,
                 category: "FIDIC Contracts", tagClass: "disc-tag-yellow",
-                title: "Clause 20.1 time bar — contractor missed 28-day notice. What are the options?",
-                excerpt: "The contractor failed to submit a notice within 28 days as required under Clause 20.1. The employer is now rejecting all claims. Has anyone dealt with this and found a successful argument?",
-                tags: ["#FIDIC", "#Clause20", "#Claims"],
-                author: "Ahmed Al-Rashidi", avatar: "https://i.pravatar.cc/150?img=32",
+                title: "FIDIC Madde 20.1 — Yüklenici 28 günlük bildirim süresini kaçırdı. Seçenekler neler?",
+                excerpt: "Yüklenici, öngörülemeyen zemin koşulları nedeniyle FIDIC Kırmızı Kitap Madde 20.1 kapsamında 28 günlük bildirim yükümlülüğünü yerine getirmedi. İşveren tüm talepleri reddediyor. Bu konuda başarılı bir argüman geliştiren var mı?",
+                tags: ["#FIDIC", "#Madde20", "#Talepler"],
+                author: "Ahmed Al-Rashidi", avatar: "https://i.pravatar.cc/150?img=33",
                 date: "May 12, 2026", replies: 32, views: 3200, votes: 61
             },
             {
                 id: 3, pinned: false,
                 category: "Delay Analysis", tagClass: "disc-tag-red",
-                title: "Concurrent delays — how do you handle compensation in a split-responsibility window?",
-                excerpt: "We have a 3-week window where both employer-caused and contractor-caused delays overlap. The SCL Protocol gives guidance but our contract is silent on this. Looking for practical approaches.",
-                tags: ["#DelayAnalysis", "#ConcurrentDelay", "#SCL"],
-                author: "Carlos Mendes", avatar: "https://i.pravatar.cc/150?img=8",
+                title: "Eşzamanlı gecikmeler — ortak sorumluluk döneminde tazminat nasıl hesaplanır?",
+                excerpt: "İşveren kaynaklı ve yüklenici kaynaklı gecikmeler kritik yolda 3 hafta boyunca örtüşüyor. SCL Protokolü rehberlik sunuyor ancak sözleşme bu konuda sessiz. Pratik yaklaşımlar arıyorum.",
+                tags: ["#GecikmeAnalizi", "#EşzamanlıGecikme", "#SCL"],
+                author: "Carlos Mendes", avatar: "https://i.pravatar.cc/150?img=57",
                 date: "May 10, 2026", replies: 41, views: 4600, votes: 83
             },
             {
                 id: 4, pinned: false,
                 category: "Earned Value", tagClass: "disc-tag-blue",
-                title: "EVM on lump sum contracts — how to define BCWP without a BOQ?",
-                excerpt: "Our client wants full EVM reporting on a design-build lump sum contract. There is no BOQ breakdown. I'm trying to figure out how to assign BCWP when percentage complete is subjective.",
-                tags: ["#EVM", "#LumpSum", "#BCWP"],
+                title: "Götürü bedelli sözleşmelerde EVM — BCWP'yi BOQ olmadan nasıl tanımlarsınız?",
+                excerpt: "Tasarım-yapım götürü bedelli bir projede tam EVM raporlaması isteniyor. BOQ dökümü yok. Fiziksel tamamlanma yüzdesi subjektif olduğunda BCWP nasıl belirlenir?",
+                tags: ["#EVM", "#GötürüBedel", "#BCWP"],
                 author: "Priya Nair", avatar: "https://i.pravatar.cc/150?img=5",
                 date: "May 8, 2026", replies: 18, views: 2100, votes: 35
             },
             {
                 id: 5, pinned: false,
                 category: "Primavera P6", tagClass: "disc-tag-green",
-                title: "P6 resource leveling destroying my critical path — best approach?",
-                excerpt: "Every time I run resource leveling in P6, activities that were on the critical path get pushed out and the logic seems to break. Is there a way to protect the critical path while still leveling?",
-                tags: ["#P6", "#ResourceLeveling", "#CriticalPath"],
+                title: "P6'da kaynak dengeleme kritik yolu bozuyor — nasıl korunur?",
+                excerpt: "Resource leveling çalıştırdığımda kritik yoldaki aktiviteler ötelenip mantık bozuluyor. Kritik yolu korurken kaynakları dengelemenin doğru yöntemi nedir?",
+                tags: ["#P6", "#KaynakDengeleme", "#KritikYol"],
                 author: "Barış Emre Özçelik", avatar: "https://i.pravatar.cc/150?img=11",
                 date: "May 6, 2026", replies: 15, views: 1750, votes: 29
             },
             {
                 id: 6, pinned: false,
                 category: "Risk Management", tagClass: "disc-tag-purple",
-                title: "Quantitative risk analysis — Monte Carlo in Excel vs dedicated software?",
-                excerpt: "Our PMO is pushing for QRA on all major projects. We've been using @RISK but the license cost is significant. Has anyone had success doing Monte Carlo simulations in Excel with custom macros?",
-                tags: ["#RiskManagement", "#MonteCarlo", "#QRA"],
+                title: "Kantitatif risk analizi — Monte Carlo için Excel mi, yazılım mı?",
+                excerpt: "PMO tüm büyük projelerde QRA zorunlu kıldı. @RISK lisansı maliyetli. Excel'de özel makrolarla Monte Carlo simülasyonu yapan var mı? Sonuçlar güvenilir oluyor mu?",
+                tags: ["#RiskYönetimi", "#MonteCarlo", "#QRA"],
                 author: "Sarah O'Brien", avatar: "https://i.pravatar.cc/150?img=20",
                 date: "May 4, 2026", replies: 22, views: 2800, votes: 44
             },
             {
                 id: 7, pinned: false,
                 category: "FIDIC Contracts", tagClass: "disc-tag-yellow",
-                title: "Engineer's determination under FIDIC — is it truly binding before DAB?",
-                excerpt: "The Engineer issued a determination under Sub-Clause 3.5 that we disagree with. We want to escalate to DAB but in the meantime, are we obliged to comply with the determination?",
-                tags: ["#FIDIC", "#Engineer", "#DAB"],
-                author: "Ahmed Al-Rashidi", avatar: "https://i.pravatar.cc/150?img=32",
+                title: "Mühendis'in FIDIC kapsamındaki kararı — DAB öncesinde bağlayıcı mı?",
+                excerpt: "Mühendis Alt Madde 3.5 kapsamında bir karar verdi ve buna itiraz etmek istiyoruz. DAB'a taşımadan önce bu karara uymak zorunda mıyız?",
+                tags: ["#FIDIC", "#Mühendis", "#DAB"],
+                author: "Ahmed Al-Rashidi", avatar: "https://i.pravatar.cc/150?img=33",
                 date: "May 2, 2026", replies: 27, views: 3100, votes: 52
             },
             {
                 id: 8, pinned: false,
                 category: "Primavera P6", tagClass: "disc-tag-green",
-                title: "How to accurately report physical % complete vs duration % complete in P6?",
-                excerpt: "My client wants physical % complete reported but P6 keeps showing duration % complete in my S-curves. I've set the activity % complete type but the reports don't seem to pick it up correctly.",
-                tags: ["#P6", "#PercentComplete", "#Reporting"],
+                title: "P6'da fiziksel tamamlanma % ile süre tamamlanma % — S-eğrisine nasıl doğru yansıtılır?",
+                excerpt: "Müşteri fiziksel tamamlanma yüzdesi istiyor ancak P6 S-eğrilerinde süre bazlı yüzde gösteriyor. Activity % complete type ayarlıyorum ama raporlara yansımıyor.",
+                tags: ["#P6", "#FizikselTamamlanma", "#Raporlama"],
                 author: "James Okafor", avatar: "https://i.pravatar.cc/150?img=15",
                 date: "Apr 30, 2026", replies: 11, views: 1320, votes: 21
             },
@@ -819,7 +819,7 @@
 
         let currentFilter = 'all';
         let currentSearch = '';
-        let currentSort = 'latest';
+        let currentSort = 'popular';
         let currentUser = null;
 
         // ── AUTH ──

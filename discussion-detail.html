@@ -579,7 +579,7 @@
             {
                 id: 1, pinned: true,
                 category: "Primavera P6", tagClass: "disc-tag-green",
-                title: "Best practices for baseline management — multiple baselines on a live project?",
+                title: "Primavera P6'da çoklu baseline yönetimi — canlı projede en iyi yaklaşım nedir?",
                 content: `<p>Our project is 8 months in with 3 approved scope changes. We now maintain 4 baselines and the schedule is getting cluttered.</p><p>The project manager wants to keep all baselines visible for audit purposes, but the schedule is becoming hard to navigate in P6. We're currently using BL1 as the original contract baseline, BL2 and BL3 for approved variations, and BL4 as the current forecast.</p><p>Looking for advice on how experienced planners handle this without losing traceability. Specifically:</p><p><strong>1.</strong> Do you archive old baselines and only keep the current approved one?<br><strong>2.</strong> How do you present baseline comparisons to clients when multiple are involved?<br><strong>3.</strong> Is there a standard industry practice for this?</p>`,
                 tags: ["#P6", "#Baseline", "#BestPractice"],
                 author: "Barış Emre Özçelik", avatar: "https://i.pravatar.cc/150?img=11",
@@ -588,26 +588,26 @@
             {
                 id: 2, pinned: false,
                 category: "FIDIC Contracts", tagClass: "disc-tag-yellow",
-                title: "Clause 20.1 time bar — contractor missed 28-day notice. What are the options?",
+                title: "FIDIC Madde 20.1 — Yüklenici 28 günlük bildirim süresini kaçırdı. Seçenekler neler?",
                 content: `<p>The contractor failed to submit a notice within 28 days as required under Clause 20.1 of the FIDIC Red Book 1999.</p><p>The employer is now rejecting all extension of time and additional cost claims related to an unforeseen ground condition event that occurred in Week 12 of construction.</p><p>The contractor argues that the employer was aware of the event through the Engineer's site visits and weekly meeting minutes. Has anyone dealt with this and found a successful argument?</p><p>We're exploring the "prevention principle" argument and whether the employer's knowledge waives the time bar. Any precedents or case law references would be extremely helpful.</p>`,
                 tags: ["#FIDIC", "#Clause20", "#Claims"],
-                author: "Ahmed Al-Rashidi", avatar: "https://i.pravatar.cc/150?img=32",
+                author: "Ahmed Al-Rashidi", avatar: "https://i.pravatar.cc/150?img=33",
                 date: "May 12, 2026", replies: 32, views: 3200, votes: 61
             },
             {
                 id: 3, pinned: false,
                 category: "Delay Analysis", tagClass: "disc-tag-red",
-                title: "Concurrent delays — how do you handle compensation in a split-responsibility window?",
+                title: "Eşzamanlı gecikmeler — ortak sorumluluk döneminde tazminat nasıl hesaplanır?",
                 content: `<p>We have a 3-week window where both employer-caused and contractor-caused delays overlap on the critical path.</p><p>The SCL Protocol (2nd Edition) gives guidance on concurrent delay but our contract is silent on this specific scenario. The window in question involves an employer-issued design change that delayed procurement, running simultaneously with the contractor's late mobilization of key subcontractors.</p><p>Key questions:<br><strong>1.</strong> Do we use TIA (Time Impact Analysis) or Windows Analysis for this scenario?<br><strong>2.</strong> Is the contractor entitled to time but not money for the concurrent period?<br><strong>3.</strong> How have you documented concurrent delay events for DAB/arbitration?</p>`,
                 tags: ["#DelayAnalysis", "#ConcurrentDelay", "#SCL"],
-                author: "Carlos Mendes", avatar: "https://i.pravatar.cc/150?img=8",
+                author: "Carlos Mendes", avatar: "https://i.pravatar.cc/150?img=57",
                 date: "May 10, 2026", replies: 41, views: 4600, votes: 83
             },
         ];
 
         const replies = {
             1: [
-                { id: 1, accepted: true, author: "Ahmed Al-Rashidi", avatar: "https://i.pravatar.cc/150?img=32", date: "May 14, 2026", votes: 28,
+                { id: 1, accepted: true, author: "Ahmed Al-Rashidi", avatar: "https://i.pravatar.cc/150?img=33", date: "May 14, 2026", votes: 28,
                   content: `<p>This is a very common challenge on projects with scope changes. Here's what I've found works best:</p><p><strong>Baseline Strategy:</strong> Keep only 2 active baselines in P6 — the original contract baseline (BL1) and the current approved baseline (latest). Archive intermediate baselines in a separate project file or documentation system.</p><p>For client reporting, create a custom layout that shows planned vs current vs actual. Clients rarely need to see BL2 and BL3 in the working schedule — those belong in the claims register.</p>` },
                 { id: 2, accepted: false, author: "Sarah O'Brien", avatar: "https://i.pravatar.cc/150?img=20", date: "May 15, 2026", votes: 14,
                   content: `<p>Agree with Ahmed. I'd also add — use the "Maintain Baseline" function carefully. A lot of planners update the wrong baseline by accident.</p><p>We typically create a PDF export of each baseline at the time of approval, stamped and signed, and store it in the document management system. The live P6 project only keeps BL1 and the current approved baseline.</p>` },
@@ -615,13 +615,13 @@
                   content: `<p>For audit purposes, you can export each baseline as a separate XER file and store those in your project archive. That way you have full traceability without cluttering the working schedule.</p>` },
             ],
             2: [
-                { id: 1, accepted: true, author: "Carlos Mendes", avatar: "https://i.pravatar.cc/150?img=8", date: "May 12, 2026", votes: 35,
+                { id: 1, accepted: true, author: "Carlos Mendes", avatar: "https://i.pravatar.cc/150?img=57", date: "May 12, 2026", votes: 35,
                   content: `<p>The time bar under FIDIC 20.1 is strict but not absolute. There are a few avenues worth exploring:</p><p><strong>1. Prevention Principle:</strong> If the employer's actions prevented the contractor from giving notice (e.g., access issues, information withheld), the time bar may not apply. This is well-established in English law.</p><p><strong>2. Employer's Knowledge:</strong> If the Engineer documented the event in meeting minutes or site reports, there's an argument that the employer had constructive notice. Courts have been sympathetic to this in some jurisdictions.</p><p><strong>3. Good Faith:</strong> Under some civil law systems, strict enforcement of a time bar that leads to manifestly unjust results may be challenged on good faith grounds.</p>` },
             ],
             3: [
                 { id: 1, accepted: false, author: "Barış Emre Özçelik", avatar: "https://i.pravatar.cc/150?img=11", date: "May 10, 2026", votes: 22,
                   content: `<p>For concurrent delay analysis, Windows Analysis is generally preferred when you have overlapping responsible parties — it lets you isolate each window and attribute delay causes independently.</p><p>On the compensation question: under English law (which most FIDIC contracts follow), the contractor is typically entitled to time but not additional cost for a concurrently caused delay. The key case is <em>Saga Cruises v Fincantieri</em>.</p>` },
-                { id: 2, accepted: true, author: "Ahmed Al-Rashidi", avatar: "https://i.pravatar.cc/150?img=32", date: "May 11, 2026", votes: 31,
+                { id: 2, accepted: true, author: "Ahmed Al-Rashidi", avatar: "https://i.pravatar.cc/150?img=33", date: "May 11, 2026", votes: 31,
                   content: `<p>Critical distinction to make: concurrent delay ≠ parallel delay. True concurrence requires both delays to independently impact the same critical path activity simultaneously.</p><p>For documentation, I always prepare a delay register with: (1) event description, (2) responsible party, (3) impact on critical path, (4) contemporaneous records (RFIs, instructions, meeting minutes). This is essential for DAB proceedings.</p>` },
             ]
         };
@@ -692,7 +692,6 @@
                                 </div>
                             </div>
                             <div class="post-actions">
-                                <button class="action-btn" onclick="shareDiscussion('copy')"><i class='bx bx-link'></i> Share</button>
                                 <button class="action-btn" onclick="scrollToReply()"><i class='bx bx-reply'></i> Reply</button>
                             </div>
                         </div>
