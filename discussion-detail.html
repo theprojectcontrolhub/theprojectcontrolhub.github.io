@@ -669,10 +669,11 @@
             document.getElementById('mainPost').innerHTML = `
                 <div class="post-header">
                     <div class="post-vote">
-                        <button class="vote-btn-lg" onclick="votePost(1)" title="Upvote"><i class='bx bx-chevron-up'></i></button>
+                        <button class="vote-btn-lg" id="likePostBtn" onclick="likePost()" title="Like">
+                            <i class='bx bx-heart'></i>
+                        </button>
                         <span class="vote-num" id="postVoteNum">${disc.votes}</span>
-                        <span class="vote-lbl">votes</span>
-                        <button class="vote-btn-lg" onclick="votePost(-1)" title="Downvote"><i class='bx bx-chevron-down'></i></button>
+                        <span class="vote-lbl">likes</span>
                     </div>
                     <div class="post-body">
                         <div class="post-tags">
@@ -709,9 +710,9 @@
             document.getElementById('repliesList').innerHTML = discReplies.map(r => `
                 <div class="reply-card ${r.accepted ? 'accepted' : ''}">
                     <div class="reply-vote">
-                        <button class="vote-btn-sm" onclick="voteReply(${r.id}, 1)"><i class='bx bx-chevron-up'></i></button>
+                        <button class="vote-btn-sm" id="likeReply${r.id}" onclick="likeReply(${r.id})" title="Like"><i class='bx bx-heart'></i></button>
                         <span class="reply-vote-num" id="replyVote${r.id}">${r.votes}</span>
-                        <button class="vote-btn-sm" onclick="voteReply(${r.id}, -1)"><i class='bx bx-chevron-down'></i></button>
+                        <span style="font-size:10px;color:var(--text-muted);">likes</span>
                     </div>
                     <div class="reply-body">
                         ${r.accepted ? `<div class="accepted-badge"><i class='bx bx-check-circle'></i> Accepted Answer</div>` : ''}
@@ -724,7 +725,7 @@
                         </div>
                         <div class="reply-content">${r.content}</div>
                         <div class="reply-actions">
-                            <button class="reply-action-btn" onclick="voteReply(${r.id}, 1)"><i class='bx bx-like'></i> Helpful</button>
+                            <button class="reply-action-btn" onclick="likeReply(${r.id})"><i class='bx bx-heart'></i> Like</button>
                             <button class="reply-action-btn"><i class='bx bx-reply'></i> Quote</button>
                             <button class="reply-action-btn"><i class='bx bx-flag'></i> Report</button>
                         </div>
@@ -768,16 +769,46 @@
         }
 
         // ── ACTIONS ──
-        window.votePost = (dir) => {
+        const likedPosts = new Set();
+        const likedReplies = new Set();
+
+        window.likePost = () => {
             if (!currentUser) { openMembershipModal(); return; }
             const el = document.getElementById('postVoteNum');
-            el.textContent = parseInt(el.textContent) + dir;
+            const btn = document.getElementById('likePostBtn');
+            const key = 'post_' + discId;
+            if (likedPosts.has(key)) {
+                likedPosts.delete(key);
+                el.textContent = parseInt(el.textContent) - 1;
+                btn.style.color = '';
+                btn.style.borderColor = '';
+                btn.style.background = '';
+            } else {
+                likedPosts.add(key);
+                el.textContent = parseInt(el.textContent) + 1;
+                btn.style.color = '#ef4444';
+                btn.style.borderColor = '#ef4444';
+                btn.style.background = 'rgba(239,68,68,0.05)';
+            }
         };
 
-        window.voteReply = (id, dir) => {
+        window.likeReply = (id) => {
             if (!currentUser) { openMembershipModal(); return; }
             const el = document.getElementById('replyVote' + id);
-            if (el) el.textContent = parseInt(el.textContent) + dir;
+            const btn = document.getElementById('likeReply' + id);
+            if (likedReplies.has(id)) {
+                likedReplies.delete(id);
+                el.textContent = parseInt(el.textContent) - 1;
+                btn.style.color = '';
+                btn.style.borderColor = '';
+                btn.style.background = '';
+            } else {
+                likedReplies.add(id);
+                el.textContent = parseInt(el.textContent) + 1;
+                btn.style.color = '#ef4444';
+                btn.style.borderColor = '#ef4444';
+                btn.style.background = 'rgba(239,68,68,0.05)';
+            }
         };
 
         window.submitReply = () => {

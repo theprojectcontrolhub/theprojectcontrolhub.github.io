@@ -895,10 +895,11 @@
                     </div>
                     <div class="disc-card-side">
                         <div class="disc-vote">
-                            <button class="vote-btn" onclick="vote(event, ${d.id}, 1)"><i class='bx bx-chevron-up'></i></button>
-                            <span class="vote-count">${d.votes}</span>
-                            <span class="vote-label">votes</span>
-                            <button class="vote-btn" onclick="vote(event, ${d.id}, -1)"><i class='bx bx-chevron-down'></i></button>
+                            <button class="vote-btn" id="like_${d.id}" onclick="likeDisc(event, ${d.id})" title="Like">
+                                <i class='bx bx-heart'></i>
+                            </button>
+                            <span class="vote-count" id="likeCount_${d.id}">${d.votes}</span>
+                            <span class="vote-label">likes</span>
                         </div>
                     </div>
                 </div>
@@ -923,12 +924,26 @@
             renderDiscussions();
         };
 
-        // ── VOTING ──
-        window.vote = (e, id, dir) => {
+        // ── LIKING ──
+        const liked = new Set();
+
+        window.likeDisc = (e, id) => {
             e.stopPropagation();
             if (!currentUser) { openMembershipModal(); return; }
             const disc = discussions.find(d => d.id === id);
-            if (disc) { disc.votes += dir; renderDiscussions(); }
+            if (!disc) return;
+            const btn = document.getElementById('like_' + id);
+            const countEl = document.getElementById('likeCount_' + id);
+            if (liked.has(id)) {
+                liked.delete(id);
+                disc.votes--;
+                if (btn) { btn.style.color = ''; btn.style.borderColor = ''; btn.style.background = ''; }
+            } else {
+                liked.add(id);
+                disc.votes++;
+                if (btn) { btn.style.color = '#ef4444'; btn.style.borderColor = '#ef4444'; btn.style.background = 'rgba(239,68,68,0.05)'; }
+            }
+            if (countEl) countEl.textContent = disc.votes;
         };
 
         // ── DISCUSSION CLICK ──
