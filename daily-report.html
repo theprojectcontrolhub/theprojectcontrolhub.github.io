@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Report Generator — The Project Control Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <style>
+        .gen-hero { background: var(--bg-dark); color: var(--text-light); padding: 100px 48px 40px; }
+        .gen-hero h1 { font-size: 40px; font-weight: 800; letter-spacing: -1px; margin-bottom: 10px; }
+        .gen-hero h1 span { color: var(--primary-green); }
+        .gen-hero p { font-size: 16px; color: var(--text-muted); max-width: 580px; }
+
+        .gen-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 0; min-height: 80vh; }
+
+        .data-panel { background: var(--bg-light); padding: 32px; border-right: 1px solid #e2e8f0; overflow-y: auto; }
+        .preview-panel { background: white; padding: 32px; overflow-y: auto; }
+
+        .panel-title { font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 24px; display: flex; align-items: center; gap: 8px; }
+        .panel-title i { color: var(--primary-green); font-size: 16px; }
+
+        .form-section { background: var(--white); border: 1px solid #e2e8f0; border-radius: 12px; margin-bottom: 16px; overflow: hidden; }
+        .form-section-header { background: #f8fafc; padding: 12px 16px; border-bottom: 1px solid #e2e8f0; font-size: 13px; font-weight: 700; color: var(--text-dark); display: flex; align-items: center; gap: 8px; }
+        .form-section-header i { color: var(--primary-green); }
+        .form-section-body { padding: 16px; }
+
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+        .form-row.single { grid-template-columns: 1fr; }
+        .form-row.triple { grid-template-columns: 1fr 1fr 1fr; }
+
+        .form-group label { display: block; font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 9px 12px; border: 1px solid #e2e8f0; border-radius: 8px; font-family: inherit; font-size: 13px; color: var(--text-dark); background: var(--white); transition: border-color 0.2s; }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--primary-green); box-shadow: 0 0 0 3px rgba(16,185,129,0.08); }
+        .form-group textarea { min-height: 70px; resize: vertical; }
+
+        .mp-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+        .mp-table th { background: #f8fafc; padding: 8px 10px; text-align: left; font-size: 11px; font-weight: 700; color: var(--text-muted); border-bottom: 1px solid #e2e8f0; }
+        .mp-table td { padding: 6px 4px; border-bottom: 1px solid #f1f5f9; }
+        .mp-table input { width: 100%; padding: 6px 8px; border: 1px solid #e2e8f0; border-radius: 6px; font-family: inherit; font-size: 12px; }
+        .mp-table input:focus { outline: none; border-color: var(--primary-green); }
+        .mp-table .total-row td { background: rgba(16,185,129,0.05); font-weight: 700; }
+
+        .add-row-btn { font-size: 12px; color: var(--primary-green); background: none; border: 1px dashed rgba(16,185,129,0.4); border-radius: 6px; padding: 6px 12px; cursor: pointer; font-family: inherit; width: 100%; margin-top: 8px; transition: background 0.2s; }
+        .add-row-btn:hover { background: rgba(16,185,129,0.05); }
+
+        .preview-actions { display: flex; gap: 10px; margin-bottom: 24px; }
+        .preview-btn { display: flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 8px; font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; transition: var(--transition); border: none; }
+        .preview-btn.primary { background: var(--primary-green); color: white; }
+        .preview-btn.primary:hover { background: var(--primary-green-hover); }
+        .preview-btn.secondary { background: #f8fafc; color: var(--text-dark); border: 1px solid #e2e8f0; }
+        .preview-btn.secondary:hover { border-color: var(--primary-green); color: var(--primary-green); }
+
+        .report-preview { border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; font-size: 12px; }
+        .rp-header { background: #0f172a; padding: 20px 24px; color: white; }
+        .rp-header h2 { font-size: 16px; font-weight: 800; margin-bottom: 4px; }
+        .rp-header p { font-size: 12px; color: #94a3b8; }
+        .rp-meta { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: #e2e8f0; border-bottom: 1px solid #e2e8f0; }
+        .rp-meta-item { background: #f8fafc; padding: 12px 16px; }
+        .rp-meta-item label { display: block; font-size: 10px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+        .rp-meta-item span { font-size: 13px; font-weight: 600; color: #0f172a; }
+        .rp-section { border-top: 1px solid #e2e8f0; }
+        .rp-section-title { background: #1e293b; color: white; padding: 8px 16px; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+        .rp-table { width: 100%; border-collapse: collapse; font-size: 11px; }
+        .rp-table th { background: #10b981; color: white; padding: 8px 12px; text-align: left; font-size: 10px; font-weight: 700; }
+        .rp-table td { padding: 7px 12px; border-bottom: 1px solid #f1f5f9; color: #334155; }
+        .rp-table tr:nth-child(even) td { background: #f8fafc; }
+        .rp-table .total-row td { background: #d1fae5; font-weight: 700; color: #065f46; }
+        .rp-text-block { padding: 14px 16px; font-size: 12px; color: #334155; line-height: 1.6; border-bottom: 1px solid #f1f5f9; white-space: pre-line; }
+        .rp-text-block.empty { color: #94a3b8; font-style: italic; }
+        .rp-footer { background: #f8fafc; padding: 16px 24px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+        .sig-block label { display: block; font-size: 10px; font-weight: 700; color: #94a3b8; text-transform: uppercase; margin-bottom: 20px; }
+        .sig-line { border-top: 1px solid #cbd5e1; padding-top: 6px; font-size: 11px; color: #64748b; }
+
+        @media print {
+            .gen-hero, .data-panel, .preview-actions, nav, footer { display: none !important; }
+            .gen-layout { grid-template-columns: 1fr; }
+            .preview-panel { padding: 0; }
+        }
+
+        @media (max-width: 1024px) {
+            .gen-layout { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero-section" style="padding-bottom:0;">
+        <nav class="navbar">
+            <div class="logo"><i class='bx bx-hive'></i><span>THE PROJECT CONTROL HUB</span></div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="discussions.html">Discussions</a>
+                <a href="courses.html">Courses</a>
+                <a href="report-builder.html">Report Builder</a>
+                <a href="about.html">About</a>
+            </div>
+            <div class="nav-actions">
+                <button id="joinBtn" class="btn btn-primary" onclick="openMembershipModal()"><i class='bx bx-user-plus'></i> Join Community</button>
+                <div id="userMenu" style="display:none; align-items:center; gap:12px;">
+                    <img id="userAvatar" src="" style="width:32px;height:32px;border-radius:50%;object-fit:cover;" alt="avatar">
+                    <span id="userName" style="font-size:14px;font-weight:600;color:var(--text-light);"></span>
+                    <button class="btn btn-primary" onclick="logoutUser()" style="padding:8px 16px;font-size:13px;">Sign Out</button>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+    <div class="gen-hero">
+        <h1>Daily Report <span>Generator</span></h1>
+        <p>Enter your site data once — get a professional report instantly. Community-approved format. Download as Excel or print as PDF.</p>
+    </div>
+
+    <div class="gen-layout">
+        <!-- LEFT: DATA ENTRY -->
+        <div class="data-panel">
+            <div class="panel-title"><i class='bx bx-edit'></i> Enter Site Data</div>
+
+            <div class="form-section">
+                <div class="form-section-header"><i class='bx bx-building'></i> Project Information</div>
+                <div class="form-section-body">
+                    <div class="form-row">
+                        <div class="form-group"><label>Project Name</label><input type="text" id="projectName" placeholder="e.g. Airport Terminal 3" oninput="updatePreview()"></div>
+                        <div class="form-group"><label>Contract No</label><input type="text" id="contractNo" placeholder="CT-2026-001" oninput="updatePreview()"></div>
+                    </div>
+                    <div class="form-row triple">
+                        <div class="form-group"><label>Report Date</label><input type="date" id="reportDate" oninput="updatePreview()"></div>
+                        <div class="form-group"><label>Report No</label><input type="text" id="reportNo" placeholder="DR-001" oninput="updatePreview()"></div>
+                        <div class="form-group"><label>Prepared By</label><input type="text" id="preparedBy" placeholder="Your name" oninput="updatePreview()"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <div class="form-section-header"><i class='bx bx-cloud'></i> Weather Conditions</div>
+                <div class="form-section-body">
+                    <div class="form-row triple">
+                        <div class="form-group"><label>Condition</label>
+                            <select id="weather" onchange="updatePreview()">
+                                <option value="">Select...</option>
+                                <option>Clear / Sunny</option><option>Partly Cloudy</option><option>Overcast</option>
+                                <option>Light Rain</option><option>Heavy Rain</option><option>Windy</option>
+                                <option>Sandstorm</option><option>Extreme Heat</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label>Temp (°C)</label><input type="number" id="temp" placeholder="32" oninput="updatePreview()"></div>
+                        <div class="form-group"><label>Wind (km/h)</label><input type="number" id="wind" placeholder="15" oninput="updatePreview()"></div>
+                    </div>
+                    <div class="form-row single">
+                        <div class="form-group"><label>Weather Impact</label><input type="text" id="weatherImpact" placeholder="e.g. No impact / Concreting suspended due to rain" oninput="updatePreview()"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <div class="form-section-header"><i class='bx bx-group'></i> Manpower</div>
+                <div class="form-section-body">
+                    <table class="mp-table">
+                        <thead><tr><th>Trade / Discipline</th><th>Subcontractor</th><th>Planned</th><th>Actual</th></tr></thead>
+                        <tbody id="mpBody">
+                            <tr><td><input type="text" placeholder="Civil Works" oninput="updatePreview()"></td><td><input type="text" placeholder="Subcon" oninput="updatePreview()"></td><td><input type="number" placeholder="0" oninput="calcTotal();updatePreview()"></td><td><input type="number" placeholder="0" oninput="calcTotal();updatePreview()"></td></tr>
+                            <tr><td><input type="text" placeholder="Structural Steel" oninput="updatePreview()"></td><td><input type="text" placeholder="Subcon" oninput="updatePreview()"></td><td><input type="number" placeholder="0" oninput="calcTotal();updatePreview()"></td><td><input type="number" placeholder="0" oninput="calcTotal();updatePreview()"></td></tr>
+                            <tr><td><input type="text" placeholder="MEP" oninput="updatePreview()"></td><td><input type="text" placeholder="Subcon" oninput="updatePreview()"></td><td><input type="number" placeholder="0" oninput="calcTotal();updatePreview()"></td><td><input type="number" placeholder="0" oninput="calcTotal();updatePreview()"></td></tr>
+                        </tbody>
+                        <tfoot>
+                            <tr class="total-row">
+                                <td colspan="2" style="padding:8px 10px;font-size:12px;">TOTAL</td>
+                                <td style="padding:8px 4px;"><input type="number" id="totalPlanned" readonly style="background:#d1fae5;font-weight:700;border:none;"></td>
+                                <td style="padding:8px 4px;"><input type="number" id="totalActual" readonly style="background:#d1fae5;font-weight:700;border:none;"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <button class="add-row-btn" onclick="addMpRow()"><i class='bx bx-plus'></i> Add Trade</button>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <div class="form-section-header"><i class='bx bx-check-circle'></i> Work Completed Today</div>
+                <div class="form-section-body">
+                    <div class="form-group"><label>Description</label><textarea id="workCompleted" placeholder="• Foundation concrete pour at Grid A1-A5 — 120m³&#10;• Steel erection Level 2 — 45 columns&#10;• Backfilling Zone B — completed" oninput="updatePreview()"></textarea></div>
+                    <div class="form-row triple">
+                        <div class="form-group"><label>Planned Progress %</label><input type="number" id="plannedProgress" min="0" max="100" placeholder="45" oninput="updatePreview()"></div>
+                        <div class="form-group"><label>Actual Progress %</label><input type="number" id="actualProgress" min="0" max="100" placeholder="43" oninput="updatePreview()"></div>
+                        <div class="form-group"><label>SPI (Auto)</label><input type="text" id="spiVal" readonly style="background:#f8fafc;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <div class="form-section-header"><i class='bx bx-cog'></i> Equipment on Site</div>
+                <div class="form-section-body">
+                    <div class="form-group"><label>Equipment Summary</label><textarea id="equipment" placeholder="• Tower Crane TC-01 — Operational (8 hrs)&#10;• Excavator CAT 320 — Operational (6 hrs)&#10;• Concrete Pump — Standby" oninput="updatePreview()"></textarea></div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <div class="form-section-header"><i class='bx bx-shield'></i> Safety & Issues</div>
+                <div class="form-section-body">
+                    <div class="form-row">
+                        <div class="form-group"><label>Incidents</label>
+                            <select id="incidents" onchange="updatePreview()">
+                                <option>None reported</option><option>1 Near Miss</option>
+                                <option>1 First Aid</option><option>1 Lost Time Injury</option><option>Multiple — see notes</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label>Toolbox Talk</label>
+                            <select id="toolbox" onchange="updatePreview()"><option>Yes</option><option>No</option></select>
+                        </div>
+                    </div>
+                    <div class="form-group"><label>Issues & Constraints</label><textarea id="issues" placeholder="• Material delivery delayed&#10;• RFI-045 pending" oninput="updatePreview()"></textarea></div>
+                    <div class="form-group" style="margin-top:12px;"><label>Next Day Plan</label><textarea id="nextDay" placeholder="• Continue steel erection Level 2&#10;• Start formwork at Grid B" oninput="updatePreview()"></textarea></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT: PREVIEW -->
+        <div class="preview-panel">
+            <div class="panel-title"><i class='bx bx-file'></i> Live Report Preview</div>
+            <div class="preview-actions">
+                <button class="preview-btn primary" onclick="downloadExcel()"><i class='bx bx-spreadsheet'></i> Download Excel</button>
+                <button class="preview-btn secondary" onclick="window.print()"><i class='bx bx-printer'></i> Print / PDF</button>
+                <button class="preview-btn secondary" onclick="resetForm()"><i class='bx bx-refresh'></i> Reset</button>
+            </div>
+            <div class="report-preview" id="reportPreview"></div>
+        </div>
+    </div>
+
+    <!-- MEMBERSHIP MODAL -->
+    <div class="modal-overlay" id="membershipModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>Join to Download</h3>
+                <button class="close-modal" onclick="closeMembershipModal()"><i class='bx bx-x'></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-icon-wrapper"><i class='bx bx-lock-alt'></i></div>
+                <h4>Join The Project Control Hub</h4>
+                <p>Sign in to download your report as Excel or PDF. Free forever.</p>
+                <div class="social-login-container">
+                    <button class="btn-social btn-google" onclick="signInWithGoogleBtn()"><i class='bx bxl-google'></i> Continue with Google</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { signInWithGoogle, logout, onUserChange } from './auth.js';
+        let currentUser = null;
+
+        onUserChange((user) => {
+            currentUser = user;
+            if (user) {
+                document.getElementById('joinBtn').style.display = 'none';
+                document.getElementById('userMenu').style.display = 'flex';
+                document.getElementById('userName').textContent = user.displayName.split(' ')[0];
+                if (user.photoURL) document.getElementById('userAvatar').src = user.photoURL;
+                closeMembershipModal();
+                if (!document.getElementById('preparedBy').value) {
+                    document.getElementById('preparedBy').value = user.displayName;
+                    updatePreview();
+                }
+            } else {
+                document.getElementById('joinBtn').style.display = 'flex';
+                document.getElementById('userMenu').style.display = 'none';
+            }
+        });
+
+        window.signInWithGoogleBtn = async () => { try { await signInWithGoogle(); } catch(e) {} };
+        window.logoutUser = async () => { await logout(); };
+
+        function val(id) { return document.getElementById(id)?.value || ''; }
+
+        function getMpData() {
+            const rows = document.querySelectorAll('#mpBody tr');
+            const data = []; let totalP = 0, totalA = 0;
+            rows.forEach(row => {
+                const inputs = row.querySelectorAll('input');
+                if (inputs.length >= 4) {
+                    const trade = inputs[0].value, sub = inputs[1].value;
+                    const planned = parseInt(inputs[2].value) || 0;
+                    const actual = parseInt(inputs[3].value) || 0;
+                    if (trade || planned || actual) { data.push({trade,sub,planned,actual}); totalP+=planned; totalA+=actual; }
+                }
+            });
+            return { rows: data, totalPlanned: totalP, totalActual: totalA };
+        }
+
+        window.calcTotal = () => {
+            const {totalPlanned,totalActual} = getMpData();
+            document.getElementById('totalPlanned').value = totalPlanned || '';
+            document.getElementById('totalActual').value = totalActual || '';
+        };
+
+        window.addMpRow = () => {
+            const tbody = document.getElementById('mpBody');
+            const tr = document.createElement('tr');
+            tr.innerHTML = `<td><input type="text" placeholder="Trade" oninput="updatePreview()"></td><td><input type="text" placeholder="Subcon" oninput="updatePreview()"></td><td><input type="number" placeholder="0" oninput="calcTotal();updatePreview()"></td><td><input type="number" placeholder="0" oninput="calcTotal();updatePreview()"></td>`;
+            tbody.appendChild(tr);
+        };
+
+        function calcSPI() {
+            const p = parseFloat(val('plannedProgress')), a = parseFloat(val('actualProgress'));
+            if (p && a) { const s = (a/p).toFixed(2); document.getElementById('spiVal').value = s; return s; }
+            document.getElementById('spiVal').value = ''; return '—';
+        }
+
+        window.updatePreview = () => {
+            const spi = calcSPI();
+            const mp = getMpData();
+            const date = val('reportDate') ? new Date(val('reportDate')).toLocaleDateString('en-GB',{day:'2-digit',month:'long',year:'numeric'}) : '—';
+            const spiColor = parseFloat(spi) >= 1 ? '#059669' : parseFloat(spi) > 0 ? '#d97706' : '#64748b';
+
+            document.getElementById('reportPreview').innerHTML = `
+                <div class="rp-header">
+                    <h2>${val('projectName') || 'Project Name'}</h2>
+                    <p>Daily Site Report &nbsp;•&nbsp; ${date} &nbsp;•&nbsp; Report No: ${val('reportNo') || '—'}</p>
+                </div>
+                <div class="rp-meta">
+                    <div class="rp-meta-item"><label>Contract No</label><span>${val('contractNo') || '—'}</span></div>
+                    <div class="rp-meta-item"><label>Prepared By</label><span>${val('preparedBy') || '—'}</span></div>
+                    <div class="rp-meta-item"><label>Weather</label><span>${val('weather') || '—'} ${val('temp') ? val('temp')+'°C' : ''}</span></div>
+                    <div class="rp-meta-item"><label>Manpower Planned</label><span>${mp.totalPlanned || '—'}</span></div>
+                    <div class="rp-meta-item"><label>Manpower Actual</label><span>${mp.totalActual || '—'}</span></div>
+                    <div class="rp-meta-item"><label>SPI</label><span style="color:${spiColor};font-weight:800;">${spi}</span></div>
+                </div>
+                <div class="rp-section">
+                    <div class="rp-section-title">1. Manpower</div>
+                    <table class="rp-table">
+                        <thead><tr><th>Trade</th><th>Subcontractor</th><th>Planned</th><th>Actual</th><th>Variance</th></tr></thead>
+                        <tbody>
+                            ${mp.rows.length ? mp.rows.map(r => `<tr><td>${r.trade||'—'}</td><td>${r.sub||'—'}</td><td>${r.planned}</td><td>${r.actual}</td><td style="color:${r.actual-r.planned>=0?'#059669':'#dc2626'};font-weight:600;">${r.actual-r.planned>=0?'+':''}${r.actual-r.planned}</td></tr>`).join('') : '<tr><td colspan="5" style="color:#94a3b8;text-align:center;padding:12px;">No data entered</td></tr>'}
+                            <tr class="total-row"><td colspan="2"><strong>TOTAL</strong></td><td><strong>${mp.totalPlanned}</strong></td><td><strong>${mp.totalActual}</strong></td><td style="color:${mp.totalActual-mp.totalPlanned>=0?'#059669':'#dc2626'};font-weight:800;">${mp.totalActual-mp.totalPlanned>=0?'+':''}${mp.totalActual-mp.totalPlanned}</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="rp-section">
+                    <div class="rp-section-title">2. Progress</div>
+                    <table class="rp-table"><thead><tr><th>Metric</th><th>Value</th></tr></thead><tbody>
+                        <tr><td>Planned Progress</td><td><strong>${val('plannedProgress')?val('plannedProgress')+'%':'—'}</strong></td></tr>
+                        <tr><td>Actual Progress</td><td><strong>${val('actualProgress')?val('actualProgress')+'%':'—'}</strong></td></tr>
+                        <tr><td>SPI</td><td><strong style="color:${spiColor};">${spi}</strong></td></tr>
+                    </tbody></table>
+                </div>
+                <div class="rp-section">
+                    <div class="rp-section-title">3. Work Completed</div>
+                    <div class="rp-text-block ${!val('workCompleted')?'empty':''}">${val('workCompleted')||'No description entered'}</div>
+                </div>
+                <div class="rp-section">
+                    <div class="rp-section-title">4. Equipment</div>
+                    <div class="rp-text-block ${!val('equipment')?'empty':''}">${val('equipment')||'No data entered'}</div>
+                </div>
+                <div class="rp-section">
+                    <div class="rp-section-title">5. Safety</div>
+                    <table class="rp-table"><tbody>
+                        <tr><td>Incidents / Near Misses</td><td><strong>${val('incidents')||'None reported'}</strong></td></tr>
+                        <tr><td>Toolbox Talk</td><td><strong>${val('toolbox')||'—'}</strong></td></tr>
+                    </tbody></table>
+                </div>
+                ${val('issues')?`<div class="rp-section"><div class="rp-section-title">6. Issues & Constraints</div><div class="rp-text-block">${val('issues')}</div></div>`:''}
+                ${val('nextDay')?`<div class="rp-section"><div class="rp-section-title">7. Next Day Plan</div><div class="rp-text-block">${val('nextDay')}</div></div>`:''}
+                ${val('weatherImpact')?`<div class="rp-section"><div class="rp-section-title">Weather Impact</div><div class="rp-text-block">${val('weatherImpact')}</div></div>`:''}
+                <div class="rp-footer">
+                    <div class="sig-block"><label>Prepared by (Planner)</label><div class="sig-line">${val('preparedBy')||''}</div></div>
+                    <div class="sig-block"><label>Reviewed by (PM)</label><div class="sig-line"></div></div>
+                    <div class="sig-block"><label>Approved by (Client)</label><div class="sig-line"></div></div>
+                </div>`;
+        };
+
+        window.downloadExcel = () => {
+            if (!currentUser) { openMembershipModal(); return; }
+            const mp = getMpData();
+            const wb = XLSX.utils.book_new();
+            const data = [
+                ["THE PROJECT CONTROL HUB — Daily Site Report"],
+                ["Project:", val('projectName'), "", "Contract No:", val('contractNo')],
+                ["Date:", val('reportDate'), "", "Report No:", val('reportNo')],
+                ["Prepared By:", val('preparedBy'), "", "Weather:", val('weather')+' '+val('temp')+'°C'],
+                [],
+                ["MANPOWER"],
+                ["Trade", "Subcontractor", "Planned", "Actual", "Variance"],
+                ...mp.rows.map(r => [r.trade, r.sub, r.planned, r.actual, r.actual-r.planned]),
+                ["TOTAL", "", mp.totalPlanned, mp.totalActual, mp.totalActual-mp.totalPlanned],
+                [],
+                ["PROGRESS"],
+                ["Planned %", val('plannedProgress')+'%', "Actual %", val('actualProgress')+'%', "SPI", document.getElementById('spiVal').value],
+                [],
+                ["WORK COMPLETED"],
+                [val('workCompleted')],
+                [],
+                ["EQUIPMENT"],
+                [val('equipment')],
+                [],
+                ["SAFETY"],
+                ["Incidents:", val('incidents'), "Toolbox Talk:", val('toolbox')],
+                [],
+                ["ISSUES"],
+                [val('issues')||'None'],
+                [],
+                ["NEXT DAY PLAN"],
+                [val('nextDay')],
+                [],
+                ["Prepared by:", val('preparedBy'), "Reviewed by:", "", "Approved by:", ""],
+            ];
+            const ws = XLSX.utils.aoa_to_sheet(data);
+            ws['!cols'] = [{wch:22},{wch:18},{wch:12},{wch:18},{wch:12}];
+            XLSX.utils.book_append_sheet(wb, ws, "Daily Report");
+            XLSX.writeFile(wb, `Daily_Report_${val('reportNo')||'DR'}_${val('reportDate')||'draft'}.xlsx`);
+        };
+
+        window.resetForm = () => {
+            if (!confirm('Reset all fields?')) return;
+            document.querySelectorAll('input:not([readonly]), select, textarea').forEach(el => el.value = '');
+            updatePreview();
+        };
+
+        window.openMembershipModal = () => { document.getElementById('membershipModal').classList.add('active'); document.body.style.overflow = 'hidden'; };
+        window.closeMembershipModal = () => { document.getElementById('membershipModal').classList.remove('active'); document.body.style.overflow = ''; };
+        document.getElementById('membershipModal').addEventListener('click', function(e) { if(e.target===this) closeMembershipModal(); });
+
+        document.getElementById('reportDate').value = new Date().toISOString().split('T')[0];
+        updatePreview();
+    </script>
+</body>
+</html>
