@@ -9,17 +9,20 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script>
-        // EmailJS - initialize with your public key
-        // Sign up free at emailjs.com, create a service + template, paste IDs below
-        const EMAILJS_SERVICE_ID = 'service_0mpwdit';
-        const EMAILJS_TEMPLATE_ID = '3kg6imj';
-        const EMAILJS_PUBLIC_KEY = 'sPoofeEoOmEIUqv2J';
-        const ADMIN_EMAIL = 'barisemreozcelik@hotmail.com';
-        window._emailjsReady = false;
-        try {
-            emailjs.init(EMAILJS_PUBLIC_KEY);
-            window._emailjsReady = true;
-        } catch(e) {}
+        window.EMAILJS_SERVICE_ID = 'service_0mpwdit';
+        window.EMAILJS_TEMPLATE_ID = '3kg6imj';
+        window.EMAILJS_PUBLIC_KEY = 'sPoofeEoOmEIUqv2J';
+        window.ADMIN_EMAIL = 'barisemreozcelik@gmail.com';
+        document.addEventListener('DOMContentLoaded', function() {
+            try {
+                emailjs.init(window.EMAILJS_PUBLIC_KEY);
+                window._emailjsReady = true;
+                console.log('EmailJS initialized successfully');
+            } catch(e) {
+                console.error('EmailJS init failed:', e);
+                window._emailjsReady = false;
+            }
+        });
     </script>
     <style>
         .detail-layout {
@@ -907,10 +910,10 @@
             const pageUrl = window.location.href;
 
             // Try EmailJS
-            if (window._emailjsReady && EMAILJS_SERVICE_ID !== 'YOUR_SERVICE_ID') {
+            if (window._emailjsReady) {
                 try {
-                    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-                        to_email: ADMIN_EMAIL,
+                    await emailjs.send(window.EMAILJS_SERVICE_ID, window.EMAILJS_TEMPLATE_ID, {
+                        to_email: window.ADMIN_EMAIL,
                         name: reporter,
                         email: reporter,
                         report_type: type,
