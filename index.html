@@ -9,6 +9,7 @@
     <!-- Icons -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script type="module" src="auth.js"></script>
 </head>
 <body>
 
@@ -28,7 +29,12 @@
                 <a href="about.html">About</a>
             </div>
             <div class="nav-actions">
-                <button class="btn btn-primary" onclick="openMembershipModal()"><i class='bx bx-user-plus'></i> Join Community</button>
+                <button id="joinBtn" class="btn btn-primary" onclick="openMembershipModal()"><i class='bx bx-user-plus'></i> Join Community</button>
+                <div id="userMenu" style="display:none; align-items:center; gap:12px;">
+                    <img id="userAvatar" src="" style="width:32px;height:32px;border-radius:50%;object-fit:cover;" alt="avatar">
+                    <span id="userName" style="font-size:14px;font-weight:600;color:var(--text-light);"></span>
+                    <button class="btn btn-primary" onclick="logoutUser()" style="padding:8px 16px;font-size:13px;">Sign Out</button>
+                </div>
             </div>
         </nav>
 
@@ -365,10 +371,7 @@
                 <p>Join our professional network to start participating in discussions, sharing insights, and expanding your career in project controls.</p>
                 
                 <div class="social-login-container">
-                    <button class="btn-social btn-linkedin" onclick="submitMembership(event)">
-                        <i class='bx bxl-linkedin-square'></i> Continue with LinkedIn
-                    </button>
-                    <button class="btn-social btn-google" onclick="submitMembership(event)">
+                    <button class="btn-social btn-google" onclick="signInWithGoogleBtn()">
                         <i class='bx bxl-google'></i> Continue with Google
                     </button>
                 </div>
@@ -461,18 +464,56 @@
         </div>
     </footer>
 
-    <script>
-        function openMembershipModal() {
+    <script type="module">
+        import { signInWithGoogle, logout, onUserChange } from './auth.js';
+
+        // Kullanıcı durumu değişince UI güncelle
+        onUserChange((user) => {
+            const joinBtn = document.getElementById('joinBtn');
+            const userMenu = document.getElementById('userMenu');
+            const userName = document.getElementById('userName');
+            const userAvatar = document.getElementById('userAvatar');
+
+            if (user) {
+                // Giriş yapılmış
+                joinBtn.style.display = 'none';
+                userMenu.style.display = 'flex';
+                userName.textContent = user.displayName.split(' ')[0];
+                if (user.photoURL) userAvatar.src = user.photoURL;
+                closeMembershipModal();
+            } else {
+                // Çıkış yapılmış
+                joinBtn.style.display = 'flex';
+                userMenu.style.display = 'none';
+            }
+        });
+
+        // Google ile giriş
+        window.signInWithGoogleBtn = async function() {
+            try {
+                await signInWithGoogle();
+            } catch (e) {
+                alert('Giriş başarısız. Lütfen tekrar deneyin.');
+            }
+        };
+
+        // Çıkış
+        window.logoutUser = async function() {
+            await logout();
+        };
+
+        // Modal
+        window.openMembershipModal = function() {
             document.getElementById('membershipModal').classList.add('active');
             document.body.style.overflow = 'hidden';
-        }
+        };
 
-        function closeMembershipModal() {
+        window.closeMembershipModal = function() {
             document.getElementById('membershipModal').classList.remove('active');
             document.body.style.overflow = '';
-        }
+        };
 
-        function subscribeNewsletter() {
+        window.subscribeNewsletter = function() {
             const email = document.getElementById("newsletterEmail").value;
             if (email && email.includes("@")) {
                 const btn = document.querySelector(".newsletter-form-home button");
@@ -484,21 +525,16 @@
                 document.getElementById("newsletterEmail").style.borderColor = "#ef4444";
                 setTimeout(() => { document.getElementById("newsletterEmail").style.borderColor = ""; }, 2000);
             }
-        }
+        };
 
-        function submitMembership(e) {
+        window.submitMembership = function(e) {
             e.preventDefault();
-            alert("Your request has been submitted. Our team will verify your details before granting access.");
-            closeMembershipModal();
-        }
+            signInWithGoogleBtn();
+        };
 
-        // Close on outside click
         document.getElementById('membershipModal').addEventListener('click', function(e) {
-            if(e.target === this) {
-                closeMembershipModal();
-            }
+            if(e.target === this) closeMembershipModal();
         });
     </script>
 </body>
 </html>
-
