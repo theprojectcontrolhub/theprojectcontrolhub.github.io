@@ -628,6 +628,7 @@
 
         let currentUser = null;
         let discId = 1;
+        window._discId = 1;
 
         // ── AUTH ──
         onUserChange((user) => {
@@ -656,6 +657,7 @@
         function loadDiscussion() {
             const params = new URLSearchParams(window.location.search);
             discId = parseInt(params.get('id')) || 1;
+            window._discId = discId;
             const disc = discussions.find(d => d.id === discId) || discussions[0];
 
             document.title = disc.title + ' — The Project Control Hub';
@@ -693,7 +695,7 @@
                             </div>
                             <div class="post-actions">
                                 <button class="action-btn" onclick="scrollToReply()"><i class='bx bx-reply'></i> Reply</button>
-                                <button class="action-btn" onclick="reportContent('post', discId)" style="color:#ef4444;border-color:#fecaca;"><i class='bx bx-flag'></i> Report</button>
+                                <button class="action-btn" id="reportPostBtn" onclick="reportContent('post', window._discId)" style="color:#ef4444;border-color:#fecaca;"><i class='bx bx-flag'></i> Report</button>
                             </div>
                         </div>
                     </div>
@@ -870,13 +872,16 @@
         // ── REPORT ──
         window.reportContent = (type, id) => {
             if (!currentUser) { openMembershipModal(); return; }
+            const realId = id || window._discId || 1;
             const modal = document.getElementById('reportModal');
+            document.body.style.overflow = 'hidden';
             modal.classList.add('active');
-            document.getElementById('reportType').value = type + '_' + id;
+            document.getElementById('reportType').value = type + '_' + realId;
         };
 
         window.closeReportModal = () => {
             document.getElementById('reportModal').classList.remove('active');
+            document.body.style.overflow = '';
         };
 
         window.submitReport = () => {
