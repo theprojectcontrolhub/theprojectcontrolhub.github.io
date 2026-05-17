@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Report Builder — The Project Control Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .builder-hero {
+            background: var(--bg-dark);
+            color: var(--text-light);
+            padding: 120px 48px 60px;
+        }
+
+        .builder-hero-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .builder-hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+        }
+
+        .builder-hero h1 span { color: var(--primary-green); }
+
+        .builder-hero p {
+            font-size: 17px;
+            color: var(--text-muted);
+            max-width: 600px;
+            line-height: 1.6;
+            margin-bottom: 32px;
+        }
+
+        .hero-badges {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .hero-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(16,185,129,0.1);
+            border: 1px solid rgba(16,185,129,0.2);
+            color: var(--primary-green);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        /* MAIN LAYOUT */
+        .builder-layout {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 48px 24px;
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 40px;
+            align-items: start;
+        }
+
+        /* REPORT TYPE TABS */
+        .report-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 32px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0;
+        }
+
+        .report-tab {
+            padding: 12px 24px;
+            border: none;
+            background: none;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -2px;
+            transition: var(--transition);
+        }
+
+        .report-tab.active {
+            color: var(--primary-green);
+            border-bottom-color: var(--primary-green);
+        }
+
+        .report-tab:hover { color: var(--text-dark); }
+
+        /* SECTION HEADER */
+        .section-header-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .section-header-row h2 {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--text-dark);
+        }
+
+        /* COLUMN CARDS */
+        .columns-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        .column-card {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transition: var(--transition);
+        }
+
+        .column-card:hover {
+            border-color: #cbd5e1;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+
+        .column-card.approved {
+            border-color: rgba(16,185,129,0.3);
+            background: rgba(16,185,129,0.02);
+        }
+
+        .column-card.pending {
+            border-color: rgba(234,179,8,0.3);
+            background: rgba(234,179,8,0.02);
+        }
+
+        .col-drag {
+            color: #cbd5e1;
+            cursor: grab;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .col-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .col-icon.green { background: rgba(16,185,129,0.1); color: var(--primary-green); }
+        .col-icon.blue { background: rgba(59,130,246,0.1); color: #3b82f6; }
+        .col-icon.yellow { background: rgba(234,179,8,0.1); color: #d97706; }
+        .col-icon.red { background: rgba(239,68,68,0.1); color: #dc2626; }
+        .col-icon.purple { background: rgba(139,92,246,0.1); color: #7c3aed; }
+        .col-icon.gray { background: #f1f5f9; color: #64748b; }
+
+        .col-info { flex: 1; }
+
+        .col-info h4 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+        }
+
+        .col-info p {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        .col-badges {
+            display: flex;
+            gap: 6px;
+            margin-top: 6px;
+        }
+
+        .col-badge {
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 10px;
+            letter-spacing: 0.3px;
+        }
+
+        .col-badge.approved { background: rgba(16,185,129,0.12); color: #059669; }
+        .col-badge.pending { background: rgba(234,179,8,0.12); color: #d97706; }
+        .col-badge.required { background: rgba(239,68,68,0.1); color: #dc2626; }
+
+        .col-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .like-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            background: none;
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .like-btn:hover, .like-btn.liked {
+            border-color: #ef4444;
+            color: #ef4444;
+            background: rgba(239,68,68,0.05);
+        }
+
+        .like-btn i { font-size: 16px; }
+
+        .include-toggle {
+            position: relative;
+            width: 44px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+
+        .include-toggle input { display: none; }
+
+        .toggle-slider {
+            position: absolute;
+            inset: 0;
+            background: #e2e8f0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .toggle-slider::before {
+            content: '';
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            background: white;
+            border-radius: 50%;
+            top: 3px;
+            left: 3px;
+            transition: 0.2s;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+
+        .include-toggle input:checked + .toggle-slider {
+            background: var(--primary-green);
+        }
+
+        .include-toggle input:checked + .toggle-slider::before {
+            transform: translateX(20px);
+        }
+
+        /* SUGGEST FORM */
+        .suggest-form {
+            background: var(--white);
+            border: 2px dashed #e2e8f0;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            transition: border-color 0.2s;
+        }
+
+        .suggest-form:focus-within { border-color: var(--primary-green); }
+
+        .suggest-form h3 {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .suggest-form h3 i { color: var(--primary-green); }
+
+        .suggest-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .suggest-form input,
+        .suggest-form textarea,
+        .suggest-form select {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 13px;
+            color: var(--text-dark);
+            transition: border-color 0.2s;
+        }
+
+        .suggest-form input:focus,
+        .suggest-form textarea:focus,
+        .suggest-form select:focus {
+            outline: none;
+            border-color: var(--primary-green);
+        }
+
+        .suggest-form textarea { min-height: 70px; resize: vertical; }
+
+        /* SIDEBAR */
+        .builder-sidebar { position: sticky; top: 24px; }
+
+        .preview-card {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 16px;
+        }
+
+        .preview-header {
+            background: var(--bg-dark);
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .preview-header h3 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .preview-header span {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .preview-body { padding: 0; }
+
+        .preview-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+
+        .preview-table th {
+            background: #f8fafc;
+            padding: 8px 12px;
+            text-align: left;
+            font-weight: 700;
+            color: var(--text-dark);
+            border-bottom: 1px solid #e2e8f0;
+            white-space: nowrap;
+        }
+
+        .preview-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #f1f5f9;
+            color: var(--text-muted);
+            font-size: 11px;
+        }
+
+        .preview-table tr:last-child td { border-bottom: none; }
+
+        .download-section {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+
+        .download-section h4 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+        }
+
+        .download-btns {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .download-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            background: none;
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: left;
+        }
+
+        .download-btn:hover {
+            border-color: var(--primary-green);
+            color: var(--primary-green);
+            background: rgba(16,185,129,0.03);
+        }
+
+        .download-btn i { font-size: 20px; }
+
+        .stats-card {
+            background: var(--bg-dark);
+            border-radius: 16px;
+            padding: 20px;
+        }
+
+        .stats-card h4 {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .stat-row:last-child { border-bottom: none; }
+
+        .stat-row span { font-size: 13px; color: var(--text-muted); }
+        .stat-row strong { font-size: 16px; font-weight: 800; color: var(--primary-green); }
+
+        /* TOAST */
+        #toast {
+            display: none;
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #0f172a;
+            color: white;
+            padding: 14px 20px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            align-items: center;
+            gap: 10px;
+            z-index: 9999;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 1024px) {
+            .builder-layout { grid-template-columns: 1fr; }
+            .builder-sidebar { position: static; }
+        }
+
+        @media (max-width: 768px) {
+            .builder-hero { padding: 100px 20px 40px; }
+            .builder-hero h1 { font-size: 32px; }
+            .suggest-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <section class="hero-section" style="padding-bottom:0;">
+        <nav class="navbar">
+            <div class="logo">
+                <i class='bx bx-hive'></i>
+                <span>THE PROJECT CONTROL HUB</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="discussions.html">Discussions</a>
+                <a href="courses.html">Courses</a>
+                <a href="report-builder.html" class="active">Report Builder</a>
+                <a href="about.html">About</a>
+            </div>
+            <div class="nav-actions">
+                <button id="joinBtn" class="btn btn-primary" onclick="openMembershipModal()"><i class='bx bx-user-plus'></i> Join Community</button>
+                <div id="userMenu" style="display:none; align-items:center; gap:12px;">
+                    <img id="userAvatar" src="" style="width:32px;height:32px;border-radius:50%;object-fit:cover;" alt="avatar">
+                    <span id="userName" style="font-size:14px;font-weight:600;color:var(--text-light);"></span>
+                    <button class="btn btn-primary" onclick="logoutUser()" style="padding:8px 16px;font-size:13px;">Sign Out</button>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+    <!-- HERO -->
+    <div class="builder-hero">
+        <div class="builder-hero-inner">
+            <p style="font-size:12px;font-weight:700;letter-spacing:1.5px;color:var(--primary-green);text-transform:uppercase;margin-bottom:12px;">// Community-Driven Standard</p>
+            <h1>Build the <span>Global Standard</span><br>Daily Report. Together.</h1>
+            <p>Vote on what belongs in a construction daily report. The community decides the columns. The result becomes the industry standard — built by planners, for planners.</p>
+            <div class="hero-badges">
+                <div class="hero-badge"><i class='bx bx-globe'></i> 15+ Countries</div>
+                <div class="hero-badge"><i class='bx bx-check-shield'></i> Community Approved</div>
+                <div class="hero-badge"><i class='bx bx-download'></i> Free Download</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN -->
+    <div style="background:var(--bg-light); min-height:70vh;">
+        <div class="builder-layout">
+
+            <!-- LEFT -->
+            <div>
+                <!-- TABS -->
+                <div class="report-tabs">
+                    <button class="report-tab active" onclick="switchReport('daily', this)">Daily Report</button>
+                    <button class="report-tab" onclick="switchReport('weekly', this)">Weekly Report</button>
+                    <button class="report-tab" onclick="switchReport('lookahead', this)">Lookahead</button>
+                </div>
+
+                <!-- COLUMN LIST -->
+                <div class="section-header-row">
+                    <h2>Report Columns <span id="approvedCount" style="font-size:14px;color:var(--primary-green);font-weight:600;margin-left:8px;"></span></h2>
+                    <span style="font-size:13px;color:var(--text-muted);">Toggle to include/exclude • Vote to rank</span>
+                </div>
+
+                <div class="columns-grid" id="columnsList"></div>
+
+                <!-- SUGGEST NEW -->
+                <div class="suggest-form">
+                    <h3><i class='bx bx-plus-circle'></i> Suggest a New Column</h3>
+                    <div class="suggest-row">
+                        <input type="text" id="suggestName" placeholder="Column name (e.g. Crane Utilization %)">
+                        <select id="suggestType">
+                            <option value="">Data type...</option>
+                            <option>Text</option>
+                            <option>Number</option>
+                            <option>Percentage</option>
+                            <option>Yes/No</option>
+                            <option>Date/Time</option>
+                            <option>Photo</option>
+                        </select>
+                    </div>
+                    <textarea id="suggestDesc" placeholder="Why should this column be in every daily report? What problem does it solve?"></textarea>
+                    <div style="display:flex;justify-content:flex-end;margin-top:12px;">
+                        <button class="btn btn-primary" onclick="suggestColumn()"><i class='bx bx-send'></i> Submit for Community Vote</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SIDEBAR -->
+            <aside class="builder-sidebar">
+
+                <!-- LIVE PREVIEW -->
+                <div class="preview-card">
+                    <div class="preview-header">
+                        <h3>Live Preview</h3>
+                        <span id="previewColCount">0 columns</span>
+                    </div>
+                    <div class="preview-body" style="overflow-x:auto;">
+                        <table class="preview-table">
+                            <thead>
+                                <tr id="previewHeaders"></tr>
+                            </thead>
+                            <tbody>
+                                <tr id="previewRow1"></tr>
+                                <tr id="previewRow2"></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- DOWNLOAD -->
+                <div class="download-section">
+                    <h4><i class='bx bx-download' style="color:var(--primary-green);"></i> Download Template</h4>
+                    <div class="download-btns">
+                        <button class="download-btn" onclick="downloadTemplate('excel')">
+                            <i class='bx bx-spreadsheet' style="color:#217346;"></i>
+                            <div>
+                                <div>Excel (.xlsx)</div>
+                                <div style="font-size:11px;color:var(--text-muted);font-weight:400;">Ready to fill template</div>
+                            </div>
+                        </button>
+                        <button class="download-btn" onclick="downloadTemplate('pdf')">
+                            <i class='bx bxs-file-pdf' style="color:#ef4444;"></i>
+                            <div>
+                                <div>PDF Report</div>
+                                <div style="font-size:11px;color:var(--text-muted);font-weight:400;">Printable format</div>
+                            </div>
+                        </button>
+                        <button class="download-btn" onclick="downloadTemplate('csv')">
+                            <i class='bx bx-table' style="color:#3b82f6;"></i>
+                            <div>
+                                <div>CSV Data</div>
+                                <div style="font-size:11px;color:var(--text-muted);font-weight:400;">For Power BI / Excel</div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- STATS -->
+                <div class="stats-card">
+                    <h4>Community Stats</h4>
+                    <div class="stat-row">
+                        <span>Total Votes Cast</span>
+                        <strong id="totalVotes">0</strong>
+                    </div>
+                    <div class="stat-row">
+                        <span>Approved Columns</span>
+                        <strong id="approvedColsStat">0</strong>
+                    </div>
+                    <div class="stat-row">
+                        <span>Pending Review</span>
+                        <strong id="pendingColsStat">0</strong>
+                    </div>
+                    <div class="stat-row">
+                        <span>Contributors</span>
+                        <strong>47</strong>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- MEMBERSHIP MODAL -->
+    <div class="modal-overlay" id="membershipModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>Join to Vote & Contribute</h3>
+                <button class="close-modal" onclick="closeMembershipModal()"><i class='bx bx-x'></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-icon-wrapper"><i class='bx bx-lock-alt'></i></div>
+                <h4>Join The Project Control Hub</h4>
+                <p>Sign in to vote on columns, suggest new ones, and help build the global standard for construction reporting.</p>
+                <div class="social-login-container">
+                    <button class="btn-social btn-google" onclick="signInWithGoogleBtn()">
+                        <i class='bx bxl-google'></i> Continue with Google
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST -->
+    <div id="toast" style="display:none;position:fixed;bottom:24px;right:24px;background:#0f172a;color:white;padding:14px 20px;border-radius:10px;font-size:14px;font-weight:600;align-items:center;gap:10px;z-index:9999;box-shadow:0 8px 20px rgba(0,0,0,0.2);"></div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <div class="logo"><i class='bx bx-hive'></i><span>THE PROJECT CONTROL<br>HUB</span></div>
+                <p>Building the global standard for construction project control — together.</p>
+            </div>
+            <div class="footer-links">
+                <h4>TOOLS</h4>
+                <ul>
+                    <li><a href="report-builder.html">Report Builder</a></li>
+                    <li><a href="discussions.html">Discussions</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 The Project Control Hub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script type="module">
+        import { signInWithGoogle, logout, onUserChange } from './auth.js';
+
+        // ── DATA ──
+        const reportData = {
+            daily: [
+                { id: 1, name: "Date", desc: "Report date", icon: "bx-calendar", iconClass: "green", votes: 312, included: true, status: "approved", required: true, type: "Date" },
+                { id: 2, name: "Weather Conditions", desc: "Temperature, wind, rain — impacts productivity and safety", icon: "bx-cloud", iconClass: "blue", votes: 287, included: true, status: "approved", required: false, type: "Text" },
+                { id: 3, name: "Total Manpower", desc: "Total headcount on site that day", icon: "bx-group", iconClass: "green", votes: 265, included: true, status: "approved", required: true, type: "Number" },
+                { id: 4, name: "Manpower by Trade", desc: "Breakdown: civil, steel, MEP, formwork, etc.", icon: "bx-hard-hat", iconClass: "blue", votes: 241, included: true, status: "approved", required: false, type: "Text" },
+                { id: 5, name: "Work Completed Today", desc: "Key activities completed — with quantities where possible", icon: "bx-check-circle", iconClass: "green", votes: 298, included: true, status: "approved", required: true, type: "Text" },
+                { id: 6, name: "Equipment on Site", desc: "List of equipment and operational status", icon: "bx-cog", iconClass: "yellow", votes: 198, included: true, status: "approved", required: false, type: "Text" },
+                { id: 7, name: "Safety Incidents", desc: "Near misses, incidents, toolbox talks held", icon: "bx-shield", iconClass: "red", votes: 276, included: true, status: "approved", required: true, type: "Text" },
+                { id: 8, name: "Issues & Constraints", desc: "What blocked progress today?", icon: "bx-error", iconClass: "red", votes: 243, included: true, status: "approved", required: false, type: "Text" },
+                { id: 9, name: "Photos", desc: "Photographic evidence of work completed", icon: "bx-camera", iconClass: "purple", votes: 189, included: false, status: "approved", required: false, type: "Photo" },
+                { id: 10, name: "Planned vs Actual Progress %", desc: "EVM-based comparison of planned vs actual", icon: "bx-trending-up", iconClass: "green", votes: 156, included: true, status: "approved", required: false, type: "Percentage" },
+                { id: 11, name: "Subcontractor Performance", desc: "Which subs were on site and their output", icon: "bx-buildings", iconClass: "blue", votes: 134, included: false, status: "approved", required: false, type: "Text" },
+                { id: 12, name: "Material Deliveries", desc: "What was delivered, quantity, any issues", icon: "bx-package", iconClass: "yellow", votes: 112, included: false, status: "approved", required: false, type: "Text" },
+                { id: 13, name: "Crane Utilization %", desc: "Hours crane operated vs available", icon: "bx-bar-chart", iconClass: "gray", votes: 67, included: false, status: "pending", required: false, type: "Percentage" },
+                { id: 14, name: "Concrete Pour Volume (m³)", desc: "Daily concrete poured — critical for structure tracking", icon: "bx-cube", iconClass: "gray", votes: 54, included: false, status: "pending", required: false, type: "Number" },
+            ],
+            weekly: [
+                { id: 1, name: "Report Week", desc: "Week number and date range", icon: "bx-calendar-week", iconClass: "green", votes: 198, included: true, status: "approved", required: true, type: "Date" },
+                { id: 2, name: "S-Curve Progress", desc: "Planned vs actual cumulative progress chart", icon: "bx-trending-up", iconClass: "green", votes: 245, included: true, status: "approved", required: true, type: "Chart" },
+                { id: 3, name: "SPI / CPI", desc: "Schedule and Cost Performance Index", icon: "bx-bar-chart-alt-2", iconClass: "blue", votes: 213, included: true, status: "approved", required: false, type: "Number" },
+                { id: 4, name: "Critical Path Status", desc: "Current critical path and float summary", icon: "bx-git-merge", iconClass: "red", votes: 187, included: true, status: "approved", required: false, type: "Text" },
+                { id: 5, name: "Milestone Status", desc: "Upcoming milestones and forecast dates", icon: "bx-flag", iconClass: "yellow", votes: 176, included: true, status: "approved", required: true, type: "Text" },
+                { id: 6, name: "Issues Log Summary", desc: "Open issues count and status", icon: "bx-error-circle", iconClass: "red", votes: 154, included: true, status: "approved", required: false, type: "Text" },
+                { id: 7, name: "Lookahead (3-Week)", desc: "Activities planned for next 3 weeks", icon: "bx-calendar-check", iconClass: "purple", votes: 143, included: false, status: "approved", required: false, type: "Text" },
+            ],
+            lookahead: [
+                { id: 1, name: "Activity ID", desc: "P6 or MS Project activity reference", icon: "bx-hash", iconClass: "gray", votes: 167, included: true, status: "approved", required: true, type: "Text" },
+                { id: 2, name: "Activity Description", desc: "What work is planned", icon: "bx-list-ul", iconClass: "green", votes: 198, included: true, status: "approved", required: true, type: "Text" },
+                { id: 3, name: "Planned Start", desc: "Scheduled start date", icon: "bx-calendar", iconClass: "green", votes: 189, included: true, status: "approved", required: true, type: "Date" },
+                { id: 4, name: "Planned Finish", desc: "Scheduled finish date", icon: "bx-calendar-check", iconClass: "green", votes: 187, included: true, status: "approved", required: true, type: "Date" },
+                { id: 5, name: "Responsible Party", desc: "Who owns this activity", icon: "bx-user", iconClass: "blue", votes: 156, included: true, status: "approved", required: false, type: "Text" },
+                { id: 6, name: "Constraints / Look-ahead Issues", desc: "What could prevent this activity from starting?", icon: "bx-error", iconClass: "red", votes: 143, included: true, status: "approved", required: false, type: "Text" },
+                { id: 7, name: "% Complete Forecast", desc: "Expected completion at end of period", icon: "bx-pie-chart", iconClass: "purple", votes: 112, included: false, status: "approved", required: false, type: "Percentage" },
+            ]
+        };
+
+        let currentReport = 'daily';
+        let currentUser = null;
+        const liked = new Set();
+
+        // ── AUTH ──
+        onUserChange((user) => {
+            currentUser = user;
+            const joinBtn = document.getElementById('joinBtn');
+            const userMenu = document.getElementById('userMenu');
+            if (user) {
+                joinBtn.style.display = 'none';
+                userMenu.style.display = 'flex';
+                document.getElementById('userName').textContent = user.displayName.split(' ')[0];
+                if (user.photoURL) document.getElementById('userAvatar').src = user.photoURL;
+                closeMembershipModal();
+            } else {
+                joinBtn.style.display = 'flex';
+                userMenu.style.display = 'none';
+            }
+        });
+
+        window.signInWithGoogleBtn = async () => {
+            try { await signInWithGoogle(); } catch(e) { alert('Sign in failed.'); }
+        };
+        window.logoutUser = async () => { await logout(); };
+
+        // ── RENDER ──
+        function render() {
+            const cols = reportData[currentReport];
+            const list = document.getElementById('columnsList');
+            const approved = cols.filter(c => c.status === 'approved').length;
+            const pending = cols.filter(c => c.status === 'pending').length;
+            const totalVotes = cols.reduce((a, c) => a + c.votes, 0);
+
+            document.getElementById('approvedCount').textContent = `${approved} approved`;
+            document.getElementById('approvedColsStat').textContent = approved;
+            document.getElementById('pendingColsStat').textContent = pending;
+            document.getElementById('totalVotes').textContent = totalVotes.toLocaleString();
+
+            list.innerHTML = cols.sort((a,b) => b.votes - a.votes).map(col => `
+                <div class="column-card ${col.status}" id="col_${col.id}">
+                    <i class='bx bx-dots-vertical-rounded col-drag'></i>
+                    <div class="col-icon ${col.iconClass}"><i class='bx ${col.icon}'></i></div>
+                    <div class="col-info">
+                        <h4>${col.name} ${col.required ? '<span style="color:#ef4444;font-size:11px;">*required</span>' : ''}</h4>
+                        <p>${col.desc}</p>
+                        <div class="col-badges">
+                            ${col.status === 'approved' ? '<span class="col-badge approved">✓ Community Approved</span>' : '<span class="col-badge pending">⏳ Pending Vote</span>'}
+                            <span class="col-badge" style="background:#f1f5f9;color:#64748b;">${col.type}</span>
+                        </div>
+                    </div>
+                    <div class="col-actions">
+                        <button class="like-btn ${liked.has(col.id) ? 'liked' : ''}" onclick="voteColumn(${col.id})" id="likeBtn_${col.id}">
+                            <i class='bx bx-heart'></i> <span id="voteCount_${col.id}">${col.votes}</span>
+                        </button>
+                        <label class="include-toggle" title="Include in your template">
+                            <input type="checkbox" ${col.included ? 'checked' : ''} onchange="toggleColumn(${col.id}, this.checked)">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+            `).join('');
+
+            updatePreview();
+        }
+
+        function updatePreview() {
+            const cols = reportData[currentReport].filter(c => c.included).slice(0, 6);
+            const headers = document.getElementById('previewHeaders');
+            const row1 = document.getElementById('previewRow1');
+            const row2 = document.getElementById('previewRow2');
+
+            document.getElementById('previewColCount').textContent = `${cols.length} columns`;
+
+            headers.innerHTML = cols.map(c => `<th>${c.name}</th>`).join('');
+            row1.innerHTML = cols.map(c => `<td style="color:#94a3b8;">—</td>`).join('');
+            row2.innerHTML = cols.map(c => `<td style="color:#94a3b8;">—</td>`).join('');
+        }
+
+        // ── ACTIONS ──
+        window.switchReport = (type, btn) => {
+            currentReport = type;
+            document.querySelectorAll('.report-tab').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            render();
+        };
+
+        window.voteColumn = (id) => {
+            if (!currentUser) { openMembershipModal(); return; }
+            const col = reportData[currentReport].find(c => c.id === id);
+            if (!col) return;
+            const btn = document.getElementById(`likeBtn_${id}`);
+            const countEl = document.getElementById(`voteCount_${id}`);
+            if (liked.has(id)) {
+                liked.delete(id);
+                col.votes--;
+                btn.classList.remove('liked');
+            } else {
+                liked.add(id);
+                col.votes++;
+                btn.classList.add('liked');
+            }
+            countEl.textContent = col.votes;
+            document.getElementById('totalVotes').textContent = reportData[currentReport].reduce((a,c) => a + c.votes, 0).toLocaleString();
+            showToast('✓ Vote recorded!', '#10b981');
+        };
+
+        window.toggleColumn = (id, checked) => {
+            const col = reportData[currentReport].find(c => c.id === id);
+            if (col) { col.included = checked; updatePreview(); }
+        };
+
+        window.suggestColumn = () => {
+            if (!currentUser) { openMembershipModal(); return; }
+            const name = document.getElementById('suggestName').value.trim();
+            const type = document.getElementById('suggestType').value;
+            const desc = document.getElementById('suggestDesc').value.trim();
+            if (!name || !type || !desc) { alert('Please fill in all fields.'); return; }
+
+            const newCol = {
+                id: Date.now(), name, desc, type,
+                icon: 'bx-plus', iconClass: 'gray',
+                votes: 1, included: false, status: 'pending', required: false
+            };
+
+            reportData[currentReport].push(newCol);
+            liked.add(newCol.id);
+            document.getElementById('suggestName').value = '';
+            document.getElementById('suggestType').value = '';
+            document.getElementById('suggestDesc').value = '';
+            render();
+            showToast('✓ Column submitted for community vote!', '#10b981');
+        };
+
+        window.downloadTemplate = (format) => {
+            if (!currentUser) { openMembershipModal(); return; }
+            const cols = reportData[currentReport].filter(c => c.included).map(c => c.name);
+
+            if (format === 'csv') {
+                const csv = cols.join(',') + '\n' + cols.map(() => '').join(',');
+                const blob = new Blob([csv], { type: 'text/csv' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `${currentReport}-report-template.csv`;
+                a.click();
+                showToast('✓ CSV downloaded!', '#10b981');
+            } else {
+                showToast(`✓ ${format.toUpperCase()} template coming soon — use CSV for now!`, '#3b82f6');
+            }
+        };
+
+        function showToast(msg, color = '#0f172a') {
+            const toast = document.getElementById('toast');
+            toast.innerHTML = `<i class='bx bx-check-circle' style="font-size:20px;color:${color};"></i> ${msg}`;
+            toast.style.display = 'flex';
+            setTimeout(() => { toast.style.display = 'none'; }, 3000);
+        }
+
+        // ── MODAL ──
+        window.openMembershipModal = () => {
+            document.getElementById('membershipModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        };
+        window.closeMembershipModal = () => {
+            document.getElementById('membershipModal').classList.remove('active');
+            document.body.style.overflow = '';
+        };
+        document.getElementById('membershipModal').addEventListener('click', function(e) {
+            if (e.target === this) closeMembershipModal();
+        });
+
+        // ── INIT ──
+        render();
+    </script>
+</body>
+</html>
