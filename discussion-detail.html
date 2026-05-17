@@ -7,6 +7,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        // EmailJS - initialize with your public key
+        // Sign up free at emailjs.com, create a service + template, paste IDs below
+        const EMAILJS_SERVICE_ID = 'service_0mpwdit';
+        const EMAILJS_TEMPLATE_ID = '3kg6imj';
+        const EMAILJS_PUBLIC_KEY = 'sPoofeEoOmEIUqv2J';
+        const ADMIN_EMAIL = 'barisemreozcelik@hotmail.com';
+        window._emailjsReady = false;
+        try {
+            emailjs.init(EMAILJS_PUBLIC_KEY);
+            window._emailjsReady = true;
+        } catch(e) {}
+    </script>
     <style>
         .detail-layout {
             max-width: 1280px;
@@ -729,7 +743,7 @@
                         <div class="reply-actions">
                             <button class="reply-action-btn" onclick="likeReply(${r.id})"><i class='bx bx-heart'></i> Like</button>
                             <button class="reply-action-btn"><i class='bx bx-reply'></i> Quote</button>
-                            <button class="reply-action-btn"><i class='bx bx-flag'></i> Report</button>
+                            <button class="reply-action-btn" onclick="reportContent('reply', ${r.id})" style="color:#ef4444;"><i class='bx bx-flag'></i> Report</button>
                         </div>
                     </div>
                 </div>`).join('');
@@ -884,9 +898,31 @@
             document.body.style.overflow = '';
         };
 
-        window.submitReport = () => {
+        window.submitReport = async () => {
             const reason = document.getElementById('reportReason').value;
+            const details = document.querySelector('#reportModal textarea')?.value || '';
             if (!reason) { alert('Please select a reason.'); return; }
+            const type = document.getElementById('reportType').value;
+            const reporter = currentUser ? currentUser.email : 'anonymous';
+            const pageUrl = window.location.href;
+
+            // Try EmailJS
+            if (window._emailjsReady && EMAILJS_SERVICE_ID !== 'YOUR_SERVICE_ID') {
+                try {
+                    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+                        to_email: ADMIN_EMAIL,
+                        report_type: type,
+                        report_reason: reason,
+                        report_details: details || 'No additional details',
+                        reporter_email: reporter,
+                        page_url: pageUrl,
+                        discussion_title: document.querySelector('.post-body h1')?.textContent || 'Unknown'
+                    });
+                } catch(e) {
+                    console.log('EmailJS not configured yet:', e);
+                }
+            }
+
             closeReportModal();
             const toast = document.getElementById('toast');
             toast.style.display = 'flex';
