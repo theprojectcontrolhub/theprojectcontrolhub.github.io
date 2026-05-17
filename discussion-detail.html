@@ -579,16 +579,16 @@
             {
                 id: 1, pinned: true,
                 category: "Primavera P6", tagClass: "disc-tag-green",
-                title: "Primavera P6'da çoklu baseline yönetimi — canlı projede en iyi yaklaşım nedir?",
+                title: "Baseline management best practices — how to handle multiple baselines on a live project?",
                 content: `<p>Our project is 8 months in with 3 approved scope changes. We now maintain 4 baselines and the schedule is getting cluttered.</p><p>The project manager wants to keep all baselines visible for audit purposes, but the schedule is becoming hard to navigate in P6. We're currently using BL1 as the original contract baseline, BL2 and BL3 for approved variations, and BL4 as the current forecast.</p><p>Looking for advice on how experienced planners handle this without losing traceability. Specifically:</p><p><strong>1.</strong> Do you archive old baselines and only keep the current approved one?<br><strong>2.</strong> How do you present baseline comparisons to clients when multiple are involved?<br><strong>3.</strong> Is there a standard industry practice for this?</p>`,
                 tags: ["#P6", "#Baseline", "#BestPractice"],
-                author: "Barış Emre Özçelik", avatar: "https://i.pravatar.cc/150?img=11",
+                author: "Emre Ozcelik", avatar: "https://i.pravatar.cc/150?img=11",
                 date: "May 14, 2026", replies: 24, views: 1840, votes: 47
             },
             {
                 id: 2, pinned: false,
                 category: "FIDIC Contracts", tagClass: "disc-tag-yellow",
-                title: "FIDIC Madde 20.1 — Yüklenici 28 günlük bildirim süresini kaçırdı. Seçenekler neler?",
+                title: "FIDIC Clause 20.1 time bar — contractor missed 28-day notice. What are the options?",
                 content: `<p>The contractor failed to submit a notice within 28 days as required under Clause 20.1 of the FIDIC Red Book 1999.</p><p>The employer is now rejecting all extension of time and additional cost claims related to an unforeseen ground condition event that occurred in Week 12 of construction.</p><p>The contractor argues that the employer was aware of the event through the Engineer's site visits and weekly meeting minutes. Has anyone dealt with this and found a successful argument?</p><p>We're exploring the "prevention principle" argument and whether the employer's knowledge waives the time bar. Any precedents or case law references would be extremely helpful.</p>`,
                 tags: ["#FIDIC", "#Clause20", "#Claims"],
                 author: "Ahmed Al-Rashidi", avatar: "https://i.pravatar.cc/150?img=33",
@@ -597,7 +597,7 @@
             {
                 id: 3, pinned: false,
                 category: "Delay Analysis", tagClass: "disc-tag-red",
-                title: "Eşzamanlı gecikmeler — ortak sorumluluk döneminde tazminat nasıl hesaplanır?",
+                title: "Concurrent delays — how do you handle compensation in a split-responsibility window?",
                 content: `<p>We have a 3-week window where both employer-caused and contractor-caused delays overlap on the critical path.</p><p>The SCL Protocol (2nd Edition) gives guidance on concurrent delay but our contract is silent on this specific scenario. The window in question involves an employer-issued design change that delayed procurement, running simultaneously with the contractor's late mobilization of key subcontractors.</p><p>Key questions:<br><strong>1.</strong> Do we use TIA (Time Impact Analysis) or Windows Analysis for this scenario?<br><strong>2.</strong> Is the contractor entitled to time but not money for the concurrent period?<br><strong>3.</strong> How have you documented concurrent delay events for DAB/arbitration?</p>`,
                 tags: ["#DelayAnalysis", "#ConcurrentDelay", "#SCL"],
                 author: "Carlos Mendes", avatar: "https://i.pravatar.cc/150?img=57",
@@ -619,7 +619,7 @@
                   content: `<p>The time bar under FIDIC 20.1 is strict but not absolute. There are a few avenues worth exploring:</p><p><strong>1. Prevention Principle:</strong> If the employer's actions prevented the contractor from giving notice (e.g., access issues, information withheld), the time bar may not apply. This is well-established in English law.</p><p><strong>2. Employer's Knowledge:</strong> If the Engineer documented the event in meeting minutes or site reports, there's an argument that the employer had constructive notice. Courts have been sympathetic to this in some jurisdictions.</p><p><strong>3. Good Faith:</strong> Under some civil law systems, strict enforcement of a time bar that leads to manifestly unjust results may be challenged on good faith grounds.</p>` },
             ],
             3: [
-                { id: 1, accepted: false, author: "Barış Emre Özçelik", avatar: "https://i.pravatar.cc/150?img=11", date: "May 10, 2026", votes: 22,
+                { id: 1, accepted: false, author: "Emre Ozcelik", avatar: "https://i.pravatar.cc/150?img=11", date: "May 10, 2026", votes: 22,
                   content: `<p>For concurrent delay analysis, Windows Analysis is generally preferred when you have overlapping responsible parties — it lets you isolate each window and attribute delay causes independently.</p><p>On the compensation question: under English law (which most FIDIC contracts follow), the contractor is typically entitled to time but not additional cost for a concurrently caused delay. The key case is <em>Saga Cruises v Fincantieri</em>.</p>` },
                 { id: 2, accepted: true, author: "Ahmed Al-Rashidi", avatar: "https://i.pravatar.cc/150?img=33", date: "May 11, 2026", votes: 31,
                   content: `<p>Critical distinction to make: concurrent delay ≠ parallel delay. True concurrence requires both delays to independently impact the same critical path activity simultaneously.</p><p>For documentation, I always prepare a delay register with: (1) event description, (2) responsible party, (3) impact on critical path, (4) contemporaneous records (RFIs, instructions, meeting minutes). This is essential for DAB proceedings.</p>` },
@@ -693,6 +693,7 @@
                             </div>
                             <div class="post-actions">
                                 <button class="action-btn" onclick="scrollToReply()"><i class='bx bx-reply'></i> Reply</button>
+                                <button class="action-btn" onclick="reportContent('post', discId)" style="color:#ef4444;border-color:#fecaca;"><i class='bx bx-flag'></i> Report</button>
                             </div>
                         </div>
                     </div>
@@ -866,8 +867,71 @@
             if (e.target === this) closeMembershipModal();
         });
 
+        // ── REPORT ──
+        window.reportContent = (type, id) => {
+            if (!currentUser) { openMembershipModal(); return; }
+            const modal = document.getElementById('reportModal');
+            modal.classList.add('active');
+            document.getElementById('reportType').value = type + '_' + id;
+        };
+
+        window.closeReportModal = () => {
+            document.getElementById('reportModal').classList.remove('active');
+        };
+
+        window.submitReport = () => {
+            const reason = document.getElementById('reportReason').value;
+            if (!reason) { alert('Please select a reason.'); return; }
+            closeReportModal();
+            const toast = document.getElementById('toast');
+            toast.style.display = 'flex';
+            setTimeout(() => { toast.style.display = 'none'; }, 3000);
+        };
+
+        document.getElementById('reportModal').addEventListener('click', function(e) {
+            if (e.target === this) closeReportModal();
+        });
+
         // ── INIT ──
         loadDiscussion();
     </script>
+
+    <!-- REPORT MODAL -->
+    <div class="modal-overlay" id="reportModal">
+        <div class="modal-box" style="max-width:420px;">
+            <div class="modal-header">
+                <h3>Report Content</h3>
+                <button class="close-modal" onclick="closeReportModal()"><i class='bx bx-x'></i></button>
+            </div>
+            <div class="modal-body" style="text-align:left;">
+                <input type="hidden" id="reportType">
+                <p style="font-size:14px;color:#64748b;margin-bottom:20px;">Help us keep the community professional. Select a reason for your report.</p>
+                <div class="disc-form-group" style="margin-bottom:16px;">
+                    <label style="font-size:13px;font-weight:600;color:#0f172a;display:block;margin-bottom:8px;">Reason</label>
+                    <select id="reportReason" style="width:100%;padding:12px 16px;border:1px solid #cbd5e1;border-radius:8px;font-family:inherit;font-size:14px;background:white;">
+                        <option value="">Select a reason...</option>
+                        <option value="spam">Spam or self-promotion</option>
+                        <option value="offtopic">Off-topic / not related to project control</option>
+                        <option value="offensive">Offensive or inappropriate content</option>
+                        <option value="misinformation">Technical misinformation</option>
+                        <option value="duplicate">Duplicate post</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="disc-form-group" style="margin-bottom:20px;">
+                    <label style="font-size:13px;font-weight:600;color:#0f172a;display:block;margin-bottom:8px;">Additional details (optional)</label>
+                    <textarea style="width:100%;padding:12px 16px;border:1px solid #cbd5e1;border-radius:8px;font-family:inherit;font-size:14px;min-height:80px;resize:vertical;" placeholder="Any additional context..."></textarea>
+                </div>
+                <button onclick="submitReport()" class="btn btn-primary-large" style="width:100%;background:#ef4444;">Submit Report</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST -->
+    <div id="toast" style="display:none;position:fixed;bottom:24px;right:24px;background:#0f172a;color:white;padding:14px 20px;border-radius:10px;font-size:14px;font-weight:600;align-items:center;gap:10px;z-index:9999;box-shadow:0 8px 20px rgba(0,0,0,0.2);">
+        <i class='bx bx-check-circle' style="font-size:20px;color:#10b981;"></i>
+        Report submitted. Our team will review it shortly.
+    </div>
+
 </body>
 </html>
