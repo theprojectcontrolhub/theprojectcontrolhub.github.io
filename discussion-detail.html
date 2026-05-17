@@ -911,12 +911,15 @@
                 try {
                     await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
                         to_email: ADMIN_EMAIL,
+                        name: reporter,
+                        email: reporter,
                         report_type: type,
                         report_reason: reason,
                         report_details: details || 'No additional details',
                         reporter_email: reporter,
                         page_url: pageUrl,
-                        discussion_title: document.querySelector('.post-body h1')?.textContent || 'Unknown'
+                        discussion_title: document.querySelector('.post-body h1')?.textContent || 'Unknown',
+                        message: 'Type: ' + type + ' | Reason: ' + reason + ' | Reporter: ' + reporter
                     });
                 } catch(e) {
                     console.log('EmailJS not configured yet:', e);
