@@ -908,25 +908,23 @@
             const type = document.getElementById('reportType').value;
             const reporter = currentUser ? currentUser.email : 'anonymous';
             const pageUrl = window.location.href;
+            const title = document.querySelector('.post-body h1')?.textContent || 'Unknown';
 
-            // Try EmailJS
-            if (window._emailjsReady) {
-                try {
-                    await emailjs.send(window.EMAILJS_SERVICE_ID, window.EMAILJS_TEMPLATE_ID, {
-                        to_email: window.ADMIN_EMAIL,
-                        name: reporter,
-                        email: reporter,
-                        report_type: type,
-                        report_reason: reason,
-                        report_details: details || 'No additional details',
-                        reporter_email: reporter,
-                        page_url: pageUrl,
-                        discussion_title: document.querySelector('.post-body h1')?.textContent || 'Unknown',
-                        message: 'Type: ' + type + ' | Reason: ' + reason + ' | Reporter: ' + reporter
-                    });
-                } catch(e) {
-                    console.log('EmailJS not configured yet:', e);
-                }
+            try {
+                await emailjs.send('service_0mpwdit', '3kg6imj', {
+                    name: reporter,
+                    email: reporter,
+                    report_type: type,
+                    report_reason: reason,
+                    report_details: details || 'No additional details',
+                    reporter_email: reporter,
+                    page_url: pageUrl,
+                    discussion_title: title,
+                    message: 'Type: ' + type + ' | Reason: ' + reason + ' | Reporter: ' + reporter
+                }, 'sPoofeEoOmEIUqv2J');
+                console.log('Report sent successfully');
+            } catch(e) {
+                console.error('EmailJS error:', e);
             }
 
             closeReportModal();
