@@ -934,7 +934,7 @@
         // ── DISCUSSION CLICK ──
         window.openDiscussion = (id) => {
             if (!currentUser) { openMembershipModal(); return; }
-            alert('Discussion detail page coming soon!');
+            window.location.href = 'discussion-detail.html?id=' + id;
         };
 
         // ── NEW DISCUSSION ──

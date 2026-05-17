@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discussion — The Project Control Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .detail-layout {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 48px 24px;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 40px;
+            align-items: start;
+        }
+
+        /* BREADCRUMB */
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        .breadcrumb a {
+            color: var(--primary-green);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover { text-decoration: underline; }
+
+        /* MAIN POST */
+        .post-card {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+        }
+
+        .post-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        .post-vote {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            flex-shrink: 0;
+        }
+
+        .vote-btn-lg {
+            background: none;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--text-muted);
+            transition: var(--transition);
+            font-size: 20px;
+        }
+
+        .vote-btn-lg:hover, .vote-btn-lg.active {
+            border-color: var(--primary-green);
+            color: var(--primary-green);
+            background: rgba(16,185,129,0.05);
+        }
+
+        .vote-num {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--text-dark);
+        }
+
+        .vote-lbl {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .post-body { flex: 1; }
+
+        .post-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        .post-tag {
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 6px;
+        }
+
+        .post-body h1 {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--text-dark);
+            line-height: 1.3;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        .post-content {
+            font-size: 15px;
+            color: var(--text-dark);
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+
+        .post-content p { margin-bottom: 16px; }
+
+        .post-content strong { color: var(--text-dark); }
+
+        .post-hashtags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+        }
+
+        .post-hashtag {
+            font-size: 13px;
+            color: var(--primary-green);
+            background: rgba(16,185,129,0.08);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        .post-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 20px;
+            border-top: 1px solid #f1f5f9;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .post-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .post-author img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .post-author-info strong {
+            display: block;
+            font-size: 14px;
+            color: var(--text-dark);
+            font-weight: 700;
+        }
+
+        .post-author-info span {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .post-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .action-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: var(--text-muted);
+            background: none;
+            border: 1px solid #e2e8f0;
+            padding: 7px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: inherit;
+        }
+
+        .action-btn:hover {
+            border-color: var(--primary-green);
+            color: var(--primary-green);
+        }
+
+        /* REPLIES */
+        .replies-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .replies-header h2 {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--text-dark);
+        }
+
+        .reply-card {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+            display: flex;
+            gap: 16px;
+        }
+
+        .reply-vote {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            flex-shrink: 0;
+        }
+
+        .vote-btn-sm {
+            background: none;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--text-muted);
+            transition: var(--transition);
+            font-size: 16px;
+        }
+
+        .vote-btn-sm:hover {
+            border-color: var(--primary-green);
+            color: var(--primary-green);
+        }
+
+        .reply-vote-num {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .reply-body { flex: 1; }
+
+        .reply-author {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .reply-author img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .reply-author strong {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .reply-author span {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-left: 4px;
+        }
+
+        .reply-content {
+            font-size: 14px;
+            color: var(--text-dark);
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .reply-content p { margin-bottom: 10px; }
+
+        .reply-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .reply-action-btn {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-family: inherit;
+            transition: color 0.2s;
+        }
+
+        .reply-action-btn:hover { color: var(--primary-green); }
+
+        .reply-card.accepted {
+            border-color: var(--primary-green);
+            background: rgba(16,185,129,0.02);
+        }
+
+        .accepted-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--primary-green);
+            background: rgba(16,185,129,0.1);
+            padding: 4px 10px;
+            border-radius: 6px;
+            margin-bottom: 12px;
+        }
+
+        /* WRITE REPLY */
+        .write-reply {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 28px;
+            margin-top: 8px;
+        }
+
+        .write-reply h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+        }
+
+        .write-reply textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 14px 16px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 14px;
+            color: var(--text-dark);
+            resize: vertical;
+            transition: border-color 0.2s;
+            margin-bottom: 14px;
+        }
+
+        .write-reply textarea:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(16,185,129,0.1);
+        }
+
+        .locked-reply {
+            background: rgba(16,185,129,0.05);
+            border: 1px solid rgba(16,185,129,0.2);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .locked-reply i { font-size: 28px; color: var(--primary-green); }
+
+        .locked-reply p { font-size: 14px; color: var(--text-dark); line-height: 1.5; }
+
+        /* SIDEBAR */
+        .detail-sidebar { position: sticky; top: 24px; }
+
+        .sidebar-card {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+
+        .sidebar-card h4 {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .related-item {
+            padding: 12px 0;
+            border-bottom: 1px solid #f1f5f9;
+            cursor: pointer;
+        }
+
+        .related-item:last-child { border-bottom: none; }
+
+        .related-item:hover h5 { color: var(--primary-green); }
+
+        .related-item h5 {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-dark);
+            line-height: 1.4;
+            margin-bottom: 4px;
+            transition: color 0.2s;
+        }
+
+        .related-item span {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 1024px) {
+            .detail-layout { grid-template-columns: 1fr; }
+            .detail-sidebar { position: static; }
+        }
+
+        @media (max-width: 768px) {
+            .post-header { flex-direction: column; }
+            .post-vote { flex-direction: row; }
+            .post-body h1 { font-size: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <section class="hero-section" style="padding-bottom:0;">
+        <nav class="navbar">
+            <div class="logo">
+                <i class='bx bx-hive'></i>
+                <span>THE PROJECT CONTROL HUB</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="discussions.html" class="active">Discussions</a>
+                <a href="courses.html">Courses</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="about.html">About</a>
+            </div>
+            <div class="nav-actions">
+                <button id="joinBtn" class="btn btn-primary" onclick="openMembershipModal()"><i class='bx bx-user-plus'></i> Join Community</button>
+                <div id="userMenu" style="display:none; align-items:center; gap:12px;">
+                    <img id="userAvatar" src="" style="width:32px;height:32px;border-radius:50%;object-fit:cover;" alt="avatar">
+                    <span id="userName" style="font-size:14px;font-weight:600;color:var(--text-light);"></span>
+                    <button class="btn btn-primary" onclick="logoutUser()" style="padding:8px 16px;font-size:13px;">Sign Out</button>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+    <!-- MAIN -->
+    <div style="background:var(--bg-light); min-height:80vh; padding-top:24px;">
+        <div class="detail-layout">
+
+            <!-- LEFT -->
+            <div>
+                <div class="breadcrumb">
+                    <a href="discussions.html">Discussions</a>
+                    <i class='bx bx-chevron-right'></i>
+                    <span id="breadcrumbCat">Loading...</span>
+                </div>
+
+                <!-- MAIN POST -->
+                <div class="post-card" id="mainPost">
+                    <div style="text-align:center;padding:40px;color:var(--text-muted);">
+                        <i class='bx bx-loader-alt' style="font-size:32px;"></i>
+                        <p>Loading discussion...</p>
+                    </div>
+                </div>
+
+                <!-- REPLIES -->
+                <div class="replies-header">
+                    <h2 id="repliesTitle">Replies</h2>
+                </div>
+
+                <div id="repliesList"></div>
+
+                <!-- WRITE REPLY -->
+                <div class="write-reply" id="writeReply">
+                    <h3>Write a Reply</h3>
+                    <div id="replyForm"></div>
+                </div>
+            </div>
+
+            <!-- SIDEBAR -->
+            <aside class="detail-sidebar">
+                <div class="sidebar-card">
+                    <h4>Discussion Info</h4>
+                    <div style="display:flex;flex-direction:column;gap:12px;font-size:14px;">
+                        <div style="display:flex;justify-content:space-between;">
+                            <span style="color:var(--text-muted);">Category</span>
+                            <span id="sidebarCat" style="font-weight:600;color:var(--text-dark);">—</span>
+                        </div>
+                        <div style="display:flex;justify-content:space-between;">
+                            <span style="color:var(--text-muted);">Posted</span>
+                            <span id="sidebarDate" style="font-weight:600;color:var(--text-dark);">—</span>
+                        </div>
+                        <div style="display:flex;justify-content:space-between;">
+                            <span style="color:var(--text-muted);">Replies</span>
+                            <span id="sidebarReplies" style="font-weight:600;color:var(--text-dark);">—</span>
+                        </div>
+                        <div style="display:flex;justify-content:space-between;">
+                            <span style="color:var(--text-muted);">Views</span>
+                            <span id="sidebarViews" style="font-weight:600;color:var(--text-dark);">—</span>
+                        </div>
+                        <div style="display:flex;justify-content:space-between;">
+                            <span style="color:var(--text-muted);">Votes</span>
+                            <span id="sidebarVotes" style="font-weight:600;color:var(--text-dark);">—</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-card">
+                    <h4>Related Discussions</h4>
+                    <div id="relatedList"></div>
+                </div>
+
+                <div class="sidebar-card" style="background:rgba(16,185,129,0.04);border-color:rgba(16,185,129,0.2);">
+                    <h4 style="color:var(--primary-green);">Share</h4>
+                    <div style="display:flex;gap:10px;">
+                        <button onclick="shareDiscussion('linkedin')" style="flex:1;padding:10px;border:1px solid #0a66c2;border-radius:8px;background:#0a66c2;color:white;font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;font-family:inherit;">
+                            <i class='bx bxl-linkedin'></i> LinkedIn
+                        </button>
+                        <button onclick="shareDiscussion('copy')" style="flex:1;padding:10px;border:1px solid #e2e8f0;border-radius:8px;background:white;color:var(--text-dark);font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;font-family:inherit;">
+                            <i class='bx bx-link'></i> Copy Link
+                        </button>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- MEMBERSHIP MODAL -->
+    <div class="modal-overlay" id="membershipModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>Join to Participate</h3>
+                <button class="close-modal" onclick="closeMembershipModal()"><i class='bx bx-x'></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-icon-wrapper"><i class='bx bx-lock-alt'></i></div>
+                <h4>Join The Project Control Hub</h4>
+                <p>Sign in to vote, reply, and participate in discussions with professionals worldwide.</p>
+                <div class="social-login-container">
+                    <button class="btn-social btn-google" onclick="signInWithGoogleBtn()">
+                        <i class='bx bxl-google'></i> Continue with Google
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { signInWithGoogle, logout, onUserChange } from './auth.js';
+
+        // ── DATA (shared with discussions.html) ──
+        const discussions = [
+            {
+                id: 1, pinned: true,
+                category: "Primavera P6", tagClass: "disc-tag-green",
+                title: "Best practices for baseline management — multiple baselines on a live project?",
+                content: `<p>Our project is 8 months in with 3 approved scope changes. We now maintain 4 baselines and the schedule is getting cluttered.</p><p>The project manager wants to keep all baselines visible for audit purposes, but the schedule is becoming hard to navigate in P6. We're currently using BL1 as the original contract baseline, BL2 and BL3 for approved variations, and BL4 as the current forecast.</p><p>Looking for advice on how experienced planners handle this without losing traceability. Specifically:</p><p><strong>1.</strong> Do you archive old baselines and only keep the current approved one?<br><strong>2.</strong> How do you present baseline comparisons to clients when multiple are involved?<br><strong>3.</strong> Is there a standard industry practice for this?</p>`,
+                tags: ["#P6", "#Baseline", "#BestPractice"],
+                author: "Barış Emre Özçelik", avatar: "https://i.pravatar.cc/150?img=11",
+                date: "May 14, 2026", replies: 24, views: 1840, votes: 47
+            },
+            {
+                id: 2, pinned: false,
+                category: "FIDIC Contracts", tagClass: "disc-tag-yellow",
+                title: "Clause 20.1 time bar — contractor missed 28-day notice. What are the options?",
+                content: `<p>The contractor failed to submit a notice within 28 days as required under Clause 20.1 of the FIDIC Red Book 1999.</p><p>The employer is now rejecting all extension of time and additional cost claims related to an unforeseen ground condition event that occurred in Week 12 of construction.</p><p>The contractor argues that the employer was aware of the event through the Engineer's site visits and weekly meeting minutes. Has anyone dealt with this and found a successful argument?</p><p>We're exploring the "prevention principle" argument and whether the employer's knowledge waives the time bar. Any precedents or case law references would be extremely helpful.</p>`,
+                tags: ["#FIDIC", "#Clause20", "#Claims"],
+                author: "Ahmed Al-Rashidi", avatar: "https://i.pravatar.cc/150?img=32",
+                date: "May 12, 2026", replies: 32, views: 3200, votes: 61
+            },
+            {
+                id: 3, pinned: false,
+                category: "Delay Analysis", tagClass: "disc-tag-red",
+                title: "Concurrent delays — how do you handle compensation in a split-responsibility window?",
+                content: `<p>We have a 3-week window where both employer-caused and contractor-caused delays overlap on the critical path.</p><p>The SCL Protocol (2nd Edition) gives guidance on concurrent delay but our contract is silent on this specific scenario. The window in question involves an employer-issued design change that delayed procurement, running simultaneously with the contractor's late mobilization of key subcontractors.</p><p>Key questions:<br><strong>1.</strong> Do we use TIA (Time Impact Analysis) or Windows Analysis for this scenario?<br><strong>2.</strong> Is the contractor entitled to time but not money for the concurrent period?<br><strong>3.</strong> How have you documented concurrent delay events for DAB/arbitration?</p>`,
+                tags: ["#DelayAnalysis", "#ConcurrentDelay", "#SCL"],
+                author: "Carlos Mendes", avatar: "https://i.pravatar.cc/150?img=8",
+                date: "May 10, 2026", replies: 41, views: 4600, votes: 83
+            },
+        ];
+
+        const replies = {
+            1: [
+                { id: 1, accepted: true, author: "Ahmed Al-Rashidi", avatar: "https://i.pravatar.cc/150?img=32", date: "May 14, 2026", votes: 28,
+                  content: `<p>This is a very common challenge on projects with scope changes. Here's what I've found works best:</p><p><strong>Baseline Strategy:</strong> Keep only 2 active baselines in P6 — the original contract baseline (BL1) and the current approved baseline (latest). Archive intermediate baselines in a separate project file or documentation system.</p><p>For client reporting, create a custom layout that shows planned vs current vs actual. Clients rarely need to see BL2 and BL3 in the working schedule — those belong in the claims register.</p>` },
+                { id: 2, accepted: false, author: "Sarah O'Brien", avatar: "https://i.pravatar.cc/150?img=20", date: "May 15, 2026", votes: 14,
+                  content: `<p>Agree with Ahmed. I'd also add — use the "Maintain Baseline" function carefully. A lot of planners update the wrong baseline by accident.</p><p>We typically create a PDF export of each baseline at the time of approval, stamped and signed, and store it in the document management system. The live P6 project only keeps BL1 and the current approved baseline.</p>` },
+                { id: 3, accepted: false, author: "James Okafor", avatar: "https://i.pravatar.cc/150?img=15", date: "May 15, 2026", votes: 9,
+                  content: `<p>For audit purposes, you can export each baseline as a separate XER file and store those in your project archive. That way you have full traceability without cluttering the working schedule.</p>` },
+            ],
+            2: [
+                { id: 1, accepted: true, author: "Carlos Mendes", avatar: "https://i.pravatar.cc/150?img=8", date: "May 12, 2026", votes: 35,
+                  content: `<p>The time bar under FIDIC 20.1 is strict but not absolute. There are a few avenues worth exploring:</p><p><strong>1. Prevention Principle:</strong> If the employer's actions prevented the contractor from giving notice (e.g., access issues, information withheld), the time bar may not apply. This is well-established in English law.</p><p><strong>2. Employer's Knowledge:</strong> If the Engineer documented the event in meeting minutes or site reports, there's an argument that the employer had constructive notice. Courts have been sympathetic to this in some jurisdictions.</p><p><strong>3. Good Faith:</strong> Under some civil law systems, strict enforcement of a time bar that leads to manifestly unjust results may be challenged on good faith grounds.</p>` },
+            ],
+            3: [
+                { id: 1, accepted: false, author: "Barış Emre Özçelik", avatar: "https://i.pravatar.cc/150?img=11", date: "May 10, 2026", votes: 22,
+                  content: `<p>For concurrent delay analysis, Windows Analysis is generally preferred when you have overlapping responsible parties — it lets you isolate each window and attribute delay causes independently.</p><p>On the compensation question: under English law (which most FIDIC contracts follow), the contractor is typically entitled to time but not additional cost for a concurrently caused delay. The key case is <em>Saga Cruises v Fincantieri</em>.</p>` },
+                { id: 2, accepted: true, author: "Ahmed Al-Rashidi", avatar: "https://i.pravatar.cc/150?img=32", date: "May 11, 2026", votes: 31,
+                  content: `<p>Critical distinction to make: concurrent delay ≠ parallel delay. True concurrence requires both delays to independently impact the same critical path activity simultaneously.</p><p>For documentation, I always prepare a delay register with: (1) event description, (2) responsible party, (3) impact on critical path, (4) contemporaneous records (RFIs, instructions, meeting minutes). This is essential for DAB proceedings.</p>` },
+            ]
+        };
+
+        let currentUser = null;
+        let discId = 1;
+
+        // ── AUTH ──
+        onUserChange((user) => {
+            currentUser = user;
+            const joinBtn = document.getElementById('joinBtn');
+            const userMenu = document.getElementById('userMenu');
+            if (user) {
+                joinBtn.style.display = 'none';
+                userMenu.style.display = 'flex';
+                document.getElementById('userName').textContent = user.displayName.split(' ')[0];
+                if (user.photoURL) document.getElementById('userAvatar').src = user.photoURL;
+                closeMembershipModal();
+            } else {
+                joinBtn.style.display = 'flex';
+                userMenu.style.display = 'none';
+            }
+            renderReplyForm();
+        });
+
+        window.signInWithGoogleBtn = async () => {
+            try { await signInWithGoogle(); } catch(e) { alert('Sign in failed. Please try again.'); }
+        };
+        window.logoutUser = async () => { await logout(); };
+
+        // ── LOAD DISCUSSION ──
+        function loadDiscussion() {
+            const params = new URLSearchParams(window.location.search);
+            discId = parseInt(params.get('id')) || 1;
+            const disc = discussions.find(d => d.id === discId) || discussions[0];
+
+            document.title = disc.title + ' — The Project Control Hub';
+            document.getElementById('breadcrumbCat').textContent = disc.category;
+            document.getElementById('sidebarCat').textContent = disc.category;
+            document.getElementById('sidebarDate').textContent = disc.date;
+            document.getElementById('sidebarReplies').textContent = disc.replies;
+            document.getElementById('sidebarViews').textContent = disc.views.toLocaleString();
+            document.getElementById('sidebarVotes').textContent = disc.votes;
+
+            document.getElementById('mainPost').innerHTML = `
+                <div class="post-header">
+                    <div class="post-vote">
+                        <button class="vote-btn-lg" onclick="votePost(1)" title="Upvote"><i class='bx bx-chevron-up'></i></button>
+                        <span class="vote-num" id="postVoteNum">${disc.votes}</span>
+                        <span class="vote-lbl">votes</span>
+                        <button class="vote-btn-lg" onclick="votePost(-1)" title="Downvote"><i class='bx bx-chevron-down'></i></button>
+                    </div>
+                    <div class="post-body">
+                        <div class="post-tags">
+                            <span class="post-tag ${disc.tagClass}">${disc.category}</span>
+                            ${disc.pinned ? `<span class="post-tag" style="background:#f1f5f9;color:#64748b;"><i class='bx bx-pin'></i> Pinned</span>` : ''}
+                        </div>
+                        <h1>${disc.title}</h1>
+                        <div class="post-content">${disc.content}</div>
+                        <div class="post-hashtags">${disc.tags.map(t => `<span class="post-hashtag">${t}</span>`).join('')}</div>
+                        <div class="post-footer">
+                            <div class="post-author">
+                                <img src="${disc.avatar}" alt="${disc.author}">
+                                <div class="post-author-info">
+                                    <strong>${disc.author}</strong>
+                                    <span>Posted ${disc.date}</span>
+                                </div>
+                            </div>
+                            <div class="post-actions">
+                                <button class="action-btn" onclick="shareDiscussion('copy')"><i class='bx bx-link'></i> Share</button>
+                                <button class="action-btn" onclick="scrollToReply()"><i class='bx bx-reply'></i> Reply</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+
+            renderReplies(disc);
+            renderRelated(disc);
+        }
+
+        function renderReplies(disc) {
+            const discReplies = replies[disc.id] || [];
+            document.getElementById('repliesTitle').textContent = `${discReplies.length} Replies`;
+
+            document.getElementById('repliesList').innerHTML = discReplies.map(r => `
+                <div class="reply-card ${r.accepted ? 'accepted' : ''}">
+                    <div class="reply-vote">
+                        <button class="vote-btn-sm" onclick="voteReply(${r.id}, 1)"><i class='bx bx-chevron-up'></i></button>
+                        <span class="reply-vote-num" id="replyVote${r.id}">${r.votes}</span>
+                        <button class="vote-btn-sm" onclick="voteReply(${r.id}, -1)"><i class='bx bx-chevron-down'></i></button>
+                    </div>
+                    <div class="reply-body">
+                        ${r.accepted ? `<div class="accepted-badge"><i class='bx bx-check-circle'></i> Accepted Answer</div>` : ''}
+                        <div class="reply-author">
+                            <img src="${r.avatar}" alt="${r.author}">
+                            <div>
+                                <strong>${r.author}</strong>
+                                <span>• ${r.date}</span>
+                            </div>
+                        </div>
+                        <div class="reply-content">${r.content}</div>
+                        <div class="reply-actions">
+                            <button class="reply-action-btn" onclick="voteReply(${r.id}, 1)"><i class='bx bx-like'></i> Helpful</button>
+                            <button class="reply-action-btn"><i class='bx bx-reply'></i> Quote</button>
+                            <button class="reply-action-btn"><i class='bx bx-flag'></i> Report</button>
+                        </div>
+                    </div>
+                </div>`).join('');
+        }
+
+        function renderRelated(disc) {
+            const related = discussions.filter(d => d.id !== disc.id && d.category === disc.category).slice(0, 3);
+            const all = discussions.filter(d => d.id !== disc.id).slice(0, 3 - related.length);
+            const list = [...related, ...all].slice(0, 3);
+
+            document.getElementById('relatedList').innerHTML = list.map(d => `
+                <div class="related-item" onclick="window.location.href='discussion-detail.html?id=${d.id}'">
+                    <h5>${d.title}</h5>
+                    <span>${d.replies} replies • ${d.votes} votes</span>
+                </div>`).join('');
+        }
+
+        function renderReplyForm() {
+            const form = document.getElementById('replyForm');
+            if (currentUser) {
+                form.innerHTML = `
+                    <div style="display:flex;gap:12px;margin-bottom:12px;">
+                        <img src="${currentUser.photoURL || 'https://i.pravatar.cc/150?img=1'}" style="width:36px;height:36px;border-radius:50%;flex-shrink:0;" alt="">
+                        <textarea id="replyText" placeholder="Share your experience, knowledge, or ask a follow-up question..."></textarea>
+                    </div>
+                    <div style="display:flex;justify-content:flex-end;">
+                        <button class="btn btn-primary" onclick="submitReply()"><i class='bx bx-send'></i> Post Reply</button>
+                    </div>`;
+            } else {
+                form.innerHTML = `
+                    <div class="locked-reply">
+                        <i class='bx bx-lock-alt'></i>
+                        <p>Join the community to reply and share your expertise. <strong>It's free.</strong></p>
+                    </div>
+                    <button class="btn-social btn-google" onclick="signInWithGoogleBtn()" style="width:100%;display:flex;align-items:center;justify-content:center;gap:12px;padding:14px;border-radius:8px;font-size:15px;font-weight:600;background:#0a66c2;color:white;border:none;cursor:pointer;margin-top:14px;font-family:inherit;">
+                        <i class='bx bxl-google' style="font-size:22px;"></i> Continue with Google
+                    </button>`;
+            }
+        }
+
+        // ── ACTIONS ──
+        window.votePost = (dir) => {
+            if (!currentUser) { openMembershipModal(); return; }
+            const el = document.getElementById('postVoteNum');
+            el.textContent = parseInt(el.textContent) + dir;
+        };
+
+        window.voteReply = (id, dir) => {
+            if (!currentUser) { openMembershipModal(); return; }
+            const el = document.getElementById('replyVote' + id);
+            if (el) el.textContent = parseInt(el.textContent) + dir;
+        };
+
+        window.submitReply = () => {
+            const text = document.getElementById('replyText')?.value?.trim();
+            if (!text) return;
+            const list = document.getElementById('repliesList');
+            const newReply = `
+                <div class="reply-card" style="border-color:rgba(16,185,129,0.3);background:rgba(16,185,129,0.02);">
+                    <div class="reply-vote">
+                        <button class="vote-btn-sm"><i class='bx bx-chevron-up'></i></button>
+                        <span class="reply-vote-num">0</span>
+                        <button class="vote-btn-sm"><i class='bx bx-chevron-down'></i></button>
+                    </div>
+                    <div class="reply-body">
+                        <div class="reply-author">
+                            <img src="${currentUser.photoURL || 'https://i.pravatar.cc/150?img=1'}" style="width:32px;height:32px;border-radius:50%;" alt="">
+                            <div>
+                                <strong>${currentUser.displayName}</strong>
+                                <span>• Just now</span>
+                            </div>
+                        </div>
+                        <div class="reply-content"><p>${text.replace(/\n/g, '<br>')}</p></div>
+                        <div class="reply-actions">
+                            <button class="reply-action-btn"><i class='bx bx-like'></i> Helpful</button>
+                        </div>
+                    </div>
+                </div>`;
+            list.insertAdjacentHTML('beforeend', newReply);
+            document.getElementById('replyText').value = '';
+            document.getElementById('replyText').scrollIntoView({ behavior: 'smooth' });
+        };
+
+        window.scrollToReply = () => {
+            document.getElementById('writeReply').scrollIntoView({ behavior: 'smooth' });
+        };
+
+        window.shareDiscussion = (type) => {
+            if (type === 'copy') {
+                navigator.clipboard.writeText(window.location.href);
+                alert('Link copied to clipboard!');
+            } else if (type === 'linkedin') {
+                window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`, '_blank');
+            }
+        };
+
+        // ── MODAL ──
+        window.openMembershipModal = () => {
+            document.getElementById('membershipModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        };
+        window.closeMembershipModal = () => {
+            document.getElementById('membershipModal').classList.remove('active');
+            document.body.style.overflow = '';
+        };
+        document.getElementById('membershipModal').addEventListener('click', function(e) {
+            if (e.target === this) closeMembershipModal();
+        });
+
+        // ── INIT ──
+        loadDiscussion();
+    </script>
+</body>
+</html>
