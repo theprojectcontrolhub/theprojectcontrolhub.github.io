@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="theme-color" content="#0c1018" />
-<title>Teleprompter + Kamera — Kılavuzlu</title>
+<title>Teleprompter — Mikrofon Seçmeli</title>
 <style>
   :root{
     --bg:#0c1018;--panel:#161c28;--line:#28303f;
@@ -16,13 +16,12 @@
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
     overflow:hidden;overscroll-behavior:none;}
 
-  /* ---- SETUP ---- */
   #setup{height:100%;display:flex;flex-direction:column;
-    padding:22px 18px calc(18px + env(safe-area-inset-bottom));}
+    padding:22px 18px calc(18px + env(safe-area-inset-bottom));overflow-y:auto;}
   .title{font-size:13px;letter-spacing:.22em;text-transform:uppercase;
     color:var(--accent);font-weight:700;margin-bottom:4px;}
   .subtitle{font-size:13px;color:var(--muted);margin-bottom:14px;}
-  textarea{flex:1;width:100%;background:var(--panel);border:1px solid var(--line);
+  textarea{min-height:130px;width:100%;background:var(--panel);border:1px solid var(--line);
     border-radius:14px;color:var(--ink);font-size:16px;line-height:1.6;
     padding:16px;resize:none;outline:none;margin-bottom:14px;font-family:inherit;}
   textarea:focus{border-color:var(--accent);}
@@ -36,6 +35,15 @@
     width:26px;height:26px;border-radius:50%;background:var(--accent);border:3px solid var(--bg);}
   input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;
     background:var(--accent);border:3px solid var(--bg);}
+
+  .field-label{font-size:12px;color:var(--muted);margin-bottom:6px;
+    letter-spacing:.04em;text-transform:uppercase;}
+  select{width:100%;background:var(--panel);border:1px solid var(--line);
+    border-radius:12px;color:var(--ink);font-size:14px;padding:13px 14px;
+    outline:none;font-family:inherit;margin-bottom:6px;}
+  select:focus{border-color:var(--accent);}
+  .mic-hint{font-size:11.5px;color:var(--muted);margin-bottom:8px;line-height:1.5;}
+
   .toggle-box{display:flex;align-items:center;justify-content:space-between;
     background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 16px;}
   .toggle-box span{font-size:14px;}
@@ -46,17 +54,23 @@
     background:#fff;border-radius:50%;transition:.2s;}
   .switch input:checked + .slider{background:var(--accent);}
   .switch input:checked + .slider::before{transform:translateX(22px);}
-  .start-btn{width:100%;background:var(--accent);color:#1a1400;border:none;
-    border-radius:14px;padding:17px;font-size:16px;font-weight:800;cursor:pointer;margin-top:12px;}
-  .start-btn:active{transform:scale(.985);}
+
+  .level-wrap{margin:4px 0 6px;}
+  .level-bar{height:8px;background:var(--line);border-radius:5px;overflow:hidden;}
+  .level-fill{height:100%;width:0%;background:var(--good);transition:width .08s;}
+  .level-label{font-size:11.5px;color:var(--muted);margin-top:5px;}
+
+  .btn{width:100%;border:none;border-radius:13px;padding:15px;
+    font-size:15px;font-weight:800;cursor:pointer;margin-top:8px;}
+  .btn-ghost{background:var(--panel);color:var(--ink);border:1px solid var(--line);}
+  .btn-go{background:var(--accent);color:#1a1400;}
+  .btn:active{transform:scale(.985);}
   .note{font-size:11.5px;color:var(--muted);margin-top:11px;line-height:1.5;text-align:center;}
 
-  /* ---- STAGE ---- */
   #stage{display:none;position:fixed;inset:0;background:#000;}
   #stage.active{display:block;}
   #cam{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#000;}
   #cam.mirrored{transform:scaleX(-1);}
-
   #scrollWrap{position:absolute;left:0;right:0;top:0;height:56%;
     overflow:hidden;z-index:3;
     -webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 16%,#000 80%,transparent 100%);
@@ -71,46 +85,6 @@
   #readline::after{right:0;border-right:9px solid var(--accent);}
   #scriptText{padding:32vh 22px 42vh;font-size:28px;line-height:1.5;font-weight:700;
     color:#fff;white-space:pre-wrap;text-shadow:0 2px 8px rgba(0,0,0,.95);will-change:transform;}
-  #scriptText.mirrored{transform:scaleX(-1);}
-
-  /* ---- KILAVUZLAR ---- */
-  #frameGuide{
-    position:absolute;left:50%;transform:translateX(-50%);
-    top:44%;
-    width:48vw;height:48vw;max-width:240px;max-height:240px;
-    border:2.5px dashed rgba(62,201,138,.75);
-    border-radius:50% 50% 46% 46%;
-    z-index:5;pointer-events:none;
-  }
-  #frameGuide .cap{
-    position:absolute;bottom:-28px;left:50%;transform:translateX(-50%);
-    white-space:nowrap;font-size:11.5px;color:var(--good);
-    background:rgba(0,0,0,.8);padding:3px 10px;border-radius:10px;
-  }
-  #eyeDot{
-    position:absolute;left:50%;transform:translate(-50%,-50%);
-    top:30%;width:14px;height:14px;border-radius:50%;
-    background:var(--accent);box-shadow:0 0 0 6px rgba(240,180,41,.2);
-    z-index:6;pointer-events:none;
-  }
-  #eyeDot .cap{
-    position:absolute;left:24px;top:50%;transform:translateY(-50%);
-    white-space:nowrap;font-size:11px;color:var(--accent);
-    background:rgba(0,0,0,.8);padding:3px 8px;border-radius:8px;
-  }
-  #coach{
-    position:absolute;left:0;right:0;
-    bottom:calc(70px + env(safe-area-inset-bottom));
-    z-index:5;padding:0 12px;
-  }
-  .coach-card{background:rgba(22,28,40,.93);border:1px solid var(--line);
-    border-radius:13px;padding:10px 13px;}
-  .coach-title{font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;
-    color:var(--accent);font-weight:700;margin-bottom:6px;}
-  .coach-tip{display:flex;align-items:flex-start;gap:8px;font-size:12px;
-    color:var(--ink);line-height:1.4;margin-bottom:4px;}
-  .coach-tip:last-child{margin-bottom:0;}
-  .coach-tip .ic{flex:none;width:15px;text-align:center;}
 
   #recDot{position:absolute;top:calc(13px + env(safe-area-inset-top));
     right:14px;z-index:7;display:flex;align-items:center;gap:7px;
@@ -120,9 +94,13 @@
   #recDot .t{font-size:13px;font-weight:700;font-variant-numeric:tabular-nums;}
   @keyframes pulse{50%{opacity:.3;}}
 
-  #hint{position:absolute;top:calc(13px + env(safe-area-inset-top));
-    left:14px;z-index:7;color:var(--muted);font-size:11.5px;
-    background:rgba(0,0,0,.55);padding:6px 10px;border-radius:14px;transition:opacity .4s;}
+  /* canlı ses göstergesi - kayıt ekranında */
+  #liveLevel{position:absolute;top:calc(13px + env(safe-area-inset-top));
+    left:14px;z-index:7;width:120px;
+    background:rgba(0,0,0,.6);padding:8px 10px;border-radius:14px;}
+  #liveLevel .lb{height:6px;background:var(--line);border-radius:4px;overflow:hidden;}
+  #liveLevel .lf{height:100%;width:0%;background:var(--good);}
+  #liveLevel .lt{font-size:10px;color:var(--muted);margin-top:4px;}
 
   .bar{position:absolute;left:0;right:0;bottom:0;z-index:8;
     display:flex;align-items:center;gap:7px;
@@ -136,8 +114,6 @@
   .spd{width:38px;flex:none;font-size:18px;padding:13px 0;}
   .spd-val{min-width:26px;flex:none;text-align:center;
     color:var(--accent);font-weight:800;font-size:14px;}
-  .gd{width:42px;flex:none;font-size:10.5px;}
-  .gd.off{opacity:.4;}
 
   #dlScreen{display:none;position:fixed;inset:0;z-index:20;
     background:var(--bg);flex-direction:column;align-items:center;justify-content:center;
@@ -155,14 +131,29 @@
 </head>
 <body>
 
-<!-- ===== SETUP ===== -->
 <div id="setup">
-  <div class="title">Teleprompter + Kamera</div>
-  <div class="subtitle">Kılavuzlu: yüz çerçevesi, bakış noktası, el ipuçları.</div>
+  <div class="title">Teleprompter — Mikrofon Seçmeli</div>
+  <div class="subtitle">Önce mikrofonu seç ve test et, sonra kaydı başlat.</div>
 
   <textarea id="scriptInput" placeholder="Video metnini buraya yaz..."></textarea>
 
-  <div class="controls">
+  <div class="field-label">Mikrofon</div>
+  <select id="micSelect"><option>Önce "Mikrofonları Tara" deyin</option></select>
+  <div class="mic-hint">Yaka mikrofonun listede görünmüyorsa: alıcısının telefona tam takılı olduğundan emin ol, sonra tekrar tara.</div>
+
+  <div class="field-label">Kamera</div>
+  <select id="camSelect"><option>Ön kamera (selfie)</option></select>
+
+  <button class="btn btn-ghost" id="scanBtn">🔄 Mikrofonları Tara</button>
+
+  <div class="field-label" style="margin-top:14px;">Ses Testi</div>
+  <div class="level-wrap">
+    <div class="level-bar"><div class="level-fill" id="levelFill"></div></div>
+    <div class="level-label" id="levelLabel">Test için "Mikrofonu Dinle" deyin, sonra konuşun.</div>
+  </div>
+  <button class="btn btn-ghost" id="testBtn">🎙️ Mikrofonu Dinle (test)</button>
+
+  <div class="controls" style="margin-top:16px;">
     <div class="ctrl-row">
       <span class="ctrl-label">Kaydırma hızı</span>
       <input type="range" id="speed" min="1" max="20" value="7" />
@@ -173,57 +164,35 @@
       <input type="range" id="fontSize" min="20" max="46" value="28" />
       <span class="ctrl-value" id="fontVal">28</span>
     </div>
-    <div class="toggle-box">
-      <span>Ön kamera (selfie)</span>
-      <label class="switch"><input type="checkbox" id="frontCam" checked /><span class="slider"></span></label>
-    </div>
-    <div class="toggle-box">
-      <span>Kılavuzları göster</span>
-      <label class="switch"><input type="checkbox" id="guides" checked /><span class="slider"></span></label>
-    </div>
   </div>
 
-  <button class="start-btn" id="startBtn">KAMERAYI AÇ</button>
-  <div class="note">Not: Kamera yalnızca güvenli adresten (https) açılırsa çalışır. Dosyayı doğrudan İndirilenler'den açarsanız "izin reddedildi" hatası verir — bu durumda sade teleprompter'ı + telefonun kamera uygulamasını kullanın.</div>
+  <button class="btn btn-go" id="startBtn">KAMERAYI AÇ VE BAŞLAT</button>
+  <div class="note">Ses testinde çubuk hareket ediyorsa mikrofon doğru seçilmiştir. Hareket etmiyorsa başka mikrofon seçip tekrar test et.</div>
 </div>
 
-<!-- ===== STAGE ===== -->
 <div id="stage">
   <video id="cam" playsinline muted autoplay></video>
   <div id="scrim"></div>
   <div id="scrollWrap"><div id="scriptText"></div></div>
   <div id="readline"></div>
-
-  <div id="eyeDot"><span class="cap">Buraya bak — kamera burada</span></div>
-  <div id="frameGuide"><span class="cap">Yüzün bu çerçevede kalsın</span></div>
-
-  <div id="coach">
-    <div class="coach-card">
-      <div class="coach-title">El ve Duruş</div>
-      <div class="coach-tip"><span class="ic">✋</span><span>Eller göğüs hizasında, serbest. "Şu", "üç adım" derken elinle göster.</span></div>
-      <div class="coach-tip"><span class="ic">🧍</span><span>Omuzlar geride, dik dur, sallanma.</span></div>
-      <div class="coach-tip"><span class="ic">👁️</span><span>Sarı noktaya bak. Cümle başında hafif gülümse.</span></div>
-    </div>
-  </div>
-
-  <div id="hint">Metne dokun: kaydır / durdur</div>
   <div id="recDot"><span class="d"></span><span class="t" id="recTime">00:00</span></div>
-
+  <div id="liveLevel">
+    <div class="lb"><div class="lf" id="liveFill"></div></div>
+    <div class="lt">ses seviyesi</div>
+  </div>
   <div class="bar">
     <button id="backBtn">‹ Çıkış</button>
     <button class="spd" id="slower">−</button>
     <span class="spd-val" id="liveSpeed">7</span>
     <button class="spd" id="faster">+</button>
-    <button class="gd" id="guideBtn">Kılavuz</button>
     <button id="scrollBtn">Kaydır ▶</button>
     <button class="rec" id="recBtn">● KAYIT</button>
   </div>
 </div>
 
-<!-- ===== DOWNLOAD ===== -->
 <div id="dlScreen">
   <h2>Kayıt tamam ✓</h2>
-  <p>Önizle, beğendiysen indir. İndirince telefonunun dosyalarına kaydedilir.</p>
+  <p>Önizle, sesi kontrol et. İyiyse indir.</p>
   <video id="preview" controls playsinline></video>
   <a class="dl-btn" id="downloadBtn" download="video.webm">VİDEOYU İNDİR</a>
   <button class="dl-btn ghost" id="againBtn">Yeniden Çek</button>
@@ -233,28 +202,31 @@
 (function(){
   var DEFAULT_SCRIPT =
 "Merhaba. Ben Barış, dokuz yıldır inşaat sektöründe proje kontrol mühendisiyim.\n\n" +
-"Size proje raporlamasının en çok yanlış bilinen tarafını anlatacağım. Çoğu mühendis raporu sona bırakır.\n\n" +
-"Ama gerçek şu: Rapor, raporu yazdığınız gün başlamaz. Verinin yapısını kurduğunuz gün başlar.\n\n" +
-"Önce bir veri taslağı hazırlıyorum. Sahadan, İK'dan, dizayndan neye ihtiyacım olduğunu belirliyorum. Ve düzenli bir Excel formatına döküyorum.\n\n" +
-"Herkes veriyi bu hazır formata giriyor. Veri düzenli aktığı için rapor kendiliğinden oluşuyor.\n\n" +
-"Dahası, bu veriyi Primavera'ya da aktarabiliyorsunuz. Zaman kaybı kalmıyor.\n\n" +
-"Özet: İyi rapor, iyi yazıdan gelmez. İyi veri yapısından gelir.\n\n" +
-"Bunu kendi projenizde deneyin. Görüşmek üzere.";
+"Bugün inşaat projelerinde bütçe yönetimini konuşacağız. Çünkü teknik her şey kusursuz olsa bile, bütçe kontrolden çıkarsa proje yarıda kalır.\n\n" +
+"Beş adımda anlatayım.\n\n" +
+"Birincisi, planlama. Daha proje başlamadan toplam maliyeti çıkarıyorsunuz. Ve contingency ayırıyorsunuz — beklenmedik durumlar için pay.\n\n" +
+"İkincisi, takip. Earned Value Management ile bütçeye göre nerede olduğunuzu görüyorsunuz.\n\n" +
+"Üçüncüsü, nakit akışı. Para ne zaman giriyor, ne zaman çıkıyor — dengelemezseniz kârlı proje bile ödeme yapamaz.\n\n" +
+"Dördüncüsü, risk yönetimi. Hangi faktör bütçeyi şişirir, önceden görün.\n\n" +
+"Beşincisi, ders çıkarmak. Proje bitince planlananla gerçekleşeni karşılaştırın.\n\n" +
+"Bütçe yönetimi bir tablo işi değil, bir disiplin işi. Görüşmek üzere.";
 
   var $=function(id){return document.getElementById(id);};
   var setup=$('setup'),stage=$('stage'),dlScreen=$('dlScreen');
   var scriptInput=$('scriptInput'),scriptText=$('scriptText');
   var speed=$('speed'),speedVal=$('speedVal');
   var fontSize=$('fontSize'),fontVal=$('fontVal');
-  var cam=$('cam'),liveSpeed=$('liveSpeed'),hint=$('hint');
+  var cam=$('cam'),liveSpeed=$('liveSpeed');
   var scrollWrap=$('scrollWrap');
   var recDot=$('recDot'),recTime=$('recTime'),recBtn=$('recBtn');
+  var micSelect=$('micSelect'),camSelect=$('camSelect');
 
   scriptInput.value=DEFAULT_SCRIPT;
 
   var S={pos:0,scrolling:false,speed:7,raf:null,lastTs:0,
     stream:null,recorder:null,chunks:[],recording:false,
-    recStart:0,timer:null,guidesOn:true};
+    recStart:0,timer:null,
+    testStream:null,audioCtx:null,analyser:null,levelRaf:null};
 
   speed.addEventListener('input',function(){
     speedVal.textContent=speed.value;S.speed=parseInt(speed.value,10);
@@ -263,9 +235,97 @@
     fontVal.textContent=fontSize.value;
     scriptText.style.fontSize=fontSize.value+'px';});
 
-  function applyTransform(){
-    scriptText.style.transform='translateY('+(-S.pos)+'px)';
+  /* ---- cihazları tara ---- */
+  function scanDevices(){
+    navigator.mediaDevices.getUserMedia({audio:true,video:true})
+      .then(function(s){
+        s.getTracks().forEach(function(t){t.stop();});
+        return navigator.mediaDevices.enumerateDevices();
+      })
+      .then(function(devices){
+        var mics=devices.filter(function(d){return d.kind==='audioinput';});
+        var cams=devices.filter(function(d){return d.kind==='videoinput';});
+        micSelect.innerHTML='';
+        if(mics.length===0){
+          micSelect.innerHTML='<option>Mikrofon bulunamadı</option>';
+        } else {
+          mics.forEach(function(m,i){
+            var o=document.createElement('option');
+            o.value=m.deviceId;
+            o.textContent=m.label||('Mikrofon '+(i+1));
+            micSelect.appendChild(o);
+          });
+        }
+        camSelect.innerHTML='';
+        if(cams.length===0){
+          var co=document.createElement('option');
+          co.value='user'; co.textContent='Varsayılan kamera';
+          camSelect.appendChild(co);
+        } else {
+          cams.forEach(function(c,i){
+            var o=document.createElement('option');
+            o.value=c.deviceId;
+            o.textContent=c.label||('Kamera '+(i+1));
+            camSelect.appendChild(o);
+          });
+        }
+        $('levelLabel').textContent='Cihazlar tarandı. Mikrofon seç, sonra "Dinle" ile test et.';
+      })
+      .catch(function(err){
+        alert('Cihazlara erişilemedi: '+err.message+
+          '\n\nSayfa https ile açılmalı ve mikrofon/kamera izni verilmeli.');
+      });
   }
+  $('scanBtn').addEventListener('click',scanDevices);
+
+  /* ---- ses testi (dinleme) ---- */
+  function startTest(){
+    stopTest();
+    var micId=micSelect.value;
+    var constraints={audio: micId?{deviceId:{exact:micId}}:true};
+    navigator.mediaDevices.getUserMedia(constraints).then(function(stream){
+      S.testStream=stream;
+      S.audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+      var src=S.audioCtx.createMediaStreamSource(stream);
+      S.analyser=S.audioCtx.createAnalyser();
+      S.analyser.fftSize=256;
+      src.connect(S.analyser);
+      var data=new Uint8Array(S.analyser.frequencyBinCount);
+      $('testBtn').textContent='■ Testi Durdur';
+      function loop(){
+        if(!S.analyser)return;
+        S.analyser.getByteFrequencyData(data);
+        var sum=0;
+        for(var i=0;i<data.length;i++)sum+=data[i];
+        var avg=sum/data.length;
+        var pct=Math.min(100,Math.round(avg*1.8));
+        $('levelFill').style.width=pct+'%';
+        $('levelLabel').textContent = pct>6
+          ? 'Ses algılanıyor ✓ ('+pct+'%) — bu mikrofon çalışıyor.'
+          : 'Ses yok — konuşun. Çubuk oynamıyorsa başka mikrofon seçin.';
+        S.levelRaf=requestAnimationFrame(loop);
+      }
+      loop();
+    }).catch(function(err){
+      alert('Mikrofon testi başlatılamadı: '+err.message);
+    });
+  }
+  function stopTest(){
+    if(S.levelRaf)cancelAnimationFrame(S.levelRaf);
+    S.levelRaf=null;
+    if(S.analyser)S.analyser=null;
+    if(S.audioCtx){S.audioCtx.close();S.audioCtx=null;}
+    if(S.testStream){S.testStream.getTracks().forEach(function(t){t.stop();});S.testStream=null;}
+    $('testBtn').textContent='🎙️ Mikrofonu Dinle (test)';
+    $('levelFill').style.width='0%';
+  }
+  $('testBtn').addEventListener('click',function(){
+    if(S.testStream)stopTest();
+    else startTest();
+  });
+
+  /* ---- prompter ---- */
+  function applyTransform(){scriptText.style.transform='translateY('+(-S.pos)+'px)';}
   function tick(ts){
     if(!S.scrolling)return;
     if(!S.lastTs)S.lastTs=ts;
@@ -280,7 +340,6 @@
     if(S.scrolling)return;
     S.scrolling=true;S.lastTs=0;
     $('scrollBtn').textContent='Durdur ❚❚';
-    hint.style.opacity='0';
     S.raf=requestAnimationFrame(tick);
   }
   function stopScroll(){
@@ -289,32 +348,51 @@
     $('scrollBtn').textContent='Kaydır ▶';
   }
   function toggleScroll(){S.scrolling?stopScroll():startScroll();}
-  function resetScroll(){stopScroll();S.pos=0;applyTransform();hint.style.opacity='1';}
+  function resetScroll(){stopScroll();S.pos=0;applyTransform();}
 
-  function applyGuides(){
-    var d=S.guidesOn?'block':'none';
-    $('frameGuide').style.display=d;
-    $('eyeDot').style.display=d;
-    $('coach').style.display=d;
-    $('guideBtn').classList.toggle('off',!S.guidesOn);
-  }
-
+  /* ---- kamera + kayıt ---- */
   function startCamera(){
-    var facing=$('frontCam').checked?'user':'environment';
-    navigator.mediaDevices.getUserMedia({
-      audio:true,
-      video:{facingMode:facing,width:{ideal:1280},height:{ideal:720}}
-    }).then(function(stream){
-      S.stream=stream;cam.srcObject=stream;
-      if($('frontCam').checked)cam.classList.add('mirrored');
-      else cam.classList.remove('mirrored');
+    var micId=micSelect.value;
+    var camId=camSelect.value;
+    var audioC = micId ? {deviceId:{exact:micId}} : true;
+    var videoC;
+    if(camId && camId!=='user' && camId.length>10){
+      videoC={deviceId:{exact:camId},width:{ideal:1280},height:{ideal:720}};
+    } else {
+      videoC={facingMode:'user',width:{ideal:1280},height:{ideal:720}};
+    }
+    navigator.mediaDevices.getUserMedia({audio:audioC,video:videoC}).then(function(stream){
+      S.stream=stream;
+      cam.srcObject=stream;
+      cam.classList.add('mirrored');
+      // canlı ses göstergesi
+      try{
+        S.audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+        var src=S.audioCtx.createMediaStreamSource(stream);
+        S.analyser=S.audioCtx.createAnalyser();
+        S.analyser.fftSize=256;
+        src.connect(S.analyser);
+        var data=new Uint8Array(S.analyser.frequencyBinCount);
+        function lv(){
+          if(!S.analyser)return;
+          S.analyser.getByteFrequencyData(data);
+          var sum=0;for(var i=0;i<data.length;i++)sum+=data[i];
+          var pct=Math.min(100,Math.round((sum/data.length)*1.8));
+          $('liveFill').style.width=pct+'%';
+          S.levelRaf=requestAnimationFrame(lv);
+        }
+        lv();
+      }catch(e){}
     }).catch(function(err){
-      alert('Kameraya erişilemedi: '+err.message+
-        '\n\nBu sayfa güvenli bir adresten (https) açılmalı. Dosyayı doğrudan açtıysanız kamera çalışmaz.');
+      alert('Kamera/mikrofon açılamadı: '+err.message);
       backToSetup();
     });
   }
   function stopCamera(){
+    if(S.levelRaf)cancelAnimationFrame(S.levelRaf);
+    S.levelRaf=null;
+    if(S.analyser)S.analyser=null;
+    if(S.audioCtx){S.audioCtx.close();S.audioCtx=null;}
     if(S.stream){S.stream.getTracks().forEach(function(t){t.stop();});S.stream=null;}
   }
   function pickMime(){
@@ -372,13 +450,12 @@
   }
 
   $('startBtn').addEventListener('click',function(){
+    stopTest();
     var txt=scriptInput.value.trim();
     scriptText.textContent=txt.length?txt:DEFAULT_SCRIPT;
     scriptText.style.fontSize=fontSize.value+'px';
     S.speed=parseInt(speed.value,10);
     liveSpeed.textContent=speed.value;
-    S.guidesOn=guides.checked;
-    applyGuides();
     setup.style.display='none';
     stage.classList.add('active');
     resetScroll();
@@ -387,9 +464,6 @@
   $('backBtn').addEventListener('click',backToSetup);
   $('scrollBtn').addEventListener('click',toggleScroll);
   $('recBtn').addEventListener('click',toggleRec);
-  $('guideBtn').addEventListener('click',function(){
-    S.guidesOn=!S.guidesOn;applyGuides();
-  });
   scrollWrap.addEventListener('click',toggleScroll);
   $('faster').addEventListener('click',function(){
     S.speed=Math.min(20,S.speed+1);liveSpeed.textContent=S.speed;
@@ -402,6 +476,9 @@
     stage.classList.add('active');
     resetScroll();startCamera();
   });
+
+  // başlangıçta otomatik tara
+  setTimeout(scanDevices,400);
 })();
 </script>
 </body>
