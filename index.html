@@ -95,7 +95,7 @@
             flex-shrink: 0;
         }
     </style>
-    <script type="module" src="auth.js"></script>
+
 </head>
 <body>
 
@@ -110,17 +110,10 @@
             <div class="nav-links">
                 <a href="index.html" class="active">Home</a>
                 <a href="discussions.html">Discussions</a>
-                <a href="courses.html">Courses</a>
-                <a href="report-builder.html">Report Builder</a>
                 <a href="about.html">About</a>
             </div>
             <div class="nav-actions">
-                <button id="joinBtn" class="btn btn-primary" onclick="openMembershipModal()"><i class='bx bx-user-plus'></i> Join Community</button>
-                <div id="userMenu" style="display:none; align-items:center; gap:12px;">
-                    <img id="userAvatar" src="" style="width:32px;height:32px;border-radius:50%;object-fit:cover;" alt="avatar">
-                    <span id="userName" style="font-size:14px;font-weight:600;color:var(--text-light);"></span>
-                    <button class="btn btn-primary" onclick="logoutUser()" style="padding:8px 16px;font-size:13px;">Sign Out</button>
-                </div>
+                <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" class="btn btn-primary"><i class='bx bxl-linkedin'></i> LinkedIn</a>
             </div>
         </nav>
 
@@ -359,30 +352,7 @@
 
 
 
-    <!-- Membership Modal -->
-    <div class="modal-overlay" id="membershipModal">
-        <div class="modal-box">
-            <div class="modal-header">
-                <h3>Exclusive Community Access</h3>
-                <button class="close-modal" onclick="closeMembershipModal()"><i class='bx bx-x'></i></button>
-            </div>
-            <div class="modal-body">
-                <div class="modal-icon-wrapper">
-                    <i class='bx bx-lock-alt'></i>
-                </div>
-                <h4>Join The Project Control Hub</h4>
-                <p>Join our professional network to start participating in discussions, sharing insights, and expanding your career in project controls.</p>
-                
-                <div class="social-login-container">
-                    <button class="btn-social btn-google" onclick="signInWithGoogleBtn()">
-                        <i class='bx bxl-google'></i> Continue with Google
-                    </button>
-                </div>
 
-                <p style="font-size:13px;color:#64748b;margin-top:16px;line-height:1.5;">By joining, you agree to our community guidelines. Your profile will be visible to other members.</p>
-            </div>
-        </div>
-    </div>
 
     <!-- FOOTER -->
     <footer class="footer">
@@ -392,133 +362,36 @@
                     <i class='bx bx-hive'></i>
                     <span>THE PROJECT CONTROL<br>HUB</span>
                 </div>
-                <p>A members-only discussion community for project planners, controls engineers, and construction managers worldwide.</p>
+                <p>Field notes on planning & project controls — by Barış Emre Özçelik, PMP.</p>
                 <div class="social-links">
-                    <a href="https://linkedin.com" target="_blank"><i class='bx bxl-linkedin'></i></a>
+                    <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank"><i class='bx bxl-linkedin'></i></a>
                     <a href="https://youtube.com" target="_blank"><i class='bx bxl-youtube'></i></a>
-                    <a href="https://twitter.com" target="_blank"><i class='bx bxl-twitter'></i></a>
                 </div>
             </div>
-            
+
             <div class="footer-links">
                 <h4>DISCUSSIONS</h4>
                 <ul>
-                    <li><a href="discussions.html">Primavera P6</a></li>
-                    <li><a href="discussions.html">FIDIC Contracts</a></li>
+                    <li><a href="discussions.html">Schedule Planning</a></li>
                     <li><a href="discussions.html">Delay Analysis</a></li>
-                    <li><a href="discussions.html">Earned Value (EVM)</a></li>
-                    <li><a href="discussions.html">Risk Management</a></li>
+                    <li><a href="discussions.html">Project Controls</a></li>
+                    <li><a href="discussions.html">Earned Value</a></li>
                 </ul>
             </div>
 
             <div class="footer-links">
-                <h4>COURSES</h4>
+                <h4>PAGES</h4>
                 <ul>
-                    <li><a href="courses.html">Primavera P6 Masterclass</a></li>
-                    <li><a href="courses.html">FIDIC Contracts</a></li>
-                    <li><a href="courses.html">Delay Analysis Methods</a></li>
-                    <li><a href="courses.html">EVM Bootcamp</a></li>
-                    <li><a href="courses.html">Risk Management</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-links">
-                <h4>RESOURCES</h4>
-                <ul>
-                    <li><a href="coming-soon.html">Blog Articles</a></li>
-                    <li><a href="coming-soon.html">Case Studies</a></li>
-                    <li><a href="coming-soon.html">Tools & Templates</a></li>
-                    <li><a href="coming-soon.html">Community Guidelines</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-links">
-                <h4>COMPANY</h4>
-                <ul>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="coming-soon.html">Contact</a></li>
-                    <li><a href="coming-soon.html">Terms of Service</a></li>
-                    <li><a href="coming-soon.html">Privacy Policy</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="discussions.html">Discussions</a></li>
                 </ul>
             </div>
         </div>
         <div class="container footer-bottom">
             <p>&copy; 2026 The Project Control Hub. All rights reserved.</p>
-            <p>Made for construction professionals worldwide <i class='bx bx-world' style="color: #10b981;"></i></p>
         </div>
     </footer>
 
-    <script type="module">
-        import { signInWithGoogle, logout, onUserChange } from './auth.js';
 
-        // Kullanıcı durumu değişince UI güncelle
-        onUserChange((user) => {
-            const joinBtn = document.getElementById('joinBtn');
-            const userMenu = document.getElementById('userMenu');
-            const userName = document.getElementById('userName');
-            const userAvatar = document.getElementById('userAvatar');
-
-            if (user) {
-                // Giriş yapılmış
-                joinBtn.style.display = 'none';
-                userMenu.style.display = 'flex';
-                userName.textContent = user.displayName.split(' ')[0];
-                if (user.photoURL) userAvatar.src = user.photoURL;
-                closeMembershipModal();
-            } else {
-                // Çıkış yapılmış
-                joinBtn.style.display = 'flex';
-                userMenu.style.display = 'none';
-            }
-        });
-
-        // Google ile giriş
-        window.signInWithGoogleBtn = async function() {
-            try {
-                await signInWithGoogle();
-            } catch (e) {
-                alert('Giriş başarısız. Lütfen tekrar deneyin.');
-            }
-        };
-
-        // Çıkış
-        window.logoutUser = async function() {
-            await logout();
-        };
-
-        // Modal
-        window.openMembershipModal = function() {
-            document.getElementById('membershipModal').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        };
-
-        window.closeMembershipModal = function() {
-            document.getElementById('membershipModal').classList.remove('active');
-            document.body.style.overflow = '';
-        };
-
-        window.subscribeNewsletter = function() {
-            const email = document.getElementById("newsletterEmail").value;
-            if (email && email.includes("@")) {
-                const btn = document.querySelector(".newsletter-form-home button");
-                btn.textContent = "✓ Subscribed!";
-                btn.style.backgroundColor = "#059669";
-                document.getElementById("newsletterEmail").value = "";
-                setTimeout(() => { btn.textContent = "Subscribe Free"; btn.style.backgroundColor = ""; }, 3000);
-            } else {
-                document.getElementById("newsletterEmail").style.borderColor = "#ef4444";
-                setTimeout(() => { document.getElementById("newsletterEmail").style.borderColor = ""; }, 2000);
-            }
-        };
-
-        window.submitMembership = function(e) {
-            e.preventDefault();
-            signInWithGoogleBtn();
-        };
-
-        document.getElementById('membershipModal').addEventListener('click', function(e) {
-            if(e.target === this) closeMembershipModal();
-        });
-    </script>
 </body>
 </html>
