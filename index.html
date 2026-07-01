@@ -23,13 +23,6 @@
             height: 52px;
             flex-shrink: 0;
         }
-        .founder-avatar {
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid #10b981;
-        }
         .founder-avatar-fallback {
             width: 52px;
             height: 52px;
@@ -330,7 +323,7 @@
         }
         .btn-follow-bar:hover { border-color: #10b981; color: #10b981; }
 
-        /* Email gate modal */
+        /* Google sign-in modal */
         .modal-overlay {
             position: fixed;
             inset: 0;
@@ -385,21 +378,6 @@
             line-height: 1.6;
             margin: 0 0 20px;
         }
-        .email-gate-form {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .email-gate-form input {
-            padding: 12px 16px;
-            border: 1.5px solid #e2e8f0;
-            border-radius: 8px;
-            font-size: 14px;
-            outline: none;
-            transition: border 0.2s;
-        }
-        .email-gate-form input:focus { border-color: #10b981; }
-        .email-gate-form .btn { width: 100%; justify-content: center; padding: 13px; }
         .modal-note {
             font-size: 12px !important;
             color: #94a3b8 !important;
@@ -504,7 +482,6 @@
             </div>
             <div class="nav-links">
                 <a href="index.html" class="active">Home</a>
-                <a href="discussions.html">Discussions</a>
                 <a href="about.html">About</a>
             </div>
             <div class="nav-actions" style="display:flex;align-items:center;gap:10px;">
@@ -529,9 +506,6 @@
                 <!-- Founder intro -->
                 <div class="founder-intro">
                     <div class="founder-avatar-wrap">
-                        <img src="https://media.licdn.com/dms/image/v2/D4D03AQHnw0nw0nw0nw/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1234567890?e=1234567890&v=beta&t=placeholder" 
-                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-                             alt="Barış Emre Özçelik" class="founder-avatar">
                         <div class="founder-avatar-fallback" style="display:flex;">
                             <span>BE</span>
                         </div>
@@ -555,7 +529,7 @@
                 </div>
 
                 <div class="hero-buttons">
-                    <a href="discussion-detail.html" class="btn btn-primary-large"><i class='bx bx-play'></i> Start from Week 1</a>
+                    <a href="#curriculum" class="btn btn-primary-large"><i class='bx bx-play'></i> Start from Week 1</a>
                     <a href="about.html" class="btn btn-ghost-large"><i class='bx bx-user'></i> About Me</a>
                 </div>
             </div>
@@ -567,28 +541,28 @@
                 </div>
 
                 <div class="discussion-list">
-                    <div class="discussion-list-item">
+                    <a href="discussion-detail.html" class="discussion-list-item module-post-item">
                         <span class="category-text text-green">WEEK 1 · SCHEDULE</span>
                         <h4>Why projects fail — and why the answer is never the tools</h4>
                         <div class="item-meta">
                             <i class='bx bx-right-arrow-alt arrow-icon'></i>
                         </div>
-                    </div>
-                    <div class="discussion-list-item">
+                    </a>
+                    <a href="discussion-detail.html" class="discussion-list-item module-post-item">
                         <span class="category-text text-green">WEEK 2 · SCHEDULE</span>
                         <h4>The anatomy of a schedule — Activity, Milestone, Resource, Logic</h4>
                         <div class="item-meta">
                             <i class='bx bx-right-arrow-alt arrow-icon'></i>
                         </div>
-                    </div>
-                    <div class="discussion-list-item" style="position:relative;">
+                    </a>
+                    <a href="discussion-detail.html" class="discussion-list-item module-post-item" style="position:relative;">
                         <span class="category-text text-green">WEEK 3 · SCHEDULE</span>
                         <h4>That Gantt chart on the wall? It's not your schedule.</h4>
                         <div class="item-meta">
                             <span style="font-size:11px;font-weight:700;color:#10b981;background:#ecfdf5;padding:2px 8px;border-radius:20px;">New</span>
                             <i class='bx bx-right-arrow-alt arrow-icon'></i>
                         </div>
-                    </div>
+                    </a>
                 </div>
 
                 <div class="hero-follow-cta">
@@ -603,13 +577,12 @@
     </section>
 
     <!-- CURRICULUM SECTION -->
-    <section class="discussions-section">
+    <section class="discussions-section" id="curriculum">
         <div class="container">
 
             <div class="section-header">
                 <div>
-                    <span class="subtitle">WHERE DO I START?</span>
-                    <h2>Project Controls — Step by Step</h2>
+                    <h2>Start Here</h2>
                     <p>A structured series published weekly. Each module builds on the previous one — from theory to tools.</p>
                 </div>
             </div>
@@ -726,12 +699,6 @@
         </div>
     </section>
 
-
-
-
-
-
-
     <!-- ACCESS MODAL — Google Sign In -->
     <div class="modal-overlay" id="accessModal">
         <div class="modal-box">
@@ -789,7 +756,6 @@
             <p>&copy; 2026 The Project Control Hub. All rights reserved.</p>
         </div>
     </footer>
-
 
 </body>
 </html>
