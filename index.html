@@ -323,7 +323,11 @@
         }
         .btn-follow-bar:hover { border-color: #10b981; color: #10b981; }
 
-        /* Google sign-in modal */
+        @media (max-width: 768px) {
+            .btn-nav-social { display: none !important; }
+            .hero-buttons { flex-direction: column; }
+            .hero-buttons a { width: 100%; justify-content: center; }
+        }
         .modal-overlay {
             position: fixed;
             inset: 0;
