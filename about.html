@@ -318,6 +318,13 @@
         };
 
         window.logoutUser = async function() { await logout(); };
+        window.toggleMobileNav = function() {
+            const nav = document.getElementById('mobileNav');
+            const btn = document.getElementById('hamburger');
+            nav.classList.toggle('open');
+            btn.classList.toggle('open');
+            document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
+        };
 
         window.openModal = function() {
             document.getElementById('accessModal').classList.add('active');
@@ -351,6 +358,9 @@
                 <a href="about.html" class="active">About</a>
             </div>
             <div class="nav-actions" style="display:flex;align-items:center;gap:10px;">
+                <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
                 <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" class="btn-nav-social"><i class='bx bxl-linkedin'></i></a>
                 <a href="https://youtube.com" target="_blank" class="btn-nav-social"><i class='bx bxl-youtube'></i></a>
                 <button id="joinBtn" class="btn btn-primary" onclick="openModal()"><i class='bx bx-user-plus'></i> Join Free</button>
@@ -483,6 +493,18 @@
                 </div>
             </div>
 
+        </div>
+    </div>
+
+    <!-- MOBILE NAV -->
+    <div class="mobile-nav" id="mobileNav">
+        <button class="mobile-nav-close" onclick="toggleMobileNav()"><i class='bx bx-x'></i></button>
+        <a href="index.html" onclick="toggleMobileNav()">Home</a>
+        <a href="learn.html" onclick="toggleMobileNav()">Learn</a>
+        <a href="about.html" class="active" onclick="toggleMobileNav()">About</a>
+        <div class="mobile-nav-bottom">
+            <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank"><i class='bx bxl-linkedin'></i> LinkedIn</a>
+            <a href="https://youtube.com" target="_blank"><i class='bx bxl-youtube'></i> YouTube</a>
         </div>
     </div>
 
