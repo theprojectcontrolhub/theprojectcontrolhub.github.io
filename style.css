@@ -688,11 +688,85 @@ ul {
     }
 }
 @media (max-width: 768px) {
+    /* NAVBAR */
+    .navbar { padding: 16px 20px; }
     .nav-links { display: none; }
-    .hero-left h1 { font-size: 40px; }
-    .section-header { flex-direction: column; gap: 20px; }
-    .footer-content { grid-template-columns: 1fr; }
-    .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    .logo span { font-size: 14px; }
+    .btn-nav-social { display: none; }
+
+    /* HERO */
+    .hero-section { padding-bottom: 40px; }
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        margin-top: 32px;
+        padding: 0 20px;
+    }
+    .hero-left h1 { font-size: 32px; line-height: 1.2; }
+    .hero-desc { font-size: 14px; }
+    .tags-group { flex-wrap: wrap; gap: 8px; }
+    .hero-buttons { flex-direction: column; gap: 12px; }
+    .hero-buttons a { width: 100%; justify-content: center; text-align: center; }
+    .btn-primary-large { padding: 14px 20px; font-size: 14px; }
+    .btn-ghost-large { padding: 14px 20px; font-size: 14px; }
+
+    /* HERO RIGHT — hide on mobile, too cluttered */
+    .hero-right { display: none; }
+
+    /* CURRICULUM SECTION */
+    .discussions-section { padding: 40px 0; }
+    .container { padding: 0 16px; }
+    .section-header { flex-direction: column; gap: 16px; }
+    .section-header h2 { font-size: 26px; }
+
+    .module-track-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 18px 16px;
+    }
+    .module-track-left { gap: 12px; }
+    .module-number { font-size: 22px; min-width: 32px; }
+    .module-title { font-size: 15px; }
+    .module-desc { font-size: 12px; }
+    .module-status { font-size: 11px; padding: 5px 10px; }
+
+    .module-post-item {
+        padding: 12px 16px;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+    .post-week { min-width: 48px; font-size: 10px; }
+    .post-title { font-size: 13px; }
+    .post-date { display: none; }
+
+    /* SERIES FOLLOW BAR */
+    .series-follow-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 16px;
+    }
+    .series-follow-bar div:last-child { width: 100%; }
+    .btn-follow-bar { flex: 1; justify-content: center; }
+
+    /* FOOTER */
+    .footer-content {
+        grid-template-columns: 1fr !important;
+        gap: 32px;
+        padding: 32px 20px;
+    }
+    .footer-bottom { flex-direction: column; gap: 12px; text-align: center; padding: 20px; }
+
+    /* MODAL */
+    .modal-box { padding: 28px 20px; margin: 0 16px; }
+}
+
+@media (max-width: 480px) {
+    .hero-left h1 { font-size: 26px; }
+    .founder-name { font-size: 13px; }
+    .founder-title { font-size: 11px; }
+    .pill-badge { font-size: 10px; }
 }
 
 /* Modal and Discussions Page Styles */
