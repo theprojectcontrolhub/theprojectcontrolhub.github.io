@@ -493,6 +493,63 @@
             margin-top: 12px;
         }
 
+        /* NEXT ARTICLE NAV */
+        .next-article {
+            margin-top: 8px;
+            border-top: 1px solid #f1f5f9;
+            padding: 28px 36px 36px;
+        }
+
+        .next-article-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 14px;
+        }
+
+        .next-article-link {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-decoration: none;
+            padding: 16px 20px;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            transition: all 0.2s;
+        }
+
+        .next-article-link:hover {
+            border-color: #10b981;
+            background: rgba(16,185,129,0.02);
+        }
+
+        .next-week-tag {
+            font-size: 11px;
+            font-weight: 700;
+            color: #10b981;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .next-article-link h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-dark);
+            line-height: 1.4;
+            margin: 0;
+            flex: 1;
+        }
+
+        .next-article-link i {
+            font-size: 22px;
+            color: #10b981;
+            flex-shrink: 0;
+        }
+
         /* MOBILE */
         @media (max-width: 1024px) {
             .content-layout { grid-template-columns: 1fr; }
@@ -507,6 +564,7 @@
             .article-body p { font-size: 15px; }
             .paywall-cta { padding: 24px 20px 28px; }
             .article-footer { padding: 20px; }
+            .next-article { padding: 20px; }
             .btn-nav-social { display: none !important; }
         }
     </style>
@@ -536,19 +594,32 @@
         });
 
         function unlockContent() {
-            document.querySelector('.content-blur')?.classList.remove('content-blur');
-            document.querySelectorAll('.content-locked').forEach(el => {
-                el.style.display = 'block';
-            });
-            document.querySelector('.paywall-cta').style.display = 'none';
-            document.querySelector('.article-footer').style.display = 'block';
+            const preview = document.getElementById('contentPreview');
+            preview.classList.remove('content-blur');
+            document.querySelectorAll('.content-locked').forEach(el => el.style.display = 'block');
+            document.getElementById('paywallCta').style.display = 'none';
+            document.getElementById('articleFooter').style.display = 'block';
+            document.getElementById('nextArticle').style.display = 'flex';
         }
 
         function lockContent() {
-            document.querySelector('.content-preview')?.classList.add('content-blur') || null;
-            document.querySelector('.paywall-cta').style.display = 'block';
-            document.querySelector('.article-footer').style.display = 'none';
+            const preview = document.getElementById('contentPreview');
+            preview.classList.add('content-blur');
+            document.querySelectorAll('.content-locked').forEach(el => el.style.display = 'none');
+            document.getElementById('paywallCta').style.display = 'block';
+            document.getElementById('articleFooter').style.display = 'none';
+            document.getElementById('nextArticle').style.display = 'none';
         }
+
+        // Auth gate for sidebar links
+        document.querySelectorAll('.sidebar-series-item[data-gated]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (!currentUser) {
+                    e.preventDefault();
+                    openModal();
+                }
+            });
+        });
 
         window.signInWithGoogleBtn = async function() {
             try { await signInWithGoogle(); }
@@ -627,6 +698,9 @@
                                 <strong>Barış Emre Özçelik, PMP</strong>
                                 <span>Planning & Project Controls Lead · Jun 20, 2026</span>
                             </div>
+                            <div style="margin-left:auto;display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-muted);">
+                                <i class='bx bx-time-five'></i> 6 min read
+                            </div>
                         </div>
                     </div>
 
@@ -644,7 +718,7 @@
 
                     <!-- ARTICLE BODY — PREVIEW (visible to all) -->
                     <div class="article-body">
-                        <div class="content-preview content-blur">
+                        <div class="content-preview content-blur" id="contentPreview">
                             <p>Every week, somewhere in the world, a project that had a schedule, a team, a budget, and modern software — still fails. Sometimes it's a delay. Sometimes it's a cost overrun. Sometimes it's both, and no one can explain why.</p>
 
                             <p>When this happens, the first instinct is always the same: blame the tools. "We need better software." "The team didn't use Primavera correctly." "The Excel tracker wasn't updated." But I've been on enough projects — from infrastructure to nuclear — to know that this is almost never the real answer.</p>
@@ -679,7 +753,7 @@
                         </div>
 
                         <!-- PAYWALL CTA -->
-                        <div class="paywall-cta">
+                        <div class="paywall-cta" id="paywallCta">
                             <h3>Continue reading — it's free</h3>
                             <p>Sign in with Google to read the full article and access all content in the series.</p>
                             <button class="btn-google-signin" onclick="signInWithGoogleBtn()">
@@ -690,13 +764,25 @@
                         </div>
 
                         <!-- ARTICLE FOOTER (after login) -->
-                        <div class="article-footer">
+                        <div class="article-footer" id="articleFooter">
                             <div class="article-tags">
                                 <span class="article-tag">#SchedulePlanning</span>
                                 <span class="article-tag">#ProjectControls</span>
                                 <span class="article-tag">#CriticalPath</span>
                                 <span class="article-tag">#Planning</span>
                             </div>
+                        </div>
+
+                        <!-- NEXT ARTICLE NAV (after login) -->
+                        <div class="next-article" id="nextArticle" style="display:none;">
+                            <div class="next-article-label">Next in the series</div>
+                            <a href="discussion-detail.html" class="next-article-link">
+                                <div>
+                                    <span class="next-week-tag">Week 2</span>
+                                    <h4>The anatomy of a schedule — Activity, Milestone, Resource, Logic</h4>
+                                </div>
+                                <i class='bx bx-right-arrow-alt'></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -714,12 +800,12 @@
                         <span class="sidebar-week">Week 1</span>
                         <span class="sidebar-item-title">Why projects fail — and why the answer is never the tools</span>
                     </a>
-                    <a href="discussion-detail.html" class="sidebar-series-item">
+                    <a href="discussion-detail.html" class="sidebar-series-item" data-gated>
                         <span class="sidebar-week">Week 2</span>
                         <span class="sidebar-item-title">The anatomy of a schedule</span>
                         <span class="sidebar-new">New</span>
                     </a>
-                    <a href="discussion-detail.html" class="sidebar-series-item">
+                    <a href="discussion-detail.html" class="sidebar-series-item" data-gated>
                         <span class="sidebar-week">Week 3</span>
                         <span class="sidebar-item-title">That Gantt chart? It's not your schedule.</span>
                     </a>
@@ -772,6 +858,44 @@
             <p class="modal-note">No spam. One notification per week when new content drops.</p>
         </div>
     </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-content" style="grid-template-columns: 1fr 1fr;">
+            <div class="footer-brand">
+                <div class="logo">
+                    <i class='bx bx-hive'></i>
+                    <span>THE PROJECT CONTROL HUB</span>
+                </div>
+                <p>Field notes on planning & project controls — by Barış Emre Özçelik, PMP.</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank"><i class='bx bxl-linkedin'></i></a>
+                    <a href="https://youtube.com" target="_blank"><i class='bx bxl-youtube'></i></a>
+                </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:16px;">
+                <h4 style="font-size:11px;font-weight:700;letter-spacing:1px;color:#64748b;margin:0;">FOLLOW THE SERIES</h4>
+                <p style="font-size:13px;color:#64748b;margin:0;line-height:1.6;">New content every week — follow along so you don't miss the next topic.</p>
+                <div style="display:flex;gap:10px;">
+                    <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank"
+                       style="display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);color:#cbd5e1;text-decoration:none;font-size:13px;font-weight:600;transition:all 0.2s;"
+                       onmouseover="this.style.borderColor='#10b981';this.style.color='#10b981'"
+                       onmouseout="this.style.borderColor='rgba(255,255,255,0.1)';this.style.color='#cbd5e1'">
+                        <i class='bx bxl-linkedin' style="font-size:17px;"></i> LinkedIn
+                    </a>
+                    <a href="https://youtube.com" target="_blank"
+                       style="display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);color:#cbd5e1;text-decoration:none;font-size:13px;font-weight:600;transition:all 0.2s;"
+                       onmouseover="this.style.borderColor='#10b981';this.style.color='#10b981'"
+                       onmouseout="this.style.borderColor='rgba(255,255,255,0.1)';this.style.color='#cbd5e1'">
+                        <i class='bx bxl-youtube' style="font-size:17px;"></i> YouTube
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 The Project Control Hub. All rights reserved.</p>
+        </div>
+    </footer>
 
 </body>
 </html>
