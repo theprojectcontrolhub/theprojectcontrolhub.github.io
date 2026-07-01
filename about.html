@@ -103,20 +103,20 @@
             margin: 20px 0 32px;
         }
 
+        .timeline-item:not(:last-child) .timeline-dot::after {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 19px;
+            width: 1px;
+            height: calc(100% - 8px);
+            background: #e2e8f0;
+        }
+
         .timeline-item {
             display: flex;
             gap: 20px;
             position: relative;
-        }
-
-        .timeline-item:not(:last-child)::before {
-            content: '';
-            position: absolute;
-            left: 19px;
-            top: 36px;
-            bottom: 0;
-            width: 1px;
-            background: #e2e8f0;
         }
 
         .timeline-dot {
@@ -132,6 +132,7 @@
             color: #10b981;
             flex-shrink: 0;
             margin-top: 2px;
+            position: relative;
         }
 
         .timeline-body {
@@ -269,12 +270,24 @@
 
         /* MOBILE */
         @media (max-width: 768px) {
-            .about-profile { flex-direction: column; align-items: flex-start; gap: 16px; }
+            .about-page { padding: 32px 0 60px; }
+            .about-container { padding: 0 16px; }
+            .about-profile { flex-direction: column; align-items: flex-start; gap: 16px; margin-bottom: 28px; }
             .about-avatar { width: 64px; height: 64px; font-size: 22px; }
             .about-profile-info h1 { font-size: 20px; }
-            .about-why { padding: 20px; }
+            .about-profile-info p { font-size: 13px; }
+            .about-content h2 { font-size: 16px; }
+            .about-content p { font-size: 14px; }
+            .about-why { padding: 18px; }
+            .about-why p { font-size: 14px; }
             .about-connect { flex-direction: column; }
             .connect-btn { justify-content: center; }
+            .timeline-body { padding-bottom: 20px; }
+            .timeline-role { font-size: 13px; }
+            .timeline-desc { font-size: 12px; }
+            .cert-item { padding: 12px; }
+            .cert-name { font-size: 13px; }
+            .about-divider { margin: 20px 0; }
             .btn-nav-social { display: none !important; }
         }
     </style>

@@ -325,9 +325,35 @@
 
         @media (max-width: 768px) {
             .btn-nav-social { display: none !important; }
-            .hero-buttons { flex-direction: column; }
-            .hero-buttons a { width: 100%; justify-content: center; }
             .logo span { font-size: 13px !important; }
+            .hero-buttons { flex-direction: column; gap: 10px; }
+            .hero-buttons a { width: 100%; justify-content: center; }
+            .founder-name { font-size: 14px; }
+            .founder-title { font-size: 11px; }
+            .section-header { flex-direction: column; gap: 14px; align-items: flex-start; }
+            .section-header h2 { font-size: 22px; }
+            .section-header p { font-size: 14px; }
+            .module-track-header { flex-direction: column; align-items: flex-start; gap: 10px; padding: 16px; }
+            .module-track-left { gap: 12px; }
+            .module-number { font-size: 22px; min-width: 32px; }
+            .module-title { font-size: 15px; }
+            .module-desc { font-size: 12px; }
+            .module-status { font-size: 11px; padding: 4px 10px; }
+            .module-post-item { padding: 11px 16px; gap: 10px; }
+            .post-week { min-width: 48px; font-size: 10px; }
+            .post-title { font-size: 13px; }
+            .post-date { display: none; }
+            .series-follow-bar { flex-direction: column; align-items: flex-start; gap: 14px; padding: 16px; }
+            .series-follow-bar div:last-child { display: flex; gap: 10px; width: 100%; }
+            .btn-follow-bar { flex: 1; justify-content: center; }
+            .footer-content { grid-template-columns: 1fr !important; gap: 28px; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+        }
+
+        @media (max-width: 480px) {
+            .founder-name { font-size: 13px; }
+            .pill-badge { font-size: 10px; }
+            .module-title { font-size: 14px; }
         }
         .modal-overlay {
             position: fixed;
