@@ -1716,3 +1716,117 @@ ul {
     .newsletter-form-home input { border-right: 1px solid rgba(255,255,255,0.1); border-bottom: none; border-radius: 8px 8px 0 0; }
     .newsletter-form-home .btn { border-radius: 0 0 8px 8px; }
 }
+
+/* HAMBURGER MENU */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 8px;
+    transition: background 0.2s;
+    flex-shrink: 0;
+}
+
+.hamburger:hover { background: rgba(255,255,255,0.08); }
+
+.hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #cbd5e1;
+    border-radius: 2px;
+    transition: all 0.25s ease;
+}
+
+.hamburger.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+.hamburger.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* MOBILE NAV DRAWER */
+.mobile-nav {
+    display: flex;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(10,15,28,0.97);
+    z-index: 999;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+    visibility: hidden;
+}
+
+.mobile-nav.open {
+    opacity: 1;
+    pointer-events: all;
+    visibility: visible;
+}
+
+.mobile-nav a {
+    font-size: 24px;
+    font-weight: 700;
+    color: #94a3b8;
+    text-decoration: none;
+    padding: 12px 32px;
+    border-radius: 12px;
+    transition: all 0.2s;
+    letter-spacing: -0.3px;
+}
+
+.mobile-nav a:hover,
+.mobile-nav a.active {
+    color: #10b981;
+    background: rgba(16,185,129,0.08);
+}
+
+.mobile-nav-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: #64748b;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.mobile-nav-bottom {
+    position: absolute;
+    bottom: 40px;
+    display: flex;
+    gap: 12px;
+}
+
+.mobile-nav-bottom a {
+    font-size: 14px !important;
+    padding: 10px 20px !important;
+    border: 1px solid rgba(255,255,255,0.1) !important;
+    color: #64748b !important;
+    background: transparent !important;
+}
+
+@media (max-width: 768px) {
+    .hamburger { display: flex; }
+}
+
+@media (min-width: 769px) {
+    .mobile-nav { display: none !important; }
+}
