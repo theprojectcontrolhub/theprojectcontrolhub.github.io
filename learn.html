@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn — The Project Control Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .learn-page {
+            background: var(--bg-light);
+            min-height: 100vh;
+            padding: 48px 0 80px;
+        }
+
+        .learn-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* PAGE HEADER */
+        .learn-header {
+            margin-bottom: 48px;
+        }
+
+        .learn-header-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(16,185,129,0.08);
+            color: #059669;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            padding: 5px 14px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+            border: 1px solid rgba(16,185,129,0.15);
+        }
+
+        .learn-header h1 {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--text-dark);
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .learn-header p {
+            font-size: 16px;
+            color: #64748b;
+            line-height: 1.7;
+            max-width: 580px;
+        }
+
+        .learn-header-meta {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .learn-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .learn-meta-item i {
+            font-size: 16px;
+            color: #10b981;
+        }
+
+        /* MODULE CARDS */
+        .modules-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .module-card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: box-shadow 0.2s;
+        }
+
+        .module-card:hover {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+
+        .module-card-locked {
+            opacity: 0.55;
+        }
+
+        .module-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 28px 32px;
+            gap: 20px;
+        }
+
+        .module-card-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .module-num {
+            font-size: 32px;
+            font-weight: 800;
+            color: #10b981;
+            min-width: 48px;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .module-num.locked { color: #cbd5e1; }
+
+        .module-info h2 {
+            font-size: 19px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin: 0 0 6px;
+        }
+
+        .module-info p {
+            font-size: 13px;
+            color: #64748b;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .module-badge {
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .badge-active {
+            background: #ecfdf5;
+            color: #059669;
+        }
+
+        .badge-locked {
+            background: #f1f5f9;
+            color: #94a3b8;
+        }
+
+        .dot-green {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #10b981;
+            display: inline-block;
+        }
+
+        /* TOOLS ROW */
+        .module-tools {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0 32px 20px;
+            flex-wrap: wrap;
+        }
+
+        .tool-tag {
+            font-size: 11px;
+            font-weight: 600;
+            color: #475569;
+            background: #f1f5f9;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        .tool-tag-label {
+            font-size: 11px;
+            color: #94a3b8;
+            margin-right: 4px;
+        }
+
+        /* WEEKS LIST */
+        .module-weeks {
+            border-top: 1px solid #f1f5f9;
+        }
+
+        .week-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 32px;
+            border-bottom: 1px solid #f8fafc;
+            text-decoration: none;
+            color: inherit;
+            transition: background 0.15s;
+        }
+
+        a.week-item:hover { background: #f8fafc; }
+
+        .week-item.upcoming {
+            opacity: 0.4;
+            cursor: default;
+            pointer-events: none;
+        }
+
+        .week-num {
+            font-size: 11px;
+            font-weight: 700;
+            color: #10b981;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            min-width: 64px;
+            flex-shrink: 0;
+        }
+
+        .week-item.upcoming .week-num { color: #94a3b8; }
+
+        .week-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: #1e293b;
+            flex: 1;
+            line-height: 1.4;
+        }
+
+        .week-date {
+            font-size: 12px;
+            color: #94a3b8;
+            white-space: nowrap;
+        }
+
+        .week-new {
+            font-size: 10px;
+            font-weight: 700;
+            color: #fff;
+            background: #10b981;
+            padding: 2px 8px;
+            border-radius: 10px;
+            white-space: nowrap;
+        }
+
+        .week-upcoming-label {
+            font-size: 12px;
+            color: #cbd5e1;
+            white-space: nowrap;
+        }
+
+        .week-arrow {
+            color: #cbd5e1;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        /* PROGRESS BAR */
+        .module-progress {
+            padding: 16px 32px 24px;
+            border-top: 1px solid #f8fafc;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #94a3b8;
+            margin-bottom: 8px;
+        }
+
+        .progress-bar {
+            height: 4px;
+            background: #f1f5f9;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #10b981, #059669);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        /* MODAL */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+        }
+        .modal-overlay.active { opacity: 1; pointer-events: all; }
+        .modal-box {
+            background: #fff;
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 420px;
+            width: 90%;
+            position: relative;
+            text-align: center;
+        }
+        .close-modal {
+            position: absolute;
+            top: 16px; right: 16px;
+            background: none;
+            border: none;
+            font-size: 22px;
+            color: #94a3b8;
+            cursor: pointer;
+        }
+        .modal-icon-wrapper {
+            width: 56px; height: 56px;
+            background: #ecfdf5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 24px;
+            color: #10b981;
+        }
+        .modal-box h4 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0f172a;
+            margin: 0 0 10px;
+        }
+        .modal-box p {
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.6;
+            margin: 0 0 20px;
+        }
+        .btn-google-signin {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            padding: 13px 20px;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #1e293b;
+            background: #fff;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+        .btn-google-signin:hover {
+            border-color: #cbd5e1;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .modal-note {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-top: 12px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            .learn-header h1 { font-size: 26px; }
+            .module-card-header { flex-direction: column; align-items: flex-start; padding: 20px; }
+            .module-card-left { gap: 12px; }
+            .module-num { font-size: 24px; min-width: 36px; }
+            .module-info h2 { font-size: 16px; }
+            .module-tools { padding: 0 20px 16px; }
+            .week-item { padding: 12px 20px; }
+            .week-date { display: none; }
+            .module-progress { padding: 12px 20px 20px; }
+            .btn-nav-social { display: none !important; }
+        }
+    </style>
+
+    <script type="module">
+        import { signInWithGoogle, logout, onUserChange } from './auth.js';
+
+        let currentUser = null;
+
+        onUserChange((user) => {
+            currentUser = user;
+            const joinBtn = document.getElementById('joinBtn');
+            const userMenu = document.getElementById('userMenu');
+            if (user) {
+                joinBtn.style.display = 'none';
+                userMenu.style.display = 'flex';
+                document.getElementById('userName').textContent = user.displayName.split(' ')[0];
+                if (user.photoURL) document.getElementById('userAvatar').src = user.photoURL;
+                closeModal();
+            } else {
+                joinBtn.style.display = 'flex';
+                userMenu.style.display = 'none';
+            }
+        });
+
+        // Gate week links
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('a.week-item[data-gated]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (!currentUser) {
+                        e.preventDefault();
+                        sessionStorage.setItem('pch_intended', this.href);
+                        openModal();
+                    }
+                });
+            });
+
+            document.getElementById('accessModal').addEventListener('click', function(e) {
+                if (e.target === this) closeModal();
+            });
+        });
+
+        window.signInWithGoogleBtn = async function() {
+            try { await signInWithGoogle(); }
+            catch(e) { alert('Sign in failed. Please try again.'); }
+        };
+
+        window.logoutUser = async function() { await logout(); };
+
+        window.openModal = function() {
+            document.getElementById('accessModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        };
+
+        window.closeModal = function() {
+            document.getElementById('accessModal').classList.remove('active');
+            document.body.style.overflow = '';
+        };
+    </script>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <section class="hero-section" style="padding-bottom:0;">
+        <nav class="navbar">
+            <div class="logo">
+                <i class='bx bx-hive'></i>
+                <span>THE PROJECT CONTROL HUB</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="learn.html" class="active">Learn</a>
+                <a href="about.html">About</a>
+            </div>
+            <div class="nav-actions" style="display:flex;align-items:center;gap:10px;">
+                <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" class="btn-nav-social"><i class='bx bxl-linkedin'></i></a>
+                <a href="https://youtube.com" target="_blank" class="btn-nav-social"><i class='bx bxl-youtube'></i></a>
+                <button id="joinBtn" class="btn btn-primary" onclick="openModal()"><i class='bx bx-user-plus'></i> Join Free</button>
+                <div id="userMenu" style="display:none;align-items:center;gap:10px;">
+                    <img id="userAvatar" src="" style="width:32px;height:32px;border-radius:50%;object-fit:cover;" alt="avatar">
+                    <span id="userName" style="font-size:14px;font-weight:600;color:var(--text-light);"></span>
+                    <button class="btn btn-primary" onclick="logoutUser()" style="padding:8px 14px;font-size:13px;">Sign Out</button>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+    <!-- LEARN PAGE -->
+    <div class="learn-page">
+        <div class="learn-container">
+
+            <!-- PAGE HEADER -->
+            <div class="learn-header">
+                <div class="learn-header-badge">
+                    <span class="dot-green"></span> CURRICULUM
+                </div>
+                <h1>Project Controls — From Zero to Field-Ready</h1>
+                <p>A structured series built for engineers who want to understand project controls the way it actually works on site. Theory first, then the tools that bring it to life.</p>
+                <div class="learn-header-meta">
+                    <span class="learn-meta-item"><i class='bx bx-book-open'></i> 4 modules</span>
+                    <span class="learn-meta-item"><i class='bx bx-time-five'></i> ~40 weeks total</span>
+                    <span class="learn-meta-item"><i class='bx bx-calendar'></i> Published weekly</span>
+                    <span class="learn-meta-item"><i class='bx bx-lock-open'></i> Free with sign in</span>
+                </div>
+            </div>
+
+            <!-- MODULES -->
+            <div class="modules-list">
+
+                <!-- MODULE 01: SCHEDULE — ACTIVE -->
+                <div class="module-card">
+                    <div class="module-card-header">
+                        <div class="module-card-left">
+                            <span class="module-num">01</span>
+                            <div class="module-info">
+                                <h2>Schedule Management</h2>
+                                <p>How to build, defend, and communicate a project schedule. We start from why schedules fail, then build the theory and tools from the ground up.</p>
+                            </div>
+                        </div>
+                        <span class="module-badge badge-active"><span class="dot-green"></span> In Progress · Week 3 of 10</span>
+                    </div>
+
+                    <div class="module-tools">
+                        <span class="tool-tag-label">Tools covered:</span>
+                        <span class="tool-tag">Theory</span>
+                        <span class="tool-tag">Primavera P6</span>
+                        <span class="tool-tag">Excel</span>
+                        <span class="tool-tag">MS Project</span>
+                    </div>
+
+                    <div class="module-weeks">
+                        <a href="discussion-detail.html" class="week-item" data-gated>
+                            <span class="week-num">Week 1</span>
+                            <span class="week-title">Why projects fail — and why the answer is never the tools</span>
+                            <span class="week-date">Jun 20, 2026</span>
+                            <i class='bx bx-right-arrow-alt week-arrow'></i>
+                        </a>
+                        <a href="discussion-detail.html" class="week-item" data-gated>
+                            <span class="week-num">Week 2</span>
+                            <span class="week-title">The anatomy of a schedule — Activity, Milestone, Resource, Logic</span>
+                            <span class="week-date">Jun 27, 2026</span>
+                            <i class='bx bx-right-arrow-alt week-arrow'></i>
+                        </a>
+                        <a href="discussion-detail.html" class="week-item" data-gated>
+                            <span class="week-num">Week 3</span>
+                            <span class="week-title">That Gantt chart on the wall? It's not your schedule.</span>
+                            <span class="week-new">New</span>
+                            <i class='bx bx-right-arrow-alt week-arrow'></i>
+                        </a>
+                        <div class="week-item upcoming">
+                            <span class="week-num">Week 4</span>
+                            <span class="week-title">WBS — why deliverable-based structure changes everything</span>
+                            <span class="week-upcoming-label">Coming soon</span>
+                        </div>
+                        <div class="week-item upcoming">
+                            <span class="week-num">Week 5</span>
+                            <span class="week-title">Critical Path Method — how to read and use it on site</span>
+                            <span class="week-upcoming-label">Coming soon</span>
+                        </div>
+                        <div class="week-item upcoming">
+                            <span class="week-num">Week 6</span>
+                            <span class="week-title">Resource loading and leveling — the gap between plan and site</span>
+                            <span class="week-upcoming-label">Coming soon</span>
+                        </div>
+                        <div class="week-item upcoming">
+                            <span class="week-num">Week 7</span>
+                            <span class="week-title">Baseline — what it is, how to set it, how to protect it</span>
+                            <span class="week-upcoming-label">Coming soon</span>
+                        </div>
+                        <div class="week-item upcoming">
+                            <span class="week-num">Week 8</span>
+                            <span class="week-title">Monitoring & controlling — variance analysis and earned value</span>
+                            <span class="week-upcoming-label">Coming soon</span>
+                        </div>
+                        <div class="week-item upcoming">
+                            <span class="week-num">Week 9</span>
+                            <span class="week-title">Delay analysis — when things go wrong, how to document it</span>
+                            <span class="week-upcoming-label">Coming soon</span>
+                        </div>
+                        <div class="week-item upcoming">
+                            <span class="week-num">Week 10</span>
+                            <span class="week-title">Reporting — what to tell management, what to tell the client</span>
+                            <span class="week-upcoming-label">Coming soon</span>
+                        </div>
+                    </div>
+
+                    <div class="module-progress">
+                        <div class="progress-label">
+                            <span>3 of 10 published</span>
+                            <span>30%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width:30%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MODULE 02: EXCEL -->
+                <div class="module-card module-card-locked">
+                    <div class="module-card-header">
+                        <div class="module-card-left">
+                            <span class="module-num locked">02</span>
+                            <div class="module-info">
+                                <h2>Excel for Project Controls</h2>
+                                <p>Build schedules, S-curves, EVM trackers, and progress reports in Excel — from scratch. No templates, no shortcuts, just understanding.</p>
+                            </div>
+                        </div>
+                        <span class="module-badge badge-locked"><i class='bx bx-lock-alt'></i> Starting after Module 01</span>
+                    </div>
+                    <div class="module-tools">
+                        <span class="tool-tag-label">Tools covered:</span>
+                        <span class="tool-tag">Microsoft Excel</span>
+                        <span class="tool-tag">Formulas</span>
+                        <span class="tool-tag">Charts</span>
+                        <span class="tool-tag">Dashboards</span>
+                    </div>
+                </div>
+
+                <!-- MODULE 03: PRIMAVERA P6 -->
+                <div class="module-card module-card-locked">
+                    <div class="module-card-header">
+                        <div class="module-card-left">
+                            <span class="module-num locked">03</span>
+                            <div class="module-info">
+                                <h2>Primavera P6</h2>
+                                <p>The industry standard for project scheduling. From setup and structure to baseline, resource loading, and client reporting.</p>
+                            </div>
+                        </div>
+                        <span class="module-badge badge-locked"><i class='bx bx-lock-alt'></i> Starting after Module 02</span>
+                    </div>
+                    <div class="module-tools">
+                        <span class="tool-tag-label">Tools covered:</span>
+                        <span class="tool-tag">Primavera P6</span>
+                        <span class="tool-tag">XER Export</span>
+                        <span class="tool-tag">Baselines</span>
+                        <span class="tool-tag">Reports</span>
+                    </div>
+                </div>
+
+                <!-- MODULE 04: POWER BI -->
+                <div class="module-card module-card-locked">
+                    <div class="module-card-header">
+                        <div class="module-card-left">
+                            <span class="module-num locked">04</span>
+                            <div class="module-info">
+                                <h2>Power BI for Project Controls</h2>
+                                <p>Turn your P6 and Excel data into live dashboards. Connect, visualize, and present project performance in a way that actually communicates.</p>
+                            </div>
+                        </div>
+                        <span class="module-badge badge-locked"><i class='bx bx-lock-alt'></i> Starting after Module 03</span>
+                    </div>
+                    <div class="module-tools">
+                        <span class="tool-tag-label">Tools covered:</span>
+                        <span class="tool-tag">Power BI</span>
+                        <span class="tool-tag">DAX</span>
+                        <span class="tool-tag">Data Modeling</span>
+                        <span class="tool-tag">Live Dashboards</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-content" style="grid-template-columns: 1fr 1fr;">
+            <div class="footer-brand">
+                <div class="logo">
+                    <i class='bx bx-hive'></i>
+                    <span>THE PROJECT CONTROL HUB</span>
+                </div>
+                <p>Field notes on planning & project controls — by Barış Emre Özçelik, PMP.</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank"><i class='bx bxl-linkedin'></i></a>
+                    <a href="https://youtube.com" target="_blank"><i class='bx bxl-youtube'></i></a>
+                </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:16px;">
+                <h4 style="font-size:11px;font-weight:700;letter-spacing:1px;color:#64748b;margin:0;">FOLLOW THE SERIES</h4>
+                <p style="font-size:13px;color:#64748b;margin:0;line-height:1.6;">New content every week — follow along so you don't miss the next topic.</p>
+                <div style="display:flex;gap:10px;">
+                    <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank"
+                       style="display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);color:#cbd5e1;text-decoration:none;font-size:13px;font-weight:600;transition:all 0.2s;"
+                       onmouseover="this.style.borderColor='#10b981';this.style.color='#10b981'"
+                       onmouseout="this.style.borderColor='rgba(255,255,255,0.1)';this.style.color='#cbd5e1'">
+                        <i class='bx bxl-linkedin' style="font-size:17px;"></i> LinkedIn
+                    </a>
+                    <a href="https://youtube.com" target="_blank"
+                       style="display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);color:#cbd5e1;text-decoration:none;font-size:13px;font-weight:600;transition:all 0.2s;"
+                       onmouseover="this.style.borderColor='#10b981';this.style.color='#10b981'"
+                       onmouseout="this.style.borderColor='rgba(255,255,255,0.1)';this.style.color='#cbd5e1'">
+                        <i class='bx bxl-youtube' style="font-size:17px;"></i> YouTube
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 The Project Control Hub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- ACCESS MODAL -->
+    <div class="modal-overlay" id="accessModal">
+        <div class="modal-box">
+            <button class="close-modal" onclick="closeModal()"><i class='bx bx-x'></i></button>
+            <div class="modal-icon-wrapper">
+                <i class='bx bx-book-open'></i>
+            </div>
+            <h4>Free access to all content</h4>
+            <p>Sign in with Google to read the full series and get notified when new topics are published.</p>
+            <button class="btn-google-signin" onclick="signInWithGoogleBtn()">
+                <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z" fill="#4285F4"/><path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/><path d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.711V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/><path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#EA4335"/></svg>
+                Continue with Google
+            </button>
+            <p class="modal-note">No spam. One notification per week when new content drops.</p>
+        </div>
+    </div>
+
+</body>
+</html>
