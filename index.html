@@ -94,6 +94,171 @@
             color: #fff;
             flex-shrink: 0;
         }
+
+        /* Curriculum tracks */
+        .curriculum-tracks {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 40px;
+        }
+
+        .module-track {
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .module-track-locked {
+            opacity: 0.6;
+            background: #f8fafc;
+        }
+
+        .module-track-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 24px 28px;
+            gap: 20px;
+        }
+
+        .module-track-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .module-number {
+            font-size: 28px;
+            font-weight: 800;
+            color: #10b981;
+            font-variant-numeric: tabular-nums;
+            min-width: 40px;
+        }
+
+        .module-number.locked {
+            color: #cbd5e1;
+        }
+
+        .module-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0f172a;
+            margin: 0 0 4px 0;
+        }
+
+        .module-desc {
+            font-size: 13px;
+            color: #64748b;
+            margin: 0;
+            max-width: 480px;
+        }
+
+        .module-status {
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: 20px;
+        }
+
+        .active-status {
+            background: #ecfdf5;
+            color: #059669;
+        }
+
+        .locked-status {
+            background: #f1f5f9;
+            color: #94a3b8;
+        }
+
+        .dot-green {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #10b981;
+            display: inline-block;
+        }
+
+        /* Module posts list */
+        .module-posts {
+            border-top: 1px solid #f1f5f9;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .module-post-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 28px;
+            border-bottom: 1px solid #f8fafc;
+            text-decoration: none;
+            color: inherit;
+            transition: background 0.15s ease;
+        }
+
+        a.module-post-item:hover {
+            background: #f8fafc;
+        }
+
+        .module-post-item.upcoming {
+            opacity: 0.45;
+            cursor: default;
+        }
+
+        .post-week {
+            font-size: 11px;
+            font-weight: 700;
+            color: #10b981;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            min-width: 60px;
+        }
+
+        .module-post-item.upcoming .post-week {
+            color: #94a3b8;
+        }
+
+        .post-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: #1e293b;
+            flex: 1;
+        }
+
+        .post-date {
+            font-size: 12px;
+            color: #94a3b8;
+            white-space: nowrap;
+        }
+
+        .post-upcoming {
+            font-size: 12px;
+            color: #cbd5e1;
+            white-space: nowrap;
+        }
+
+        .new-badge {
+            font-size: 11px;
+            font-weight: 700;
+            color: #fff;
+            background: #10b981;
+            padding: 2px 8px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+
+        .module-post-item bx-right-arrow-alt,
+        .module-post-item i {
+            color: #cbd5e1;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
     </style>
 
 </head>
@@ -197,126 +362,104 @@
         </div>
     </section>
 
-    <!-- DISCUSSIONS SECTION -->
+    <!-- CURRICULUM SECTION -->
     <section class="discussions-section">
         <div class="container">
+
             <div class="section-header">
                 <div>
-                    <span class="subtitle">DISCUSSIONS & INSIGHTS</span>
-                    <h2>Discussions</h2>
-                    <p>Posts and notes on planning and project controls.</p>
+                    <span class="subtitle">WHERE DO I START?</span>
+                    <h2>Project Controls — Step by Step</h2>
+                    <p>A structured series published weekly. Each module builds on the previous one — from theory to tools.</p>
                 </div>
             </div>
 
-            <!-- Cards Grid -->
-            <div class="cards-grid">
-                
-                <!-- Card 1 — from LinkedIn series -->
-                <div class="discussion-card">
-                    <div class="card-header">
-                        <div class="card-tags">
-                            <span class="tag tag-light-green">Schedule Planning</span>
-                            <span class="tag tag-pinned"><i class='bx bx-pin'></i> Pinned</span>
-                        </div>
-                        <div class="card-stats"></div>
-                    </div>
-                    <h3>Why do projects still fail when we have engineers, materials, and software? The real answer.</h3>
-                    <p class="card-excerpt">Most people blame the tools. But the root cause is almost always the same: projects are planned around investor wishes, not field realities. Critical Path blindness, optimism bias, and missing lag times are just symptoms of one deeper problem...</p>
-                    <div class="hashtag-group">
-                        <span class="hashtag">#SchedulePlanning</span>
-                        <span class="hashtag">#CriticalPath</span>
-                        <span class="hashtag">#ProjectControls</span>
-                    </div>
-                    <div class="card-footer">
-                        <div class="author-info">
-                            <div class="author-avatar-initials">BE</div>
+            <!-- Module Track -->
+            <div class="curriculum-tracks">
+
+                <!-- MODULE 1: SCHEDULE — ACTIVE -->
+                <div class="module-track">
+                    <div class="module-track-header">
+                        <div class="module-track-left">
+                            <span class="module-number">01</span>
                             <div>
-                                <strong>Barış Emre Özçelik</strong>
-                                <span>Jun 20, 2026</span>
+                                <h3 class="module-title">Schedule Management</h3>
+                                <p class="module-desc">How to build, defend, and communicate a project schedule. Theory first, then Primavera P6 and Excel.</p>
                             </div>
                         </div>
-                        <a href="discussion-detail.html" class="view-comments">Read more <i class='bx bx-chevron-right'></i></a>
+                        <span class="module-status active-status"><span class="dot-green"></span> In Progress · Week 3 of 10</span>
+                    </div>
+
+                    <!-- Weekly posts inside module -->
+                    <div class="module-posts">
+
+                        <a href="discussion-detail.html" class="module-post-item">
+                            <span class="post-week">Week 1</span>
+                            <span class="post-title">Why projects fail — and why the answer is never the tools</span>
+                            <span class="post-date">Jun 20, 2026</span>
+                            <i class='bx bx-right-arrow-alt'></i>
+                        </a>
+
+                        <a href="discussion-detail.html" class="module-post-item">
+                            <span class="post-week">Week 2</span>
+                            <span class="post-title">The anatomy of a schedule — Activity, Milestone, Resource, Logic</span>
+                            <span class="post-date">Jun 27, 2026</span>
+                            <i class='bx bx-right-arrow-alt'></i>
+                        </a>
+
+                        <a href="discussion-detail.html" class="module-post-item new-badge-row">
+                            <span class="post-week">Week 3</span>
+                            <span class="post-title">That Gantt chart on the wall? It's not your schedule.</span>
+                            <span class="new-badge">New</span>
+                            <i class='bx bx-right-arrow-alt'></i>
+                        </a>
+
+                        <div class="module-post-item upcoming">
+                            <span class="post-week">Week 4</span>
+                            <span class="post-title">WBS — why deliverable-based structure changes everything</span>
+                            <span class="post-upcoming">Coming soon</span>
+                        </div>
+
+                        <div class="module-post-item upcoming">
+                            <span class="post-week">Week 5</span>
+                            <span class="post-title">Critical Path Method — how to read and use it on site</span>
+                            <span class="post-upcoming">Coming soon</span>
+                        </div>
+
+                        <div class="module-post-item upcoming">
+                            <span class="post-week">Week 6–10</span>
+                            <span class="post-title">Resources · Baseline · Monitoring · Delay Analysis · Reporting</span>
+                            <span class="post-upcoming">Coming soon</span>
+                        </div>
+
                     </div>
                 </div>
 
-                <!-- Card 2 -->
-                <div class="discussion-card">
-                    <div class="card-header">
-                        <div class="card-tags">
-                            <span class="tag tag-light-yellow">Schedule Model</span>
-                        </div>
-                        <div class="card-stats"></div>
-                    </div>
-                    <h3>That Gantt chart on the wall? It's not your schedule. Here's what actually is.</h3>
-                    <p class="card-excerpt">A Schedule Presentation is a frozen snapshot for stakeholders. Your actual Schedule Model is the living data inside the software. The difference matters — especially when things go wrong on site. Most PMs confuse the two, and it costs them...</p>
-                    <div class="hashtag-group">
-                        <span class="hashtag">#ScheduleModel</span>
-                        <span class="hashtag">#PrimaveraP6</span>
-                        <span class="hashtag">#Planning</span>
-                    </div>
-                    <div class="card-footer">
-                        <div class="author-info">
-                            <div class="author-avatar-initials">BE</div>
+                <!-- MODULE 2: RISK — COMING SOON -->
+                <div class="module-track module-track-locked">
+                    <div class="module-track-header">
+                        <div class="module-track-left">
+                            <span class="module-number locked">02</span>
                             <div>
-                                <strong>Barış Emre Özçelik</strong>
-                                <span>Jun 18, 2026</span>
+                                <h3 class="module-title">Risk Management</h3>
+                                <p class="module-desc">How to identify, quantify, and respond to project risk. Monte Carlo, risk registers, and mitigation strategies.</p>
                             </div>
                         </div>
-                        <a href="discussion-detail.html" class="view-comments">Read more <i class='bx bx-chevron-right'></i></a>
+                        <span class="module-status locked-status"><i class='bx bx-lock-alt'></i> Starting after Module 01</span>
                     </div>
                 </div>
 
-                <!-- Card 3 -->
-                <div class="discussion-card">
-                    <div class="card-header">
-                        <div class="card-tags">
-                            <span class="tag tag-light-red">Delay Analysis</span>
-                        </div>
-                        <div class="card-stats"></div>
-                    </div>
-                    <h3>The 5 forces that destroy every construction schedule — and how dynamic planning fights back.</h3>
-                    <p class="card-excerpt">Planning Gaps, Scope Decomposition, Change Orders, Organizational Shifts, Environmental Factors. Every project faces all five. The question is whether your schedule is a static poster or a live sensor that detects them before they kill your timeline...</p>
-                    <div class="hashtag-group">
-                        <span class="hashtag">#DelayAnalysis</span>
-                        <span class="hashtag">#RiskManagement</span>
-                        <span class="hashtag">#Construction</span>
-                    </div>
-                    <div class="card-footer">
-                        <div class="author-info">
-                            <div class="author-avatar-initials">BE</div>
+                <!-- MODULE 3: CONTRACT — COMING SOON -->
+                <div class="module-track module-track-locked">
+                    <div class="module-track-header">
+                        <div class="module-track-left">
+                            <span class="module-number locked">03</span>
                             <div>
-                                <strong>Barış Emre Özçelik</strong>
-                                <span>Jun 15, 2026</span>
+                                <h3 class="module-title">Contract Management</h3>
+                                <p class="module-desc">FIDIC, claims, delay notices, EOT — how contracts work in practice on construction projects.</p>
                             </div>
                         </div>
-                        <a href="discussion-detail.html" class="view-comments">Read more <i class='bx bx-chevron-right'></i></a>
-                    </div>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="discussion-card">
-                    <div class="card-header">
-                        <div class="card-tags">
-                            <span class="tag tag-light-blue">Project Controls</span>
-                        </div>
-                        <div class="card-stats"></div>
-                    </div>
-                    <h3>WBS built around phases will sink you. Here's the deliverable-based approach that saves projects.</h3>
-                    <p class="card-excerpt">If your budget gets cut mid-project and your WBS is organized by phase (Phase 1, Phase 2…), you end up with nothing functional. But a deliverable-based WBS means you can at least hand over the East Wing and open it. One structural decision changes everything...</p>
-                    <div class="hashtag-group">
-                        <span class="hashtag">#WBS</span>
-                        <span class="hashtag">#Scope</span>
-                        <span class="hashtag">#ProjectControls</span>
-                    </div>
-                    <div class="card-footer">
-                        <div class="author-info">
-                            <div class="author-avatar-initials">BE</div>
-                            <div>
-                                <strong>Barış Emre Özçelik</strong>
-                                <span>Jun 12, 2026</span>
-                            </div>
-                        </div>
-                        <a href="discussion-detail.html" class="view-comments">Read more <i class='bx bx-chevron-right'></i></a>
+                        <span class="module-status locked-status"><i class='bx bx-lock-alt'></i> Starting after Module 02</span>
                     </div>
                 </div>
 
