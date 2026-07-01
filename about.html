@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About — The Project Control Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .about-page {
+            background: var(--bg-light);
+            min-height: 100vh;
+            padding: 48px 0 80px;
+        }
+
+        .about-container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* PROFILE */
+        .about-profile {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .about-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #10b981, #059669);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 800;
+            color: #fff;
+            flex-shrink: 0;
+            border: 3px solid rgba(16,185,129,0.2);
+        }
+
+        .about-profile-info h1 {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin: 0 0 4px;
+            letter-spacing: -0.3px;
+        }
+
+        .about-profile-info p {
+            font-size: 14px;
+            color: #64748b;
+            margin: 0 0 12px;
+        }
+
+        .about-profile-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .about-tag {
+            font-size: 11px;
+            font-weight: 600;
+            color: #475569;
+            background: #f1f5f9;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        /* DIVIDER */
+        .about-divider {
+            height: 1px;
+            background: #e2e8f0;
+            margin: 32px 0;
+        }
+
+        /* CONTENT */
+        .about-content h2 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin: 0 0 14px;
+            letter-spacing: -0.2px;
+        }
+
+        .about-content p {
+            font-size: 15px;
+            color: #334155;
+            line-height: 1.85;
+            margin-bottom: 18px;
+        }
+
+        /* TIMELINE */
+        .about-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin: 20px 0 32px;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 20px;
+            position: relative;
+        }
+
+        .timeline-item:not(:last-child)::before {
+            content: '';
+            position: absolute;
+            left: 19px;
+            top: 36px;
+            bottom: 0;
+            width: 1px;
+            background: #e2e8f0;
+        }
+
+        .timeline-dot {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: #10b981;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .timeline-body {
+            padding-bottom: 28px;
+            flex: 1;
+        }
+
+        .timeline-role {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin: 0 0 2px;
+        }
+
+        .timeline-company {
+            font-size: 13px;
+            color: #10b981;
+            font-weight: 600;
+            margin: 0 0 4px;
+        }
+
+        .timeline-period {
+            font-size: 12px;
+            color: #94a3b8;
+            margin: 0 0 8px;
+        }
+
+        .timeline-desc {
+            font-size: 13px;
+            color: #64748b;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* CERTS */
+        .about-certs {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 16px 0 32px;
+        }
+
+        .cert-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 16px;
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+        }
+
+        .cert-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: rgba(16,185,129,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #10b981;
+            flex-shrink: 0;
+        }
+
+        .cert-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .cert-issuer {
+            font-size: 12px;
+            color: #94a3b8;
+        }
+
+        /* WHY THIS SITE */
+        .about-why {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 28px 32px;
+            margin: 20px 0 32px;
+        }
+
+        .about-why p {
+            font-size: 15px;
+            color: #334155;
+            line-height: 1.85;
+            margin-bottom: 16px;
+        }
+
+        .about-why p:last-child { margin-bottom: 0; }
+
+        /* CONNECT */
+        .about-connect {
+            display: flex;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .connect-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 11px 20px;
+            border-radius: 9px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .connect-btn-linkedin {
+            background: #0a66c2;
+            color: #fff;
+            border: 1.5px solid #0a66c2;
+        }
+
+        .connect-btn-linkedin:hover {
+            background: #094fa3;
+            border-color: #094fa3;
+        }
+
+        .connect-btn-youtube {
+            background: #fff;
+            color: #334155;
+            border: 1.5px solid #e2e8f0;
+        }
+
+        .connect-btn-youtube:hover {
+            border-color: #ff0000;
+            color: #ff0000;
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            .about-profile { flex-direction: column; align-items: flex-start; gap: 16px; }
+            .about-avatar { width: 64px; height: 64px; font-size: 22px; }
+            .about-profile-info h1 { font-size: 20px; }
+            .about-why { padding: 20px; }
+            .about-connect { flex-direction: column; }
+            .connect-btn { justify-content: center; }
+            .btn-nav-social { display: none !important; }
+        }
+    </style>
+
+    <script type="module">
+        import { signInWithGoogle, logout, onUserChange } from './auth.js';
+
+        let currentUser = null;
+
+        onUserChange((user) => {
+            currentUser = user;
+            const joinBtn = document.getElementById('joinBtn');
+            const userMenu = document.getElementById('userMenu');
+            if (user) {
+                joinBtn.style.display = 'none';
+                userMenu.style.display = 'flex';
+                document.getElementById('userName').textContent = user.displayName.split(' ')[0];
+                if (user.photoURL) document.getElementById('userAvatar').src = user.photoURL;
+            } else {
+                joinBtn.style.display = 'flex';
+                userMenu.style.display = 'none';
+            }
+        });
+
+        window.signInWithGoogleBtn = async function() {
+            try { await signInWithGoogle(); }
+            catch(e) { alert('Sign in failed. Please try again.'); }
+        };
+
+        window.logoutUser = async function() { await logout(); };
+
+        window.openModal = function() {
+            document.getElementById('accessModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        };
+
+        window.closeModal = function() {
+            document.getElementById('accessModal').classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('accessModal').addEventListener('click', function(e) {
+                if (e.target === this) closeModal();
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <section class="hero-section" style="padding-bottom:0;">
+        <nav class="navbar">
+            <div class="logo">
+                <i class='bx bx-hive'></i>
+                <span>THE PROJECT CONTROL HUB</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="learn.html">Learn</a>
+                <a href="about.html" class="active">About</a>
+            </div>
+            <div class="nav-actions" style="display:flex;align-items:center;gap:10px;">
+                <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" class="btn-nav-social"><i class='bx bxl-linkedin'></i></a>
+                <a href="https://youtube.com" target="_blank" class="btn-nav-social"><i class='bx bxl-youtube'></i></a>
+                <button id="joinBtn" class="btn btn-primary" onclick="openModal()"><i class='bx bx-user-plus'></i> Join Free</button>
+                <div id="userMenu" style="display:none;align-items:center;gap:10px;">
+                    <img id="userAvatar" src="" style="width:32px;height:32px;border-radius:50%;object-fit:cover;" alt="avatar">
+                    <span id="userName" style="font-size:14px;font-weight:600;color:var(--text-light);"></span>
+                    <button class="btn btn-primary" onclick="logoutUser()" style="padding:8px 14px;font-size:13px;">Sign Out</button>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+    <!-- ABOUT PAGE -->
+    <div class="about-page">
+        <div class="about-container">
+
+            <!-- PROFILE -->
+            <div class="about-profile">
+                <div class="about-avatar">BE</div>
+                <div class="about-profile-info">
+                    <h1>Barış Emre Özçelik</h1>
+                    <p>Planning & Project Controls Lead · Civil Engineer · MBA · PMP</p>
+                    <div class="about-profile-tags">
+                        <span class="about-tag">Nuclear</span>
+                        <span class="about-tag">Infrastructure</span>
+                        <span class="about-tag">Primavera P6</span>
+                        <span class="about-tag">FIDIC</span>
+                        <span class="about-tag">Delay Analysis</span>
+                        <span class="about-tag">EVM</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-divider"></div>
+
+            <!-- WHO I AM -->
+            <div class="about-content">
+                <h2>Who I am</h2>
+                <p>I'm a planning and project controls engineer with experience on some of the most complex construction and engineering projects in the region — including nuclear power plant construction, large-scale infrastructure, and industrial megaprojects.</p>
+                <p>My background is in civil engineering, with an MBA and a PMP certification. But what actually shaped my understanding of project controls was the field — years of managing schedules, dealing with scope changes, preparing delay analysis reports, and trying to communicate what's really happening on site to people who are far from it.</p>
+            </div>
+
+            <div class="about-divider"></div>
+
+            <!-- EXPERIENCE -->
+            <div class="about-content">
+                <h2>Experience</h2>
+                <div class="about-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"><i class='bx bx-buildings'></i></div>
+                        <div class="timeline-body">
+                            <p class="timeline-role">Planning & Project Controls Lead</p>
+                            <p class="timeline-company">Nuclear Power Plant Project</p>
+                            <p class="timeline-period">2022 — Present</p>
+                            <p class="timeline-desc">Lead end-to-end planning and controls on one of the region's largest active construction sites. Managing multi-disciplinary schedule coordination, delay analysis, and monthly progress reporting across the full project lifecycle.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"><i class='bx bx-hard-hat'></i></div>
+                        <div class="timeline-body">
+                            <p class="timeline-role">Senior Planning & Project Controls Specialist</p>
+                            <p class="timeline-company">Infrastructure & Construction Projects</p>
+                            <p class="timeline-period">2018 — 2022</p>
+                            <p class="timeline-desc">Managed planning and project controls on multiple large-scale construction projects. Developed baseline schedules, conducted schedule risk analysis, and prepared EOT claim documentation.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"><i class='bx bx-briefcase'></i></div>
+                        <div class="timeline-body">
+                            <p class="timeline-role">Project Control Consultant & Specialist</p>
+                            <p class="timeline-company">Various Projects</p>
+                            <p class="timeline-period">2014 — 2018</p>
+                            <p class="timeline-desc">Built and maintained project schedules using Primavera P6 and MS Project. Prepared weekly and monthly progress reports for management and client teams.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CERTIFICATIONS -->
+            <div class="about-content">
+                <h2>Certifications</h2>
+                <div class="about-certs">
+                    <div class="cert-item">
+                        <div class="cert-icon"><i class='bx bxs-badge-check'></i></div>
+                        <div>
+                            <p class="cert-name">Project Management Professional (PMP)</p>
+                            <p class="cert-issuer">Project Management Institute</p>
+                        </div>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-icon"><i class='bx bxs-graduation'></i></div>
+                        <div>
+                            <p class="cert-name">Master of Business Administration (MBA)</p>
+                            <p class="cert-issuer">İstanbul University</p>
+                        </div>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-icon"><i class='bx bxs-graduation'></i></div>
+                        <div>
+                            <p class="cert-name">BSc Civil Engineering</p>
+                            <p class="cert-issuer">Muğla Sıtkı Koçman University</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-divider"></div>
+
+            <!-- WHY THIS SITE -->
+            <div class="about-content">
+                <h2>Why I built this</h2>
+                <div class="about-why">
+                    <p>Most of what's written about project controls is either too theoretical to be useful or too tool-specific to transfer. You read about Primavera P6 without understanding what a schedule is actually for. You learn EVM formulas without knowing when and why they matter on a real project.</p>
+                    <p>I built this site to bridge that gap. Everything here starts from first principles — why things work the way they do — and then moves into the practical tools and techniques that make a difference on site.</p>
+                    <p>This isn't a course catalogue or a community platform. It's a structured series of articles and videos, published weekly, built around the way I wish I had been taught when I was starting out. If you're a planning engineer, a project controls specialist, or simply someone trying to understand how large construction projects are actually managed — this is for you.</p>
+                </div>
+            </div>
+
+            <!-- CONNECT -->
+            <div class="about-content">
+                <h2>Connect</h2>
+                <p>You can follow the series and reach me on LinkedIn or YouTube. I publish new content weekly.</p>
+                <div class="about-connect">
+                    <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" class="connect-btn connect-btn-linkedin">
+                        <i class='bx bxl-linkedin'></i> LinkedIn
+                    </a>
+                    <a href="https://youtube.com" target="_blank" class="connect-btn connect-btn-youtube">
+                        <i class='bx bxl-youtube'></i> YouTube
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-content" style="grid-template-columns: 1fr 1fr;">
+            <div class="footer-brand">
+                <div class="logo">
+                    <i class='bx bx-hive'></i>
+                    <span>THE PROJECT CONTROL HUB</span>
+                </div>
+                <p>Field notes on planning & project controls — by Barış Emre Özçelik, PMP.</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank"><i class='bx bxl-linkedin'></i></a>
+                    <a href="https://youtube.com" target="_blank"><i class='bx bxl-youtube'></i></a>
+                </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:16px;">
+                <h4 style="font-size:11px;font-weight:700;letter-spacing:1px;color:#64748b;margin:0;">FOLLOW THE SERIES</h4>
+                <p style="font-size:13px;color:#64748b;margin:0;line-height:1.6;">New content every week — follow along so you don't miss the next topic.</p>
+                <div style="display:flex;gap:10px;">
+                    <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank"
+                       style="display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);color:#cbd5e1;text-decoration:none;font-size:13px;font-weight:600;transition:all 0.2s;"
+                       onmouseover="this.style.borderColor='#10b981';this.style.color='#10b981'"
+                       onmouseout="this.style.borderColor='rgba(255,255,255,0.1)';this.style.color='#cbd5e1'">
+                        <i class='bx bxl-linkedin' style="font-size:17px;"></i> LinkedIn
+                    </a>
+                    <a href="https://youtube.com" target="_blank"
+                       style="display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);color:#cbd5e1;text-decoration:none;font-size:13px;font-weight:600;transition:all 0.2s;"
+                       onmouseover="this.style.borderColor='#10b981';this.style.color='#10b981'"
+                       onmouseout="this.style.borderColor='rgba(255,255,255,0.1)';this.style.color='#cbd5e1'">
+                        <i class='bx bxl-youtube' style="font-size:17px;"></i> YouTube
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 The Project Control Hub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- ACCESS MODAL -->
+    <div class="modal-overlay" id="accessModal">
+        <div class="modal-box">
+            <button class="close-modal" onclick="closeModal()"><i class='bx bx-x'></i></button>
+            <div class="modal-icon-wrapper" style="width:56px;height:56px;background:#ecfdf5;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:24px;color:#10b981;">
+                <i class='bx bx-book-open'></i>
+            </div>
+            <h4>Free access to all content</h4>
+            <p>Sign in with Google to read the full series and get notified when new topics are published.</p>
+            <button style="display:inline-flex;align-items:center;justify-content:center;gap:12px;width:100%;padding:13px 20px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:15px;font-weight:600;color:#1e293b;background:#fff;cursor:pointer;transition:all 0.2s;font-family:inherit;" onclick="signInWithGoogleBtn()">
+                <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z" fill="#4285F4"/><path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/><path d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/><path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#EA4335"/></svg>
+                Continue with Google
+            </button>
+            <p style="font-size:12px;color:#94a3b8;margin-top:12px;">No spam. One notification per week when new content drops.</p>
+        </div>
+    </div>
+
+</body>
+</html>
