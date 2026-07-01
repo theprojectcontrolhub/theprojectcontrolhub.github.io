@@ -9,6 +9,92 @@
     <!-- Icons -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Founder intro block */
+        .founder-intro {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+        .founder-avatar-wrap {
+            position: relative;
+            width: 52px;
+            height: 52px;
+            flex-shrink: 0;
+        }
+        .founder-avatar {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #10b981;
+        }
+        .founder-avatar-fallback {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #10b981, #059669);
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            border: 2px solid #10b981;
+            position: absolute;
+            top: 0; left: 0;
+        }
+        .founder-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+        .founder-name {
+            font-size: 15px;
+            font-weight: 700;
+            color: #f1f5f9;
+            letter-spacing: 0.01em;
+        }
+        .founder-title {
+            font-size: 12px;
+            color: #94a3b8;
+            font-weight: 400;
+        }
+        /* Ghost button */
+        .btn-ghost-large {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            border: 1.5px solid rgba(255,255,255,0.15);
+            color: #cbd5e1;
+            background: transparent;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .btn-ghost-large:hover {
+            border-color: #10b981;
+            color: #10b981;
+            background: rgba(16,185,129,0.06);
+        }
+        /* Author initials avatar */
+        .author-avatar-initials {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #10b981, #059669);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
+        }
+    </style>
     <script type="module" src="auth.js"></script>
 </head>
 <body>
@@ -24,6 +110,8 @@
             <div class="nav-links">
                 <a href="index.html" class="active">Home</a>
                 <a href="discussions.html">Discussions</a>
+                <a href="courses.html">Courses</a>
+                <a href="report-builder.html">Report Builder</a>
                 <a href="about.html">About</a>
             </div>
             <div class="nav-actions">
@@ -40,11 +128,28 @@
         <div class="hero-container">
             <div class="hero-left">
                 <div class="pill-badge">
-                    <span class="dot"></span> PROFESSIONAL COMMUNITY — PROJECT CONTROLS
+                    <span class="dot"></span> PLANNING & PROJECT CONTROLS
                 </div>
-                <h1>Where Project Control <br><span class="text-green">Professionals Connect.</span></h1>
+
+                <!-- Founder intro -->
+                <div class="founder-intro">
+                    <div class="founder-avatar-wrap">
+                        <img src="https://media.licdn.com/dms/image/v2/D4D03AQHnw0nw0nw0nw/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1234567890?e=1234567890&v=beta&t=placeholder" 
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                             alt="Barış Emre Özçelik" class="founder-avatar">
+                        <div class="founder-avatar-fallback" style="display:flex;">
+                            <span>BE</span>
+                        </div>
+                    </div>
+                    <div class="founder-meta">
+                        <span class="founder-name">Barış Emre Özçelik, PMP</span>
+                        <span class="founder-title">Planning & Project Controls Lead · Civil Engineer · MBA</span>
+                    </div>
+                </div>
+
+                <h1>Planning is not a <br><span class="text-green">poster on the wall.</span></h1>
                 <p class="hero-desc">
-                    A members-only community for planners, project controls engineers, and construction managers. Discuss Primavera P6, FIDIC, delay analysis, EVM — with people who actually understand the work.
+                    I've spent years managing schedules on large-scale engineering and construction projects — from nuclear power plants to infrastructure megaprojects. This hub is where I share what actually works: techniques, frameworks, and hard-won lessons from the field.
                 </p>
                 
                 <div class="tags-group">
@@ -57,6 +162,7 @@
 
                 <div class="hero-buttons">
                     <a href="discussions.html" class="btn btn-primary-large"><i class='bx bx-message-square-dots'></i> Browse Discussions</a>
+                    <a href="about.html" class="btn btn-ghost-large"><i class='bx bx-user'></i> About Me</a>
                 </div>
             </div>
 
@@ -69,31 +175,31 @@
                 <div class="discussion-list">
                     <!-- Item 1 -->
                     <div class="discussion-list-item">
-                        <span class="category-text text-green">PRIMAVERA P6</span>
-                        <h4>Best practices for baseline management — multiple baselines on a live project?</h4>
+                        <span class="category-text text-green">SCHEDULE PLANNING</span>
+                        <h4>Why do projects still fail when we have engineers, materials, and software?</h4>
                         <div class="item-meta">
-                            <span><i class='bx bx-message-rounded'></i> 24 replies</span>
-                            <span><i class='bx bx-show'></i> 1.8K views</span>
+                            <span><i class='bx bx-message-rounded'></i> 12 replies</span>
+                            <span><i class='bx bx-show'></i> 2.4K views</span>
                             <i class='bx bx-right-arrow-alt arrow-icon'></i>
                         </div>
                     </div>
                     <!-- Item 2 -->
                     <div class="discussion-list-item">
-                        <span class="category-text text-yellow">FIDIC CONTRACTS</span>
-                        <h4>Clause 20.1 time bar — contractor missed 28-day notice. What are the options?</h4>
+                        <span class="category-text text-yellow">SCHEDULE MODEL</span>
+                        <h4>That Gantt chart on the wall? It's not your schedule. Here's what actually is.</h4>
                         <div class="item-meta">
-                            <span><i class='bx bx-message-rounded'></i> 32 replies</span>
-                            <span><i class='bx bx-show'></i> 3.2K views</span>
+                            <span><i class='bx bx-message-rounded'></i> 8 replies</span>
+                            <span><i class='bx bx-show'></i> 1.9K views</span>
                             <i class='bx bx-right-arrow-alt arrow-icon'></i>
                         </div>
                     </div>
                     <!-- Item 3 -->
                     <div class="discussion-list-item">
                         <span class="category-text text-red">DELAY ANALYSIS</span>
-                        <h4>Concurrent delays — how do you handle compensation in a split-responsibility window?</h4>
+                        <h4>The 5 forces that destroy every construction schedule — and how to fight back.</h4>
                         <div class="item-meta">
-                            <span><i class='bx bx-message-rounded'></i> 41 replies</span>
-                            <span><i class='bx bx-show'></i> 4.6K views</span>
+                            <span><i class='bx bx-message-rounded'></i> 17 replies</span>
+                            <span><i class='bx bx-show'></i> 3.1K views</span>
                             <i class='bx bx-right-arrow-alt arrow-icon'></i>
                         </div>
                     </div>
@@ -113,9 +219,9 @@
         <div class="container">
             <div class="section-header">
                 <div>
-                    <span class="subtitle">COMMUNITY DISCUSSIONS</span>
-                    <h2>Join the Conversation</h2>
-                    <p>Real discussions from professionals working on real projects. Ask questions, share experience, and learn from the community.</p>
+                    <span class="subtitle">DISCUSSIONS & INSIGHTS</span>
+                    <h2>From the Field</h2>
+                    <p>Real questions, real answers. Topics I discuss on LinkedIn — expanded here with more depth and context. Join the conversation.</p>
                 </div>
                 <a href="#" class="btn btn-primary"><i class='bx bx-plus'></i> Start a Discussion</a>
             </div>
@@ -139,34 +245,34 @@
             <!-- Cards Grid -->
             <div class="cards-grid">
                 
-                <!-- Card 1 -->
+                <!-- Card 1 — from LinkedIn series -->
                 <div class="discussion-card">
                     <div class="card-header">
                         <div class="card-tags">
-                            <span class="tag tag-light-green">Primavera P6</span>
+                            <span class="tag tag-light-green">Schedule Planning</span>
                             <span class="tag tag-pinned"><i class='bx bx-pin'></i> Pinned</span>
                         </div>
                         <div class="card-stats">
-                            <span><i class='bx bx-message-rounded'></i> 24</span>
-                            <span><i class='bx bx-show'></i> 1.840</span>
+                            <span><i class='bx bx-message-rounded'></i> 12</span>
+                            <span><i class='bx bx-show'></i> 2.4K</span>
                         </div>
                     </div>
-                    <h3>Best practices for baseline management in P6 — multiple baselines on a live project?</h3>
-                    <p class="card-excerpt">Our project is 8 months in with 3 approved scope changes. We now maintain 4 baselines and the schedule is getting cluttered. Looking for advice on how experienced planners...</p>
+                    <h3>Why do projects still fail when we have engineers, materials, and software? The real answer.</h3>
+                    <p class="card-excerpt">Most people blame the tools. But the root cause is almost always the same: projects are planned around investor wishes, not field realities. Critical Path blindness, optimism bias, and missing lag times are just symptoms of one deeper problem...</p>
                     <div class="hashtag-group">
-                        <span class="hashtag">#P6</span>
-                        <span class="hashtag">#Baseline</span>
-                        <span class="hashtag">#Best Practice</span>
+                        <span class="hashtag">#SchedulePlanning</span>
+                        <span class="hashtag">#CriticalPath</span>
+                        <span class="hashtag">#ProjectControls</span>
                     </div>
                     <div class="card-footer">
                         <div class="author-info">
-                            <img src="https://i.pravatar.cc/150?img=11" alt="Barış Emre Özçelik">
+                            <div class="author-avatar-initials">BE</div>
                             <div>
                                 <strong>Barış Emre Özçelik</strong>
-                                <span>Apr 21, 2026</span>
+                                <span>Jun 20, 2026</span>
                             </div>
                         </div>
-                        <a href="discussion-detail.html" class="view-comments">View 2 comments <i class='bx bx-chevron-down'></i></a>
+                        <a href="discussion-detail.html" class="view-comments">Read more <i class='bx bx-chevron-right'></i></a>
                     </div>
                 </div>
 
@@ -174,30 +280,29 @@
                 <div class="discussion-card">
                     <div class="card-header">
                         <div class="card-tags">
-                            <span class="tag tag-light-yellow">FIDIC Contracts</span>
+                            <span class="tag tag-light-yellow">Schedule Model</span>
                         </div>
                         <div class="card-stats">
-                            <span><i class='bx bx-message-rounded'></i> 32</span>
-                            <span><i class='bx bx-show'></i> 3.210</span>
+                            <span><i class='bx bx-message-rounded'></i> 8</span>
+                            <span><i class='bx bx-show'></i> 1.9K</span>
                         </div>
                     </div>
-                    <h3>FIDIC Clause 20.1 time bar — contractor missed 28-day notice, what are the options?</h3>
-                    <p class="card-excerpt">We have a contractor who clearly has a valid delay event but failed to submit the notice within 28 days. The employer is now rejecting the claim on time bar grounds. Has anyone...</p>
+                    <h3>That Gantt chart on the wall? It's not your schedule. Here's what actually is.</h3>
+                    <p class="card-excerpt">A Schedule Presentation is a frozen snapshot for stakeholders. Your actual Schedule Model is the living data inside the software. The difference matters — especially when things go wrong on site. Most PMs confuse the two, and it costs them...</p>
                     <div class="hashtag-group">
-                        <span class="hashtag">#FIDIC</span>
-                        <span class="hashtag">#Clause 20</span>
-                        <span class="hashtag">#Claims</span>
-                        <span class="hashtag">#Time Bar</span>
+                        <span class="hashtag">#ScheduleModel</span>
+                        <span class="hashtag">#PrimaveraP6</span>
+                        <span class="hashtag">#Planning</span>
                     </div>
                     <div class="card-footer">
                         <div class="author-info">
-                            <img src="https://i.pravatar.cc/150?img=12" alt="James Okafor">
+                            <div class="author-avatar-initials">BE</div>
                             <div>
-                                <strong>James Okafor</strong>
-                                <span>Apr 19, 2026</span>
+                                <strong>Barış Emre Özçelik</strong>
+                                <span>Jun 18, 2026</span>
                             </div>
                         </div>
-                        <a href="discussion-detail.html" class="view-comments">View 2 comments <i class='bx bx-chevron-down'></i></a>
+                        <a href="discussion-detail.html" class="view-comments">Read more <i class='bx bx-chevron-right'></i></a>
                     </div>
                 </div>
 
@@ -208,26 +313,26 @@
                             <span class="tag tag-light-red">Delay Analysis</span>
                         </div>
                         <div class="card-stats">
-                            <span><i class='bx bx-message-rounded'></i> 41</span>
-                            <span><i class='bx bx-show'></i> 4.580</span>
+                            <span><i class='bx bx-message-rounded'></i> 17</span>
+                            <span><i class='bx bx-show'></i> 3.1K</span>
                         </div>
                     </div>
-                    <h3>Concurrent delays — how do you handle compensation in a concurrent delay scenario?</h3>
-                    <p class="card-excerpt">Working on a $200M port project where both employer and contractor caused delays in the same window. The contract is silent on concurrent delays. Time Impact Analysis gives us ...</p>
+                    <h3>The 5 forces that destroy every construction schedule — and how dynamic planning fights back.</h3>
+                    <p class="card-excerpt">Planning Gaps, Scope Decomposition, Change Orders, Organizational Shifts, Environmental Factors. Every project faces all five. The question is whether your schedule is a static poster or a live sensor that detects them before they kill your timeline...</p>
                     <div class="hashtag-group">
-                        <span class="hashtag">#Delay Analysis</span>
-                        <span class="hashtag">#TIA</span>
-                        <span class="hashtag">#Concurrent Delay</span>
+                        <span class="hashtag">#DelayAnalysis</span>
+                        <span class="hashtag">#RiskManagement</span>
+                        <span class="hashtag">#Construction</span>
                     </div>
                     <div class="card-footer">
                         <div class="author-info">
-                            <img src="https://i.pravatar.cc/150?img=5" alt="Priya Nair">
+                            <div class="author-avatar-initials">BE</div>
                             <div>
-                                <strong>Priya Nair</strong>
-                                <span>Apr 17, 2026</span>
+                                <strong>Barış Emre Özçelik</strong>
+                                <span>Jun 15, 2026</span>
                             </div>
                         </div>
-                        <a href="discussion-detail.html" class="view-comments">View 1 comment <i class='bx bx-chevron-down'></i></a>
+                        <a href="discussion-detail.html" class="view-comments">Read more <i class='bx bx-chevron-right'></i></a>
                     </div>
                 </div>
 
@@ -235,30 +340,29 @@
                 <div class="discussion-card">
                     <div class="card-header">
                         <div class="card-tags">
-                            <span class="tag tag-light-blue">Earned Value</span>
+                            <span class="tag tag-light-blue">Project Controls</span>
                         </div>
                         <div class="card-stats">
-                            <span><i class='bx bx-message-rounded'></i> 19</span>
-                            <span><i class='bx bx-show'></i> 2.140</span>
+                            <span><i class='bx bx-message-rounded'></i> 9</span>
+                            <span><i class='bx bx-show'></i> 1.6K</span>
                         </div>
                     </div>
-                    <h3>EVM on lump sum contracts — how to define BCWP without a BOQ?</h3>
-                    <p class="card-excerpt">Our client wants full EVM reporting on a design-build lump sum contract. There is no BOQ breakdown. I'm trying to figure out how to assign BCWP when percentage complete is...</p>
+                    <h3>WBS built around phases will sink you. Here's the deliverable-based approach that saves projects.</h3>
+                    <p class="card-excerpt">If your budget gets cut mid-project and your WBS is organized by phase (Phase 1, Phase 2…), you end up with nothing functional. But a deliverable-based WBS means you can at least hand over the East Wing and open it. One structural decision changes everything...</p>
                     <div class="hashtag-group">
-                        <span class="hashtag">#EVM</span>
-                        <span class="hashtag">#Lump Sum</span>
-                        <span class="hashtag">#BCWP</span>
-                        <span class="hashtag">#Reporting</span>
+                        <span class="hashtag">#WBS</span>
+                        <span class="hashtag">#Scope</span>
+                        <span class="hashtag">#ProjectControls</span>
                     </div>
                     <div class="card-footer">
                         <div class="author-info">
-                            <img src="https://i.pravatar.cc/150?img=8" alt="Carlos Mendes">
+                            <div class="author-avatar-initials">BE</div>
                             <div>
-                                <strong>Carlos Mendes</strong>
-                                <span>Apr 15, 2026</span>
+                                <strong>Barış Emre Özçelik</strong>
+                                <span>Jun 12, 2026</span>
                             </div>
                         </div>
-                        <a href="#" class="view-comments">View 1 comment <i class='bx bx-chevron-down'></i></a>
+                        <a href="discussion-detail.html" class="view-comments">Read more <i class='bx bx-chevron-right'></i></a>
                     </div>
                 </div>
 
