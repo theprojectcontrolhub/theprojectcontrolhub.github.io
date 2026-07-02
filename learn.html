@@ -413,17 +413,24 @@
 
         let currentUser = null;
 
+        // Prevent auth flash: show correct button immediately based on last known state
+        if (!localStorage.getItem('pch_auth')) {
+            document.getElementById('joinBtn').style.display = 'flex';
+        }
+
         onUserChange((user) => {
             currentUser = user;
             const joinBtn = document.getElementById('joinBtn');
             const userMenu = document.getElementById('userMenu');
             if (user) {
+                localStorage.setItem('pch_auth', '1');
                 joinBtn.style.display = 'none';
                 userMenu.style.display = 'flex';
                 document.getElementById('userName').textContent = user.displayName.split(' ')[0];
                 if (user.photoURL) document.getElementById('userAvatar').src = user.photoURL;
                 closeModal();
             } else {
+                localStorage.removeItem('pch_auth');
                 joinBtn.style.display = 'flex';
                 userMenu.style.display = 'none';
             }
@@ -491,7 +498,7 @@
                 </button>
                 <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" class="btn-nav-social"><i class='bx bxl-linkedin'></i></a>
                 <a href="https://youtube.com" target="_blank" class="btn-nav-social"><i class='bx bxl-youtube'></i></a>
-                <button id="joinBtn" class="btn btn-primary" onclick="openModal()"><i class='bx bx-user-plus'></i> Join Free</button>
+                <button id="joinBtn" class="btn btn-primary" style="display:none;" onclick="openModal()"><i class='bx bx-log-in'></i> Sign In</button>
                 <div id="userMenu" style="display:none;align-items:center;gap:10px;">
                     <img id="userAvatar" src="" style="width:32px;height:32px;border-radius:50%;object-fit:cover;" alt="avatar">
                     <span id="userName" style="font-size:14px;font-weight:600;color:var(--text-light);"></span>
@@ -510,7 +517,7 @@
                 <div class="learn-header-badge">
                     <span class="dot-green"></span> CURRICULUM
                 </div>
-                <h1>Project Controls — From Zero to Field-Ready</h1>
+                <h1>Project Controls — The Way It Works on Site</h1>
                 <p>A structured series built for engineers who want to understand project controls the way it actually works on site. Theory first, then the tools that bring it to life.</p>
                 <div class="learn-header-meta">
                     <span class="learn-meta-item"><i class='bx bx-book-open'></i> 4 modules</span>
@@ -560,6 +567,7 @@
                         <a href="discussion-detail.html" class="week-item" data-gated>
                             <span class="week-num">Week 3</span>
                             <span class="week-title">That Gantt chart on the wall? It's not your schedule.</span>
+                            <span class="week-date">Jul 1, 2026</span>
                             <span class="week-new">New</span>
                             <i class='bx bx-right-arrow-alt week-arrow'></i>
                         </a>
@@ -660,7 +668,7 @@
                             <span class="module-num locked">04</span>
                             <div class="module-info">
                                 <h2>Power BI for Project Controls</h2>
-                                <p>Turn your P6 and Excel data into live dashboards. Connect, visualize, and present project performance in a way that actually communicates.</p>
+                                <p>Turn your P6 and Excel data into live dashboards. Connect, visualize, and communicate project performance clearly.</p>
                             </div>
                         </div>
                         <span class="module-badge badge-locked"><i class='bx bx-lock-alt'></i> Starting after Module 03</span>
