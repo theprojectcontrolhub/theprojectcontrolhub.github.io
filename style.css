@@ -1717,6 +1717,22 @@ ul {
     .newsletter-form-home .btn { border-radius: 0 0 8px 8px; }
 }
 
+
+/* NAV SOCIAL ICONS (shared) */
+.btn-nav-social {
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    color: #94a3b8;
+    font-size: 18px;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+.btn-nav-social:hover { color: #10b981; background: rgba(16,185,129,0.08); }
+
 /* HAMBURGER MENU */
 .hamburger {
     display: none;

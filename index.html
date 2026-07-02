@@ -238,21 +238,6 @@
             flex-shrink: 0;
         }
 
-        /* Nav social icons */
-        .btn-nav-social {
-            width: 36px;
-            height: 36px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-            color: #94a3b8;
-            font-size: 18px;
-            text-decoration: none;
-            transition: all 0.2s;
-        }
-        .btn-nav-social:hover { color: #10b981; background: rgba(16,185,129,0.08); }
-
         /* Hero follow CTA */
         .hero-follow-cta {
             margin-top: 16px;
@@ -529,7 +514,7 @@
                 </button>
                 <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" class="btn-nav-social"><i class='bx bxl-linkedin'></i></a>
                 <a href="https://youtube.com" target="_blank" class="btn-nav-social"><i class='bx bxl-youtube'></i></a>
-                <button id="joinBtn" class="btn btn-primary" onclick="openAccessModal()"><i class='bx bx-user-plus'></i> Join Free</button>
+                <button id="joinBtn" class="btn btn-primary" onclick="openAccessModal()"><i class='bx bx-log-in'></i> Sign In</button>
                 <div id="userMenu" style="display:none; align-items:center; gap:10px;">
                     <img id="userAvatar" src="" style="width:32px;height:32px;border-radius:50%;object-fit:cover;" alt="avatar">
                     <span id="userName" style="font-size:14px;font-weight:600;color:var(--text-light);"></span>
@@ -571,14 +556,14 @@
                 </div>
 
                 <div class="hero-buttons">
-                    <a href="#curriculum" class="btn btn-primary-large"><i class='bx bx-play'></i> Start from Week 1</a>
+                    <a href="discussion-detail.html" class="btn btn-primary-large"><i class='bx bx-play'></i> Start from Week 1</a>
                     <a href="about.html" class="btn btn-ghost-large"><i class='bx bx-user'></i> About Me</a>
                 </div>
             </div>
 
             <div class="hero-right">
                 <div class="latest-header">
-                    <h3>LATEST CONTENT</h3>
+                    <h3>LATEST FROM THE SERIES</h3>
                     <span class="live-badge"><span class="dot-green"></span> Week 3 live</span>
                 </div>
 
@@ -601,6 +586,7 @@
                         <span class="category-text text-green">WEEK 3 · SCHEDULE</span>
                         <h4>That Gantt chart on the wall? It's not your schedule.</h4>
                         <div class="item-meta">
+                            <span style="font-size:11px;color:#64748b;">Jul 1, 2026</span>
                             <span style="font-size:11px;font-weight:700;color:#10b981;background:#ecfdf5;padding:2px 8px;border-radius:20px;">New</span>
                             <i class='bx bx-right-arrow-alt arrow-icon'></i>
                         </div>
@@ -659,9 +645,10 @@
                             <span class="post-date">Jun 27, 2026</span>
                             <i class='bx bx-right-arrow-alt'></i>
                         </a>
-                        <a href="discussion-detail.html" class="module-post-item new-badge-row">
+                        <a href="discussion-detail.html" class="module-post-item">
                             <span class="post-week">Week 3</span>
                             <span class="post-title">That Gantt chart on the wall? It's not your schedule.</span>
+                            <span class="post-date">Jul 1, 2026</span>
                             <span class="new-badge">New</span>
                             <i class='bx bx-right-arrow-alt'></i>
                         </a>
@@ -718,7 +705,7 @@
                             <span class="module-number locked">04</span>
                             <div>
                                 <h3 class="module-title">Power BI for Project Controls</h3>
-                                <p class="module-desc">Turn your P6 and Excel data into live dashboards. Impress your client, simplify your reporting.</p>
+                                <p class="module-desc">Turn your P6 and Excel data into live dashboards. Communicate project performance clearly.</p>
                             </div>
                         </div>
                         <span class="module-status locked-status"><i class='bx bx-lock-alt'></i> Starting after Module 03</span>
