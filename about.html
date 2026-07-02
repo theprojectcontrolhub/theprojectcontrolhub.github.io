@@ -297,17 +297,29 @@
 
         let currentUser = null;
 
-        // Prevent auth flash: show correct button immediately based on last known state
-        if (!localStorage.getItem('pch_auth')) {
-            document.getElementById('joinBtn').style.display = 'flex';
-        }
+        // Prevent auth flash: restore UI instantly from cached state
+        (function() {
+            const hint = localStorage.getItem('pch_auth');
+            let cached = null;
+            try { cached = JSON.parse(hint); } catch(e) {}
+            if (cached && cached.name) {
+                document.getElementById('userMenu').style.display = 'flex';
+                document.getElementById('userName').textContent = cached.name;
+                if (cached.photo) document.getElementById('userAvatar').src = cached.photo;
+            } else {
+                document.getElementById('joinBtn').style.display = 'flex';
+            }
+        })();
 
         onUserChange((user) => {
             currentUser = user;
             const joinBtn = document.getElementById('joinBtn');
             const userMenu = document.getElementById('userMenu');
             if (user) {
-                localStorage.setItem('pch_auth', '1');
+                localStorage.setItem('pch_auth', JSON.stringify({
+                    name: user.displayName.split(' ')[0],
+                    photo: user.photoURL || ''
+                }));
                 joinBtn.style.display = 'none';
                 userMenu.style.display = 'flex';
                 document.getElementById('userName').textContent = user.displayName.split(' ')[0];
