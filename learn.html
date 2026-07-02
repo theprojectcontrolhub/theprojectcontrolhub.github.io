@@ -293,6 +293,29 @@
             transition: width 0.3s ease;
         }
 
+
+        /* PHASE DIVIDERS */
+        .phase-divider {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 32px;
+            background: #f8fafc;
+            border-bottom: 1px solid #f1f5f9;
+            border-top: 1px solid #f1f5f9;
+        }
+        .phase-label {
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1.2px;
+            color: #059669;
+        }
+        .phase-weeks-tag {
+            font-size: 10px;
+            color: #94a3b8;
+            font-weight: 600;
+        }
+
         /* MODAL */
         .modal-overlay {
             position: fixed;
@@ -533,7 +556,7 @@
                 <p>A structured series built for engineers who want to understand project controls the way it actually works on site. Theory first, then the tools that bring it to life.</p>
                 <div class="learn-header-meta">
                     <span class="learn-meta-item"><i class='bx bx-book-open'></i> 4 modules</span>
-                    <span class="learn-meta-item"><i class='bx bx-time-five'></i> ~40 weeks total</span>
+                    <span class="learn-meta-item"><i class='bx bx-time-five'></i> 27-week core curriculum</span>
                     <span class="learn-meta-item"><i class='bx bx-calendar'></i> Published weekly</span>
                     <span class="learn-meta-item"><i class='bx bx-lock-open'></i> Free with sign in</span>
                 </div>
@@ -549,10 +572,10 @@
                             <span class="module-num">01</span>
                             <div class="module-info">
                                 <h2>Schedule Management</h2>
-                                <p>How to build, defend, and communicate a project schedule. We start from why schedules fail, then build the theory and tools from the ground up.</p>
+                                <p>How to build, defend, and communicate a project schedule — the complete curriculum, built on the PMI Practice Standard for Scheduling and 8+ years in the field.</p>
                             </div>
                         </div>
-                        <span class="module-badge badge-active"><span class="dot-green"></span> In Progress · Week 3 of 10</span>
+                        <span class="module-badge badge-active"><span class="dot-green"></span> In Progress · Week 3 of 27</span>
                     </div>
 
                     <div class="module-tools">
@@ -564,6 +587,10 @@
                     </div>
 
                     <div class="module-weeks">
+                        <div class="phase-divider">
+                            <span class="phase-label">PHASE A — FOUNDATIONS</span>
+                            <span class="phase-weeks-tag">Weeks 1–3</span>
+                        </div>
                         <a href="discussion-detail.html" class="week-item" data-gated>
                             <span class="week-num">Week 1</span>
                             <span class="week-title">Why projects fail — and why the answer is never the tools</span>
@@ -572,61 +599,165 @@
                         </a>
                         <a href="discussion-detail.html" class="week-item" data-gated>
                             <span class="week-num">Week 2</span>
-                            <span class="week-title">The anatomy of a schedule — Activity, Milestone, Resource, Logic</span>
+                            <span class="week-title">The building blocks of project controls — Scope, Time, Cost</span>
                             <span class="week-date">Jun 27, 2026</span>
                             <i class='bx bx-right-arrow-alt week-arrow'></i>
                         </a>
                         <a href="discussion-detail.html" class="week-item" data-gated>
                             <span class="week-num">Week 3</span>
                             <span class="week-title">That Gantt chart on the wall? It's not your schedule.</span>
-                            <span class="week-date">Jul 1, 2026</span>
                             <span class="week-new">New</span>
                             <i class='bx bx-right-arrow-alt week-arrow'></i>
                         </a>
+                        <div class="phase-divider">
+                            <span class="phase-label">PHASE B — SCHEDULE STRATEGY · DOMAIN 1</span>
+                            <span class="phase-weeks-tag">Weeks 4–6</span>
+                        </div>
                         <div class="week-item upcoming">
                             <span class="week-num">Week 4</span>
-                            <span class="week-title">WBS — why deliverable-based structure changes everything</span>
+                            <span class="week-title">Strategy before software — scheduling approach & governance</span>
                             <span class="week-upcoming-label">Coming soon</span>
                         </div>
                         <div class="week-item upcoming">
                             <span class="week-num">Week 5</span>
-                            <span class="week-title">Critical Path Method — how to read and use it on site</span>
+                            <span class="week-title">Life cycles: Critical Path, Critical Chain, Agile & Rolling Wave</span>
                             <span class="week-upcoming-label">Coming soon</span>
                         </div>
                         <div class="week-item upcoming">
                             <span class="week-num">Week 6</span>
-                            <span class="week-title">Resource loading and leveling — the gap between plan and site</span>
+                            <span class="week-title">From charter to schedule — building the project strategy</span>
                             <span class="week-upcoming-label">Coming soon</span>
+                        </div>
+                        <div class="phase-divider">
+                            <span class="phase-label">PHASE C — SCHEDULE DEVELOPMENT · DOMAIN 2</span>
+                            <span class="phase-weeks-tag">Weeks 7–15</span>
                         </div>
                         <div class="week-item upcoming">
                             <span class="week-num">Week 7</span>
-                            <span class="week-title">Baseline — what it is, how to set it, how to protect it</span>
+                            <span class="week-title">The 9-step schedule development process</span>
                             <span class="week-upcoming-label">Coming soon</span>
                         </div>
                         <div class="week-item upcoming">
                             <span class="week-num">Week 8</span>
-                            <span class="week-title">Monitoring & controlling — variance analysis and earned value</span>
+                            <span class="week-title">Scheduling components I — activity types, calendars, data</span>
                             <span class="week-upcoming-label">Coming soon</span>
                         </div>
                         <div class="week-item upcoming">
                             <span class="week-num">Week 9</span>
-                            <span class="week-title">Delay analysis — when things go wrong, how to document it</span>
+                            <span class="week-title">Scheduling components II — scope & schedule performance</span>
                             <span class="week-upcoming-label">Coming soon</span>
                         </div>
                         <div class="week-item upcoming">
                             <span class="week-num">Week 10</span>
-                            <span class="week-title">Reporting — what to tell management, what to tell the client</span>
+                            <span class="week-title">WBS & baseline development — structure that survives</span>
+                            <span class="week-upcoming-label">Coming soon</span>
+                        </div>
+                        <div class="week-item upcoming">
+                            <span class="week-num">Week 11</span>
+                            <span class="week-title">Activities & networks — PDM, relationships, leads & lags</span>
+                            <span class="week-upcoming-label">Coming soon</span>
+                        </div>
+                        <div class="week-item upcoming">
+                            <span class="week-num">Week 12</span>
+                            <span class="week-title">Estimating — duration & budget techniques</span>
+                            <span class="week-upcoming-label">Coming soon</span>
+                        </div>
+                        <div class="week-item upcoming">
+                            <span class="week-num">Week 13</span>
+                            <span class="week-title">CPM math — forward pass, backward pass, float</span>
+                            <span class="week-upcoming-label">Coming soon</span>
+                        </div>
+                        <div class="week-item upcoming">
+                            <span class="week-num">Week 14</span>
+                            <span class="week-title">Resource loading, leveling & schedule compression</span>
+                            <span class="week-upcoming-label">Coming soon</span>
+                        </div>
+                        <div class="week-item upcoming">
+                            <span class="week-num">Week 15</span>
+                            <span class="week-title">Schedule risk analysis — Monte Carlo & contingency</span>
+                            <span class="week-upcoming-label">Coming soon</span>
+                        </div>
+                        <div class="phase-divider">
+                            <span class="phase-label">PHASE D — MONITORING & CONTROL · DOMAIN 3</span>
+                            <span class="phase-weeks-tag">Weeks 16–23</span>
+                        </div>
+                        <div class="week-item upcoming">
+                            <span class="week-num">Week 16</span>
+                            <span class="week-title">Schedule maintenance — actuals & the update cycle</span>
+                            <span class="week-upcoming-label">Coming soon</span>
+                        </div>
+                        <div class="week-item upcoming">
+                            <span class="week-num">Week 17</span>
+                            <span class="week-title">Model health — constraints, open ends, out-of-sequence logic</span>
+                            <span class="week-upcoming-label">Coming soon</span>
+                        </div>
+                        <div class="week-item upcoming">
+                            <span class="week-num">Week 18</span>
+                            <span class="week-title">EVM fundamentals — PMB, PV, EV, AC</span>
+                            <span class="week-upcoming-label">Coming soon</span>
+                        </div>
+                        <div class="week-item upcoming">
+                            <span class="week-num">Week 19</span>
+                            <span class="week-title">EVM analysis — SPI, CPI & variance interpretation</span>
+                            <span class="week-upcoming-label">Coming soon</span>
+                        </div>
+                        <div class="week-item upcoming">
+                            <span class="week-num">Week 20</span>
+                            <span class="week-title">Forecasting — EAC, ETC, TCPI & Earned Schedule</span>
+                            <span class="week-upcoming-label">Coming soon</span>
+                        </div>
+                        <div class="week-item upcoming">
+                            <span class="week-num">Week 21</span>
+                            <span class="week-title">Change control & protecting the baseline</span>
+                            <span class="week-upcoming-label">Coming soon</span>
+                        </div>
+                        <div class="week-item upcoming">
+                            <span class="week-num">Week 22</span>
+                            <span class="week-title">The control philosophy — telemetry & managing variances</span>
+                            <span class="week-upcoming-label">Coming soon</span>
+                        </div>
+                        <div class="week-item upcoming">
+                            <span class="week-num">Week 23</span>
+                            <span class="week-title">Project reviews & the Conformance Index</span>
+                            <span class="week-upcoming-label">Coming soon</span>
+                        </div>
+                        <div class="phase-divider">
+                            <span class="phase-label">PHASE E — CLOSEOUT & FORENSICS · DOMAIN 4</span>
+                            <span class="phase-weeks-tag">Weeks 24–25</span>
+                        </div>
+                        <div class="week-item upcoming">
+                            <span class="week-num">Week 24</span>
+                            <span class="week-title">Forensic schedule analysis — delays, claims, evidence</span>
+                            <span class="week-upcoming-label">Coming soon</span>
+                        </div>
+                        <div class="week-item upcoming">
+                            <span class="week-num">Week 25</span>
+                            <span class="week-title">Closeout & continuous closeout — capturing the data</span>
+                            <span class="week-upcoming-label">Coming soon</span>
+                        </div>
+                        <div class="phase-divider">
+                            <span class="phase-label">PHASE F — COMMUNICATION · DOMAIN 5</span>
+                            <span class="phase-weeks-tag">Weeks 26–27</span>
+                        </div>
+                        <div class="week-item upcoming">
+                            <span class="week-num">Week 26</span>
+                            <span class="week-title">Reporting & the altitude concept — right data, right level</span>
+                            <span class="week-upcoming-label">Coming soon</span>
+                        </div>
+                        <div class="week-item upcoming">
+                            <span class="week-num">Week 27</span>
+                            <span class="week-title">Stakeholder management & schedule communication</span>
                             <span class="week-upcoming-label">Coming soon</span>
                         </div>
                     </div>
 
                     <div class="module-progress">
                         <div class="progress-label">
-                            <span>3 of 10 published</span>
-                            <span>30%</span>
+                            <span>3 of 27 published</span>
+                            <span>11%</span>
                         </div>
                         <div class="progress-bar">
-                            <div class="progress-fill" style="width:30%;"></div>
+                            <div class="progress-fill" style="width:11%;"></div>
                         </div>
                     </div>
                 </div>
