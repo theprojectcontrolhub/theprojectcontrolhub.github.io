@@ -20,7 +20,7 @@ const CURRICULUM = {
   // new:    true shows a green "New" badge (use for the latest one)
   weeks: [
     // ---- PHASE A — FOUNDATIONS ----
-    { phase: "Phase A — Foundations", n: 1, title: "Why projects fail — and why the answer is never the tools", short: "Why projects fail — and why the answer is never the tools", status: "live", page: "discussion-detail.html", date: "Jun 20, 2026" },
+    { phase: "Phase A — Foundations", n: 1, title: "Why projects fail — and why the answer is never the tools", short: "Why projects fail — and why the answer is never the tools", status: "live", page: "week-1.html", date: "Jun 20, 2026" },
     { n: 2, title: "The building blocks of project controls — Scope, Time, Cost", short: "Building blocks — Scope, Time, Cost", status: "live", page: "week-2.html", date: "Jun 27, 2026" },
     { n: 3, title: "That Gantt chart on the wall? It's not your schedule.", short: "That Gantt chart? It's not your schedule.", status: "live", page: "week-3.html", date: "Jul 8, 2026" },
 
