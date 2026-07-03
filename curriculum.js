@@ -22,7 +22,7 @@ const CURRICULUM = {
     // ---- PHASE A — FOUNDATIONS ----
     { phase: "Phase A — Foundations", n: 1, title: "Why projects fail — and why the answer is never the tools", short: "Why projects fail — and why the answer is never the tools", status: "live", page: "discussion-detail.html", date: "Jun 20, 2026" },
     { n: 2, title: "The building blocks of project controls — Scope, Time, Cost", short: "Building blocks — Scope, Time, Cost", status: "live", page: "week-2.html", date: "Jun 27, 2026" },
-    { n: 3, title: "That Gantt chart on the wall? It's not your schedule.", short: "That Gantt chart? It's not your schedule.", status: "upcoming" },
+    { n: 3, title: "That Gantt chart on the wall? It's not your schedule.", short: "That Gantt chart? It's not your schedule.", status: "live", page: "week-3.html", date: "Jul 8, 2026" },
 
     // ---- PHASE B — SCHEDULE STRATEGY · DOMAIN 1 ----
     { phase: "Phase B — Schedule Strategy · Domain 1", n: 4, title: "Strategy before software — scheduling approach & governance", short: "Strategy before software", status: "upcoming" },
@@ -82,7 +82,8 @@ function renderArticleSidebar(currentWeek) {
   visible.forEach(week => {
     const isActive = week.n === currentWeek;
     const isLive = week.status === "live";
-    const badge = week.new && !isActive
+    const isLatest = week === w.latestLiveWeek;
+    const badge = isLatest && !isActive
       ? '<span class="sidebar-new" translate="no">New</span>' : "";
 
     if (isActive) {
@@ -154,7 +155,8 @@ function renderLearnCurriculum() {
     }
     const isLive = week.status === "live";
     if (isLive || week.page) {
-      const dateOrNew = week.new
+      const isLatest = week === w.latestLiveWeek;
+      const dateOrNew = isLatest
         ? '<span class="week-new" translate="no">New</span>'
         : (week.date ? `<span class="week-date">${week.date}</span>` : '');
       const gated = isLive ? "" : " data-gated";

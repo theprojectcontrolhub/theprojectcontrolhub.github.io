@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>That Gantt Chart Isn't Your Schedule — The Project Control Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* PAGE LAYOUT */
+        .content-page {
+            background: var(--bg-light);
+            min-height: 100vh;
+            padding: 40px 0 80px;
+        }
+
+        .content-layout {
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 40px;
+            align-items: start;
+        }
+
+        /* BREADCRUMB */
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 28px;
+        }
+        .breadcrumb a {
+            color: var(--primary-green);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .breadcrumb a:hover { text-decoration: underline; }
+
+        /* ARTICLE */
+        .article-card {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .article-meta {
+            padding: 32px 36px 0;
+        }
+
+        .article-week-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(16,185,129,0.08);
+            color: #059669;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            padding: 5px 14px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(16,185,129,0.15);
+        }
+
+        .article-title {
+            font-size: 30px;
+            font-weight: 800;
+            color: var(--text-dark);
+            line-height: 1.25;
+            letter-spacing: -0.5px;
+            margin-bottom: 20px;
+        }
+
+        .article-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #f1f5f9;
+            margin-bottom: 0;
+        }
+
+        .author-avatar-sm {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #10b981, #059669);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .author-details strong {
+            display: block;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .author-details span {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* VIDEO EMBED */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            background: #0f172a;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-placeholder {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            color: #94a3b8;
+        }
+
+        .video-placeholder i { font-size: 48px; color: #10b981; }
+        .video-placeholder p { font-size: 14px; }
+
+        /* ARTICLE CONTENT */
+        .article-body {
+            padding: 36px 36px 0;
+        }
+
+        .article-body p {
+            font-size: 16px;
+            color: #334155;
+            line-height: 1.85;
+            margin-bottom: 20px;
+        }
+
+        .article-body h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin: 32px 0 16px;
+            letter-spacing: -0.3px;
+        }
+
+        .article-body strong { color: var(--text-dark); }
+
+        .article-body ul {
+            margin: 0 0 20px 20px;
+        }
+
+        .article-body ul li {
+            font-size: 16px;
+            color: #334155;
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        /* PAYWALL BLUR */
+        .content-preview {
+            position: relative;
+        }
+
+        .content-blur {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-blur::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 180px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.95) 60%, #fff 100%);
+            pointer-events: none;
+        }
+
+        .content-locked {
+            display: none;
+        }
+
+        /* PAYWALL CTA */
+        .paywall-cta {
+            padding: 32px 36px 36px;
+            text-align: center;
+            border-top: 1px solid #f1f5f9;
+            margin-top: 0;
+        }
+
+        .paywall-cta h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .paywall-cta p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .btn-google-signin {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            max-width: 340px;
+            padding: 14px 20px;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #1e293b;
+            background: #fff;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .btn-google-signin:hover {
+            border-color: #cbd5e1;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+        }
+
+        .paywall-note {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-top: 12px;
+        }
+
+        /* ARTICLE FOOTER (visible after login) */
+        .article-footer {
+            display: none;
+            padding: 28px 36px 36px;
+            border-top: 1px solid #f1f5f9;
+            margin-top: 8px;
+        }
+
+        .article-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .article-tag {
+            font-size: 13px;
+            color: #10b981;
+            background: rgba(16,185,129,0.08);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        /* SIDEBAR */
+        .content-sidebar {
+            position: sticky;
+            top: 24px;
+        }
+
+        .sidebar-card {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 16px;
+        }
+
+        .sidebar-card-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .sidebar-card-header h4 {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0;
+        }
+
+        .sidebar-series-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 20px;
+            border-bottom: 1px solid #f8fafc;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.15s;
+        }
+
+        .sidebar-series-item:hover { background: #f8fafc; }
+
+        .sidebar-series-item.active {
+            background: rgba(16,185,129,0.04);
+            border-left: 3px solid #10b981;
+        }
+
+        .sidebar-series-item.upcoming {
+            opacity: 0.45;
+            cursor: default;
+            pointer-events: none;
+        }
+
+        .sidebar-week {
+            font-size: 10px;
+            font-weight: 700;
+            color: #10b981;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            min-width: 44px;
+            flex-shrink: 0;
+        }
+
+        .sidebar-series-item.upcoming .sidebar-week { color: #94a3b8; }
+
+        .sidebar-item-title {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-dark);
+            line-height: 1.4;
+            flex: 1;
+        }
+
+        .sidebar-series-item.active .sidebar-item-title {
+            font-weight: 700;
+            color: #059669;
+        }
+
+        .sidebar-new {
+            font-size: 10px;
+            font-weight: 700;
+            color: #fff;
+            background: #10b981;
+            padding: 2px 7px;
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+
+        /* AUTHOR CARD */
+        .author-sidebar-card {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 20px;
+        }
+
+        .author-sidebar-top {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .author-sidebar-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #10b981, #059669);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .author-sidebar-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-dark);
+            display: block;
+        }
+
+        .author-sidebar-title {
+            font-size: 12px;
+            color: var(--text-muted);
+            display: block;
+            margin-top: 2px;
+        }
+
+        .author-sidebar-bio {
+            font-size: 13px;
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .btn-linkedin {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #0a66c2;
+            color: #0a66c2;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        /* MODAL */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+        }
+        .modal-overlay.active { opacity: 1; pointer-events: all; }
+        .modal-box {
+            background: #fff;
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 420px;
+            width: 90%;
+            position: relative;
+            text-align: center;
+        }
+        .close-modal {
+            position: absolute;
+            top: 16px; right: 16px;
+            background: none;
+            border: none;
+            font-size: 22px;
+            color: #94a3b8;
+            cursor: pointer;
+        }
+        .modal-icon-wrapper {
+            width: 56px; height: 56px;
+            background: #ecfdf5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 24px;
+            color: #10b981;
+        }
+        .modal-box h4 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0f172a;
+            margin: 0 0 10px;
+        }
+        .modal-box p {
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.6;
+            margin: 0 0 20px;
+        }
+        .modal-note {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-top: 12px;
+        }
+
+        /* NEXT ARTICLE NAV */
+        .next-article {
+            margin-top: 8px;
+            border-top: 1px solid #f1f5f9;
+            padding: 28px 36px 36px;
+        }
+
+        .next-article-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 14px;
+        }
+
+        .next-article-link {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-decoration: none;
+            padding: 16px 20px;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            transition: all 0.2s;
+        }
+
+        .next-article-link:hover {
+            border-color: #10b981;
+            background: rgba(16,185,129,0.02);
+        }
+
+        .next-week-tag {
+            font-size: 11px;
+            font-weight: 700;
+            color: #10b981;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .next-article-link h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-dark);
+            line-height: 1.4;
+            margin: 0;
+            flex: 1;
+        }
+
+        .next-article-link i {
+            font-size: 22px;
+            color: #10b981;
+            flex-shrink: 0;
+        }
+
+        /* MOBILE */
+        @media (max-width: 1024px) {
+            .content-layout { grid-template-columns: 1fr; }
+            .content-sidebar { position: static; }
+        }
+
+        @media (max-width: 768px) {
+            .content-page { padding: 24px 0 60px; }
+            .content-layout { padding: 0 16px; gap: 24px; }
+            .breadcrumb { font-size: 12px; margin-bottom: 16px; }
+            .article-card { border-radius: 14px; }
+            .article-meta { padding: 20px 18px 0; }
+            .article-week-badge { font-size: 10px; padding: 4px 10px; margin-bottom: 14px; }
+            .article-title { font-size: 20px; margin-bottom: 14px; }
+            .article-author { flex-wrap: wrap; gap: 8px; padding-bottom: 16px; }
+            .author-details strong { font-size: 13px; }
+            .author-details span { font-size: 11px; }
+            .article-body { padding: 18px 18px 0; }
+            .article-body p { font-size: 14px; line-height: 1.75; }
+            .article-body h2 { font-size: 17px; margin: 24px 0 12px; }
+            .article-body ul li { font-size: 14px; }
+            .paywall-cta { padding: 20px 18px 24px; }
+            .paywall-cta h3 { font-size: 17px; }
+            .paywall-cta p { font-size: 13px; }
+            .btn-google-signin { font-size: 14px; padding: 12px 16px; }
+            .article-footer { padding: 16px 18px; }
+            .next-article { padding: 16px 18px 20px; }
+            .next-article-link h4 { font-size: 13px; }
+            .sidebar-card-header { padding: 14px 16px; }
+            .sidebar-series-item { padding: 12px 16px; }
+            .sidebar-item-title { font-size: 12px; }
+            .author-sidebar-card { padding: 16px; }
+            .author-sidebar-bio { font-size: 12px; }
+            .btn-nav-social { display: none !important; }
+        }
+
+        @media (max-width: 480px) {
+            .article-title { font-size: 18px; }
+            .article-body p { font-size: 14px; }
+        }
+    </style>
+
+    <script type="module">
+        import { signInWithGoogle, logout, onUserChange } from './auth.js';
+
+        let currentUser = null;
+
+        // Prevent auth flash: restore UI instantly from cached state
+        (function() {
+            const hint = localStorage.getItem('pch_auth');
+            let cached = null;
+            try { cached = JSON.parse(hint); } catch(e) {}
+            if (cached && cached.name) {
+                document.getElementById('userMenu').style.display = 'flex';
+                document.getElementById('userName').textContent = cached.name;
+                if (cached.photo) document.getElementById('userAvatar').src = cached.photo;
+            } else {
+                document.getElementById('joinBtn').style.display = 'flex';
+            }
+        })();
+
+        onUserChange((user) => {
+            currentUser = user;
+            const joinBtn = document.getElementById('joinBtn');
+            const userMenu = document.getElementById('userMenu');
+
+            if (user) {
+                localStorage.setItem('pch_auth', JSON.stringify({
+                    name: user.displayName.split(' ')[0],
+                    photo: user.photoURL || ''
+                }));
+                joinBtn.style.display = 'none';
+                userMenu.style.display = 'flex';
+                document.getElementById('userName').textContent = user.displayName.split(' ')[0];
+                if (user.photoURL) document.getElementById('userAvatar').src = user.photoURL;
+                closeModal();
+                unlockContent();
+            } else {
+                localStorage.removeItem('pch_auth');
+                joinBtn.style.display = 'flex';
+                userMenu.style.display = 'none';
+                lockContent();
+            }
+        });
+
+        function unlockContent() {
+            const preview = document.getElementById('contentPreview');
+            preview.classList.remove('content-blur');
+            document.querySelectorAll('.content-locked').forEach(el => el.style.display = 'block');
+            document.getElementById('paywallCta').style.display = 'none';
+            document.getElementById('articleFooter').style.display = 'block';
+            document.getElementById('nextArticle').style.display = 'flex';
+        }
+
+        function lockContent() {
+            const preview = document.getElementById('contentPreview');
+            preview.classList.add('content-blur');
+            document.querySelectorAll('.content-locked').forEach(el => el.style.display = 'none');
+            document.getElementById('paywallCta').style.display = 'block';
+            document.getElementById('articleFooter').style.display = 'none';
+            document.getElementById('nextArticle').style.display = 'none';
+        }
+
+        // Auth gate for sidebar links
+        document.querySelectorAll('.sidebar-series-item[data-gated]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (!currentUser) {
+                    e.preventDefault();
+                    openModal();
+                }
+            });
+        });
+
+        window.signInWithGoogleBtn = async function() {
+            try { await signInWithGoogle(); }
+            catch(e) { alert('Sign in failed. Please try again.'); }
+        };
+
+        window.logoutUser = async function() { await logout(); };
+        window.toggleMobileNav = function() {
+            const nav = document.getElementById('mobileNav');
+            const btn = document.getElementById('hamburger');
+            nav.classList.toggle('open');
+            btn.classList.toggle('open');
+            document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
+        };
+
+        window.openModal = function() {
+            document.getElementById('accessModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        };
+
+        window.closeModal = function() {
+            document.getElementById('accessModal').classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('accessModal').addEventListener('click', function(e) {
+                if (e.target === this) closeModal();
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <section class="hero-section" style="padding-bottom:0;">
+        <nav class="navbar">
+            <div class="logo">
+                <i class='bx bx-hive'></i>
+                <span translate="no">THE PROJECT CONTROL HUB</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="learn.html">Learn</a>
+                <a href="about.html">About</a>
+            </div>
+            <div class="nav-actions" style="display:flex;align-items:center;gap:10px;">
+                <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+                <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" class="btn-nav-social" translate="no"><i class='bx bxl-linkedin'></i></a>
+                <a href="https://youtube.com" target="_blank" class="btn-nav-social" translate="no"><i class='bx bxl-youtube'></i></a>
+                <button id="joinBtn" class="btn btn-primary" style="display:none;" onclick="openModal()"><i class='bx bx-log-in'></i> Sign In</button>
+                <div id="userMenu" style="display:none;align-items:center;gap:10px;">
+                    <img id="userAvatar" src="" style="width:32px;height:32px;border-radius:50%;object-fit:cover;" alt="avatar">
+                    <span id="userName" style="font-size:14px;font-weight:600;color:var(--text-light);"></span>
+                    <button class="btn btn-primary" onclick="logoutUser()" style="padding:8px 14px;font-size:13px;">Sign Out</button>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+    <!-- CONTENT PAGE -->
+    <div class="content-page">
+        <div class="content-layout">
+
+            <!-- LEFT — ARTICLE -->
+            <div>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <i class='bx bx-chevron-right'></i>
+                    <a href="learn.html">Schedule Management</a>
+                    <i class='bx bx-chevron-right'></i>
+                    <span>Week 3</span>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-meta">
+                        <div class="article-week-badge">
+                            <span class="dot-green" style="width:6px;height:6px;border-radius:50%;background:#10b981;display:inline-block;"></span>
+                            MODULE 01 · SCHEDULE MANAGEMENT · WEEK 3
+                        </div>
+                        <h1 class="article-title">That Gantt chart on the wall? It's not your schedule.</h1>
+                        <div class="article-author">
+                            <div class="author-avatar-sm">BE</div>
+                            <div class="author-details">
+                                <strong translate="no">Barış Emre Özçelik, PMP</strong>
+                                <span>Planning & Project Controls Lead · Jul 8, 2026</span>
+                            </div>
+                            <div style="margin-left:auto;display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-muted);">
+                                <i class='bx bx-time-five'></i> 8 min read
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- VIDEO -->
+                    <div class="video-container">
+                        <!-- Replace VIDEO_ID with your YouTube video ID -->
+                        <div class="video-placeholder">
+                            <i class='bx bxl-youtube'></i>
+                            <p>Video coming soon</p>
+                        </div>
+                        <!-- When video is ready, replace above div with:
+                        <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+                        -->
+                    </div>
+
+                    <!-- ARTICLE BODY — PREVIEW (visible to all) -->
+                    <div class="article-body">
+                        <div class="content-preview content-blur" id="contentPreview">
+                            <p>Walk onto any construction site and you'll see it: a big, colorful Gantt chart pinned to the wall of the site office. Someone points at it and says, "That's our schedule." I've heard it a hundred times. And every time, they're wrong — technically, precisely wrong.</p>
+
+                            <p>That chart on the wall is not the schedule. It's a photograph of what the schedule looked like at one moment in the past. Confusing the two isn't just a vocabulary problem — it's the reason updates stop happening, data goes stale, and by month three nobody trusts the plan anymore.</p>
+
+                            <p>To manage a project properly, you have to understand that "the schedule" is actually four different things, stacked on top of each other. Most people only ever see the top layer — and mistake it for the whole thing.</p>
+
+                            <!-- LOCKED CONTENT -->
+                            <div class="content-locked" style="display:none;">
+                                <h2>Layer 1: The Tool is an engine, not the schedule</h2>
+                                <p>Primavera P6. MS Project. These are not your schedule — they're the <strong>engine</strong> that processes it. Like a car engine, the tool does three jobs: it handles logic and sequencing (predecessors, successors, leads and lags), it allocates resources (capacity, loading, preventing over-allocation), and it runs analysis and control (what-if scenarios, baseline capture, variance calculation).</p>
+
+                                <p>Buying Primavera no more gives you a schedule than buying an engine gives you a car. The engine is just the thing that makes the rest run.</p>
+
+                                <h2>Layer 2: The Model is the living blueprint</h2>
+                                <p>The <strong>Schedule Model</strong> is the real thing — a massive relational database of every activity, duration, resource, and dependency in your project. And critically, it's <em>dynamic</em>, not static. Enter real progress, and it logically recalculates everything downstream. This is the layer that answers "what do we do now?" when reality shifts.</p>
+
+                                <p>Two rules keep the model healthy, and both come straight from the field:</p>
+
+                                <p><strong>Name with precision.</strong> Every activity must follow "Verb + Unique Object." Not "Pour foundation" — that's ambiguous across a project with twelve foundations. It's "Pour South Wing Foundation." On a real site, ambiguity in an activity name is how two crews show up to pour the same slab, or nobody shows up at all.</p>
+
+                                <p><strong>Never fake the dates with hard constraints.</strong> This is the one that separates professionals from amateurs. When a schedule doesn't "look right," the temptation is to force it — slap a "Must Finish On" constraint on an activity, or add an arbitrary lag to push things around. Don't. The moment you do, you break the engine's ability to recalculate automatically. A schedule full of hard constraints is a dead schedule — it can't react to change, which was the entire point. Stay faithful to real logical dependencies. Let the math tell you the truth, even when the truth is uncomfortable.</p>
+
+                                <h2>Layer 3: The Instance is a frozen snapshot</h2>
+                                <p>A <strong>Schedule Instance</strong> is the model frozen at a specific moment — last month's final version, the approved baseline, a saved what-if scenario. It doesn't change. That's the point: you use instances to compare against, to measure variance, to see how far reality has drifted from plan.</p>
+
+                                <h2>Layer 4: The Presentation is a filtered view</h2>
+                                <p>The <strong>Presentation</strong> is what most people actually see — a filtered output of an instance, shaped for a specific audience. And here's the key: the same data gets presented differently depending on who's looking.</p>
+
+                                <p>The <strong>executive</strong> gets a high-level Gantt chart — milestones, major phases, no clutter. The <strong>engineer</strong> gets a detailed network logic diagram — every relationship, every dependency. The <strong>software team</strong> gets a Kanban board. Give the wrong presentation to the wrong stakeholder and you either drown them in detail or starve them of information. Neither one can make a decision.</p>
+
+                                <h2>So what's on the wall?</h2>
+                                <p>Now we can be precise about that colorful chart in the site office. It is a <strong>Presentation</strong> of a <strong>Instance</strong>. It is a filtered picture of a frozen snapshot of the model, from some point in the past. It is — at best — three layers removed from the living thing that actually runs your project.</p>
+
+                                <p>This is why "the schedule on the wall" is so dangerous. It <em>feels</em> like the schedule. It's big and official-looking and everyone refers to it. But it doesn't recalculate, it doesn't react, and the moment site reality diverges from it, it becomes a beautiful, expensive lie. The real schedule — the Model — lives inside the tool, gets updated continuously, and quietly tells you the truth about where the project is actually heading.</p>
+
+                                <h2>The mental model to keep: Engine, Lens, Cycle</h2>
+                                <p>Three words to remember all of this: <strong>Engine</strong> — the software tool that does logic, resources, and calculation. <strong>Lens</strong> — the model and its instances, filtered into presentations for different stakeholders. And <strong>Cycle</strong> — the continuous loop of updating with real progress, which is what keeps the whole thing alive.</p>
+
+                                <h2>What's coming next</h2>
+                                <p>We've now established that the schedule is a living model, not a poster — and that the tool is just an engine. That closes out our foundations. From Week 4, we move into Schedule Strategy: the decisions you make <em>before</em> you build anything, starting with why strategy has to come before software. Follow along on LinkedIn or YouTube.</p>
+                            </div>
+                        </div>
+
+                        <!-- PAYWALL CTA -->
+                        <div class="paywall-cta" id="paywallCta">
+                            <h3>Continue reading — it's free</h3>
+                            <p>Sign in with Google to read the full article and access all content in the series.</p>
+                            <button class="btn-google-signin" onclick="signInWithGoogleBtn()">
+                                <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z" fill="#4285F4"/><path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/><path d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/><path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#EA4335"/></svg>
+                                Continue with Google
+                            </button>
+                            <p class="modal-note">No spam. One notification per week when new content drops.</p>
+                        </div>
+
+                        <!-- ARTICLE FOOTER (after login) -->
+                        <div class="article-footer" id="articleFooter">
+                            <div class="article-tags">
+                                <span class="article-tag">#ScheduleModel</span>
+                                <span class="article-tag">#PrimaveraP6</span>
+                                <span class="article-tag">#ProjectControls</span>
+                                <span class="article-tag">#Planning</span>
+                            </div>
+                        </div>
+
+                        <!-- NEXT ARTICLE NAV (after login) -->
+                        <div class="next-article" id="nextArticle" style="display:none;">
+                            <div class="next-article-label">Next in the series</div>
+                            <a href="learn.html" class="next-article-link">
+                                <div>
+                                    <span class="next-week-tag">Week 4 · Coming soon</span>
+                                    <h4>Strategy before software — scheduling approach & governance</h4>
+                                </div>
+                                <i class='bx bx-right-arrow-alt'></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT — SIDEBAR -->
+            <aside class="content-sidebar">
+
+                                <!-- SERIES NAV (populated from curriculum.js) -->
+                <div class="sidebar-card" id="seriesSidebar" data-current-week="3"></div>
+
+                <!-- AUTHOR CARD -->
+                <div class="author-sidebar-card">
+                    <div class="author-sidebar-top">
+                        <div class="author-sidebar-avatar">BE</div>
+                        <div>
+                            <span class="author-sidebar-name" translate="no">Barış Emre Özçelik</span>
+                            <span class="author-sidebar-title">Planning & Project Controls Lead, PMP</span>
+                        </div>
+                    </div>
+                    <p class="author-sidebar-bio">8+ years in planning & project controls across nuclear, mining, ports, and high-rise projects — currently on the Akkuyu NPP. Writing about what actually works on site.</p>
+                    <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" class="btn-linkedin" translate="no">
+                        <i class='bx bxl-linkedin'></i> Follow on LinkedIn
+                    </a>
+                </div>
+
+            </aside>
+        </div>
+    </div>
+
+    <!-- ACCESS MODAL -->
+    <div class="modal-overlay" id="accessModal">
+        <div class="modal-box">
+            <button class="close-modal" onclick="closeModal()"><i class='bx bx-x'></i></button>
+            <div class="modal-icon-wrapper">
+                <i class='bx bx-book-open'></i>
+            </div>
+            <h4>Free access to all content</h4>
+            <p>Sign in with Google to read the full series and get notified when new topics are published.</p>
+            <button class="btn-google-signin" onclick="signInWithGoogleBtn()">
+                <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z" fill="#4285F4"/><path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/><path d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/><path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#EA4335"/></svg>
+                Continue with Google
+            </button>
+            <p class="modal-note">No spam. One notification per week when new content drops.</p>
+        </div>
+    </div>
+
+    <!-- MOBILE NAV -->
+    <div class="mobile-nav" id="mobileNav">
+        <button class="mobile-nav-close" onclick="toggleMobileNav()"><i class='bx bx-x'></i></button>
+        <a href="index.html" onclick="toggleMobileNav()">Home</a>
+        <a href="learn.html" onclick="toggleMobileNav()">Learn</a>
+        <a href="about.html" onclick="toggleMobileNav()">About</a>
+        <div class="mobile-nav-bottom">
+            <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" translate="no"><i class='bx bxl-linkedin'></i> LinkedIn</a>
+            <a href="https://youtube.com" target="_blank" translate="no"><i class='bx bxl-youtube'></i> YouTube</a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-content" style="grid-template-columns: 1fr 1fr;">
+            <div class="footer-brand">
+                <div class="logo">
+                    <i class='bx bx-hive'></i>
+                    <span translate="no">THE PROJECT CONTROL HUB</span>
+                </div>
+                <p>Field notes on planning & project controls — by Barış Emre Özçelik, PMP.</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" translate="no"><i class='bx bxl-linkedin'></i></a>
+                    <a href="https://youtube.com" target="_blank" translate="no"><i class='bx bxl-youtube'></i></a>
+                </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:16px;">
+                <h4 style="font-size:11px;font-weight:700;letter-spacing:1px;color:#64748b;margin:0;">FOLLOW THE SERIES</h4>
+                <p style="font-size:13px;color:#64748b;margin:0;line-height:1.6;">New content every week — follow along so you don't miss the next topic.</p>
+                <div style="display:flex;gap:10px;">
+                    <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank"
+                       style="display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);color:#cbd5e1;text-decoration:none;font-size:13px;font-weight:600;transition:all 0.2s;" translate="no">
+                        <i class='bx bxl-linkedin' style="font-size:17px;"></i> LinkedIn
+                    </a>
+                    <a href="https://youtube.com" target="_blank"
+                       style="display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);color:#cbd5e1;text-decoration:none;font-size:13px;font-weight:600;transition:all 0.2s;" translate="no">
+                        <i class='bx bxl-youtube' style="font-size:17px;"></i> YouTube
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 The Project Control Hub. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+    <!-- Curriculum data + sidebar renderer -->
+    <script src="curriculum.js"></script>
+    <script>
+        (function() {
+            const el = document.getElementById('seriesSidebar');
+            if (el && typeof renderArticleSidebar === 'function') {
+                const currentWeek = parseInt(el.getAttribute('data-current-week'), 10);
+                el.innerHTML = renderArticleSidebar(currentWeek);
+                // Re-bind gated links after render
+                el.querySelectorAll('.sidebar-series-item[data-gated]').forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        if (!localStorage.getItem('pch_auth')) {
+                            e.preventDefault();
+                            sessionStorage.setItem('pch_intended', this.href);
+                            if (typeof openModal === 'function') openModal();
+                        }
+                    });
+                });
+            }
+        })();
+    </script>
+
+</body>
+</html>
