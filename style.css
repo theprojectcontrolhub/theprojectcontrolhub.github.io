@@ -969,20 +969,7 @@ ul {
     font-size: 24px;
 }
 
-.btn-linkedin {
-    background-color: #0a66c2;
-    color: var(--white);
-    border-color: #0a66c2;
-}
 
-.btn-linkedin:hover {
-    background-color: #004182;
-}
-
-.btn-google {
-    background-color: var(--white);
-    color: var(--text-dark);
-}
 
 .btn-google:hover {
     background-color: #f8fafc;
