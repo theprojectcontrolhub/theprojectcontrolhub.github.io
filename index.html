@@ -308,6 +308,13 @@
         }
         .btn-follow-bar:hover { border-color: #10b981; color: #10b981; }
 
+        /* Home latest panel pills */
+        .home-new-pill {
+            font-size: 11px; font-weight: 700; color: #10b981;
+            background: #ecfdf5; padding: 2px 8px; border-radius: 20px;
+        }
+        .home-date { font-size: 11px; color: #64748b; }
+
         @media (max-width: 768px) {
             .btn-nav-social { display: none !important; }
             .logo span { font-size: 13px !important; }
@@ -583,33 +590,10 @@
             <div class="hero-right">
                 <div class="latest-header">
                     <h3>LATEST FROM THE SERIES</h3>
-                    <span class="live-badge"><span class="dot-green"></span> Week 3 of 27 live</span>
+                    <span class="live-badge" id="homeLiveBadge"><span class="dot-green"></span> Week 3 of 27 live</span>
                 </div>
 
-                <div class="discussion-list">
-                    <a href="discussion-detail.html" class="discussion-list-item module-post-item">
-                        <span class="category-text text-green">WEEK 1 · SCHEDULE</span>
-                        <h4>Why projects fail — and why the answer is never the tools</h4>
-                        <div class="item-meta">
-                            <i class='bx bx-right-arrow-alt arrow-icon'></i>
-                        </div>
-                    </a>
-                    <a href="week-2.html" class="discussion-list-item module-post-item">
-                        <span class="category-text text-green">WEEK 2 · SCHEDULE</span>
-                        <h4>The building blocks of project controls — Scope, Time, Cost</h4>
-                        <div class="item-meta">
-                            <i class='bx bx-right-arrow-alt arrow-icon'></i>
-                        </div>
-                    </a>
-                    <a href="discussion-detail.html" class="discussion-list-item module-post-item" style="position:relative;">
-                        <span class="category-text text-green">WEEK 3 · SCHEDULE</span>
-                        <h4>That Gantt chart on the wall? It's not your schedule.</h4>
-                        <div class="item-meta">
-                            <span style="font-size:11px;color:#64748b;">Jul 1, 2026</span>
-                            <span style="font-size:11px;font-weight:700;color:#10b981;background:#ecfdf5;padding:2px 8px;border-radius:20px;">New</span>
-                            <i class='bx bx-right-arrow-alt arrow-icon'></i>
-                        </div>
-                    </a>
+                <div class="discussion-list" id="homeLatest"></div>
                 </div>
 
                 <div class="hero-follow-cta">
@@ -648,45 +632,10 @@
                                 <p class="module-desc">How to build, defend, and communicate a project schedule. Theory first, then tools.</p>
                             </div>
                         </div>
-                        <span class="module-status active-status"><span class="dot-green"></span> In Progress · Week 3 of 27</span>
+                        <span class="module-status active-status" id="homeModuleBadge"><span class="dot-green"></span> In Progress · Week 3 of 27</span>
                     </div>
 
-                    <div class="module-posts">
-                        <a href="discussion-detail.html" class="module-post-item">
-                            <span class="post-week">Week 1</span>
-                            <span class="post-title">Why projects fail — and why the answer is never the tools</span>
-                            <span class="post-date">Jun 20, 2026</span>
-                            <i class='bx bx-right-arrow-alt'></i>
-                        </a>
-                        <a href="week-2.html" class="module-post-item">
-                            <span class="post-week">Week 2</span>
-                            <span class="post-title">The building blocks of project controls — Scope, Time, Cost</span>
-                            <span class="post-date">Jun 27, 2026</span>
-                            <i class='bx bx-right-arrow-alt'></i>
-                        </a>
-                        <a href="discussion-detail.html" class="module-post-item">
-                            <span class="post-week">Week 3</span>
-                            <span class="post-title">That Gantt chart on the wall? It's not your schedule.</span>
-                            <span class="post-date">Jul 1, 2026</span>
-                            <span class="new-badge">New</span>
-                            <i class='bx bx-right-arrow-alt'></i>
-                        </a>
-                        <div class="module-post-item upcoming">
-                            <span class="post-week">Week 4</span>
-                            <span class="post-title">Strategy before software — scheduling approach & governance</span>
-                            <span class="post-upcoming">Coming soon</span>
-                        </div>
-                        <div class="module-post-item upcoming">
-                            <span class="post-week">Week 5</span>
-                            <span class="post-title">Life cycles: Critical Path, Critical Chain, Agile & Rolling Wave</span>
-                            <span class="post-upcoming">Coming soon</span>
-                        </div>
-                        <div class="module-post-item upcoming">
-                            <span class="post-week">Week 6–27</span>
-                            <span class="post-title">Development · CPM · EVM · Change Control · Forensics · Reporting</span>
-                            <span class="post-upcoming">Coming soon</span>
-                        </div>
-                    </div>
+                    <div class="module-posts" id="homeCurriculum"></div>
                 </div>
 
                 <!-- MODULE 2: EXCEL -->
@@ -813,6 +762,45 @@
             <p>&copy; 2026 The Project Control Hub. All rights reserved.</p>
         </div>
     </footer>
+
+
+    <!-- Curriculum data + home renderers -->
+    <script src="curriculum.js"></script>
+    <script>
+        (function() {
+            if (typeof CURRICULUM === 'undefined') return;
+
+            // Hero panel — latest live weeks
+            const latest = document.getElementById('homeLatest');
+            if (latest) latest.innerHTML = renderHomeLatest();
+
+            // Hero live badge
+            const liveBadge = document.getElementById('homeLiveBadge');
+            const lw = CURRICULUM.latestLiveWeek;
+            if (liveBadge && lw) {
+                liveBadge.innerHTML = '<span class="dot-green"></span> Week ' + lw.n + ' of ' + CURRICULUM.totalWeeks + ' live';
+            }
+
+            // Curriculum card — module 01 weeks
+            const curr = document.getElementById('homeCurriculum');
+            if (curr) curr.innerHTML = renderHomeCurriculum();
+
+            // Module 01 active badge
+            const modBadge = document.getElementById('homeModuleBadge');
+            if (modBadge) modBadge.innerHTML = renderHomeBadge();
+
+            // Bind gated links (both hero + curriculum)
+            document.querySelectorAll('.module-post-item[data-gated], #homeLatest a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (this.hasAttribute('data-gated') && !localStorage.getItem('pch_auth')) {
+                        e.preventDefault();
+                        sessionStorage.setItem('pch_intended', this.href);
+                        if (typeof openAccessModal === 'function') openAccessModal();
+                    }
+                });
+            });
+        })();
+    </script>
 
 </body>
 </html>

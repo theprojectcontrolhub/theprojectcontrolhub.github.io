@@ -22,7 +22,7 @@ const CURRICULUM = {
     // ---- PHASE A — FOUNDATIONS ----
     { phase: "Phase A — Foundations", n: 1, title: "Why projects fail — and why the answer is never the tools", short: "Why projects fail — and why the answer is never the tools", status: "live", page: "discussion-detail.html", date: "Jun 20, 2026" },
     { n: 2, title: "The building blocks of project controls — Scope, Time, Cost", short: "Building blocks — Scope, Time, Cost", status: "live", page: "week-2.html", date: "Jun 27, 2026" },
-    { n: 3, title: "That Gantt chart on the wall? It's not your schedule.", short: "That Gantt chart? It's not your schedule.", status: "upcoming", page: "week-3.html", new: true },
+    { n: 3, title: "That Gantt chart on the wall? It's not your schedule.", short: "That Gantt chart? It's not your schedule.", status: "upcoming" },
 
     // ---- PHASE B — SCHEDULE STRATEGY · DOMAIN 1 ----
     { phase: "Phase B — Schedule Strategy · Domain 1", n: 4, title: "Strategy before software — scheduling approach & governance", short: "Strategy before software", status: "upcoming" },
@@ -207,4 +207,70 @@ function renderHomeLatest() {
       </a>`;
   });
   return html;
+}
+
+// Home page — Module 01 curriculum card (compact, no phase dividers)
+// Shows live weeks as links + first few upcoming, then a summary row.
+function renderHomeCurriculum() {
+  const w = CURRICULUM;
+  let rows = "";
+  const live = w.weeks.filter(x => x.status === "live");
+  const upcoming = w.weeks.filter(x => x.status === "upcoming");
+
+  // all live weeks
+  live.forEach(week => {
+    const isLatest = week === w.latestLiveWeek;
+    const badge = isLatest ? '<span class="new-badge" translate="no">New</span>' : '';
+    rows += `
+      <a href="${week.page}" class="module-post-item">
+        <span class="post-week">Week ${week.n}</span>
+        <span class="post-title">${week.short}</span>
+        ${week.date ? `<span class="post-date">${week.date}</span>` : ''}
+        ${badge}
+        <i class='bx bx-right-arrow-alt'></i>
+      </a>`;
+  });
+
+  // next 2 upcoming (with a page target = gated links)
+  const nextUp = upcoming.slice(0, 2);
+  nextUp.forEach(week => {
+    if (week.page) {
+      const badge = week.new ? '<span class="new-badge" translate="no">New</span>' : '';
+      rows += `
+        <a href="${week.page}" class="module-post-item" data-gated>
+          <span class="post-week">Week ${week.n}</span>
+          <span class="post-title">${week.short}</span>
+          ${badge}
+          <i class='bx bx-right-arrow-alt'></i>
+        </a>`;
+    } else {
+      rows += `
+        <div class="module-post-item upcoming">
+          <span class="post-week">Week ${week.n}</span>
+          <span class="post-title">${week.short}</span>
+          <span class="post-upcoming">Coming soon</span>
+        </div>`;
+    }
+  });
+
+  // summary row for the rest
+  const shown = live.length + nextUp.length;
+  const restStart = w.weeks[shown] ? w.weeks[shown].n : null;
+  if (restStart) {
+    rows += `
+      <div class="module-post-item upcoming">
+        <span class="post-week">Week ${restStart}\u2013${w.totalWeeks}</span>
+        <span class="post-title">Development · CPM · EVM · Change Control · Forensics · Reporting</span>
+        <span class="post-upcoming">Coming soon</span>
+      </div>`;
+  }
+  return rows;
+}
+
+// Module badge text for home
+function renderHomeBadge() {
+  const latest = CURRICULUM.latestLiveWeek;
+  return latest
+    ? `<span class="dot-green"></span> In Progress · Week ${latest.n} of ${CURRICULUM.totalWeeks}`
+    : '';
 }
