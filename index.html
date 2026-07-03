@@ -490,8 +490,15 @@
         });
 
         window.signInWithGoogleBtn = async function() {
-            try { await signInWithGoogle(); }
-            catch(e) { alert('Sign in failed. Please try again.'); }
+            try {
+                await signInWithGoogle();
+            } catch(e) {
+                const code = e && e.code ? e.code : '';
+                if (code !== 'auth/popup-closed-by-user' &&
+                    code !== 'auth/cancelled-popup-request') {
+                    alert('Sign in failed. Please try again.');
+                }
+            }
         };
 
         window.logoutUser = async function() { await logout(); };

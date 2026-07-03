@@ -332,8 +332,17 @@
         });
 
         window.signInWithGoogleBtn = async function() {
-            try { await signInWithGoogle(); }
-            catch(e) { alert('Sign in failed. Please try again.'); }
+            try {
+                await signInWithGoogle();
+                // On mobile this redirects away; on desktop the popup resolves here.
+            } catch(e) {
+                // Only show an error for genuine failures, not user-cancelled popups.
+                const code = e && e.code ? e.code : '';
+                if (code !== 'auth/popup-closed-by-user' &&
+                    code !== 'auth/cancelled-popup-request') {
+                    alert('Sign in failed. Please try again.');
+                }
+            }
         };
 
         window.logoutUser = async function() { await logout(); };
