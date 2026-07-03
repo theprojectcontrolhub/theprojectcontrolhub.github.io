@@ -584,6 +584,8 @@
             .article-title { font-size: 18px; }
             .article-body p { font-size: 14px; }
         }
+            figure svg { width: 100%; height: auto; display: block; }
+        @media (max-width: 768px) { figure { padding: 14px !important; } }
     </style>
 
     <script type="module">
@@ -785,6 +787,55 @@
                                 <p>The rule that follows is simple and non-negotiable: <strong>if time or budget is constrained, scope or quality must come down proportionally.</strong> You cannot squeeze the deadline, freeze the budget, hold the scope, and keep the quality — all at once. Something gives. The only choice you have is whether you decide what gives, or whether the project decides for you.</p>
 
                                 <p>This is the exam's golden rule and the site's golden rule at the same time: an imbalanced plan can't be controlled. Say no to the impossible plan before it starts, not after it fails.</p>
+
+                                <figure style="margin:32px 0;padding:24px;background:#f8fafc;border-radius:16px;border:1px solid #e2e8f0;">
+                                    <svg viewBox="0 0 640 380" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif">
+  <defs>
+    <linearGradient id="beam" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#10b981"/><stop offset="1" stop-color="#059669"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Base / fulcrum -->
+  <text x="320" y="30" text-anchor="middle" fill="#0f172a" font-size="15" font-weight="700">The Triple Constraint</text>
+
+  <!-- Left pan: Scope + Quality -->
+  <g>
+    <rect x="70" y="120" width="170" height="70" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
+    <text x="155" y="150" text-anchor="middle" fill="#059669" font-size="15" font-weight="700">Scope</text>
+    <text x="155" y="172" text-anchor="middle" fill="#059669" font-size="15" font-weight="700">+ Quality</text>
+    <!-- hanging strings -->
+    <line x1="90" y1="90" x2="90" y2="120" stroke="#cbd5e1" stroke-width="1.5"/>
+    <line x1="220" y1="90" x2="220" y2="120" stroke="#cbd5e1" stroke-width="1.5"/>
+  </g>
+
+  <!-- Right pan: Time + Budget -->
+  <g>
+    <rect x="400" y="120" width="170" height="70" rx="10" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5"/>
+    <text x="485" y="150" text-anchor="middle" fill="#334155" font-size="15" font-weight="700">Time</text>
+    <text x="485" y="172" text-anchor="middle" fill="#334155" font-size="15" font-weight="700">+ Budget</text>
+    <line x1="420" y1="90" x2="420" y2="120" stroke="#cbd5e1" stroke-width="1.5"/>
+    <line x1="550" y1="90" x2="550" y2="120" stroke="#cbd5e1" stroke-width="1.5"/>
+  </g>
+
+  <!-- Balance beam -->
+  <rect x="80" y="82" width="480" height="10" rx="5" fill="url(#beam)"/>
+  <!-- Fulcrum triangle -->
+  <path d="M320,92 L295,140 L345,140 Z" fill="#0f172a"/>
+
+  <!-- Resources base -->
+  <rect x="230" y="230" width="180" height="50" rx="10" fill="#0f172a"/>
+  <text x="320" y="261" text-anchor="middle" fill="#10b981" font-size="14" font-weight="700">Resources</text>
+  <!-- connector fulcrum to base -->
+  <line x1="320" y1="140" x2="320" y2="230" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4"/>
+
+  <!-- Rule text -->
+  <text x="320" y="320" text-anchor="middle" fill="#64748b" font-size="12">Constrain one side and the other must move.</text>
+  <text x="320" y="340" text-anchor="middle" fill="#94a3b8" font-size="12">You decide what gives — or the project decides for you.</text>
+</svg>
+
+                                    <figcaption style="text-align:center;font-size:13px;color:#64748b;margin-top:16px;">Scope and Quality sit on one side, Time and Budget on the other — all resting on Resources. Squeeze the deadline or freeze the budget, and scope or quality must come down to match.</figcaption>
+                                </figure>
 
                                 <h2>The WBS is the central nervous system</h2>
                                 <p>If Scope-Time-Cost is the body, the Work Breakdown Structure is its nervous system. Get the WBS wrong and every signal that travels through the project — every progress update, every cost report, every forecast — is wrong at the source.</p>

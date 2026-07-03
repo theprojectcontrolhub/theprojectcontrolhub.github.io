@@ -584,6 +584,8 @@
             .article-title { font-size: 18px; }
             .article-body p { font-size: 14px; }
         }
+            figure svg { width: 100%; height: auto; display: block; }
+        @media (max-width: 768px) { figure { padding: 14px !important; } }
     </style>
 
     <script type="module">
@@ -793,6 +795,66 @@
                                 <p><strong>4. Organizational Shifts.</strong> A site is an ecosystem — one broken link stops everything. At the busiest phase, the main electrical subcontractor hits a financial crisis and walks off. Finding a replacement, signing contracts, mobilizing, analyzing the as-built state left behind: a 3–4 week black period. Meanwhile the ceiling crew and the painters, who were waiting on electrical, can't work either.</p>
 
                                 <p><strong>5. Environmental Factors.</strong> The soil report looked clean. Excavation starts — and hits an unexpected rock layer, or high-pressure groundwater. The standard excavator stops; now you need breakers, blasting crews, or dewatering systems. Or weeks of high winds exceed the crane's operating limits and vertical transport simply locks. External, uncontrollable, and absolutely predictable in one sense: something like this always happens.</p>
+
+                                <figure style="margin:32px 0;padding:24px;background:#f8fafc;border-radius:16px;border:1px solid #e2e8f0;">
+                                    <svg viewBox="0 0 680 340" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif">
+  <!-- Center: baseline under attack -->
+  <rect x="270" y="140" width="140" height="60" rx="12" fill="url(#fg)"/>
+  <defs>
+    <linearGradient id="fg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#10b981"/><stop offset="1" stop-color="#059669"/>
+    </linearGradient>
+    <marker id="fa" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#ef4444"/>
+    </marker>
+  </defs>
+  <text x="340" y="167" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">Your</text>
+  <text x="340" y="186" text-anchor="middle" fill="#d1fae5" font-size="13" font-weight="700">Baseline</text>
+
+  <!-- 5 forces around it -->
+  <!-- top-left -->
+  <g>
+    <rect x="30" y="30" width="180" height="52" rx="10" fill="#fff" stroke="#fecaca" stroke-width="1.5"/>
+    <text x="120" y="52" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="700">1 · Planning Gaps</text>
+    <text x="120" y="70" text-anchor="middle" fill="#94a3b8" font-size="10">missing curing time, lead times</text>
+  </g>
+  <line x1="180" y1="82" x2="285" y2="145" stroke="#ef4444" stroke-width="1.5" marker-end="url(#fa)" opacity="0.6"/>
+
+  <!-- top-right -->
+  <g>
+    <rect x="470" y="30" width="180" height="52" rx="10" fill="#fff" stroke="#fecaca" stroke-width="1.5"/>
+    <text x="560" y="52" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="700">2 · Scope Decomposition</text>
+    <text x="560" y="70" text-anchor="middle" fill="#94a3b8" font-size="10">hidden clashes surface</text>
+  </g>
+  <line x1="500" y1="82" x2="395" y2="145" stroke="#ef4444" stroke-width="1.5" marker-end="url(#fa)" opacity="0.6"/>
+
+  <!-- mid-left -->
+  <g>
+    <rect x="10" y="155" width="180" height="52" rx="10" fill="#fff" stroke="#fecaca" stroke-width="1.5"/>
+    <text x="100" y="177" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="700">3 · Formal Changes</text>
+    <text x="100" y="195" text-anchor="middle" fill="#94a3b8" font-size="10">client redesigns mid-project</text>
+  </g>
+  <line x1="192" y1="176" x2="265" y2="172" stroke="#ef4444" stroke-width="1.5" marker-end="url(#fa)" opacity="0.6"/>
+
+  <!-- bottom-left -->
+  <g>
+    <rect x="60" y="270" width="200" height="52" rx="10" fill="#fff" stroke="#fecaca" stroke-width="1.5"/>
+    <text x="160" y="292" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="700">4 · Organizational Shifts</text>
+    <text x="160" y="310" text-anchor="middle" fill="#94a3b8" font-size="10">subcontractor walks off</text>
+  </g>
+  <line x1="215" y1="270" x2="290" y2="200" stroke="#ef4444" stroke-width="1.5" marker-end="url(#fa)" opacity="0.6"/>
+
+  <!-- bottom-right -->
+  <g>
+    <rect x="420" y="270" width="200" height="52" rx="10" fill="#fff" stroke="#fecaca" stroke-width="1.5"/>
+    <text x="520" y="292" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="700">5 · Environmental Factors</text>
+    <text x="520" y="310" text-anchor="middle" fill="#94a3b8" font-size="10">rock layer, wind, groundwater</text>
+  </g>
+  <line x1="465" y1="270" x2="390" y2="200" stroke="#ef4444" stroke-width="1.5" marker-end="url(#fa)" opacity="0.6"/>
+</svg>
+
+                                    <figcaption style="text-align:center;font-size:13px;color:#64748b;margin-top:16px;">Even a perfect baseline is under constant attack from five forces. A static plan absorbs the hits silently; a dynamic model shows you the impact the moment each one lands.</figcaption>
+                                </figure>
 
                                 <h2>What a real schedule actually does</h2>
                                 <p>A planning engineer's job isn't just knowing how many days a concrete pour takes. It's managing the subcontractor's bankruptcy risk, the wind speed, the client's change of mind, and the blind spots in the design — all inside one living model.</p>
