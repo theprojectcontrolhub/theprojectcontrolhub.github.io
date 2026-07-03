@@ -789,52 +789,52 @@
                                 <p>This is the exam's golden rule and the site's golden rule at the same time: an imbalanced plan can't be controlled. Say no to the impossible plan before it starts, not after it fails.</p>
 
                                 <figure style="margin:32px 0;padding:24px;background:#f8fafc;border-radius:16px;border:1px solid #e2e8f0;">
-                                    <svg viewBox="0 0 640 380" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif">
+                                    <svg viewBox="0 0 640 460" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif">
   <defs>
-    <linearGradient id="beam" x1="0" y1="0" x2="1" y2="0">
+    <linearGradient id="tri" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#10b981"/><stop offset="1" stop-color="#059669"/>
     </linearGradient>
   </defs>
 
-  <!-- Base / fulcrum -->
-  <text x="320" y="30" text-anchor="middle" fill="#0f172a" font-size="15" font-weight="700">The Triple Constraint</text>
+  <text x="320" y="36" text-anchor="middle" fill="#0f172a" font-size="16" font-weight="700">The Project Triangle</text>
 
-  <!-- Left pan: Scope + Quality -->
-  <g>
-    <rect x="70" y="120" width="170" height="70" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
-    <text x="155" y="150" text-anchor="middle" fill="#059669" font-size="15" font-weight="700">Scope</text>
-    <text x="155" y="172" text-anchor="middle" fill="#059669" font-size="15" font-weight="700">+ Quality</text>
-    <!-- hanging strings -->
-    <line x1="90" y1="90" x2="90" y2="120" stroke="#cbd5e1" stroke-width="1.5"/>
-    <line x1="220" y1="90" x2="220" y2="120" stroke="#cbd5e1" stroke-width="1.5"/>
+  <!-- Triangle -->
+  <polygon points="320,80 540,390 100,390" fill="url(#tri)" opacity="0.08" stroke="url(#tri)" stroke-width="4" stroke-linejoin="round"/>
+
+  <!-- Quality core -->
+  <text x="320" y="320" text-anchor="middle" fill="#059669" font-size="17" font-weight="700">Quality</text>
+  <text x="320" y="340" text-anchor="middle" fill="#10b981" font-size="11">held at the centre</text>
+
+  <!-- Corner dots + labels -->
+  <circle cx="320" cy="80" r="7" fill="#059669"/>
+  <circle cx="540" cy="390" r="7" fill="#059669"/>
+  <circle cx="100" cy="390" r="7" fill="#059669"/>
+
+  <!-- SCOPE label — top left of left edge -->
+  <g transform="translate(150,210)">
+    <rect x="-48" y="-18" width="96" height="36" rx="9" fill="#0f172a"/>
+    <text x="0" y="6" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">Scope</text>
+  </g>
+  <line x1="150" y1="228" x2="205" y2="240" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="3"/>
+
+  <!-- TIME label — top right of right edge -->
+  <g transform="translate(490,210)">
+    <rect x="-45" y="-18" width="90" height="36" rx="9" fill="#0f172a"/>
+    <text x="0" y="6" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">Time</text>
+  </g>
+  <line x1="490" y1="228" x2="435" y2="240" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="3"/>
+
+  <!-- COST label — below bottom edge -->
+  <g transform="translate(320,418)">
+    <rect x="-45" y="-18" width="90" height="36" rx="9" fill="#0f172a"/>
+    <text x="0" y="6" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">Cost</text>
   </g>
 
-  <!-- Right pan: Time + Budget -->
-  <g>
-    <rect x="400" y="120" width="170" height="70" rx="10" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5"/>
-    <text x="485" y="150" text-anchor="middle" fill="#334155" font-size="15" font-weight="700">Time</text>
-    <text x="485" y="172" text-anchor="middle" fill="#334155" font-size="15" font-weight="700">+ Budget</text>
-    <line x1="420" y1="90" x2="420" y2="120" stroke="#cbd5e1" stroke-width="1.5"/>
-    <line x1="550" y1="90" x2="550" y2="120" stroke="#cbd5e1" stroke-width="1.5"/>
-  </g>
-
-  <!-- Balance beam -->
-  <rect x="80" y="82" width="480" height="10" rx="5" fill="url(#beam)"/>
-  <!-- Fulcrum triangle -->
-  <path d="M320,92 L295,140 L345,140 Z" fill="#0f172a"/>
-
-  <!-- Resources base -->
-  <rect x="230" y="230" width="180" height="50" rx="10" fill="#0f172a"/>
-  <text x="320" y="261" text-anchor="middle" fill="#10b981" font-size="14" font-weight="700">Resources</text>
-  <!-- connector fulcrum to base -->
-  <line x1="320" y1="140" x2="320" y2="230" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4"/>
-
-  <!-- Rule text -->
-  <text x="320" y="320" text-anchor="middle" fill="#64748b" font-size="12">Constrain one side and the other must move.</text>
-  <text x="320" y="340" text-anchor="middle" fill="#94a3b8" font-size="12">You decide what gives — or the project decides for you.</text>
+  <!-- Rule -->
+  <text x="320" y="450" text-anchor="middle" fill="#64748b" font-size="12.5">Change one side and the others must move — you cannot fix all three at once.</text>
 </svg>
 
-                                    <figcaption style="text-align:center;font-size:13px;color:#64748b;margin-top:16px;">Scope and Quality sit on one side, Time and Budget on the other — all resting on Resources. Squeeze the deadline or freeze the budget, and scope or quality must come down to match.</figcaption>
+                                    <figcaption style="text-align:center;font-size:13px;color:#64748b;margin-top:16px;">Scope, Time, and Cost form the three sides; Quality sits in the middle. Push one corner — tighten the deadline, cut the budget — and the triangle can only hold its shape if another side gives.</figcaption>
                                 </figure>
 
                                 <h2>The WBS is the central nervous system</h2>
