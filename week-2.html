@@ -856,37 +856,8 @@
             <!-- RIGHT — SIDEBAR -->
             <aside class="content-sidebar">
 
-                <!-- SERIES NAV -->
-                <div class="sidebar-card">
-                    <div class="sidebar-card-header">
-                        <h4>Schedule Management · 27 Weeks</h4>
-                    </div>
-                    <a href="discussion-detail.html" class="sidebar-series-item">
-                        <span class="sidebar-week">Week 1</span>
-                        <span class="sidebar-item-title">Why projects fail — and why the answer is never the tools</span>
-                    </a>
-                    <a href="week-2.html" class="sidebar-series-item active">
-                        <span class="sidebar-week">Week 2</span>
-                        <span class="sidebar-item-title">Building blocks — Scope, Time, Cost</span>
-                    </a>
-                    <a href="week-3.html" class="sidebar-series-item" data-gated>
-                        <span class="sidebar-week">Week 3</span>
-                        <span class="sidebar-item-title">That Gantt chart? It's not your schedule.</span>
-                        <span class="sidebar-new">New</span>
-                    </a>
-                    <div class="sidebar-series-item upcoming">
-                        <span class="sidebar-week">Week 4</span>
-                        <span class="sidebar-item-title">Strategy before software</span>
-                    </div>
-                    <div class="sidebar-series-item upcoming">
-                        <span class="sidebar-week">Week 5</span>
-                        <span class="sidebar-item-title">Life cycles: CPM, Critical Chain, Agile</span>
-                    </div>
-                    <div class="sidebar-series-item upcoming">
-                        <span class="sidebar-week">6–27</span>
-                        <span class="sidebar-item-title">Development · CPM · EVM · Forensics · Reporting</span>
-                    </div>
-                </div>
+                                <!-- SERIES NAV (populated from curriculum.js) -->
+                <div class="sidebar-card" id="seriesSidebar" data-current-week="2"></div>
 
                 <!-- AUTHOR CARD -->
                 <div class="author-sidebar-card">
@@ -969,6 +940,29 @@
             <p>&copy; 2026 The Project Control Hub. All rights reserved.</p>
         </div>
     </footer>
+
+
+    <!-- Curriculum data + sidebar renderer -->
+    <script src="curriculum.js"></script>
+    <script>
+        (function() {
+            const el = document.getElementById('seriesSidebar');
+            if (el && typeof renderArticleSidebar === 'function') {
+                const currentWeek = parseInt(el.getAttribute('data-current-week'), 10);
+                el.innerHTML = renderArticleSidebar(currentWeek);
+                // Re-bind gated links after render
+                el.querySelectorAll('.sidebar-series-item[data-gated]').forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        if (!localStorage.getItem('pch_auth')) {
+                            e.preventDefault();
+                            sessionStorage.setItem('pch_intended', this.href);
+                            if (typeof openModal === 'function') openModal();
+                        }
+                    });
+                });
+            }
+        })();
+    </script>
 
 </body>
 </html>
