@@ -7,7 +7,8 @@ import {
   signInWithRedirect,
   getRedirectResult,
   signOut,
-  onAuthStateChanged
+  onAuthStateChanged,
+  browserPopupRedirectResolver
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
 const firebaseConfig = {
@@ -23,54 +24,44 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
-// Always prompt account selection (nicer UX, avoids silent-fail on some devices)
 provider.setCustomParameters({ prompt: "select_account" });
 
-// Detect mobile / in-app browsers where popups fail
-function isMobile() {
-  return /Android|iPhone|iPad|iPod|Mobile|webOS|BlackBerry|IEMobile|Opera Mini/i.test(
-    navigator.userAgent
-  );
-}
-
-// On page load, complete any pending redirect sign-in.
-// This runs automatically when the user comes back from the Google redirect.
+// Complete any pending redirect result on load (fallback path only).
 getRedirectResult(auth).catch((error) => {
-  // Non-fatal: just log. The auth state listener will handle the result.
   console.error("Redirect result error:", error);
 });
 
-// Sign in — popup on desktop, redirect on mobile
+// Sign in with Google.
+// POPUP first on every device — modern mobile browsers support it and it avoids
+// the third-party-cookie failures that break signInWithRedirect. Redirect only
+// as a last resort when the popup genuinely cannot run.
 export async function signInWithGoogle() {
-  if (isMobile()) {
-    // Redirect flow: navigates away to Google, then back to the site.
-    // No return value here — onUserChange fires after redirect completes.
-    await signInWithRedirect(auth, provider);
-    return null;
-  }
-
-  // Desktop: popup flow. If the popup is blocked, fall back to redirect.
   try {
-    const result = await signInWithPopup(auth, provider);
+    const result = await signInWithPopup(auth, provider, browserPopupRedirectResolver);
     return result.user;
   } catch (error) {
-    const code = error && error.code ? error.code : "";
+    const code = (error && error.code) ? error.code : "";
+
+    if (
+      code === "auth/popup-closed-by-user" ||
+      code === "auth/cancelled-popup-request"
+    ) {
+      return null; // user dismissed — let them retry
+    }
+
     if (
       code === "auth/popup-blocked" ||
-      code === "auth/popup-closed-by-user" ||
-      code === "auth/cancelled-popup-request" ||
       code === "auth/operation-not-supported-in-this-environment"
     ) {
-      // Popup didn't work — use redirect instead
-      await signInWithRedirect(auth, provider);
+      await signInWithRedirect(auth, provider); // fallback
       return null;
     }
+
     console.error("Giriş hatası:", error);
     throw error;
   }
 }
 
-// Sign out
 export async function logout() {
   try {
     await signOut(auth);
@@ -79,7 +70,6 @@ export async function logout() {
   }
 }
 
-// Watch auth state
 export function onUserChange(callback) {
   return onAuthStateChanged(auth, callback);
 }
