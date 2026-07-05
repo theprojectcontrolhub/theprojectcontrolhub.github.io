@@ -310,6 +310,83 @@
             .about-divider { margin: 20px 0; }
             .btn-nav-social { display: none !important; }
         }
+
+        /* WHAT YOU'LL LEARN — chip grid */
+        .learn-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px;
+        }
+        .learn-chip {
+            font-size: 13px;
+            font-weight: 600;
+            color: #059669;
+            background: #ecfdf5;
+            border: 1px solid #a7f3d0;
+            padding: 8px 16px;
+            border-radius: 8px;
+        }
+
+        /* TIMELINE — sector tag */
+        .timeline-tag {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #10b981;
+            margin: 0 0 4px;
+        }
+
+        /* MY APPROACH — quote */
+        .approach-quote {
+            background: #052e26;
+            border-radius: 14px;
+            padding: 24px 28px;
+            margin: 18px 0;
+            text-align: center;
+        }
+        .approach-quote p {
+            color: #6ee7b7 !important;
+            font-size: 18px !important;
+            font-weight: 700;
+            font-style: italic;
+            line-height: 1.5 !important;
+        }
+
+        /* CERTIFICATIONS — compact pills */
+        .cert-compact {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 16px;
+        }
+        .cert-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #334155;
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            padding: 12px 16px;
+            border-radius: 10px;
+        }
+        .cert-pill i {
+            color: #10b981;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        /* MOBILE tweaks for new elements */
+        @media (max-width: 768px) {
+            .learn-chip { font-size: 12px; padding: 7px 12px; }
+            .approach-quote { padding: 18px; }
+            .approach-quote p { font-size: 16px !important; }
+            .cert-pill { font-size: 13px; padding: 10px 14px; }
+        }
+
     </style>
 
     <script type="module">
@@ -426,12 +503,13 @@
     <div class="about-page">
         <div class="about-container">
 
-            <!-- PROFILE -->
+            <!-- HERO / PROFILE -->
             <div class="about-profile">
                 <div class="about-avatar">BE</div>
                 <div class="about-profile-info">
+                    <p style="font-size:14px;color:#10b981;font-weight:600;margin:0 0 4px;">Hi, I'm</p>
                     <h1 translate="no">Barış Emre Özçelik</h1>
-                    <p>Planning & Project Controls Lead · Civil Engineer · PMP®</p>
+                    <p>Planning &amp; Project Controls Lead · Civil Engineer · PMP®</p>
                     <div class="about-profile-tags">
                         <span class="about-tag">Nuclear</span>
                         <span class="about-tag">Mining</span>
@@ -445,122 +523,86 @@
                 </div>
             </div>
 
+            <div class="about-content" style="margin-top:24px;">
+                <p style="font-size:16px;line-height:1.8;">I help engineers understand how real construction projects are planned, monitored, and recovered — not just how scheduling software works.</p>
+                <p>Over the past eight years, I've worked on some of the world's largest industrial projects, including nuclear power plants, mining facilities, ports, and high-rise developments.</p>
+                <p>Today, I share those lessons through <strong>The Project Control Hub</strong>.</p>
+            </div>
+
             <div class="about-divider"></div>
 
-            <!-- WHO I AM -->
+            <!-- WHY I BUILT THIS -->
             <div class="about-content">
-                <h2>Who I am</h2>
-                <p>I'm a Civil Engineer and Planning & Project Controls Lead with over 8 years of experience on large-scale industrial and infrastructure projects — across nuclear, mining, ports, and high-rise construction. I currently lead planning and project controls on the Akkuyu Nuclear Power Plant, one of the largest active construction projects in the world.</p>
-                <p>My work sits at the intersection of scheduling, analysis, and communication: Primavera P6, Earned Value Management, delay and schedule-impact analysis, and Power BI reporting. But what actually shaped my understanding wasn't the certifications — it was the field. Years of coordinating clients, consultants, and multidisciplinary site teams to keep critical milestones on track, and turning messy project data into decisions people can act on.</p>
+                <h2>Why I built this hub</h2>
+                <p>Most project controls resources focus on software. They teach where to click. They explain which button to press.</p>
+                <p>But very few explain how experienced planners actually <em>think</em>.</p>
+                <p>After years of working with Primavera P6, delay analysis, Earned Value Management, forecasting, and executive reporting, I realized something:</p>
+                <div class="about-why">
+                    <p style="margin:0;font-size:16px;"><strong>Projects don't succeed because someone knows Primavera. Projects succeed because people make better decisions.</strong></p>
+                </div>
+                <p>That's why I created this platform. Every article here is based on lessons learned from real projects — not classroom examples.</p>
+            </div>
+
+            <div class="about-divider"></div>
+
+            <!-- WHAT YOU'LL LEARN -->
+            <div class="about-content">
+                <h2>What you'll learn here</h2>
+                <p>Instead of learning isolated software features, you'll learn how Project Controls works as an integrated system.</p>
+                <div class="learn-grid">
+                    <span class="learn-chip">Planning Philosophy</span>
+                    <span class="learn-chip">Primavera P6</span>
+                    <span class="learn-chip">Critical Path Method</span>
+                    <span class="learn-chip">Delay Analysis</span>
+                    <span class="learn-chip">Earned Value Management</span>
+                    <span class="learn-chip">Recovery Scheduling</span>
+                    <span class="learn-chip">Progress Measurement</span>
+                    <span class="learn-chip">Risk-Based Planning</span>
+                    <span class="learn-chip">Power BI Reporting</span>
+                    <span class="learn-chip">Construction Productivity</span>
+                </div>
             </div>
 
             <div class="about-divider"></div>
 
             <!-- EXPERIENCE -->
             <div class="about-content">
-                <h2>Experience</h2>
+                <h2>My experience</h2>
                 <div class="about-timeline">
                     <div class="timeline-item">
-                        <div class="timeline-dot"><i class='bx bx-buildings'></i></div>
+                        <div class="timeline-dot"><i class='bx bx-radio-circle-marked'></i></div>
                         <div class="timeline-body">
-                            <p class="timeline-role">Planning & Project Controls Lead</p>
-                            <p class="timeline-company">IC İçtaş · Akkuyu Nuclear Power Plant</p>
-                            <p class="timeline-period">Nov 2025 — Present · Mersin, Türkiye</p>
-                            <p class="timeline-desc">Leading end-to-end planning and project controls: scheduling, progress measurement, forecasting, and reporting across multidisciplinary construction activities in Primavera P6. Built executive Power BI dashboards giving leadership real-time visibility into performance and milestones. Leading critical delay and schedule-impact analyses with mitigation and recovery plans.</p>
+                            <p class="timeline-tag">Nuclear Power</p>
+                            <p class="timeline-role">Planning &amp; Project Controls Lead</p>
+                            <p class="timeline-company">IC İçtaş — Akkuyu Nuclear Power Plant</p>
+                            <p class="timeline-desc">Leading planning, forecasting, progress measurement, Power BI reporting, and delay analysis on one of the world's largest nuclear construction projects.</p>
                         </div>
                     </div>
                     <div class="timeline-item">
-                        <div class="timeline-dot"><i class='bx bx-world'></i></div>
+                        <div class="timeline-dot"><i class='bx bx-cube'></i></div>
                         <div class="timeline-body">
-                            <p class="timeline-role">Senior Planning & Project Controls Specialist</p>
-                            <p class="timeline-company">Tekfen Construction · Ma'aden Phosphate 3</p>
-                            <p class="timeline-period">May 2025 — Nov 2025 · Saudi Arabia</p>
-                            <p class="timeline-desc">Managed planning and project controls for the Beneficiation Plant (Phase 1). Optimized Level 4 schedules in Primavera P6, monitored critical path activities monthly, and maintained delay logs with mitigation recommendations to minimize schedule impacts.</p>
+                            <p class="timeline-tag">Mining</p>
+                            <p class="timeline-role">Senior Planning &amp; Project Controls Specialist</p>
+                            <p class="timeline-company">Tekfen Construction — Ma'aden Phosphate 3</p>
+                            <p class="timeline-desc">Managed Level 4 Primavera schedules, Earned Value Analysis, productivity studies, and recovery planning on a major EPC mining project.</p>
                         </div>
                     </div>
                     <div class="timeline-item">
-                        <div class="timeline-dot"><i class='bx bx-buildings'></i></div>
+                        <div class="timeline-dot"><i class='bx bx-anchor'></i></div>
                         <div class="timeline-body">
-                            <p class="timeline-role">Senior Planning & Project Controls Specialist</p>
-                            <p class="timeline-company">IC İçtaş · Akkuyu Nuclear Power Plant</p>
-                            <p class="timeline-period">Jun 2024 — May 2025 · Mersin, Türkiye</p>
-                            <p class="timeline-desc">Supported project controls on the master schedule in Primavera P6. Prepared weekly and monthly Power BI dashboards, performed delay analysis, and coordinated with client, consultants, and site teams to validate progress data and ensure reporting accuracy.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"><i class='bx bx-briefcase'></i></div>
-                        <div class="timeline-body">
-                            <p class="timeline-role">Project Control Consultant</p>
-                            <p class="timeline-company">Beğen Construction</p>
-                            <p class="timeline-period">Jan 2021 — Apr 2024 · Ankara, Türkiye</p>
-                            <p class="timeline-desc">Developed master work schedules in Primavera P6, managed cash flow forecasts, performed Earned Value Analysis, and implemented Power BI dashboards for digital progress reporting — including the master schedule for a high-rise residential complex.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"><i class='bx bx-world'></i></div>
-                        <div class="timeline-body">
+                            <p class="timeline-tag">Ports</p>
                             <p class="timeline-role">Project Control Specialist</p>
-                            <p class="timeline-company">STFA Construction Group · Nador West Med Port</p>
-                            <p class="timeline-period">Aug 2019 — Aug 2020 · Morocco</p>
-                            <p class="timeline-desc">Managed project controls for the $800M port project. Monitored and updated Primavera P6 schedules, tracked SPI/CPI performance, and developed delay analysis reports supporting claims and mitigation strategies.</p>
+                            <p class="timeline-company">STFA — Nador West Med Port</p>
+                            <p class="timeline-desc">Supported schedule control, SPI/CPI analysis, and delay reporting for an $800M international port development.</p>
                         </div>
                     </div>
                     <div class="timeline-item">
-                        <div class="timeline-dot"><i class='bx bx-hard-hat'></i></div>
+                        <div class="timeline-dot"><i class='bx bx-buildings'></i></div>
                         <div class="timeline-body">
-                            <p class="timeline-role">Earlier Roles — Planning & Technical Office</p>
-                            <p class="timeline-company">Alpkon Yapı Tasarım · Kasil Construction</p>
-                            <p class="timeline-period">2017 — 2019 · Ankara, Türkiye</p>
-                            <p class="timeline-desc">Planning consultancy across multiple projects: WBS development, work schedules in Primavera, BoQ preparation, and daily/weekly/monthly progress reporting on building projects.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- EDUCATION -->
-            <div class="about-content">
-                <h2>Education</h2>
-                <div class="about-certs">
-                    <div class="cert-item">
-                        <div class="cert-icon"><i class='bx bxs-graduation'></i></div>
-                        <div>
-                            <p class="cert-name">MBA — in progress</p>
-                            <p class="cert-issuer">Istanbul University · 2026–2027</p>
-                        </div>
-                    </div>
-                    <div class="cert-item">
-                        <div class="cert-icon"><i class='bx bxs-graduation'></i></div>
-                        <div>
-                            <p class="cert-name">BSc Civil Engineering</p>
-                            <p class="cert-issuer">Muğla Sıtkı Koçman University · 2012–2017</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- CERTIFICATIONS -->
-            <div class="about-content">
-                <h2>Certifications</h2>
-                <div class="about-certs">
-                    <div class="cert-item">
-                        <div class="cert-icon"><i class='bx bxs-badge-check'></i></div>
-                        <div>
-                            <p class="cert-name">Project Management Professional (PMP)®</p>
-                            <p class="cert-issuer">Project Management Institute · 2026</p>
-                        </div>
-                    </div>
-                    <div class="cert-item">
-                        <div class="cert-icon"><i class='bx bxs-badge-check'></i></div>
-                        <div>
-                            <p class="cert-name">Oracle Primavera P6 Specialist</p>
-                            <p class="cert-issuer">AKIM Mühendislik · 2024</p>
-                        </div>
-                    </div>
-                    <div class="cert-item">
-                        <div class="cert-icon"><i class='bx bxs-badge-check'></i></div>
-                        <div>
-                            <p class="cert-name">Advanced Planning: Baseline Schedule with Primavera P6 & Excel</p>
-                            <p class="cert-issuer">Planning Engineer FZE · 2023</p>
+                            <p class="timeline-tag">High-Rise Buildings</p>
+                            <p class="timeline-role">Project Planning &amp; Technical Office</p>
+                            <p class="timeline-company">Residential &amp; Commercial Construction</p>
+                            <p class="timeline-desc">Developed WBS structures, schedules, BoQs, and progress reporting across residential and commercial building projects.</p>
                         </div>
                     </div>
                 </div>
@@ -568,20 +610,54 @@
 
             <div class="about-divider"></div>
 
-            <!-- WHY THIS SITE -->
+            <!-- MY APPROACH -->
             <div class="about-content">
-                <h2>Why I built this</h2>
-                <div class="about-why">
-                    <p>Most of what's written about project controls is either too theoretical to be useful or too tool-specific to transfer. You read about Primavera P6 without understanding what a schedule is actually for. You learn EVM formulas without knowing when and why they matter on a real project.</p>
-                    <p>I built this site to bridge that gap. Everything here starts from first principles — why things work the way they do — and then moves into the practical tools and techniques that make a difference on site.</p>
-                    <p>This isn't a course catalogue or a community platform. It's a structured series of articles and videos, published weekly, built around the way I wish I had been taught when I was starting out. If you're a planning engineer, a project controls specialist, or simply someone trying to understand how large construction projects are actually managed — this is for you.</p>
+                <h2>My approach</h2>
+                <p>I believe Project Controls is much more than scheduling. It's about turning uncertainty into decisions.</p>
+                <p>Every schedule should answer one question:</p>
+                <div class="approach-quote">
+                    <p style="margin:0;">"If something changes today, what happens tomorrow?"</p>
                 </div>
+                <p>That philosophy shapes every article, diagram, and lesson published on this platform.</p>
+            </div>
+
+            <div class="about-divider"></div>
+
+            <!-- BEYOND THE JOB -->
+            <div class="about-content">
+                <h2>Beyond the job title</h2>
+                <p>Outside work, I'm passionate about simplifying complex engineering concepts. I enjoy turning technical subjects into practical lessons that engineers can immediately apply on site.</p>
+                <p>Whether you're a student, a planning engineer, or an experienced project manager, my goal is the same: <strong>help you think like a Project Controls professional — not just use the software.</strong></p>
+            </div>
+
+            <div class="about-divider"></div>
+
+            <!-- CERTIFICATIONS (compact) -->
+            <div class="about-content">
+                <h2>Certifications</h2>
+                <div class="cert-compact">
+                    <span class="cert-pill"><i class='bx bxs-badge-check'></i> PMP® — Project Management Institute</span>
+                    <span class="cert-pill"><i class='bx bxs-badge-check'></i> Oracle Primavera P6</span>
+                    <span class="cert-pill"><i class='bx bxs-badge-check'></i> Advanced Planning &amp; Baseline Scheduling</span>
+                    <span class="cert-pill"><i class='bx bxs-badge-check'></i> Planning &amp; Cost Control</span>
+                    <span class="cert-pill"><i class='bx bxs-badge-check'></i> Power BI Reporting</span>
+                    <span class="cert-pill"><i class='bx bxs-badge-check'></i> Advanced Microsoft Excel</span>
+                </div>
+            </div>
+
+            <div class="about-divider"></div>
+
+            <!-- WHAT'S NEXT -->
+            <div class="about-content">
+                <h2>What's next?</h2>
+                <p>The Project Control Hub is a long-term project. Every week, I publish a new lesson covering the principles, tools, and real-world decisions behind successful Project Controls.</p>
+                <p>My goal isn't to build another blog. It's to build one of the most practical free learning resources for construction planning and project controls.</p>
             </div>
 
             <!-- CONNECT -->
             <div class="about-content">
-                <h2>Connect</h2>
-                <p>You can follow the series and reach me on LinkedIn or YouTube. I publish new content weekly.</p>
+                <h2>Let's connect</h2>
+                <p>If you enjoy practical engineering content, follow the weekly series on LinkedIn and YouTube. I'd be glad to have you along.</p>
                 <div class="about-connect">
                     <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" class="connect-btn connect-btn-linkedin" translate="no">
                         <i class='bx bxl-linkedin'></i> LinkedIn
@@ -592,18 +668,6 @@
                 </div>
             </div>
 
-        </div>
-    </div>
-
-    <!-- MOBILE NAV -->
-    <div class="mobile-nav" id="mobileNav">
-        <button class="mobile-nav-close" onclick="toggleMobileNav()"><i class='bx bx-x'></i></button>
-        <a href="index.html" onclick="toggleMobileNav()">Home</a>
-        <a href="learn.html" onclick="toggleMobileNav()">Learn</a>
-        <a href="about.html" class="active" onclick="toggleMobileNav()">About</a>
-        <div class="mobile-nav-bottom">
-            <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" translate="no"><i class='bx bxl-linkedin'></i> LinkedIn</a>
-            <a href="https://youtube.com" target="_blank" translate="no"><i class='bx bxl-youtube'></i> YouTube</a>
         </div>
     </div>
 
