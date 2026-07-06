@@ -31,227 +31,115 @@
         .about-page {
             background: var(--bg-light);
             min-height: 100vh;
-            padding: 48px 0 80px;
+            padding: 64px 0 80px;
         }
 
         .about-container {
-            max-width: 720px;
+            max-width: 680px;
             margin: 0 auto;
             padding: 0 24px;
         }
 
-        /* PROFILE */
-        .about-profile {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-            margin-bottom: 40px;
+        /* HERO */
+        .about-hero { margin-bottom: 8px; }
+
+        .about-greeting {
+            font-size: 15px;
+            color: #10b981;
+            font-weight: 600;
+            margin: 0 0 6px;
         }
 
-        .about-avatar {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #10b981, #059669);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            font-weight: 800;
-            color: #fff;
-            flex-shrink: 0;
-            border: 3px solid rgba(16,185,129,0.2);
-        }
-
-        .about-profile-info h1 {
-            font-size: 24px;
+        .about-hero h1 {
+            font-size: 32px;
             font-weight: 800;
             color: var(--text-dark);
-            margin: 0 0 4px;
-            letter-spacing: -0.3px;
+            letter-spacing: -0.5px;
+            margin: 0 0 8px;
+            line-height: 1.15;
         }
 
-        .about-profile-info p {
-            font-size: 14px;
+        .about-role {
+            font-size: 15px;
             color: #64748b;
-            margin: 0 0 12px;
+            margin: 0 0 24px;
         }
 
-        .about-profile-tags {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .about-tag {
-            font-size: 11px;
-            font-weight: 600;
-            color: #475569;
-            background: #f1f5f9;
-            padding: 4px 10px;
-            border-radius: 6px;
+        .about-hero p {
+            font-size: 16px;
+            color: #334155;
+            line-height: 1.8;
+            margin-bottom: 16px;
         }
 
         /* DIVIDER */
         .about-divider {
             height: 1px;
             background: #e2e8f0;
-            margin: 32px 0;
+            margin: 40px 0;
         }
 
-        /* CONTENT */
-        .about-content h2 {
-            font-size: 18px;
+        /* SECTIONS */
+        .about-section { margin-bottom: 40px; }
+
+        .about-section h2 {
+            font-size: 20px;
             font-weight: 700;
             color: var(--text-dark);
-            margin: 0 0 14px;
-            letter-spacing: -0.2px;
+            letter-spacing: -0.3px;
+            margin: 0 0 16px;
         }
 
-        .about-content p {
-            font-size: 15px;
-            color: #334155;
-            line-height: 1.85;
-            margin-bottom: 18px;
-        }
-
-        /* TIMELINE */
-        .about-timeline {
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-            margin: 20px 0 32px;
-        }
-
-        .timeline-item:not(:last-child) .timeline-dot::after {
-            content: '';
-            position: absolute;
-            top: 40px;
-            left: 19px;
-            width: 1px;
-            height: calc(100% - 8px);
-            background: #e2e8f0;
-        }
-
-        .timeline-item {
-            display: flex;
-            gap: 20px;
-            position: relative;
-        }
-
-        .timeline-dot {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .about-section p {
             font-size: 16px;
-            color: #10b981;
-            flex-shrink: 0;
-            margin-top: 2px;
-            position: relative;
-        }
-
-        .timeline-body {
-            padding-bottom: 28px;
-            flex: 1;
-        }
-
-        .timeline-role {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin: 0 0 2px;
-        }
-
-        .timeline-company {
-            font-size: 13px;
-            color: #10b981;
-            font-weight: 600;
-            margin: 0 0 4px;
-        }
-
-        .timeline-period {
-            font-size: 12px;
-            color: #94a3b8;
-            margin: 0 0 8px;
-        }
-
-        .timeline-desc {
-            font-size: 13px;
-            color: #64748b;
-            line-height: 1.6;
-            margin: 0;
-        }
-
-        /* CERTS */
-        .about-certs {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin: 16px 0 32px;
-        }
-
-        .cert-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 14px 16px;
-            background: #fff;
-            border: 1px solid #e2e8f0;
-            border-radius: 10px;
-        }
-
-        .cert-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 8px;
-            background: rgba(16,185,129,0.08);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            color: #10b981;
-            flex-shrink: 0;
-        }
-
-        .cert-name {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--text-dark);
-        }
-
-        .cert-issuer {
-            font-size: 12px;
-            color: #94a3b8;
-        }
-
-        /* WHY THIS SITE */
-        .about-why {
-            background: #fff;
-            border: 1px solid #e2e8f0;
-            border-radius: 16px;
-            padding: 28px 32px;
-            margin: 20px 0 32px;
-        }
-
-        .about-why p {
-            font-size: 15px;
             color: #334155;
-            line-height: 1.85;
+            line-height: 1.8;
             margin-bottom: 16px;
         }
 
-        .about-why p:last-child { margin-bottom: 0; }
+        .about-section p:last-child { margin-bottom: 0; }
+
+        .about-section em {
+            color: #059669;
+            font-style: italic;
+        }
+
+        /* EXPERIENCE */
+        .xp { margin-bottom: 28px; }
+        .xp:last-child { margin-bottom: 0; }
+
+        .xp-sector {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #10b981;
+            margin: 0 0 4px !important;
+        }
+
+        .xp-role {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin: 0 0 6px !important;
+        }
+
+        .xp p:last-child {
+            color: #64748b;
+            margin: 0;
+        }
+
+        /* CERTIFICATIONS */
+        .about-certs-list {
+            line-height: 2.2 !important;
+            color: #334155;
+        }
 
         /* CONNECT */
         .about-connect {
             display: flex;
             gap: 12px;
-            margin-top: 8px;
+            margin-top: 20px;
         }
 
         .connect-btn {
@@ -263,7 +151,6 @@
             font-size: 14px;
             font-weight: 600;
             text-decoration: none;
-            transition: all 0.2s;
         }
 
         .connect-btn-linkedin {
@@ -272,119 +159,23 @@
             border: 1.5px solid #0a66c2;
         }
 
-        .connect-btn-linkedin:hover {
-            background: #094fa3;
-            border-color: #094fa3;
-        }
-
         .connect-btn-youtube {
             background: #fff;
             color: #334155;
             border: 1.5px solid #e2e8f0;
         }
 
-        .connect-btn-youtube:hover {
-            border-color: #ff0000;
-            color: #ff0000;
-        }
-
         /* MOBILE */
         @media (max-width: 768px) {
-            .about-page { padding: 32px 0 60px; }
-            .about-container { padding: 0 16px; }
-            .about-profile { flex-direction: column; align-items: flex-start; gap: 16px; margin-bottom: 28px; }
-            .about-avatar { width: 64px; height: 64px; font-size: 22px; }
-            .about-profile-info h1 { font-size: 20px; }
-            .about-profile-info p { font-size: 13px; }
-            .about-content h2 { font-size: 16px; }
-            .about-content p { font-size: 14px; }
-            .about-why { padding: 18px; }
-            .about-why p { font-size: 14px; }
+            .about-page { padding: 40px 0 60px; }
+            .about-container { padding: 0 20px; }
+            .about-hero h1 { font-size: 26px; }
+            .about-hero p, .about-section p { font-size: 15px; }
+            .about-section h2 { font-size: 18px; }
+            .about-divider { margin: 32px 0; }
             .about-connect { flex-direction: column; }
             .connect-btn { justify-content: center; }
-            .timeline-body { padding-bottom: 20px; }
-            .timeline-role { font-size: 13px; }
-            .timeline-desc { font-size: 12px; }
-            .cert-item { padding: 12px; }
-            .cert-name { font-size: 13px; }
-            .about-divider { margin: 20px 0; }
             .btn-nav-social { display: none !important; }
-        }
-
-        /* WHAT YOU'LL LEARN — chip grid */
-        .learn-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 18px;
-        }
-        .learn-chip {
-            font-size: 13px;
-            font-weight: 600;
-            color: #059669;
-            background: #ecfdf5;
-            border: 1px solid #a7f3d0;
-            padding: 8px 16px;
-            border-radius: 8px;
-        }
-
-        /* TIMELINE — sector tag */
-        .timeline-tag {
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            color: #10b981;
-            margin: 0 0 4px;
-        }
-
-        /* MY APPROACH — quote */
-        .approach-quote {
-            background: #052e26;
-            border-radius: 14px;
-            padding: 24px 28px;
-            margin: 18px 0;
-            text-align: center;
-        }
-        .approach-quote p {
-            color: #6ee7b7 !important;
-            font-size: 18px !important;
-            font-weight: 700;
-            font-style: italic;
-            line-height: 1.5 !important;
-        }
-
-        /* CERTIFICATIONS — compact pills */
-        .cert-compact {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 16px;
-        }
-        .cert-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 14px;
-            font-weight: 500;
-            color: #334155;
-            background: #fff;
-            border: 1px solid #e2e8f0;
-            padding: 12px 16px;
-            border-radius: 10px;
-        }
-        .cert-pill i {
-            color: #10b981;
-            font-size: 18px;
-            flex-shrink: 0;
-        }
-
-        /* MOBILE tweaks for new elements */
-        @media (max-width: 768px) {
-            .learn-chip { font-size: 12px; padding: 7px 12px; }
-            .approach-quote { padding: 18px; }
-            .approach-quote p { font-size: 16px !important; }
-            .cert-pill { font-size: 13px; padding: 10px 14px; }
         }
 
     </style>
@@ -503,162 +294,32 @@
     <div class="about-page">
         <div class="about-container">
 
-            <!-- HERO / PROFILE -->
-            <div class="about-profile">
-                <div class="about-avatar">BE</div>
-                <div class="about-profile-info">
-                    <p style="font-size:14px;color:#10b981;font-weight:600;margin:0 0 4px;">Hi, I'm</p>
-                    <h1 translate="no">Barış Emre Özçelik</h1>
-                    <p>Planning &amp; Project Controls Lead · Civil Engineer · PMP®</p>
-                    <div class="about-profile-tags">
-                        <span class="about-tag">Nuclear</span>
-                        <span class="about-tag">Mining</span>
-                        <span class="about-tag">Ports</span>
-                        <span class="about-tag">High-Rise</span>
-                        <span class="about-tag">Primavera P6</span>
-                        <span class="about-tag">Power BI</span>
-                        <span class="about-tag">EVM</span>
-                        <span class="about-tag">Delay Analysis</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="about-content" style="margin-top:24px;">
-                <p style="font-size:16px;line-height:1.8;">I help engineers understand how real construction projects are planned, monitored, and recovered — not just how scheduling software works.</p>
-                <p>Over the past eight years, I've worked on some of the world's largest industrial projects, including nuclear power plants, mining facilities, ports, and high-rise developments.</p>
-                <p>Today, I share those lessons through <strong>The Project Control Hub</strong>.</p>
-            </div>
-
-            <div class="about-divider"></div>
-
-            <!-- WHY I BUILT THIS -->
             <div class="about-content">
-                <h2>Why I built this hub</h2>
-                <p>Most project controls resources focus on software. They teach where to click. They explain which button to press.</p>
-                <p>But very few explain how experienced planners actually <em>think</em>.</p>
-                <p>After years of working with Primavera P6, delay analysis, Earned Value Management, forecasting, and executive reporting, I realized something:</p>
-                <div class="about-why">
-                    <p style="margin:0;font-size:16px;"><strong>Projects don't succeed because someone knows Primavera. Projects succeed because people make better decisions.</strong></p>
-                </div>
-                <p>That's why I created this platform. Every article here is based on lessons learned from real projects — not classroom examples.</p>
-            </div>
+                <p style="font-size:14px;color:#10b981;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;">About</p>
+                <h1 style="margin-bottom:28px;">Learning Project Controls Through Real Projects</h1>
 
-            <div class="about-divider"></div>
+                <p>I'm <span translate="no">Barış Emre Özçelik</span>, a Planning &amp; Project Controls Lead, Civil Engineer, and PMP® with experience delivering project controls on large-scale nuclear power, mining, port, and high-rise construction projects.</p>
+                <p>Throughout my career, I've learned that successful projects are not driven by software — they're driven by better planning, sound decisions, and effective project controls.</p>
+                <p>That's exactly why I created The Project Control Hub.</p>
 
-            <!-- WHAT YOU'LL LEARN -->
-            <div class="about-content">
-                <h2>What you'll learn here</h2>
-                <p>Instead of learning isolated software features, you'll learn how Project Controls works as an integrated system.</p>
-                <div class="learn-grid">
-                    <span class="learn-chip">Planning Philosophy</span>
-                    <span class="learn-chip">Primavera P6</span>
-                    <span class="learn-chip">Critical Path Method</span>
-                    <span class="learn-chip">Delay Analysis</span>
-                    <span class="learn-chip">Earned Value Management</span>
-                    <span class="learn-chip">Recovery Scheduling</span>
-                    <span class="learn-chip">Progress Measurement</span>
-                    <span class="learn-chip">Risk-Based Planning</span>
-                    <span class="learn-chip">Power BI Reporting</span>
-                    <span class="learn-chip">Construction Productivity</span>
-                </div>
-            </div>
+                <h2>Why This Hub Exists</h2>
+                <p>Most Project Controls resources focus on teaching software.</p>
+                <p>They explain how to use Primavera P6, create Gantt charts, or build reports.</p>
+                <p>Those skills matter — but they're only part of the picture.</p>
+                <p>This platform focuses on the principles behind successful projects: planning, scheduling, risk, forecasting, progress measurement, and decision-making.</p>
+                <p>Every article is based on lessons learned from real construction projects — not classroom theory.</p>
 
-            <div class="about-divider"></div>
+                <h2>My Philosophy</h2>
+                <p>Planning is not about creating schedules.</p>
+                <p>Planning is about reducing uncertainty and helping teams make better decisions.</p>
+                <p>That philosophy is the foundation of every article, diagram, and lesson published on this platform.</p>
 
-            <!-- EXPERIENCE -->
-            <div class="about-content">
-                <h2>My experience</h2>
-                <div class="about-timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-dot"><i class='bx bx-radio-circle-marked'></i></div>
-                        <div class="timeline-body">
-                            <p class="timeline-tag">Nuclear Power</p>
-                            <p class="timeline-role">Planning &amp; Project Controls Lead</p>
-                            <p class="timeline-company">IC İçtaş — Akkuyu Nuclear Power Plant</p>
-                            <p class="timeline-desc">Leading planning, forecasting, progress measurement, Power BI reporting, and delay analysis on one of the world's largest nuclear construction projects.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"><i class='bx bx-cube'></i></div>
-                        <div class="timeline-body">
-                            <p class="timeline-tag">Mining</p>
-                            <p class="timeline-role">Senior Planning &amp; Project Controls Specialist</p>
-                            <p class="timeline-company">Tekfen Construction — Ma'aden Phosphate 3</p>
-                            <p class="timeline-desc">Managed Level 4 Primavera schedules, Earned Value Analysis, productivity studies, and recovery planning on a major EPC mining project.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"><i class='bx bx-anchor'></i></div>
-                        <div class="timeline-body">
-                            <p class="timeline-tag">Ports</p>
-                            <p class="timeline-role">Project Control Specialist</p>
-                            <p class="timeline-company">STFA — Nador West Med Port</p>
-                            <p class="timeline-desc">Supported schedule control, SPI/CPI analysis, and delay reporting for an $800M international port development.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"><i class='bx bx-buildings'></i></div>
-                        <div class="timeline-body">
-                            <p class="timeline-tag">High-Rise Buildings</p>
-                            <p class="timeline-role">Project Planning &amp; Technical Office</p>
-                            <p class="timeline-company">Residential &amp; Commercial Construction</p>
-                            <p class="timeline-desc">Developed WBS structures, schedules, BoQs, and progress reporting across residential and commercial building projects.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                <h2>Let's Learn Together</h2>
+                <p>The Project Control Hub is an ongoing learning series for engineers, planners, and project professionals who want to develop practical Project Controls skills.</p>
+                <p>New lessons are published regularly, each building on the previous one to create a structured learning journey.</p>
+                <p>If you're ready to think beyond software and understand how real projects are controlled, welcome to The Project Control Hub.</p>
 
-            <div class="about-divider"></div>
-
-            <!-- MY APPROACH -->
-            <div class="about-content">
-                <h2>My approach</h2>
-                <p>I believe Project Controls is much more than scheduling. It's about turning uncertainty into decisions.</p>
-                <p>Every schedule should answer one question:</p>
-                <div class="approach-quote">
-                    <p style="margin:0;">"If something changes today, what happens tomorrow?"</p>
-                </div>
-                <p>That philosophy shapes every article, diagram, and lesson published on this platform.</p>
-            </div>
-
-            <div class="about-divider"></div>
-
-            <!-- BEYOND THE JOB -->
-            <div class="about-content">
-                <h2>Beyond the job title</h2>
-                <p>Outside work, I'm passionate about simplifying complex engineering concepts. I enjoy turning technical subjects into practical lessons that engineers can immediately apply on site.</p>
-                <p>Whether you're a student, a planning engineer, or an experienced project manager, my goal is the same: <strong>help you think like a Project Controls professional — not just use the software.</strong></p>
-            </div>
-
-            <div class="about-divider"></div>
-
-            <!-- CERTIFICATIONS (compact) -->
-            <div class="about-content">
-                <h2>Certifications</h2>
-                <div class="cert-compact">
-                    <span class="cert-pill"><i class='bx bxs-badge-check'></i> PMP® — Project Management Institute</span>
-                    <span class="cert-pill"><i class='bx bxs-badge-check'></i> Oracle Primavera P6</span>
-                    <span class="cert-pill"><i class='bx bxs-badge-check'></i> Advanced Planning &amp; Baseline Scheduling</span>
-                    <span class="cert-pill"><i class='bx bxs-badge-check'></i> Planning &amp; Cost Control</span>
-                    <span class="cert-pill"><i class='bx bxs-badge-check'></i> Power BI Reporting</span>
-                    <span class="cert-pill"><i class='bx bxs-badge-check'></i> Advanced Microsoft Excel</span>
-                </div>
-            </div>
-
-            <div class="about-divider"></div>
-
-            <!-- WHAT'S NEXT -->
-            <div class="about-content">
-                <h2>What's next?</h2>
-                <p>The Project Control Hub is a long-term project. Every week, I publish a new lesson covering the principles, tools, and real-world decisions behind successful Project Controls.</p>
-                <p>My goal isn't to build another blog. It's to build one of the most practical free learning resources for construction planning and project controls.</p>
-            </div>
-
-            <!-- CONNECT -->
-            <div class="about-content">
-                <h2>Let's connect</h2>
-                <p>If you enjoy practical engineering content, follow the weekly series on LinkedIn and YouTube. I'd be glad to have you along.</p>
-                <div class="about-connect">
+                <div class="about-connect" style="margin-top:32px;">
                     <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" class="connect-btn connect-btn-linkedin" translate="no">
                         <i class='bx bxl-linkedin'></i> LinkedIn
                     </a>
