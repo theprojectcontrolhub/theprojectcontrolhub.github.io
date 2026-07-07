@@ -45,19 +45,63 @@
             background: var(--white);
             border: 1px solid #e2e8f0;
             border-radius: 20px;
-            padding: 48px 56px;
+            padding: 56px 60px;
         }
 
-        /* CONTENT — matches article reading typography */
+        .about-eyebrow {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #10b981;
+            margin: 0 0 14px;
+        }
+
         .about-content h1 {
-            font-size: 34px;
+            font-size: 40px;
             font-weight: 800;
             color: var(--text-dark);
-            letter-spacing: -0.5px;
-            line-height: 1.2;
+            letter-spacing: -1px;
+            line-height: 1.12;
             margin: 0 0 28px;
         }
 
+        /* Larger, lighter intro paragraph */
+        .about-lead {
+            font-size: 20px !important;
+            line-height: 1.6 !important;
+            color: #1e293b !important;
+            font-weight: 400;
+            margin: 0 0 8px !important;
+        }
+
+        /* Sector credential strip */
+        .about-figure {
+            margin: 36px 0 40px;
+            padding: 8px 0;
+        }
+        .about-figure svg { width: 100%; height: auto; display: block; }
+
+        /* Big philosophy pull-quote */
+        .about-pullquote {
+            margin: 40px 0;
+            padding: 4px 0 4px 28px;
+            border-left: 4px solid #10b981;
+        }
+        .about-pullquote p {
+            font-size: 24px !important;
+            line-height: 1.4 !important;
+            font-weight: 700;
+            color: var(--text-dark) !important;
+            margin: 0 0 8px !important;
+            letter-spacing: -0.4px;
+        }
+        .about-pullquote p:last-child {
+            color: #64748b !important;
+            margin-bottom: 0 !important;
+        }
+
+        /* CONTENT — matches article reading typography */
         .about-content h2 {
             font-size: 22px;
             font-weight: 700;
@@ -206,9 +250,13 @@
             .about-page { padding: 32px 0 60px; }
             .about-container { padding: 0 16px; }
             .about-content { padding: 28px 22px; border-radius: 14px; }
-            .about-content h1 { font-size: 25px; }
-            .about-content h2 { font-size: 19px; margin: 32px 0 12px; }
+            .about-content h1 { font-size: 28px; letter-spacing: -0.5px; }
+            .about-lead { font-size: 17px !important; }
+            .about-content h2 { font-size: 20px; margin: 32px 0 12px; }
             .about-content p { font-size: 15px; line-height: 1.8; }
+            .about-figure { margin: 28px 0 30px; }
+            .about-pullquote { padding-left: 18px; margin: 30px 0; }
+            .about-pullquote p { font-size: 19px !important; }
             .about-connect { flex-direction: column; }
             .connect-btn { justify-content: center; }
             .btn-nav-social { display: none !important; }
@@ -335,33 +383,65 @@
         <div class="about-container">
 
             <div class="about-content">
-                <p style="font-size:14px;color:#10b981;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;">About</p>
-                <h1 style="margin-bottom:28px;">Learning Project Controls Through Real Projects</h1>
+                <p class="about-eyebrow">About</p>
+                <h1>Learning Project Controls<br>Through Real Projects</h1>
 
-                <p>I'm <span translate="no">Barış Emre Özçelik</span>, a Planning &amp; Project Controls Lead, Civil Engineer, and PMP® with experience delivering project controls on large-scale nuclear power, mining, port, and high-rise construction projects.</p>
-                <p>Throughout my career, I've learned that successful projects are not driven by software — they're driven by better planning, sound decisions, and effective project controls.</p>
-                <p>That's exactly why I created The Project Control Hub.</p>
+                <p class="about-lead">I'm <span translate="no">Barış Emre Özçelik</span> — a Planning &amp; Project Controls Lead, Civil Engineer, and PMP®. I've spent the last eight years delivering project controls on some of the largest construction projects in the world.</p>
 
-                <h2>Why This Hub Exists</h2>
-                <p>Most Project Controls resources focus on teaching software.</p>
-                <p>They explain how to use Primavera P6, create Gantt charts, or build reports.</p>
-                <p>Those skills matter — but they're only part of the picture.</p>
-                <p>This platform focuses on the principles behind successful projects: planning, scheduling, risk, forecasting, progress measurement, and decision-making.</p>
-                <p>Every article is based on lessons learned from real construction projects — not classroom theory.</p>
+                <figure class="about-figure">
+                    <svg viewBox="0 0 760 160" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif">
+  <!-- baseline connecting the four -->
+  <line x1="95" y1="70" x2="665" y2="70" stroke="#e2e8f0" stroke-width="2"/>
 
-                <h2>My Philosophy</h2>
-                <p>Planning is not about creating schedules.</p>
-                <p>Planning is about reducing uncertainty and helping teams make better decisions.</p>
-                <p>That philosophy is the foundation of every article, diagram, and lesson published on this platform.</p>
+  <!-- Nuclear -->
+  <circle cx="95" cy="70" r="8" fill="#10b981"/>
+  <text x="95" y="42" text-anchor="middle" fill="#0f172a" font-size="15" font-weight="800">Nuclear</text>
+  <text x="95" y="105" text-anchor="middle" fill="#94a3b8" font-size="12">Akkuyu NPP</text>
 
-                <h2>Let's Learn Together</h2>
+  <!-- Mining -->
+  <circle cx="285" cy="70" r="8" fill="#10b981"/>
+  <text x="285" y="42" text-anchor="middle" fill="#0f172a" font-size="15" font-weight="800">Mining</text>
+  <text x="285" y="105" text-anchor="middle" fill="#94a3b8" font-size="12">Ma'aden</text>
+
+  <!-- Ports -->
+  <circle cx="475" cy="70" r="8" fill="#10b981"/>
+  <text x="475" y="42" text-anchor="middle" fill="#0f172a" font-size="15" font-weight="800">Ports</text>
+  <text x="475" y="105" text-anchor="middle" fill="#94a3b8" font-size="12">Nador West Med</text>
+
+  <!-- High-Rise -->
+  <circle cx="665" cy="70" r="8" fill="#10b981"/>
+  <text x="665" y="42" text-anchor="middle" fill="#0f172a" font-size="15" font-weight="800">High-Rise</text>
+  <text x="665" y="105" text-anchor="middle" fill="#94a3b8" font-size="12">Buildings</text>
+
+  <!-- 8+ years label centered above -->
+  <text x="380" y="140" text-anchor="middle" fill="#10b981" font-size="13" font-weight="700" letter-spacing="0.5">8+ YEARS ACROSS FOUR SECTORS</text>
+</svg>
+
+                </figure>
+
+                <p>Throughout my career, I've learned one thing again and again: successful projects are not driven by software. They're driven by better planning, sound decisions, and effective project controls.</p>
+                <p>That's exactly why I created <strong>The Project Control Hub</strong>.</p>
+
+                <h2>Why this hub exists</h2>
+                <p>Most Project Controls resources focus on teaching software — how to use Primavera P6, how to create Gantt charts, how to build reports.</p>
+                <p>Those skills matter. But they're only part of the picture.</p>
+                <p>This platform focuses on the principles behind successful projects: planning, scheduling, risk, forecasting, progress measurement, and decision-making. Every article is based on lessons learned from real construction projects — not classroom theory.</p>
+
+                <div class="about-pullquote">
+                    <p>Planning is not about creating schedules.</p>
+                    <p>Planning is about reducing uncertainty — and helping teams make better decisions.</p>
+                </div>
+
+                <p>That philosophy is the foundation of every article, diagram, and lesson published here.</p>
+
+                <h2>Let's learn together</h2>
                 <p>The Project Control Hub is an ongoing learning series for engineers, planners, and project professionals who want to develop practical Project Controls skills.</p>
-                <p>New lessons are published regularly, each building on the previous one to create a structured learning journey.</p>
-                <p>If you're ready to think beyond software and understand how real projects are controlled, welcome to The Project Control Hub.</p>
+                <p>New lessons are published every week, each building on the last to create a structured learning journey.</p>
+                <p>If you're ready to think beyond software and understand how real projects are actually controlled — welcome.</p>
 
-                <div class="about-connect" style="margin-top:32px;">
+                <div class="about-connect">
                     <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" class="connect-btn connect-btn-linkedin" translate="no">
-                        <i class='bx bxl-linkedin'></i> LinkedIn
+                        <i class='bx bxl-linkedin'></i> Follow on LinkedIn
                     </a>
                     <a href="https://youtube.com" target="_blank" class="connect-btn connect-btn-youtube" translate="no">
                         <i class='bx bxl-youtube'></i> YouTube
