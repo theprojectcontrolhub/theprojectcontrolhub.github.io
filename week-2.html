@@ -804,103 +804,239 @@
                     <!-- ARTICLE BODY — PREVIEW (visible to all) -->
                     <div class="article-body">
                         <div class="content-preview content-blur" id="contentPreview">
-                            <p>Last week we said a schedule is a model, not a poster. This week we open the hood. Before we ever touch Primavera or draw a single bar, there's something more fundamental to get right — and almost every failed project I've seen got it wrong here first.</p>
-
-                            <p>Project controls rest on three things that are never independent: <strong>Scope, Time, and Cost.</strong> Most people treat them as separate boxes on a status report. They're not. They're three faces of the same object, and the moment you pull one, the other two move.</p>
-
-                            <p>Here's the uncomfortable truth this week is built on: controlling an imbalanced plan is mathematically impossible. The most expensive software on earth can't fix it — it can only document the failure in real time.</p>
+                            <h2 style="margin-top:0;">Before we open Primavera...</h2>
+                            <p>Last week, we learned an important lesson. Projects don't fail because of software. They fail because reality was never modeled correctly.</p>
+                            <p>But that raises a new question. What exactly are we trying to model?</p>
+                            <p>Before we ever build a schedule. Before we define activities. Before we calculate the Critical Path. We first need to understand the three forces that control every construction project.</p>
+                            <p><strong>Scope. Time. Cost.</strong></p>
+                            <p>Everything else is built on top of them.</p>
 
                             <!-- LOCKED CONTENT -->
                             <div class="content-locked" style="display:none;">
-                                <h2>It starts with psychology, not software</h2>
-                                <p>Before the math, there's the human layer. A realistic, logical plan creates something you can feel on site: confidence. The team has energy, morale holds. Hand that same team a schedule that is mathematically impossible — a deadline that no honest sequence of work can hit — and you get the opposite: burnout, then disengagement, then people quietly checking out.</p>
+                                <h2>Imagine building a house</h2>
+                                <p>Imagine someone asks you to build a house.</p>
+                                <p>The first question isn't <em>"How long will it take?"</em> It isn't <em>"How much will it cost?"</em></p>
+                                <p>The first question is much simpler: <strong>"What exactly are we building?"</strong></p>
+                                <p>Three bedrooms? Five floors? A reinforced concrete frame? Luxury finishes? A swimming pool?</p>
+                                <p>Without defining the scope, neither time nor cost can be estimated with confidence.</p>
+                                <p>Everything begins with scope.</p>
 
-                                <p>This is why setting clear, realistic targets isn't a "nice to have." It's the prerequisite for project control to even function. Following a plan that was broken from day one doesn't control anything — it just documents the breakage as it happens.</p>
+                                <h2>The three building blocks</h2>
+                                <p>Every successful project balances three elements.</p>
 
-                                <h2>The Triple Constraint — and the golden rule</h2>
-                                <p>Picture a balance. On one side sit Scope and Quality. On the other, Time and Budget. And the whole thing rests on Resources. Move any weight and the balance tips.</p>
-
-                                <p>The rule that follows is simple and non-negotiable: <strong>if time or budget is constrained, scope or quality must come down proportionally.</strong> You cannot squeeze the deadline, freeze the budget, hold the scope, and keep the quality — all at once. Something gives. The only choice you have is whether you decide what gives, or whether the project decides for you.</p>
-
-                                <p>This is the exam's golden rule and the site's golden rule at the same time: an imbalanced plan can't be controlled. Say no to the impossible plan before it starts, not after it fails.</p>
-
-                                <figure style="margin:32px 0;padding:24px;background:#f8fafc;border-radius:16px;border:1px solid #e2e8f0;">
-                                    <svg viewBox="0 0 640 460" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif">
+                                <figure style="margin:36px 0;padding:24px;background:#f8fafc;border-radius:16px;border:1px solid #e2e8f0;">
+                                    <svg viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif">
   <defs>
     <linearGradient id="tri" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#10b981"/><stop offset="1" stop-color="#059669"/>
     </linearGradient>
   </defs>
 
-  <text x="320" y="36" text-anchor="middle" fill="#0f172a" font-size="16" font-weight="700">The Project Triangle</text>
+  <text x="320" y="36" text-anchor="middle" fill="#0f172a" font-size="17" font-weight="800">The Project Triangle</text>
 
   <!-- Triangle -->
-  <polygon points="320,80 540,390 100,390" fill="url(#tri)" opacity="0.08" stroke="url(#tri)" stroke-width="4" stroke-linejoin="round"/>
+  <polygon points="320,80 545,410 95,410" fill="url(#tri)" opacity="0.06" stroke="url(#tri)" stroke-width="4" stroke-linejoin="round"/>
 
   <!-- Quality core -->
-  <text x="320" y="320" text-anchor="middle" fill="#059669" font-size="17" font-weight="700">Quality</text>
-  <text x="320" y="340" text-anchor="middle" fill="#10b981" font-size="11">held at the centre</text>
+  <text x="320" y="330" text-anchor="middle" fill="#059669" font-size="16" font-weight="700">Quality</text>
+  <text x="320" y="350" text-anchor="middle" fill="#10b981" font-size="11">holds the centre</text>
 
-  <!-- Corner dots + labels -->
-  <circle cx="320" cy="80" r="7" fill="#059669"/>
-  <circle cx="540" cy="390" r="7" fill="#059669"/>
-  <circle cx="100" cy="390" r="7" fill="#059669"/>
+  <!-- Corner dots -->
+  <circle cx="320" cy="80" r="8" fill="#059669"/>
+  <circle cx="545" cy="410" r="8" fill="#059669"/>
+  <circle cx="95" cy="410" r="8" fill="#059669"/>
 
-  <!-- SCOPE label — top left of left edge -->
-  <g transform="translate(150,210)">
-    <rect x="-48" y="-18" width="96" height="36" rx="9" fill="#0f172a"/>
-    <text x="0" y="6" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">Scope</text>
+  <!-- SCOPE (top) -->
+  <g transform="translate(320,62)">
+    <rect x="-48" y="-22" width="96" height="34" rx="9" fill="#0f172a"/>
+    <text x="0" y="1" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">Scope</text>
   </g>
-  <line x1="150" y1="228" x2="205" y2="240" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="3"/>
+  <text x="320" y="118" text-anchor="middle" fill="#64748b" font-size="12">what will be delivered</text>
 
-  <!-- TIME label — top right of right edge -->
-  <g transform="translate(490,210)">
-    <rect x="-45" y="-18" width="90" height="36" rx="9" fill="#0f172a"/>
-    <text x="0" y="6" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">Time</text>
+  <!-- TIME (bottom right) -->
+  <g transform="translate(545,435)">
+    <rect x="-42" y="-16" width="84" height="34" rx="9" fill="#0f172a"/>
+    <text x="0" y="7" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">Time</text>
   </g>
-  <line x1="490" y1="228" x2="435" y2="240" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="3"/>
+  <text x="545" y="465" text-anchor="middle" fill="#64748b" font-size="12">when</text>
 
-  <!-- COST label — below bottom edge -->
-  <g transform="translate(320,418)">
-    <rect x="-45" y="-18" width="90" height="36" rx="9" fill="#0f172a"/>
-    <text x="0" y="6" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">Cost</text>
+  <!-- COST (bottom left) -->
+  <g transform="translate(95,435)">
+    <rect x="-42" y="-16" width="84" height="34" rx="9" fill="#0f172a"/>
+    <text x="0" y="7" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">Cost</text>
   </g>
-
-  <!-- Rule -->
-  <text x="320" y="450" text-anchor="middle" fill="#64748b" font-size="12.5">Change one side and the others must move — you cannot fix all three at once.</text>
+  <text x="95" y="465" text-anchor="middle" fill="#64748b" font-size="12">how much</text>
 </svg>
 
-                                    <figcaption style="text-align:center;font-size:13px;color:#64748b;margin-top:16px;">Scope, Time, and Cost form the three sides; Quality sits in the middle. Push one corner — tighten the deadline, cut the budget — and the triangle can only hold its shape if another side gives.</figcaption>
+                                    <figcaption style="text-align:center;font-size:13px;color:#64748b;margin-top:16px;line-height:1.5;">Scope, Time, and Cost — the three sides of every project, with Quality held at the centre. Pull one corner and the whole shape has to move.</figcaption>
                                 </figure>
 
-                                <h2>The WBS is the central nervous system</h2>
-                                <p>If Scope-Time-Cost is the body, the Work Breakdown Structure is its nervous system. Get the WBS wrong and every signal that travels through the project — every progress update, every cost report, every forecast — is wrong at the source.</p>
+                                <p><strong>Scope</strong> defines what will be delivered. <strong>Time</strong> defines when it will be delivered. <strong>Cost</strong> defines how much it will take to deliver it.</p>
+                                <p>None of these can exist independently. Change one — the other two immediately react.</p>
+                                <p>That's why Project Controls isn't about managing schedules. It's about managing relationships.</p>
 
-                                <p>There's one hard rule: <strong>a WBS must be deliverable-based, never phase-based.</strong> This sounds academic until you've lived the consequences.</p>
+                                <h2>The rule every planner must accept</h2>
+                                <p>Many projects begin with a dangerous conversation. The client says:</p>
+                                <p><em>"I need the same scope. I have the same budget. I just want it finished three months earlier."</em></p>
+                                <p>Sounds reasonable. Unfortunately, construction doesn't work like that.</p>
+                                <p>If the deadline becomes shorter, something else must change. Either more resources, more budget, or less scope.</p>
+                                <p><strong>There is no fourth option.</strong></p>
+                                <p>This isn't an opinion. It's mathematics.</p>
+                                <p>Whenever someone changes one corner, the triangle immediately becomes unstable. A professional planner doesn't simply accept impossible targets. A professional planner explains their consequences.</p>
 
-                                <p><strong>Right:</strong> 1.0 East Wing · 2.0 West Wing · 3.0 Security Room. Physical, concrete, completable pieces.</p>
+                                <h2>The nervous system of every project</h2>
+                                <p>If Scope, Time, and Cost form the body, the Work Breakdown Structure is the nervous system.</p>
+                                <p>Everything depends on it. Progress. Costs. Forecasts. Reports. Dashboards. Earned Value.</p>
+                                <p>Everything starts with the WBS.</p>
 
-                                <p><strong>Wrong:</strong> 1.0 Design · 2.0 Development · 3.0 Testing. Slicing by time period is invalid — and here's why it matters.</p>
+                                <h2>A simple example</h2>
+                                <p>Imagine your project consists of two buildings. A deliverable-based WBS is simple: Building A, Building B.</p>
+                                <p>Now imagine the client's budget is suddenly reduced by 40%. You can still complete Building A. The client receives a finished asset.</p>
+                                <p>Now imagine your WBS looks different — organized by phase instead: Design, Procurement, Construction, Commissioning.</p>
+                                <p>The budget is reduced halfway. Now every phase stops halfway. Nothing is finished. Nothing can be handed over.</p>
+                                <p>The project has consumed money — without creating value.</p>
 
-                                <p>Imagine the budget gets cut in half mid-project. With a deliverable-based WBS, you finish the East Wing completely and hand it over — a functioning building. With a phase-based WBS, the cut leaves every phase half-done: you have design fragments, half-built systems, nothing tested. Zero functional output. One structural decision, made before construction, determines whether a budget cut leaves you with something or nothing.</p>
+                                <figure style="margin:36px 0;padding:24px;background:#f8fafc;border-radius:16px;border:1px solid #e2e8f0;">
+                                    <svg viewBox="0 0 720 380" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif">
+  <text x="360" y="30" text-anchor="middle" fill="#0f172a" font-size="17" font-weight="800">When the budget is cut 40%, structure decides everything</text>
 
-                                <h2>The four building blocks of the model</h2>
-                                <p>Once scope is structured correctly, the schedule model itself is built from exactly four components — like a circuit, they only work in synergy:</p>
+  <!-- LEFT: Deliverable-based (survives) -->
+  <g>
+    <rect x="30" y="60" width="310" height="290" rx="16" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="185" y="90" text-anchor="middle" fill="#059669" font-size="15" font-weight="800">Deliverable-based WBS</text>
+    <text x="185" y="110" text-anchor="middle" fill="#10b981" font-size="12">organized by what you hand over</text>
 
-                                <p><strong>Activity.</strong> A measurable unit of physical or intellectual work with a duration greater than zero.</p>
-                                <p><strong>Milestone.</strong> A critical checkpoint with a duration of exactly zero — a "foundation-laying ceremony," a permit approval, a phase gate.</p>
-                                <p><strong>Resource.</strong> The people, equipment, material, or capital required to do the work.</p>
-                                <p><strong>Logic.</strong> The structural relationship that links activities and milestones to each other.</p>
+    <!-- Building A - complete -->
+    <rect x="60" y="130" width="250" height="60" rx="10" fill="#10b981"/>
+    <text x="185" y="158" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">Building A</text>
+    <text x="185" y="177" text-anchor="middle" fill="#d1fae5" font-size="11">✓ FINISHED · handed over</text>
 
-                                <p>Alone, these are inert. Activities fed by resources and bound by logic become something else entirely: a dynamic forecasting engine. Change one duration and the whole model recalculates the impact.</p>
+    <!-- Building B - stopped -->
+    <rect x="60" y="205" width="250" height="60" rx="10" fill="#fff" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="5"/>
+    <text x="185" y="233" text-anchor="middle" fill="#94a3b8" font-size="14" font-weight="700">Building B</text>
+    <text x="185" y="252" text-anchor="middle" fill="#94a3b8" font-size="11">paused — but A still works</text>
 
-                                <h2>Why these rules exist — they're not arbitrary</h2>
-                                <p>It's worth knowing that these controls weren't invented by academics. They came from law and money. In 1967 the US Department of Defense set the first rules integrating cost and schedule (C/SCSC). In 1993 the Government Performance and Results Act forced results-based accountability across federal agencies. Today, Earned Value Management is the standard in both public and private sectors — and the logic behind all of it is blunt: if the controls aren't reliable, the funding gets cut.</p>
+    <text x="185" y="300" text-anchor="middle" fill="#059669" font-size="13" font-weight="700">Result: a finished asset.</text>
+    <text x="185" y="322" text-anchor="middle" fill="#64748b" font-size="12">The client receives real value.</text>
+  </g>
 
-                                <p>That's the real stakes behind "get the fundamentals right." It's not about passing an exam. It's about whether the money keeps flowing.</p>
+  <!-- RIGHT: Phase-based (fails) -->
+  <g>
+    <rect x="380" y="60" width="310" height="290" rx="16" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+    <text x="535" y="90" text-anchor="middle" fill="#dc2626" font-size="15" font-weight="800">Phase-based WBS</text>
+    <text x="535" y="110" text-anchor="middle" fill="#f87171" font-size="12">organized by project stage</text>
 
-                                <h2>What's coming next</h2>
-                                <p>We now know a schedule is a model, and that model rests on Scope-Time-Cost balance and a deliverable-based WBS. In Week 3 we go after one of the most common — and most costly — confusions in the whole field: the difference between your Schedule <em>Model</em> and the Gantt chart hanging on the wall. They are not the same thing, and mistaking one for the other quietly wrecks projects. Follow along on LinkedIn or YouTube.</p>
+    <!-- 4 phases all half-done -->
+    <rect x="410" y="128" width="250" height="26" rx="6" fill="#fff" stroke="#fecaca" stroke-width="1.5"/>
+    <rect x="410" y="128" width="125" height="26" rx="6" fill="#fca5a5"/>
+    <text x="535" y="146" text-anchor="middle" fill="#7f1d1d" font-size="11" font-weight="600">Design — 50%</text>
+
+    <rect x="410" y="160" width="250" height="26" rx="6" fill="#fff" stroke="#fecaca" stroke-width="1.5"/>
+    <rect x="410" y="160" width="125" height="26" rx="6" fill="#fca5a5"/>
+    <text x="535" y="178" text-anchor="middle" fill="#7f1d1d" font-size="11" font-weight="600">Procurement — 50%</text>
+
+    <rect x="410" y="192" width="250" height="26" rx="6" fill="#fff" stroke="#fecaca" stroke-width="1.5"/>
+    <rect x="410" y="192" width="125" height="26" rx="6" fill="#fca5a5"/>
+    <text x="535" y="210" text-anchor="middle" fill="#7f1d1d" font-size="11" font-weight="600">Construction — 50%</text>
+
+    <rect x="410" y="224" width="250" height="26" rx="6" fill="#fff" stroke="#fecaca" stroke-width="1.5"/>
+    <rect x="410" y="224" width="125" height="26" rx="6" fill="#fca5a5"/>
+    <text x="535" y="242" text-anchor="middle" fill="#7f1d1d" font-size="11" font-weight="600">Commissioning — 50%</text>
+
+    <text x="535" y="300" text-anchor="middle" fill="#dc2626" font-size="13" font-weight="700">Result: nothing is finished.</text>
+    <text x="535" y="322" text-anchor="middle" fill="#64748b" font-size="12">Money spent, no value created.</text>
+  </g>
+</svg>
+
+                                    <figcaption style="text-align:center;font-size:13px;color:#64748b;margin-top:16px;line-height:1.5;">The same 40% budget cut, two different outcomes. A deliverable-based WBS leaves you with a finished building. A phase-based WBS leaves you with four half-done phases and nothing to hand over.</figcaption>
+                                </figure>
+
+                                <p>That's why experienced planners organize work around deliverables — not project phases.</p>
+
+                                <h2>Four components that turn planning into a model</h2>
+                                <p>Once the scope has been structured correctly, the schedule itself is surprisingly simple. Every schedule is built from only four components.</p>
+
+                                <figure style="margin:36px 0;padding:24px;background:#f8fafc;border-radius:16px;border:1px solid #e2e8f0;">
+                                    <svg viewBox="0 0 680 420" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif">
+  <defs>
+    <marker id="cchev" markerWidth="12" markerHeight="12" refX="6" refY="5" orient="auto">
+      <path d="M1,1 L6,5 L1,9" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <text x="340" y="30" text-anchor="middle" fill="#0f172a" font-size="17" font-weight="800">Four components turn planning into a model</text>
+
+  <!-- Activity -->
+  <g>
+    <rect x="240" y="55" width="200" height="60" rx="12" fill="#0f172a"/>
+    <text x="340" y="82" text-anchor="middle" fill="#fff" font-size="16" font-weight="700">Activity</text>
+    <text x="340" y="102" text-anchor="middle" fill="#94a3b8" font-size="11">the work itself</text>
+  </g>
+  <line x1="340" y1="117" x2="340" y2="145" stroke="#10b981" stroke-width="2" marker-end="url(#cchev)"/>
+
+  <!-- Milestone -->
+  <g>
+    <rect x="240" y="149" width="200" height="60" rx="12" fill="#1e293b"/>
+    <text x="340" y="176" text-anchor="middle" fill="#fff" font-size="16" font-weight="700">Milestone</text>
+    <text x="340" y="196" text-anchor="middle" fill="#94a3b8" font-size="11">an important event</text>
+  </g>
+  <line x1="340" y1="211" x2="340" y2="239" stroke="#10b981" stroke-width="2" marker-end="url(#cchev)"/>
+
+  <!-- Resource -->
+  <g>
+    <rect x="240" y="243" width="200" height="60" rx="12" fill="#1e293b"/>
+    <text x="340" y="270" text-anchor="middle" fill="#fff" font-size="16" font-weight="700">Resource</text>
+    <text x="340" y="290" text-anchor="middle" fill="#94a3b8" font-size="11">who performs the work</text>
+  </g>
+  <line x1="340" y1="305" x2="340" y2="333" stroke="#10b981" stroke-width="2" marker-end="url(#cchev)"/>
+
+  <!-- Logic -->
+  <g>
+    <rect x="240" y="337" width="200" height="60" rx="12" fill="url(#lg)"/>
+    <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#10b981"/><stop offset="1" stop-color="#059669"/></linearGradient></defs>
+    <text x="340" y="364" text-anchor="middle" fill="#fff" font-size="16" font-weight="700">Logic</text>
+    <text x="340" y="384" text-anchor="middle" fill="#d1fae5" font-size="11">connects everything together</text>
+  </g>
+
+  <!-- Side annotation -->
+  <text x="580" y="150" text-anchor="middle" fill="#94a3b8" font-size="12">Alone,</text>
+  <text x="580" y="168" text-anchor="middle" fill="#64748b" font-size="13" font-weight="600">they're just data.</text>
+  <text x="580" y="270" text-anchor="middle" fill="#10b981" font-size="12">Together,</text>
+  <text x="580" y="288" text-anchor="middle" fill="#059669" font-size="13" font-weight="700">a forecasting model.</text>
+
+  <!-- brackets -->
+  <path d="M470,55 h20 v155 h-8" fill="none" stroke="#e2e8f0" stroke-width="1.5"/>
+  <path d="M470,397 h20 v-155 h-8" fill="none" stroke="#e2e8f0" stroke-width="1.5"/>
+</svg>
+
+                                    <figcaption style="text-align:center;font-size:13px;color:#64748b;margin-top:16px;line-height:1.5;">The four building blocks of any schedule. On their own they're just data — activities, events, people, links. Connected, they become a model that forecasts the future.</figcaption>
+                                </figure>
+
+                                <p><strong>Activities</strong> represent work. <strong>Milestones</strong> represent important events. <strong>Resources</strong> perform the work. <strong>Logic</strong> connects everything together.</p>
+                                <p>Individually, they're just data. Together, they become a forecasting model.</p>
+
+                                <h2>Why these rules exist</h2>
+                                <p>Many people think these rules were created by software companies. They weren't.</p>
+                                <p>They were created because governments and project owners lost enormous amounts of money. Large defence programs. Infrastructure projects. Public investments. All suffered from the same problem: poor visibility.</p>
+                                <p>Modern Project Controls evolved because organizations needed reliable information before making expensive decisions. That's why these principles still matter today.</p>
+
+                                <h2>The big picture</h2>
+                                <p>Week One taught us: a schedule is a model.</p>
+                                <p>Week Two teaches us: that model stands on Scope, Time, and Cost.</p>
+                                <p>Without balance, no software can rescue the project.</p>
+
+                                <h2>Key takeaways</h2>
+                                <p>Before moving to Week Three, remember these ideas:</p>
+                                <p>✔ Every project is governed by Scope, Time, and Cost.<br>
+                                ✔ Changing one always affects the other two.<br>
+                                ✔ Scope must be structured through a deliverable-based WBS.<br>
+                                ✔ Activities, Milestones, Resources, and Logic create the schedule model.<br>
+                                ✔ Project Controls is about balancing systems — not updating software.</p>
+
+                                <h2>What's next?</h2>
+                                <p>Next week we'll challenge one of the biggest misconceptions in construction.</p>
+                                <p>Most people think a Gantt chart is the schedule. It isn't.</p>
+                                <p>We'll explore the difference between a Schedule Model and a Gantt chart — and why confusing the two leads to poor decisions on real projects. Follow along on LinkedIn or YouTube.</p>
                             </div>
                         </div>
 
