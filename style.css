@@ -1713,3 +1713,70 @@ ul {
     border-color: #cbd5e1;
     box-shadow: 0 2px 12px rgba(0,0,0,0.1);
 }
+
+/* ============ SHARE BUTTONS ============ */
+.share-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.share-bar-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #94a3b8;
+    margin-right: 4px;
+}
+.share-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    height: 38px;
+    padding: 0 14px;
+    border-radius: 9px;
+    border: 1px solid #e2e8f0;
+    background: #fff;
+    color: #475569;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.18s ease;
+    white-space: nowrap;
+}
+.share-btn i { font-size: 17px; }
+.share-btn:hover { transform: translateY(-1px); box-shadow: 0 3px 10px rgba(0,0,0,0.06); }
+.share-btn.linkedin:hover { background: #0a66c2; color: #fff; border-color: #0a66c2; }
+.share-btn.whatsapp:hover { background: #25d366; color: #fff; border-color: #25d366; }
+.share-btn.x:hover { background: #0f172a; color: #fff; border-color: #0f172a; }
+.share-btn.copy:hover { background: #10b981; color: #fff; border-color: #10b981; }
+.share-btn.copied { background: #10b981; color: #fff; border-color: #10b981; }
+
+/* Top share bar sits under the article meta */
+.share-bar-top {
+    padding: 20px 36px;
+    border-bottom: 1px solid #f1f5f9;
+}
+/* Bottom share bar */
+.share-bar-bottom {
+    padding: 28px 36px;
+    border-top: 1px solid #f1f5f9;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+}
+.share-bar-bottom .share-bar-heading {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+.share-bar-bottom .share-row { display: flex; gap: 10px; flex-wrap: wrap; }
+
+@media (max-width: 768px) {
+    .share-bar-top { padding: 16px 20px; }
+    .share-bar-bottom { padding: 22px 20px; }
+    .share-btn { height: 40px; padding: 0 14px; }
+    .share-btn .share-label-text { display: inline; }
+}
