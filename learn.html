@@ -433,12 +433,17 @@
             padding: 22px 26px;
             margin-bottom: 14px;
         }
-        .roadmap-num {
-            font-size: 28px;
-            font-weight: 800;
-            color: #cbd5e1;
-            min-width: 44px;
-            font-variant-numeric: tabular-nums;
+        .roadmap-marker {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            min-width: 48px;
+            border-radius: 12px;
+            background: #f1f5f9;
+            color: #94a3b8;
+            font-size: 24px;
         }
         .roadmap-body { flex: 1; }
         .roadmap-body h3 {
@@ -472,7 +477,7 @@
             .roadmap-section { margin-top: 40px; }
             .roadmap-intro h2 { font-size: 21px; }
             .roadmap-card { flex-direction: column; align-items: flex-start; gap: 12px; padding: 18px 20px; }
-            .roadmap-num { font-size: 24px; }
+            .roadmap-marker { width: 42px; height: 42px; min-width: 42px; font-size: 21px; }
         }
 
         /* MODAL */
@@ -728,9 +733,9 @@
                 <h1>Project Controls — The Way It Works on Site</h1>
                 <p>A structured series built for engineers who want to understand project controls the way it actually works on site. Theory first, then the tools that bring it to life.</p>
                 <div class="learn-header-meta">
-                    <span class="learn-meta-item"><i class='bx bx-layer'></i> 2 tracks · 7 modules</span>
+                    <span class="learn-meta-item"><i class='bx bx-layer'></i> 5 tracks · a long-term academy</span>
                     <span class="learn-meta-item"><i class='bx bx-time-five'></i> 27-week free core</span>
-                    <span class="learn-meta-item"><i class='bx bx-calendar'></i> Published weekly</span>
+                    <span class="learn-meta-item"><i class='bx bx-calendar'></i> New lesson every week</span>
                     <span class="learn-meta-item"><i class='bx bx-lock-open'></i> Fundamentals always free</span>
                 </div>
             </div>
@@ -753,18 +758,20 @@
                             <span class="module-num">01</span>
                             <div class="module-info">
                                 <h2>Schedule Management</h2>
-                                <p>How to build, defend, and communicate a project schedule — the complete curriculum, built on the PMI Practice Standard for Scheduling and 8+ years in the field.</p>
+                                <p>Built on the PMI Practice Standard for Scheduling and 8+ years on nuclear, mining, port, and high-rise projects.</p>
                             </div>
                         </div>
                         <span class="module-badge badge-active" id="moduleBadge"><span class="dot-green"></span> In Progress · Week 3 of 27</span>
                     </div>
 
                     <div class="module-tools">
-                        <span class="tool-tag-label">Tools covered:</span>
-                        <span class="tool-tag">Theory</span>
-                        <span class="tool-tag">Primavera P6</span>
-                        <span class="tool-tag">Excel</span>
-                        <span class="tool-tag">MS Project</span>
+                        <span class="tool-tag-label">Topics:</span>
+                        <span class="tool-tag">Planning</span>
+                        <span class="tool-tag">CPM</span>
+                        <span class="tool-tag">Baseline</span>
+                        <span class="tool-tag">EVM</span>
+                        <span class="tool-tag">Forecasting</span>
+                        <span class="tool-tag">Reporting</span>
                     </div>
 
                     <div class="module-weeks" id="moduleWeeks"></div>
@@ -802,7 +809,7 @@
                                 <p>Where everything begins. On day one, it's all Excel — BOQ, material lists, progress, manpower, equipment, daily and concrete reports, the procurement log. Master this before anything else.</p>
                             </div>
                         </div>
-                        <span class="module-badge badge-locked"><i class='bx bx-lock-alt'></i> Track 2</span>
+                        <span class="module-badge badge-locked"><i class='bx bx-time'></i> After the core</span>
                     </div>
                     <div class="module-tools">
                         <span class="tool-tag-label">You'll learn:</span>
@@ -826,7 +833,7 @@
                                 <p>Now we turn data into a plan. With scope, WBS, and activities in hand, this is where the schedule is truly built — the engine every report and forecast runs on.</p>
                             </div>
                         </div>
-                        <span class="module-badge badge-locked"><i class='bx bx-lock-alt'></i> Track 2</span>
+                        <span class="module-badge badge-locked"><i class='bx bx-time'></i> After the core</span>
                     </div>
                     <div class="module-tools">
                         <span class="tool-tag-label">You'll learn:</span>
@@ -851,7 +858,7 @@
                                 <p>The plan exists, progress is coming in, and management wants a report. This is where data becomes a decision — live dashboards that show exactly where the project stands.</p>
                             </div>
                         </div>
-                        <span class="module-badge badge-locked"><i class='bx bx-lock-alt'></i> Track 2</span>
+                        <span class="module-badge badge-locked"><i class='bx bx-time'></i> After the core</span>
                     </div>
                     <div class="module-tools">
                         <span class="tool-tag-label">You'll learn:</span>
@@ -874,7 +881,7 @@
                                 <p>Who enters all this data? The site. Build the mobile app the field actually uses to capture progress — Power Apps becomes the data source that feeds Power BI.</p>
                             </div>
                         </div>
-                        <span class="module-badge badge-locked"><i class='bx bx-lock-alt'></i> Track 2</span>
+                        <span class="module-badge badge-locked"><i class='bx bx-time'></i> After the core</span>
                     </div>
                     <div class="module-tools">
                         <span class="tool-tag-label">You'll learn:</span>
@@ -897,7 +904,7 @@
                                 <p>Now we automate the process. Site Engineer → Power Apps → SharePoint → notification → Power BI refresh → email to manager. The manual work disappears.</p>
                             </div>
                         </div>
-                        <span class="module-badge badge-locked"><i class='bx bx-lock-alt'></i> Track 2</span>
+                        <span class="module-badge badge-locked"><i class='bx bx-time'></i> After the core</span>
                     </div>
                     <div class="module-tools">
                         <span class="tool-tag-label">You'll learn:</span>
@@ -919,7 +926,7 @@
                                 <p>Last — because AI does nothing on its own. It becomes powerful only once you know Excel, Primavera, Power BI, and Power Apps. Then it accelerates everything.</p>
                             </div>
                         </div>
-                        <span class="module-badge badge-locked"><i class='bx bx-lock-alt'></i> Track 2</span>
+                        <span class="module-badge badge-locked"><i class='bx bx-time'></i> After the core</span>
                     </div>
                     <div class="module-tools">
                         <span class="tool-tag-label">You'll learn:</span>
@@ -941,7 +948,7 @@
 
                     <!-- TRACK 3: RISK -->
                     <div class="roadmap-card">
-                        <span class="roadmap-num">03</span>
+                        <span class="roadmap-marker"><i class='bx bx-shield-quarter'></i></span>
                         <div class="roadmap-body">
                             <h3>Construction Risk</h3>
                             <p>Where most content stops — and where real delays begin. Built on PMI's Risk practice: identification, qualitative &amp; quantitative analysis, Monte Carlo, contingency, response, monitoring, opportunities vs threats. Not "filling a risk register" — a system that creates value.</p>
@@ -951,7 +958,7 @@
 
                     <!-- TRACK 4: CLAIMS -->
                     <div class="roadmap-card">
-                        <span class="roadmap-num">04</span>
+                        <span class="roadmap-marker"><i class='bx bx-file-find'></i></span>
                         <div class="roadmap-body">
                             <h3>Claims &amp; Delay Analysis</h3>
                             <p>When things go wrong, who pays? Forensic delay analysis, extension of time, disruption, productivity loss, evidence, and how daily reports become the foundation of a defensible claim.</p>
@@ -961,7 +968,7 @@
 
                     <!-- TRACK 5: LEADERSHIP -->
                     <div class="roadmap-card">
-                        <span class="roadmap-num">05</span>
+                        <span class="roadmap-marker"><i class='bx bx-trophy'></i></span>
                         <div class="roadmap-body">
                             <h3>Project Controls Leadership</h3>
                             <p>The step into senior roles. Governance, KPIs, PMO structures, portfolio-level dashboards, and how project controls data turns into executive decisions.</p>
