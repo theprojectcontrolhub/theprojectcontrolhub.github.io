@@ -336,6 +336,71 @@
             font-weight: 600;
         }
 
+        /* TRACK SECTION HEADERS */
+        .track-header {
+            margin: 8px 0 20px;
+        }
+        .track-header.track-2 { margin-top: 52px; }
+        .track-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            margin-bottom: 14px;
+        }
+        .track-badge.free {
+            color: #059669;
+            background: rgba(16,185,129,0.08);
+            border: 1px solid rgba(16,185,129,0.2);
+        }
+        .track-badge.paid {
+            color: #b45309;
+            background: rgba(245,158,11,0.08);
+            border: 1px solid rgba(245,158,11,0.22);
+        }
+        .track-header h2 {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--text-dark);
+            letter-spacing: -0.5px;
+            margin: 0 0 6px;
+        }
+        .track-header .track-sub {
+            font-size: 15px;
+            color: #64748b;
+            font-weight: 500;
+            margin: 0 0 10px;
+        }
+        .track-header .track-desc {
+            font-size: 14px;
+            color: #475569;
+            line-height: 1.65;
+            max-width: 680px;
+            margin: 0;
+        }
+        .track-note {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin: 20px 0 4px;
+        }
+        .track-note i { color: #10b981; font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+        .track-note p { font-size: 13.5px; color: #166534; line-height: 1.6; margin: 0; }
+        .track-note strong { color: #14532d; }
+
+        @media (max-width: 768px) {
+            .track-header h2 { font-size: 21px; }
+            .track-header.track-2 { margin-top: 40px; }
+        }
+
         /* MODAL */
         .modal-overlay {
             position: fixed;
@@ -589,15 +654,23 @@
                 <h1>Project Controls — The Way It Works on Site</h1>
                 <p>A structured series built for engineers who want to understand project controls the way it actually works on site. Theory first, then the tools that bring it to life.</p>
                 <div class="learn-header-meta">
-                    <span class="learn-meta-item"><i class='bx bx-book-open'></i> 4 modules</span>
-                    <span class="learn-meta-item"><i class='bx bx-time-five'></i> 27-week core curriculum</span>
+                    <span class="learn-meta-item"><i class='bx bx-layer'></i> 2 tracks · 7 modules</span>
+                    <span class="learn-meta-item"><i class='bx bx-time-five'></i> 27-week free core</span>
                     <span class="learn-meta-item"><i class='bx bx-calendar'></i> Published weekly</span>
-                    <span class="learn-meta-item"><i class='bx bx-lock-open'></i> Free with sign in</span>
+                    <span class="learn-meta-item"><i class='bx bx-lock-open'></i> Fundamentals always free</span>
                 </div>
             </div>
 
             <!-- MODULES -->
             <div class="modules-list">
+
+                <!-- ===== TRACK 1 ===== -->
+                <div class="track-header">
+                    <div class="track-badge free"><span class="dot-green"></span> TRACK 1 · FREE</div>
+                    <h2>Construction Project Controls Fundamentals</h2>
+                    <p class="track-sub">The logic. Why projects succeed — and why they fail.</p>
+                    <p class="track-desc">A complete 27-week curriculum on how project controls actually works on site. This is the foundation — the thinking behind every schedule, forecast, and decision. Free, forever.</p>
+                </div>
 
                 <!-- MODULE 01: SCHEDULE — ACTIVE -->
                 <div class="module-card">
@@ -633,24 +706,39 @@
                     </div>
                 </div>
 
+                <!-- ===== TRACK 2 ===== -->
+                <div class="track-header track-2">
+                    <div class="track-badge paid"><i class='bx bx-diamond'></i> TRACK 2 · FROM THEORY TO PRACTICE</div>
+                    <h2>Digital Project Controls</h2>
+                    <p class="track-sub">The tools. How professionals implement it on real projects.</p>
+                    <p class="track-desc">Once you understand the logic, this is where you learn to build it — the exact digital workflow used on live construction projects. Each tool feeds the next: data, plan, report, field capture, automation, and finally AI on top.</p>
+                    <div class="track-note">
+                        <i class='bx bx-lock-open-alt'></i>
+                        <p><strong>The fundamentals will always remain free.</strong> If you'd like to learn how these principles are implemented using professional digital tools on real construction projects, you're welcome to continue with the Digital Project Controls track — arriving after the core curriculum.</p>
+                    </div>
+                </div>
+
                 <!-- MODULE 02: EXCEL -->
                 <div class="module-card module-card-locked">
                     <div class="module-card-header">
                         <div class="module-card-left">
                             <span class="module-num locked">02</span>
                             <div class="module-info">
-                                <h2>Excel for Project Controls</h2>
-                                <p>Build schedules, S-curves, EVM trackers, and progress reports in Excel — from scratch. No templates, no shortcuts, just understanding.</p>
+                                <h2>Excel</h2>
+                                <p>Where everything begins. On day one, it's all Excel — BOQ, material lists, progress, manpower, equipment, daily and concrete reports, the procurement log. Master this before anything else.</p>
                             </div>
                         </div>
-                        <span class="module-badge badge-locked"><i class='bx bx-lock-alt'></i> Starting after Module 01</span>
+                        <span class="module-badge badge-locked"><i class='bx bx-lock-alt'></i> Track 2</span>
                     </div>
                     <div class="module-tools">
-                        <span class="tool-tag-label">Tools covered:</span>
-                        <span class="tool-tag">Microsoft Excel</span>
-                        <span class="tool-tag">Formulas</span>
-                        <span class="tool-tag">Charts</span>
+                        <span class="tool-tag-label">You'll learn:</span>
+                        <span class="tool-tag">Tables</span>
+                        <span class="tool-tag">Pivot</span>
+                        <span class="tool-tag">XLOOKUP</span>
+                        <span class="tool-tag">INDEX/MATCH</span>
+                        <span class="tool-tag">Power Query</span>
                         <span class="tool-tag">Dashboards</span>
+                        <span class="tool-tag">Conditional Formatting</span>
                     </div>
                 </div>
 
@@ -661,17 +749,21 @@
                             <span class="module-num locked">03</span>
                             <div class="module-info">
                                 <h2>Primavera P6</h2>
-                                <p>The industry standard for project scheduling. From setup and structure to baseline, resource loading, and client reporting.</p>
+                                <p>Now we turn data into a plan. With scope, WBS, and activities in hand, this is where the schedule is truly built — the engine every report and forecast runs on.</p>
                             </div>
                         </div>
-                        <span class="module-badge badge-locked"><i class='bx bx-lock-alt'></i> Starting after Module 02</span>
+                        <span class="module-badge badge-locked"><i class='bx bx-lock-alt'></i> Track 2</span>
                     </div>
                     <div class="module-tools">
-                        <span class="tool-tag-label">Tools covered:</span>
-                        <span class="tool-tag">Primavera P6</span>
-                        <span class="tool-tag">XER Export</span>
-                        <span class="tool-tag">Baselines</span>
-                        <span class="tool-tag">Reports</span>
+                        <span class="tool-tag-label">You'll learn:</span>
+                        <span class="tool-tag">WBS</span>
+                        <span class="tool-tag">Activities</span>
+                        <span class="tool-tag">Logic</span>
+                        <span class="tool-tag">Calendars</span>
+                        <span class="tool-tag">Constraints</span>
+                        <span class="tool-tag">Resources</span>
+                        <span class="tool-tag">Baseline</span>
+                        <span class="tool-tag">Updating</span>
                     </div>
                 </div>
 
@@ -681,18 +773,87 @@
                         <div class="module-card-left">
                             <span class="module-num locked">04</span>
                             <div class="module-info">
-                                <h2>Power BI for Project Controls</h2>
-                                <p>Turn your P6 and Excel data into live dashboards. Connect, visualize, and communicate project performance clearly.</p>
+                                <h2>Power BI</h2>
+                                <p>The plan exists, progress is coming in, and management wants a report. This is where data becomes a decision — live dashboards that show exactly where the project stands.</p>
                             </div>
                         </div>
-                        <span class="module-badge badge-locked"><i class='bx bx-lock-alt'></i> Starting after Module 03</span>
+                        <span class="module-badge badge-locked"><i class='bx bx-lock-alt'></i> Track 2</span>
                     </div>
                     <div class="module-tools">
-                        <span class="tool-tag-label">Tools covered:</span>
-                        <span class="tool-tag">Power BI</span>
-                        <span class="tool-tag">DAX</span>
-                        <span class="tool-tag">Data Modeling</span>
-                        <span class="tool-tag">Live Dashboards</span>
+                        <span class="tool-tag-label">You'll learn:</span>
+                        <span class="tool-tag">Dashboards</span>
+                        <span class="tool-tag">KPIs</span>
+                        <span class="tool-tag">S-Curve</span>
+                        <span class="tool-tag">SPI</span>
+                        <span class="tool-tag">CPI</span>
+                        <span class="tool-tag">Progress</span>
+                    </div>
+                </div>
+
+                <!-- MODULE 05: POWER APPS -->
+                <div class="module-card module-card-locked">
+                    <div class="module-card-header">
+                        <div class="module-card-left">
+                            <span class="module-num locked">05</span>
+                            <div class="module-info">
+                                <h2>Power Apps</h2>
+                                <p>Who enters all this data? The site. Build the mobile app the field actually uses to capture progress — Power Apps becomes the data source that feeds Power BI.</p>
+                            </div>
+                        </div>
+                        <span class="module-badge badge-locked"><i class='bx bx-lock-alt'></i> Track 2</span>
+                    </div>
+                    <div class="module-tools">
+                        <span class="tool-tag-label">You'll learn:</span>
+                        <span class="tool-tag">Daily Progress</span>
+                        <span class="tool-tag">Inspection</span>
+                        <span class="tool-tag">Concrete</span>
+                        <span class="tool-tag">Equipment</span>
+                        <span class="tool-tag">Photos</span>
+                        <span class="tool-tag">HSE</span>
+                    </div>
+                </div>
+
+                <!-- MODULE 06: POWER AUTOMATE -->
+                <div class="module-card module-card-locked">
+                    <div class="module-card-header">
+                        <div class="module-card-left">
+                            <span class="module-num locked">06</span>
+                            <div class="module-info">
+                                <h2>Power Automate</h2>
+                                <p>Now we automate the process. Site Engineer → Power Apps → SharePoint → notification → Power BI refresh → email to manager. The manual work disappears.</p>
+                            </div>
+                        </div>
+                        <span class="module-badge badge-locked"><i class='bx bx-lock-alt'></i> Track 2</span>
+                    </div>
+                    <div class="module-tools">
+                        <span class="tool-tag-label">You'll learn:</span>
+                        <span class="tool-tag">Workflows</span>
+                        <span class="tool-tag">SharePoint</span>
+                        <span class="tool-tag">Notifications</span>
+                        <span class="tool-tag">Auto-Refresh</span>
+                        <span class="tool-tag">Approvals</span>
+                    </div>
+                </div>
+
+                <!-- MODULE 07: AI -->
+                <div class="module-card module-card-locked">
+                    <div class="module-card-header">
+                        <div class="module-card-left">
+                            <span class="module-num locked">07</span>
+                            <div class="module-info">
+                                <h2>AI for Project Controls</h2>
+                                <p>Last — because AI does nothing on its own. It becomes powerful only once you know Excel, Primavera, Power BI, and Power Apps. Then it accelerates everything.</p>
+                            </div>
+                        </div>
+                        <span class="module-badge badge-locked"><i class='bx bx-lock-alt'></i> Track 2</span>
+                    </div>
+                    <div class="module-tools">
+                        <span class="tool-tag-label">You'll learn:</span>
+                        <span class="tool-tag">Delay Analysis</span>
+                        <span class="tool-tag">Report Writing</span>
+                        <span class="tool-tag">Risk Summary</span>
+                        <span class="tool-tag">Meeting Minutes</span>
+                        <span class="tool-tag">Dashboard Explanation</span>
                     </div>
                 </div>
 
