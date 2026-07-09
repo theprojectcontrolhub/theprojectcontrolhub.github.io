@@ -860,39 +860,86 @@
                                 <p>Because construction isn't a collection of independent decisions. Construction is a system. Every decision creates consequences.</p>
 
                                 <figure style="margin:36px 0;padding:24px;background:#f8fafc;border-radius:16px;border:1px solid #e2e8f0;">
-                                    <svg viewBox="0 0 720 340" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif">
+                                    <svg viewBox="0 0 900 700" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif">
   <defs>
-    <marker id="sar" markerWidth="12" markerHeight="12" refX="8" refY="5" orient="auto">
-      <path d="M1,1 L8,5 L1,9" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <marker id="sarw" markerWidth="12" markerHeight="12" refX="6" refY="6" orient="auto">
+      <path d="M2,2 L7,6 L2,10" fill="none" stroke="#334155" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
     </marker>
   </defs>
 
-  <text x="360" y="30" text-anchor="middle" fill="#0f172a" font-size="17" font-weight="800">Construction is a system, not a list of choices</text>
-  <text x="360" y="52" text-anchor="middle" fill="#64748b" font-size="13">Pull one lever and the whole chain reacts</text>
+  <text x="450" y="34" text-anchor="middle" fill="#059669" font-size="14" font-weight="800" letter-spacing="2">FIGURE 1</text>
+  <text x="450" y="70" text-anchor="middle" fill="#0f172a" font-size="30" font-weight="800">Construction is a system</text>
+  <text x="450" y="98" text-anchor="middle" fill="#64748b" font-size="15">One decision triggers a chain of consequences.</text>
 
-  <!-- Trigger -->
-  <rect x="260" y="75" width="200" height="50" rx="10" fill="#0f172a"/>
-  <text x="360" y="105" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">Reduce the duration</text>
-  <line x1="360" y1="127" x2="360" y2="150" stroke="#f59e0b" stroke-width="2" marker-end="url(#sar)"/>
+  <!-- ===== DECISION (top, dark) — centered at 450, NO icon ===== -->
+  <rect x="310" y="122" width="280" height="78" rx="14" fill="#0f172a"/>
+  <text x="450" y="150" text-anchor="middle" fill="#6ee7b7" font-size="11" font-weight="700" letter-spacing="1.5">DECISION</text>
+  <text x="450" y="172" text-anchor="middle" fill="#fff" font-size="16" font-weight="700">Reduce the schedule</text>
+  <text x="450" y="192" text-anchor="middle" fill="#fff" font-size="16" font-weight="700">duration</text>
 
-  <!-- chain -->
-  <rect x="235" y="153" width="250" height="42" rx="9" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
-  <text x="360" y="179" text-anchor="middle" fill="#c2410c" font-size="13">You need more labour</text>
-  <line x1="360" y1="197" x2="360" y2="216" stroke="#f59e0b" stroke-width="2" marker-end="url(#sar)"/>
+  <!-- branch to 3 boxes: centers 160, 450, 740 -->
+  <line x1="450" y1="200" x2="450" y2="222" stroke="#334155" stroke-width="2"/>
+  <line x1="160" y1="222" x2="740" y2="222" stroke="#334155" stroke-width="2"/>
+  <line x1="160" y1="222" x2="160" y2="246" stroke="#334155" stroke-width="2" marker-end="url(#sarw)"/>
+  <line x1="450" y1="222" x2="450" y2="246" stroke="#334155" stroke-width="2" marker-end="url(#sarw)"/>
+  <line x1="740" y1="222" x2="740" y2="246" stroke="#334155" stroke-width="2" marker-end="url(#sarw)"/>
 
-  <rect x="235" y="219" width="250" height="42" rx="9" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
-  <text x="360" y="245" text-anchor="middle" fill="#c2410c" font-size="13">Temporary facilities fall short</text>
-  <line x1="360" y1="263" x2="360" y2="282" stroke="#f59e0b" stroke-width="2" marker-end="url(#sar)"/>
+  <!-- ===== 3 PARALLEL BOXES (blue tint), NO icons, text centered ===== -->
+  <!-- Box 1: More labour — center=160 -->
+  <rect x="40" y="250" width="240" height="80" rx="12" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+  <text x="160" y="284" text-anchor="middle" fill="#0f172a" font-size="15" font-weight="700">More labour</text>
+  <text x="160" y="306" text-anchor="middle" fill="#64748b" font-size="12.5">is required</text>
 
-  <rect x="235" y="285" width="250" height="42" rx="9" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
-  <text x="360" y="311" text-anchor="middle" fill="#dc2626" font-size="13" font-weight="600">Costs rise — or scope must give</text>
+  <!-- Box 2: Equipment & resources — center=450 -->
+  <rect x="330" y="250" width="240" height="80" rx="12" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+  <text x="450" y="278" text-anchor="middle" fill="#0f172a" font-size="15" font-weight="700">Equipment &amp; resources</text>
+  <text x="450" y="300" text-anchor="middle" fill="#64748b" font-size="12.5">are stretched</text>
 
-  <!-- side note -->
-  <text x="600" y="200" text-anchor="middle" fill="#64748b" font-size="12">There is</text>
-  <text x="600" y="220" text-anchor="middle" fill="#dc2626" font-size="14" font-weight="700">no free change.</text>
+  <!-- Box 3: Overtime — center=740 -->
+  <rect x="620" y="250" width="240" height="80" rx="12" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+  <text x="740" y="278" text-anchor="middle" fill="#0f172a" font-size="15" font-weight="700">Overtime &amp; productivity</text>
+  <text x="740" y="300" text-anchor="middle" fill="#64748b" font-size="12.5">loss increases</text>
+
+  <!-- 3 boxes merge down -->
+  <line x1="160" y1="330" x2="160" y2="354" stroke="#334155" stroke-width="2"/>
+  <line x1="740" y1="330" x2="740" y2="354" stroke="#334155" stroke-width="2"/>
+  <line x1="450" y1="330" x2="450" y2="354" stroke="#334155" stroke-width="2"/>
+  <line x1="160" y1="354" x2="740" y2="354" stroke="#334155" stroke-width="2"/>
+  <line x1="450" y1="354" x2="450" y2="378" stroke="#334155" stroke-width="2" marker-end="url(#sarw)"/>
+
+  <!-- ===== Temporary facilities (orange) — centered 450, NO icon ===== -->
+  <rect x="270" y="382" width="360" height="66" rx="12" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+  <text x="450" y="410" text-anchor="middle" fill="#0f172a" font-size="15" font-weight="700">Temporary facilities &amp; site logistics</text>
+  <text x="450" y="432" text-anchor="middle" fill="#64748b" font-size="12.5">become insufficient</text>
+
+  <line x1="450" y1="448" x2="450" y2="472" stroke="#334155" stroke-width="2" marker-end="url(#sarw)"/>
+
+  <!-- ===== Costs OR Scope (red) — TWO separate boxes with OR between, NO overlap ===== -->
+  <!-- left box: costs -->
+  <rect x="180" y="476" width="270" height="74" rx="12" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+  <text x="315" y="506" text-anchor="middle" fill="#0f172a" font-size="14.5" font-weight="700">Project costs increase</text>
+  <text x="315" y="527" text-anchor="middle" fill="#64748b" font-size="12">beyond the baseline</text>
+
+  <!-- OR circle between the two boxes -->
+  <circle cx="450" cy="513" r="20" fill="#fff" stroke="#dc2626" stroke-width="2"/>
+  <text x="450" y="518" text-anchor="middle" fill="#dc2626" font-size="13" font-weight="800">OR</text>
+
+  <!-- right box: scope -->
+  <rect x="450" y="476" width="270" height="74" rx="12" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+  <text x="585" y="506" text-anchor="middle" fill="#0f172a" font-size="14.5" font-weight="700">Scope must change</text>
+  <text x="585" y="527" text-anchor="middle" fill="#64748b" font-size="12">to fit the budget</text>
+
+  <line x1="450" y1="550" x2="450" y2="574" stroke="#334155" stroke-width="2" marker-end="url(#sarw)"/>
+
+  <!-- ===== GREEN CONCLUSION — centered 450, NO icon ===== -->
+  <rect x="180" y="578" width="540" height="76" rx="14" fill="#065f46"/>
+  <text x="450" y="610" text-anchor="middle" fill="#fff" font-size="16" font-weight="700">Every construction decision creates a chain reaction.</text>
+  <text x="450" y="634" text-anchor="middle" fill="#a7f3d0" font-size="16" font-weight="700">There is no such thing as a free change.</text>
 </svg>
 
-                                    <figcaption style="text-align:center;font-size:13px;color:#64748b;margin-top:16px;line-height:1.5;">Nothing on a construction site happens in isolation. Compress the schedule and a chain of consequences follows — more labour, strained facilities, rising cost. There is no free change.</figcaption>
+
+
+                                    <figcaption style="text-align:center;font-size:13px;color:#64748b;margin-top:16px;line-height:1.5;"><strong style="color:#334155;">Figure 1 — Construction is a system.</strong> Pull one lever and the whole chain reacts. On a construction site, there is no such thing as a free change.</figcaption>
                                 </figure>
 
                                 <p>Reduce the duration, and you may need additional labour. Increase labour, and temporary facilities become insufficient. Add more equipment, and costs increase. Freeze the budget, and something else must change.</p>
@@ -948,7 +995,7 @@
 
 
 
-                                    <figcaption style="text-align:center;font-size:13px;color:#64748b;margin-top:16px;line-height:1.5;">The Triple Constraint — Scope, Time, and Cost, with Quality at the centre. This is the classic model, and it's correct as far as it goes. Construction simply needs more than three corners.</figcaption>
+                                    <figcaption style="text-align:center;font-size:13px;color:#64748b;margin-top:16px;line-height:1.5;"><strong style="color:#334155;">Figure 2 — The Triple Constraint.</strong> The classic model — Scope, Time, and Cost balanced around Quality. Correct as far as it goes, but construction needs more than three corners.</figcaption>
                                 </figure>
                                 <p>A building delivered on time is not a success if it is unsafe. A bridge completed within budget is not successful if it fails quality requirements. A project with excellent quality has still failed if workers are seriously injured during construction.</p>
                                 <p>For that reason, throughout this series we'll use a practical framework built specifically for construction projects. Every successful construction project stands on six interconnected foundations.</p>
@@ -1031,7 +1078,7 @@
 
 
 
-                                    <figcaption style="text-align:center;font-size:13px;color:#64748b;margin-top:16px;line-height:1.5;">The framework this entire series is built on. Five foundations — Scope, Time, Cost, Quality, and Safety — carry the project, all wrapped inside Risk Management, which anticipates and absorbs whatever the site throws at them. When one foundation weakens, the whole system moves.</figcaption>
+                                    <figcaption style="text-align:center;font-size:13px;color:#64748b;margin-top:16px;line-height:1.5;"><strong style="color:#334155;">Figure 3 — The Six Foundations.</strong> Five foundations carry every project — Scope, Time, Cost, Quality, Safety — all wrapped inside Risk Management. When one weakens, the whole system moves.</figcaption>
                                 </figure>
 
                                 <p>These foundations do not compete with one another. They support one another. When one becomes unstable, the entire project begins to move.</p>
@@ -1139,7 +1186,7 @@
   </g>
 </svg>
 
-                                    <figcaption style="text-align:center;font-size:13px;color:#64748b;margin-top:16px;line-height:1.5;">The same half-funded hospital, two ways to structure the work. Organized by deliverable, the Emergency Wing opens and starts treating patients on day one. Organized by phase, every stage sits at 50% — and not a single wing can open.</figcaption>
+                                    <figcaption style="text-align:center;font-size:13px;color:#64748b;margin-top:16px;line-height:1.5;"><strong style="color:#334155;">Figure 4 — Deliverables before phases.</strong> The same half-funded hospital, structured two ways. By deliverable, a wing opens and treats patients; by phase, nothing opens at all.</figcaption>
                                 </figure>
 
                                 <p>With a deliverable-based WBS, you finish the Emergency Wing completely and open its doors. It treats patients from day one. Real, functioning value — even on half the money.</p>
@@ -1180,7 +1227,7 @@
   <text x="580" y="290" text-anchor="middle" fill="#059669" font-size="13" font-weight="700">a model.</text>
 </svg>
 
-                                    <figcaption style="text-align:center;font-size:13px;color:#64748b;margin-top:16px;line-height:1.5;">The four building blocks of any schedule. On their own they're just data — activities, events, people, links. Connected, they become a model that forecasts the future.</figcaption>
+                                    <figcaption style="text-align:center;font-size:13px;color:#64748b;margin-top:16px;line-height:1.5;"><strong style="color:#334155;">Figure 5 — The four components.</strong> Activities, milestones, resources, and logic. Alone they are just data; connected, they become a model that forecasts the future.</figcaption>
                                 </figure>
 
                                 <p><strong>Activities</strong> represent work. <strong>Milestones</strong> represent important events. <strong>Resources</strong> perform the work. <strong>Logic</strong> connects everything together.</p>
@@ -1191,6 +1238,10 @@
                                 <p>Project Controls exists to help people make better decisions — earlier, with clearer eyes, before problems become expensive.</p>
                                 <p>Every foundation we've covered feeds that single purpose. Scope tells you what. Time tells you when. Cost tells you how much. Quality and Safety tell you how. Risk tells you what could go wrong. And the WBS holds it all together so the information is reliable when a decision has to be made.</p>
                                 <p>That's the difference between a planner who types dates and a professional who protects a project.</p>
+
+                                <div style="margin:32px 0;padding:28px 32px;background:#052e26;border-radius:16px;">
+                                    <p style="margin:0;color:#fff;font-size:20px;font-weight:700;font-style:italic;line-height:1.5;">Project controls doesn't begin with the schedule. It begins with the decisions made before construction starts.</p>
+                                </div>
 
                                 <h2>Key takeaways</h2>
                                 <p>Before moving to Week Three, remember these ideas:</p>
