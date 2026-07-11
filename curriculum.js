@@ -25,12 +25,12 @@ const CURRICULUM = {
     { n: 3, title: "That Gantt chart on the wall? It's not your schedule.", short: "That Gantt chart? It's not your schedule.", status: "live", page: "week-3.html", date: "Jul 8, 2026" },
 
     // ---- PHASE B — SCHEDULE STRATEGY · DOMAIN 1 ----
-    { phase: "Phase B — Schedule Strategy · Domain 1", n: 4, title: "Strategy before software — scheduling approach & governance", short: "Strategy before software", status: "upcoming" },
-    { n: 5, title: "Life cycles: Critical Path, Critical Chain, Agile & Rolling Wave", short: "Life cycles: CPM, Critical Chain, Agile", status: "upcoming" },
+    { phase: "Phase B — Schedule Strategy", n: 4, title: "Strategy before software — scheduling approach & governance", short: "Strategy before software", status: "live", page: "week-4.html", date: "Jul 15, 2026" },
+    { n: 5, title: "Life cycles: Critical Path, Critical Chain & Rolling Wave", short: "Life cycles: CPM, Critical Chain, Rolling Wave", status: "live", page: "week-5.html", date: "Jul 22, 2026" },
     { n: 6, title: "From charter to schedule — building the project strategy", short: "From charter to schedule", status: "upcoming" },
 
     // ---- PHASE C — SCHEDULE DEVELOPMENT · DOMAIN 2 ----
-    { phase: "Phase C — Schedule Development · Domain 2", n: 7, title: "The 9-step schedule development process", short: "The 9-step development process", status: "upcoming" },
+    { phase: "Phase C — Schedule Development", n: 7, title: "The 9-step schedule development process", short: "The 9-step development process", status: "upcoming" },
     { n: 8, title: "Scheduling components I — activity types, calendars, data", short: "Components I — activities, calendars", status: "upcoming" },
     { n: 9, title: "Scheduling components II — scope & schedule performance", short: "Components II — scope & performance", status: "upcoming" },
     { n: 10, title: "WBS & baseline development — structure that survives", short: "WBS & baseline development", status: "upcoming" },
@@ -41,7 +41,7 @@ const CURRICULUM = {
     { n: 15, title: "Schedule risk analysis — Monte Carlo & contingency", short: "Schedule risk analysis — Monte Carlo", status: "upcoming" },
 
     // ---- PHASE D — MONITORING & CONTROL · DOMAIN 3 ----
-    { phase: "Phase D — Monitoring & Control · Domain 3", n: 16, title: "Schedule maintenance — actuals & the update cycle", short: "Maintenance — actuals & update cycle", status: "upcoming" },
+    { phase: "Phase D — Monitoring & Control", n: 16, title: "Schedule maintenance — actuals & the update cycle", short: "Maintenance — actuals & update cycle", status: "upcoming" },
     { n: 17, title: "Model health — constraints, open ends, out-of-sequence logic", short: "Model health — constraints, OOS logic", status: "upcoming" },
     { n: 18, title: "EVM fundamentals — PMB, PV, EV, AC", short: "EVM fundamentals — PMB, PV, EV, AC", status: "upcoming" },
     { n: 19, title: "EVM analysis — SPI, CPI & variance interpretation", short: "EVM analysis — SPI, CPI, variance", status: "upcoming" },
@@ -51,11 +51,11 @@ const CURRICULUM = {
     { n: 23, title: "Project reviews & the Conformance Index", short: "Project reviews & Conformance Index", status: "upcoming" },
 
     // ---- PHASE E — CLOSEOUT & FORENSICS · DOMAIN 4 ----
-    { phase: "Phase E — Closeout & Forensics · Domain 4", n: 24, title: "Forensic schedule analysis — delays, claims, evidence", short: "Forensic schedule analysis — claims", status: "upcoming" },
+    { phase: "Phase E — Closeout & Forensics", n: 24, title: "Forensic schedule analysis — delays, claims, evidence", short: "Forensic schedule analysis — claims", status: "upcoming" },
     { n: 25, title: "Closeout & continuous closeout — capturing the data", short: "Closeout & continuous closeout", status: "upcoming" },
 
     // ---- PHASE F — COMMUNICATION · DOMAIN 5 ----
-    { phase: "Phase F — Communication · Domain 5", n: 26, title: "Reporting & the altitude concept — right data, right level", short: "Reporting & the altitude concept", status: "upcoming" },
+    { phase: "Phase F — Communication", n: 26, title: "Reporting & the altitude concept — right data, right level", short: "Reporting & the altitude concept", status: "upcoming" },
     { n: 27, title: "Stakeholder management & schedule communication", short: "Stakeholder management & communication", status: "upcoming" },
   ],
 
