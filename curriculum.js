@@ -27,7 +27,7 @@ const CURRICULUM = {
     // ---- PHASE B — SCHEDULE STRATEGY · DOMAIN 1 ----
     { phase: "Phase B — Schedule Strategy", n: 4, title: "Strategy before software — scheduling approach & governance", short: "Strategy before software", status: "live", page: "week-4.html", date: "Jul 15, 2026" },
     { n: 5, title: "Life cycles: Critical Path, Critical Chain & Rolling Wave", short: "Life cycles: CPM, Critical Chain, Rolling Wave", status: "live", page: "week-5.html", date: "Jul 22, 2026" },
-    { n: 6, title: "From charter to schedule — building the project strategy", short: "From charter to schedule", status: "upcoming" },
+    { n: 6, title: "From charter to schedule — building the project strategy", short: "From charter to schedule", status: "live", page: "week-6.html", date: "Jul 29, 2026" },
 
     // ---- PHASE C — SCHEDULE DEVELOPMENT · DOMAIN 2 ----
     { phase: "Phase C — Schedule Development", n: 7, title: "The 9-step schedule development process", short: "The 9-step development process", status: "upcoming" },
