@@ -20,7 +20,6 @@
     --accent-blue: #3b82f6;
 
     --font-main: 'Inter', sans-serif;
-    --font-heading: 'Montserrat', 'Inter', sans-serif;
     --transition: all 0.2s ease-in-out;
 }
 
@@ -36,18 +35,6 @@ body {
     color: var(--text-dark);
     line-height: 1.5;
 }
-
-/* Heading font — matches the logo (Montserrat) */
-h1, h2, h3,
-.hero-left h1,
-.section-header h2,
-.article-title,
-.logo,
-.track-header h2,
-.roadmap-intro h2 {
-    font-family: var(--font-heading);
-}
-
 
 a {
     text-decoration: none;
