@@ -163,6 +163,12 @@ ul {
     color: var(--primary-green);
 }
 
+.logo-mark {
+    flex-shrink: 0;
+    display: block;
+}
+
+
 .nav-links {
     display: flex;
     gap: 32px;
