@@ -45,7 +45,7 @@ const CURRICULUM = {
     { n: 17, title: "Model health — constraints, open ends, out-of-sequence logic", short: "Model health — constraints, OOS logic", status: "live", page: "week-17.html", date: "Oct 14, 2026" },
     { n: 18, title: "EVM fundamentals — PMB, PV, EV, AC", short: "EVM fundamentals — PMB, PV, EV, AC", status: "live", page: "week-18.html", date: "Oct 21, 2026" },
     { n: 19, title: "EVM analysis — SPI, CPI & variance interpretation", short: "EVM analysis — SPI, CPI, variance", status: "live", page: "week-19.html", date: "Oct 28, 2026" },
-    { n: 20, title: "Forecasting — EAC, ETC, TCPI & Earned Schedule", short: "Forecasting — EAC, ETC, Earned Schedule", status: "upcoming" },
+    { n: 20, title: "Forecasting — EAC, ETC, TCPI & Earned Schedule", short: "Forecasting — EAC, ETC, Earned Schedule", status: "live", page: "week-20.html", date: "Nov 4, 2026" },
     { n: 21, title: "Change control & protecting the baseline", short: "Change control & baseline protection", status: "upcoming" },
     { n: 22, title: "The control philosophy — telemetry & managing variances", short: "Control philosophy — telemetry", status: "upcoming" },
     { n: 23, title: "Project reviews & the Conformance Index", short: "Project reviews & Conformance Index", status: "upcoming" },
