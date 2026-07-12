@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estimating — The Project Control Hub</title>
+    <meta name="description" content="Forty man-hours isn't five days. Effort vs duration, why doubling the crew never halves the time, the three estimating methods, and why the average date is a date you'll miss half the time.">
+    <link rel="canonical" href="https://theprojectcontrolhub.com/week-12.html">
+
+    <!-- Open Graph (LinkedIn, Facebook, WhatsApp) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="The Project Control Hub">
+    <meta property="og:title" content="Estimating | The Project Control Hub">
+    <meta property="og:description" content="Forty man-hours isn't five days. Effort vs duration, why doubling the crew never halves the time, the three estimating methods, and why the average date is a date you'll miss half the time.">
+    <meta property="og:url" content="https://theprojectcontrolhub.com/week-12.html">
+    <meta property="og:image" content="https://theprojectcontrolhub.com/og-image.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Estimating | The Project Control Hub">
+    <meta name="twitter:description" content="Forty man-hours isn't five days. Effort vs duration, why doubling the crew never halves the time, the three estimating methods, and why the average date is a date you'll miss half the time.">
+    <meta name="twitter:image" content="https://theprojectcontrolhub.com/og-image.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=9">
+    <style>
+        /* PAGE LAYOUT */
+        .content-page {
+            background: var(--bg-light);
+            min-height: 100vh;
+            padding: 40px 0 80px;
+        }
+
+        .content-layout {
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 40px;
+            align-items: start;
+        }
+
+        /* BREADCRUMB */
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 28px;
+        }
+        .breadcrumb a {
+            color: var(--primary-green);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .breadcrumb a:hover { text-decoration: underline; }
+
+        /* ARTICLE */
+        .article-card {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .article-meta {
+            padding: 32px 36px 0;
+        }
+
+        .article-week-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(16,185,129,0.08);
+            color: #059669;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            padding: 5px 14px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(16,185,129,0.15);
+        }
+
+        .article-title {
+            font-size: 30px;
+            font-weight: 800;
+            color: var(--text-dark);
+            line-height: 1.25;
+            letter-spacing: -0.5px;
+            margin-bottom: 20px;
+        }
+
+        .article-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #f1f5f9;
+            margin-bottom: 0;
+        }
+
+        .author-avatar-sm {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #10b981, #059669);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .author-details strong {
+            display: block;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .author-details span {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* VIDEO EMBED */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            background: #0f172a;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-placeholder {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            color: #94a3b8;
+        }
+
+        .video-placeholder i { font-size: 48px; color: #10b981; }
+        .video-placeholder p { font-size: 14px; }
+
+        /* ARTICLE CONTENT */
+        .article-body {
+            padding: 36px 36px 0;
+        }
+
+        .article-body p {
+            font-size: 16px;
+            color: #334155;
+            line-height: 1.85;
+            margin-bottom: 20px;
+        }
+
+        .article-body h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin: 32px 0 16px;
+            letter-spacing: -0.3px;
+        }
+
+        .article-body strong { color: var(--text-dark); }
+
+        .article-body ul {
+            margin: 0 0 20px 20px;
+        }
+
+        .article-body ul li {
+            font-size: 16px;
+            color: #334155;
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        /* PAYWALL BLUR */
+        .content-preview {
+            position: relative;
+        }
+
+        .content-blur {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-blur::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 180px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.95) 60%, #fff 100%);
+            pointer-events: none;
+        }
+
+        .content-locked {
+            display: block;
+        }
+
+        /* PAYWALL CTA */
+        .paywall-cta {
+            padding: 32px 36px 36px;
+            text-align: center;
+            border-top: 1px solid #f1f5f9;
+            margin-top: 0;
+        }
+
+        .paywall-cta h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .paywall-cta p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .btn-google-signin {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            max-width: 340px;
+            padding: 14px 20px;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #1e293b;
+            background: #fff;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .btn-google-signin:hover {
+            border-color: #cbd5e1;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+        }
+
+        .paywall-note {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-top: 12px;
+        }
+
+        /* ARTICLE FOOTER (visible after login) */
+        .article-footer {
+            display: none;
+            padding: 28px 36px 36px;
+            border-top: 1px solid #f1f5f9;
+            margin-top: 8px;
+        }
+
+        .article-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .article-tag {
+            font-size: 13px;
+            color: #10b981;
+            background: rgba(16,185,129,0.08);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        /* SIDEBAR */
+        .content-sidebar {
+            position: sticky;
+            top: 24px;
+        }
+
+        .sidebar-card {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 16px;
+        }
+
+        .sidebar-card-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .sidebar-card-header h4 {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0;
+        }
+
+        .sidebar-series-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 20px;
+            border-bottom: 1px solid #f8fafc;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.15s;
+        }
+
+        .sidebar-series-item:hover { background: #f8fafc; }
+
+        .sidebar-series-item.active {
+            background: rgba(16,185,129,0.04);
+            border-left: 3px solid #10b981;
+        }
+
+        .sidebar-series-item.upcoming {
+            opacity: 0.45;
+            cursor: default;
+            pointer-events: none;
+        }
+
+        .sidebar-week {
+            font-size: 10px;
+            font-weight: 700;
+            color: #10b981;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            min-width: 44px;
+            flex-shrink: 0;
+        }
+
+        .sidebar-series-item.upcoming .sidebar-week { color: #94a3b8; }
+
+        .sidebar-item-title {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-dark);
+            line-height: 1.4;
+            flex: 1;
+        }
+
+        .sidebar-series-item.active .sidebar-item-title {
+            font-weight: 700;
+            color: #059669;
+        }
+
+        .sidebar-new {
+            font-size: 10px;
+            font-weight: 700;
+            color: #fff;
+            background: #10b981;
+            padding: 2px 7px;
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+
+        /* AUTHOR CARD */
+        .author-sidebar-card {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 20px;
+        }
+
+        .author-sidebar-top {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .author-sidebar-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #10b981, #059669);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .author-sidebar-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-dark);
+            display: block;
+        }
+
+        .author-sidebar-title {
+            font-size: 12px;
+            color: var(--text-muted);
+            display: block;
+            margin-top: 2px;
+        }
+
+        .author-sidebar-bio {
+            font-size: 13px;
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .btn-linkedin {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #0a66c2;
+            color: #0a66c2;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        /* MODAL */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+        }
+        .modal-overlay.active { opacity: 1; pointer-events: all; }
+        .modal-box {
+            background: #fff;
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 420px;
+            width: 90%;
+            position: relative;
+            text-align: center;
+        }
+        .close-modal {
+            position: absolute;
+            top: 16px; right: 16px;
+            background: none;
+            border: none;
+            font-size: 22px;
+            color: #94a3b8;
+            cursor: pointer;
+        }
+        .modal-icon-wrapper {
+            width: 56px; height: 56px;
+            background: #ecfdf5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 24px;
+            color: #10b981;
+        }
+        .modal-box h4 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0f172a;
+            margin: 0 0 10px;
+        }
+        .modal-box p {
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.6;
+            margin: 0 0 20px;
+        }
+        .modal-note {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-top: 12px;
+        }
+
+        /* NEXT ARTICLE NAV */
+        .next-article {
+            margin-top: 8px;
+            border-top: 1px solid #f1f5f9;
+            padding: 28px 36px 36px;
+        }
+
+        .next-article-label {
+            display: block;
+            width: 100%;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 14px;
+        }
+
+        .next-article-link {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-decoration: none;
+            padding: 16px 20px;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            transition: all 0.2s;
+        }
+
+        .next-article-link:hover {
+            border-color: #10b981;
+            background: rgba(16,185,129,0.02);
+        }
+
+        .next-week-tag {
+            font-size: 11px;
+            font-weight: 700;
+            color: #10b981;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .next-article-link h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-dark);
+            line-height: 1.4;
+            margin: 0;
+            flex: 1;
+        }
+
+        .next-article-link i {
+            font-size: 22px;
+            color: #10b981;
+            flex-shrink: 0;
+        }
+
+        /* MOBILE */
+        @media (max-width: 1024px) {
+            .content-layout { grid-template-columns: 1fr; }
+            .content-sidebar { position: static; }
+        }
+
+        @media (max-width: 768px) {
+            .content-page { padding: 24px 0 60px; }
+            .content-layout { padding: 0 16px; gap: 24px; }
+            .breadcrumb { font-size: 12px; margin-bottom: 16px; }
+            .article-card { border-radius: 14px; }
+            .article-meta { padding: 20px 18px 0; }
+            .article-week-badge { font-size: 10px; padding: 4px 10px; margin-bottom: 14px; }
+            .article-title { font-size: 20px; margin-bottom: 14px; }
+            .article-author { flex-wrap: wrap; gap: 8px; padding-bottom: 16px; }
+            .author-details strong { font-size: 13px; }
+            .author-details span { font-size: 11px; }
+            .article-body { padding: 18px 18px 0; }
+            .article-body p { font-size: 14px; line-height: 1.75; }
+            .article-body h2 { font-size: 17px; margin: 24px 0 12px; }
+            .article-body ul li { font-size: 14px; }
+            .paywall-cta { padding: 20px 18px 24px; }
+            .paywall-cta h3 { font-size: 17px; }
+            .paywall-cta p { font-size: 13px; }
+            .btn-google-signin { font-size: 14px; padding: 12px 16px; }
+            .article-footer { padding: 16px 18px; }
+            .next-article { padding: 16px 18px 20px; }
+            .next-article-link h4 { font-size: 13px; }
+            .sidebar-card-header { padding: 14px 16px; }
+            .sidebar-series-item { padding: 12px 16px; }
+            .sidebar-item-title { font-size: 12px; }
+            .author-sidebar-card { padding: 16px; }
+            .author-sidebar-bio { font-size: 12px; }
+            .btn-nav-social { display: none !important; }
+        }
+
+        @media (max-width: 480px) {
+            .article-title { font-size: 18px; }
+            .article-body p { font-size: 14px; }
+        }
+            figure svg { width: 100%; height: auto; display: block; }
+        @media (max-width: 768px) { figure { padding: 14px !important; } }
+    </style>
+
+        <!-- Share: copy link -->
+    <script>
+        window.copyArticleLink = function(btn) {
+            const url = "https://theprojectcontrolhub.com/week-12.html";
+            const label = btn.querySelector('i') ? btn.innerHTML : btn.textContent;
+            navigator.clipboard.writeText(url).then(function() {
+                const original = btn.innerHTML;
+                btn.classList.add('copied');
+                btn.innerHTML = "<i class='bx bx-check'></i>" + (btn.textContent.trim() ? " Copied!" : "");
+                setTimeout(function() {
+                    btn.classList.remove('copied');
+                    btn.innerHTML = original;
+                }, 1800);
+            }).catch(function() {
+                // Fallback
+                const t = document.createElement('textarea');
+                t.value = url; document.body.appendChild(t); t.select();
+                try { document.execCommand('copy'); } catch(e) {}
+                document.body.removeChild(t);
+                const original = btn.innerHTML;
+                btn.classList.add('copied');
+                btn.innerHTML = "<i class='bx bx-check'></i>" + (btn.textContent.trim() ? " Copied!" : "");
+                setTimeout(function() { btn.classList.remove('copied'); btn.innerHTML = original; }, 1800);
+            });
+        };
+    </script>
+
+    <!-- Mobile nav toggle — standalone, independent of Firebase -->
+    <script>
+        window.toggleMobileNav = function() {
+            const nav = document.getElementById('mobileNav');
+            const btn = document.getElementById('hamburger');
+            if (!nav) return;
+            nav.classList.toggle('open');
+            if (btn) btn.classList.toggle('open');
+            document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
+        };
+    </script>
+
+    <script type="module">
+        import { signInWithGoogle, logout, onUserChange } from './auth.js';
+
+        let currentUser = null;
+
+        // Prevent auth flash: restore UI instantly from cached state
+        (function() {
+            const hint = localStorage.getItem('pch_auth');
+            let cached = null;
+            try { cached = JSON.parse(hint); } catch(e) {}
+            if (cached && cached.name) {
+                document.getElementById('userMenu').style.display = 'flex';
+                document.getElementById('userName').textContent = cached.name;
+                if (cached.photo) document.getElementById('userAvatar').src = cached.photo;
+            } else {
+                document.getElementById('joinBtn').style.display = 'flex';
+            }
+        })();
+
+        onUserChange((user) => {
+            currentUser = user;
+            const joinBtn = document.getElementById('joinBtn');
+            const userMenu = document.getElementById('userMenu');
+
+            if (user) {
+                localStorage.setItem('pch_auth', JSON.stringify({
+                    name: user.displayName.split(' ')[0],
+                    photo: user.photoURL || ''
+                }));
+                joinBtn.style.display = 'none';
+                userMenu.style.display = 'flex';
+                document.getElementById('userName').textContent = user.displayName.split(' ')[0];
+                if (user.photoURL) document.getElementById('userAvatar').src = user.photoURL;
+                closeModal();
+                unlockContent();
+            } else {
+                localStorage.removeItem('pch_auth');
+                joinBtn.style.display = 'flex';
+                userMenu.style.display = 'none';
+                lockContent();
+            }
+        });
+
+        // Soft paywall: content is always visible. Signed-in users just don't see the invite.
+        function unlockContent() {
+            const cta = document.getElementById('paywallCta');
+            if (cta) cta.style.display = 'none';
+            const footer = document.getElementById('articleFooter');
+            if (footer) footer.style.display = 'block';
+            const next = document.getElementById('nextArticle');
+            if (next) next.style.display = 'flex';
+        }
+
+        function lockContent() {
+            // Content stays open. Show the friendly invite to sign in.
+            const cta = document.getElementById('paywallCta');
+            if (cta) cta.style.display = 'block';
+            const footer = document.getElementById('articleFooter');
+            if (footer) footer.style.display = 'block';
+            const next = document.getElementById('nextArticle');
+            if (next) next.style.display = 'flex';
+        }
+
+        // Sidebar links are open — no gating in soft-paywall mode.
+
+        window.signInWithGoogleBtn = async function() {
+            try {
+                await signInWithGoogle();
+                // On mobile this redirects away; on desktop the popup resolves here.
+            } catch(e) {
+                // Only show an error for genuine failures, not user-cancelled popups.
+                const code = e && e.code ? e.code : '';
+                if (code !== 'auth/popup-closed-by-user' &&
+                    code !== 'auth/cancelled-popup-request') {
+                    alert('Sign in failed. Please try again.');
+                }
+            }
+        };
+
+        window.logoutUser = async function() { await logout(); };
+        window.openModal = function() {
+            document.getElementById('accessModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        };
+
+        window.closeModal = function() {
+            document.getElementById('accessModal').classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('accessModal').addEventListener('click', function(e) {
+                if (e.target === this) closeModal();
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+            <a href="index.html" class="logo">
+                <svg class="logo-mark" width="40" height="40" viewBox="0 0 100 100" fill="none" aria-hidden="true"><path d="M30 32 L49 32 L58.5 48 L49 64 L30 64 L20.5 48 Z" stroke="#10b981" stroke-width="6" stroke-linejoin="round"/><path d="M60 22 L71 22 L76.5 31.5 L71 41 L60 41 L54.5 31.5 Z" stroke="#64748b" stroke-width="5" stroke-linejoin="round"/><path d="M59 58 L68 58 L72.5 65.5 L68 73 L59 73 L54.5 65.5 Z" stroke="#64748b" stroke-width="4.5" stroke-linejoin="round"/></svg>
+                <span translate="no">THE PROJECT CONTROL HUB</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="learn.html">Learn</a>
+                <a href="about.html">About</a>
+            </div>
+            <div class="nav-actions" style="display:flex;align-items:center;gap:10px;">
+                <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+                <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" class="btn-nav-social" translate="no"><i class='bx bxl-linkedin'></i></a>
+                <a href="https://youtube.com" target="_blank" class="btn-nav-social" translate="no"><i class='bx bxl-youtube'></i></a>
+                <button id="joinBtn" class="btn btn-primary" style="display:none;" onclick="openModal()"><i class='bx bx-log-in'></i> Sign In</button>
+                <div id="userMenu" style="display:none;align-items:center;gap:10px;">
+                    <img id="userAvatar" src="" style="width:32px;height:32px;border-radius:50%;object-fit:cover;" alt="avatar">
+                    <span id="userName" style="font-size:14px;font-weight:600;color:var(--text-light);"></span>
+                    <button class="btn btn-primary" onclick="logoutUser()" style="padding:8px 14px;font-size:13px;">Sign Out</button>
+                </div>
+            </div>
+        </nav>
+
+    <section class="hero-section" style="padding-bottom:0;">
+    </section>
+
+    <!-- CONTENT PAGE -->
+    <div class="content-page">
+        <div class="content-layout">
+
+            <!-- LEFT — ARTICLE -->
+            <div>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <i class='bx bx-chevron-right'></i>
+                    <a href="learn.html">Schedule Management</a>
+                    <i class='bx bx-chevron-right'></i>
+                    <span>Week 12</span>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-meta">
+                        <div class="article-week-badge">
+                            <span class="dot-green" style="width:6px;height:6px;border-radius:50%;background:#10b981;display:inline-block;"></span>
+                            MODULE 01 · SCHEDULE MANAGEMENT · WEEK 12
+                        </div>
+                        <h1 class="article-title">How long will it take?</h1>
+                        <div class="article-author">
+                            <div class="author-avatar-sm">BE</div>
+                            <div class="author-details">
+                                <strong translate="no">Barış Emre Özçelik, PMP</strong>
+                                <span>Planning & Project Controls Lead · Sep 9, 2026</span>
+                            </div>
+                            <div style="margin-left:auto;display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-muted);">
+                                <i class='bx bx-time-five'></i> 9 min read
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SHARE BAR (top) -->
+                    <div class="share-bar share-bar-top">
+                        <span class="share-bar-label">Share</span>
+                        <a class="share-btn linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftheprojectcontrolhub.com%2Fweek-12.html" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><i class='bx bxl-linkedin'></i></a>
+                        <a class="share-btn whatsapp" href="https://wa.me/?text=How%20a%20schedule%20gets%20built%20%E2%80%94%20the%20nine-step%20process%20https%3A%2F%2Ftheprojectcontrolhub.com%2Fweek-12.html" target="_blank" rel="noopener" aria-label="Share on WhatsApp"><i class='bx bxl-whatsapp'></i></a>
+                        <a class="share-btn x" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftheprojectcontrolhub.com%2Fweek-12.html&text=How%20a%20schedule%20gets%20built%20%E2%80%94%20the%20nine-step%20process" target="_blank" rel="noopener" aria-label="Share on X"><i class='bx bxl-twitter'></i></a>
+                        <button class="share-btn copy" onclick="copyArticleLink(this)" aria-label="Copy link"><i class='bx bx-link'></i></button>
+                    </div>
+
+                    <!-- VIDEO -->
+                    <div class="video-container">
+                        <!-- Replace VIDEO_ID with your YouTube video ID -->
+                        <div class="video-placeholder">
+                            <i class='bx bxl-youtube'></i>
+                            <p>Video coming soon</p>
+                        </div>
+                        <!-- When video is ready, replace above div with:
+                        <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+                        -->
+                    </div>
+
+                    <!-- ARTICLE BODY — PREVIEW (visible to all) -->
+                    <div class="article-body">
+                        <div class="content-preview" id="contentPreview">
+                            <h2 style="margin-top:0;">"How long will it take?"</h2>
+                            <p>Someone asks. You answer. And that number &#8212; given in a corridor, in about four seconds &#8212; becomes a date on a contract, a line in a cash flow, and eventually the thing you get blamed for.</p>
+                            <p>Estimating is the least respected skill in planning. It's also the one that decides whether everything else works.</p>
+                            <p>Because a perfect network with bad durations is just a very well-organised way to be late.</p>
+
+                            <!-- LOCKED CONTENT -->
+                            <div class="content-locked">
+                                <p>Let's start with the mistake that's underneath most of them.</p>
+
+                                <h2>Effort is not duration</h2>
+                                <p>Two words that get used as if they're the same thing. They aren't, and confusing them is the most common estimating error there is.</p>
+                                <p><strong>Effort</strong> is labour. Forty man-hours. It's how much work exists.</p>
+                                <p><strong>Duration</strong> is calendar time. How long it takes, with the crew you actually have, on the site you actually have.</p>
+                                <p>Forty man-hours does not mean five days. It might mean eight.</p>
+
+                                <figure style="margin:36px 0;padding:24px;background:#f8fafc;border-radius:16px;border:1px solid #e2e8f0;">
+                                    <svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif">
+  <text x="320" y="30" text-anchor="middle" fill="#10b981" font-size="11.5" font-weight="700" letter-spacing="2">WHY THE JOB TAKES LONGER THAN THE HOURS</text>
+
+  <text x="40" y="76" fill="#475569" font-size="13" font-weight="600">The effort you estimated</text>
+  <rect x="40" y="88" width="200" height="34" rx="7" fill="#10b981"/>
+  <text x="140" y="111" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="700">40 hours of work</text>
+  <text x="256" y="111" fill="#94a3b8" font-size="12">on paper</text>
+
+  <text x="40" y="166" fill="#475569" font-size="13" font-weight="600">Minus the day that isn't tools-down work</text>
+  <rect x="40" y="178" width="200" height="34" rx="7" fill="#34d399"/>
+  <rect x="240" y="178" width="36" height="34" rx="7" fill="#fbbf24"/>
+  <text x="140" y="201" text-anchor="middle" fill="#065f46" font-size="13" font-weight="700">productive time</text>
+  <text x="292" y="201" fill="#d97706" font-size="12">briefings, setup, moving</text>
+
+  <text x="40" y="256" fill="#475569" font-size="13" font-weight="600">Minus the crew you don't fully have</text>
+  <rect x="40" y="268" width="200" height="34" rx="7" fill="#34d399"/>
+  <rect x="240" y="268" width="36" height="34" rx="7" fill="#fbbf24"/>
+  <rect x="276" y="268" width="84" height="34" rx="7" fill="#f87171"/>
+  <text x="140" y="291" text-anchor="middle" fill="#065f46" font-size="13" font-weight="700">productive time</text>
+  <text x="376" y="291" fill="#dc2626" font-size="12">they're on two other fronts</text>
+
+  <line x1="360" y1="80" x2="360" y2="316" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <text x="440" y="336" text-anchor="middle" fill="#0f172a" font-size="13.5" font-weight="700">Real duration: 8 days, not 5</text>
+
+  <text x="320" y="376" text-anchor="middle" fill="#64748b" font-size="13">Effort is hours. Duration is hours divided by reality.</text>
+</svg>
+                                    <figcaption style="text-align:center;font-size:13px;color:#64748b;margin-top:16px;line-height:1.5;"><strong style="color:#334155;">Figure 1 &#8212; Effort, then reality.</strong> Nobody spends the whole day laying block. And nobody has a crew that&#39;s only working for you. Duration is effort divided by both.</figcaption>
+                                </figure>
+
+                                <p>Nobody works every minute of the shift. There's the briefing, the setup, moving materials, waiting on the crane. Even a good crew turns maybe three-quarters of the day into installed work. That's not laziness &#8212; that's construction.</p>
+                                <p>And then availability. Is that crew yours all week, or are they on two other work fronts? A crew you have half the time takes twice as long.</p>
+                                <p>Skip both corrections and you get the <strong>optimism illusion</strong>: an estimate that would be right if the world worked the way the spreadsheet does. It doesn't. It never has.</p>
+
+                                <h2>Twice the crew is not half the time</h2>
+                                <p>Here's the follow-up someone senior always asks: <em>"Fine &#8212; so put twice the men on it."</em></p>
+                                <p>It doesn't work like that, and everyone who's been on site knows why.</p>
+                                <p>The new crew has to learn the job. Somebody has to supervise them. Two gangs on one pour deck get in each other's way. The crane can only lift for one of them at a time. You add people, and you get less out of each one.</p>
+                                <p>And some things don't care at all. Concrete cures in seven days. Put a hundred men around it and it still cures in seven days. <strong>Effort-driven work responds to crew. Fixed-duration work laughs at you.</strong></p>
+                                <p>Knowing which is which is most of the skill.</p>
+
+                                <h2>Three ways to get a number</h2>
+                                <p>So where does an honest duration actually come from?</p>
+
+                                <figure style="margin:36px 0;padding:24px;background:#f8fafc;border-radius:16px;border:1px solid #e2e8f0;">
+                                    <svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif">
+  <text x="320" y="30" text-anchor="middle" fill="#10b981" font-size="11.5" font-weight="700" letter-spacing="2">THREE WAYS TO PUT A NUMBER ON IT</text>
+
+  <rect x="40" y="56" width="560" height="86" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+  <rect x="40" y="56" width="6" height="86" rx="3" fill="#34d399"/>
+  <text x="70" y="86" fill="#0f172a" font-size="15.5" font-weight="700">By comparison</text>
+  <text x="70" y="110" fill="#64748b" font-size="12.5">&#8220;The last tower like this took 14 months.&#8221;</text>
+  <text x="70" y="130" fill="#94a3b8" font-size="12">Fast, rough &#8212; only as good as the similarity.</text>
+  <rect x="470" y="82" width="112" height="28" rx="14" fill="#f1f5f9"/>
+  <text x="526" y="101" text-anchor="middle" fill="#475569" font-size="11" font-weight="700">BIDDING</text>
+
+  <rect x="40" y="154" width="560" height="86" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+  <rect x="40" y="154" width="6" height="86" rx="3" fill="#10b981"/>
+  <text x="70" y="184" fill="#0f172a" font-size="15.5" font-weight="700">By rate</text>
+  <text x="70" y="208" fill="#64748b" font-size="12.5">&#8220;We lay 40 m&#178; of blockwork a day. This is 800 m&#178;.&#8221;</text>
+  <text x="70" y="228" fill="#94a3b8" font-size="12">Scales cleanly &#8212; if your rate is real.</text>
+  <rect x="470" y="180" width="112" height="28" rx="14" fill="#ecfdf5"/>
+  <text x="526" y="199" text-anchor="middle" fill="#059669" font-size="11" font-weight="700">WORKHORSE</text>
+
+  <rect x="40" y="252" width="560" height="86" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+  <rect x="40" y="252" width="6" height="86" rx="3" fill="#047857"/>
+  <text x="70" y="282" fill="#0f172a" font-size="15.5" font-weight="700">From the bottom up</text>
+  <text x="70" y="306" fill="#64748b" font-size="12.5">Price every work package, then add them up.</text>
+  <text x="70" y="326" fill="#94a3b8" font-size="12">Slow and expensive. Also the most accurate.</text>
+  <rect x="470" y="278" width="112" height="28" rx="14" fill="#ecfdf5"/>
+  <text x="526" y="297" text-anchor="middle" fill="#059669" font-size="11" font-weight="700">BASELINE</text>
+
+  <text x="320" y="376" text-anchor="middle" fill="#64748b" font-size="13">Never trust one method alone. Cross-check the number against a second.</text>
+</svg>
+                                    <figcaption style="text-align:center;font-size:13px;color:#64748b;margin-top:16px;line-height:1.5;"><strong style="color:#334155;">Figure 2 &#8212; Three estimating methods.</strong> Comparison is fast and rough. Rates carry most of construction estimating. Bottom-up is slow, expensive, and the only one good enough for a baseline.</figcaption>
+                                </figure>
+
+                                <p><strong>By comparison.</strong> The last tower like this took fourteen months, so this one will take about fourteen months. Fast, and fine at tender stage &#8212; as long as the projects really are alike. Same ground, same height, same country, same client. Change any of those and the comparison quietly stops being true.</p>
+                                <p><strong>By rate.</strong> This is the one construction runs on. Your gang lays 40 m&#178; of blockwork a day, and there's 800 m&#178; here, so that's 20 days. It scales, it's defensible, and you can argue it with a quantity surveyor.</p>
+                                <p>But it stands entirely on one thing: <em>is the rate real?</em> Is it from your last three projects, or from a table someone typed in 2009? Your own historical production data is the most valuable estimating asset your company owns, and most companies throw it away at handover.</p>
+                                <p><strong>From the bottom up.</strong> Price every work package, then add them up. Slow, expensive, and by far the most accurate. This is what a baseline deserves.</p>
+                                <p>And the rule that governs all three: <strong>never trust a single number from a single source.</strong> The foreman's estimate, checked against your production rates, checked against what the last project actually did. Where they agree, you're probably right. Where they don't, you've found something worth knowing before it costs you.</p>
+
+                                <h2>The date you promise</h2>
+                                <p>Some work is genuinely uncertain. Ground conditions. A method nobody here has used before.</p>
+                                <p>For those, one number is a lie with a decimal point. So take three: the best case, the likely case, the bad case. Weight them &#8212; the likely one counts most &#8212; and you get an average.</p>
+                                <p>Now the part almost everybody gets wrong.</p>
+
+                                <figure style="margin:36px 0;padding:24px;background:#f8fafc;border-radius:16px;border:1px solid #e2e8f0;">
+                                    <svg viewBox="0 0 640 380" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif">
+  <text x="320" y="30" text-anchor="middle" fill="#10b981" font-size="11.5" font-weight="700" letter-spacing="2">THE DATE YOU GIVE THE CLIENT</text>
+
+  <path d="M 70 280 C 150 280, 170 90, 250 90 C 330 90, 350 280, 430 280 L 430 280 Z" fill="#d1fae5" opacity="0.85"/>
+  <path d="M 250 90 C 330 90, 350 280, 430 280 L 470 280 C 470 280, 470 280, 470 280 Z" fill="none"/>
+  <path d="M 70 280 C 150 280, 170 90, 250 90 C 330 90, 350 280, 430 280" fill="none" stroke="#10b981" stroke-width="2.5"/>
+
+  <line x1="250" y1="90" x2="250" y2="280" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5 4"/>
+  <line x1="340" y1="176" x2="340" y2="280" stroke="#059669" stroke-width="2.5"/>
+
+  <line x1="60" y1="280" x2="500" y2="280" stroke="#cbd5e1" stroke-width="1.5"/>
+
+  <rect x="196" y="46" width="108" height="26" rx="13" fill="#f1f5f9"/>
+  <text x="250" y="64" text-anchor="middle" fill="#475569" font-size="11.5" font-weight="700">50% LIKELY</text>
+  <text x="250" y="304" text-anchor="middle" fill="#64748b" font-size="12" font-weight="600">the average</text>
+  <text x="250" y="322" text-anchor="middle" fill="#94a3b8" font-size="11.5">a coin flip</text>
+
+  <rect x="352" y="140" width="118" height="26" rx="13" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1.5"/>
+  <text x="411" y="158" text-anchor="middle" fill="#059669" font-size="11.5" font-weight="700">85% LIKELY</text>
+  <text x="340" y="304" text-anchor="middle" fill="#059669" font-size="12" font-weight="700">the date to promise</text>
+  <text x="340" y="322" text-anchor="middle" fill="#047857" font-size="11.5">average + one deviation</text>
+
+  <text x="530" y="200" text-anchor="middle" fill="#94a3b8" font-size="12" font-weight="600">longer</text>
+  <text x="530" y="218" text-anchor="middle" fill="#94a3b8" font-size="12" font-weight="600">durations</text>
+
+  <text x="320" y="360" text-anchor="middle" fill="#64748b" font-size="13">Give the average, and you'll be late half the time. That's the maths, not bad luck.</text>
+</svg>
+                                    <figcaption style="text-align:center;font-size:13px;color:#64748b;margin-top:16px;line-height:1.5;"><strong style="color:#334155;">Figure 3 &#8212; 50% is not a promise.</strong> The average duration is a coin flip &#8212; half the time you finish later. The date you commit to sits further along the curve.</figcaption>
+                                </figure>
+
+                                <p>That average is a <strong>coin flip.</strong> Half the time the work takes longer than the average &#8212; that's what an average <em>is.</em></p>
+                                <p>So if you promise the client the average date, you have promised a date you will miss half the time. Not through bad luck. Through arithmetic.</p>
+                                <p>The date you commit to sits further out on the curve &#8212; far enough that you'll hit it around 85% of the time. That's not padding. That's the difference between an estimate and a commitment, and knowing which one you're being asked for is a professional skill.</p>
+
+                                <h2>Hidden padding is not contingency</h2>
+                                <p>Which brings us to the quiet habit that ruins planners' credibility.</p>
+                                <p>Everyone knows the game. The foreman adds a bit "to be safe." The planner adds a bit on top. The PM adds a bit more. Nobody says so. Now there's three layers of invisible fat in the programme, and no one &#8212; including you &#8212; knows what the real duration is anymore.</p>
+                                <p>And the first time a client's planner finds it, every number you produce for the rest of the project is suspect.</p>
+                                <p>The professional version is boring and it works: <strong>estimate honestly, then hold contingency openly.</strong> A visible reserve, owned by the project, released by a decision &#8212; not smuggled inside forty activities where nobody can manage it.</p>
+                                <p>Hidden padding gets spent by accident. Declared contingency gets spent on purpose.</p>
+
+                                <div style="margin:32px 0;padding:28px 32px;background:#052e26;border-radius:16px;">
+                                    <p style="margin:0 0 14px;color:#fff;font-size:21px;font-weight:700;font-style:italic;line-height:1.45;">"It is better to be roughly right than precisely wrong."</p>
+                                    <p style="margin:0;color:#6ee7b7;font-size:13px;font-weight:700;letter-spacing:0.5px;">&#8212; ATTRIBUTED TO JOHN MAYNARD KEYNES</p>
+                                    <p style="margin:4px 0 0;color:#a7f3d0;font-size:12px;">Economist &#183; 1883&#8211;1946</p>
+                                </div>
+
+                                <p>An estimate of "18 to 22 days, and here's why" is worth more than "20.4 days" pulled from nowhere. The range tells the truth about what you know. The decimal point only pretends to.</p>
+
+                                <h2>Practical insight</h2>
+                                <p>Next time someone asks you for a duration in a corridor, ask three things before you answer.</p>
+                                <p>How much work is there, and what's our real production rate for it? Do we actually have that crew, all of it, all week? And is this an estimate or a commitment &#8212; because those are two different numbers?</p>
+                                <p>Then give a range and say what it depends on. It takes ten seconds longer and it's the difference between a professional and a hostage.</p>
+
+                                <h2>Key takeaways</h2>
+                                <p>&#10004; Effort is labour hours; duration is calendar time with the crew you really have.<br>
+                                &#10004; Correct for productivity and availability &#8212; nobody installs work for a full shift.<br>
+                                &#10004; Doubling the crew doesn't halve the duration; some work is fixed no matter what.<br>
+                                &#10004; Comparison is for tenders, rates carry construction, bottom-up earns the baseline.<br>
+                                &#10004; A production rate is only as good as the project it came from &#8212; keep your own history.<br>
+                                &#10004; Cross-check every estimate against a second source.<br>
+                                &#10004; The average date is a coin flip; a commitment sits further along the curve.<br>
+                                &#10004; Estimate honestly and hold contingency openly &#8212; hidden padding destroys credibility.</p>
+
+                                <h2>What's coming next</h2>
+                                <p>We have a network. We have durations. The model can finally do arithmetic.</p>
+                                <p>Next week we do it by hand: the forward pass, the backward pass, and the float that falls out of them. It's the one calculation every planner should be able to run on the back of a drawing &#8212; because sooner or later the software will hand you a critical path you don't believe, and you'll need to know whether it's wrong or you are.</p>
+                                <p>Time to find the critical path ourselves.</p>
+                            </div>
+                        </div>
+
+                        <!-- PAYWALL CTA -->
+                        <div class="paywall-cta" id="paywallCta">
+                            <div class="soft-cta-inner">
+                                <h3>Enjoyed this lesson?</h3>
+                                <p>Join with Google to get each new lesson the moment it's published — and help me see which topics matter most to you. No spam, one email a week, unsubscribe anytime.</p>
+                                <button class="btn-google-signin" onclick="signInWithGoogleBtn()">
+                                    <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z" fill="#4285F4"/><path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/><path d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/><path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#EA4335"/></svg>
+                                    Continue with Google
+                                </button>
+                                <p class="modal-note">Already following on LinkedIn works too — this is just for the weekly email.</p>
+                            </div>
+                        </div>
+
+                        <!-- ARTICLE FOOTER (after login) -->
+                        <div class="article-footer" id="articleFooter">
+                            <div class="article-tags">
+                                <span class="article-tag">#Estimating</span>
+                                <span class="article-tag">#Productivity</span>
+                                <span class="article-tag">#Contingency</span>
+                                <span class="article-tag">#ProjectControls</span>
+                            </div>
+                        </div>
+
+                        <!-- SHARE BAR (bottom) -->
+                        <div class="share-bar share-bar-bottom">
+                            <span class="share-bar-heading">Found this useful? Share it with your team.</span>
+                            <div class="share-row">
+                                <a class="share-btn linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftheprojectcontrolhub.com%2Fweek-12.html" target="_blank" rel="noopener"><i class='bx bxl-linkedin'></i> LinkedIn</a>
+                                <a class="share-btn whatsapp" href="https://wa.me/?text=How%20a%20schedule%20gets%20built%20%E2%80%94%20the%20nine-step%20process%20https%3A%2F%2Ftheprojectcontrolhub.com%2Fweek-12.html" target="_blank" rel="noopener"><i class='bx bxl-whatsapp'></i> WhatsApp</a>
+                                <a class="share-btn x" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftheprojectcontrolhub.com%2Fweek-12.html&text=How%20a%20schedule%20gets%20built%20%E2%80%94%20the%20nine-step%20process" target="_blank" rel="noopener"><i class='bx bxl-twitter'></i> X</a>
+                                <button class="share-btn copy" onclick="copyArticleLink(this)"><i class='bx bx-link'></i> Copy Link</button>
+                            </div>
+                        </div>
+
+                        <!-- NEXT ARTICLE NAV (after login) -->
+                        <div class="next-article" id="nextArticle" style="display:none;">
+                            <div class="next-article-label">Next in the series</div>
+                            <a href="week-13.html" class="next-article-link">
+                                <div>
+                                    <span class="next-week-tag">Week 13</span>
+                                    <h4>CPM math — forward pass, backward pass, float</h4>
+                                </div>
+                                <i class='bx bx-right-arrow-alt'></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT — SIDEBAR -->
+            <aside class="content-sidebar">
+
+                                <!-- SERIES NAV (populated from curriculum.js) -->
+                <div class="sidebar-card" id="seriesSidebar" data-current-week="12"></div>
+
+                <!-- AUTHOR CARD -->
+                <div class="author-sidebar-card">
+                    <div class="author-sidebar-top">
+                        <div class="author-sidebar-avatar">BE</div>
+                        <div>
+                            <span class="author-sidebar-name" translate="no">Barış Emre Özçelik</span>
+                            <span class="author-sidebar-title">Planning & Project Controls Lead, PMP</span>
+                        </div>
+                    </div>
+                    <p class="author-sidebar-bio">8+ years in planning & project controls across nuclear, mining, ports, and high-rise projects — currently on the Akkuyu NPP. Writing about what actually works on site.</p>
+                    <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" class="btn-linkedin" translate="no">
+                        <i class='bx bxl-linkedin'></i> Follow on LinkedIn
+                    </a>
+                </div>
+
+            </aside>
+        </div>
+    </div>
+
+    <!-- ACCESS MODAL -->
+    <div class="modal-overlay" id="accessModal">
+        <div class="modal-box">
+            <button class="close-modal" onclick="closeModal()"><i class='bx bx-x'></i></button>
+            <div class="modal-icon-wrapper">
+                <i class='bx bx-book-open'></i>
+            </div>
+            <h4>Free access to all content</h4>
+            <p>Sign in with Google to read the full series and get notified when new topics are published.</p>
+            <button class="btn-google-signin" onclick="signInWithGoogleBtn()">
+                <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z" fill="#4285F4"/><path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/><path d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/><path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#EA4335"/></svg>
+                Continue with Google
+            </button>
+            <p class="modal-note">No spam. One notification per week when new content drops.</p>
+        </div>
+    </div>
+
+    <!-- MOBILE NAV -->
+    <div class="mobile-nav" id="mobileNav">
+        <button class="mobile-nav-close" onclick="toggleMobileNav()"><i class='bx bx-x'></i></button>
+        <a href="index.html" onclick="toggleMobileNav()">Home</a>
+        <a href="learn.html" onclick="toggleMobileNav()">Learn</a>
+        <a href="about.html" onclick="toggleMobileNav()">About</a>
+        <div class="mobile-nav-bottom">
+            <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" translate="no"><i class='bx bxl-linkedin'></i> LinkedIn</a>
+            <a href="https://youtube.com" target="_blank" translate="no"><i class='bx bxl-youtube'></i> YouTube</a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-content" style="grid-template-columns: 1fr 1fr;">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <svg class="logo-mark" width="40" height="40" viewBox="0 0 100 100" fill="none" aria-hidden="true"><path d="M30 32 L49 32 L58.5 48 L49 64 L30 64 L20.5 48 Z" stroke="#10b981" stroke-width="6" stroke-linejoin="round"/><path d="M60 22 L71 22 L76.5 31.5 L71 41 L60 41 L54.5 31.5 Z" stroke="#64748b" stroke-width="5" stroke-linejoin="round"/><path d="M59 58 L68 58 L72.5 65.5 L68 73 L59 73 L54.5 65.5 Z" stroke="#64748b" stroke-width="4.5" stroke-linejoin="round"/></svg>
+                    <span translate="no">THE PROJECT CONTROL HUB</span>
+                </a>
+                <p>Field notes on planning & project controls — by Barış Emre Özçelik, PMP.</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" translate="no"><i class='bx bxl-linkedin'></i></a>
+                    <a href="https://youtube.com" target="_blank" translate="no"><i class='bx bxl-youtube'></i></a>
+                </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:16px;">
+                <h4 style="font-size:11px;font-weight:700;letter-spacing:1px;color:#64748b;margin:0;">FOLLOW THE SERIES</h4>
+                <p style="font-size:13px;color:#64748b;margin:0;line-height:1.6;">New content every week — follow along so you don't miss the next topic.</p>
+                <div style="display:flex;gap:10px;">
+                    <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank"
+                       style="display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);color:#cbd5e1;text-decoration:none;font-size:13px;font-weight:600;transition:all 0.2s;" translate="no">
+                        <i class='bx bxl-linkedin' style="font-size:17px;"></i> LinkedIn
+                    </a>
+                    <a href="https://youtube.com" target="_blank"
+                       style="display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);color:#cbd5e1;text-decoration:none;font-size:13px;font-weight:600;transition:all 0.2s;" translate="no">
+                        <i class='bx bxl-youtube' style="font-size:17px;"></i> YouTube
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 The Project Control Hub. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+    <!-- Curriculum data + sidebar renderer -->
+    <script src="curriculum.js?v=8"></script>
+    <script>
+        (function() {
+            const el = document.getElementById('seriesSidebar');
+            if (el && typeof renderArticleSidebar === 'function') {
+                const currentWeek = parseInt(el.getAttribute('data-current-week'), 10);
+                el.innerHTML = renderArticleSidebar(currentWeek);
+                // Re-bind gated links after render
+                el.querySelectorAll('.sidebar-series-item[data-gated]').forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        if (!localStorage.getItem('pch_auth')) {
+                            e.preventDefault();
+                            sessionStorage.setItem('pch_intended', this.href);
+                            if (typeof openModal === 'function') openModal();
+                        }
+                    });
+                });
+            }
+        })();
+    </script>
+
+</body>
+</html>
