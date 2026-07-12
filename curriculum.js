@@ -31,7 +31,7 @@ const CURRICULUM = {
 
     // ---- PHASE C — SCHEDULE DEVELOPMENT · DOMAIN 2 ----
     { phase: "Phase C — Schedule Development", n: 7, title: "The 9-step schedule development process", short: "The 9-step development process", status: "live", page: "week-7.html", date: "Aug 5, 2026" },
-    { n: 8, title: "Scheduling components I — activity types, calendars, data", short: "Components I — activities, calendars", status: "upcoming" },
+    { n: 8, title: "Scheduling components I — activity types, calendars, data", short: "Components I — activities, calendars", status: "live", page: "week-8.html", date: "Aug 12, 2026" },
     { n: 9, title: "Scheduling components II — scope & schedule performance", short: "Components II — scope & performance", status: "upcoming" },
     { n: 10, title: "WBS & baseline development — structure that survives", short: "WBS & baseline development", status: "upcoming" },
     { n: 11, title: "Activities & networks — PDM, relationships, leads & lags", short: "Activities & networks — PDM, logic", status: "upcoming" },
