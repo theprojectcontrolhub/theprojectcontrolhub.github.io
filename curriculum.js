@@ -289,46 +289,47 @@ function renderHomeBadge() {
 const TRACK2 = {
   title: "Cost & Cash",
   totalWeeks: 24,
+
+  // Titles are written in the same register as Track 1: the topic and its
+  // components. The punchy version of each is the article's own headline.
   weeks: [
-    { phase: "Opening", n: 1, short: "\u201cAsk accounts.\u201d — the sentence from Week 18 that wasn't true" },
+    // ---- PHASE A — FOUNDATIONS & ESTIMATING ----
+    { phase: "Phase A — Foundations & Estimating", n: 1, title: "Why cost control fails — and why \u201cactual cost\u201d is the hardest number", short: "Why cost control fails" },
+    { n: 2, title: "Unit rates — labour, plant, material & waste", short: "Unit rates — how a price is built" },
+    { n: 3, title: "Estimate classes — accuracy ranges & the maturity of scope", short: "Estimate classes & accuracy ranges" },
+    { n: 4, title: "The BoQ and the schedule — mapping bill items to activities", short: "Mapping the BoQ to the schedule" },
+    { n: 5, title: "Indirects, waste & escalation — the costs not on the drawing", short: "Indirects, waste & escalation" },
+    { n: 6, title: "Contingency & management reserve — sizing, ownership & drawdown", short: "Contingency & management reserve" },
 
-    { phase: "Phase A — The Estimate", n: 2, short: "Where a price comes from — the anatomy of a unit rate" },
-    { n: 3, short: "You quoted \u00b150% as if it were a number — estimate classes" },
-    { n: 4, short: "The BoQ and the schedule don't speak — 400 items, 300 activities" },
-    { n: 5, short: "What isn't on the drawing — waste, escalation, indirects" },
-    { n: 6, short: "Contingency is not padding — where it sits, whose pocket it's in" },
+    // ---- PHASE B — FROM ESTIMATE TO BUDGET ----
+    { phase: "Phase B — From Estimate to Budget", n: 7, title: "From estimate to budget — the cost breakdown structure", short: "From estimate to budget" },
+    { n: 8, title: "Control accounts & work packages — where scope, cost and ownership meet", short: "Control accounts & work packages" },
+    { n: 9, title: "The time-phased baseline — building planned value from unit rates", short: "The time-phased baseline" },
+    { n: 10, title: "The schedule of values — valuation, front-loading & interim payment", short: "The schedule of values" },
 
-    { phase: "Phase B — From Estimate to Budget", n: 7, short: "An estimate is not a budget" },
-    { n: 8, short: "The control account — where scope, cost and a name meet" },
-    { n: 9, short: "The time-phased baseline — how planned value is really built" },
-    { n: 10, short: "The schedule of values — and the oldest trick in construction" },
+    // ---- PHASE C — MEASUREMENT ----
+    { phase: "Phase C — Measurement", n: 11, title: "Cost accounting for planners — commitment, accrual & expenditure", short: "Commitment, accrual & expenditure" },
+    { n: 12, title: "Physical progress measurement — the six methods", short: "Physical progress — the six methods" },
+    { n: 13, title: "Single data capture — one entry, cost and schedule", short: "Single data capture" },
+    { n: 14, title: "Productivity control — factors, indices & the labour rate", short: "Productivity control" },
 
-    { phase: "Phase C — Measuring It", n: 11, short: "Three clocks: commitment, accrual, expenditure" },
-    { n: 12, short: "How physical percent is actually measured — the six methods" },
-    { n: 13, short: "One entry, two systems — the turnaround document" },
-    { n: 14, short: "Productivity — where those 70 man-days came from" },
+    // ---- PHASE D — CASH ----
+    { phase: "Phase D — Cash", n: 15, title: "Cash flow fundamentals — the income and requirements curves", short: "Cash flow fundamentals" },
+    { n: 16, title: "Retention, payment terms & the working capital gap", short: "Retention & the working capital gap" },
+    { n: 17, title: "Overtrading — why growth destroys profitable contractors", short: "Overtrading — when growth kills" },
+    { n: 18, title: "Cash management — the levers a project actually has", short: "Cash management strategies" },
 
-    { phase: "Phase D — Cash", n: 15, short: "Profitable and bankrupt — the two curves" },
-    { n: 16, short: "The hole in the middle — retention, terms, and the 90-day gap" },
-    { n: 17, short: "Growth can kill you — winning more work and running out of money" },
-    { n: 18, short: "The levers you actually have" },
-
-    { phase: "Phase E — The Company", n: 19, short: "Direct, indirect, and the cost of simply being there" },
-    { n: 20, short: "Contribution — what this project really gives the business" },
-    { n: 21, short: "Value engineering — cutting cost without cutting scope" },
-    { n: 22, short: "The price of time — trade-offs and constructive acceleration" },
-    { n: 23, short: "The forecast that hits the balance sheet" },
-    { n: 24, short: "The planner who can talk about money" },
+    // ---- PHASE E — THE COMPANY ----
+    { phase: "Phase E — The Company", n: 19, title: "Direct, indirect & site overheads — the true cost of being there", short: "Direct, indirect & site overheads" },
+    { n: 20, title: "Contribution & margin — what the project returns to the business", short: "Contribution & margin" },
+    { n: 21, title: "Value engineering — reducing cost without reducing scope", short: "Value engineering" },
+    { n: 22, title: "Time-cost trade-off & acceleration — actual, constructive & forced", short: "Trade-offs & acceleration" },
+    { n: 23, title: "Contract cost accounting — revenue recognition & the expected loss rule", short: "Revenue recognition & expected loss" },
+    { n: 24, title: "The commercial planner — speaking the language of money", short: "The commercial planner" },
   ],
-  getPhases() {
-    const out = [];
-    let cur = null;
-    this.weeks.forEach(w => {
-      if (w.phase) { cur = { phase: w.phase, weeks: [] }; out.push(cur); }
-      if (cur) cur.weeks.push(w);
-    });
-    return out;
-  }
+
+  get phaseCount() { return this.weeks.filter(w => w.phase).length; },
+  getWeek(n) { return this.weeks.find(w => w.n === n); }
 };
 
 // Renderer: Track 2 curriculum for learn.html (all upcoming)
@@ -354,7 +355,7 @@ function renderTrack2Curriculum() {
     rows += `
       <div class="week-item upcoming">
         <span class="week-num">Week ${week.n}</span>
-        <span class="week-title">${week.short}</span>
+        <span class="week-title">${week.title}</span>
         <span class="week-upcoming-label">Coming soon</span>
       </div>`;
   });
