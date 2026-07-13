@@ -332,19 +332,31 @@ const TRACK2 = {
 };
 
 // Renderer: Track 2 curriculum for learn.html (all upcoming)
+// NOTE: must use the SAME classes as renderLearnCurriculum above,
+// or the rows render as unstyled plain text.
 function renderTrack2Curriculum() {
+  const t = TRACK2;
   let rows = "";
-  TRACK2.getPhases().forEach(group => {
-    rows += `
-      <div class="module-phase-divider"><span>${group.phase}</span></div>`;
-    group.weeks.forEach(week => {
+  t.weeks.forEach((week, idx) => {
+    if (week.phase) {
+      let end = week.n;
+      for (let j = idx + 1; j < t.weeks.length; j++) {
+        if (t.weeks[j].phase) break;
+        end = t.weeks[j].n;
+      }
+      const range = week.n === end ? `Week ${week.n}` : `Weeks ${week.n}\u2013${end}`;
       rows += `
-        <div class="module-post-item upcoming">
-          <span class="post-week">Week ${week.n}</span>
-          <span class="post-title">${week.short}</span>
-          <span class="post-upcoming">Coming soon</span>
+        <div class="phase-divider">
+          <span class="phase-label" translate="no">${week.phase.toUpperCase()}</span>
+          <span class="phase-weeks-tag">${range}</span>
         </div>`;
-    });
+    }
+    rows += `
+      <div class="week-item upcoming">
+        <span class="week-num">Week ${week.n}</span>
+        <span class="week-title">${week.short}</span>
+        <span class="week-upcoming-label">Coming soon</span>
+      </div>`;
   });
   return rows;
 }
