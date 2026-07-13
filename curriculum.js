@@ -276,3 +276,75 @@ function renderHomeBadge() {
     ? `<span class="dot-green"></span> In Progress · Week ${latest.n} of ${CURRICULUM.totalWeeks}`
     : '';
 }
+
+
+// ============================================================
+// TRACK 2 — COST & CASH
+// ------------------------------------------------------------
+// Separate object on purpose: CURRICULUM above is the single
+// source of truth for Track 1 and is read by all 27 article
+// pages. Do not merge them — extend here instead.
+// ============================================================
+
+const TRACK2 = {
+  title: "Cost & Cash",
+  totalWeeks: 24,
+  weeks: [
+    { phase: "Opening", n: 1, short: "\u201cAsk accounts.\u201d — the sentence from Week 18 that wasn't true" },
+
+    { phase: "Phase A — The Estimate", n: 2, short: "Where a price comes from — the anatomy of a unit rate" },
+    { n: 3, short: "You quoted \u00b150% as if it were a number — estimate classes" },
+    { n: 4, short: "The BoQ and the schedule don't speak — 400 items, 300 activities" },
+    { n: 5, short: "What isn't on the drawing — waste, escalation, indirects" },
+    { n: 6, short: "Contingency is not padding — where it sits, whose pocket it's in" },
+
+    { phase: "Phase B — From Estimate to Budget", n: 7, short: "An estimate is not a budget" },
+    { n: 8, short: "The control account — where scope, cost and a name meet" },
+    { n: 9, short: "The time-phased baseline — how planned value is really built" },
+    { n: 10, short: "The schedule of values — and the oldest trick in construction" },
+
+    { phase: "Phase C — Measuring It", n: 11, short: "Three clocks: commitment, accrual, expenditure" },
+    { n: 12, short: "How physical percent is actually measured — the six methods" },
+    { n: 13, short: "One entry, two systems — the turnaround document" },
+    { n: 14, short: "Productivity — where those 70 man-days came from" },
+
+    { phase: "Phase D — Cash", n: 15, short: "Profitable and bankrupt — the two curves" },
+    { n: 16, short: "The hole in the middle — retention, terms, and the 90-day gap" },
+    { n: 17, short: "Growth can kill you — winning more work and running out of money" },
+    { n: 18, short: "The levers you actually have" },
+
+    { phase: "Phase E — The Company", n: 19, short: "Direct, indirect, and the cost of simply being there" },
+    { n: 20, short: "Contribution — what this project really gives the business" },
+    { n: 21, short: "Value engineering — cutting cost without cutting scope" },
+    { n: 22, short: "The price of time — trade-offs and constructive acceleration" },
+    { n: 23, short: "The forecast that hits the balance sheet" },
+    { n: 24, short: "The planner who can talk about money" },
+  ],
+  getPhases() {
+    const out = [];
+    let cur = null;
+    this.weeks.forEach(w => {
+      if (w.phase) { cur = { phase: w.phase, weeks: [] }; out.push(cur); }
+      if (cur) cur.weeks.push(w);
+    });
+    return out;
+  }
+};
+
+// Renderer: Track 2 curriculum for learn.html (all upcoming)
+function renderTrack2Curriculum() {
+  let rows = "";
+  TRACK2.getPhases().forEach(group => {
+    rows += `
+      <div class="module-phase-divider"><span>${group.phase}</span></div>`;
+    group.weeks.forEach(week => {
+      rows += `
+        <div class="module-post-item upcoming">
+          <span class="post-week">Week ${week.n}</span>
+          <span class="post-title">${week.short}</span>
+          <span class="post-upcoming">Coming soon</span>
+        </div>`;
+    });
+  });
+  return rows;
+}
