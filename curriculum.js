@@ -52,7 +52,7 @@ const CURRICULUM = {
 
     // ---- PHASE E — CLOSEOUT & FORENSICS · DOMAIN 4 ----
     { phase: "Phase E — Closeout & Forensics", n: 24, title: "Forensic schedule analysis — delays, claims, evidence", short: "Forensic schedule analysis — claims", status: "live", page: "week-24.html", date: "Dec 2, 2026" },
-    { n: 25, title: "Closeout & continuous closeout — capturing the data", short: "Closeout & continuous closeout", status: "upcoming" },
+    { n: 25, title: "Closeout & continuous closeout — capturing the data", short: "Closeout & continuous closeout", status: "live", page: "week-25.html", date: "Dec 9, 2026" },
 
     // ---- PHASE F — COMMUNICATION · DOMAIN 5 ----
     { phase: "Phase F — Communication", n: 26, title: "Reporting & the altitude concept — right data, right level", short: "Reporting & the altitude concept", status: "upcoming" },
