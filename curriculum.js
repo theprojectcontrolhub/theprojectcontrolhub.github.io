@@ -51,7 +51,7 @@ const CURRICULUM = {
     { n: 23, title: "Project reviews & the Conformance Index", short: "Project reviews & Conformance Index", status: "live", page: "week-23.html", date: "Nov 25, 2026" },
 
     // ---- PHASE E — CLOSEOUT & FORENSICS · DOMAIN 4 ----
-    { phase: "Phase E — Closeout & Forensics", n: 24, title: "Forensic schedule analysis — delays, claims, evidence", short: "Forensic schedule analysis — claims", status: "upcoming" },
+    { phase: "Phase E — Closeout & Forensics", n: 24, title: "Forensic schedule analysis — delays, claims, evidence", short: "Forensic schedule analysis — claims", status: "live", page: "week-24.html", date: "Dec 2, 2026" },
     { n: 25, title: "Closeout & continuous closeout — capturing the data", short: "Closeout & continuous closeout", status: "upcoming" },
 
     // ---- PHASE F — COMMUNICATION · DOMAIN 5 ----
