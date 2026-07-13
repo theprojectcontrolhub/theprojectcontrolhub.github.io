@@ -55,7 +55,7 @@ const CURRICULUM = {
     { n: 25, title: "Closeout & continuous closeout — capturing the data", short: "Closeout & continuous closeout", status: "live", page: "week-25.html", date: "Dec 9, 2026" },
 
     // ---- PHASE F — COMMUNICATION · DOMAIN 5 ----
-    { phase: "Phase F — Communication", n: 26, title: "Reporting & the altitude concept — right data, right level", short: "Reporting & the altitude concept", status: "upcoming" },
+    { phase: "Phase F — Communication", n: 26, title: "Reporting & the altitude concept — right data, right level", short: "Reporting & the altitude concept", status: "live", page: "week-26.html", date: "Dec 16, 2026" },
     { n: 27, title: "Stakeholder management & schedule communication", short: "Stakeholder management & communication", status: "upcoming" },
   ],
 
