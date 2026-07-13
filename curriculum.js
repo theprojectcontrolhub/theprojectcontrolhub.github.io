@@ -48,7 +48,7 @@ const CURRICULUM = {
     { n: 20, title: "Forecasting — EAC, ETC, TCPI & Earned Schedule", short: "Forecasting — EAC, ETC, Earned Schedule", status: "live", page: "week-20.html", date: "Nov 4, 2026" },
     { n: 21, title: "Change control & protecting the baseline", short: "Change control & baseline protection", status: "live", page: "week-21.html", date: "Nov 11, 2026" },
     { n: 22, title: "The control philosophy — telemetry & managing variances", short: "Control philosophy — telemetry", status: "live", page: "week-22.html", date: "Nov 18, 2026" },
-    { n: 23, title: "Project reviews & the Conformance Index", short: "Project reviews & Conformance Index", status: "upcoming" },
+    { n: 23, title: "Project reviews & the Conformance Index", short: "Project reviews & Conformance Index", status: "live", page: "week-23.html", date: "Nov 25, 2026" },
 
     // ---- PHASE E — CLOSEOUT & FORENSICS · DOMAIN 4 ----
     { phase: "Phase E — Closeout & Forensics", n: 24, title: "Forensic schedule analysis — delays, claims, evidence", short: "Forensic schedule analysis — claims", status: "upcoming" },
