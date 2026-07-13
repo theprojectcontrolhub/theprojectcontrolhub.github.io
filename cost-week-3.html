@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estimate Classes &#8212; The Project Control Hub</title>
+    <meta name="description" content="A rate built to the cent, on a drawing that says &#8220;to engineer&#39;s detail&#8221;. Why a $1M tender with a &#177;5% range is going to cost $1,267,000 &#8212; and why one week finishing the bar schedule buys ten times more certainty than three weeks perfecting the rate.">
+    <link rel="canonical" href="https://theprojectcontrolhub.com/cost-week-3.html">
+
+    <!-- Open Graph (LinkedIn, Facebook, WhatsApp) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="The Project Control Hub">
+    <meta property="og:title" content="Estimate Classes | The Project Control Hub">
+    <meta property="og:description" content="A rate built to the cent, on a drawing that says &#8220;to engineer&#39;s detail&#8221;. Why a $1M tender with a &#177;5% range is going to cost $1,267,000 &#8212; and why one week finishing the bar schedule buys ten times more certainty than three weeks perfecting the rate.">
+    <meta property="og:url" content="https://theprojectcontrolhub.com/cost-week-3.html">
+    <meta property="og:image" content="https://theprojectcontrolhub.com/og-image.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Estimate Classes | The Project Control Hub">
+    <meta name="twitter:description" content="A rate built to the cent, on a drawing that says &#8220;to engineer&#39;s detail&#8221;. Why a $1M tender with a &#177;5% range is going to cost $1,267,000 &#8212; and why one week finishing the bar schedule buys ten times more certainty than three weeks perfecting the rate.">
+    <meta name="twitter:image" content="https://theprojectcontrolhub.com/og-image.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=9">
+    <style>
+        /* PAGE LAYOUT */
+        .content-page {
+            background: var(--bg-light);
+            min-height: 100vh;
+            padding: 40px 0 80px;
+        }
+
+        .content-layout {
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 40px;
+            align-items: start;
+        }
+
+        /* BREADCRUMB */
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 28px;
+        }
+        .breadcrumb a {
+            color: var(--primary-green);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .breadcrumb a:hover { text-decoration: underline; }
+
+        /* ARTICLE */
+        .article-card {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .article-meta {
+            padding: 32px 36px 0;
+        }
+
+        .article-week-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(16,185,129,0.08);
+            color: #059669;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            padding: 5px 14px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(16,185,129,0.15);
+        }
+
+        .article-title {
+            font-size: 30px;
+            font-weight: 800;
+            color: var(--text-dark);
+            line-height: 1.25;
+            letter-spacing: -0.5px;
+            margin-bottom: 20px;
+        }
+
+        .article-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #f1f5f9;
+            margin-bottom: 0;
+        }
+
+        .author-avatar-sm {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #10b981, #059669);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .author-details strong {
+            display: block;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .author-details span {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* VIDEO EMBED */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            background: #0f172a;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-placeholder {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            color: #94a3b8;
+        }
+
+        .video-placeholder i { font-size: 48px; color: #10b981; }
+        .video-placeholder p { font-size: 14px; }
+
+        /* ARTICLE CONTENT */
+        .article-body {
+            padding: 36px 36px 0;
+        }
+
+        .article-body p {
+            font-size: 16px;
+            color: #334155;
+            line-height: 1.85;
+            margin-bottom: 20px;
+        }
+
+        .article-body h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin: 32px 0 16px;
+            letter-spacing: -0.3px;
+        }
+
+        .article-body strong { color: var(--text-dark); }
+
+        .article-body ul {
+            margin: 0 0 20px 20px;
+        }
+
+        .article-body ul li {
+            font-size: 16px;
+            color: #334155;
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        /* PAYWALL BLUR */
+        .content-preview {
+            position: relative;
+        }
+
+        .content-blur {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-blur::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 180px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.95) 60%, #fff 100%);
+            pointer-events: none;
+        }
+
+        .content-locked {
+            display: block;
+        }
+
+        /* PAYWALL CTA */
+        .paywall-cta {
+            padding: 32px 36px 36px;
+            text-align: center;
+            border-top: 1px solid #f1f5f9;
+            margin-top: 0;
+        }
+
+        .paywall-cta h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .paywall-cta p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .btn-google-signin {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            max-width: 340px;
+            padding: 14px 20px;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #1e293b;
+            background: #fff;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .btn-google-signin:hover {
+            border-color: #cbd5e1;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+        }
+
+        .paywall-note {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-top: 12px;
+        }
+
+        /* ARTICLE FOOTER (visible after login) */
+        .article-footer {
+            display: none;
+            padding: 28px 36px 36px;
+            border-top: 1px solid #f1f5f9;
+            margin-top: 8px;
+        }
+
+        .article-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .article-tag {
+            font-size: 13px;
+            color: #10b981;
+            background: rgba(16,185,129,0.08);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        /* SIDEBAR */
+        .content-sidebar {
+            position: sticky;
+            top: 24px;
+        }
+
+        .sidebar-card {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 16px;
+        }
+
+        .sidebar-card-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .sidebar-card-header h4 {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0;
+        }
+
+        .sidebar-series-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 20px;
+            border-bottom: 1px solid #f8fafc;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.15s;
+        }
+
+        .sidebar-series-item:hover { background: #f8fafc; }
+
+        .sidebar-series-item.active {
+            background: rgba(16,185,129,0.04);
+            border-left: 3px solid #10b981;
+        }
+
+        .sidebar-series-item.upcoming {
+            opacity: 0.45;
+            cursor: default;
+            pointer-events: none;
+        }
+
+        .sidebar-week {
+            font-size: 10px;
+            font-weight: 700;
+            color: #10b981;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            min-width: 44px;
+            flex-shrink: 0;
+        }
+
+        .sidebar-series-item.upcoming .sidebar-week { color: #94a3b8; }
+
+        .sidebar-item-title {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-dark);
+            line-height: 1.4;
+            flex: 1;
+        }
+
+        .sidebar-series-item.active .sidebar-item-title {
+            font-weight: 700;
+            color: #059669;
+        }
+
+        .sidebar-new {
+            font-size: 10px;
+            font-weight: 700;
+            color: #fff;
+            background: #10b981;
+            padding: 2px 7px;
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+
+        /* AUTHOR CARD */
+        .author-sidebar-card {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 20px;
+        }
+
+        .author-sidebar-top {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .author-sidebar-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #10b981, #059669);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .author-sidebar-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-dark);
+            display: block;
+        }
+
+        .author-sidebar-title {
+            font-size: 12px;
+            color: var(--text-muted);
+            display: block;
+            margin-top: 2px;
+        }
+
+        .author-sidebar-bio {
+            font-size: 13px;
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .btn-linkedin {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #0a66c2;
+            color: #0a66c2;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        /* MODAL */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+        }
+        .modal-overlay.active { opacity: 1; pointer-events: all; }
+        .modal-box {
+            background: #fff;
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 420px;
+            width: 90%;
+            position: relative;
+            text-align: center;
+        }
+        .close-modal {
+            position: absolute;
+            top: 16px; right: 16px;
+            background: none;
+            border: none;
+            font-size: 22px;
+            color: #94a3b8;
+            cursor: pointer;
+        }
+        .modal-icon-wrapper {
+            width: 56px; height: 56px;
+            background: #ecfdf5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 24px;
+            color: #10b981;
+        }
+        .modal-box h4 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0f172a;
+            margin: 0 0 10px;
+        }
+        .modal-box p {
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.6;
+            margin: 0 0 20px;
+        }
+        .modal-note {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-top: 12px;
+        }
+
+        /* NEXT ARTICLE NAV */
+        .next-article {
+            margin-top: 8px;
+            border-top: 1px solid #f1f5f9;
+            padding: 28px 36px 36px;
+        }
+
+        .next-article-label {
+            display: block;
+            width: 100%;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 14px;
+        }
+
+        .next-article-link {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-decoration: none;
+            padding: 16px 20px;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            transition: all 0.2s;
+        }
+
+        .next-article-link:hover {
+            border-color: #10b981;
+            background: rgba(16,185,129,0.02);
+        }
+
+        .next-week-tag {
+            font-size: 11px;
+            font-weight: 700;
+            color: #10b981;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .next-article-link h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-dark);
+            line-height: 1.4;
+            margin: 0;
+            flex: 1;
+        }
+
+        .next-article-link i {
+            font-size: 22px;
+            color: #10b981;
+            flex-shrink: 0;
+        }
+
+        /* MOBILE */
+        @media (max-width: 1024px) {
+            .content-layout { grid-template-columns: 1fr; }
+            .content-sidebar { position: static; }
+        }
+
+        @media (max-width: 768px) {
+            .content-page { padding: 24px 0 60px; }
+            .content-layout { padding: 0 16px; gap: 24px; }
+            .breadcrumb { font-size: 12px; margin-bottom: 16px; }
+            .article-card { border-radius: 14px; }
+            .article-meta { padding: 20px 18px 0; }
+            .article-week-badge { font-size: 10px; padding: 4px 10px; margin-bottom: 14px; }
+            .article-title { font-size: 20px; margin-bottom: 14px; }
+            .article-author { flex-wrap: wrap; gap: 8px; padding-bottom: 16px; }
+            .author-details strong { font-size: 13px; }
+            .author-details span { font-size: 11px; }
+            .article-body { padding: 18px 18px 0; }
+            .article-body p { font-size: 14px; line-height: 1.75; }
+            .article-body h2 { font-size: 17px; margin: 24px 0 12px; }
+            .article-body ul li { font-size: 14px; }
+            .paywall-cta { padding: 20px 18px 24px; }
+            .paywall-cta h3 { font-size: 17px; }
+            .paywall-cta p { font-size: 13px; }
+            .btn-google-signin { font-size: 14px; padding: 12px 16px; }
+            .article-footer { padding: 16px 18px; }
+            .next-article { padding: 16px 18px 20px; }
+            .next-article-link h4 { font-size: 13px; }
+            .sidebar-card-header { padding: 14px 16px; }
+            .sidebar-series-item { padding: 12px 16px; }
+            .sidebar-item-title { font-size: 12px; }
+            .author-sidebar-card { padding: 16px; }
+            .author-sidebar-bio { font-size: 12px; }
+            .btn-nav-social { display: none !important; }
+        }
+
+        @media (max-width: 480px) {
+            .article-title { font-size: 18px; }
+            .article-body p { font-size: 14px; }
+        }
+            figure svg { width: 100%; height: auto; display: block; }
+        @media (max-width: 768px) { figure { padding: 14px !important; } }
+    </style>
+
+        <!-- Share: copy link -->
+    <script>
+        window.copyArticleLink = function(btn) {
+            const url = "https://theprojectcontrolhub.com/cost-week-3.html";
+            const label = btn.querySelector('i') ? btn.innerHTML : btn.textContent;
+            navigator.clipboard.writeText(url).then(function() {
+                const original = btn.innerHTML;
+                btn.classList.add('copied');
+                btn.innerHTML = "<i class='bx bx-check'></i>" + (btn.textContent.trim() ? " Copied!" : "");
+                setTimeout(function() {
+                    btn.classList.remove('copied');
+                    btn.innerHTML = original;
+                }, 1800);
+            }).catch(function() {
+                // Fallback
+                const t = document.createElement('textarea');
+                t.value = url; document.body.appendChild(t); t.select();
+                try { document.execCommand('copy'); } catch(e) {}
+                document.body.removeChild(t);
+                const original = btn.innerHTML;
+                btn.classList.add('copied');
+                btn.innerHTML = "<i class='bx bx-check'></i>" + (btn.textContent.trim() ? " Copied!" : "");
+                setTimeout(function() { btn.classList.remove('copied'); btn.innerHTML = original; }, 1800);
+            });
+        };
+    </script>
+
+    <!-- Mobile nav toggle — standalone, independent of Firebase -->
+    <script>
+        window.toggleMobileNav = function() {
+            const nav = document.getElementById('mobileNav');
+            const btn = document.getElementById('hamburger');
+            if (!nav) return;
+            nav.classList.toggle('open');
+            if (btn) btn.classList.toggle('open');
+            document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
+        };
+    </script>
+
+    <script type="module">
+        import { signInWithGoogle, logout, onUserChange } from './auth.js';
+
+        let currentUser = null;
+
+        // Prevent auth flash: restore UI instantly from cached state
+        (function() {
+            const hint = localStorage.getItem('pch_auth');
+            let cached = null;
+            try { cached = JSON.parse(hint); } catch(e) {}
+            if (cached && cached.name) {
+                document.getElementById('userMenu').style.display = 'flex';
+                document.getElementById('userName').textContent = cached.name;
+                if (cached.photo) document.getElementById('userAvatar').src = cached.photo;
+            } else {
+                document.getElementById('joinBtn').style.display = 'flex';
+            }
+        })();
+
+        onUserChange((user) => {
+            currentUser = user;
+            const joinBtn = document.getElementById('joinBtn');
+            const userMenu = document.getElementById('userMenu');
+
+            if (user) {
+                localStorage.setItem('pch_auth', JSON.stringify({
+                    name: user.displayName.split(' ')[0],
+                    photo: user.photoURL || ''
+                }));
+                joinBtn.style.display = 'none';
+                userMenu.style.display = 'flex';
+                document.getElementById('userName').textContent = user.displayName.split(' ')[0];
+                if (user.photoURL) document.getElementById('userAvatar').src = user.photoURL;
+                closeModal();
+                unlockContent();
+            } else {
+                localStorage.removeItem('pch_auth');
+                joinBtn.style.display = 'flex';
+                userMenu.style.display = 'none';
+                lockContent();
+            }
+        });
+
+        // Soft paywall: content is always visible. Signed-in users just don't see the invite.
+        function unlockContent() {
+            const cta = document.getElementById('paywallCta');
+            if (cta) cta.style.display = 'none';
+            const footer = document.getElementById('articleFooter');
+            if (footer) footer.style.display = 'block';
+            const next = document.getElementById('nextArticle');
+            if (next) next.style.display = 'flex';
+        }
+
+        function lockContent() {
+            // Content stays open. Show the friendly invite to sign in.
+            const cta = document.getElementById('paywallCta');
+            if (cta) cta.style.display = 'block';
+            const footer = document.getElementById('articleFooter');
+            if (footer) footer.style.display = 'block';
+            const next = document.getElementById('nextArticle');
+            if (next) next.style.display = 'flex';
+        }
+
+        // Sidebar links are open — no gating in soft-paywall mode.
+
+        window.signInWithGoogleBtn = async function() {
+            try {
+                await signInWithGoogle();
+                // On mobile this redirects away; on desktop the popup resolves here.
+            } catch(e) {
+                // Only show an error for genuine failures, not user-cancelled popups.
+                const code = e && e.code ? e.code : '';
+                if (code !== 'auth/popup-closed-by-user' &&
+                    code !== 'auth/cancelled-popup-request') {
+                    alert('Sign in failed. Please try again.');
+                }
+            }
+        };
+
+        window.logoutUser = async function() { await logout(); };
+        window.openModal = function() {
+            document.getElementById('accessModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        };
+
+        window.closeModal = function() {
+            document.getElementById('accessModal').classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('accessModal').addEventListener('click', function(e) {
+                if (e.target === this) closeModal();
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+            <a href="index.html" class="logo">
+                <svg class="logo-mark" width="40" height="40" viewBox="0 0 100 100" fill="none" aria-hidden="true"><path d="M30 32 L49 32 L58.5 48 L49 64 L30 64 L20.5 48 Z" stroke="#10b981" stroke-width="6" stroke-linejoin="round"/><path d="M60 22 L71 22 L76.5 31.5 L71 41 L60 41 L54.5 31.5 Z" stroke="#64748b" stroke-width="5" stroke-linejoin="round"/><path d="M59 58 L68 58 L72.5 65.5 L68 73 L59 73 L54.5 65.5 Z" stroke="#64748b" stroke-width="4.5" stroke-linejoin="round"/></svg>
+                <span translate="no">THE PROJECT CONTROL HUB</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="learn.html">Learn</a>
+                <a href="about.html">About</a>
+            </div>
+            <div class="nav-actions" style="display:flex;align-items:center;gap:10px;">
+                <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+                <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" class="btn-nav-social" translate="no"><i class='bx bxl-linkedin'></i></a>
+                <a href="https://youtube.com" target="_blank" class="btn-nav-social" translate="no"><i class='bx bxl-youtube'></i></a>
+                <button id="joinBtn" class="btn btn-primary" style="display:none;" onclick="openModal()"><i class='bx bx-log-in'></i> Sign In</button>
+                <div id="userMenu" style="display:none;align-items:center;gap:10px;">
+                    <img id="userAvatar" src="" style="width:32px;height:32px;border-radius:50%;object-fit:cover;" alt="avatar">
+                    <span id="userName" style="font-size:14px;font-weight:600;color:var(--text-light);"></span>
+                    <button class="btn btn-primary" onclick="logoutUser()" style="padding:8px 14px;font-size:13px;">Sign Out</button>
+                </div>
+            </div>
+        </nav>
+
+    <section class="hero-section" style="padding-bottom:0;">
+    </section>
+
+    <!-- CONTENT PAGE -->
+    <div class="content-page">
+        <div class="content-layout">
+
+            <!-- LEFT — ARTICLE -->
+            <div>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <i class='bx bx-chevron-right'></i>
+                    <a href="learn.html">Cost &amp; Cash</a>
+                    <i class='bx bx-chevron-right'></i>
+                    <span>Week 3</span>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-meta">
+                        <div class="article-week-badge">
+                            <span class="dot-green" style="width:6px;height:6px;border-radius:50%;background:#10b981;display:inline-block;"></span>
+                            MODULE 02 · COST &amp; CASH · WEEK 3
+                        </div>
+                        <h1 class="article-title">Two decimal places of nothing.</h1>
+                        <div class="article-author">
+                            <div class="author-avatar-sm">BE</div>
+                            <div class="author-details">
+                                <strong translate="no">Barış Emre Özçelik, PMP</strong>
+                                <span>Planning & Project Controls Lead · Jan 13, 2027</span>
+                            </div>
+                            <div style="margin-left:auto;display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-muted);">
+                                <i class='bx bx-time-five'></i> 9 min read
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SHARE BAR (top) -->
+                    <div class="share-bar share-bar-top">
+                        <span class="share-bar-label">Share</span>
+                        <a class="share-btn linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftheprojectcontrolhub.com%2Fcost-week-3.html" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><i class='bx bxl-linkedin'></i></a>
+                        <a class="share-btn whatsapp" href="https://wa.me/?text=Precision%20is%20decimal%20places.%20Accuracy%20is%20scope.%20They%20are%20not%20related.%20https%3A%2F%2Ftheprojectcontrolhub.com%2Fcost-week-3.html" target="_blank" rel="noopener" aria-label="Share on WhatsApp"><i class='bx bxl-whatsapp'></i></a>
+                        <a class="share-btn x" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftheprojectcontrolhub.com%2Fcost-week-3.html&text=Precision%20is%20decimal%20places.%20Accuracy%20is%20scope.%20They%20are%20not%20related." target="_blank" rel="noopener" aria-label="Share on X"><i class='bx bxl-twitter'></i></a>
+                        <button class="share-btn copy" onclick="copyArticleLink(this)" aria-label="Copy link"><i class='bx bx-link'></i></button>
+                    </div>
+
+                    <!-- VIDEO -->
+                    <div class="video-container">
+                        <!-- Replace VIDEO_ID with your YouTube video ID -->
+                        <div class="video-placeholder">
+                            <i class='bx bxl-youtube'></i>
+                            <p>Video coming soon</p>
+                        </div>
+                        <!-- When video is ready, replace above div with:
+                        <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+                        -->
+                    </div>
+
+                    <!-- ARTICLE BODY — PREVIEW (visible to all) -->
+                    <div class="article-body">
+                        <div class="content-preview" id="contentPreview">
+                            <h2 style="margin-top:0;">Two decimal places of nothing</h2>
+                            <p>Last week we built a rate. $1,446.94 a tonne. To the cent.</p>
+                            <p>It was priced off a drawing that said <em>reinforcement to engineer&#39;s detail</em>, on a project where the foundations had not been designed and the bar schedules were provisional.</p>
+                            <p>The rate is accurate to three percent. The estimate it sits in is not accurate to thirty.</p>
+
+                            <!-- LOCKED CONTENT -->
+                            <div class="content-locked">
+                                <p>Precision and accuracy are not the same thing, and construction confuses them constantly. A number with two decimal places <em>looks</em> like a fact. It is still only as good as the drawing it was measured from.</p>
+
+                                <h2>What an estimate class actually measures</h2>
+                                <p>Cost engineering sorts estimates into classes. At one end, the concept estimate: a floor area, a rate per square metre, half an hour, an answer. At the other end, the tender: a full bill of quantities, every item measured, every rate built.</p>
+                                <p>Each class carries a range. Wide at the start, narrow at the end. Everybody knows this.</p>
+                                <p>What almost nobody internalises is <strong>what the class is a statement about</strong>. It is not a statement about how much work the estimator did. It is not a statement about the software, the database, or the detail of the build-up.</p>
+                                <p>It is a statement about <strong>how much of the scope has actually been defined</strong>.</p>
+                                <p>You can spend three months producing a bottom-up estimate to the cent, and if the foundations have not been designed, you have produced a very expensive Class 4 estimate. The drawings decide your class. You do not.</p>
+
+                                <h2>The project you already know</h2>
+                                <p>The $1,000,000 project from Track 1 was estimated three times.</p>
+                                <p>At concept it was $880,000 &#8212; a floor area and a rate. Everybody in the room treated it as a guess, because it was one, and it carried a range from $616,000 to $1.32 million.</p>
+                                <p>At design development it was $940,000, with quantities off preliminary drawings and a tighter range: $799,000 to $1,175,000.</p>
+                                <p>At tender it was $1,000,000 exactly, off a full bill, with rates built from first principles. Range: $950,000 to $1.1 million. Signed.</p>
+                                <p>It is going to cost <strong>$1,267,000</strong>.</p>
+
+                                <figure style="margin:36px 0;padding:24px;background:#f8fafc;border-radius:16px;border:1px solid #e2e8f0;">
+                                    <svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif">
+  <text x="320" y="24" text-anchor="middle" fill="#10b981" font-size="11.5" font-weight="700" letter-spacing="2">THE SAME PROJECT, ESTIMATED THREE TIMES</text>
+
+  <line x1="150" y1="292" x2="600" y2="292" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="180" y="312" text-anchor="middle" fill="#94a3b8" font-size="10">$600k</text>
+  <text x="290" y="312" text-anchor="middle" fill="#94a3b8" font-size="10">$800k</text>
+  <text x="400" y="312" text-anchor="middle" fill="#94a3b8" font-size="10">$1.0M</text>
+  <text x="510" y="312" text-anchor="middle" fill="#94a3b8" font-size="10">$1.2M</text>
+
+  <text x="140" y="76" text-anchor="end" fill="#0f172a" font-size="11.5" font-weight="700">CLASS 5</text>
+  <text x="140" y="92" text-anchor="end" fill="#94a3b8" font-size="10">concept &#183; 2% scope</text>
+  <rect x="188.8" y="62" width="387.2" height="26" rx="5" fill="#64748b" opacity="0.22"/>
+  <line x1="334" y1="56" x2="334" y2="94" stroke="#0f172a" stroke-width="2.5"/>
+  <text x="334" y="50" text-anchor="middle" fill="#0f172a" font-size="10.5" font-weight="700">$880k</text>
+
+  <text x="140" y="150" text-anchor="end" fill="#0f172a" font-size="11.5" font-weight="700">CLASS 3</text>
+  <text x="140" y="166" text-anchor="end" fill="#94a3b8" font-size="10">design dev &#183; 30%</text>
+  <rect x="289.5" y="136" width="206.8" height="26" rx="5" fill="#64748b" opacity="0.22"/>
+  <line x1="367" y1="130" x2="367" y2="168" stroke="#0f172a" stroke-width="2.5"/>
+  <text x="367" y="124" text-anchor="middle" fill="#0f172a" font-size="10.5" font-weight="700">$940k</text>
+
+  <text x="140" y="224" text-anchor="end" fill="#0f172a" font-size="11.5" font-weight="700">CLASS 1</text>
+  <text x="140" y="240" text-anchor="end" fill="#94a3b8" font-size="10">tender &#183; full BoQ</text>
+  <rect x="372.5" y="210" width="82.5" height="26" rx="5" fill="#10b981" opacity="0.30"/>
+  <line x1="400" y1="204" x2="400" y2="242" stroke="#10b981" stroke-width="2.5"/>
+  <text x="400" y="198" text-anchor="middle" fill="#10b981" font-size="10.5" font-weight="700">$1,000k</text>
+
+  <line x1="547" y1="44" x2="547" y2="292" stroke="#dc2626" stroke-width="2" stroke-dasharray="5 4"/>
+  <text x="556" y="262" fill="#dc2626" font-size="11" font-weight="700">$1,267k</text>
+  <text x="556" y="278" fill="#dc2626" font-size="10">what it cost</text>
+
+  <text x="150" y="344" fill="#0f172a" font-size="11.5" font-weight="700">The only range wide enough to be right was the one nobody trusted.</text>
+  <text x="150" y="364" fill="#94a3b8" font-size="10.5">The range narrowed because the drawings got prettier. The scope never moved.</text>
+</svg>
+                                    <figcaption style="text-align:center;font-size:13px;color:#64748b;margin-top:16px;line-height:1.5;"><strong style="color:#334155;">Figure 1 &#8212; Three estimates, one project.</strong> Each one is more detailed than the last, and each one is more confidently wrong. The outcome sits outside every range but the first.</figcaption>
+                                </figure>
+
+                                <p>Read that figure again. The outcome falls outside the tender range. It falls outside the design-development range. The only estimate on that project whose range was honest enough to contain the answer was the one nobody trusted.</p>
+                                <p>This is not an argument for guessing. It is an argument about what happened to the range.</p>
+                                <p>The range narrowed because the drawings got prettier. It did not narrow because the scope got firmer &#8212; the bar schedules were <em>still provisional at tender</em>. A Class 1 label was stapled onto a Class 3 body of information, and the estimate stopped telling anyone the truth about how much it did not know.</p>
+
+                                <div style="margin:32px 0;padding:28px 32px;background:#052e26;border-radius:16px;">
+                                    <p style="margin:0 0 14px;color:#fff;font-size:21px;font-weight:700;font-style:italic;line-height:1.45;">&#8220;An estimate class is a statement about the drawings, not about the estimator.&#8221;</p>
+                                    <p style="margin:0;color:#6ee7b7;font-size:13px;font-weight:700;letter-spacing:0.5px;">&#8212; THE RULE OF MATURITY</p>
+                                    <p style="margin:4px 0 0;color:#a7f3d0;font-size:12px;">Effort buys you precision. Only scope buys you accuracy.</p>
+                                </div>
+
+                                <h2>The weakest input wins</h2>
+                                <p>Take the reinforcement package. Two hundred tonnes at $1,446.94. $289,388.</p>
+                                <p>The rate is good. Built from first principles, sourced, checked &#8212; call it accurate to three percent.</p>
+                                <p>The quantity came off provisional bar schedules on an undesigned substructure. Call it twenty-five percent, and be grateful.</p>
+                                <p>Multiply them and the package sits somewhere between <strong>$210,530 and $372,587</strong>. That is the number you are actually carrying. Not $289,388.</p>
+
+                                <figure style="margin:36px 0;padding:24px;background:#f8fafc;border-radius:16px;border:1px solid #e2e8f0;">
+                                    <svg viewBox="0 0 640 380" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif">
+  <text x="320" y="24" text-anchor="middle" fill="#10b981" font-size="11.5" font-weight="700" letter-spacing="2">ONE PACKAGE, TWO INPUTS, $289,388</text>
+
+  <line x1="330" y1="52" x2="330" y2="252" stroke="#0f172a" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="330" y="270" text-anchor="middle" fill="#64748b" font-size="10">$289,388</text>
+
+  <text x="300" y="76" text-anchor="end" fill="#0f172a" font-size="11.5" font-weight="700">The rate</text>
+  <text x="300" y="92" text-anchor="end" fill="#94a3b8" font-size="10">built from first principles</text>
+  <rect x="312" y="62" width="36" height="26" rx="4" fill="#10b981"/>
+  <text x="368" y="80" fill="#10b981" font-size="11" font-weight="700">&#177; 3%</text>
+
+  <text x="300" y="132" text-anchor="end" fill="#0f172a" font-size="11.5" font-weight="700">The quantity</text>
+  <text x="300" y="148" text-anchor="end" fill="#94a3b8" font-size="10">provisional bar schedules</text>
+  <rect x="180" y="118" width="300" height="26" rx="4" fill="#dc2626"/>
+  <text x="496" y="136" fill="#dc2626" font-size="11" font-weight="700">&#177; 25%</text>
+
+  <text x="300" y="196" text-anchor="end" fill="#0f172a" font-size="12" font-weight="700">The package</text>
+  <text x="300" y="212" text-anchor="end" fill="#94a3b8" font-size="10">what you actually carry</text>
+  <rect x="174" y="182" width="312" height="30" rx="5" fill="#0f172a"/>
+  <text x="186" y="202" fill="#ffffff" font-size="10.5" font-weight="700">$210,530</text>
+  <text x="474" y="202" text-anchor="end" fill="#ffffff" font-size="10.5" font-weight="700">$372,587</text>
+
+  <rect x="60" y="286" width="250" height="76" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="78" y="308" fill="#64748b" font-size="10.5" font-weight="700">3 MORE WEEKS ON THE RATE</text>
+  <text x="78" y="330" fill="#0f172a" font-size="11">&#177;3% &#8594; &#177;1%</text>
+  <text x="292" y="348" text-anchor="end" fill="#dc2626" font-size="17" font-weight="700">7% narrower</text>
+
+  <rect x="330" y="286" width="250" height="76" rx="10" fill="#ffffff" stroke="#10b981" stroke-width="2"/>
+  <text x="348" y="308" fill="#64748b" font-size="10.5" font-weight="700">1 WEEK ON THE BAR SCHEDULE</text>
+  <text x="348" y="330" fill="#0f172a" font-size="11">&#177;25% &#8594; &#177;5%</text>
+  <text x="562" y="348" text-anchor="end" fill="#10b981" font-size="17" font-weight="700">71% narrower</text>
+</svg>
+                                    <figcaption style="text-align:center;font-size:13px;color:#64748b;margin-top:16px;line-height:1.5;"><strong style="color:#334155;">Figure 2 &#8212; The weakest input wins.</strong> The rate was built to three percent. The quantity was a guess. The package inherits the guess, and no amount of work on the rate can rescue it.</figcaption>
+                                </figure>
+
+                                <p>Now make a choice. You have some time. Where do you spend it?</p>
+                                <p>Spend three more weeks on the rate. Chase every supplier, re-time every gang, get it from three percent to one. The uncertainty on the package falls by <strong>seven percent</strong>. You have bought almost nothing.</p>
+                                <p>Or send one detailer to finish the bar schedules and get the quantity from twenty-five percent to five. The uncertainty falls by <strong>seventy-one percent</strong>.</p>
+                                <p>An estimate is a chain. Chains do not care how strong the good links are.</p>
+
+                                <h2>The costs that are not on the drawing</h2>
+                                <p>Now the second half of the problem &#8212; and it is the half that swallows contractors.</p>
+                                <p>Add up every measured item in that bill at direct cost and you get $710,000. Every one of them is something you can walk onto site and point at.</p>
+                                <p>The tender was a million.</p>
+                                <p>The difference is not profiteering. It is the site itself. The engineer, the foreman, the offices, the fence, the welfare unit, the tower crane standing over everything, the scaffold, the temporary power, the security guard at the gate at three in the morning. <strong>Preliminaries.</strong> Nobody drew any of it, and none of it is optional. Twelve percent.</p>
+                                <p>Then <strong>escalation</strong>. This job runs for two years. Steel, diesel, concrete and wages will not sit still for two years &#8212; and last week the steel market moved $140 a tonne while everybody was looking the other way. Four percent, and it is a bet, not a calculation.</p>
+                                <p>Then the company: head office, the bond, the insurance, the bid you lost last month, and profit. Fifteen percent.</p>
+                                <p>Then <strong>contingency</strong>: the money for the things you know will happen but cannot yet name. Five percent, and we will spend a whole week on it, because it is the most politically abused number in construction.</p>
+
+                                <figure style="margin:36px 0;padding:24px;background:#f8fafc;border-radius:16px;border:1px solid #e2e8f0;">
+                                    <svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif">
+  <text x="320" y="24" text-anchor="middle" fill="#10b981" font-size="11.5" font-weight="700" letter-spacing="2">FROM THE DRAWING TO THE TENDER</text>
+
+  <rect x="70" y="48" width="360" height="30" rx="6" fill="#0f172a"/>
+  <text x="86" y="68" fill="#ffffff" font-size="11.5" font-weight="700">Measured works &#183; on the drawing</text>
+  <text x="416" y="68" text-anchor="end" fill="#ffffff" font-size="11.5" font-weight="700">$710,000</text>
+  <text x="446" y="68" fill="#94a3b8" font-size="10">you can point at it</text>
+
+  <rect x="70" y="88" width="360" height="26" rx="6" fill="#f59e0b"/>
+  <text x="86" y="106" fill="#ffffff" font-size="11" font-weight="700">Preliminaries &#183; the site around the work</text>
+  <text x="416" y="106" text-anchor="end" fill="#ffffff" font-size="11" font-weight="700">$85,200</text>
+  <text x="446" y="106" fill="#94a3b8" font-size="10">12%</text>
+
+  <rect x="70" y="124" width="360" height="26" rx="6" fill="#f59e0b"/>
+  <text x="86" y="142" fill="#ffffff" font-size="11" font-weight="700">Escalation &#183; two years of prices moving</text>
+  <text x="416" y="142" text-anchor="end" fill="#ffffff" font-size="11" font-weight="700">$31,808</text>
+  <text x="446" y="142" fill="#94a3b8" font-size="10">4%</text>
+
+  <rect x="70" y="160" width="360" height="26" rx="6" fill="#64748b"/>
+  <text x="86" y="178" fill="#ffffff" font-size="11" font-weight="700">Overhead &amp; profit &#183; the company</text>
+  <text x="416" y="178" text-anchor="end" fill="#ffffff" font-size="11" font-weight="700">$124,051</text>
+  <text x="446" y="178" fill="#94a3b8" font-size="10">15%</text>
+
+  <rect x="70" y="196" width="360" height="26" rx="6" fill="#dc2626"/>
+  <text x="86" y="214" fill="#ffffff" font-size="11" font-weight="700">Contingency &#183; the things you cannot name</text>
+  <text x="416" y="214" text-anchor="end" fill="#ffffff" font-size="11" font-weight="700">$47,553</text>
+  <text x="446" y="214" fill="#94a3b8" font-size="10">5%</text>
+
+  <line x1="70" y1="236" x2="500" y2="236" stroke="#0f172a" stroke-width="2"/>
+  <text x="86" y="258" fill="#64748b" font-size="11.5" font-weight="700">ESTIMATED COST</text>
+  <text x="416" y="258" text-anchor="end" fill="#64748b" font-size="12" font-weight="700">$998,612</text>
+
+  <rect x="70" y="274" width="430" height="46" rx="8" fill="#052e26"/>
+  <text x="88" y="303" fill="#6ee7b7" font-size="12" font-weight="700" letter-spacing="1">TENDER SUBMITTED</text>
+  <text x="482" y="304" text-anchor="end" fill="#ffffff" font-size="19" font-weight="700">$1,000,000</text>
+
+  <text x="70" y="346" fill="#dc2626" font-size="11.5" font-weight="700">Rounded up by $1,388 &#8212; in a rate carried to the cent.</text>
+  <text x="70" y="366" fill="#94a3b8" font-size="10.5">Two-fifths of the tender is money that is not on any drawing.</text>
+</svg>
+                                    <figcaption style="text-align:center;font-size:13px;color:#64748b;margin-top:16px;line-height:1.5;"><strong style="color:#334155;">Figure 3 &#8212; What is not on the drawing.</strong> The measured work is $710,000. The tender is a million. Everything in between is real money that no engineer ever drew.</figcaption>
+                                </figure>
+
+                                <p>Two-fifths of that tender is money that is not on any drawing.</p>
+                                <p>And notice the last line. The estimate came out at $998,612 &#8212; and somebody rounded it up to a million, because a round number looks better on a covering letter. A rate carried to two decimal places, inside a total adjusted by $1,388 for aesthetics.</p>
+
+                                <h2>Where you put the money</h2>
+                                <p>One warning, because it costs people jobs.</p>
+                                <p>Last week&#39;s rate was <em>all-in</em>: $1,123.40 of direct cost, with the preliminaries and the margin folded into it, giving $1,446.94. That is one convention.</p>
+                                <p>Most bills of quantities do the opposite. The rate stays at direct cost, and the preliminaries and margin are carried once, in their own sections, for the whole job.</p>
+                                <p>Both give you the same tender &#8212; $224,680 of direct rebar, marked up, is exactly the $289,388 you get from the all-in rate. Choose one. Write it down. And never let both happen, because the day they do, you have priced your site overheads twice and you have lost the job to someone who only counted them once.</p>
+
+                                <h2>Practical insight</h2>
+                                <p>Find the estimate your budget came from and ask two questions.</p>
+                                <p>First: what class is it? Not what it is called &#8212; what it <em>is</em>. Go and look at the drawings it was priced from. If the words &#8220;to be confirmed&#8221; or &#8220;to engineer&#39;s detail&#8221; appear anywhere in the scope of your biggest package, your baseline is softer than the two decimal places suggest.</p>
+                                <p>Second: where are the preliminaries? In the rates, or in their own section? If nobody can answer immediately, go and check that they are not in both.</p>
+                                <p>You are not being pedantic. You are finding out how much of your baseline is real before the client asks you why the forecast moved.</p>
+
+                                <h2>Key takeaways</h2>
+                                <p>&#10004; Precision is decimal places. Accuracy is scope. They are not related.<br>
+                                &#10004; An estimate class describes the maturity of the drawings, not the effort of the estimator.<br>
+                                &#10004; The $1M tender range was $950k&#8211;$1.1M. The job will cost $1,267,000 &#8212; outside it.<br>
+                                &#10004; Only the concept estimate, at $880k &#177;, had a range wide enough to contain the truth.<br>
+                                &#10004; The estimate inherits the accuracy of its worst input: rate &#177;3% &#215; quantity &#177;25% = package &#177;28%.<br>
+                                &#10004; Three weeks perfecting the rate buys 7% of certainty. One week finishing the bar schedule buys 71%.<br>
+                                &#10004; $710,000 of measured work becomes a $1,000,000 tender. Two-fifths is not on any drawing.<br>
+                                &#10004; Preliminaries live in the rates <em>or</em> in their own section. Never both.</p>
+
+                                <h2>What is coming next</h2>
+                                <p>You now have a bill: hundreds of items, each with a quantity and a rate.</p>
+                                <p>You also have a schedule: hundreds of activities, each with a duration and a logic link.</p>
+                                <p>They were built by different people, in different offices, in different weeks, and they do not line up. The bill has an item for &#8220;reinforcement, 200 tonnes&#8221;. The schedule has fourteen activities that each place some of it.</p>
+                                <p>Next week: how you marry the two &#8212; and what happens to your cost report when you do not.</p>
+                            </div>
+                        </div>
+
+                        <!-- PAYWALL CTA -->
+                        <div class="paywall-cta" id="paywallCta">
+                            <div class="soft-cta-inner">
+                                <h3>Enjoyed this lesson?</h3>
+                                <p>Join with Google to get each new lesson the moment it's published — and help me see which topics matter most to you. No spam, one email a week, unsubscribe anytime.</p>
+                                <button class="btn-google-signin" onclick="signInWithGoogleBtn()">
+                                    <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z" fill="#4285F4"/><path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/><path d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/><path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#EA4335"/></svg>
+                                    Continue with Google
+                                </button>
+                                <p class="modal-note">Already following on LinkedIn works too — this is just for the weekly email.</p>
+                            </div>
+                        </div>
+
+                        <!-- ARTICLE FOOTER (after login) -->
+                        <div class="article-footer" id="articleFooter">
+                            <div class="article-tags">
+                                <span class="article-tag">#Estimating</span>
+                                <span class="article-tag">#EstimateClasses</span>
+                                <span class="article-tag">#Preliminaries</span>
+                                <span class="article-tag">#Escalation</span>
+                            </div>
+                        </div>
+
+                        <!-- SHARE BAR (bottom) -->
+                        <div class="share-bar share-bar-bottom">
+                            <span class="share-bar-heading">Found this useful? Share it with your team.</span>
+                            <div class="share-row">
+                                <a class="share-btn linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftheprojectcontrolhub.com%2Fcost-week-3.html" target="_blank" rel="noopener"><i class='bx bxl-linkedin'></i> LinkedIn</a>
+                                <a class="share-btn whatsapp" href="https://wa.me/?text=Precision%20is%20decimal%20places.%20Accuracy%20is%20scope.%20They%20are%20not%20related.%20https%3A%2F%2Ftheprojectcontrolhub.com%2Fcost-week-3.html" target="_blank" rel="noopener"><i class='bx bxl-whatsapp'></i> WhatsApp</a>
+                                <a class="share-btn x" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftheprojectcontrolhub.com%2Fcost-week-3.html&text=Precision%20is%20decimal%20places.%20Accuracy%20is%20scope.%20They%20are%20not%20related." target="_blank" rel="noopener"><i class='bx bxl-twitter'></i> X</a>
+                                <button class="share-btn copy" onclick="copyArticleLink(this)"><i class='bx bx-link'></i> Copy Link</button>
+                            </div>
+                        </div>
+
+                        <!-- NEXT ARTICLE NAV (after login) -->
+                        <div class="next-article" id="nextArticle" style="display:none;">
+                            <div class="next-article-label">Next week</div>
+                            <a href="learn.html" class="next-article-link">
+                                <div>
+                                    <span class="next-week-tag">Week 4 &#183; Coming soon</span>
+                                    <h4>The BoQ and the schedule &#8212; mapping bill items to activities</h4>
+                                </div>
+                                <i class='bx bx-right-arrow-alt'></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT — SIDEBAR -->
+            <aside class="content-sidebar">
+
+                                <!-- SERIES NAV (populated from curriculum.js) -->
+                <div class="sidebar-card" id="seriesSidebar" data-current-week="3" data-track="2"></div>
+
+                <!-- AUTHOR CARD -->
+                <div class="author-sidebar-card">
+                    <div class="author-sidebar-top">
+                        <div class="author-sidebar-avatar">BE</div>
+                        <div>
+                            <span class="author-sidebar-name" translate="no">Barış Emre Özçelik</span>
+                            <span class="author-sidebar-title">Planning & Project Controls Lead, PMP</span>
+                        </div>
+                    </div>
+                    <p class="author-sidebar-bio">8+ years in planning & project controls across nuclear, mining, ports, and high-rise projects — currently on the Akkuyu NPP. Writing about what actually works on site.</p>
+                    <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" class="btn-linkedin" translate="no">
+                        <i class='bx bxl-linkedin'></i> Follow on LinkedIn
+                    </a>
+                </div>
+
+            </aside>
+        </div>
+    </div>
+
+    <!-- ACCESS MODAL -->
+    <div class="modal-overlay" id="accessModal">
+        <div class="modal-box">
+            <button class="close-modal" onclick="closeModal()"><i class='bx bx-x'></i></button>
+            <div class="modal-icon-wrapper">
+                <i class='bx bx-book-open'></i>
+            </div>
+            <h4>Free access to all content</h4>
+            <p>Sign in with Google to read the full series and get notified when new topics are published.</p>
+            <button class="btn-google-signin" onclick="signInWithGoogleBtn()">
+                <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z" fill="#4285F4"/><path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/><path d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/><path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#EA4335"/></svg>
+                Continue with Google
+            </button>
+            <p class="modal-note">No spam. One notification per week when new content drops.</p>
+        </div>
+    </div>
+
+    <!-- MOBILE NAV -->
+    <div class="mobile-nav" id="mobileNav">
+        <button class="mobile-nav-close" onclick="toggleMobileNav()"><i class='bx bx-x'></i></button>
+        <a href="index.html" onclick="toggleMobileNav()">Home</a>
+        <a href="learn.html" onclick="toggleMobileNav()">Learn</a>
+        <a href="about.html" onclick="toggleMobileNav()">About</a>
+        <div class="mobile-nav-bottom">
+            <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" translate="no"><i class='bx bxl-linkedin'></i> LinkedIn</a>
+            <a href="https://youtube.com" target="_blank" translate="no"><i class='bx bxl-youtube'></i> YouTube</a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-content" style="grid-template-columns: 1fr 1fr;">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <svg class="logo-mark" width="40" height="40" viewBox="0 0 100 100" fill="none" aria-hidden="true"><path d="M30 32 L49 32 L58.5 48 L49 64 L30 64 L20.5 48 Z" stroke="#10b981" stroke-width="6" stroke-linejoin="round"/><path d="M60 22 L71 22 L76.5 31.5 L71 41 L60 41 L54.5 31.5 Z" stroke="#64748b" stroke-width="5" stroke-linejoin="round"/><path d="M59 58 L68 58 L72.5 65.5 L68 73 L59 73 L54.5 65.5 Z" stroke="#64748b" stroke-width="4.5" stroke-linejoin="round"/></svg>
+                    <span translate="no">THE PROJECT CONTROL HUB</span>
+                </a>
+                <p>Field notes on planning & project controls — by Barış Emre Özçelik, PMP.</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" translate="no"><i class='bx bxl-linkedin'></i></a>
+                    <a href="https://youtube.com" target="_blank" translate="no"><i class='bx bxl-youtube'></i></a>
+                </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:16px;">
+                <h4 style="font-size:11px;font-weight:700;letter-spacing:1px;color:#64748b;margin:0;">FOLLOW THE SERIES</h4>
+                <p style="font-size:13px;color:#64748b;margin:0;line-height:1.6;">New content every week — follow along so you don't miss the next topic.</p>
+                <div style="display:flex;gap:10px;">
+                    <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank"
+                       style="display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);color:#cbd5e1;text-decoration:none;font-size:13px;font-weight:600;transition:all 0.2s;" translate="no">
+                        <i class='bx bxl-linkedin' style="font-size:17px;"></i> LinkedIn
+                    </a>
+                    <a href="https://youtube.com" target="_blank"
+                       style="display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);color:#cbd5e1;text-decoration:none;font-size:13px;font-weight:600;transition:all 0.2s;" translate="no">
+                        <i class='bx bxl-youtube' style="font-size:17px;"></i> YouTube
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 The Project Control Hub. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+    <!-- Curriculum data + sidebar renderer -->
+    <script src="curriculum.js?v=14"></script>
+    <script>
+        (function() {
+            const el = document.getElementById('seriesSidebar');
+            if (el && typeof renderTrack2Sidebar === 'function') {
+                const currentWeek = parseInt(el.getAttribute('data-current-week'), 10);
+                el.innerHTML = renderTrack2Sidebar(currentWeek);
+                // Re-bind gated links after render
+                el.querySelectorAll('.sidebar-series-item[data-gated]').forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        if (!localStorage.getItem('pch_auth')) {
+                            e.preventDefault();
+                            sessionStorage.setItem('pch_intended', this.href);
+                            if (typeof openModal === 'function') openModal();
+                        }
+                    });
+                });
+            }
+        })();
+    </script>
+
+</body>
+</html>
