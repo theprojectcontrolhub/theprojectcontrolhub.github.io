@@ -56,7 +56,7 @@ const CURRICULUM = {
 
     // ---- PHASE F — COMMUNICATION · DOMAIN 5 ----
     { phase: "Phase F — Communication", n: 26, title: "Reporting & the altitude concept — right data, right level", short: "Reporting & the altitude concept", status: "live", page: "week-26.html", date: "Dec 16, 2026" },
-    { n: 27, title: "Stakeholder management & schedule communication", short: "Stakeholder management & communication", status: "upcoming" },
+    { n: 27, title: "Stakeholder management & schedule communication", short: "Stakeholder management & communication", status: "live", page: "week-27.html", date: "Dec 23, 2026" },
   ],
 
   // ---- Derived helpers ----
