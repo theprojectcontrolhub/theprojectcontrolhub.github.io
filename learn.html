@@ -793,7 +793,7 @@
                 
                 <!-- ===== TRACK 2 — COST & CASH ===== -->
                 <div class="track-header track-2">
-                    <div class="track-badge free"><span class="dot-green"></span> TRACK 2 · FREE · NEXT</div>
+                    <div class="track-badge free"><span class="dot-green"></span> TRACK 2 · FREE · IN PROGRESS</div>
                     <h2>Cost &amp; Cash</h2>
                     <p class="track-sub">The money. Where the numbers come from — and how companies go broke while profitable.</p>
                     <p class="track-desc">Track 1 taught you to read a project. This one teaches you to read its money. Where a unit rate actually comes from, why the BoQ and the schedule never quite line up, how physical percent is really measured — and the half nobody teaches a planner: <strong>cash</strong>. A contractor doesn&#39;t fail because of a bad CPI. It fails because it ran out of money while turning a profit.</p>
@@ -813,7 +813,7 @@
                                 <p>Estimating, budgeting, measurement and cash flow &#8212; built on AACE&#39;s cost engineering framework and the way contractors actually run their books on site.</p>
                             </div>
                         </div>
-                        <span class="module-badge badge-locked"><i class='bx bx-time'></i> Starting soon</span>
+                        <span class="module-badge badge-active"><i class='bx bx-loader-circle'></i> In progress</span>
                     </div>
                     <div class="module-tools">
                         <span class="tool-tag-label">Topics:</span>
@@ -828,11 +828,11 @@
                     <div class="module-weeks" id="track2Weeks"></div>
                     <div class="module-progress">
                         <div class="progress-label">
-                            <span>0 of 24 published</span>
-                            <span>0%</span>
+                            <span id="t2ProgressText">1 of 24 published</span>
+                            <span id="t2ProgressPct">4%</span>
                         </div>
                         <div class="progress-bar">
-                            <div class="progress-fill" style="width:0%;"></div>
+                            <div class="progress-fill" id="t2ProgressFill" style="width:4%;"></div>
                         </div>
                     </div>
                 </div>
@@ -1098,7 +1098,7 @@
 
 
     <!-- Curriculum data + renderers -->
-    <script src="curriculum.js?v=11"></script>
+    <script src="curriculum.js?v=12"></script>
     <script>
         (function() {
             if (typeof CURRICULUM === 'undefined') return;
@@ -1111,6 +1111,15 @@
             const t2El = document.getElementById('track2Weeks');
             if (t2El && typeof renderTrack2Curriculum === 'function') {
                 t2El.innerHTML = renderTrack2Curriculum();
+                if (typeof renderTrack2Progress === 'function') {
+                    const p2 = renderTrack2Progress();
+                    const t2t = document.getElementById('t2ProgressText');
+                    const t2p = document.getElementById('t2ProgressPct');
+                    const t2f = document.getElementById('t2ProgressFill');
+                    if (t2t) t2t.textContent = p2.text;
+                    if (t2p) t2p.textContent = p2.percent + '%';
+                    if (t2f) t2f.style.width = p2.percent + '%';
+                }
             }
 
             // Progress

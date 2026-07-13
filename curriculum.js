@@ -292,47 +292,54 @@ const TRACK2 = {
 
   // Titles are written in the same register as Track 1: the topic and its
   // components. The punchy version of each is the article's own headline.
+  // status: "live" = published & clickable | "upcoming" = greyed out
   weeks: [
     // ---- PHASE A — FOUNDATIONS & ESTIMATING ----
-    { phase: "Phase A — Foundations & Estimating", n: 1, title: "Why cost control fails — and why \u201cactual cost\u201d is the hardest number", short: "Why cost control fails" },
-    { n: 2, title: "Unit rates — labour, plant, material & waste", short: "Unit rates — how a price is built" },
-    { n: 3, title: "Estimate classes — accuracy ranges & the maturity of scope", short: "Estimate classes & accuracy ranges" },
-    { n: 4, title: "The BoQ and the schedule — mapping bill items to activities", short: "Mapping the BoQ to the schedule" },
-    { n: 5, title: "Indirects, waste & escalation — the costs not on the drawing", short: "Indirects, waste & escalation" },
-    { n: 6, title: "Contingency & management reserve — sizing, ownership & drawdown", short: "Contingency & management reserve" },
+    { phase: "Phase A — Foundations & Estimating", n: 1, title: "Why cost control fails — and why \u201cactual cost\u201d is the hardest number", short: "Why cost control fails", status: "live", page: "cost-week-1.html", date: "Dec 30, 2026" },
+    { n: 2, title: "Unit rates — labour, plant, material & waste", short: "Unit rates — how a price is built", status: "upcoming" },
+    { n: 3, title: "Estimate classes & the costs not on the drawing — accuracy, indirects & escalation", short: "Estimate classes, indirects & escalation", status: "upcoming" },
+    { n: 4, title: "The BoQ and the schedule — mapping bill items to activities", short: "Mapping the BoQ to the schedule", status: "upcoming" },
+    { n: 5, title: "Contingency & management reserve — sizing, ownership & drawdown", short: "Contingency & management reserve", status: "upcoming" },
 
     // ---- PHASE B — FROM ESTIMATE TO BUDGET ----
-    { phase: "Phase B — From Estimate to Budget", n: 7, title: "From estimate to budget — the cost breakdown structure", short: "From estimate to budget" },
-    { n: 8, title: "Control accounts & work packages — where scope, cost and ownership meet", short: "Control accounts & work packages" },
-    { n: 9, title: "The time-phased baseline — building planned value from unit rates", short: "The time-phased baseline" },
-    { n: 10, title: "The schedule of values — valuation, front-loading & interim payment", short: "The schedule of values" },
+    { phase: "Phase B — From Estimate to Budget", n: 6, title: "From estimate to budget — the cost breakdown structure", short: "From estimate to budget", status: "upcoming" },
+    { n: 7, title: "Control accounts & work packages — where scope, cost and ownership meet", short: "Control accounts & work packages", status: "upcoming" },
+    { n: 8, title: "Subcontractor cost control — packages, valuations & variations", short: "Subcontractor cost control", status: "upcoming" },
+    { n: 9, title: "The time-phased baseline — building planned value from unit rates", short: "The time-phased baseline", status: "upcoming" },
+    { n: 10, title: "The schedule of values — valuation, front-loading & interim payment", short: "The schedule of values", status: "upcoming" },
 
     // ---- PHASE C — MEASUREMENT ----
-    { phase: "Phase C — Measurement", n: 11, title: "Cost accounting for planners — commitment, accrual & expenditure", short: "Commitment, accrual & expenditure" },
-    { n: 12, title: "Physical progress measurement — the six methods", short: "Physical progress — the six methods" },
-    { n: 13, title: "Single data capture — one entry, cost and schedule", short: "Single data capture" },
-    { n: 14, title: "Productivity control — factors, indices & the labour rate", short: "Productivity control" },
+    { phase: "Phase C — Measurement", n: 11, title: "Cost accounting for planners — commitment, accrual & expenditure", short: "Commitment, accrual & expenditure", status: "upcoming" },
+    { n: 12, title: "Physical progress measurement — the six methods", short: "Physical progress — the six methods", status: "upcoming" },
+    { n: 13, title: "Single data capture — one entry, cost and schedule", short: "Single data capture", status: "upcoming" },
+    { n: 14, title: "Productivity control — factors, indices & the labour rate", short: "Productivity control", status: "upcoming" },
 
     // ---- PHASE D — CASH ----
-    { phase: "Phase D — Cash", n: 15, title: "Cash flow fundamentals — the income and requirements curves", short: "Cash flow fundamentals" },
-    { n: 16, title: "Retention, payment terms & the working capital gap", short: "Retention & the working capital gap" },
-    { n: 17, title: "Overtrading — why growth destroys profitable contractors", short: "Overtrading — when growth kills" },
-    { n: 18, title: "Cash management — the levers a project actually has", short: "Cash management strategies" },
+    { phase: "Phase D — Cash", n: 15, title: "Cash flow fundamentals — the income and requirements curves", short: "Cash flow fundamentals", status: "upcoming" },
+    { n: 16, title: "Retention, payment terms & the working capital gap", short: "Retention & the working capital gap", status: "upcoming" },
+    { n: 17, title: "Overtrading — why growth destroys profitable contractors", short: "Overtrading — when growth kills", status: "upcoming" },
+    { n: 18, title: "Cash management — the levers a project actually has", short: "Cash management strategies", status: "upcoming" },
 
     // ---- PHASE E — THE COMPANY ----
-    { phase: "Phase E — The Company", n: 19, title: "Direct, indirect & site overheads — the true cost of being there", short: "Direct, indirect & site overheads" },
-    { n: 20, title: "Contribution & margin — what the project returns to the business", short: "Contribution & margin" },
-    { n: 21, title: "Value engineering — reducing cost without reducing scope", short: "Value engineering" },
-    { n: 22, title: "Time-cost trade-off & acceleration — actual, constructive & forced", short: "Trade-offs & acceleration" },
-    { n: 23, title: "Contract cost accounting — revenue recognition & the expected loss rule", short: "Revenue recognition & expected loss" },
-    { n: 24, title: "The commercial planner — speaking the language of money", short: "The commercial planner" },
+    { phase: "Phase E — The Company", n: 19, title: "Direct, indirect & site overheads — the true cost of being there", short: "Direct, indirect & site overheads", status: "upcoming" },
+    { n: 20, title: "Contribution & margin — what the project returns to the business", short: "Contribution & margin", status: "upcoming" },
+    { n: 21, title: "Value engineering — reducing cost without reducing scope", short: "Value engineering", status: "upcoming" },
+    { n: 22, title: "Time-cost trade-off & acceleration — actual, constructive & forced", short: "Trade-offs & acceleration", status: "upcoming" },
+    { n: 23, title: "Contract cost accounting — revenue recognition & the expected loss rule", short: "Revenue recognition & expected loss", status: "upcoming" },
+    { n: 24, title: "The commercial planner — speaking the language of money", short: "The commercial planner", status: "upcoming" },
   ],
 
+  get liveCount() { return this.weeks.filter(w => w.status === "live").length; },
+  get progressPercent() { return Math.round((this.liveCount / this.totalWeeks) * 100); },
+  get latestLiveWeek() {
+    const live = this.weeks.filter(w => w.status === "live");
+    return live.length ? live[live.length - 1] : null;
+  },
   get phaseCount() { return this.weeks.filter(w => w.phase).length; },
   getWeek(n) { return this.weeks.find(w => w.n === n); }
 };
 
-// Renderer: Track 2 curriculum for learn.html (all upcoming)
+// Renderer: Track 2 curriculum for learn.html
 // NOTE: must use the SAME classes as renderLearnCurriculum above,
 // or the rows render as unstyled plain text.
 function renderTrack2Curriculum() {
@@ -352,12 +359,82 @@ function renderTrack2Curriculum() {
           <span class="phase-weeks-tag">${range}</span>
         </div>`;
     }
-    rows += `
-      <div class="week-item upcoming">
-        <span class="week-num">Week ${week.n}</span>
-        <span class="week-title">${week.title}</span>
-        <span class="week-upcoming-label">Coming soon</span>
-      </div>`;
+    if (week.status === "live" && week.page) {
+      const isLatest = week === t.latestLiveWeek;
+      const dateOrNew = isLatest
+        ? '<span class="week-new" translate="no">New</span>'
+        : (week.date ? `<span class="week-date">${week.date}</span>` : '');
+      rows += `
+        <a href="${week.page}" class="week-item">
+          <span class="week-num">Week ${week.n}</span>
+          <span class="week-title">${week.title}</span>
+          ${dateOrNew}
+          <i class='bx bx-right-arrow-alt week-arrow'></i>
+        </a>`;
+    } else {
+      rows += `
+        <div class="week-item upcoming">
+          <span class="week-num">Week ${week.n}</span>
+          <span class="week-title">${week.title}</span>
+          <span class="week-upcoming-label">Coming soon</span>
+        </div>`;
+    }
   });
   return rows;
+}
+
+// Progress bar values for the Track 2 card on learn.html
+function renderTrack2Progress() {
+  const t = TRACK2;
+  return {
+    text: `${t.liveCount} of ${t.totalWeeks} published`,
+    percent: t.progressPercent
+  };
+}
+
+// Sidebar for Track 2 article pages. Mirrors renderArticleSidebar.
+function renderTrack2Sidebar(currentWeek) {
+  const t = TRACK2;
+  let rows = "";
+  const visible = t.weeks.slice(0, 5);
+  visible.forEach(week => {
+    const isActive = week.n === currentWeek;
+    const isLive = week.status === "live";
+    if (isActive) {
+      rows += `
+        <a href="${week.page || '#'}" class="sidebar-series-item active">
+          <span class="sidebar-week">Week ${week.n}</span>
+          <span class="sidebar-item-title">${week.short}</span>
+        </a>`;
+    } else if (isLive && week.page) {
+      const badge = week === t.latestLiveWeek
+        ? '<span class="sidebar-new" translate="no">New</span>' : "";
+      rows += `
+        <a href="${week.page}" class="sidebar-series-item">
+          <span class="sidebar-week">Week ${week.n}</span>
+          <span class="sidebar-item-title">${week.short}</span>${badge}
+        </a>`;
+    } else {
+      rows += `
+        <div class="sidebar-series-item upcoming">
+          <span class="sidebar-week">Week ${week.n}</span>
+          <span class="sidebar-item-title">${week.short}</span>
+        </div>`;
+    }
+  });
+
+  const remaining = t.weeks.length - visible.length;
+  if (remaining > 0) {
+    const firstRest = visible.length + 1;
+    rows += `
+      <div class="sidebar-series-item upcoming">
+        <span class="sidebar-week">${firstRest}\u2013${t.totalWeeks}</span>
+        <span class="sidebar-item-title">Budget · Measurement · Cash · Margin</span>
+      </div>`;
+  }
+
+  return `
+    <div class="sidebar-card-header">
+      <h4 translate="no">${t.title} · ${t.totalWeeks} Weeks</h4>
+    </div>${rows}`;
 }
