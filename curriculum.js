@@ -302,32 +302,33 @@ const TRACK2 = {
     { n: 5, title: "Contingency & management reserve — sizing, ownership & drawdown", short: "Contingency & management reserve", status: "live", page: "cost-week-5.html", date: "Jan 27, 2027" },
 
     // ---- PHASE B — FROM ESTIMATE TO BUDGET ----
-    { phase: "Phase B — From Estimate to Budget", n: 6, title: "From estimate to budget — the cost breakdown structure", short: "From estimate to budget", status: "upcoming" },
-    { n: 7, title: "Control accounts & work packages — where scope, cost and ownership meet", short: "Control accounts & work packages", status: "upcoming" },
-    { n: 8, title: "Subcontractor cost control — packages, valuations & variations", short: "Subcontractor cost control", status: "upcoming" },
-    { n: 9, title: "The time-phased baseline — building planned value from unit rates", short: "The time-phased baseline", status: "upcoming" },
-    { n: 10, title: "The schedule of values — valuation, front-loading & interim payment", short: "The schedule of values", status: "upcoming" },
+    { phase: "Phase B — From Estimate to Budget", n: 6, title: "From estimate to budget — the cost breakdown structure & the code of accounts", short: "The CBS & the code of accounts", status: "live", page: "cost-week-6.html", date: "Feb 3, 2027" },
+    { n: 7, title: "Control accounts & work packages — where scope, cost and ownership meet", short: "Control accounts & work packages", status: "live", page: "cost-week-7.html", date: "Feb 10, 2027" },
+    { n: 8, title: "The time-phased baseline — building planned value from unit rates", short: "The time-phased baseline", status: "upcoming" },
+    { n: 9, title: "The schedule of values — valuation, front-loading & interim payment", short: "The schedule of values", status: "upcoming" },
 
-    // ---- PHASE C — MEASUREMENT ----
-    { phase: "Phase C — Measurement", n: 11, title: "Cost accounting for planners — commitment, accrual & expenditure", short: "Commitment, accrual & expenditure", status: "upcoming" },
-    { n: 12, title: "Physical progress measurement — the six methods", short: "Physical progress — the six methods", status: "upcoming" },
-    { n: 13, title: "Single data capture — one entry, cost and schedule", short: "Single data capture", status: "upcoming" },
-    { n: 14, title: "Productivity control — factors, indices & the labour rate", short: "Productivity control", status: "upcoming" },
+    // ---- PHASE C — MEASUREMENT & CHANGE ----
+    { phase: "Phase C — Measurement & Change", n: 10, title: "Cost accounting for planners — commitment, accrual & expenditure", short: "Commitment, accrual & expenditure", status: "upcoming" },
+    { n: 11, title: "Physical progress measurement — the six methods", short: "Physical progress — the six methods", status: "upcoming" },
+    { n: 12, title: "Subcontractor cost control — packages, valuations & variations", short: "Subcontractor cost control", status: "upcoming" },
+    { n: 13, title: "Change & variation pricing — bill rates, star rates, dayworks & disruption", short: "Pricing a change", status: "upcoming" },
+    { n: 14, title: "Single data capture — one entry, cost and schedule", short: "Single data capture", status: "upcoming" },
+    { n: 15, title: "Productivity control — factors, indices & earned hours", short: "Productivity & earned hours", status: "upcoming" },
 
     // ---- PHASE D — CASH ----
-    { phase: "Phase D — Cash", n: 15, title: "Cash flow fundamentals — the income and requirements curves", short: "Cash flow fundamentals", status: "upcoming" },
-    { n: 16, title: "Retention, payment terms & the working capital gap", short: "Retention & the working capital gap", status: "upcoming" },
-    { n: 17, title: "Overtrading — why growth destroys profitable contractors", short: "Overtrading — when growth kills", status: "upcoming" },
-    { n: 18, title: "Cash management — the levers a project actually has", short: "Cash management strategies", status: "upcoming" },
+    { phase: "Phase D — Cash", n: 16, title: "Cash flow fundamentals — the income and requirements curves", short: "Cash flow fundamentals", status: "upcoming" },
+    { n: 17, title: "Retention, payment terms & the working capital gap", short: "Retention & the working capital gap", status: "upcoming" },
+    { n: 18, title: "Overtrading — why growth destroys profitable contractors", short: "Overtrading — when growth kills", status: "upcoming" },
+    { n: 19, title: "Cash management — the levers a project actually has", short: "Cash management strategies", status: "upcoming" },
 
     // ---- PHASE E — THE COMPANY ----
-    { phase: "Phase E — The Company", n: 19, title: "Direct, indirect & site overheads — the true cost of being there", short: "Direct, indirect & site overheads", status: "upcoming" },
-    { n: 20, title: "Contribution & margin — what the project returns to the business", short: "Contribution & margin", status: "upcoming" },
-    { n: 21, title: "Value engineering — reducing cost without reducing scope", short: "Value engineering", status: "upcoming" },
-    { n: 22, title: "Time-cost trade-off & acceleration — actual, constructive & forced", short: "Trade-offs & acceleration", status: "upcoming" },
+    { phase: "Phase E — The Company", n: 20, title: "Direct, indirect & site overheads — the true cost of being there", short: "Direct, indirect & site overheads", status: "upcoming" },
+    { n: 21, title: "The levers — value engineering & the time-cost trade-off", short: "Value engineering & time-cost trade-off", status: "upcoming" },
+    { n: 22, title: "Contribution & margin — what the project returns to the business", short: "Contribution & margin", status: "upcoming" },
     { n: 23, title: "Contract cost accounting — revenue recognition & the expected loss rule", short: "Revenue recognition & expected loss", status: "upcoming" },
     { n: 24, title: "The commercial planner — speaking the language of money", short: "The commercial planner", status: "upcoming" },
   ],
+
 
   get liveCount() { return this.weeks.filter(w => w.status === "live").length; },
   get progressPercent() { return Math.round((this.liveCount / this.totalWeeks) * 100); },
