@@ -304,8 +304,8 @@ const TRACK2 = {
     // ---- PHASE B — FROM ESTIMATE TO BUDGET ----
     { phase: "Phase B — From Estimate to Budget", n: 6, title: "From estimate to budget — the cost breakdown structure & the code of accounts", short: "The CBS & the code of accounts", status: "live", page: "cost-week-6.html", date: "Feb 3, 2027" },
     { n: 7, title: "Control accounts & work packages — where scope, cost and ownership meet", short: "Control accounts & work packages", status: "live", page: "cost-week-7.html", date: "Feb 10, 2027" },
-    { n: 8, title: "The time-phased baseline — building planned value from unit rates", short: "The time-phased baseline", status: "upcoming" },
-    { n: 9, title: "The schedule of values — valuation, front-loading & interim payment", short: "The schedule of values", status: "upcoming" },
+    { n: 8, title: "The time-phased baseline — building planned value from unit rates", short: "The time-phased baseline", status: "live", page: "cost-week-8.html", date: "Feb 17, 2027" },
+    { n: 9, title: "The schedule of values — valuation, front-loading & interim payment", short: "The schedule of values", status: "live", page: "cost-week-9.html", date: "Feb 24, 2027" },
 
     // ---- PHASE C — MEASUREMENT & CHANGE ----
     { phase: "Phase C — Measurement & Change", n: 10, title: "Cost accounting for planners — commitment, accrual & expenditure", short: "Commitment, accrual & expenditure", status: "upcoming" },
