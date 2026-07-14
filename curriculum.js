@@ -299,7 +299,7 @@ const TRACK2 = {
     { n: 2, title: "Unit rates — labour, plant, material & waste", short: "Unit rates — how a price is built", status: "live", page: "cost-week-2.html", date: "Jan 6, 2027" },
     { n: 3, title: "Estimate classes & the costs not on the drawing — accuracy, indirects & escalation", short: "Estimate classes, indirects & escalation", status: "live", page: "cost-week-3.html", date: "Jan 13, 2027" },
     { n: 4, title: "The BoQ and the schedule — mapping bill items to activities", short: "Mapping the BoQ to the schedule", status: "live", page: "cost-week-4.html", date: "Jan 20, 2027" },
-    { n: 5, title: "Contingency & management reserve — sizing, ownership & drawdown", short: "Contingency & management reserve", status: "upcoming" },
+    { n: 5, title: "Contingency & management reserve — sizing, ownership & drawdown", short: "Contingency & management reserve", status: "live", page: "cost-week-5.html", date: "Jan 27, 2027" },
 
     // ---- PHASE B — FROM ESTIMATE TO BUDGET ----
     { phase: "Phase B — From Estimate to Budget", n: 6, title: "From estimate to budget — the cost breakdown structure", short: "From estimate to budget", status: "upcoming" },
