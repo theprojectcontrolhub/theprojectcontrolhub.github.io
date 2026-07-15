@@ -308,16 +308,16 @@ const TRACK2 = {
     { n: 9, title: "The schedule of values — valuation, front-loading & interim payment", short: "The schedule of values", status: "live", page: "cost-week-9.html", date: "Feb 24, 2027" },
 
     // ---- PHASE C — MEASUREMENT & CHANGE ----
-    { phase: "Phase C — Measurement & Change", n: 10, title: "Cost accounting for planners — commitment, accrual & expenditure", short: "Commitment, accrual & expenditure", status: "upcoming" },
-    { n: 11, title: "Physical progress measurement — the six methods", short: "Physical progress — the six methods", status: "upcoming" },
-    { n: 12, title: "Subcontractor cost control — packages, valuations & variations", short: "Subcontractor cost control", status: "upcoming" },
+    { phase: "Phase C — Measurement & Change", n: 10, title: "Cost accounting for planners — commitment, accrual & expenditure", short: "Commitment, accrual & expenditure", status: "live", page: "cost-week-10.html", date: "Mar 3, 2027" },
+    { n: 11, title: "Physical progress measurement — the six methods", short: "Physical progress — the six methods", status: "live", page: "cost-week-11.html", date: "Mar 10, 2027" },
+    { n: 12, title: "Subcontractor cost control — packages, valuations & variations", short: "Subcontractor cost control", status: "live", page: "cost-week-12.html", date: "Mar 17, 2027" },
     { n: 13, title: "Change & variation pricing — bill rates, star rates, dayworks & disruption", short: "Pricing a change", status: "upcoming" },
     { n: 14, title: "Single data capture — one entry, cost and schedule", short: "Single data capture", status: "upcoming" },
     { n: 15, title: "Productivity control — factors, indices & earned hours", short: "Productivity & earned hours", status: "upcoming" },
 
     // ---- PHASE D — CASH ----
     { phase: "Phase D — Cash", n: 16, title: "Cash flow fundamentals — the income and requirements curves", short: "Cash flow fundamentals", status: "upcoming" },
-    { n: 17, title: "Retention, payment terms & the working capital gap", short: "Retention & the working capital gap", status: "upcoming" },
+    { n: 17, title: "The interim payment cycle — valuation, retention & the working capital gap", short: "Interim payment & retention", status: "upcoming" },
     { n: 18, title: "Overtrading — why growth destroys profitable contractors", short: "Overtrading — when growth kills", status: "upcoming" },
     { n: 19, title: "Cash management — the levers a project actually has", short: "Cash management strategies", status: "upcoming" },
 
