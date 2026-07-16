@@ -326,7 +326,7 @@ const TRACK2 = {
     { n: 21, title: "The levers — value engineering & the time-cost trade-off", short: "Value engineering & time-cost trade-off", status: "live", page: "cost-week-21.html", date: "May 19, 2027" },
     { n: 22, title: "Contribution & margin — what the project returns to the business", short: "Contribution & margin", status: "live", page: "cost-week-22.html", date: "May 26, 2027" },
     { n: 23, title: "Contract cost accounting — revenue recognition & the expected loss rule", short: "Revenue recognition & expected loss", status: "live", page: "cost-week-23.html", date: "Jun 2, 2027" },
-    { n: 24, title: "The commercial planner — speaking the language of money", short: "The commercial planner", status: "upcoming" },
+    { n: 24, title: "The commercial planner — speaking the language of money", short: "The commercial planner", status: "live", page: "cost-week-24.html", date: "Jun 9, 2027" },
   ],
 
 
