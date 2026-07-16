@@ -318,14 +318,14 @@ const TRACK2 = {
     // ---- PHASE D — CASH ----
     { phase: "Phase D — Cash", n: 16, title: "Cash flow fundamentals — the income and requirements curves", short: "Cash flow fundamentals", status: "live", page: "cost-week-16.html", date: "Apr 14, 2027" },
     { n: 17, title: "The interim payment cycle — valuation, retention & the working capital gap", short: "Interim payment & retention", status: "live", page: "cost-week-17.html", date: "Apr 21, 2027" },
-    { n: 18, title: "Overtrading — why growth destroys profitable contractors", short: "Overtrading — when growth kills", status: "upcoming" },
-    { n: 19, title: "Cash management — the levers a project actually has", short: "Cash management strategies", status: "upcoming" },
+    { n: 18, title: "Overtrading — why growth destroys profitable contractors", short: "Overtrading — when growth kills", status: "live", page: "cost-week-18.html", date: "Apr 28, 2027" },
+    { n: 19, title: "Cash management — the levers a project actually has", short: "Cash management strategies", status: "live", page: "cost-week-19.html", date: "May 5, 2027" },
 
     // ---- PHASE E — THE COMPANY ----
-    { phase: "Phase E — The Company", n: 20, title: "Direct, indirect & site overheads — the true cost of being there", short: "Direct, indirect & site overheads", status: "upcoming" },
-    { n: 21, title: "The levers — value engineering & the time-cost trade-off", short: "Value engineering & time-cost trade-off", status: "upcoming" },
-    { n: 22, title: "Contribution & margin — what the project returns to the business", short: "Contribution & margin", status: "upcoming" },
-    { n: 23, title: "Contract cost accounting — revenue recognition & the expected loss rule", short: "Revenue recognition & expected loss", status: "upcoming" },
+    { phase: "Phase E — The Company", n: 20, title: "Direct, indirect & site overheads — the true cost of being there", short: "Direct, indirect & site overheads", status: "live", page: "cost-week-20.html", date: "May 12, 2027" },
+    { n: 21, title: "The levers — value engineering & the time-cost trade-off", short: "Value engineering & time-cost trade-off", status: "live", page: "cost-week-21.html", date: "May 19, 2027" },
+    { n: 22, title: "Contribution & margin — what the project returns to the business", short: "Contribution & margin", status: "live", page: "cost-week-22.html", date: "May 26, 2027" },
+    { n: 23, title: "Contract cost accounting — revenue recognition & the expected loss rule", short: "Revenue recognition & expected loss", status: "live", page: "cost-week-23.html", date: "Jun 2, 2027" },
     { n: 24, title: "The commercial planner — speaking the language of money", short: "The commercial planner", status: "upcoming" },
   ],
 
