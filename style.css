@@ -152,11 +152,22 @@ ul {
     align-items: center;
     text-decoration: none;
     cursor: pointer;
-    gap: 12px;
-    font-weight: 800;
-    font-size: 18px;
-    letter-spacing: 0.5px;
+    gap: 13px;
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 0.2px;
     color: var(--white);
+}
+
+.logo-text {
+    line-height: 1.05;
+    font-weight: 700;
+    text-transform: none;
+}
+
+.logo-hub {
+    color: var(--primary-green);
+    font-weight: 700;
 }
 
 .logo i {
@@ -167,8 +178,8 @@ ul {
 .logo-mark {
     flex-shrink: 0;
     display: block;
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
 }
 
 
@@ -711,7 +722,8 @@ ul {
     /* NAVBAR */
     .navbar { padding: 16px 20px; }
     .nav-links { display: none; }
-    .logo span { font-size: 14px; }
+    .logo-text { font-size: 15px; }
+    .logo-mark { width: 40px; height: 40px; }
     .btn-nav-social { display: none; }
 
     /* HERO */
