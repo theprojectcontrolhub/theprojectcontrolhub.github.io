@@ -508,14 +508,14 @@ const TRACK3 = {
   weeks: [
     // ---- PHASE A — IDENTIFICATION & THE REGISTER ----
     { phase: "Phase A — Identification & the Register", n: 1, title: "Risk fundamentals — the register behind the contingency", short: "The register behind the contingency", status: "live", page: "risk-week-1.html", date: "Jun 16, 2027" },
-    { n: 2, title: "Risk identification — where risks actually hide on a construction project", short: "Where risks actually hide", status: "upcoming" },
-    { n: 3, title: "The risk breakdown structure — a WBS for what can go wrong", short: "The risk breakdown structure", status: "upcoming" },
-    { n: 4, title: "Writing a risk properly — cause, event, effect", short: "Cause, event, effect", status: "upcoming" },
+    { n: 2, title: "Risk identification — where risks actually hide on a construction project", short: "Where risks actually hide", status: "live", page: "risk-week-2.html", date: "Jun 23, 2027" },
+    { n: 3, title: "The risk breakdown structure — a WBS for what can go wrong", short: "The risk breakdown structure", status: "live", page: "risk-week-3.html", date: "Jun 30, 2027" },
+    { n: 4, title: "Writing a risk properly — cause, event, effect", short: "Cause, event, effect", status: "live", page: "risk-week-4.html", date: "Jul 7, 2027" },
 
     // ---- PHASE B — QUALITATIVE ANALYSIS ----
-    { phase: "Phase B — Qualitative Analysis", n: 5, title: "Qualitative analysis — anchoring probability and impact scales", short: "Anchoring the scales", status: "upcoming" },
-    { n: 6, title: "The limits of the probability-impact matrix", short: "The limits of the heat map", status: "upcoming" },
-    { n: 7, title: "Bias, the planning fallacy & reference class forecasting", short: "Bias & reference class forecasting", status: "upcoming" },
+    { phase: "Phase B — Qualitative Analysis", n: 5, title: "Qualitative analysis — anchoring probability and impact scales", short: "Anchoring the scales", status: "live", page: "risk-week-5.html", date: "Jul 14, 2027" },
+    { n: 6, title: "The limits of the probability-impact matrix", short: "The limits of the heat map", status: "live", page: "risk-week-6.html", date: "Jul 21, 2027" },
+    { n: 7, title: "Bias, the planning fallacy & reference class forecasting", short: "Bias & reference class forecasting", status: "live", page: "risk-week-7.html", date: "Jul 28, 2027" },
 
     // ---- PHASE C — QUANTITATIVE ANALYSIS ----
     { phase: "Phase C — Quantitative Analysis", n: 8, title: "Two kinds of uncertainty — aleatory and epistemic", short: "Aleatory & epistemic uncertainty", status: "upcoming" },
