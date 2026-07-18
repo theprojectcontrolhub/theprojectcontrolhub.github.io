@@ -735,8 +735,8 @@
                 <h1>Project Controls — The Way It Works on Site</h1>
                 <p>A structured series built for engineers who want to understand project controls the way it actually works on site. Theory first, then the tools that bring it to life.</p>
                 <div class="learn-header-meta">
-                    <span class="learn-meta-item"><i class='bx bx-layer'></i> 4 tracks + a toolbox</span>
-                    <span class="learn-meta-item"><i class='bx bx-time-five'></i> Track 1 complete · 27 weeks</span>
+                    <span class="learn-meta-item"><i class='bx bx-layer'></i> 5 tracks + a toolbox</span>
+                    <span class="learn-meta-item"><i class='bx bx-time-five'></i> Tracks 1 &amp; 2 complete · 51 weeks</span>
                     <span class="learn-meta-item"><i class='bx bx-calendar'></i> New lesson every week</span>
                     <span class="learn-meta-item"><i class='bx bx-lock-open'></i> Fundamentals always free</span>
                 </div>
@@ -839,21 +839,60 @@
                     </div>
                 </div>
 
+                <!-- ===== TRACK 3 ===== -->
+
+                <!-- ===== TRACK 3 — RISK ===== -->
+                <div class="track-header">
+                    <div class="track-badge free"><i class='bx bx-shield-quarter'></i> TRACK 3 &#183; FREE &#183; COMING SOON</div>
+                    <h2>Risk</h2>
+                    <p class="track-sub">The future. What has not happened yet &#8212; and who pays for it when it does.</p>
+                    <p class="track-desc">Track 1 taught you to read a project&#39;s time. Track 2 taught you to read its money. Both of them measure something that has already happened. This one is about the only part of project controls that moves before the number does: where the risks on a job actually come from, what a probability is worth when somebody just felt it, how much confidence you are really buying with a contingency &#8212; and the question nobody in a PMI textbook asks, which is whose money pays when the risk arrives.</p>
+                    <div class="track-note">
+                        <i class='bx bx-lock-open-alt'></i>
+                        <p><strong>Cost &amp; Cash Week 5 showed you a risk register with five lines on it.</strong> It sized the contingency at $47,553 and admitted, in one sentence, that the odds of that money being enough were 49.5% &#8212; a coin flip. Nobody ever asked where those five lines came from. Track 3 opens there, and comes back to that number in Week 12.</p>
+                    </div>
+                </div>
+
+                <!-- MODULE 03: RISK -->
+                <div class="module-card">
+                    <div class="module-card-header">
+                        <div class="module-card-left">
+                            <span class="module-num">03</span>
+                            <div class="module-info">
+                                <h2>Risk</h2>
+                                <p>Identification, analysis and ownership &#8212; built on the PMI risk standards, the quantitative methods behind them, and the FIDIC conditions that decide who actually carries a risk on site.</p>
+                            </div>
+                        </div>
+                        <span class="module-badge"><i class='bx bx-time'></i> Coming soon</span>
+                    </div>
+                    <div class="module-tools">
+                        <span class="tool-tag-label">Topics:</span>
+                        <span class="tool-tag">Risk Register</span>
+                        <span class="tool-tag">RBS</span>
+                        <span class="tool-tag">Qualitative</span>
+                        <span class="tool-tag">Quantitative</span>
+                        <span class="tool-tag">Correlation</span>
+                        <span class="tool-tag">P50 / P80</span>
+                        <span class="tool-tag">FIDIC</span>
+                        <span class="tool-tag">Opportunity</span>
+                    </div>
+                    <div class="module-weeks" id="track3Weeks"></div>
+                    <div class="module-progress">
+                        <div class="progress-label">
+                            <span id="t3ProgressText">0 of 18 published</span>
+                            <span id="t3ProgressPct">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="t3ProgressFill" style="width:0%;"></div>
+                        </div>
+                    </div>
+                </div>
+
 <div class="roadmap-section">
                     <div class="roadmap-intro">
                         <div class="track-badge roadmap"><i class='bx bx-map-alt'></i> THE ROADMAP</div>
-                        <h2>Tracks 3 and 4</h2>
-                        <p>Cost and schedule are only half the discipline. Risk explains why projects go wrong before they do; claims decide who pays when they have. These are the next two tracks in the path &#8212; and the two that pay the most.</p>
-                    </div>
-
-                    <!-- TRACK 3: RISK -->
-                    <div class="roadmap-card">
-                        <span class="roadmap-marker"><i class='bx bx-shield-quarter'></i></span>
-                        <div class="roadmap-body">
-                            <h3>Track 3 &#183; Risk Management</h3>
-                            <p>Where most content stops — and where real delays begin. Built on PMI's Risk practice: identification, qualitative &amp; quantitative analysis, Monte Carlo, contingency, response, monitoring, opportunities vs threats. Not "filling a risk register" — a system that creates value.</p>
-                        </div>
-                        <span class="roadmap-badge"><i class='bx bx-time'></i> On the roadmap</span>
+                        <h2>Tracks 4 and 5</h2>
+                        <p>Risk explains why projects go wrong before they do. Claims decide who pays once they have, and leadership decides whether any of it reaches the people who can act. These are the tracks that follow &#8212; and the two that pay the most.</p>
                     </div>
 
                     <!-- TRACK 4: CLAIMS -->
@@ -1100,7 +1139,7 @@
 
 
     <!-- Curriculum data + renderers -->
-    <script src="curriculum.js?v=36"></script>
+    <script src="curriculum.js?v=37"></script>
     <script>
         (function() {
             if (typeof CURRICULUM === 'undefined') return;
@@ -1121,6 +1160,21 @@
                     if (t2t) t2t.textContent = p2.text;
                     if (t2p) t2p.textContent = p2.percent + '%';
                     if (t2f) t2f.style.width = p2.percent + '%';
+                }
+            }
+
+            // Track 3 — Risk (all upcoming)
+            const t3El = document.getElementById('track3Weeks');
+            if (t3El && typeof renderTrack3Curriculum === 'function') {
+                t3El.innerHTML = renderTrack3Curriculum();
+                if (typeof renderTrack3Progress === 'function') {
+                    const p3 = renderTrack3Progress();
+                    const t3t = document.getElementById('t3ProgressText');
+                    const t3p = document.getElementById('t3ProgressPct');
+                    const t3f = document.getElementById('t3ProgressFill');
+                    if (t3t) t3t.textContent = p3.text;
+                    if (t3p) t3p.textContent = p3.percent + '%';
+                    if (t3f) t3f.style.width = p3.percent + '%';
                 }
             }
 

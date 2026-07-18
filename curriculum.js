@@ -490,3 +490,110 @@ function renderTrack2Sidebar(currentWeek) {
       <h4 translate="no">${t.title} · ${t.totalWeeks} Weeks</h4>
     </div>${rows}`;
 }
+
+
+// ============================================================
+// TRACK 3 — RISK
+// The same $1,000,000 project, third lens. Track 1 measured time,
+// Track 2 measured money, Track 3 measures what has not happened yet.
+// Opens on the five-line risk register from Cost & Cash Week 5 —
+// the one nobody ever audited.
+// ============================================================
+const TRACK3 = {
+  title: "Risk",
+  totalWeeks: 18,
+
+  // Same register as Tracks 1 and 2: the topic and its components.
+  // The punchy version of each is the article's own headline.
+  weeks: [
+    // ---- PHASE A — IDENTIFICATION & THE REGISTER ----
+    { phase: "Phase A — Identification & the Register", n: 1, title: "Risk fundamentals — the register behind the contingency", short: "The register behind the contingency", status: "upcoming" },
+    { n: 2, title: "Risk identification — where risks actually hide on a construction project", short: "Where risks actually hide", status: "upcoming" },
+    { n: 3, title: "The risk breakdown structure — a WBS for what can go wrong", short: "The risk breakdown structure", status: "upcoming" },
+    { n: 4, title: "Writing a risk properly — cause, event, effect", short: "Cause, event, effect", status: "upcoming" },
+
+    // ---- PHASE B — QUALITATIVE ANALYSIS ----
+    { phase: "Phase B — Qualitative Analysis", n: 5, title: "Qualitative analysis — anchoring probability and impact scales", short: "Anchoring the scales", status: "upcoming" },
+    { n: 6, title: "The limits of the probability-impact matrix", short: "The limits of the heat map", status: "upcoming" },
+    { n: 7, title: "Bias, the planning fallacy & reference class forecasting", short: "Bias & reference class forecasting", status: "upcoming" },
+
+    // ---- PHASE C — QUANTITATIVE ANALYSIS ----
+    { phase: "Phase C — Quantitative Analysis", n: 8, title: "Two kinds of uncertainty — aleatory and epistemic", short: "Aleatory & epistemic uncertainty", status: "upcoming" },
+    { n: 9, title: "The shape of an estimate — three-point ranges & distributions", short: "Three-point ranges & distributions", status: "upcoming" },
+    { n: 10, title: "Correlation & common cause effects — why bad days cluster", short: "Correlation & common cause effects", status: "upcoming" },
+    { n: 11, title: "Cost risk analysis — pointing the machine at money", short: "Cost risk analysis", status: "upcoming" },
+    { n: 12, title: "Risk appetite & confidence levels — P50, P80 and who decides", short: "Risk appetite & confidence levels", status: "upcoming" },
+
+    // ---- PHASE D — RISK OWNERSHIP & THE CONTRACT ----
+    { phase: "Phase D — Risk Ownership & the Contract", n: 13, title: "Response strategies — priced, owned, and the decision tree", short: "Response strategies & decision trees", status: "upcoming" },
+    { n: 14, title: "Contractual risk allocation — FIDIC and the ground risk", short: "FIDIC & the ground risk", status: "upcoming" },
+    { n: 15, title: "Time, money, or neither — extension of time, exceptional events, insurance & bonds", short: "Transferring risk — insurance & bonds", status: "upcoming" },
+
+    // ---- PHASE E — LIVING WITH RISK ----
+    { phase: "Phase E — Living with Risk", n: 16, title: "The living register — triggers, reviews & Bayesian revision", short: "The living register", status: "upcoming" },
+    { n: 17, title: "Opportunity — the half nobody manages", short: "Opportunity management", status: "upcoming" },
+    { n: 18, title: "The risk-literate planner — acting before the number moves", short: "Acting before the number moves", status: "upcoming" }
+  ],
+
+  get liveCount() { return this.weeks.filter(w => w.status === "live").length; },
+  get progressPercent() { return Math.round((this.liveCount / this.totalWeeks) * 100); },
+  get latestLiveWeek() {
+    const live = this.weeks.filter(w => w.status === "live");
+    return live.length ? live[live.length - 1] : null;
+  },
+  get phaseCount() { return this.weeks.filter(w => w.phase).length; },
+  getWeek(n) { return this.weeks.find(w => w.n === n); }
+};
+
+// Renderer: Track 3 curriculum for learn.html
+// NOTE: must use the SAME classes as renderLearnCurriculum above,
+// or the rows render as unstyled plain text.
+function renderTrack3Curriculum() {
+  const t = TRACK3;
+  let rows = "";
+  t.weeks.forEach((week, idx) => {
+    if (week.phase) {
+      let end = week.n;
+      for (let j = idx + 1; j < t.weeks.length; j++) {
+        if (t.weeks[j].phase) break;
+        end = t.weeks[j].n;
+      }
+      const range = week.n === end ? `Week ${week.n}` : `Weeks ${week.n}\u2013${end}`;
+      rows += `
+        <div class="phase-divider">
+          <span class="phase-label" translate="no">${week.phase.toUpperCase()}</span>
+          <span class="phase-weeks-tag">${range}</span>
+        </div>`;
+    }
+    if (week.status === "live" && week.page) {
+      const isLatest = week === t.latestLiveWeek;
+      const dateOrNew = isLatest
+        ? '<span class="week-new" translate="no">New</span>'
+        : (week.date ? `<span class="week-date">${week.date}</span>` : '');
+      rows += `
+        <a href="${week.page}" class="week-item">
+          <span class="week-num">Week ${week.n}</span>
+          <span class="week-title">${week.title}</span>
+          ${dateOrNew}
+          <i class='bx bx-right-arrow-alt week-arrow'></i>
+        </a>`;
+    } else {
+      rows += `
+        <div class="week-item upcoming">
+          <span class="week-num">Week ${week.n}</span>
+          <span class="week-title">${week.title}</span>
+          <span class="week-upcoming-label">Coming soon</span>
+        </div>`;
+    }
+  });
+  return rows;
+}
+
+// Progress bar values for the Track 3 card on learn.html
+function renderTrack3Progress() {
+  const t = TRACK3;
+  return {
+    text: `${t.liveCount} of ${t.totalWeeks} published`,
+    percent: t.progressPercent
+  };
+}
