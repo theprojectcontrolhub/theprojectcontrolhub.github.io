@@ -507,7 +507,7 @@ const TRACK3 = {
   // The punchy version of each is the article's own headline.
   weeks: [
     // ---- PHASE A — IDENTIFICATION & THE REGISTER ----
-    { phase: "Phase A — Identification & the Register", n: 1, title: "Risk fundamentals — the register behind the contingency", short: "The register behind the contingency", status: "upcoming" },
+    { phase: "Phase A — Identification & the Register", n: 1, title: "Risk fundamentals — the register behind the contingency", short: "The register behind the contingency", status: "live", page: "risk-week-1.html", date: "Jun 16, 2027" },
     { n: 2, title: "Risk identification — where risks actually hide on a construction project", short: "Where risks actually hide", status: "upcoming" },
     { n: 3, title: "The risk breakdown structure — a WBS for what can go wrong", short: "The risk breakdown structure", status: "upcoming" },
     { n: 4, title: "Writing a risk properly — cause, event, effect", short: "Cause, event, effect", status: "upcoming" },
@@ -596,4 +596,101 @@ function renderTrack3Progress() {
     text: `${t.liveCount} of ${t.totalWeeks} published`,
     percent: t.progressPercent
   };
+}
+
+// Sidebar for Track 3 article pages. Mirrors renderTrack2Sidebar.
+function renderTrack3Sidebar(currentWeek) {
+  const t = TRACK3;
+  let rows = "";
+  const visible = t.weeks.slice(0, 5);
+  visible.forEach(week => {
+    const isActive = week.n === currentWeek;
+    const isLive = week.status === "live";
+    if (isActive) {
+      rows += `
+        <a href="${week.page || '#'}" class="sidebar-series-item active">
+          <span class="sidebar-week">Week ${week.n}</span>
+          <span class="sidebar-item-title">${week.short}</span>
+        </a>`;
+    } else if (isLive && week.page) {
+      const badge = week === t.latestLiveWeek
+        ? '<span class="sidebar-new" translate="no">New</span>' : "";
+      rows += `
+        <a href="${week.page}" class="sidebar-series-item">
+          <span class="sidebar-week">Week ${week.n}</span>
+          <span class="sidebar-item-title">${week.short}</span>${badge}
+        </a>`;
+    } else {
+      rows += `
+        <div class="sidebar-series-item upcoming">
+          <span class="sidebar-week">Week ${week.n}</span>
+          <span class="sidebar-item-title">${week.short}</span>
+        </div>`;
+    }
+  });
+
+  const remaining = t.weeks.length - visible.length;
+  if (remaining > 0) {
+    const firstRest = visible.length + 1;
+    rows += `
+      <div class="sidebar-series-item upcoming">
+        <span class="sidebar-week">${firstRest}\u2013${t.totalWeeks}</span>
+        <span class="sidebar-item-title">Quantitative · Contract · Opportunity</span>
+      </div>`;
+  }
+
+  return `
+    <div class="sidebar-card-header">
+      <h4 translate="no">${t.title} · ${t.totalWeeks} Weeks</h4>
+    </div>${rows}`;
+}
+
+// Renderer: Track 3 post list for the home page module card.
+function renderHomeTrack3() {
+  const t = TRACK3;
+  let rows = "";
+  const live = t.weeks.filter(x => x.status === "live");
+  const upcoming = t.weeks.filter(x => x.status !== "live");
+
+  live.forEach(week => {
+    const isLatest = week === t.latestLiveWeek;
+    const badge = isLatest ? '<span class="new-badge" translate="no">New</span>' : '';
+    rows += `
+      <a href="${week.page}" class="module-post-item">
+        <span class="post-week">Week ${week.n}</span>
+        <span class="post-title">${week.short}</span>
+        ${week.date ? `<span class="post-date">${week.date}</span>` : ''}
+        ${badge}
+        <i class='bx bx-right-arrow-alt'></i>
+      </a>`;
+  });
+
+  upcoming.slice(0, 2).forEach(week => {
+    rows += `
+      <div class="module-post-item upcoming">
+        <span class="post-week">Week ${week.n}</span>
+        <span class="post-title">${week.short}</span>
+        <span class="post-upcoming">Coming soon</span>
+      </div>`;
+  });
+
+  const shown = live.length + Math.min(upcoming.length, 2);
+  const restStart = t.weeks[shown] ? t.weeks[shown].n : null;
+  if (restStart) {
+    rows += `
+      <div class="module-post-item upcoming">
+        <span class="post-week">Week ${restStart}\u2013${t.totalWeeks}</span>
+        <span class="post-title">Qualitative \u00b7 Quantitative \u00b7 FIDIC \u00b7 Opportunity</span>
+        <span class="post-upcoming">Coming soon</span>
+      </div>`;
+  }
+  return rows;
+}
+
+// Module badge text for the Track 3 card on home
+function renderHomeTrack3Badge() {
+  const latest = TRACK3.latestLiveWeek;
+  return latest
+    ? `<span class="dot-green"></span> In Progress \u00b7 Week ${latest.n} of ${TRACK3.totalWeeks}`
+    : '';
 }
