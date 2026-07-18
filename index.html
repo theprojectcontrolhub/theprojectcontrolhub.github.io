@@ -627,7 +627,6 @@
                 </div>
 
                 <div class="discussion-list" id="homeLatest"></div>
-                </div>
 
                 <div class="hero-follow-cta">
                     <p>New content every week.</p>
@@ -671,45 +670,61 @@
                     <div class="module-posts" id="homeCurriculum"></div>
                 </div>
 
-                <!-- MODULE 2: EXCEL -->
-                <div class="module-track module-track-locked">
+                <!-- MODULE 2: COST & CASH — ACTIVE -->
+                <div class="module-track">
                     <div class="module-track-header">
                         <div class="module-track-left">
-                            <span class="module-number locked">02</span>
+                            <span class="module-number">02</span>
                             <div>
-                                <h3 class="module-title">Excel for Project Controls</h3>
-                                <p class="module-desc">Build schedules, S-curves, EVM trackers, and progress reports in Excel — from scratch.</p>
+                                <h3 class="module-title">Cost &amp; Cash</h3>
+                                <p class="module-desc">Where the numbers come from — estimating, budgeting, measurement and the cash that decides whether a profitable job survives.</p>
                             </div>
                         </div>
-                        <span class="module-status locked-status"><i class='bx bx-lock-alt'></i> Starting after Module 01</span>
+                        <span class="module-status active-status" id="homeTrack2Badge"><span class="dot-green"></span> In Progress</span>
                     </div>
+
+                    <div class="module-posts" id="homeTrack2"></div>
                 </div>
 
-                <!-- MODULE 3: PRIMAVERA P6 -->
+                <!-- MODULE 3: EXCEL -->
                 <div class="module-track module-track-locked">
                     <div class="module-track-header">
                         <div class="module-track-left">
                             <span class="module-number locked">03</span>
                             <div>
-                                <h3 class="module-title">Primavera P6</h3>
-                                <p class="module-desc">The industry standard for project scheduling. From setup to baseline, resource loading, and reporting.</p>
+                                <h3 class="module-title">Excel for Project Controls</h3>
+                                <p class="module-desc">Build schedules, S-curves, EVM trackers, and progress reports in Excel — from scratch.</p>
                             </div>
                         </div>
                         <span class="module-status locked-status"><i class='bx bx-lock-alt'></i> Starting after Module 02</span>
                     </div>
                 </div>
 
-                <!-- MODULE 4: POWER BI -->
+                <!-- MODULE 4: PRIMAVERA P6 -->
                 <div class="module-track module-track-locked">
                     <div class="module-track-header">
                         <div class="module-track-left">
                             <span class="module-number locked">04</span>
                             <div>
+                                <h3 class="module-title">Primavera P6</h3>
+                                <p class="module-desc">The industry standard for project scheduling. From setup to baseline, resource loading, and reporting.</p>
+                            </div>
+                        </div>
+                        <span class="module-status locked-status"><i class='bx bx-lock-alt'></i> Starting after Module 03</span>
+                    </div>
+                </div>
+
+                <!-- MODULE 5: POWER BI -->
+                <div class="module-track module-track-locked">
+                    <div class="module-track-header">
+                        <div class="module-track-left">
+                            <span class="module-number locked">05</span>
+                            <div>
                                 <h3 class="module-title">Power BI for Project Controls</h3>
                                 <p class="module-desc">Turn your P6 and Excel data into live dashboards. Communicate project performance clearly.</p>
                             </div>
                         </div>
-                        <span class="module-status locked-status"><i class='bx bx-lock-alt'></i> Starting after Module 03</span>
+                        <span class="module-status locked-status"><i class='bx bx-lock-alt'></i> Starting after Module 04</span>
                     </div>
                 </div>
 
@@ -821,6 +836,16 @@
             // Module 01 active badge
             const modBadge = document.getElementById('homeModuleBadge');
             if (modBadge) modBadge.innerHTML = renderHomeBadge();
+
+            // Curriculum card — module 02 (Cost & Cash)
+            const t2 = document.getElementById('homeTrack2');
+            if (t2 && typeof renderHomeTrack2 === 'function') {
+                t2.innerHTML = renderHomeTrack2();
+                const t2Badge = document.getElementById('homeTrack2Badge');
+                if (t2Badge && typeof renderHomeTrack2Badge === 'function') {
+                    t2Badge.innerHTML = renderHomeTrack2Badge();
+                }
+            }
 
             // Bind gated links (both hero + curriculum)
             document.querySelectorAll('.module-post-item[data-gated], #homeLatest a').forEach(link => {

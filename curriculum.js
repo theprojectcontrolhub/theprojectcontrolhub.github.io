@@ -393,6 +393,57 @@ function renderTrack2Progress() {
   };
 }
 
+// Renderer: Track 2 post list for the home page module card.
+// Mirrors renderHomeCurriculum so the rows pick up the same styling.
+function renderHomeTrack2() {
+  const t = TRACK2;
+  let rows = "";
+  const live = t.weeks.filter(x => x.status === "live");
+  const upcoming = t.weeks.filter(x => x.status === "upcoming");
+
+  live.forEach(week => {
+    const isLatest = week === t.latestLiveWeek;
+    const badge = isLatest ? '<span class="new-badge" translate="no">New</span>' : '';
+    rows += `
+      <a href="${week.page}" class="module-post-item">
+        <span class="post-week">Week ${week.n}</span>
+        <span class="post-title">${week.short}</span>
+        ${week.date ? `<span class="post-date">${week.date}</span>` : ''}
+        ${badge}
+        <i class='bx bx-right-arrow-alt'></i>
+      </a>`;
+  });
+
+  upcoming.slice(0, 2).forEach(week => {
+    rows += `
+      <div class="module-post-item upcoming">
+        <span class="post-week">Week ${week.n}</span>
+        <span class="post-title">${week.short}</span>
+        <span class="post-upcoming">Coming soon</span>
+      </div>`;
+  });
+
+  const shown = live.length + Math.min(upcoming.length, 2);
+  const restStart = t.weeks[shown] ? t.weeks[shown].n : null;
+  if (restStart) {
+    rows += `
+      <div class="module-post-item upcoming">
+        <span class="post-week">Week ${restStart}\u2013${t.totalWeeks}</span>
+        <span class="post-title">Measurement \u00b7 Change \u00b7 Cash \u00b7 Overheads \u00b7 Margin</span>
+        <span class="post-upcoming">Coming soon</span>
+      </div>`;
+  }
+  return rows;
+}
+
+// Module badge text for the Track 2 card on home
+function renderHomeTrack2Badge() {
+  const latest = TRACK2.latestLiveWeek;
+  return latest
+    ? `<span class="dot-green"></span> In Progress \u00b7 Week ${latest.n} of ${TRACK2.totalWeeks}`
+    : '';
+}
+
 // Sidebar for Track 2 article pages. Mirrors renderArticleSidebar.
 function renderTrack2Sidebar(currentWeek) {
   const t = TRACK2;
