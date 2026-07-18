@@ -152,23 +152,31 @@ ul {
     align-items: center;
     text-decoration: none;
     cursor: pointer;
-    gap: 13px;
+    gap: 8px;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 19px;
     letter-spacing: 0.2px;
     color: var(--white);
+    align-items: center;
 }
 
 .logo-text {
-    line-height: 1.05;
-    font-weight: 700;
+    font-family: 'Poppins', var(--font-main), sans-serif;
+    line-height: 1.32;
+    font-weight: 600;
     text-transform: none;
+    font-size: 19px;
+    text-align: left;
+    letter-spacing: 0;
 }
 
 .logo-hub {
+    font-family: 'Poppins', var(--font-main), sans-serif;
     color: var(--primary-green);
-    font-weight: 700;
+    font-weight: 600;
 }
+
+
 
 .logo i {
     font-size: 28px;
@@ -178,8 +186,8 @@ ul {
 .logo-mark {
     flex-shrink: 0;
     display: block;
-    width: 48px;
-    height: 48px;
+    width: 112px;
+    height: 112px;
 }
 
 
@@ -722,8 +730,9 @@ ul {
     /* NAVBAR */
     .navbar { padding: 16px 20px; }
     .nav-links { display: none; }
-    .logo-text { font-size: 15px; }
-    .logo-mark { width: 40px; height: 40px; }
+    .logo-text { font-size: 15px; line-height: 1.32; letter-spacing: 0; }
+    .logo-mark { width: 88px; height: 88px; }
+    .navbar { padding: 10px 14px; }
     .btn-nav-social { display: none; }
 
     /* HERO */
@@ -875,8 +884,8 @@ ul {
 }
 
 .modal-icon-wrapper {
-    width: 64px;
-    height: 64px;
+    width: 112px;
+    height: 112px;
     background-color: rgba(16, 185, 129, 0.1);
     color: var(--primary-green);
     border-radius: 50%;
@@ -1679,8 +1688,8 @@ ul {
 }
 
 .modal-box .modal-icon-wrapper {
-    width: 56px;
-    height: 56px;
+    width: 112px;
+    height: 112px;
     background: #ecfdf5;
     border-radius: 50%;
     display: flex;
