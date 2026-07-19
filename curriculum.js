@@ -190,19 +190,26 @@ function renderLearnProgress() {
 
 // Home page compact list (hero panel: latest 3 live)
 function renderHomeLatest() {
-  const w = CURRICULUM;
-  const live = w.weeks.filter(x => x.status === "live").slice(-3);
+  // Sitedeki EN YENİ üç ders — hangi track'ten gelirse gelsin.
+  // Önceden yalnızca Track 1'e bakıyordu; üç track de bitince ana sayfa
+  // on ay bayat içeriğe "New" rozeti takıyordu.
+  const all = [];
+  [[CURRICULUM, "SCHEDULE"], [TRACK2, "COST & CASH"], [TRACK3, "RISK"]].forEach(function (pair) {
+    pair[0].weeks.filter(function (x) { return x.status === "live" && x.page; })
+      .forEach(function (w) { all.push({ w: w, track: pair[1], t: Date.parse(w.date || "") || 0 }); });
+  });
+  all.sort(function (a, b) { return b.t - a.t; });
+  const top = all.slice(0, 3);
   let html = "";
-  live.forEach(week => {
-    const isLatest = week === w.latestLiveWeek;
-    const badge = isLatest
-      ? '<span class="home-new-pill" translate="no">New</span>' : '';
+  top.forEach(function (item, i) {
+    const w = item.w;
+    const badge = i === 0 ? '<span class="home-new-pill" translate="no">New</span>' : '';
     html += `
-      <a href="${week.page}" class="discussion-list-item module-post-item">
-        <span class="category-text text-green">WEEK ${week.n} · SCHEDULE</span>
-        <h4>${week.short}</h4>
+      <a href="${w.page}" class="discussion-list-item module-post-item">
+        <span class="category-text text-green">WEEK ${w.n} &#183; ${item.track}</span>
+        <h4>${w.short}</h4>
         <div class="item-meta">
-          ${week.date ? `<span class="home-date">${week.date}</span>` : ''}
+          ${w.date ? `<span class="home-date">${w.date}</span>` : ''}
           ${badge}
           <i class='bx bx-right-arrow-alt arrow-icon'></i>
         </div>

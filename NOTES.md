@@ -95,23 +95,50 @@ Nothing here is legal advice. If a real question arises, ask a lawyer.
 
 ## 4. Voice *(judgement)*
 
-Contraction density, verb contractions per 1,000 words:
+Track 1 is the house voice. Tracks 2 and 3 are measured against it, not the
+other way round.
 
-| Track | | |
-|---|---|---|
-| Schedule | ~25 | deliberately the most conversational — it is the entry track |
-| Cost & Cash | ~9 | |
-| Risk | ~7 | |
+Measured across all body prose, per 1,000 words:
 
-Tracks 2 and 3 were aligned on 2026-07-19. Track 1 is intentionally the outlier;
-do not "fix" it without deciding that on purpose. The checker only warns below 3.
+| | Schedule | Cost & Cash | Risk |
+|---|---|---|---|
+| contractions | 29 | 12 | 10 |
+| "you / your" — body | 27 | 26 | **12** |
+| "you / your" — Practical insight | 51 | 51 | 36 |
+| "you / your" — Key takeaways | 22 | 13 | **7** |
+| avg sentence (words) | 10.7 | 13.7 | 13.2 |
+| avg paragraph (words) | 24 | 35 | 31 |
+| sentences opening And/But/So | 9.4% | 7.4% | 6.4% |
 
-Contractions were added to negatives (`does not` → `doesn't`) plus `here is` and
-`let us`. **`it is` was deliberately left alone** — it is ambiguous ("everything
+**Two of these gaps are deliberate. One is not.**
+
+*Deliberate — leave it.* Track 3's body prose is written **about the case study**
+where Track 1 is written **to the reader about their own job**. Compare:
+
+> Schedule: "It goes to **your** board. It goes into the forecast."
+> Risk: "A single number in that column is not an estimate of the impact."
+
+Risk keeps every rhythmic device Track 1 uses — fragments, repetition, em-dash,
+short declaratives in sequence — and points them at the evidence instead of at
+the reader. That is a coherent register for the analytical track, and the place
+where reader-address actually matters is identical across all three: every
+**Practical insight** section in all 69 articles is direct second person
+("Take **your** own register", "Before **you** build any cost model").
+`check_site.py` warns if that ever drops below half of Schedule's rate.
+
+*Not deliberate — open item.* **Key takeaways.** Schedule instructs
+("**Draw** the histogram", "divide the budget by **your** cost efficiency");
+Risk reports ("The six bids map to P10, P26, P48"). Those lines do the same job
+in every track and should sound the same. They were left alone deliberately in
+this pass: 126 Risk takeaway lines are dense with canonical figures, and
+rewriting them is the highest-risk way imaginable to reintroduce the §1 error.
+If they get rewritten, diff every digit before and after.
+
+Contractions were aligned on 2026-07-19 across Tracks 2 and 3 — negatives
+(`does not` → `doesn't`) plus `here is` and `let us`. Track 1 stays higher on
+purpose. **`it is` was deliberately left alone**: it is ambiguous ("everything
 below it | is a method being cautious") and often emphatic ("the margin is not
 thin, it is gone").
-
----
 
 ## 5. Article shape *(judgement)*
 
@@ -155,5 +182,5 @@ hard-code them again.
 - `logo-lockup.png` (471 KB) is shipped but unused
 - `learn.html`'s Track 1 → 2 bridge note does not mention that Cost & Cash Week 6
   supersedes the Track 1 treatment of CPI
-- Track 4 (Claims & Contract Administration) is promised by name at the end of
+- Track 4 (Claims & Delay Analysis) is promised by name at the end of
   Risk Weeks 15 and 18
