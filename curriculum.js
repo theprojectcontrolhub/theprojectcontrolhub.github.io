@@ -518,9 +518,9 @@ const TRACK3 = {
     { n: 7, title: "Bias, the planning fallacy & reference class forecasting", short: "Bias & reference class forecasting", status: "live", page: "risk-week-7.html", date: "Jul 28, 2027" },
 
     // ---- PHASE C — QUANTITATIVE ANALYSIS ----
-    { phase: "Phase C — Quantitative Analysis", n: 8, title: "Two kinds of uncertainty — aleatory and epistemic", short: "Aleatory & epistemic uncertainty", status: "upcoming" },
-    { n: 9, title: "The shape of an estimate — three-point ranges & distributions", short: "Three-point ranges & distributions", status: "upcoming" },
-    { n: 10, title: "Correlation & common cause effects — why bad days cluster", short: "Correlation & common cause effects", status: "upcoming" },
+    { phase: "Phase C — Quantitative Analysis", n: 8, title: "Two kinds of uncertainty — aleatory and epistemic", short: "Aleatory & epistemic uncertainty", status: "live", page: "risk-week-8.html", date: "Aug 4, 2027" },
+    { n: 9, title: "The shape of an estimate — three-point ranges & distributions", short: "Three-point ranges & distributions", status: "live", page: "risk-week-9.html", date: "Aug 11, 2027" },
+    { n: 10, title: "Correlation & common cause effects — why bad days cluster", short: "Correlation & common cause effects", status: "live", page: "risk-week-10.html", date: "Aug 18, 2027" },
     { n: 11, title: "Cost risk analysis — pointing the machine at money", short: "Cost risk analysis", status: "upcoming" },
     { n: 12, title: "Risk appetite & confidence levels — P50, P80 and who decides", short: "Risk appetite & confidence levels", status: "upcoming" },
 
