@@ -1789,3 +1789,16 @@ ul {
     .share-btn { height: 40px; padding: 0 14px; }
     .share-btn .share-label-text { display: inline; }
 }
+
+
+/* Cross-track references: same colour as the prose, emerald underline.
+   Only used for links to another track — same-track weeks are in the sidebar. */
+.article-body a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: var(--primary-green);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 2px;
+    transition: var(--transition);
+}
+.article-body a:hover { color: var(--primary-green-hover); }

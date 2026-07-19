@@ -270,11 +270,17 @@ function renderHomeCurriculum() {
 }
 
 // Module badge text for home
+function badgeText(track) {
+    if (!track) return '';
+    if (track.liveCount >= track.totalWeeks) {
+        return '<span class="dot-green"></span> Complete &#183; ' + track.totalWeeks + ' weeks';
+    }
+    var l = track.latestLiveWeek;
+    return '<span class="dot-green"></span> In Progress &#183; Week ' + (l ? l.n : 0) + ' of ' + track.totalWeeks;
+}
+
 function renderHomeBadge() {
-  const latest = CURRICULUM.latestLiveWeek;
-  return latest
-    ? `<span class="dot-green"></span> In Progress · Week ${latest.n} of ${CURRICULUM.totalWeeks}`
-    : '';
+  return badgeText(CURRICULUM);
 }
 
 
@@ -438,10 +444,7 @@ function renderHomeTrack2() {
 
 // Module badge text for the Track 2 card on home
 function renderHomeTrack2Badge() {
-  const latest = TRACK2.latestLiveWeek;
-  return latest
-    ? `<span class="dot-green"></span> In Progress \u00b7 Week ${latest.n} of ${TRACK2.totalWeeks}`
-    : '';
+  return badgeText(TRACK2);
 }
 
 // Sidebar for Track 2 article pages. Mirrors renderArticleSidebar.
@@ -531,8 +534,8 @@ const TRACK3 = {
 
     // ---- PHASE E — LIVING WITH RISK ----
     { phase: "Phase E — Living with Risk", n: 16, title: "The living register — triggers, reviews & Bayesian revision", short: "The living register", status: "live", page: "risk-week-16.html", date: "Sep 29, 2027" },
-    { n: 17, title: "Opportunity — the half nobody manages", short: "Opportunity management", status: "upcoming" },
-    { n: 18, title: "The risk-literate planner — acting before the number moves", short: "Acting before the number moves", status: "upcoming" }
+    { n: 17, title: "Opportunity — the half nobody manages", short: "Opportunity management", status: "live", page: "risk-week-17.html", date: "Oct 6, 2027" },
+    { n: 18, title: "The risk-literate planner — acting before the number moves", short: "Acting before the number moves", status: "live", page: "risk-week-18.html", date: "Oct 13, 2027" }
   ],
 
   get liveCount() { return this.weeks.filter(w => w.status === "live").length; },
@@ -689,8 +692,5 @@ function renderHomeTrack3() {
 
 // Module badge text for the Track 3 card on home
 function renderHomeTrack3Badge() {
-  const latest = TRACK3.latestLiveWeek;
-  return latest
-    ? `<span class="dot-green"></span> In Progress \u00b7 Week ${latest.n} of ${TRACK3.totalWeeks}`
-    : '';
+  return badgeText(TRACK3);
 }

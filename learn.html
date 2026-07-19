@@ -815,7 +815,7 @@
                                 <p>Estimating, budgeting, measurement and cash flow &#8212; built on AACE&#39;s cost engineering framework and the way contractors actually run their books on site.</p>
                             </div>
                         </div>
-                        <span class="module-badge badge-active"><i class='bx bx-loader-circle'></i> In progress</span>
+                        <span class="module-badge badge-active" id="t2ModuleBadge"><span class="dot-green"></span> In Progress</span>
                     </div>
                     <div class="module-tools">
                         <span class="tool-tag-label">Topics:</span>
@@ -863,7 +863,7 @@
                                 <p>Identification, analysis and ownership &#8212; built on the PMI risk standards, the quantitative methods behind them, and the FIDIC conditions that decide who actually carries a risk on site.</p>
                             </div>
                         </div>
-                        <span class="module-badge"><i class='bx bx-time'></i> Coming soon</span>
+                        <span class="module-badge badge-active" id="t3ModuleBadge"><span class="dot-green"></span> In Progress</span>
                     </div>
                     <div class="module-tools">
                         <span class="tool-tag-label">Topics:</span>
@@ -1139,7 +1139,7 @@
 
 
     <!-- Curriculum data + renderers -->
-    <script src="curriculum.js?v=53"></script>
+    <script src="curriculum.js?v=59"></script>
     <script>
         (function() {
             if (typeof CURRICULUM === 'undefined') return;
@@ -1148,7 +1148,7 @@
             const weeksEl = document.getElementById('moduleWeeks');
             if (weeksEl) weeksEl.innerHTML = renderLearnCurriculum();
 
-            // Track 2 — Cost & Cash (all upcoming)
+            // Track 2 — Cost & Cash
             const t2El = document.getElementById('track2Weeks');
             if (t2El && typeof renderTrack2Curriculum === 'function') {
                 t2El.innerHTML = renderTrack2Curriculum();
@@ -1163,7 +1163,7 @@
                 }
             }
 
-            // Track 3 — Risk (all upcoming)
+            // Track 3 — Risk
             const t3El = document.getElementById('track3Weeks');
             if (t3El && typeof renderTrack3Curriculum === 'function') {
                 t3El.innerHTML = renderTrack3Curriculum();
@@ -1189,11 +1189,11 @@
 
             // Badge — show latest live week
             const badge = document.getElementById('moduleBadge');
-            const latest = CURRICULUM.latestLiveWeek;
-            if (badge && latest) {
-                badge.innerHTML = '<span class="dot-green"></span> In Progress · Week ' +
-                    latest.n + ' of ' + CURRICULUM.totalWeeks;
-            }
+            if (badge && typeof badgeText === 'function') badge.innerHTML = badgeText(CURRICULUM);
+            const b2 = document.getElementById('t2ModuleBadge');
+            if (b2 && typeof TRACK2 !== 'undefined' && typeof badgeText === 'function') b2.innerHTML = badgeText(TRACK2);
+            const b3 = document.getElementById('t3ModuleBadge');
+            if (b3 && typeof TRACK3 !== 'undefined' && typeof badgeText === 'function') b3.innerHTML = badgeText(TRACK3);
 
             // Re-bind gated links
             document.querySelectorAll('.week-item[data-gated]').forEach(link => {
