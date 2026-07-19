@@ -521,16 +521,16 @@ const TRACK3 = {
     { phase: "Phase C — Quantitative Analysis", n: 8, title: "Two kinds of uncertainty — aleatory and epistemic", short: "Aleatory & epistemic uncertainty", status: "live", page: "risk-week-8.html", date: "Aug 4, 2027" },
     { n: 9, title: "The shape of an estimate — three-point ranges & distributions", short: "Three-point ranges & distributions", status: "live", page: "risk-week-9.html", date: "Aug 11, 2027" },
     { n: 10, title: "Correlation & common cause effects — why bad days cluster", short: "Correlation & common cause effects", status: "live", page: "risk-week-10.html", date: "Aug 18, 2027" },
-    { n: 11, title: "Cost risk analysis — pointing the machine at money", short: "Cost risk analysis", status: "upcoming" },
-    { n: 12, title: "Risk appetite & confidence levels — P50, P80 and who decides", short: "Risk appetite & confidence levels", status: "upcoming" },
+    { n: 11, title: "Cost risk analysis — pointing the machine at money", short: "Cost risk analysis", status: "live", page: "risk-week-11.html", date: "Aug 25, 2027" },
+    { n: 12, title: "Risk appetite & confidence levels — P50, P80 and who decides", short: "Risk appetite & confidence levels", status: "live", page: "risk-week-12.html", date: "Sep 1, 2027" },
 
     // ---- PHASE D — RISK OWNERSHIP & THE CONTRACT ----
-    { phase: "Phase D — Risk Ownership & the Contract", n: 13, title: "Response strategies — priced, owned, and the decision tree", short: "Response strategies & decision trees", status: "upcoming" },
-    { n: 14, title: "Contractual risk allocation — FIDIC and the ground risk", short: "FIDIC & the ground risk", status: "upcoming" },
-    { n: 15, title: "Time, money, or neither — extension of time, exceptional events, insurance & bonds", short: "Transferring risk — insurance & bonds", status: "upcoming" },
+    { phase: "Phase D — Risk Ownership & the Contract", n: 13, title: "Response strategies — priced, owned, and the decision tree", short: "Response strategies & decision trees", status: "live", page: "risk-week-13.html", date: "Sep 8, 2027" },
+    { n: 14, title: "Contractual risk allocation — FIDIC and the ground risk", short: "FIDIC & the ground risk", status: "live", page: "risk-week-14.html", date: "Sep 15, 2027" },
+    { n: 15, title: "Time, money, or neither — extension of time, exceptional events, insurance & bonds", short: "Transferring risk — insurance & bonds", status: "live", page: "risk-week-15.html", date: "Sep 22, 2027" },
 
     // ---- PHASE E — LIVING WITH RISK ----
-    { phase: "Phase E — Living with Risk", n: 16, title: "The living register — triggers, reviews & Bayesian revision", short: "The living register", status: "upcoming" },
+    { phase: "Phase E — Living with Risk", n: 16, title: "The living register — triggers, reviews & Bayesian revision", short: "The living register", status: "live", page: "risk-week-16.html", date: "Sep 29, 2027" },
     { n: 17, title: "Opportunity — the half nobody manages", short: "Opportunity management", status: "upcoming" },
     { n: 18, title: "The risk-literate planner — acting before the number moves", short: "Acting before the number moves", status: "upcoming" }
   ],
