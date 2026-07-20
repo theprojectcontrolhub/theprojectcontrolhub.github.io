@@ -43,6 +43,21 @@ checker will not flag them, so know which one a sentence means:
 - **$34,323 / $33,875** — the unconditional expectation once P(rock extends
   north) = 0.55 is applied, Risk Weeks 13 and 16
 
+
+**Second correction, closed 2026-07-20.** Schedule Week 20 forecasts the overrun
+as `1,000,000 / CPI`. That million is the tender sum &mdash; a selling price with
+head office overhead, profit and the $50,000 management reserve inside it. By the
+site's own Cost & Cash Week 5 the reserve sits *above* the baseline and the PMB is
+$874,561, so it cannot be the BAC; and Cost & Cash Week 6 shows that dividing
+invoices by a selling price flatters the efficiency, which makes the published
+0.79 generous and the 267k overrun the gentle version.
+
+The body prose of Week 20 was **not** rewritten &mdash; the method it teaches is
+correct and the numbers are internally consistent. Instead there is a dated
+editor's note after the forecast section pointing at Weeks 5 and 6, and the
+`learn.html` Track 1 &rarr; 2 bridge note now names both corrections rather than
+just the actual-cost one.
+
 ---
 
 ## 2. Cross-references
@@ -180,7 +195,26 @@ hard-code them again.
 
 - YouTube link is still a `https://youtube.com` placeholder on every page
 - `logo-lockup.png` (471 KB) is shipped but unused
-- `learn.html`'s Track 1 → 2 bridge note does not mention that Cost & Cash Week 6
-  supersedes the Track 1 treatment of CPI
-- Track 4 (Claims & Delay Analysis) is promised by name at the end of
-  Risk Weeks 15 and 18
+- Track 1 never defines BAC. The abbreviation appears twice on the whole site
+  (an axis label in Schedule Week 18, and Cost & Cash Week 5 looking back at it);
+  "budget at completion" is spelled out once, in Schedule Week 22, undefined.
+  Schedule Weeks 17-21 teach PV, EV, AC, CPI, SPI and TCPI without it. If Track 1
+  is ever revised, that is the gap to close at the source
+- **Track 4 is Contract Management**, not Claims. Settled 2026-07-20. Risk Week 18
+  closes on notices, periods, forms, recipients and the consequence of missing them
+  &mdash; that is contract administration, and it was being promised under a name
+  (*Claims & Delay Analysis*) that describes forensic delay work. The card even
+  contradicted itself: title *Claims & Delay Analysis*, subtitle *notices, records
+  and entitlement*. Contract Management now takes 4, Claims & Delay Analysis moves
+  to 5, Project Controls Leadership to 6. Nothing was written for any of them, so
+  the change cost nothing &mdash; that window is now closed
+- **There is no Reporting & Analytics track, on purpose.** Schedule Week 26 already
+  is one, and states it better: *one model, six altitudes &mdash; two versions of
+  the truth is a system failure*. A separate reporting track would say the opposite,
+  that reporting is a stage after the controls work. The genuinely missing pieces
+  (portfolio-level data governance, KPI thresholds, management by exception) are two
+  or three weeks inside Track 6, not a track. Dashboard mechanics belong to the toolbox
+- **Track 1 is "Schedule Management" everywhere.** `learn.html` used to call it
+  *Construction Project Controls Fundamentals* in the track header and
+  *Schedule Management* in the module card. "Fundamentals" implies Cost and Risk
+  derive from Track 1; they do not, they are sibling tracks
