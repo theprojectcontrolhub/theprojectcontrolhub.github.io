@@ -236,15 +236,27 @@ function homeCurriculumHTML(track) {
     }
   });
 
-  const hidden = live.length - Math.min(live.length, HOME_PREVIEW);
-  if (hidden > 0) {
-    const label = track.moduleTitle || track.title;
-    rows += `
-      <a href="learn.html" class="module-post-item module-post-more">
-        <span class="post-week">+${hidden}</span>
-        <span class="post-title">All ${track.totalWeeks} weeks of ${label}</span>
-        <i class='bx bx-right-arrow-alt'></i>
-      </a>`;
+  const rest = live.slice(HOME_PREVIEW);
+  if (rest.length > 0) {
+    let restRows = "";
+    rest.forEach(function (week) {
+      const badge = (week === track.latestLiveWeek) ? '<span class="new-badge" translate="no">New</span>' : '';
+      restRows += `
+        <a href="${week.page}" class="module-post-item">
+          <span class="post-week">Week ${week.n}</span>
+          <span class="post-title">${week.short}</span>
+          ${week.date ? `<span class="post-date">${week.date}</span>` : ''}
+          ${badge}
+          <i class='bx bx-right-arrow-alt'></i>
+        </a>`;
+    });
+    rows += `<div class="module-post-rest" hidden>${restRows}</div>
+      <button type="button" class="module-post-item module-post-more" aria-expanded="false"
+              data-more="Show all ${track.totalWeeks} weeks" data-less="Show fewer" data-count="+${rest.length}">
+        <span class="post-week">+${rest.length}</span>
+        <span class="post-title">Show all ${track.totalWeeks} weeks</span>
+        <i class='bx bx-chevron-down more-chevron'></i>
+      </button>`;
   }
   return rows;
 }
@@ -532,3 +544,20 @@ function renderHomeTrack3Badge() {
     centreActiveWeek();
   }
 })();
+
+
+/* Ana sayfa müfredat kartlarını yerinde açar. Olay delegasyonu kullanıyor:
+   düğmeler render'dan sonra DOM'a giriyor, doğrudan bağlamak yarış koşulu olurdu. */
+document.addEventListener('click', function (e) {
+  var btn = e.target.closest && e.target.closest('.module-post-more');
+  if (!btn) return;
+  var rest = btn.previousElementSibling;
+  if (!rest || !rest.classList.contains('module-post-rest')) return;
+  var isOpen = btn.getAttribute('aria-expanded') === 'true';
+  rest.hidden = isOpen;
+  btn.setAttribute('aria-expanded', String(!isOpen));
+  btn.querySelector('.post-title').textContent =
+    isOpen ? btn.getAttribute('data-more') : btn.getAttribute('data-less');
+  btn.querySelector('.post-week').textContent =
+    isOpen ? btn.getAttribute('data-count') : '';
+});

@@ -29,7 +29,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Icons -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=14">
+    <link rel="stylesheet" href="style.css?v=15">
     <style>
         /* Founder intro block */
         .founder-intro {
@@ -143,10 +143,19 @@
 
         /* "All N weeks" footer row on each homepage curriculum card.
            Reads as a way out to learn.html, not as another lesson. */
-        .module-post-more { background: #f8fafc; border-bottom: none; }
+        /* display:contents so the revealed rows become direct flex children of
+           .module-posts. The [hidden] override is required — a class rule beats
+           the UA's [hidden]{display:none}, and without it the panel never closes. */
+        .module-post-rest { display: contents; }
+        .module-post-rest[hidden] { display: none; }
+
+        .module-post-more { background: #f8fafc; border-bottom: none; width: 100%;
+            font: inherit; text-align: left; cursor: pointer; border: 0; }
         .module-post-more:hover { background: #f1f5f9; }
         .module-post-more .post-week { color: #94a3b8; }
         .module-post-more .post-title { color: #475569; font-weight: 600; }
+        .more-chevron { font-size: 18px; color: #94a3b8; transition: transform 0.2s ease; }
+        .module-post-more[aria-expanded="true"] .more-chevron { transform: rotate(180deg); }
 
         .group-divider {
             display: flex; align-items: center; gap: 10px;
@@ -980,7 +989,7 @@
 
 
     <!-- Curriculum data + home renderers -->
-    <script src="curriculum.js?v=63"></script>
+    <script src="curriculum.js?v=64"></script>
     <script>
         (function() {
             if (typeof CURRICULUM === 'undefined') return;
