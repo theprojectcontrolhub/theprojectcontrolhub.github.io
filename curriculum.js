@@ -195,16 +195,18 @@ function renderHomeLatest() {
 
 // Home page — Module 01 curriculum card (compact, no phase dividers)
 // Shows live weeks as links + first few upcoming, then a summary row.
-function renderHomeCurriculum() {
-  const w = CURRICULUM;
-  let rows = "";
-  const live = w.weeks.filter(x => x.status === "live");
-  const upcoming = w.weeks.filter(x => x.status === "upcoming");
+var HOME_PREVIEW = 5;
 
-  // all live weeks
-  live.forEach(week => {
-    const isLatest = week === w.latestLiveWeek;
-    const badge = isLatest ? '<span class="new-badge" translate="no">New</span>' : '';
+function homeCurriculumHTML(track) {
+  // Ana sayfa müfredatı iştah açar, listelemez. Eskiden bütün canlı haftaları
+  // basıyordu; üç track tamamlanınca 69 satır oldu ve sayfa bitmez hale geldi.
+  // Tam liste zaten learn.html'de ve bölümün başında "Full Curriculum" butonu var.
+  const live = track.weeks.filter(function (x) { return x.status === "live"; });
+  const upcoming = track.weeks.filter(function (x) { return x.status === "upcoming"; });
+  let rows = "";
+
+  live.slice(0, HOME_PREVIEW).forEach(function (week) {
+    const badge = (week === track.latestLiveWeek) ? '<span class="new-badge" translate="no">New</span>' : '';
     rows += `
       <a href="${week.page}" class="module-post-item">
         <span class="post-week">Week ${week.n}</span>
@@ -215,16 +217,13 @@ function renderHomeCurriculum() {
       </a>`;
   });
 
-  // next 2 upcoming (with a page target = gated links)
-  const nextUp = upcoming.slice(0, 2);
-  nextUp.forEach(week => {
+  // Henüz yayınlanmamış ilk iki hafta (varsa) — bunlar gerçekten kilitli
+  upcoming.slice(0, 2).forEach(function (week) {
     if (week.page) {
-      const badge = week.new ? '<span class="new-badge" translate="no">New</span>' : '';
       rows += `
         <a href="${week.page}" class="module-post-item" data-gated>
           <span class="post-week">Week ${week.n}</span>
           <span class="post-title">${week.short}</span>
-          ${badge}
           <i class='bx bx-right-arrow-alt'></i>
         </a>`;
     } else {
@@ -237,19 +236,22 @@ function renderHomeCurriculum() {
     }
   });
 
-  // summary row for the rest
-  const shown = live.length + nextUp.length;
-  const restStart = w.weeks[shown] ? w.weeks[shown].n : null;
-  if (restStart) {
+  const hidden = live.length - Math.min(live.length, HOME_PREVIEW);
+  if (hidden > 0) {
+    const label = track.moduleTitle || track.title;
     rows += `
-      <div class="module-post-item upcoming">
-        <span class="post-week">Week ${restStart}\u2013${w.totalWeeks}</span>
-        <span class="post-title">Development · CPM · EVM · Change Control · Forensics · Reporting</span>
-        <span class="post-upcoming">Coming soon</span>
-      </div>`;
+      <a href="learn.html" class="module-post-item module-post-more">
+        <span class="post-week">+${hidden}</span>
+        <span class="post-title">All ${track.totalWeeks} weeks of ${label}</span>
+        <i class='bx bx-right-arrow-alt'></i>
+      </a>`;
   }
   return rows;
 }
+
+function renderHomeCurriculum() { return homeCurriculumHTML(CURRICULUM); }
+function renderHomeTrack2()     { return homeCurriculumHTML(TRACK2); }
+function renderHomeTrack3()     { return homeCurriculumHTML(TRACK3); }
 
 // Module badge text for home
 function badgeText(track) {
@@ -383,46 +385,6 @@ function renderTrack2Progress() {
 
 // Renderer: Track 2 post list for the home page module card.
 // Mirrors renderHomeCurriculum so the rows pick up the same styling.
-function renderHomeTrack2() {
-  const t = TRACK2;
-  let rows = "";
-  const live = t.weeks.filter(x => x.status === "live");
-  const upcoming = t.weeks.filter(x => x.status === "upcoming");
-
-  live.forEach(week => {
-    const isLatest = week === t.latestLiveWeek;
-    const badge = isLatest ? '<span class="new-badge" translate="no">New</span>' : '';
-    rows += `
-      <a href="${week.page}" class="module-post-item">
-        <span class="post-week">Week ${week.n}</span>
-        <span class="post-title">${week.short}</span>
-        ${week.date ? `<span class="post-date">${week.date}</span>` : ''}
-        ${badge}
-        <i class='bx bx-right-arrow-alt'></i>
-      </a>`;
-  });
-
-  upcoming.slice(0, 2).forEach(week => {
-    rows += `
-      <div class="module-post-item upcoming">
-        <span class="post-week">Week ${week.n}</span>
-        <span class="post-title">${week.short}</span>
-        <span class="post-upcoming">Coming soon</span>
-      </div>`;
-  });
-
-  const shown = live.length + Math.min(upcoming.length, 2);
-  const restStart = t.weeks[shown] ? t.weeks[shown].n : null;
-  if (restStart) {
-    rows += `
-      <div class="module-post-item upcoming">
-        <span class="post-week">Week ${restStart}\u2013${t.totalWeeks}</span>
-        <span class="post-title">Measurement \u00b7 Change \u00b7 Cash \u00b7 Overheads \u00b7 Margin</span>
-        <span class="post-upcoming">Coming soon</span>
-      </div>`;
-  }
-  return rows;
-}
 
 // Module badge text for the Track 2 card on home
 function renderHomeTrack2Badge() {
@@ -541,46 +503,6 @@ function renderTrack3Progress() {
 // Sidebar for Track 3 article pages. Mirrors renderTrack2Sidebar.
 
 // Renderer: Track 3 post list for the home page module card.
-function renderHomeTrack3() {
-  const t = TRACK3;
-  let rows = "";
-  const live = t.weeks.filter(x => x.status === "live");
-  const upcoming = t.weeks.filter(x => x.status !== "live");
-
-  live.forEach(week => {
-    const isLatest = week === t.latestLiveWeek;
-    const badge = isLatest ? '<span class="new-badge" translate="no">New</span>' : '';
-    rows += `
-      <a href="${week.page}" class="module-post-item">
-        <span class="post-week">Week ${week.n}</span>
-        <span class="post-title">${week.short}</span>
-        ${week.date ? `<span class="post-date">${week.date}</span>` : ''}
-        ${badge}
-        <i class='bx bx-right-arrow-alt'></i>
-      </a>`;
-  });
-
-  upcoming.slice(0, 2).forEach(week => {
-    rows += `
-      <div class="module-post-item upcoming">
-        <span class="post-week">Week ${week.n}</span>
-        <span class="post-title">${week.short}</span>
-        <span class="post-upcoming">Coming soon</span>
-      </div>`;
-  });
-
-  const shown = live.length + Math.min(upcoming.length, 2);
-  const restStart = t.weeks[shown] ? t.weeks[shown].n : null;
-  if (restStart) {
-    rows += `
-      <div class="module-post-item upcoming">
-        <span class="post-week">Week ${restStart}\u2013${t.totalWeeks}</span>
-        <span class="post-title">Qualitative \u00b7 Quantitative \u00b7 FIDIC \u00b7 Opportunity</span>
-        <span class="post-upcoming">Coming soon</span>
-      </div>`;
-  }
-  return rows;
-}
 
 // Module badge text for the Track 3 card on home
 function renderHomeTrack3Badge() {
