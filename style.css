@@ -1791,9 +1791,12 @@ ul {
 }
 
 
-/* Cross-track references: same colour as the prose, emerald underline.
-   Only used for links to another track — same-track weeks are in the sidebar. */
-.article-body a {
+/* Cross-track references only.
+   NOT `.article-body a` — the share bar, the next-article card, the tags and the
+   paywall CTA all live inside .article-body, and a bare descendant selector
+   underlines all of them. Prose links only ever sit inside a <p>. */
+.article-body p a,
+.track-note a {
     color: inherit;
     text-decoration: underline;
     text-decoration-color: var(--primary-green);
@@ -1801,4 +1804,29 @@ ul {
     text-underline-offset: 2px;
     transition: var(--transition);
 }
-.article-body a:hover { color: var(--primary-green-hover); }
+.article-body p a:hover,
+.track-note a:hover { color: var(--primary-green-hover); }
+
+
+/* Breadcrumb carries the curriculum name on desktop; hidden on narrow screens
+   because .breadcrumb is a non-wrapping flex row and the longest title is 57 chars. */
+.breadcrumb { flex-wrap: wrap; }
+.crumb-title { color: var(--text-muted); }
+@media (max-width: 640px) { .crumb-title { display: none; } }
+
+
+/* Series sidebar scrolls the whole track. position:relative so the auto-scroll
+   in curriculum.js can measure offsetTop against this box, not a distant parent. */
+.sidebar-scroll {
+    position: relative;
+    max-height: 60vh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 transparent;
+}
+.sidebar-scroll::-webkit-scrollbar { width: 6px; }
+.sidebar-scroll::-webkit-scrollbar-track { background: transparent; }
+.sidebar-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+.sidebar-scroll::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+@media (max-width: 992px) { .sidebar-scroll { max-height: 340px; } }

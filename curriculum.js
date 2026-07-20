@@ -74,65 +74,40 @@ const CURRICULUM = {
 // ============================================================
 
 // Sidebar for article pages. currentWeek = the week number of THIS page.
-function renderArticleSidebar(currentWeek) {
-  const w = CURRICULUM;
-  let rows = "";
-  // Show first ~5 weeks + a summary row, or all if you prefer.
-  const visible = w.weeks.slice(0, 5);
-  visible.forEach(week => {
+function sidebarHTML(track, currentWeek) {
+  // Tüm track'i göster. Eskiden slice(0,5) + sabit bir özet satırı vardı;
+  // üç track de tamamlandığı için o satır hem yanlış hem gereksizdi, ve
+  // 13. haftadaki okur yan panelde kendini bulamıyordu.
+  const label = track.moduleTitle || track.title;
+  const rows = track.weeks.map(function (week) {
     const isActive = week.n === currentWeek;
     const isLive = week.status === "live";
-    const isLatest = week === w.latestLiveWeek;
-    const badge = isLatest && !isActive
+    const badge = (week === track.latestLiveWeek && !isActive)
       ? '<span class="sidebar-new" translate="no">New</span>' : "";
-
+    const inner = `<span class="sidebar-week">Week ${week.n}</span>`
+                + `<span class="sidebar-item-title">${week.short}</span>`;
     if (isActive) {
-      rows += `
-        <a href="${week.page || '#'}" class="sidebar-series-item active">
-          <span class="sidebar-week">Week ${week.n}</span>
-          <span class="sidebar-item-title">${week.short}</span>
-        </a>`;
-    } else if (isLive) {
-      rows += `
-        <a href="${week.page}" class="sidebar-series-item">
-          <span class="sidebar-week">Week ${week.n}</span>
-          <span class="sidebar-item-title">${week.short}</span>${badge}
-        </a>`;
-    } else {
-      // upcoming but shown as a gated/soon link if it has a target page,
-      // otherwise a dead greyed row
-      if (week.page) {
-        rows += `
-          <a href="${week.page}" class="sidebar-series-item" data-gated>
-            <span class="sidebar-week">Week ${week.n}</span>
-            <span class="sidebar-item-title">${week.short}</span>${badge}
-          </a>`;
-      } else {
-        rows += `
-          <div class="sidebar-series-item upcoming">
-            <span class="sidebar-week">Week ${week.n}</span>
-            <span class="sidebar-item-title">${week.short}</span>
-          </div>`;
-      }
+      return `<a href="${week.page || '#'}" class="sidebar-series-item active" aria-current="page">${inner}</a>`;
     }
-  });
-
-  // summary row for the rest
-  const remaining = w.weeks.length - visible.length;
-  if (remaining > 0) {
-    const firstRest = visible.length + 1;
-    rows += `
-      <div class="sidebar-series-item upcoming">
-        <span class="sidebar-week">${firstRest}–${w.totalWeeks}</span>
-        <span class="sidebar-item-title">Development · CPM · EVM · Forensics · Reporting</span>
-      </div>`;
-  }
+    if (isLive) {
+      return `<a href="${week.page}" class="sidebar-series-item">${inner}${badge}</a>`;
+    }
+    if (week.page) {
+      return `<a href="${week.page}" class="sidebar-series-item" data-gated>${inner}${badge}</a>`;
+    }
+    return `<div class="sidebar-series-item upcoming">${inner}</div>`;
+  }).join("");
 
   return `
     <div class="sidebar-card-header">
-      <h4 translate="no">${w.moduleTitle} · ${w.totalWeeks} Weeks</h4>
-    </div>${rows}`;
+      <h4 translate="no">${label} &#183; ${track.totalWeeks} Weeks</h4>
+    </div>
+    <div class="sidebar-scroll">${rows}</div>`;
 }
+
+function renderArticleSidebar(currentWeek) { return sidebarHTML(CURRICULUM, currentWeek); }
+function renderTrack2Sidebar(currentWeek)  { return sidebarHTML(TRACK2, currentWeek); }
+function renderTrack3Sidebar(currentWeek)  { return sidebarHTML(TRACK3, currentWeek); }
 
 // Full curriculum for learn.html (with phase dividers + progress)
 function renderLearnCurriculum() {
@@ -455,51 +430,6 @@ function renderHomeTrack2Badge() {
 }
 
 // Sidebar for Track 2 article pages. Mirrors renderArticleSidebar.
-function renderTrack2Sidebar(currentWeek) {
-  const t = TRACK2;
-  let rows = "";
-  const visible = t.weeks.slice(0, 5);
-  visible.forEach(week => {
-    const isActive = week.n === currentWeek;
-    const isLive = week.status === "live";
-    if (isActive) {
-      rows += `
-        <a href="${week.page || '#'}" class="sidebar-series-item active">
-          <span class="sidebar-week">Week ${week.n}</span>
-          <span class="sidebar-item-title">${week.short}</span>
-        </a>`;
-    } else if (isLive && week.page) {
-      const badge = week === t.latestLiveWeek
-        ? '<span class="sidebar-new" translate="no">New</span>' : "";
-      rows += `
-        <a href="${week.page}" class="sidebar-series-item">
-          <span class="sidebar-week">Week ${week.n}</span>
-          <span class="sidebar-item-title">${week.short}</span>${badge}
-        </a>`;
-    } else {
-      rows += `
-        <div class="sidebar-series-item upcoming">
-          <span class="sidebar-week">Week ${week.n}</span>
-          <span class="sidebar-item-title">${week.short}</span>
-        </div>`;
-    }
-  });
-
-  const remaining = t.weeks.length - visible.length;
-  if (remaining > 0) {
-    const firstRest = visible.length + 1;
-    rows += `
-      <div class="sidebar-series-item upcoming">
-        <span class="sidebar-week">${firstRest}\u2013${t.totalWeeks}</span>
-        <span class="sidebar-item-title">Budget · Measurement · Cash · Margin</span>
-      </div>`;
-  }
-
-  return `
-    <div class="sidebar-card-header">
-      <h4 translate="no">${t.title} · ${t.totalWeeks} Weeks</h4>
-    </div>${rows}`;
-}
 
 
 // ============================================================
@@ -609,51 +539,6 @@ function renderTrack3Progress() {
 }
 
 // Sidebar for Track 3 article pages. Mirrors renderTrack2Sidebar.
-function renderTrack3Sidebar(currentWeek) {
-  const t = TRACK3;
-  let rows = "";
-  const visible = t.weeks.slice(0, 5);
-  visible.forEach(week => {
-    const isActive = week.n === currentWeek;
-    const isLive = week.status === "live";
-    if (isActive) {
-      rows += `
-        <a href="${week.page || '#'}" class="sidebar-series-item active">
-          <span class="sidebar-week">Week ${week.n}</span>
-          <span class="sidebar-item-title">${week.short}</span>
-        </a>`;
-    } else if (isLive && week.page) {
-      const badge = week === t.latestLiveWeek
-        ? '<span class="sidebar-new" translate="no">New</span>' : "";
-      rows += `
-        <a href="${week.page}" class="sidebar-series-item">
-          <span class="sidebar-week">Week ${week.n}</span>
-          <span class="sidebar-item-title">${week.short}</span>${badge}
-        </a>`;
-    } else {
-      rows += `
-        <div class="sidebar-series-item upcoming">
-          <span class="sidebar-week">Week ${week.n}</span>
-          <span class="sidebar-item-title">${week.short}</span>
-        </div>`;
-    }
-  });
-
-  const remaining = t.weeks.length - visible.length;
-  if (remaining > 0) {
-    const firstRest = visible.length + 1;
-    rows += `
-      <div class="sidebar-series-item upcoming">
-        <span class="sidebar-week">${firstRest}\u2013${t.totalWeeks}</span>
-        <span class="sidebar-item-title">Quantitative · Contract · Opportunity</span>
-      </div>`;
-  }
-
-  return `
-    <div class="sidebar-card-header">
-      <h4 translate="no">${t.title} · ${t.totalWeeks} Weeks</h4>
-    </div>${rows}`;
-}
 
 // Renderer: Track 3 post list for the home page module card.
 function renderHomeTrack3() {
@@ -701,3 +586,27 @@ function renderHomeTrack3() {
 function renderHomeTrack3Badge() {
   return badgeText(TRACK3);
 }
+
+
+/* Yan panel artık tüm track'i gösteriyor (27/24/18 satır). Okur 13. haftadaysa
+   listenin başında değil, kendi haftasında açılmalı. Bu blok curriculum.js'in
+   sonunda duruyor ama DOMContentLoaded'i dinlediği için sayfanın kendi render
+   çağrısından SONRA çalışır; 69 makaleyi düzenlemeye gerek kalmıyor. */
+(function () {
+  function centreActiveWeek() {
+    var boxes = document.querySelectorAll('.sidebar-scroll');
+    for (var i = 0; i < boxes.length; i++) {
+      var box = boxes[i];
+      var active = box.querySelector('.sidebar-series-item.active');
+      if (!active) continue;
+      var target = active.offsetTop - box.offsetTop
+                 - (box.clientHeight / 2) + (active.offsetHeight / 2);
+      box.scrollTop = target > 0 ? target : 0;
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', centreActiveWeek);
+  } else {
+    centreActiveWeek();
+  }
+})();
