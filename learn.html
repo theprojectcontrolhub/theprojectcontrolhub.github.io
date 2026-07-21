@@ -431,7 +431,7 @@
         .track-jump-link.active { background: rgba(16,185,129,0.08); border-color: #10b981; color: #059669; }
         .track-jump-link.active span { color: #10b981; }
         /* anchors must clear both sticky bars */
-        #track-1, #track-2, #track-3, #roadmap, #toolbox { scroll-margin-top: 132px; }
+        #track-1, #track-2, #track-3, #track-4, #roadmap, #toolbox { scroll-margin-top: 132px; }
         @media (max-width: 768px) {
             .track-jump { top: 72px; padding: 10px 0; }
             .track-jump-link { font-size: 12px; padding: 6px 12px; }
@@ -781,6 +781,7 @@
                     <a href="#track-1" class="track-jump-link" data-jump="track-1">Schedule <span>27</span></a>
                     <a href="#track-2" class="track-jump-link" data-jump="track-2">Cost &amp; Cash <span>24</span></a>
                     <a href="#track-3" class="track-jump-link" data-jump="track-3">Risk <span>18</span></a>
+                    <a href="#track-4" class="track-jump-link" data-jump="track-4">Contract <span>20</span></a>
                     <a href="#roadmap" class="track-jump-link" data-jump="roadmap">Roadmap</a>
                     <a href="#toolbox" class="track-jump-link" data-jump="toolbox">Toolbox</a>
                 </nav>
@@ -931,21 +932,59 @@
                     </div>
                 </div>
 
+
+                <!-- ===== TRACK 4 &#8212; CONTRACT MANAGEMENT ===== -->
+                <div class="track-header" id="track-4">
+                    <div class="track-badge free"><i class='bx bx-file-find'></i> TRACK 4 &#183; FREE &#183; STARTS OCT 2027</div>
+                    <h2>Contract Management</h2>
+                    <p class="track-sub">The right you still have &#8212; and the letter that decides whether you kept it.</p>
+                    <p class="track-desc">Track 3 finished by putting clause numbers against five of the risks on this job and then admitting that a clause number is not the same thing as money. Every one of those clauses has a notice attached to it: a period, a form, a recipient, and a consequence for missing it that is harsher in the 2017 editions than most people on site realise. This track is about the machinery &#8212; notices and the periods that kill them, records that survive somebody else&#39;s scrutiny, variations and the instructions nobody priced, the payment clock, and the contract types that quietly change what cost control even means.</p>
+                    <div class="track-note">
+                        <i class='bx bx-lock-open-alt'></i>
+                        <p><strong>The rock is worth $48,450 and the contract may well say it is the employer&#39;s.</strong> <a href="risk-week-15.html">Risk Week 15</a> found the mechanism and <a href="risk-week-18.html">Risk Week 18</a> left the question open on purpose: whether you ever see that money depends on a letter, a date, and a set of records that either exist or do not. Track 4 starts exactly there.</p>
+                    </div>
+                </div>
+
+                <!-- MODULE 04: CONTRACT MANAGEMENT -->
+                <div class="module-card">
+                    <div class="module-card-header">
+                        <div class="module-card-left">
+                            <span class="module-num">04</span>
+                            <div class="module-info">
+                                <h2>Contract Management</h2>
+                                <p>Preserving an entitlement rather than valuing one &#8212; built on the three FIDIC 2017 forms, the NEC4 contrast, and what contract administration actually looks like from the contractor&#39;s side of the table.</p>
+                            </div>
+                        </div>
+                        <span class="module-badge badge-locked" id="t4ModuleBadge"><i class='bx bx-edit-alt'></i> In writing &#183; 20 weeks planned</span>
+                    </div>
+                    <div class="module-tools">
+                        <span class="tool-tag-label">Topics:</span>
+                        <span class="tool-tag">Notices</span>
+                        <span class="tool-tag">Time Bars</span>
+                        <span class="tool-tag">Records</span>
+                        <span class="tool-tag">Variations</span>
+                        <span class="tool-tag">Payment</span>
+                        <span class="tool-tag">Currency</span>
+                        <span class="tool-tag">FIDIC 2017</span>
+                        <span class="tool-tag">NEC4</span>
+                    </div>
+                    <div class="module-weeks" id="track4Weeks"></div>
+                    <div class="module-progress">
+                        <div class="progress-label">
+                            <span id="t4ProgressText">0 of 20 published</span>
+                            <span id="t4ProgressPct">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="t4ProgressFill" style="width:0%;"></div>
+                        </div>
+                    </div>
+                </div>
+
 <div class="roadmap-section" id="roadmap">
                     <div class="roadmap-intro">
                         <div class="track-badge roadmap"><i class='bx bx-map-alt'></i> THE ROADMAP</div>
-                        <h2>Tracks 4, 5 and 6</h2>
-                        <p>Risk explains why projects go wrong before they do. The contract decides whether you still have a right when one of them does, claims decide what that right is worth, and leadership decides whether any of it reaches the people who can act. These are the tracks that follow.</p>
-                    </div>
-
-                    <!-- TRACK 4: CONTRACT MANAGEMENT -->
-                    <div class="roadmap-card">
-                        <span class="roadmap-marker"><i class='bx bx-file-find'></i></span>
-                        <div class="roadmap-body">
-                            <h3>Track 4 &#183; Contract Management</h3>
-                            <p>Where entitlement is won or lost long before anyone writes a claim. Notices and the periods that kill them, records that survive scrutiny, variations, payment mechanisms, and what the 2017 editions made harsher.</p>
-                        </div>
-                        <span class="roadmap-badge"><i class='bx bx-time'></i> On the roadmap</span>
+                        <h2>Tracks 5 and 6</h2>
+                        <p>Track 4 decides whether you still have a right when something goes wrong. Claims decide what that right is worth, and leadership decides whether any of it reaches the people who can act. These two come after it.</p>
                     </div>
 
                     <!-- TRACK 5: CLAIMS -->
@@ -1186,7 +1225,7 @@
 
 
     <!-- Curriculum data + renderers -->
-    <script src="curriculum.js?v=66"></script>
+    <script src="curriculum.js?v=67"></script>
     <script>
         (function() {
             if (typeof CURRICULUM === 'undefined') return;
@@ -1225,6 +1264,21 @@
                 }
             }
 
+            // Track 4 — Contract Management
+            const t4El = document.getElementById('track4Weeks');
+            if (t4El && typeof renderTrack4Curriculum === 'function') {
+                t4El.innerHTML = renderTrack4Curriculum();
+                if (typeof renderTrack4Progress === 'function') {
+                    const p4 = renderTrack4Progress();
+                    const t4t = document.getElementById('t4ProgressText');
+                    const t4p = document.getElementById('t4ProgressPct');
+                    const t4f = document.getElementById('t4ProgressFill');
+                    if (t4t) t4t.textContent = p4.text;
+                    if (t4p) t4p.textContent = p4.percent + '%';
+                    if (t4f) t4f.style.width = p4.percent + '%';
+                }
+            }
+
             // Progress
             const prog = renderLearnProgress();
             const pt = document.getElementById('progressText');
@@ -1241,6 +1295,12 @@
             if (b2 && typeof TRACK2 !== 'undefined' && typeof badgeText === 'function') b2.innerHTML = badgeText(TRACK2);
             const b3 = document.getElementById('t3ModuleBadge');
             if (b3 && typeof TRACK3 !== 'undefined' && typeof badgeText === 'function') b3.innerHTML = badgeText(TRACK3);
+            const b4 = document.getElementById('t4ModuleBadge');
+            if (b4 && typeof TRACK4 !== 'undefined' && typeof badgeText === 'function') {
+                b4.innerHTML = badgeText(TRACK4);
+                // ilk hafta yayına girdiği an rozet kendiliğinden yeşile döner
+                b4.className = 'module-badge ' + (TRACK4.liveCount ? 'badge-active' : 'badge-locked');
+            }
 
             // Re-bind gated links
             document.querySelectorAll('.week-item[data-gated]').forEach(link => {

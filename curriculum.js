@@ -273,6 +273,11 @@ function renderHomeTrack3()     { return homeCurriculumHTML(TRACK3); }
 // Module badge text for home
 function badgeText(track) {
     if (!track) return '';
+    // Henüz tek makalesi yayınlanmamış track. Eskiden "Week 0 of 20" yazıyordu,
+    // ki bu hem yanlış hem de sıfırıncı bir hafta varmış gibi duruyordu.
+    if (track.liveCount === 0) {
+        return '<i class="bx bx-edit-alt"></i> In writing &#183; ' + track.totalWeeks + ' weeks planned';
+    }
     if (track.liveCount >= track.totalWeeks) {
         return '<span class="dot-green"></span> Complete &#183; ' + track.totalWeeks + ' weeks';
     }

@@ -365,9 +365,29 @@ Silver checked separately where a week turns on the difference.
 `python3 tools/check_site.py --quick` passes, with Tracks 1–3 reporting exactly
 the same figures as before the change.
 
-### Not done yet, on purpose
+### Rendered on learn.html and index.html — same day
 
-`learn.html` and `index.html` still show Track 4 as a roadmap card. Converting
-those to a real track section renders a list of twenty "Coming soon" rows and a
-progress bar reading 0%, which is worse than the card. Do it in the same commit
-as Week 1.
+The roadmap card was replaced with a real track section after all. It reads
+better than expected because nothing pretends to be published: twenty
+"Coming soon" rows under five phase dividers, a progress bar honestly at 0%,
+and a badge that says what is actually true.
+
+- **`badgeText()` now handles a track with nothing live.** It used to fall
+  through to "In Progress · Week 0 of 20", which implied a zeroth week. A track
+  at `liveCount === 0` returns *In writing · N weeks planned* instead. No other
+  track can reach that branch, so Tracks 1–3 are untouched.
+- The Track 4 badge **re-colours itself**: the page JS sets `badge-active` or
+  `badge-locked` (`active-status` / `locked-status` on the home page) from
+  `TRACK4.liveCount`. Publishing Week 1 does not need an HTML edit — do not
+  hard-code the class back in.
+- `learn.html` also gets `#track-4` in the jump nav and in the
+  `scroll-margin-top` rule. The jump nav is six items wide now and scrolls
+  horizontally below 768px, as it already did at five.
+- The roadmap section is now **"Tracks 5 and 6"**, and its intro paragraph
+  points at Track 4 as a live section rather than listing it as a future one.
+- The home card shows the first two upcoming weeks, which is
+  `homeCurriculumHTML`'s existing behaviour for a track with no live weeks. No
+  new code path.
+
+Verified in a headless browser at 1280px and 390px. `index.html`'s
+"69 lessons live" badge is still correct — Track 4 adds no published article.

@@ -822,18 +822,20 @@
                     <div class="module-posts" id="homeTrack3"></div>
                 </div>
 
-                <!-- TRACK 4: CONTRACT MANAGEMENT -->
-                <div class="module-track module-track-locked">
+                <!-- MODULE 4: CONTRACT MANAGEMENT -->
+                <div class="module-track">
                     <div class="module-track-header">
                         <div class="module-track-left">
-                            <span class="module-number locked">04</span>
+                            <span class="module-number">04</span>
                             <div>
                                 <h3 class="module-title">Contract Management</h3>
-                                <p class="module-desc">Where entitlement is won or lost long before anyone writes a claim. Notices and the periods that kill them, records that survive scrutiny, variations, payment mechanisms, and what the 2017 editions made harsher.</p>
+                                <p class="module-desc">Where entitlement is won or lost long before anyone writes a claim &#8212; notices and the periods that kill them, records that survive scrutiny, variations, and the payment clock.</p>
                             </div>
                         </div>
-                        <span class="module-status locked-status"><i class='bx bx-map-alt'></i> On the roadmap</span>
+                        <span class="module-status locked-status" id="homeTrack4Badge"><i class='bx bx-edit-alt'></i> In writing &#183; 20 weeks planned</span>
                     </div>
+
+                    <div class="module-posts" id="homeTrack4"></div>
                 </div>
 
                 <!-- TRACK 5: CLAIMS -->
@@ -989,7 +991,7 @@
 
 
     <!-- Curriculum data + home renderers -->
-    <script src="curriculum.js?v=66"></script>
+    <script src="curriculum.js?v=67"></script>
     <script>
         (function() {
             if (typeof CURRICULUM === 'undefined') return;
@@ -1032,6 +1034,19 @@
                 const t3Badge = document.getElementById('homeTrack3Badge');
                 if (t3Badge && typeof renderHomeTrack3Badge === 'function') {
                     t3Badge.innerHTML = renderHomeTrack3Badge();
+                }
+            }
+
+            // Curriculum card — module 04 (Contract Management)
+            const t4 = document.getElementById('homeTrack4');
+            if (t4 && typeof renderHomeTrack4 === 'function') {
+                t4.innerHTML = renderHomeTrack4();
+                const t4Badge = document.getElementById('homeTrack4Badge');
+                if (t4Badge && typeof renderHomeTrack4Badge === 'function') {
+                    t4Badge.innerHTML = renderHomeTrack4Badge();
+                    // ilk hafta yayına girince rozet kendiliğinden yeşile döner
+                    t4Badge.className = 'module-status ' +
+                        (TRACK4.liveCount ? 'active-status' : 'locked-status');
                 }
             }
 
