@@ -27,7 +27,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=15">
+    <link rel="stylesheet" href="style.css?v=16">
     <style>
         .learn-page {
             background: var(--bg-light);
@@ -407,6 +407,36 @@
         }
 
         /* ROADMAP TRACKS — future, minimal cards */
+
+        /* Sticky section nav. learn.html is the full curriculum — 69 weeks plus 16
+           phase dividers — so the fix for its length is navigation, not hiding rows.
+           top:72px clears the navbar (16px padding + 40px logo + 16px); z-index stays
+           under the navbar's 500. */
+        .track-jump {
+            position: sticky; top: 72px; z-index: 400;
+            display: flex; gap: 6px; align-items: center;
+            padding: 12px 0; margin-bottom: 4px;
+            background: var(--bg-light);
+            overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+        }
+        .track-jump::-webkit-scrollbar { display: none; }
+        .track-jump-link {
+            flex: 0 0 auto; padding: 7px 14px; border-radius: 20px;
+            font-size: 13px; font-weight: 600; color: #64748b;
+            background: #fff; border: 1px solid #e2e8f0;
+            white-space: nowrap; transition: all 0.18s ease;
+        }
+        .track-jump-link span { color: #94a3b8; font-weight: 500; margin-left: 4px; }
+        .track-jump-link:hover { border-color: #cbd5e1; color: #1e293b; }
+        .track-jump-link.active { background: rgba(16,185,129,0.08); border-color: #10b981; color: #059669; }
+        .track-jump-link.active span { color: #10b981; }
+        /* anchors must clear both sticky bars */
+        #track-1, #track-2, #track-3, #roadmap, #toolbox { scroll-margin-top: 132px; }
+        @media (max-width: 768px) {
+            .track-jump { top: 72px; padding: 10px 0; }
+            .track-jump-link { font-size: 12px; padding: 6px 12px; }
+        }
+
         .roadmap-section { margin-top: 52px; }
         .roadmap-intro { margin-bottom: 20px; }
         .roadmap-intro .track-badge.roadmap {
@@ -746,13 +776,22 @@
                 </div>
             </div>
 
-            <!-- MODULES -->
+            <!-- ===== TRACK JUMP NAV ===== -->
+                <nav class="track-jump" aria-label="Jump to a section">
+                    <a href="#track-1" class="track-jump-link" data-jump="track-1">Schedule <span>27</span></a>
+                    <a href="#track-2" class="track-jump-link" data-jump="track-2">Cost &amp; Cash <span>24</span></a>
+                    <a href="#track-3" class="track-jump-link" data-jump="track-3">Risk <span>18</span></a>
+                    <a href="#roadmap" class="track-jump-link" data-jump="roadmap">Roadmap</a>
+                    <a href="#toolbox" class="track-jump-link" data-jump="toolbox">Toolbox</a>
+                </nav>
+
+                <!-- MODULES -->
             <div class="modules-list">
 
                 <!-- ===== TRACK 1 ===== -->
                 
                 <!-- ===== SECTION: THE LEARNING PATH ===== -->
-<div class="track-header">
+<div class="track-header" id="track-1">
                     <div class="track-badge free"><span class="dot-green"></span> TRACK 1 · FREE · COMPLETE</div>
                     <h2>Schedule Management</h2>
                     <p class="track-sub">The logic. Why projects succeed — and why they fail.</p>
@@ -798,7 +837,7 @@
                 <!-- ===== TRACK 2 ===== -->
                 
                 <!-- ===== TRACK 2 — COST & CASH ===== -->
-                <div class="track-header track-2">
+                <div class="track-header track-2" id="track-2">
                     <div class="track-badge free"><span class="dot-green"></span> TRACK 2 &#183; FREE &#183; COMPLETE</div>
                     <h2>Cost &amp; Cash</h2>
                     <p class="track-sub">The money. Where the numbers come from — and how companies go broke while profitable.</p>
@@ -846,7 +885,7 @@
                 <!-- ===== TRACK 3 ===== -->
 
                 <!-- ===== TRACK 3 — RISK ===== -->
-                <div class="track-header">
+                <div class="track-header" id="track-3">
                     <div class="track-badge free"><i class='bx bx-shield-quarter'></i> TRACK 3 &#183; FREE &#183; COMPLETE</div>
                     <h2>Risk</h2>
                     <p class="track-sub">The future. What has not happened yet &#8212; and who pays for it when it does.</p>
@@ -892,7 +931,7 @@
                     </div>
                 </div>
 
-<div class="roadmap-section">
+<div class="roadmap-section" id="roadmap">
                     <div class="roadmap-intro">
                         <div class="track-badge roadmap"><i class='bx bx-map-alt'></i> THE ROADMAP</div>
                         <h2>Tracks 4, 5 and 6</h2>
@@ -931,7 +970,7 @@
                 </div>
 
                 <!-- ===== SECTION: THE TOOLBOX ===== -->
-<div class="track-header track-2">
+<div class="track-header track-2" id="toolbox">
                     <div class="track-badge paid"><i class='bx bx-wrench'></i> THE TOOLBOX</div>
                     <h2>The Toolbox</h2>
                     <p class="track-sub">The tools. Take these in any order, whenever you need them.</p>
@@ -1147,7 +1186,7 @@
 
 
     <!-- Curriculum data + renderers -->
-    <script src="curriculum.js?v=64"></script>
+    <script src="curriculum.js?v=65"></script>
     <script>
         (function() {
             if (typeof CURRICULUM === 'undefined') return;
@@ -1216,5 +1255,32 @@
         })();
     </script>
 
+
+    <script>
+    /* Highlights the section you are actually looking at. Uses viewport-relative
+       measurement rather than offsetTop, which would be wrong for these nested nodes. */
+    (function () {
+        var links = Array.prototype.slice.call(document.querySelectorAll('.track-jump-link'));
+        if (!links.length) return;
+        var sections = links.map(function (l) {
+            return { link: l, el: document.getElementById(l.getAttribute('data-jump')) };
+        }).filter(function (s) { return s.el; });
+        if (!sections.length) return;
+        var ticking = false;
+        function spy() {
+            var current = sections[0];
+            sections.forEach(function (s) {
+                if (s.el.getBoundingClientRect().top <= 140) current = s;
+            });
+            links.forEach(function (l) { l.classList.remove('active'); });
+            current.link.classList.add('active');
+            ticking = false;
+        }
+        window.addEventListener('scroll', function () {
+            if (!ticking) { ticking = true; window.requestAnimationFrame(spy); }
+        }, { passive: true });
+        spy();
+    })();
+    </script>
 </body>
 </html>
