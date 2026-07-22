@@ -248,7 +248,82 @@ before adding.
 
 ---
 
-## 9. Traps — every one of these actually happened
+## 9. Title conventions — and a review that got this wrong
+
+A reviewer proposed replacing several Track 4 week titles with punchier ones.
+Four of the five were right; one revealed a misunderstanding worth recording,
+because it will come up again.
+
+**The site keeps two separate title registers.** They are different fields and
+they do different jobs:
+
+| | `curriculum.js` `title` | article `<h1>` |
+|---|---|---|
+| Job | says what the week covers | editorial hook |
+| Seen on | learn.html, sidebar, breadcrumb | the article page |
+| Example | `Contractual risk allocation — FIDIC and the ground risk` | `One word decides who pays for the rock.` |
+| Example | `The limits of the probability-impact matrix` | `The heat map lies.` |
+| Example | `Risk fundamentals — the register behind the contingency` | `The number was right. Nobody checked the list.` |
+
+**59 of the 69 curriculum titles (85%) use the `Topic — components` pattern, and
+not one is a short em-dash-free phrase.** So a curriculum title that reads like
+a headline is out of register, and a headline that reads like a syllabus entry
+is a wasted h1. Write both, deliberately.
+
+Decisions taken:
+
+- **Week 1 title stays as `Contract management fundamentals — the notice behind
+  the entitlement`.** It mirrors Risk Week 1 exactly. The proposed replacements
+  were h1 material, and both were already-used formulas: `Why X fails — and why…`
+  opens Tracks 1 and 2, and `The contract is not a document. It's a…` repeats
+  `Rock is not a risk. It's a noun.` A third use makes it a tic.
+  For the **h1**, the phrase Track 3 hands over is already the strongest
+  candidate: *an entitlement is not the same thing as an entitlement you can
+  still use*. Compress that.
+- **Week 3 → `The Engineer — authority, impartiality and determination`.** Accept.
+  Back into the house pattern, and impartiality is the load-bearing idea.
+- **Week 8 → `Building entitlement — before a claim exists`.** Accept, and this
+  is the most important of the five. `The fully detailed claim` is a FIDIC 20.2.4
+  term and the work of *valuing* a right — Track 5 by the §2 boundary test.
+- **Week 13 → `When the contract says it isn't a variation`.** Accept. The quarry
+  haul road belongs inside the article, not in the title. Same treatment the
+  rock gets in `risk-week-14`.
+- **Week 19 NEC4 → expand beyond a bare mention.** Accept in principle, **but
+  there is no NEC4 source in `/mnt/user-data/uploads/`.** Fourteen FIDIC claims
+  were verified against the actual books; NEC4 cannot be written to that
+  standard without the contract. Either obtain it, or reframe the week around
+  the *contrast* with FIDIC — early warning registers link straight back to
+  Track 3, which is the more interesting angle anyway.
+
+### Track outcomes
+
+The reviewer's best idea. An `After this track you can` block now sits on
+`learn.html` under every published track — six lines each, second person,
+matching the register every Practical insight section uses. **Track 4 needs one
+written at the same time as its week list**, not bolted on afterwards.
+
+Draft for Track 4, to be revised once the weeks are fixed:
+
+- Read a FIDIC contract and find the clause that governs the situation in front of you
+- Serve a notice within its period, in its form, to the right recipient
+- Tell an instruction from a variation, and a variation from a claim
+- Keep the records that make an entitlement provable rather than arguable
+- Follow the payment machinery from application to certificate to money
+- Say what changes when the contract is cost-plus or target cost instead of lump sum
+
+### Cross-track connection chains
+
+The reviewer suggested small boxes showing how a topic links to the other
+tracks, e.g. `Risk → Notice → Record → Entitlement → Claim`. The chain idea is
+good. **Do not add a new box type.** The site has exactly two: dark emerald rule
+boxes (the lesson) and one amber editor's note (a correction). A third dilutes
+the visual language and breaks a template shared by 69 published articles.
+
+Every article already carries three SVG figures. Make the chain one of them.
+In-prose links to other tracks use the existing convention — track name in
+prose plus a link — with 14 examples already live.
+
+## 10. Traps — every one of these actually happened
 
 - **A wrong number propagated across eight articles.** The published article
   wins over any summary, including one written by a previous session. Verify
@@ -275,7 +350,7 @@ before adding.
 
 ---
 
-## 10. Open site-wide items (not Track 4's job, but visible)
+## 11. Open site-wide items (not Track 4's job, but visible)
 
 1. **Dates.** 65 of 69 published lessons carry future dates — Risk Week 18 is
    dated 13 Oct 2027. All are marked `live` and badged Complete. The homepage
@@ -284,110 +359,27 @@ before adding.
    new track inherits the same problem.
 2. **"New lesson every week"** appears in six places while three tracks are
    complete and Track 4 is unwritten.
-3. **Reading time is fabricated** — 66 articles claim "9 min read", 3 claim "8".
-   Real median is about 7 minutes. Hardcoded, never calculated.
-4. **Sitemap** has 72 URLs but only 54 carry `<lastmod>`.
+3. ~~Reading time is fabricated~~ **Fixed 2026-07-21.** Recomputed for all 69 at
+   225 wpm plus 15s per figure; 58 pages changed. Distribution is now 6/7/8/9
+   minutes instead of a flat "9 min read". Still hardcoded — recompute if an
+   article's length changes.
+4. ~~Sitemap missing lastmod~~ **Fixed 2026-07-21.** All 72 URLs now carry
+   `<lastmod>`, set to the date the files were genuinely last modified. This
+   also removed the future-dated `lastmod` values (2026-10-07 and later), which
+   search engines distrust. Note this does **not** resolve item 1 — the article
+   *display* dates are still in the future.
 5. **Progress bars are dead UI** — all three read 100% because they measure
-   *publication*, not reader progress. Static fallback is stale at
-   "3 of 27 published / 11%". A completion-ticking feature was discussed as the
-   fix; nothing built yet.
+   *publication*, not reader progress. The stale static fallbacks were fixed on
+   2026-07-21 (Track 1 read "3 of 27 / 11%", Track 3 read "0 of 18 / 0%" when JS
+   failed), but the bars themselves are still meaningless now that every track is
+   complete. A completion-ticking feature was discussed as the fix: localStorage
+   first, no login required, syncing to the account only if signed in. Nothing
+   built. Note there is no database — `auth.js` imports `firebase-app` and
+   `firebase-auth` only, no Firestore. **Track 4 will make these bars meaningful
+   again on its own**, since it will publish incrementally.
 6. **Schedule Weeks 1 and 2 carry 14 H2s** against a median of 9 — sub-points
    marked as H2 break the document outline.
 7. **Risk Key takeaways** use a reporting register where Schedule instructs.
    Left alone deliberately: 126 lines dense with canonical figures. If touched,
    diff every digit.
 8. `logo-lockup.png` (471 KB) is unused by any page.
-
----
-
-## 11. Locked on 2026-07-21 — curriculum committed
-
-Track 4 is now in `curriculum.js` as `TRACK4`: **20 weeks, 5 phases, all
-`upcoming`**. No article has been written yet. Decisions taken with the owner:
-
-- **Dates continue the existing calendar.** Risk Week 18 is 13 Oct 2027, so
-  Contract Week 1 is **20 Oct 2027** and the track runs weekly on Wednesdays to
-  **1 Mar 2028**. This inherits open item §10.1 knowingly rather than by
-  accident — every published lesson already carries a future date, and breaking
-  the pattern for one track would have looked like an error.
-- **Filenames** are `contract-week-N.html`, as suggested in §6.
-- Weeks carry a `date` while still `upcoming`; the learn-page renderer only
-  shows a date once a week is `live` or has a `page`, so nothing leaks early.
-
-### Phases
-
-| Phase | Weeks | What it covers |
-|---|---|---|
-| A — The Contract as an Instrument | 1–4 | the usable right · documents and precedence · the Engineer and 3.7 · **contract types and cost control** (§8 item 1) |
-| B — Notices & the Entitlement Machinery | 5–9 | the 28-day gate and the time bar · anatomy of a notice · contemporary records · fully detailed claim and determination · what 2017 changed |
-| C — Variations & Instructions | 10–13 | what a variation is · verbal and constructive instructions · valuation mechanics · **the quarry haul road case** (§8 item 3) |
-| D — The Payment Machinery | 14–17 | statements and the payment clock · retention and advance payment · **currencies of payment** (§8 item 2) · suspension and termination |
-| E — Obligations, Contrast & Handover | 18–20 | obligations as a matched pair · NEC4 contrast · handover to Track 5 |
-
-Week 12 sits closest to the §2 boundary. It is in Track 4 because it teaches the
-**mechanism** the contract provides for valuing a variation. The moment a week
-argues about how much a disrupted gang is worth, it has become Track 5.
-
-### Clauses pre-verified against the Red Book PDF
-
-Checked before the syllabus was written, so no phase rests on a clause that does
-not exist: **20.2.1** (the 28-day period and the discharge that follows a late
-notice), 20.2.2, 20.2.4, 3.7, 13.1, 13.3, 13.5, 14.6, 14.7, **14.15**
-*Currencies of Payment*, 16.1, 16.2 and **8.4** *Advance Warning*. 14.15 is what
-makes the §8 currency gap a real week rather than an aside; 8.4 is the bridge to
-the NEC4 comparison in Week 19.
-
-Everything still needs re-verifying in the week that cites it, and Yellow and
-Silver checked separately where a week turns on the difference.
-
-### Code changes shipped with this
-
-- `TRACK4` object plus five **thin wrappers** — `renderTrack4Sidebar`,
-  `renderTrack4Curriculum`, `renderTrack4Progress`, `renderHomeTrack4`,
-  `renderHomeTrack4Badge`.
-- §6 said the three render families were already shared helpers. Two were.
-  The **learn-page renderer was not** — `renderLearnCurriculum`,
-  `renderTrack2Curriculum` and `renderTrack3Curriculum` were three near-copies,
-  and they had already drifted (Track 1's alone rendered `data-gated` rows).
-  They are now `learnCurriculumHTML(track)` with four wrappers, keeping the
-  Track 1 behaviour because it is the superset. The three progress functions
-  collapsed into `progressFor(track)` the same way.
-  **Verified by diffing the rendered HTML of all three tracks before and after:
-  byte-identical.**
-- `renderHomeLatest` now scans four tracks, so the first live Contract week
-  reaches the homepage hero without another edit.
-- `check_site.py` knows Track 4 (`contract-week-`, 20) and builds its page lists
-  from what exists on disk, so it reports `Contract 0/20` instead of crashing on
-  the nineteen files that are not written yet. The voice check skips a track
-  with no articles rather than warning that its contraction density is zero.
-- `curriculum.js?v=` bumped 65 → 66 across all 71 pages that load it.
-
-`python3 tools/check_site.py --quick` passes, with Tracks 1–3 reporting exactly
-the same figures as before the change.
-
-### Rendered on learn.html and index.html — same day
-
-The roadmap card was replaced with a real track section after all. It reads
-better than expected because nothing pretends to be published: twenty
-"Coming soon" rows under five phase dividers, a progress bar honestly at 0%,
-and a badge that says what is actually true.
-
-- **`badgeText()` now handles a track with nothing live.** It used to fall
-  through to "In Progress · Week 0 of 20", which implied a zeroth week. A track
-  at `liveCount === 0` returns *In writing · N weeks planned* instead. No other
-  track can reach that branch, so Tracks 1–3 are untouched.
-- The Track 4 badge **re-colours itself**: the page JS sets `badge-active` or
-  `badge-locked` (`active-status` / `locked-status` on the home page) from
-  `TRACK4.liveCount`. Publishing Week 1 does not need an HTML edit — do not
-  hard-code the class back in.
-- `learn.html` also gets `#track-4` in the jump nav and in the
-  `scroll-margin-top` rule. The jump nav is six items wide now and scrolls
-  horizontally below 768px, as it already did at five.
-- The roadmap section is now **"Tracks 5 and 6"**, and its intro paragraph
-  points at Track 4 as a live section rather than listing it as a future one.
-- The home card shows the first two upcoming weeks, which is
-  `homeCurriculumHTML`'s existing behaviour for a track with no live weeks. No
-  new code path.
-
-Verified in a headless browser at 1280px and 390px. `index.html`'s
-"69 lessons live" badge is still correct — Track 4 adds no published article.

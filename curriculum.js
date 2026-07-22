@@ -109,18 +109,17 @@ function renderArticleSidebar(currentWeek) { return sidebarHTML(CURRICULUM, curr
 function renderTrack2Sidebar(currentWeek)  { return sidebarHTML(TRACK2, currentWeek); }
 function renderTrack3Sidebar(currentWeek)  { return sidebarHTML(TRACK3, currentWeek); }
 
-function learnCurriculumHTML(track) {
-  // Tek gövde, dört ince sarmalayıcı. Eskiden her track için neredeyse aynı
-  // fonksiyonun bir kopyası vardı; Track 1'inki data-gated satırı da
-  // basıyordu, diğer ikisi basmıyordu — yani kopyalar zaten ayrışmıştı.
+// Full curriculum for learn.html (with phase dividers + progress)
+function renderLearnCurriculum() {
+  const w = CURRICULUM;
   let rows = "";
-  track.weeks.forEach((week, idx) => {
+  w.weeks.forEach((week, idx) => {
     if (week.phase) {
       // compute the week range covered by this phase
       let end = week.n;
-      for (let j = idx + 1; j < track.weeks.length; j++) {
-        if (track.weeks[j].phase) break;
-        end = track.weeks[j].n;
+      for (let j = idx + 1; j < w.weeks.length; j++) {
+        if (w.weeks[j].phase) break;
+        end = w.weeks[j].n;
       }
       const range = week.n === end ? `Week ${week.n}` : `Weeks ${week.n}\u2013${end}`;
       rows += `
@@ -131,7 +130,7 @@ function learnCurriculumHTML(track) {
     }
     const isLive = week.status === "live";
     if (isLive || week.page) {
-      const isLatest = week === track.latestLiveWeek;
+      const isLatest = week === w.latestLiveWeek;
       const dateOrNew = isLatest
         ? '<span class="week-new" translate="no">New</span>'
         : (week.date ? `<span class="week-date">${week.date}</span>` : '');
@@ -155,18 +154,14 @@ function learnCurriculumHTML(track) {
   return rows;
 }
 
-function progressFor(track) {
+// Progress bar values for learn.html
+function renderLearnProgress() {
+  const w = CURRICULUM;
   return {
-    text: `${track.liveCount} of ${track.totalWeeks} published`,
-    percent: track.progressPercent
+    text: `${w.liveCount} of ${w.totalWeeks} published`,
+    percent: w.progressPercent
   };
 }
-
-// Full curriculum for learn.html (with phase dividers + progress)
-function renderLearnCurriculum() { return learnCurriculumHTML(CURRICULUM); }
-
-// Progress bar values for learn.html
-function renderLearnProgress()  { return progressFor(CURRICULUM); }
 
 // Home page compact list (hero panel: latest 3 live)
 function renderHomeLatest() {
@@ -174,7 +169,7 @@ function renderHomeLatest() {
   // Önceden yalnızca Track 1'e bakıyordu; üç track de bitince ana sayfa
   // on ay bayat içeriğe "New" rozeti takıyordu.
   const all = [];
-  [[CURRICULUM, "SCHEDULE"], [TRACK2, "COST & CASH"], [TRACK3, "RISK"], [TRACK4, "CONTRACT"]].forEach(function (pair) {
+  [[CURRICULUM, "SCHEDULE"], [TRACK2, "COST & CASH"], [TRACK3, "RISK"]].forEach(function (pair) {
     pair[0].weeks.filter(function (x) { return x.status === "live" && x.page; })
       .forEach(function (w) { all.push({ w: w, track: pair[1], t: Date.parse(w.date || "") || 0 }); });
   });
@@ -273,11 +268,6 @@ function renderHomeTrack3()     { return homeCurriculumHTML(TRACK3); }
 // Module badge text for home
 function badgeText(track) {
     if (!track) return '';
-    // Henüz tek makalesi yayınlanmamış track. Eskiden "Week 0 of 20" yazıyordu,
-    // ki bu hem yanlış hem de sıfırıncı bir hafta varmış gibi duruyordu.
-    if (track.liveCount === 0) {
-        return '<i class="bx bx-edit-alt"></i> In writing &#183; ' + track.totalWeeks + ' weeks planned';
-    }
     if (track.liveCount >= track.totalWeeks) {
         return '<span class="dot-green"></span> Complete &#183; ' + track.totalWeeks + ' weeks';
     }
@@ -355,10 +345,55 @@ const TRACK2 = {
 // Renderer: Track 2 curriculum for learn.html
 // NOTE: must use the SAME classes as renderLearnCurriculum above,
 // or the rows render as unstyled plain text.
-function renderTrack2Curriculum() { return learnCurriculumHTML(TRACK2); }
+function renderTrack2Curriculum() {
+  const t = TRACK2;
+  let rows = "";
+  t.weeks.forEach((week, idx) => {
+    if (week.phase) {
+      let end = week.n;
+      for (let j = idx + 1; j < t.weeks.length; j++) {
+        if (t.weeks[j].phase) break;
+        end = t.weeks[j].n;
+      }
+      const range = week.n === end ? `Week ${week.n}` : `Weeks ${week.n}\u2013${end}`;
+      rows += `
+        <div class="phase-divider">
+          <span class="phase-label" translate="no">${week.phase.toUpperCase()}</span>
+          <span class="phase-weeks-tag">${range}</span>
+        </div>`;
+    }
+    if (week.status === "live" && week.page) {
+      const isLatest = week === t.latestLiveWeek;
+      const dateOrNew = isLatest
+        ? '<span class="week-new" translate="no">New</span>'
+        : (week.date ? `<span class="week-date">${week.date}</span>` : '');
+      rows += `
+        <a href="${week.page}" class="week-item">
+          <span class="week-num">Week ${week.n}</span>
+          <span class="week-title">${week.title}</span>
+          ${dateOrNew}
+          <i class='bx bx-right-arrow-alt week-arrow'></i>
+        </a>`;
+    } else {
+      rows += `
+        <div class="week-item upcoming">
+          <span class="week-num">Week ${week.n}</span>
+          <span class="week-title">${week.title}</span>
+          <span class="week-upcoming-label">Coming soon</span>
+        </div>`;
+    }
+  });
+  return rows;
+}
 
 // Progress bar values for the Track 2 card on learn.html
-function renderTrack2Progress() { return progressFor(TRACK2); }
+function renderTrack2Progress() {
+  const t = TRACK2;
+  return {
+    text: `${t.liveCount} of ${t.totalWeeks} published`,
+    percent: t.progressPercent
+  };
+}
 
 // Renderer: Track 2 post list for the home page module card.
 // Mirrors renderHomeCurriculum so the rows pick up the same styling.
@@ -424,13 +459,160 @@ const TRACK3 = {
   getWeek(n) { return this.weeks.find(w => w.n === n); }
 };
 
+
+// ============================================================
+//  TRACK 4 — CONTRACT MANAGEMENT
+//  Split out of the old "Claims & Delay Analysis" on 2026-07-20:
+//  Risk Week 18 sets up contract administration, not forensic delay.
+//  Track 4 preserves an entitlement; Track 5 values one.
+// ============================================================
+const TRACK4 = {
+    title: "Contract Management",
+    totalWeeks: 20,
+    weeks: [
+        // ---- PHASE A — THE CONTRACT AS A SYSTEM ----
+        { phase: "Phase A — The Contract as a System", n: 1, title: "Contract management fundamentals — the notice behind the entitlement", short: "The notice behind the entitlement", status: "live", page: "contract-week-1.html", date: "Oct 20, 2027" },
+        { n: 2, title: "Reading a contract — structure, priority of documents and definitions", short: "Reading a contract", status: "live", page: "contract-week-2.html", date: "Oct 27, 2027" },
+        { n: 3, title: "The Engineer — authority, impartiality and determination", short: "The Engineer", status: "live", page: "contract-week-3.html", date: "Nov 3, 2027" },
+        { n: 4, title: "Contract types — lump sum, remeasurement, cost-plus and target cost", short: "Contract types", status: "live", page: "contract-week-4.html", date: "Nov 10, 2027" },
+
+        // ---- PHASE B — OBLIGATIONS & INSTRUCTIONS ----
+        { phase: "Phase B — Obligations & Instructions", n: 5, title: "Employer and contractor obligations — what each side actually promised", short: "What each side promised", status: "live", page: "contract-week-5.html", date: "Nov 17, 2027" },
+        { n: 6, title: "Instructions — and the ones that are not instructions", short: "Instructions", status: "live", page: "contract-week-6.html", date: "Nov 24, 2027" },
+        { n: 7, title: "Variations — the right to be paid for a change", short: "Variations", status: "live", page: "contract-week-7.html", date: "Dec 1, 2027" },
+        { n: 8, title: "Building entitlement — before a claim exists", short: "Building entitlement", status: "live", page: "contract-week-8.html", date: "Dec 8, 2027" },
+
+        // ---- PHASE C — TIME ----
+        { phase: "Phase C — Time", n: 9, title: "Extension of time — the contractual mechanism", short: "Extension of time", status: "live", page: "contract-week-9.html", date: "Dec 15, 2027" },
+        { n: 10, title: "Notices and time bars — periods, forms and recipients", short: "Notices and time bars", status: "upcoming" },
+        { n: 11, title: "Programme obligations — the contract's view of your schedule", short: "Programme obligations", status: "upcoming" },
+
+        // ---- PHASE D — MONEY ----
+        { phase: "Phase D — Money", n: 12, title: "Payment mechanisms — application, certificate and the money", short: "Payment mechanisms", status: "upcoming" },
+        { n: 13, title: "When the contract says it isn't a variation", short: "When it isn't a variation", status: "upcoming" },
+        { n: 14, title: "Currency, escalation and price adjustment", short: "Currency and escalation", status: "upcoming" },
+        { n: 15, title: "Retention, bonds, guarantees and insurance", short: "Retention and securities", status: "upcoming" },
+
+        // ---- PHASE E — RISK, DISPUTES & OTHER REGIMES ----
+        { phase: "Phase E — Risk, Disputes & Other Regimes", n: 16, title: "Risk allocation across the three books — Red, Yellow and Silver", short: "Across the three books", status: "upcoming" },
+        { n: 17, title: "Suspension and termination — the contractual exits", short: "Suspension and termination", status: "upcoming" },
+        { n: 18, title: "Dispute avoidance — the DAAB and the notice of dissatisfaction", short: "Dispute avoidance", status: "upcoming" },
+        { n: 19, title: "NEC4 — early warning, compensation events and proactive contract management", short: "NEC4", status: "upcoming" },
+        { n: 20, title: "The contract administrator's year — a calendar of obligations", short: "A calendar of obligations", status: "upcoming" }
+    ],
+    get liveCount() { return this.weeks.filter(w => w.status === "live").length; },
+    get progressPercent() { return Math.round((this.liveCount / this.totalWeeks) * 100); },
+    get latestLiveWeek() {
+        const live = this.weeks.filter(w => w.status === "live");
+        return live.length ? live[live.length - 1] : null;
+    },
+    get phaseCount() { return this.weeks.filter(w => w.phase).length; },
+    getWeek(n) { return this.weeks.find(w => w.n === n); }
+};
+
+
+// Learn-page curriculum rows. Same classes as renderLearnCurriculum, otherwise
+// the rows render as unstyled text. Shared so a new track needs a wrapper, not a copy.
+function learnCurriculumHTML(t) {
+  let rows = "";
+  t.weeks.forEach((week, idx) => {
+    if (week.phase) {
+      let end = week.n;
+      for (let j = idx + 1; j < t.weeks.length; j++) {
+        if (t.weeks[j].phase) break;
+        end = t.weeks[j].n;
+      }
+      const range = week.n === end ? `Week ${week.n}` : `Weeks ${week.n}\u2013${end}`;
+      rows += `
+        <div class="phase-divider">
+          <span class="phase-label" translate="no">${week.phase.toUpperCase()}</span>
+          <span class="phase-weeks-tag">${range}</span>
+        </div>`;
+    }
+    if (week.status === "live" && week.page) {
+      const isLatest = week === t.latestLiveWeek;
+      const dateOrNew = isLatest
+        ? '<span class="week-new" translate="no">New</span>'
+        : (week.date ? `<span class="week-date">${week.date}</span>` : '');
+      rows += `
+        <a href="${week.page}" class="week-item">
+          <span class="week-num">Week ${week.n}</span>
+          <span class="week-title">${week.title}</span>
+          ${dateOrNew}
+          <i class='bx bx-right-arrow-alt week-arrow'></i>
+        </a>`;
+    } else {
+      rows += `
+        <div class="week-item upcoming">
+          <span class="week-num">Week ${week.n}</span>
+          <span class="week-title">${week.title}</span>
+          <span class="week-upcoming-label">Coming soon</span>
+        </div>`;
+    }
+  });
+  return rows;
+}
+
+function renderTrack4Curriculum() { return learnCurriculumHTML(TRACK4); }
+
+function renderTrack4Sidebar(currentWeek) { return sidebarHTML(TRACK4, currentWeek); }
+function renderHomeTrack4()               { return homeCurriculumHTML(TRACK4); }
+function renderTrack4Progress() {
+    return { text: `${TRACK4.liveCount} of ${TRACK4.totalWeeks} published`, percent: TRACK4.progressPercent };
+}
+
 // Renderer: Track 3 curriculum for learn.html
 // NOTE: must use the SAME classes as renderLearnCurriculum above,
 // or the rows render as unstyled plain text.
-function renderTrack3Curriculum() { return learnCurriculumHTML(TRACK3); }
+function renderTrack3Curriculum() {
+  const t = TRACK3;
+  let rows = "";
+  t.weeks.forEach((week, idx) => {
+    if (week.phase) {
+      let end = week.n;
+      for (let j = idx + 1; j < t.weeks.length; j++) {
+        if (t.weeks[j].phase) break;
+        end = t.weeks[j].n;
+      }
+      const range = week.n === end ? `Week ${week.n}` : `Weeks ${week.n}\u2013${end}`;
+      rows += `
+        <div class="phase-divider">
+          <span class="phase-label" translate="no">${week.phase.toUpperCase()}</span>
+          <span class="phase-weeks-tag">${range}</span>
+        </div>`;
+    }
+    if (week.status === "live" && week.page) {
+      const isLatest = week === t.latestLiveWeek;
+      const dateOrNew = isLatest
+        ? '<span class="week-new" translate="no">New</span>'
+        : (week.date ? `<span class="week-date">${week.date}</span>` : '');
+      rows += `
+        <a href="${week.page}" class="week-item">
+          <span class="week-num">Week ${week.n}</span>
+          <span class="week-title">${week.title}</span>
+          ${dateOrNew}
+          <i class='bx bx-right-arrow-alt week-arrow'></i>
+        </a>`;
+    } else {
+      rows += `
+        <div class="week-item upcoming">
+          <span class="week-num">Week ${week.n}</span>
+          <span class="week-title">${week.title}</span>
+          <span class="week-upcoming-label">Coming soon</span>
+        </div>`;
+    }
+  });
+  return rows;
+}
 
 // Progress bar values for the Track 3 card on learn.html
-function renderTrack3Progress() { return progressFor(TRACK3); }
+function renderTrack3Progress() {
+  const t = TRACK3;
+  return {
+    text: `${t.liveCount} of ${t.totalWeeks} published`,
+    percent: t.progressPercent
+  };
+}
 
 // Sidebar for Track 3 article pages. Mirrors renderTrack2Sidebar.
 
@@ -440,79 +622,6 @@ function renderTrack3Progress() { return progressFor(TRACK3); }
 function renderHomeTrack3Badge() {
   return badgeText(TRACK3);
 }
-
-
-// ============================================================
-// TRACK 4 — CONTRACT MANAGEMENT
-// ------------------------------------------------------------
-// Picks up the promise Risk Week 18 makes by name: the rock is
-// worth $48,450 and the contract may well say it is the
-// employer's, but whether the money is still reachable depends
-// on a letter, a date and a set of records.
-//
-// Boundary with Track 5: this track is about PRESERVING a
-// right. Track 5 is about VALUING one. If a week argues about
-// how much, it belongs in 5.
-//
-// Every week is "upcoming" until its page exists. Publishing
-// one means: build contract-week-N.html, set status "live" and
-// add `page`, then bump curriculum.js?v= across every page.
-// ============================================================
-
-const TRACK4 = {
-  title: "Contract Management",
-  totalWeeks: 20,
-
-  weeks: [
-    // ---- PHASE A — THE CONTRACT AS AN INSTRUMENT ----
-    { phase: "Phase A — The Contract as an Instrument", n: 1, title: "Contract management fundamentals — the notice behind the entitlement", short: "The notice behind the entitlement", status: "upcoming", date: "Oct 20, 2027" },
-    { n: 2, title: "The documents you actually signed — precedence and particular conditions", short: "The documents you actually signed", status: "upcoming", date: "Oct 27, 2027" },
-    { n: 3, title: "The Engineer — delegation, agreement and determination", short: "Delegation, agreement, determination", status: "upcoming", date: "Nov 3, 2027" },
-    { n: 4, title: "Contract types — lump sum, remeasure, cost-plus and target cost", short: "Lump sum, remeasure, cost-plus, target", status: "upcoming", date: "Nov 10, 2027" },
-
-    // ---- PHASE B — NOTICES & THE ENTITLEMENT MACHINERY ----
-    { phase: "Phase B — Notices & the Entitlement Machinery", n: 5, title: "The 28-day gate — notice periods and the time bar", short: "The 28-day gate", status: "upcoming", date: "Nov 17, 2027" },
-    { n: 6, title: "Anatomy of a notice — form, recipient, content, proof of delivery", short: "Anatomy of a notice", status: "upcoming", date: "Nov 24, 2027" },
-    { n: 7, title: "Contemporary records — what survives scrutiny", short: "Records that survive scrutiny", status: "upcoming", date: "Dec 1, 2027" },
-    { n: 8, title: "The fully detailed claim and the Engineer's determination", short: "Detailed claim & determination", status: "upcoming", date: "Dec 8, 2027" },
-    { n: 9, title: "What the 2017 editions changed — dual time bars, advance warning, the DAAB", short: "What the 2017 editions changed", status: "upcoming", date: "Dec 15, 2027" },
-
-    // ---- PHASE C — VARIATIONS & INSTRUCTIONS ----
-    { phase: "Phase C — Variations & Instructions", n: 10, title: "What is a variation — and what is merely your own risk", short: "What is a variation", status: "upcoming", date: "Dec 22, 2027" },
-    { n: 11, title: "Instructions — verbal, constructive, and the ones nobody priced", short: "Instructions nobody priced", status: "upcoming", date: "Dec 29, 2027" },
-    { n: 12, title: "Valuing a variation — rates, the adjustment threshold, daywork", short: "Valuing a variation", status: "upcoming", date: "Jan 5, 2028" },
-    { n: 13, title: "The quarry haul road — when the contract decides it is not a risk", short: "The quarry haul road", status: "upcoming", date: "Jan 12, 2028" },
-
-    // ---- PHASE D — THE PAYMENT MACHINERY ----
-    { phase: "Phase D — The Payment Machinery", n: 14, title: "Statements, certificates and the payment clock", short: "Statements, certificates, the clock", status: "upcoming", date: "Jan 19, 2028" },
-    { n: 15, title: "Retention, advance payment and the cash consequences", short: "Retention & advance payment", status: "upcoming", date: "Jan 26, 2028" },
-    { n: 16, title: "Currencies of payment — the exposure nobody prices", short: "Currencies of payment", status: "upcoming", date: "Feb 2, 2028" },
-    { n: 17, title: "Non-payment — suspension, reduced rate of progress, termination", short: "Suspension & termination", status: "upcoming", date: "Feb 9, 2028" },
-
-    // ---- PHASE E — OBLIGATIONS, CONTRAST & HANDOVER ----
-    { phase: "Phase E — Obligations, Contrast & Handover", n: 18, title: "Obligations as a matched pair — access, information, care of the works", short: "Obligations as a matched pair", status: "upcoming", date: "Feb 16, 2028" },
-    { n: 19, title: "NEC4 as the contrast — early warning and the compensation event clock", short: "NEC4 — the compensation event clock", status: "upcoming", date: "Feb 23, 2028" },
-    { n: 20, title: "The contract-literate planner — a register with a clause and a date", short: "The contract-literate planner", status: "upcoming", date: "Mar 1, 2028" },
-  ],
-
-  get liveCount() { return this.weeks.filter(w => w.status === "live").length; },
-  get progressPercent() { return Math.round((this.liveCount / this.totalWeeks) * 100); },
-  get latestLiveWeek() {
-    const live = this.weeks.filter(w => w.status === "live");
-    return live.length ? live[live.length - 1] : null;
-  },
-  get phaseCount() { return this.weeks.filter(w => w.phase).length; },
-  getWeek(n) { return this.weeks.find(w => w.n === n); }
-};
-
-// Thin wrappers only — the three render families are shared helpers.
-// Do not copy a renderer here; it was duplicated once and the same bug
-// appeared in all three copies.
-function renderTrack4Sidebar(currentWeek)  { return sidebarHTML(TRACK4, currentWeek); }
-function renderTrack4Curriculum()          { return learnCurriculumHTML(TRACK4); }
-function renderTrack4Progress()            { return progressFor(TRACK4); }
-function renderHomeTrack4()                { return homeCurriculumHTML(TRACK4); }
-function renderHomeTrack4Badge()           { return badgeText(TRACK4); }
 
 
 /* Yan panel artık tüm track'i gösteriyor (27/24/18 satır). Okur 13. haftadaysa

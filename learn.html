@@ -27,7 +27,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=16">
+    <link rel="stylesheet" href="style.css?v=28">
     <style>
         .learn-page {
             background: var(--bg-light);
@@ -437,6 +437,35 @@
             .track-jump-link { font-size: 12px; padding: 6px 12px; }
         }
 
+
+        /* Track outcomes. Second person on purpose — the same register the
+           Practical insight section uses in all 69 articles. */
+        .track-outcomes {
+            margin: 18px 0 0; padding: 16px 18px;
+            background: rgba(16,185,129,0.04);
+            border: 1px solid rgba(16,185,129,0.18);
+            border-radius: 12px;
+        }
+        .track-outcomes h3 {
+            font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+            text-transform: uppercase; color: #059669; margin: 0 0 10px;
+        }
+        .track-outcomes ul { list-style: none; margin: 0; padding: 0;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 7px 20px; }
+        .track-outcomes li {
+            position: relative; padding-left: 22px;
+            font-size: 13.5px; line-height: 1.45; color: #334155;
+        }
+        .track-outcomes li::before {
+            content: "\2714"; position: absolute; left: 0; top: 0;
+            color: #10b981; font-size: 12px;
+        }
+        @media (max-width: 768px) {
+            .track-outcomes { padding: 14px 16px; }
+            .track-outcomes ul { grid-template-columns: 1fr; gap: 8px; }
+            .track-outcomes li { font-size: 13px; }
+        }
+
         .roadmap-section { margin-top: 52px; }
         .roadmap-intro { margin-bottom: 20px; }
         .roadmap-intro .track-badge.roadmap {
@@ -770,7 +799,7 @@
                 <p>A structured series built for engineers who want to understand project controls the way it actually works on site. Theory first, then the tools that bring it to life.</p>
                 <div class="learn-header-meta">
                     <span class="learn-meta-item"><i class='bx bx-layer'></i> 6 tracks + a toolbox</span>
-                    <span class="learn-meta-item"><i class='bx bx-time-five'></i> Tracks 1, 2 &amp; 3 complete &#183; 69 weeks</span>
+                    <span class="learn-meta-item"><i class='bx bx-time-five'></i> Tracks 1&#8211;3 complete &#183; Track 4 live &#183; 70 lessons</span>
                     <span class="learn-meta-item"><i class='bx bx-calendar'></i> New lesson every week</span>
                     <span class="learn-meta-item"><i class='bx bx-lock-open'></i> Fundamentals always free</span>
                 </div>
@@ -781,7 +810,7 @@
                     <a href="#track-1" class="track-jump-link" data-jump="track-1">Schedule <span>27</span></a>
                     <a href="#track-2" class="track-jump-link" data-jump="track-2">Cost &amp; Cash <span>24</span></a>
                     <a href="#track-3" class="track-jump-link" data-jump="track-3">Risk <span>18</span></a>
-                    <a href="#track-4" class="track-jump-link" data-jump="track-4">Contract <span>20</span></a>
+                    <a href="#track-4" class="track-jump-link" data-jump="track-4">Contract <span>1/20</span></a>
                     <a href="#roadmap" class="track-jump-link" data-jump="roadmap">Roadmap</a>
                     <a href="#toolbox" class="track-jump-link" data-jump="toolbox">Toolbox</a>
                 </nav>
@@ -797,6 +826,17 @@
                     <h2>Schedule Management</h2>
                     <p class="track-sub">The logic. Why projects succeed — and why they fail.</p>
                     <p class="track-desc">A complete 27-week curriculum on how project controls actually works on site — from why projects fail, through the critical path, earned value and forecasting, to forensic analysis and the people who have to act on your numbers. This is the foundation everything else stands on, and it stays free.</p>
+                        <div class="track-outcomes">
+                            <h3>After this track you can</h3>
+                            <ul>
+                            <li>Build a schedule from logic, and defend that logic when somebody questions it</li>
+                            <li>Tell a schedule that has been updated from one that is true</li>
+                            <li>Read SPI and CPI together, and know what each of them hides on its own</li>
+                            <li>Forecast a completion date you can defend in front of a board</li>
+                            <li>Recognise the month a project first told you it was in trouble</li>
+                            <li>Report one model at six altitudes without producing two versions of the truth</li>
+                            </ul>
+                        </div>
                 </div>
 
                 <!-- MODULE 01: SCHEDULE — ACTIVE -->
@@ -826,11 +866,11 @@
 
                     <div class="module-progress">
                         <div class="progress-label">
-                            <span id="progressText">3 of 27 published</span>
-                            <span id="progressPct">11%</span>
+                            <span id="progressText">27 of 27 published</span>
+                            <span id="progressPct">100%</span>
                         </div>
                         <div class="progress-bar">
-                            <div class="progress-fill" id="progressFill" style="width:11%;"></div>
+                            <div class="progress-fill" id="progressFill" style="width: 100%"></div>
                         </div>
                     </div>
                 </div>
@@ -843,6 +883,17 @@
                     <h2>Cost &amp; Cash</h2>
                     <p class="track-sub">The money. Where the numbers come from — and how companies go broke while profitable.</p>
                     <p class="track-desc">Track 1 taught you to read a project. This one teaches you to read its money. Where a unit rate actually comes from, why the BoQ and the schedule never quite line up, how physical percent is really measured — and the half nobody teaches a planner: <strong>cash</strong>. A contractor doesn&#39;t fail because of a bad CPI. It fails because it ran out of money while turning a profit.</p>
+                        <div class="track-outcomes">
+                            <h3>After this track you can</h3>
+                            <ul>
+                            <li>Trace a number from the estimate through the budget to the invoice without losing it</li>
+                            <li>Say what &#8220;actual cost&#8221; means on your job, and why it is the hardest number to get</li>
+                            <li>Keep contingency, management reserve and the performance measurement baseline apart</li>
+                            <li>Check the measure when the person measuring is the person being paid</li>
+                            <li>Read a cash curve and see the month the job runs out of money</li>
+                            <li>Explain why a profitable job can still go bust</li>
+                            </ul>
+                        </div>
                     <div class="track-note">
                         <i class='bx bx-lock-open-alt'></i>
                         <p><strong>Track 1 ends with two things that need correcting.</strong> In <a href="week-18.html">Schedule Week 18</a> we said actual cost was simple &#8212; just ask accounts. It isn&#39;t, and one day that costs somebody a great deal of money. And <a href="week-20.html">Schedule Week 20</a> forecast the overrun by dividing a million dollars by the cost efficiency &#8212; right method, wrong number, because that million is a selling price with overhead, profit and reserve inside it. Track 2 opens by going back for the first, and takes the second apart in Weeks 5 and 6.</p>
@@ -891,6 +942,17 @@
                     <h2>Risk</h2>
                     <p class="track-sub">The future. What has not happened yet &#8212; and who pays for it when it does.</p>
                     <p class="track-desc">Track 1 taught you to read a project&#39;s time. Track 2 taught you to read its money. Both of them measure something that has already happened. This one is about the only part of project controls that moves before the number does: where the risks on a job actually come from, what a probability is worth when somebody just felt it, how much confidence you are really buying with a contingency &#8212; and the question nobody in a PMI textbook asks, which is whose money pays when the risk arrives.</p>
+                        <div class="track-outcomes">
+                            <h3>After this track you can</h3>
+                            <ul>
+                            <li>Find risks in the project&#39;s own documents instead of in a workshop&#39;s memory</li>
+                            <li>Write a risk as a sentence, not a noun</li>
+                            <li>Say what a probability is worth when somebody simply felt it</li>
+                            <li>Choose a distribution and explain why that shape and not another</li>
+                            <li>Price a response, and recognise the ones worth less than the risk they treat</li>
+                            <li>Say whose money pays when a risk arrives, and find that answer in the contract</li>
+                            </ul>
+                        </div>
                     <div class="track-note">
                         <i class='bx bx-lock-open-alt'></i>
                         <p><strong>Cost &amp; Cash Week 5 showed you a risk register with five lines on it.</strong> It sized the contingency at $47,553 and admitted, in one sentence, that the odds of that money being enough were 49.5% &#8212; a coin flip. Nobody ever asked where those five lines came from. Track 3 opens there, and comes back to that number in <a href="risk-week-12.html">Risk Week 12</a>.</p>
@@ -923,68 +985,77 @@
                     <div class="module-weeks" id="track3Weeks"></div>
                     <div class="module-progress">
                         <div class="progress-label">
-                            <span id="t3ProgressText">0 of 18 published</span>
-                            <span id="t3ProgressPct">0%</span>
+                            <span id="t3ProgressText">18 of 18 published</span>
+                            <span id="t3ProgressPct">100%</span>
                         </div>
                         <div class="progress-bar">
-                            <div class="progress-fill" id="t3ProgressFill" style="width:0%;"></div>
+                            <div class="progress-fill" id="t3ProgressFill" style="width: 100%"></div>
                         </div>
                     </div>
                 </div>
 
-
-                <!-- ===== TRACK 4 &#8212; CONTRACT MANAGEMENT ===== -->
-                <div class="track-header" id="track-4">
-                    <div class="track-badge free"><i class='bx bx-file-find'></i> TRACK 4 &#183; FREE &#183; STARTS OCT 2027</div>
-                    <h2>Contract Management</h2>
-                    <p class="track-sub">The right you still have &#8212; and the letter that decides whether you kept it.</p>
-                    <p class="track-desc">Track 3 finished by putting clause numbers against five of the risks on this job and then admitting that a clause number is not the same thing as money. Every one of those clauses has a notice attached to it: a period, a form, a recipient, and a consequence for missing it that is harsher in the 2017 editions than most people on site realise. This track is about the machinery &#8212; notices and the periods that kill them, records that survive somebody else&#39;s scrutiny, variations and the instructions nobody priced, the payment clock, and the contract types that quietly change what cost control even means.</p>
-                    <div class="track-note">
-                        <i class='bx bx-lock-open-alt'></i>
-                        <p><strong>The rock is worth $48,450 and the contract may well say it is the employer&#39;s.</strong> <a href="risk-week-15.html">Risk Week 15</a> found the mechanism and <a href="risk-week-18.html">Risk Week 18</a> left the question open on purpose: whether you ever see that money depends on a letter, a date, and a set of records that either exist or do not. Track 4 starts exactly there.</p>
+<!-- ===== TRACK 4 — CONTRACT MANAGEMENT ===== -->
+                    <div class="track-header" id="track-4">
+                        <div class="track-badge free"><i class='bx bx-file'></i> TRACK 4 &#183; FREE &#183; IN PROGRESS</div>
+                        <h2>Contract Management</h2>
+                        <p class="track-sub">The machinery. Whether the money is still yours by the time you ask for it.</p>
+                        <p class="track-desc">Track 3 ended holding a priced risk and a clause number, and one uncomfortable sentence: an entitlement is not the same thing as an entitlement you can still use. This track is the machinery in between &#8212; notices and the periods that kill them, the records that make a right provable rather than arguable, instructions, variations, payment, and what changes when the contract is cost-plus or target cost instead of lump sum. Being right is not the job. Staying entitled is.</p>
+                        <div class="track-outcomes">
+                            <h3>After this track you can</h3>
+                            <ul>
+                            <li>Read a contract and find the clause that governs the situation in front of you</li>
+                            <li>Serve a notice within its period, in its form, to the right recipient</li>
+                            <li>Tell an instruction from a variation, and a variation from a claim</li>
+                            <li>Keep the records that make an entitlement provable rather than arguable</li>
+                            <li>Follow the payment machinery from application to certificate to money</li>
+                            <li>Say what changes when the contract is cost-plus or target cost instead of lump sum</li>
+                            </ul>
+                        </div>
+                        <div class="track-note">
+                            <i class='bx bx-lock-open-alt'></i>
+                            <p><strong>Risk Week 15 found five of your thirteen risks had a contractual mechanism behind them.</strong> It put clause numbers against each one, then noted that a clause is only worth the notice you served under it. The rock is worth $48,450 against a net margin of $48,163 &#8212; Track 4 opens on the letter nobody wrote, in <a href="contract-week-1.html">Contract Week 1</a>.</p>
+                        </div>
                     </div>
-                </div>
-
-                <!-- MODULE 04: CONTRACT MANAGEMENT -->
-                <div class="module-card">
-                    <div class="module-card-header">
-                        <div class="module-card-left">
-                            <span class="module-num">04</span>
-                            <div class="module-info">
-                                <h2>Contract Management</h2>
-                                <p>Preserving an entitlement rather than valuing one &#8212; built on the three FIDIC 2017 forms, the NEC4 contrast, and what contract administration actually looks like from the contractor&#39;s side of the table.</p>
+                    <!-- MODULE 04: CONTRACT MANAGEMENT -->
+                    <div class="module-card">
+                        <div class="module-card-header">
+                            <div class="module-card-left">
+                                <span class="module-num">04</span>
+                                <div class="module-info">
+                                    <h2>Contract Management</h2>
+                                    <p>Notices, records and entitlement &#8212; built on the FIDIC 2017 conditions and the contract administration that decides whether a right survives contact with a programme.</p>
+                                </div>
+                            </div>
+                            <span class="module-badge badge-active" id="t4ModuleBadge"><span class="dot-green"></span> In Progress</span>
+                        </div>
+                        <div class="module-tools">
+                            <span class="tool-tag-label">Topics:</span>
+                            <span class="tool-tag">Notices</span>
+                            <span class="tool-tag">Time Bars</span>
+                            <span class="tool-tag">Entitlement</span>
+                            <span class="tool-tag">Variations</span>
+                            <span class="tool-tag">Payment</span>
+                            <span class="tool-tag">FIDIC</span>
+                            <span class="tool-tag">Contract Types</span>
+                            <span class="tool-tag">NEC4</span>
+                        </div>
+                        <div class="module-weeks" id="track4Weeks"></div>
+                        <div class="module-progress">
+                            <div class="progress-label">
+                                <span id="t4ProgressText">1 of 20 published</span>
+                                <span id="t4ProgressPct">5%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="t4ProgressFill" style="width: 5%"></div>
                             </div>
                         </div>
-                        <span class="module-badge badge-locked" id="t4ModuleBadge"><i class='bx bx-edit-alt'></i> In writing &#183; 20 weeks planned</span>
                     </div>
-                    <div class="module-tools">
-                        <span class="tool-tag-label">Topics:</span>
-                        <span class="tool-tag">Notices</span>
-                        <span class="tool-tag">Time Bars</span>
-                        <span class="tool-tag">Records</span>
-                        <span class="tool-tag">Variations</span>
-                        <span class="tool-tag">Payment</span>
-                        <span class="tool-tag">Currency</span>
-                        <span class="tool-tag">FIDIC 2017</span>
-                        <span class="tool-tag">NEC4</span>
-                    </div>
-                    <div class="module-weeks" id="track4Weeks"></div>
-                    <div class="module-progress">
-                        <div class="progress-label">
-                            <span id="t4ProgressText">0 of 20 published</span>
-                            <span id="t4ProgressPct">0%</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" id="t4ProgressFill" style="width:0%;"></div>
-                        </div>
-                    </div>
-                </div>
 
-<div class="roadmap-section" id="roadmap">
+                    <div class="roadmap-section" id="roadmap">
                     <div class="roadmap-intro">
                         <div class="track-badge roadmap"><i class='bx bx-map-alt'></i> THE ROADMAP</div>
                         <h2>Tracks 5 and 6</h2>
-                        <p>Track 4 decides whether you still have a right when something goes wrong. Claims decide what that right is worth, and leadership decides whether any of it reaches the people who can act. These two come after it.</p>
+                        <p>Risk explains why projects go wrong before they do. The contract decides whether you still have a right when one of them does, claims decide what that right is worth, and leadership decides whether any of it reaches the people who can act. These are the tracks that follow.</p>
                     </div>
 
                     <!-- TRACK 5: CLAIMS -->
@@ -1225,7 +1296,7 @@
 
 
     <!-- Curriculum data + renderers -->
-    <script src="curriculum.js?v=67"></script>
+    <script src="curriculum.js?v=77"></script>
     <script>
         (function() {
             if (typeof CURRICULUM === 'undefined') return;
@@ -1264,7 +1335,6 @@
                 }
             }
 
-            // Track 4 — Contract Management
             const t4El = document.getElementById('track4Weeks');
             if (t4El && typeof renderTrack4Curriculum === 'function') {
                 t4El.innerHTML = renderTrack4Curriculum();
@@ -1295,12 +1365,6 @@
             if (b2 && typeof TRACK2 !== 'undefined' && typeof badgeText === 'function') b2.innerHTML = badgeText(TRACK2);
             const b3 = document.getElementById('t3ModuleBadge');
             if (b3 && typeof TRACK3 !== 'undefined' && typeof badgeText === 'function') b3.innerHTML = badgeText(TRACK3);
-            const b4 = document.getElementById('t4ModuleBadge');
-            if (b4 && typeof TRACK4 !== 'undefined' && typeof badgeText === 'function') {
-                b4.innerHTML = badgeText(TRACK4);
-                // ilk hafta yayına girdiği an rozet kendiliğinden yeşile döner
-                b4.className = 'module-badge ' + (TRACK4.liveCount ? 'badge-active' : 'badge-locked');
-            }
 
             // Re-bind gated links
             document.querySelectorAll('.week-item[data-gated]').forEach(link => {
