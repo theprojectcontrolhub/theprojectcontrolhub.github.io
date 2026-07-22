@@ -484,8 +484,8 @@ const TRACK4 = {
 
         // ---- PHASE C — TIME ----
         { phase: "Phase C — Time", n: 9, title: "Extension of time — the contractual mechanism", short: "Extension of time", status: "live", page: "contract-week-9.html", date: "Dec 15, 2027" },
-        { n: 10, title: "Notices and time bars — periods, forms and recipients", short: "Notices and time bars", status: "upcoming" },
-        { n: 11, title: "Programme obligations — the contract's view of your schedule", short: "Programme obligations", status: "upcoming" },
+        { n: 10, title: "Notices and time bars — periods, forms and recipients", short: "Notices and time bars", status: "live", page: "contract-week-10.html", date: "Dec 22, 2027" },
+        { n: 11, title: "Programme obligations — the contract's view of your schedule", short: "Programme obligations", status: "live", page: "contract-week-11.html", date: "Dec 29, 2027" },
 
         // ---- PHASE D — MONEY ----
         { phase: "Phase D — Money", n: 12, title: "Payment mechanisms — application, certificate and the money", short: "Payment mechanisms", status: "upcoming" },
