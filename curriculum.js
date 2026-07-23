@@ -488,14 +488,14 @@ const TRACK4 = {
         { n: 11, title: "Programme obligations — the contract's view of your schedule", short: "Programme obligations", status: "live", page: "contract-week-11.html", date: "Dec 29, 2027" },
 
         // ---- PHASE D — MONEY ----
-        { phase: "Phase D — Money", n: 12, title: "Payment mechanisms — application, certificate and the money", short: "Payment mechanisms", status: "upcoming" },
-        { n: 13, title: "When the contract says it isn't a variation", short: "When it isn't a variation", status: "upcoming" },
-        { n: 14, title: "Currency, escalation and price adjustment", short: "Currency and escalation", status: "upcoming" },
-        { n: 15, title: "Retention, bonds, guarantees and insurance", short: "Retention and securities", status: "upcoming" },
+        { phase: "Phase D — Money", n: 12, title: "Payment mechanisms — application, certificate and the money", short: "Payment mechanisms", status: "live", page: "contract-week-12.html", date: "Jan 5, 2028" },
+        { n: 13, title: "When the contract says it isn't a variation", short: "When it isn't a variation", status: "live", page: "contract-week-13.html", date: "Jan 12, 2028" },
+        { n: 14, title: "Currency, escalation and price adjustment", short: "Currency and escalation", status: "live", page: "contract-week-14.html", date: "Jan 19, 2028" },
+        { n: 15, title: "Retention, bonds, guarantees and insurance", short: "Retention and securities", status: "live", page: "contract-week-15.html", date: "Jan 26, 2028" },
 
         // ---- PHASE E — RISK, DISPUTES & OTHER REGIMES ----
-        { phase: "Phase E — Risk, Disputes & Other Regimes", n: 16, title: "Risk allocation across the three books — Red, Yellow and Silver", short: "Across the three books", status: "upcoming" },
-        { n: 17, title: "Suspension and termination — the contractual exits", short: "Suspension and termination", status: "upcoming" },
+        { phase: "Phase E — Risk, Disputes & Other Regimes", n: 16, title: "Risk allocation across the three books — Red, Yellow and Silver", short: "Across the three books", status: "live", page: "contract-week-16.html", date: "Feb 2, 2028" },
+        { n: 17, title: "Suspension and termination — the contractual exits", short: "Suspension and termination", status: "live", page: "contract-week-17.html", date: "Feb 9, 2028" },
         { n: 18, title: "Dispute avoidance — the DAAB and the notice of dissatisfaction", short: "Dispute avoidance", status: "upcoming" },
         { n: 19, title: "NEC4 — early warning, compensation events and proactive contract management", short: "NEC4", status: "upcoming" },
         { n: 20, title: "The contract administrator's year — a calendar of obligations", short: "A calendar of obligations", status: "upcoming" }
