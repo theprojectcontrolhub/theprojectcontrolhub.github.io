@@ -496,8 +496,8 @@ const TRACK4 = {
         // ---- PHASE E — RISK, DISPUTES & OTHER REGIMES ----
         { phase: "Phase E — Risk, Disputes & Other Regimes", n: 16, title: "Risk allocation across the three books — Red, Yellow and Silver", short: "Across the three books", status: "live", page: "contract-week-16.html", date: "Feb 2, 2028" },
         { n: 17, title: "Suspension and termination — the contractual exits", short: "Suspension and termination", status: "live", page: "contract-week-17.html", date: "Feb 9, 2028" },
-        { n: 18, title: "Dispute avoidance — the DAAB and the notice of dissatisfaction", short: "Dispute avoidance", status: "upcoming" },
-        { n: 19, title: "NEC4 — early warning, compensation events and proactive contract management", short: "NEC4", status: "upcoming" },
+        { n: 18, title: "Dispute avoidance — the DAAB and the notice of dissatisfaction", short: "Dispute avoidance", status: "live", page: "contract-week-18.html", date: "Feb 16, 2028" },
+        { n: 19, title: "NEC4 — early warning, compensation events and proactive contract management", short: "NEC4", status: "live", page: "contract-week-19.html", date: "Feb 23, 2028" },
         { n: 20, title: "The contract administrator's year — a calendar of obligations", short: "A calendar of obligations", status: "upcoming" }
     ],
     get liveCount() { return this.weeks.filter(w => w.status === "live").length; },
