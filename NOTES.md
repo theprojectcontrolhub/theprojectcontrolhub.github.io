@@ -99,8 +99,14 @@ example across.
 
 The working test: write the sentence from memory with the source closed.
 
-`check_site.py` scans every article against a 10-gram pool built from all eleven
-PDFs. Current state: **zero** 10-word overlaps. The longest overlaps anywhere are
+`check_site.py` scans every article against a 10-gram pool built from the source
+PDFs. Current state: **zero** 10-word overlaps.
+
+**Run the full scan, not `--quick`, before every zip.** On 2026-07-26 the full run
+found three live 10-word overlaps in `contract-week-9.html` — the opening of 8.5,
+published and unnoticed because only `--quick` had been run since that article went
+up. The six-word term of art was kept and the sentence around it rewritten. A
+quick run is for working; a full run is the gate. The longest overlaps anywhere are
 seven words, and each is either a term of art, a legal definition that cannot be
 paraphrased away (the *Unforeseeable* test in 1.1.85), or ordinary English.
 
@@ -191,7 +197,71 @@ hard-code them again.
 
 ---
 
+## 8. Track 4 audit &mdash; 2026-07-26
+
+The whole track was read back after Week 20. What held:
+
+- All 60 clause references exist, and every cited official heading matches the book
+- Every period checks out against the Red Book &mdash; 3.5, 3.6, 3.7.3, 4.2.1, 4.2.3, 8.3,
+  10.1, 11.9, 12.3, 14.6.1, 14.7, 14.10, 14.11.1, 15.2.2, 16.1, 20.2.1, 20.2.4, 21.1, 21.4.3
+- The countable claims are exact: 88 / 90 / 80 definitions in Red / Yellow / Silver, and
+  *Bill of Quantities* really does appear nowhere in Silver
+- No forward references, no `Clause 60`, and every *What's coming next* matches the
+  article that follows it &mdash; except Week 13, below
+
+What did not, and is now fixed:
+
+| Where | What was wrong |
+|---|---|
+| `contract-week-16` | *"Red mentions the Engineer 544 times and Yellow 548. Silver mentions the word once."* None of the three is reproducible, and the Red/Yellow order inverts on the conditions. In Silver's conditions the word survives only inside the definition of FIDIC and the phrase *Value Engineering* &mdash; never as a role, which is the stronger fact anyway |
+| `contract-week-16` | *"Same five-letter word in the heading."* **Unforeseeable** is thirteen letters, and it is the word that stays while *Physical Conditions* becomes *Difficulties* |
+| `contract-week-13` | The handoff invented a fact &mdash; that the quarry haulage was priced in one currency and the diesel bought in another. Nothing in the article establishes it and Week 14 never picks the thread up. Rewritten to hand over on escalation and currency generally |
+| `contract-week-8` | Carried the identical H2 to Week 1 (*Records made at the time, or not at all*) and restated the same argument. Also called the four components of 20.2.4 "the three components". Rewritten as a re-sort of the four by which can be produced late |
+| `contract-week-4` | h1 read *"the hardest question in this site"* &mdash; on, not in. Fixed in the h1, the H2, the share links and Week 3's next-article card |
+
+**The lesson worth keeping: precise counts are the most dangerous sentence in an
+article.** They read as authority, nobody re-derives them, and three of the five
+findings above were numbers that had never been counted. If a claim is countable,
+count it before publishing or write the qualitative version instead.
+
+### Overlap measured below the gate
+
+The 10-word gate passes with zero, so the track was re-scanned at 8, 7 and 6 words to
+see what it was actually sitting on. At 8 words there were 24 overlaps. Nearly all were
+unavoidable &mdash; defined terms, statutory-style tests (*became aware or should have
+become aware*), enumerated role lists, and ordinary contract English (*stated in the
+Contract Data*). Two were not, and both were rewritten:
+
+- **`contract-week-16`** ran four sentences through Silver's risk provisions in the
+  clause's own order and close to its own wording. Compressed to the effect plus the
+  argument, which was the point of the section anyway
+- **`contract-week-11`** listed 8.3's eleven required contents in the clause's own
+  sequence. Regrouped into three planner-facing buckets &mdash; dates somebody else owes
+  you, how the job goes together, hooks into other people &mdash; which breaks the
+  mirroring and reads better
+
+Result: **8-gram overlap 24 &rarr; 21, and nothing distinctive left in the remainder.**
+Watch for this when rewriting: the first pass at Week 11 introduced a *new* 8-word
+overlap of its own. Re-measure after every fix, not just before.
+
+Reading times were recomputed for all twenty Track 4 pages at the same time. Eleven
+were wrong by a minute, and Weeks 1&ndash;3 &mdash; the three longest in the track &mdash;
+were the ones reading *7 min* while shorter articles read 8.
+
 ## 7. Open items
+
+- **Fixed 2026-07-26 — the Track 4 module badge.** All nineteen published contract
+  pages carried `MODULE 03 · RISK · WEEK 18` in the article eyebrow, inherited from
+  the `risk-week-18` template and never corrected. No JS overwrites it, so that is
+  what readers saw on every page of the track. The `Module 03 complete`
+  next-article label and a dead `data-track="3"` came from the same place. When a
+  new track is templated off the last article of the previous one, **grep the new
+  page for the old track's name before publishing**
+- **Fixed 2026-07-26 — Track 4 badges were hard-coded.** `t4ModuleBadge` in
+  `learn.html` and `homeTrack4Badge` in `index.html` said `In Progress` in the HTML
+  and were never wired to `badgeText()`, so the track would not have flipped to
+  `Complete · 20 weeks` on its own. §6 says not to hard-code them; it happened
+  anyway. Both now read from `curriculum.js` via `renderHomeTrack4Badge()`
 
 - YouTube link is still a `https://youtube.com` placeholder on every page
 - `logo-lockup.png` (471 KB) is shipped but unused
