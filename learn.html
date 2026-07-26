@@ -1296,7 +1296,7 @@
 
 
     <!-- Curriculum data + renderers -->
-    <script src="curriculum.js?v=87"></script>
+    <script src="curriculum.js?v=90"></script>
     <script>
         (function() {
             if (typeof CURRICULUM === 'undefined') return;
@@ -1365,6 +1365,8 @@
             if (b2 && typeof TRACK2 !== 'undefined' && typeof badgeText === 'function') b2.innerHTML = badgeText(TRACK2);
             const b3 = document.getElementById('t3ModuleBadge');
             if (b3 && typeof TRACK3 !== 'undefined' && typeof badgeText === 'function') b3.innerHTML = badgeText(TRACK3);
+            const b4 = document.getElementById('t4ModuleBadge');
+            if (b4 && typeof TRACK4 !== 'undefined' && typeof badgeText === 'function') b4.innerHTML = badgeText(TRACK4);
 
             // Re-bind gated links
             document.querySelectorAll('.week-item[data-gated]').forEach(link => {

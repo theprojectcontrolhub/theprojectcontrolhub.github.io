@@ -498,7 +498,7 @@ const TRACK4 = {
         { n: 17, title: "Suspension and termination — the contractual exits", short: "Suspension and termination", status: "live", page: "contract-week-17.html", date: "Feb 9, 2028" },
         { n: 18, title: "Dispute avoidance — the DAAB and the notice of dissatisfaction", short: "Dispute avoidance", status: "live", page: "contract-week-18.html", date: "Feb 16, 2028" },
         { n: 19, title: "NEC4 — early warning, compensation events and proactive contract management", short: "NEC4", status: "live", page: "contract-week-19.html", date: "Feb 23, 2028" },
-        { n: 20, title: "The contract administrator's year — a calendar of obligations", short: "A calendar of obligations", status: "upcoming" }
+        { n: 20, title: "The contract administrator's year — a calendar of obligations", short: "A calendar of obligations", status: "live", page: "contract-week-20.html", date: "Mar 1, 2028" }
     ],
     get liveCount() { return this.weeks.filter(w => w.status === "live").length; },
     get progressPercent() { return Math.round((this.liveCount / this.totalWeeks) * 100); },
@@ -557,6 +557,10 @@ function renderTrack4Curriculum() { return learnCurriculumHTML(TRACK4); }
 
 function renderTrack4Sidebar(currentWeek) { return sidebarHTML(TRACK4, currentWeek); }
 function renderHomeTrack4()               { return homeCurriculumHTML(TRACK4); }
+function renderHomeTrack4Badge() {
+  return badgeText(TRACK4);
+}
+
 function renderTrack4Progress() {
     return { text: `${TRACK4.liveCount} of ${TRACK4.totalWeeks} published`, percent: TRACK4.progressPercent };
 }

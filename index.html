@@ -990,7 +990,7 @@
 
 
     <!-- Curriculum data + home renderers -->
-    <script src="curriculum.js?v=87"></script>
+    <script src="curriculum.js?v=90"></script>
     <script>
         (function() {
             if (typeof CURRICULUM === 'undefined') return;
@@ -1041,6 +1041,10 @@
             if (t4 && typeof renderHomeTrack4 === 'function') {
                 t4.innerHTML = renderHomeTrack4();
             }
+                const t4Badge = document.getElementById('homeTrack4Badge');
+                if (t4Badge && typeof renderHomeTrack4Badge === 'function') {
+                    t4Badge.innerHTML = renderHomeTrack4Badge();
+                }
 
             // Bind gated links (both hero + curriculum)
             document.querySelectorAll('.module-post-item[data-gated], #homeLatest a').forEach(link => {
