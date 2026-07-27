@@ -1,0 +1,182 @@
+{
+  "_README": "Single source of truth for every recurring number on the site. Each entry names the article that ESTABLISHED it. Never cite a figure from memory or from a conversation summary — check it here, and if it is not here, read the establishing article. Run ../tools/check_site.py after any edit.",
+  "shared_constants": {
+    "_note": "The $1M job. Established across Track 2 and referenced by all three tracks.",
+    "contract_sum": {
+      "value": 1000000,
+      "source": "cost-week-1.html"
+    },
+    "measured_work": {
+      "value": 710000,
+      "source": "cost-week-3.html"
+    },
+    "preliminaries": {
+      "value": 85200,
+      "source": "cost-week-4.html"
+    },
+    "escalation": {
+      "value": 31808,
+      "source": "cost-week-4.html"
+    },
+    "controlled_budget": {
+      "value": 827008,
+      "source": "cost-week-4.html"
+    },
+    "contingency": {
+      "value": 47553,
+      "source": "cost-week-5.html"
+    },
+    "management_reserve": {
+      "value": 50000,
+      "source": "cost-week-5.html"
+    },
+    "pmb": {
+      "value": 874561,
+      "source": "cost-week-5.html"
+    },
+    "ohp": {
+      "value": 124051,
+      "source": "cost-week-6.html"
+    },
+    "estimate_total": {
+      "value": 998612,
+      "source": "cost-week-6.html"
+    },
+    "rounding_gap": {
+      "value": 1388,
+      "source": "cost-week-6.html"
+    },
+    "net_margin": {
+      "value": 48163,
+      "source": "cost-week-22.html"
+    },
+    "month6_overrun": {
+      "value": 61868,
+      "source": "cost-week-6.html"
+    },
+    "cash_trough": {
+      "value": 60462,
+      "source": "cost-week-16.html"
+    },
+    "working_capital": {
+      "value": 130404,
+      "source": "cost-week-17.html"
+    },
+    "contract_duration_months": {
+      "value": 12,
+      "source": "derived — cost-week-17 ($69,000/month) against controlled_budget $827,008; 827008/12 = 68,917"
+    },
+    "preliminaries_monthly": {
+      "value": 7100,
+      "source": "derived — preliminaries $85,200 over the 12-month duration (cost-week-4)"
+    }
+  },
+  "identities": {
+    "_note": "Arithmetic that must always hold. Checked automatically.",
+    "710000+85200+31808": 827008,
+    "827008+47553": 874561,
+    "827008+124051+47553": 998612,
+    "1000000-998612": 1388,
+    "17*2850": 48450,
+    "24000+7200+8500+6900+6600+1840+3510+1890+3440": 63880,
+    "6800+900+200+1400": 9300,
+    "15000+4000+3450+2400": 24850,
+    "63880+24850+11000": 99730,
+    "99730-15000": 84730,
+    "24000+11000+8500+7200+3440": 54140,
+    "6900+6600+3510+3450+2400+1890+1840": 26590,
+    "54140+4000+26590": 84730,
+    "54140-24000-7200": 22940,
+    "48450-24000": 24450,
+    "7100*12": 85200
+  },
+  "risk_register": {
+    "_note": "ESTABLISHED BY risk-week-8.html Figure 2. This is the canon. Fourteen risks, expected values as written in the register.",
+    "_established_in": "risk-week-8.html",
+    "total_14_risks": 99730,
+    "total_13_risks_ex_steel": 84730,
+    "epistemic": {
+      "count": 9,
+      "value": 63880,
+      "cost_to_resolve": 9300
+    },
+    "aleatory": {
+      "count": 4,
+      "value": 24850
+    },
+    "mixed": {
+      "count": 1,
+      "value": 11000,
+      "which": "late detailing"
+    },
+    "boreholes_north": {
+      "count": 2,
+      "cost": 6800
+    },
+    "risks": {
+      "rock_in_pile_bores": 24000,
+      "steel_escalation": 15000,
+      "late_detailing": 11000,
+      "wayleave_unconfirmed": 8500,
+      "groundwater_february": 7200,
+      "supplier_insolvency": 6900,
+      "long_lead_switchgear": 6600,
+      "winter_shutdown": 4000,
+      "waterproofing_interface": 3510,
+      "crane_breakdown": 3450,
+      "temporary_power": 3440,
+      "pump_failure": 2400,
+      "temporary_water": 1890,
+      "discharge_consent": 1840
+    }
+  },
+  "rock_model": {
+    "_note": "Three DIFFERENT quantities. They are not contradictory — check which one a sentence means before quoting it.",
+    "register_as_written": {
+      "value": 24000,
+      "meaning": "40% x $60,000, the figure the register carried",
+      "source": "risk-week-6.html"
+    },
+    "evidence_conditional": {
+      "value": 48450,
+      "meaning": "17 of 42 piles x $2,850, CONDITIONAL on the southern ratio holding north",
+      "source": "risk-week-5.html"
+    },
+    "gap": {
+      "value": 24450,
+      "meaning": "48450 - 24000",
+      "source": "risk-week-5.html"
+    },
+    "unconditional_expected": {
+      "value": 34323,
+      "meaning": "P(north)=0.55 weighted, from the decision tree",
+      "source": "risk-week-13.html"
+    },
+    "bayesian_prior": {
+      "value": 33875,
+      "meaning": "same belief, proportion-based parameterisation",
+      "source": "risk-week-16.html"
+    },
+    "p_extends_north": 0.55,
+    "rate_reactive": 2850,
+    "rate_planned": 1900
+  },
+  "forbidden_values": {
+    "_note": "REGRESSION GUARD. These were published in error on 2026-07-19 and corrected. They came from a faulty conversation summary, not from any article. If any reappears, the canon has been bypassed again.",
+    "116,913": "wrong 14-risk total; correct is 99,730",
+    "101,913": "wrong 13-risk total; correct is 84,730",
+    "67,563": "wrong epistemic total; correct is 63,880",
+    "41,183": "invented rock EMV; correct is 24,000",
+    "71,323": "wrong time+money bucket; correct is 54,140",
+    "48,383": "wrong Silver crossing amount; correct is 31,200",
+    "Seven of the fourteen": "epistemic count is nine, not seven",
+    "three boreholes": "the northern investigation is two boreholes"
+  },
+  "conventions": {
+    "cross_track_reference": "Always name the track in prose AND link it: <a href=\"cost-week-5.html\">Cost &amp; Cash Week 5</a>. A bare 'Week N' always means the current track, because the sidebar already lists those.",
+    "inline_links": "Body prose carries links ONLY for cross-track references. Styled in style.css under .article-body a — inherits text colour, emerald underline.",
+    "copyright": "Free: clause numbers, official clause headings in italics as citation, the effect of a clause in our own words, terminology, attributed findings, our own $1M invention. Forbidden: any quotation from a source, redrawing a source figure, following a source's teaching order, carrying a numeric example across. Test: write the sentence from memory without the source open. Not legal advice.",
+    "contraction_density": "Track 1 ~25/1000 words, Tracks 2 and 3 ~8/1000. Track 1 is deliberately the most conversational.",
+    "article_shape": "h1 (4-9 word editorial hook) -> H2 repeating h1 -> 7-9 H2s -> 3 SVG figures -> Practical insight -> Key takeaways (7 x tick) -> What's coming next. 1,400-1,600 words."
+  }
+}
