@@ -197,6 +197,47 @@ hard-code them again.
 
 ---
 
+## 7. Open items
+
+- **Fixed 2026-07-26 — the Track 4 module badge.** All nineteen published contract
+  pages carried `MODULE 03 · RISK · WEEK 18` in the article eyebrow, inherited from
+  the `risk-week-18` template and never corrected. No JS overwrites it, so that is
+  what readers saw on every page of the track. The `Module 03 complete`
+  next-article label and a dead `data-track="3"` came from the same place. When a
+  new track is templated off the last article of the previous one, **grep the new
+  page for the old track's name before publishing**
+- **Fixed 2026-07-26 — Track 4 badges were hard-coded.** `t4ModuleBadge` in
+  `learn.html` and `homeTrack4Badge` in `index.html` said `In Progress` in the HTML
+  and were never wired to `badgeText()`, so the track would not have flipped to
+  `Complete · 20 weeks` on its own. §6 says not to hard-code them; it happened
+  anyway. Both now read from `curriculum.js` via `renderHomeTrack4Badge()`
+
+- YouTube link is still a `https://youtube.com` placeholder on every page
+- `logo-lockup.png` (471 KB) is shipped but unused
+- Track 1 never defines BAC. The abbreviation appears twice on the whole site
+  (an axis label in Schedule Week 18, and Cost & Cash Week 5 looking back at it);
+  "budget at completion" is spelled out once, in Schedule Week 22, undefined.
+  Schedule Weeks 17-21 teach PV, EV, AC, CPI, SPI and TCPI without it. If Track 1
+  is ever revised, that is the gap to close at the source
+- **Track 4 is Contract Management**, not Claims. Settled 2026-07-20. Risk Week 18
+  closes on notices, periods, forms, recipients and the consequence of missing them
+  &mdash; that is contract administration, and it was being promised under a name
+  (*Claims & Delay Analysis*) that describes forensic delay work. The card even
+  contradicted itself: title *Claims & Delay Analysis*, subtitle *notices, records
+  and entitlement*. Contract Management now takes 4, Claims & Delay Analysis moves
+  to 5, Project Controls Leadership to 6. Nothing was written for any of them, so
+  the change cost nothing &mdash; that window is now closed
+- **There is no Reporting & Analytics track, on purpose.** Schedule Week 26 already
+  is one, and states it better: *one model, six altitudes &mdash; two versions of
+  the truth is a system failure*. A separate reporting track would say the opposite,
+  that reporting is a stage after the controls work. The genuinely missing pieces
+  (portfolio-level data governance, KPI thresholds, management by exception) are two
+  or three weeks inside Track 6, not a track. Dashboard mechanics belong to the toolbox
+- **Track 1 is "Schedule Management" everywhere.** `learn.html` used to call it
+  *Construction Project Controls Fundamentals* in the track header and
+  *Schedule Management* in the module card. "Fundamentals" implies Cost and Risk
+  derive from Track 1; they do not, they are sibling tracks
+
 ## 8. Track 4 audit &mdash; 2026-07-26
 
 The whole track was read back after Week 20. What held:
@@ -248,43 +289,107 @@ Reading times were recomputed for all twenty Track 4 pages at the same time. Ele
 were wrong by a minute, and Weeks 1&ndash;3 &mdash; the three longest in the track &mdash;
 were the ones reading *7 min* while shorter articles read 8.
 
-## 7. Open items
+## 9. What comes next *(judgement — decided 2026-07-26)*
 
-- **Fixed 2026-07-26 — the Track 4 module badge.** All nineteen published contract
-  pages carried `MODULE 03 · RISK · WEEK 18` in the article eyebrow, inherited from
-  the `risk-week-18` template and never corrected. No JS overwrites it, so that is
-  what readers saw on every page of the track. The `Module 03 complete`
-  next-article label and a dead `data-track="3"` came from the same place. When a
-  new track is templated off the last article of the previous one, **grep the new
-  page for the old track's name before publishing**
-- **Fixed 2026-07-26 — Track 4 badges were hard-coded.** `t4ModuleBadge` in
-  `learn.html` and `homeTrack4Badge` in `index.html` said `In Progress` in the HTML
-  and were never wired to `badgeText()`, so the track would not have flipped to
-  `Complete · 20 weeks` on its own. §6 says not to hard-code them; it happened
-  anyway. Both now read from `curriculum.js` via `renderHomeTrack4Badge()`
+### Track 5 — Claims & Delay Analysis
 
-- YouTube link is still a `https://youtube.com` placeholder on every page
-- `logo-lockup.png` (471 KB) is shipped but unused
-- Track 1 never defines BAC. The abbreviation appears twice on the whole site
-  (an axis label in Schedule Week 18, and Cost & Cash Week 5 looking back at it);
-  "budget at completion" is spelled out once, in Schedule Week 22, undefined.
-  Schedule Weeks 17-21 teach PV, EV, AC, CPI, SPI and TCPI without it. If Track 1
-  is ever revised, that is the gap to close at the source
-- **Track 4 is Contract Management**, not Claims. Settled 2026-07-20. Risk Week 18
-  closes on notices, periods, forms, recipients and the consequence of missing them
-  &mdash; that is contract administration, and it was being promised under a name
-  (*Claims & Delay Analysis*) that describes forensic delay work. The card even
-  contradicted itself: title *Claims & Delay Analysis*, subtitle *notices, records
-  and entitlement*. Contract Management now takes 4, Claims & Delay Analysis moves
-  to 5, Project Controls Leadership to 6. Nothing was written for any of them, so
-  the change cost nothing &mdash; that window is now closed
-- **There is no Reporting & Analytics track, on purpose.** Schedule Week 26 already
-  is one, and states it better: *one model, six altitudes &mdash; two versions of
-  the truth is a system failure*. A separate reporting track would say the opposite,
-  that reporting is a stage after the controls work. The genuinely missing pieces
-  (portfolio-level data governance, KPI thresholds, management by exception) are two
-  or three weeks inside Track 6, not a track. Dashboard mechanics belong to the toolbox
-- **Track 1 is "Schedule Management" everywhere.** `learn.html` used to call it
-  *Construction Project Controls Fundamentals* in the track header and
-  *Schedule Management* in the module card. "Fundamentals" implies Cost and Risk
-  derive from Track 1; they do not, they are sibling tracks
+Next, and not negotiable: Contract Week 20 hands over to it **by name, in print**.
+It starts where Track 4 stops — a preserved right, a programme that can be re-run,
+and the question Track 4 deliberately never answers: how much?
+
+Source position, measured 2026-07-27 — **better than an earlier note claimed.**
+`7__Construction_Contract_Claims.pdf` is the primary text (concurrency 101, measured
+mile 38, productivity loss 35, TIA 9, collapsed as-built 8);
+`3__International_Construction_Contract_Law.pdf` carries global claims (35) and float
+(125). The real gap is narrower: the **SCL Delay and Disruption Protocol** and
+**AACE RP 29R-03** are not present as primary documents, only discussed in the books.
+Describe and attribute them from the secondary sources, or obtain them — do not quote
+them or state their guidance as if read first-hand. Full detail in
+`TRACK5-KICKOFF.md` §3.
+
+### Track 6 — the assumptions that stop holding
+
+**This supersedes the earlier one-line plan** (portfolio data governance, KPI
+thresholds, management by exception). Those were three topics, not a track. The
+thesis now:
+
+> Four tracks taught the job as a single contract with a single chain of command.
+> Track 6 is what happens when those assumptions stop holding.
+
+Note the framing that was tried and rejected: **scale.** The $1M job is a unit chosen
+so the arithmetic stays legible, not a claim that the job is small. Nothing in Track 6
+is true only on big projects — an EPCM job of any size still has no head contract.
+Do not build the track on "small job vs mega project"; it is a claim we cannot defend
+and it is not what actually varies.
+
+Contents, in order:
+
+1. **Delivery models — who holds the scope.** The opening, because it is the frame
+   the rest sits in. Sixteen names (DBB, DB, EPC, EPCM, PMC, CM, turnkey, LSTK, BOT,
+   BOOT, BOO, PPP, alliance, IPD, framework, IDIQ) collapse onto three axes: how you
+   are paid (**done** — Contract W4), who carries design (**done** — Contract W16, via
+   Red/Yellow/Silver), and **how many contracts there are** — the one that is missing.
+   The argument: under EPCM there is no head contract. The employer holds every
+   package; the managing firm directs people it has no contract with. That inverts
+   Track 4 — who do you serve the 20.2.1 notice on, and who is the Engineer?
+   BOT/BOOT/BOO/PPP are financing wrappers with an EPC still inside them; IDIQ and
+   framework agreements are procurement vehicles, not delivery models; alliance and
+   IPD change the controls function itself and hook to Contract W19
+2. **Long lead — the critical path runs through a purchase order.** Corrects Track 1,
+   which assumes a programme driven by construction logic. `long lead` appears 0 times
+   on the site
+3. **Interfaces — the work nobody planned is where two programmes meet.** Corrects
+   Risk W3, which already says the register misses "two whole branches". `interface`
+   appears 6 times, all in passing
+4. **The number with more than one owner.** Project Controls builds earned value from
+   progress, Commercial from valuation, and they collide monthly. Also: you own no
+   primary data — every figure in your report was made by someone else, for another
+   purpose, on another cycle, and each source has its own cut-off. Cost W10 already
+   owns the ledger side; do not repeat it
+5. **Document control.** `document control`, `transmittal`, `revision control`,
+   `document register` — all 0 across 89 articles. Connects straight to Contract W1:
+   the whole article was a notice reaching the right address, and this is that problem
+   at organisational scale
+
+Deferred: **systems completion / commissioning.** Real gap (`systems completion` 0),
+but there is no source for mechanical completion, turnover packages or system
+boundaries in the uploads. Wait for a book.
+
+### Closed — do not re-open
+
+- **Coding retrofit** ("a cost code cannot be applied later"). Already covered, and
+  well: Cost W6 gives the rules and says miscoded hours can never be unpicked, Cost W7
+  says cut scope, cost and schedule the same way once at the start, Cost W14 makes
+  single capture the hinge of the track. A new article would weaken three
+- **A reporting track.** `report` 223, `forecast` 113, and Schedule W26 is the
+  reporting article. Reporting is a verb inside every subject, not a subject
+- **A change management track.** `variation` 51, `instruction` 40, `daywork` 20 —
+  spread across Cost W13, Contract W6/W7/W13 and Schedule W21/W23 because that is
+  where it belongs. Pulling it out would strip three articles and produce nothing
+- **A department directory** (27 departments × RACI, reports, logs, KPIs, meetings,
+  software, Excel templates). No case, no source, unmaintainable, and it argues the
+  opposite of what the site argues: that controls is a set of forms rather than a way
+  of thinking from inside the work. Only one article survives from it, and it is
+  item 4 above
+- **A headcount reference model** (e.g. "430 white collar, HSE 40"). Not derivable.
+  The Track 4 audit is the standing lesson here: an exact number nobody can reproduce
+  is the most dangerous sentence in an article
+- **Excel template library / software lists.** A different product. Templates are the
+  digital phase, not the theory phase; software lists go stale in two years
+
+### The test that decided all of the above
+
+> **Does it correct something, or does it collect something?**
+
+Correcting earns a track. Collecting is a reference layer, and §7 already rejected one.
+
+### Open question, deliberately not acted on
+
+The delivery-model frame arrives around week 110. If the goal is that a reader
+understands what project controls does on an EPC or EPCM job, that frame is late —
+for four tracks the reader does not know they are in a single-contract world.
+Restructuring published tracks is off the table (the chain and the handoffs are in
+print). The cheap option, if it is ever wanted, is one orientation piece on
+`learn.html` outside the week sequence — not a track, not a week, nothing that
+promises a next article. Left undecided on purpose: Track 6's opening does the same
+job, just later.

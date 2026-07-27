@@ -271,8 +271,15 @@ function badgeText(track) {
     if (track.liveCount >= track.totalWeeks) {
         return '<span class="dot-green"></span> Complete &#183; ' + track.totalWeeks + ' weeks';
     }
+    if (track.liveCount === 0) {
+        return "<i class='bx bx-time'></i> Starting soon &#183; " + track.totalWeeks + ' weeks';
+    }
     var l = track.latestLiveWeek;
-    return '<span class="dot-green"></span> In Progress &#183; Week ' + (l ? l.n : 0) + ' of ' + track.totalWeeks;
+    return '<span class="dot-green"></span> In Progress &#183; Week ' + l.n + ' of ' + track.totalWeeks;
+}
+
+function badgeClass(track) {
+  return (track && track.liveCount === 0) ? 'badge-locked' : 'badge-active';
 }
 
 function renderHomeBadge() {
@@ -563,6 +570,109 @@ function renderHomeTrack4Badge() {
 
 function renderTrack4Progress() {
     return { text: `${TRACK4.liveCount} of ${TRACK4.totalWeeks} published`, percent: TRACK4.progressPercent };
+}
+
+
+// ===================== TRACK 5 — CLAIMS & DELAY ANALYSIS =====================
+const TRACK5 = {
+    title: "Claims & Delay Analysis",
+    totalWeeks: 27,
+    weeks: [
+
+        // ---- PHASE A — WHAT A CLAIM HAS TO PROVE ----
+        { phase: "Phase A — What a Claim Has to Prove", n: 1,
+          title: "Claims fundamentals — from preserved right to measured quantum",
+          short: "Claims fundamentals", status: "upcoming" },
+        { n: 2, title: "Cause and effect — the chain a claim has to close",
+          short: "Cause and effect", status: "upcoming" },
+        { n: 3, title: "Types of delay — excusable, compensable and the ones that pay nothing",
+          short: "Types of delay", status: "upcoming" },
+        { n: 4, title: "Criticality and float — what every claim actually argues about",
+          short: "Criticality and float", status: "upcoming" },
+
+        // ---- PHASE B — THE EVIDENCE THE ANALYSIS RUNS ON ----
+        { phase: "Phase B — The Evidence the Analysis Runs On", n: 5,
+          title: "The as-planned programme — validating a baseline you did not build",
+          short: "The as-planned programme", status: "upcoming" },
+        { n: 6, title: "The as-built programme — reconstructing what actually happened",
+          short: "The as-built programme", status: "upcoming" },
+        { n: 7, title: "Programme updates — the contemporaneous record and the gaps in it",
+          short: "Programme updates", status: "upcoming" },
+
+        // ---- PHASE C — METHODS, BY THE EVIDENCE THEY NEED ----
+        { phase: "Phase C — Methods, by the Evidence They Need", n: 8,
+          title: "Choosing a method — what the SCL and AACE taxonomies are for",
+          short: "Choosing a method", status: "upcoming" },
+        { n: 9, title: "Impacted as-planned — delay modelled into a plan that never happened",
+          short: "Impacted as-planned", status: "upcoming" },
+        { n: 10, title: "Time impact analysis — fragnets, updates and prospective assessment",
+          short: "Time impact analysis", status: "upcoming" },
+        { n: 11, title: "Windows analysis — contemporaneous periods and time slices",
+          short: "Windows analysis", status: "upcoming" },
+        { n: 12, title: "As-planned versus as-built — the comparison and its limits",
+          short: "As-planned versus as-built", status: "upcoming" },
+        { n: 13, title: "Collapsed as-built — subtraction, and the judgement hidden in it",
+          short: "Collapsed as-built", status: "upcoming" },
+        { n: 14, title: "Why two analysts disagree — method choice as the real dispute",
+          short: "Why two analysts disagree", status: "upcoming" },
+
+        // ---- PHASE D — THE HARD ARGUMENTS ----
+        { phase: "Phase D — The Hard Arguments", n: 15,
+          title: "Concurrency — two causes, one delay, and no agreed definition",
+          short: "Concurrency", status: "upcoming" },
+        { n: 16, title: "Pacing — the delay that answers another delay",
+          short: "Pacing", status: "upcoming" },
+        { n: 17, title: "Acceleration and mitigation — directed, constructive and unpaid",
+          short: "Acceleration and mitigation", status: "upcoming" },
+
+        // ---- PHASE E — DISRUPTION ----
+        { phase: "Phase E — Disruption", n: 18,
+          title: "Disruption — the loss that never touches the critical path",
+          short: "Disruption", status: "upcoming" },
+        { n: 19, title: "The measured mile — comparing the job to itself",
+          short: "The measured mile", status: "upcoming" },
+        { n: 20, title: "Productivity loss — the methods used when no clean mile exists",
+          short: "Productivity loss", status: "upcoming" },
+        { n: 21, title: "Global and total cost claims — why they fail",
+          short: "Global and total cost claims", status: "upcoming" },
+
+        // ---- PHASE F — QUANTUM ----
+        { phase: "Phase F — Quantum", n: 22,
+          title: "Prolongation — the cost of time on site",
+          short: "Prolongation", status: "upcoming" },
+        { n: 23, title: "Head office overhead and finance — the formulae and their weaknesses",
+          short: "Head office and finance", status: "upcoming" },
+        { n: 24, title: "Pricing and substantiation — from cost records to a number",
+          short: "Pricing and substantiation", status: "upcoming" },
+
+        // ---- PHASE G — PRESENTING THE CLAIM ----
+        { phase: "Phase G — Presenting the Claim", n: 25,
+          title: "Assembling a claim — contents, executive summary and appendices",
+          short: "Assembling a claim", status: "upcoming" },
+        { n: 26, title: "Defending a claim — reading one from the other side",
+          short: "Defending a claim", status: "upcoming" },
+        { n: 27, title: "What five tracks were for — the claim that never happened",
+          short: "What five tracks were for", status: "upcoming" }
+    ],
+    get liveCount() { return this.weeks.filter(w => w.status === "live").length; },
+    get progressPercent() { return Math.round((this.liveCount / this.totalWeeks) * 100); },
+    get latestLiveWeek() {
+        const live = this.weeks.filter(w => w.status === "live");
+        return live.length ? live[live.length - 1] : null;
+    },
+    get phaseCount() { return this.weeks.filter(w => w.phase).length; },
+    getWeek(n) { return this.weeks.find(w => w.n === n); }
+};
+
+function renderTrack5Curriculum() { return learnCurriculumHTML(TRACK5); }
+function renderTrack5Sidebar(currentWeek) { return sidebarHTML(TRACK5, currentWeek); }
+function renderHomeTrack5()               { return homeCurriculumHTML(TRACK5); }
+function renderHomeTrack5Badge() {
+  return badgeText(TRACK5);
+}
+
+function renderTrack5Progress() {
+    return { text: `${TRACK5.liveCount} of ${TRACK5.totalWeeks} published`, percent: TRACK5.progressPercent };
 }
 
 // Renderer: Track 3 curriculum for learn.html
