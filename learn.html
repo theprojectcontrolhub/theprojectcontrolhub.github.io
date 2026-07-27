@@ -1051,21 +1051,68 @@
                         </div>
                     </div>
 
+<!-- ===== TRACK 5 — CLAIMS &amp; DELAY ANALYSIS ===== -->
+                    <div class="track-header" id="track-5">
+                        <div class="track-badge free"><i class='bx bx-file-find'></i> TRACK 5 &#183; FREE &#183; STARTING SOON</div>
+                        <h2>Claims &amp; Delay Analysis</h2>
+                        <p class="track-sub">The number. What the right you kept is actually worth.</p>
+                        <p class="track-desc">Track 4 ended holding a preserved right, a programme that can be re-run, and the question it deliberately never answered: how much? This track is the answer &#8212; forensic delay methods and why two competent analysts reach different numbers, float and concurrency, disruption and the measured mile, and the quantum that turns an entitlement into an invoice. The method you can use is decided by the records you kept, not by the one you prefer.</p>
+                        <div class="track-outcomes">
+                            <h3>After this track you can</h3>
+                            <ul>
+                            <li>Choose a delay methodology from the records you actually have, and say why the other four would answer differently</li>
+                            <li>Reconstruct an as-built programme and defend it as a finding rather than a record</li>
+                            <li>Argue criticality, float and concurrency without conceding any of them by accident</li>
+                            <li>Prove disruption from a measured mile, and know how much weaker every alternative is</li>
+                            <li>Price prolongation, head office overhead and finance from the contract rather than from a formula you like</li>
+                            <li>Read a claim the way the reviewer will, and fix what they would have found</li>
+                            </ul>
+                        </div>
+                        <div class="track-note">
+                            <i class='bx bx-lock-open-alt'></i>
+                            <p><strong>The rock is worth $48,450 and the net margin on the job is $48,163.</strong> Four tracks have circled that pair without closing it &#8212; <a href="risk-week-5.html">Risk Week 5</a> priced the rock, <a href="contract-week-13.html">Contract Week 13</a> asked whether the contract even calls it a variation. Track 5 opens with the notice served on time, and the argument moved to what it is worth.</p>
+                        </div>
+                    </div>
+                    <!-- MODULE 05: CLAIMS &amp; DELAY ANALYSIS -->
+                    <div class="module-card">
+                        <div class="module-card-header">
+                            <div class="module-card-left">
+                                <span class="module-num">05</span>
+                                <div class="module-info">
+                                    <h2>Claims &amp; Delay Analysis</h2>
+                                    <p>Forensic delay analysis, disruption and quantum &#8212; the methods that turn a preserved entitlement into a number, and the reasons two analysts using two accepted methods disagree.</p>
+                                </div>
+                            </div>
+                            <span class="module-badge badge-locked" id="t5ModuleBadge"><i class='bx bx-time'></i> Starting soon</span>
+                        </div>
+                        <div class="module-tools">
+                            <span class="tool-tag-label">Topics:</span>
+                            <span class="tool-tag">Delay Analysis</span>
+                            <span class="tool-tag">Concurrency</span>
+                            <span class="tool-tag">Float</span>
+                            <span class="tool-tag">Windows</span>
+                            <span class="tool-tag">Disruption</span>
+                            <span class="tool-tag">Measured Mile</span>
+                            <span class="tool-tag">Prolongation</span>
+                            <span class="tool-tag">Quantum</span>
+                        </div>
+                        <div class="module-weeks" id="track5Weeks"></div>
+                        <div class="module-progress">
+                            <div class="progress-label">
+                                <span id="t5ProgressText">0 of 27 published</span>
+                                <span id="t5ProgressPct">0%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="t5ProgressFill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="roadmap-section" id="roadmap">
                     <div class="roadmap-intro">
                         <div class="track-badge roadmap"><i class='bx bx-map-alt'></i> THE ROADMAP</div>
-                        <h2>Tracks 5 and 6</h2>
-                        <p>Risk explains why projects go wrong before they do. The contract decides whether you still have a right when one of them does, claims decide what that right is worth, and leadership decides whether any of it reaches the people who can act. These are the tracks that follow.</p>
-                    </div>
-
-                    <!-- TRACK 5: CLAIMS -->
-                    <div class="roadmap-card">
-                        <span class="roadmap-marker"><i class='bx bx-file-find'></i></span>
-                        <div class="roadmap-body">
-                            <h3>Track 5 &#183; Claims &amp; Delay Analysis</h3>
-                            <p>When things go wrong, who pays? Forensic delay analysis, extension of time, concurrency, disruption and productivity loss &#8212; turning a preserved entitlement into a number somebody actually pays.</p>
-                        </div>
-                        <span class="roadmap-badge"><i class='bx bx-time'></i> On the roadmap</span>
+                        <h2>Track 6</h2>
+                        <p>Risk explains why projects go wrong before they do. The contract decides whether you still have a right when one of them does, and Track 5 decides what that right is worth. One track follows.</p>
                     </div>
 
                     <!-- TRACK 6: LEADERSHIP -->
@@ -1296,7 +1343,7 @@
 
 
     <!-- Curriculum data + renderers -->
-    <script src="curriculum.js?v=90"></script>
+    <script src="curriculum.js?v=91"></script>
     <script>
         (function() {
             if (typeof CURRICULUM === 'undefined') return;
@@ -1367,6 +1414,27 @@
             if (b3 && typeof TRACK3 !== 'undefined' && typeof badgeText === 'function') b3.innerHTML = badgeText(TRACK3);
             const b4 = document.getElementById('t4ModuleBadge');
             if (b4 && typeof TRACK4 !== 'undefined' && typeof badgeText === 'function') b4.innerHTML = badgeText(TRACK4);
+
+            const t5El = document.getElementById('track5Weeks');
+            if (t5El && typeof renderTrack5Curriculum === 'function') {
+                t5El.innerHTML = renderTrack5Curriculum();
+                if (typeof renderTrack5Progress === 'function') {
+                    const p5 = renderTrack5Progress();
+                    const t5t = document.getElementById('t5ProgressText');
+                    const t5p = document.getElementById('t5ProgressPct');
+                    const t5f = document.getElementById('t5ProgressFill');
+                    if (t5t) t5t.textContent = p5.text;
+                    if (t5p) t5p.textContent = p5.percent + '%';
+                    if (t5f) t5f.style.width = p5.percent + '%';
+                }
+            }
+            const b5 = document.getElementById('t5ModuleBadge');
+            if (b5 && typeof renderHomeTrack5Badge === 'function') {
+                b5.innerHTML = renderHomeTrack5Badge();
+                if (typeof badgeClass === 'function' && typeof TRACK5 !== 'undefined') {
+                    b5.className = 'module-badge ' + badgeClass(TRACK5);
+                }
+            }
 
             // Re-bind gated links
             document.querySelectorAll('.week-item[data-gated]').forEach(link => {
