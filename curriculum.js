@@ -663,11 +663,14 @@ const TRACK5 = {
         // ---- PHASE F — QUANTUM ----
         { phase: "Phase F — Quantum", n: 23,
           title: "Prolongation — the cost of time on site",
-          short: "Prolongation", status: "upcoming" },
+          short: "Prolongation", status: "live", page: "claim-week-23.html",
+          date: "Aug 9, 2028" },
         { n: 24, title: "Head office overhead and finance — the formulae and their weaknesses",
-          short: "Head office and finance", status: "upcoming" },
+          short: "Head office and finance", status: "live", page: "claim-week-24.html",
+          date: "Aug 16, 2028" },
         { n: 25, title: "Pricing and substantiation — from cost records to a number",
-          short: "Pricing and substantiation", status: "upcoming" },
+          short: "Pricing and substantiation", status: "live", page: "claim-week-25.html",
+          date: "Aug 23, 2028" },
 
         // ---- PHASE G — PRESENTING THE CLAIM ----
         { phase: "Phase G — Presenting the Claim", n: 26,
