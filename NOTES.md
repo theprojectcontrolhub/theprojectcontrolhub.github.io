@@ -4,11 +4,17 @@ Conventions that are easy to lose between sessions. Everything here is enforced
 by `tools/check_site.py` unless marked *(judgement)*.
 
 ```bash
-python3 tools/check_site.py            # full, includes copyright n-gram scan
-python3 tools/check_site.py --quick    # skip copyright (much faster)
+SOURCE_DIR=<extracted sources> python3 tools/check_site.py    # full, incl. copyright scan
+python3 tools/check_site.py --quick                           # skip copyright (much faster)
 ```
 
 Run it after any content change. It exits non-zero on failure.
+
+`SOURCE_DIR` was added 2026-07-27. `uploads/` is read-only, so sources arriving in an
+archive cannot be put there; point `SOURCE_DIR` at wherever they were extracted. The
+scan now reads `.pdf`, `.pptx` and `.docx`, and **fails loudly when it finds no sources
+at all** — it used to return "kaynak PDF yok, atlandı" and let the run exit 0, which is
+a green light with the gate switched off.
 
 ---
 
@@ -82,12 +88,31 @@ The checker compares every bare forward reference against the same-numbered
 article in all three tracks and warns if another track fits the surrounding
 sentence noticeably better.
 
+**Never number a forward reference inside your own track.** Backward references are
+numbered and linked; forward ones are named. Write *"the concurrency week later in this
+track"*, not *"Week 16"*. Two reasons, and the second is the one that bites. The page
+does not exist yet, so the checker warns on every build. And week numbers move: inserting
+the site-record week at position 6 shifted twenty-two weeks by one, and a published
+article saying "Week 16" would have quietly become wrong with nobody touching it. This
+was violated three times during Track 5 and caught three times by the checker; the build
+scripts now assert against it before writing.
+
 ---
 
 ## 3. Copyright *(partly judgement)*
 
-Sources live in `/mnt/user-data/uploads/` — three FIDIC 2017 books, PMI risk
-standards, PMBOK 8, Cooper, and four academic texts.
+Sources: three FIDIC 2017 books (Red, Yellow, Silver — full conditions, not
+commentaries), Keane & Caletka *Delay Analysis in Construction Contracts* 2e, two NEC
+books, *Construction Contract Claims*, *International Construction Contract Law*, PMI
+risk standards, PMBOK 8, Cooper, four academic texts — plus, from 2026-07-27, a third
+party's 59-deck training course and four course-transcript `.docx` files.
+
+**The course material is reference-only and the highest overlap risk on the site.**
+Verbatim spoken English, plain phrasing, and squarely on Track 5's subject. It is in
+the n-gram pool for exactly that reason. Its lesson ordering is not to be followed —
+its Lessons 29–36 run the delay methods in almost the sequence Track 5 proposed
+independently, which is convergence on the field's standard taxonomy, not borrowing,
+but it means the sequence now has to be defensible on its own terms.
 
 **Free to use:** clause numbers; official clause headings in italics as a citation
 (*Unforeseeable Physical Conditions*); the effect of a clause in our own words;
@@ -99,8 +124,9 @@ example across.
 
 The working test: write the sentence from memory with the source closed.
 
-`check_site.py` scans every article against a 10-gram pool built from the source
-PDFs. Current state: **zero** 10-word overlaps.
+`check_site.py` scans every article against a 10-gram pool built from the sources.
+Current state: **114 sources, 1.78M 10-grams, zero 10-word overlaps across 117 articles.**
+Twelve sources are skipped for having no text layer (scanned PDFs); the run warns.
 
 **Run the full scan, not `--quick`, before every zip.** On 2026-07-26 the full run
 found three live 10-word overlaps in `contract-week-9.html` — the opening of 8.5,
@@ -109,6 +135,26 @@ up. The six-word term of art was kept and the sentence around it rewritten. A
 quick run is for working; a full run is the gate. The longest overlaps anywhere are
 seven words, and each is either a term of art, a legal definition that cannot be
 paraphrased away (the *Unforeseeable* test in 1.1.85), or ordinary English.
+
+**Track 5 record: the gate fired seven times, all before publication.** Every one was
+the same mistake — a definition or a stated principle written straight from the source
+because it was already phrased as well as it could be. The list is worth keeping,
+because it is a list of the sentences most likely to be copied without noticing:
+
+| Week | What was reproduced |
+|---|---|
+| 3 | the *Unforeseeable* definition, and three Silver clause headings run consecutively |
+| 8 | the trigger condition for a revised programme in 8.3 |
+| 11 | the Protocol's core principle about assessing close to the event |
+| 12 | a phrase about the critical path moving month to month |
+| 18 | the sentence on not being required to spend money mitigating |
+| 19 | the definition of disruption |
+| 22 | the opening of the five-part total cost burden |
+| 25 | the claim certification wording |
+
+The pattern: **the better a source phrases something, the more likely it is to survive
+into your draft unaltered.** Definitions, tests and stated principles are the danger.
+Narrative and argument almost never overlap, because those get rebuilt anyway.
 
 Nothing here is legal advice. If a real question arises, ask a lawyer.
 
@@ -193,7 +239,28 @@ than you would expect, and a second run should be a no-op rather than an error.
 
 Module badges are driven by `badgeText()` in `curriculum.js` and flip to
 "Complete · N weeks" on their own once `liveCount` reaches `totalWeeks`. Do not
-hard-code them again.
+hard-code them again. `badgeText()` also handles `liveCount === 0` ("Starting soon ·
+N weeks"), and `badgeClass()` returns the matching `badge-locked` / `badge-active`.
+
+**Three traps in step 5, all found the hard way on Track 5:**
+
+- If the build script's `write()` normalises `?v=\d+` before comparing — which it must,
+  or a rebuilt page looks changed every run — then that same function will silently
+  refuse to write the cache bump. Bump the version with a direct write, not through it.
+  This shipped twice before anyone noticed the version had been stuck for two articles
+- Run the build twice. The second run must report `0 dosya`. A build script that is not
+  idempotent will drift the cache version on every invocation
+- Verify the bump landed: `grep -o "curriculum.js?v=[0-9]*" index.html`. The console
+  message is not evidence
+
+**Never put a numbered forward reference in body prose.** *"the subject of Week 16"* is
+wrong even when 16 is currently correct — inserting a week renumbers everything after it
+and the sentence becomes quietly false. Name the topic instead: *"the concurrency week
+later in this track"*. This happened three times in Track 5 before it stuck, and once
+after a week genuinely was inserted at position 6. Backward references are fine: those
+weeks are published and their numbers are fixed. The build scripts now check for it, and
+the check must ignore qualified cross-track references (*Contract Week 20* is legitimate;
+a bare *Week 20* is not).
 
 ---
 
@@ -212,6 +279,44 @@ hard-code them again.
   `Complete · 20 weeks` on its own. §6 says not to hard-code them; it happened
   anyway. Both now read from `curriculum.js` via `renderHomeTrack4Badge()`
 
+- **Fixed 2026-07-27 — the copyright gate passed with the gate switched off.** With no
+  PDFs in `uploads/`, `check_copyright()` returned "kaynak PDF yok, atlandı" and the run
+  exited 0. A full run on a session with no sources printed **GEÇTİ** with the one check
+  that matters never having executed. It now calls `bad()` and fails. Same failure shape
+  as `contract-week-9` one level up: the protection looked green because it never ran
+- **Fixed 2026-07-27 — the cache bump was writing nothing.** See §6. Two articles shipped
+  against a stale `curriculum.js?v=`, which would have served readers the previous
+  curriculum
+- **Fixed 2026-07-27 — `check_site.py` did not know about Track 5.** `QUAL` in the xref
+  check listed Schedule/Cost/Risk but not Contract or Claims, and `own_pre` had no
+  `claim-` branch, so every cross-reference on a Claims page was being resolved against
+  the Schedule track. The Contract omission had been there since Track 4 and was
+  invisible until a fifth track started citing the fourth
+- **Fixed 2026-07-27 — `check_voice` warned about tracks with no articles.** A track at
+  0/N produced two warnings on every run. Warnings that are always present are warnings
+  nobody reads
+
+- **Fixed 2026-07-27 — the track header badges were stale on two tracks.** `learn.html`
+  read `TRACK 4 · FREE · IN PROGRESS` on a 20/20 track and `TRACK 5 · FREE · STARTING SOON`
+  on a 28/28 one. Same failure as the module badge above and found the same way, one level
+  further up the page: a status written into HTML that no JS ever touched. Both now derive
+  their state from `curriculum.js`. **Any string on the site that states a track's status
+  must be computed, not typed** — this is now the third variant of this bug
+
+- **Fixed 2026-07-27 — re-running a build script broke the article chain.** Each
+  `build_claim_weekN.py` rebuilds its page from the previous week's, and the template's
+  `next-article` card points at `learn.html`. Running week N again therefore *reverted*
+  the forward link that week N+1's script had written. Running the whole set in sequence
+  produced a cascade: every script rewrote a page, every rewrite triggered a cache bump,
+  and the version ran from v122 to v179 in one loop while weeks 1, 2, 4, 14 and 15 were
+  left pointing at `learn.html`. **The checker caught it — the chain check is the only
+  thing that would have.** Every script now carries over the existing card when the page
+  already links forward, keyed on the href rather than on the label text. Verified by
+  running all twenty-eight twice: no writes, no bumps, chain intact.
+  Two lessons: a generator that reads its own previous output needs to be idempotent
+  against *its own side effects*, not just its inputs; and a cheap check that runs on
+  every build is worth more than a careful process that runs once
+
 - YouTube link is still a `https://youtube.com` placeholder on every page
 - `logo-lockup.png` (471 KB) is shipped but unused
 - Track 1 never defines BAC. The abbreviation appears twice on the whole site
@@ -219,6 +324,11 @@ hard-code them again.
   "budget at completion" is spelled out once, in Schedule Week 22, undefined.
   Schedule Weeks 17-21 teach PV, EV, AC, CPI, SPI and TCPI without it. If Track 1
   is ever revised, that is the gap to close at the source
+- **Track 6 card said the wrong thing until 2026-07-27.** `learn.html` and `index.html`
+  both still described Track 6 as *Project Controls Leadership — governance, KPIs, PMO
+  structures, portfolio dashboards*, the plan §9 explicitly superseded on 2026-07-26.
+  When a roadmap decision is taken in NOTES, grep the site for the old wording the same
+  day
 - **Track 4 is Contract Management**, not Claims. Settled 2026-07-20. Risk Week 18
   closes on notices, periods, forms, recipients and the consequence of missing them
   &mdash; that is contract administration, and it was being promised under a name
@@ -289,32 +399,97 @@ Reading times were recomputed for all twenty Track 4 pages at the same time. Ele
 were wrong by a minute, and Weeks 1&ndash;3 &mdash; the three longest in the track &mdash;
 were the ones reading *7 min* while shorter articles read 8.
 
-## 9. What comes next *(judgement — decided 2026-07-26)*
+## 8b. Track 5 notes &mdash; 2026-07-27
 
-### Track 5 — Claims & Delay Analysis
+Twenty-eight weeks, written in one run. What is worth carrying forward:
 
-Next, and not negotiable: Contract Week 20 hands over to it **by name, in print**.
-It starts where Track 4 stops — a preserved right, a programme that can be re-run,
-and the question Track 4 deliberately never answers: how much?
+**The curriculum grew by a week, from a reader.** The proposed 27 had no article whose
+subject was the site record. A comment argued that daily reports, allocation sheets,
+diaries, RFIs and the rest are the fuel of a claim &mdash; and a count settled it: nine of
+the seventeen record types named appeared **zero times across the 90 articles then published**. The week went
+in at position 6, before the as-built, because an as-built is built from those records.
+The comment was right; the list in it was not the article. Organised around
+*primary / derived / reconstructed* instead, which is an argument rather than an
+enumeration.
 
-Source position, measured 2026-07-27 — **better than an earlier note claimed.**
-`7__Construction_Contract_Claims.pdf` is the primary text (concurrency 101, measured
-mile 38, productivity loss 35, TIA 9, collapsed as-built 8);
-`3__International_Construction_Contract_Law.pdf` carries global claims (35) and float
-(125). The real gap is narrower: the **SCL Delay and Disruption Protocol** and
-**AACE RP 29R-03** are not present as primary documents, only discussed in the books.
-Describe and attribute them from the secondary sources, or obtain them — do not quote
-them or state their guidance as if read first-hand. Full detail in
-`TRACK5-KICKOFF.md` §3.
+**Articles kept coming in short.** Most weeks needed expanding after the first build,
+typically landing near 1,250 against a 1,370 floor. The cause is consistent:
+three SVG figures absorb the budget that prose was going to use. Either write to ~1,550
+expecting to lose some, or accept that a figure-heavy article needs a section more than
+it feels like it does. Every expansion improved the article, which suggests the floor is
+doing real work rather than padding.
 
-### Track 6 — the assumptions that stop holding
+**The copyright gate fired on eight of the twenty-eight weeks, and always on the same
+kind of sentence.** Not narrative, not analysis &mdash; *definitions and statements of
+principle*. `Unforeseeable` in Week 3, the revised-programme trigger in Week 8, the
+Protocol's core principle in Week 11, the mitigation duty in Week 18, the disruption
+definition in Week 19, the certification wording in Week 25. These are the hardest
+sentences to paraphrase precisely because they are already minimal: a drafter has spent
+years removing every word that could come out. Reaching for the source's phrasing is not
+laziness there, it is the path of least resistance, and it is exactly where the gate
+earns its keep. **Assume any sentence that defines a term will need rewriting from
+scratch, and write it that way the first time.** One further wrinkle: three consecutive
+clause *headings* quoted in order also tripped it. A list of titles is reproduction too.
+
+**Two structural conventions that earned their place:**
+
+- **Order the methods by the evidence they require, not by name.** Impacted as-planned
+  needs almost nothing; collapsed as-built needs an as-built and nothing else. Running the
+  phase that way makes the track's thesis &mdash; *your records chose your method* &mdash;
+  visible in the sequence rather than asserted in a sentence. It is also demonstrably not
+  the ordering used by either the primary text or the course material
+- **Phase B before Phase C.** Evidence before methods. By the time the reader reaches
+  method selection, the constraint has already been established and week 9 can simply
+  point at it
+
+**The canon absorbed two new numbers and produced one for free.** `contract_duration_months`
+= 12 was never stated anywhere on the site, but `cost-week-17`'s *"roughly $69,000 a
+month"* against a controlled budget of $827,008 fixes it. That gives
+`preliminaries_monthly` = $7,100 exactly, which is the base rate for the whole quantum
+phase. Separately, $124,051 / $827,008 is exactly 15%, which let Hudson be worked on the
+job's own figures in Week 24. **Numbers already implied by published arithmetic are worth
+hunting for before inventing new ones.**
+
+**What did not need fixing:** the two-title convention, the h1 register, the practical
+insight in second person, and the `next-article` chain all held across 28 articles without
+incident. The template-inheritance trap from Track 4 &mdash; the old track's name surviving
+in the eyebrow &mdash; did not recur, because the build scripts assert against it before
+writing.
+
+## 9. What comes next *(judgement — revised 2026-07-27)*
+
+### Track 5 — Claims & Delay Analysis — **done, 28/28**
+
+Published 2026-07-27, dated Mar 8 – Sep 13 2028. Prefix `claim-week-`. Seven phases.
+Closes on the two numbers the site was built around: the rock at $48,450 against a net
+margin of $48,163.
+
+Source position at the end: the primary text turned out to be **Keane & Caletka,
+*Delay Analysis in Construction Contracts* 2e** — not the book an earlier note named.
+It carries concurrency 229, float 415, SCL 142, acceleration 135, disruption 178, and
+Chapter 4.2 treats both industry documents directly. The three FIDIC 2017 books arrived
+as full conditions, so every clause claim in the track is first-hand.
+
+**The remaining gap is unchanged and still matters.** The **SCL Delay and Disruption
+Protocol** and **AACE RP 29R-03** are still not present as primary documents. The track
+describes and attributes them through Keane & Caletka and never states their guidance as
+if read first-hand — but that is a workaround, not a fix. The Protocol has been revised
+since the account the track is working from, and any future article touching it must say
+which edition. If the two documents are ever obtained, Weeks 9, 11 and 16 are the three
+to revisit.
+
+### Track 6 — the assumptions that stop holding — **next**
 
 **This supersedes the earlier one-line plan** (portfolio data governance, KPI
 thresholds, management by exception). Those were three topics, not a track. The
 thesis now:
 
-> Four tracks taught the job as a single contract with a single chain of command.
+> Five tracks taught the job as a single contract with a single chain of command.
 > Track 6 is what happens when those assumptions stop holding.
+
+The card text on `learn.html` and `index.html` was corrected to this on 2026-07-27;
+before that both still advertised the superseded leadership plan. `claim-week-28`
+hands over to it in print, on the same thesis, so the framing is now committed.
 
 Note the framing that was tried and rejected: **scale.** The $1M job is a unit chosen
 so the arithmetic stays legible, not a claim that the job is small. Nothing in Track 6
@@ -336,22 +511,31 @@ Contents, in order:
    framework agreements are procurement vehicles, not delivery models; alliance and
    IPD change the controls function itself and hook to Contract W19
 2. **Long lead — the critical path runs through a purchase order.** Corrects Track 1,
-   which assumes a programme driven by construction logic. `long lead` appears 0 times
-   on the site
+   which assumes a programme driven by construction logic. `long lead` still appears 0
+   times across 117 articles (re-measured 2026-07-27)
 3. **Interfaces — the work nobody planned is where two programmes meet.** Corrects
    Risk W3, which already says the register misses "two whole branches". `interface`
-   appears 6 times, all in passing
+   now appears 11 times across 117 articles, still all in passing
 4. **The number with more than one owner.** Project Controls builds earned value from
    progress, Commercial from valuation, and they collide monthly. Also: you own no
    primary data — every figure in your report was made by someone else, for another
    purpose, on another cycle, and each source has its own cut-off. Cost W10 already
    owns the ledger side; do not repeat it
 5. **Document control.** `document control`, `transmittal`, `revision control`,
-   `document register` — all 0 across 89 articles. Connects straight to Contract W1:
+   `document register` — all 0 across 117 articles (re-measured 2026-07-27). Connects straight to Contract W1:
    the whole article was a notice reaching the right address, and this is that problem
    at organisational scale
 
-Deferred: **systems completion / commissioning.** Real gap (`systems completion` 0),
+Three hooks into Track 5 that did not exist when this list was written. Item 1 inherits
+the concurrency problem: `claim-week-16` establishes that FIDIC sends the question to the
+Special Provisions, and under EPCM there is no head contract to hold them. Item 4 should
+link `claim-week-25` rather than restate it — the cost-coding resolution argument is made
+there and applies unchanged to a multi-owner number. Item 5's organisational-scale
+records problem is the same one `claim-week-6` makes at project scale; link, do not
+repeat.
+
+Deferred: **systems completion / commissioning.** Real gap (`systems completion` still 0
+across 117 articles),
 but there is no source for mechanical completion, turnover packages or system
 boundaries in the uploads. Wait for a book.
 

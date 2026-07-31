@@ -1,0 +1,4586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn — The Project Control Hub</title>
+    <meta name="description" content="A 27-week curriculum on schedule management — from why projects fail to CPM, EVM, forensic delay analysis, and reporting. Built on the PMI Practice Standard and 8+ years in the field.">
+    <link rel="canonical" href="https://theprojectcontrolhub.com/learn.html">
+
+    <!-- Open Graph (LinkedIn, Facebook, WhatsApp) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="The Project Control Hub">
+    <meta property="og:title" content="Curriculum — The Project Control Hub">
+    <meta property="og:description" content="A 27-week curriculum on schedule management — from why projects fail to CPM, EVM, forensic delay analysis, and reporting. Built on the PMI Practice Standard and 8+ years in the field.">
+    <meta property="og:url" content="https://theprojectcontrolhub.com/learn.html">
+    <meta property="og:image" content="https://theprojectcontrolhub.com/og-image.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Curriculum — The Project Control Hub">
+    <meta name="twitter:description" content="A 27-week curriculum on schedule management — from why projects fail to CPM, EVM, forensic delay analysis, and reporting. Built on the PMI Practice Standard and 8+ years in the field.">
+    <meta name="twitter:image" content="https://theprojectcontrolhub.com/og-image.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <style>
+:root {
+    /* Colors */
+    --bg-dark: #0f172a; /* Slate 900 */
+    --bg-darker: #0b1120;
+    --bg-card-dark: #1e293b; /* Slate 800 */
+    --bg-light: #f8fafc; /* Slate 50 */
+    --white: #ffffff;
+    
+    --text-light: #f1f5f9;
+    --text-muted: #94a3b8; /* Slate 400 */
+    --text-dark: #0f172a;
+    --text-dark-muted: #64748b; /* Slate 500 */
+    
+    --primary-green: #10b981; /* Emerald 500 */
+    --primary-green-hover: #059669; /* Emerald 600 */
+    --light-green: rgba(16, 185, 129, 0.1);
+    
+    --accent-yellow: #eab308;
+    --accent-red: #ef4444;
+    --accent-blue: #3b82f6;
+
+    --font-main: 'Inter', sans-serif;
+    --transition: all 0.2s ease-in-out;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* Typography Utilities */
+.text-green { color: var(--primary-green); }
+.text-yellow { color: var(--accent-yellow); }
+.text-red { color: var(--accent-red); }
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: inherit;
+}
+
+.btn-primary {
+    background-color: var(--primary-green);
+    color: var(--white);
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-green-hover);
+}
+
+.btn-primary-large {
+    background-color: var(--primary-green);
+    color: var(--white);
+    padding: 14px 28px;
+    font-size: 16px;
+    border: none;
+}
+
+.btn-primary-large:hover {
+    background-color: var(--primary-green-hover);
+}
+
+.btn-primary-small {
+    background-color: var(--primary-green);
+    color: var(--white);
+    padding: 8px 16px;
+    font-size: 13px;
+    border: none;
+}
+
+.btn-primary-small:hover {
+    background-color: var(--primary-green-hover);
+}
+
+.btn-outline-large {
+    background-color: transparent;
+    color: var(--text-light);
+    padding: 14px 28px;
+    font-size: 16px;
+    border: 1px solid var(--text-muted);
+}
+
+.btn-outline-large:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: var(--text-light);
+}
+
+/* HERO SECTION */
+.hero-section {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    padding-bottom: 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 48px;
+    position: sticky;
+    top: 0;
+    z-index: 500;
+    background: #0f172a;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    /* full-width bar, content aligned to same max as hero */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.hero-section {
+    position: relative;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+    gap: 12px;
+    font-weight: 800;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    color: var(--white);
+}
+
+.logo i {
+    font-size: 28px;
+    color: var(--primary-green);
+}
+
+.logo-mark {
+    flex-shrink: 0;
+    display: block;
+    width: 40px;
+    height: 40px;
+}
+
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.nav-links a {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-muted);
+    transition: var(--transition);
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--text-light);
+}
+
+/* Hero Content */
+.hero-container {
+    max-width: 1280px;
+    margin: 60px auto 0;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+/* Hero Left */
+.pill-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: rgba(16, 185, 129, 0.1);
+    color: var(--primary-green);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.dot {
+    width: 6px;
+    height: 6px;
+    background-color: var(--primary-green);
+    border-radius: 50%;
+}
+
+.hero-left h1 {
+    font-size: 56px;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    letter-spacing: -1px;
+}
+
+.hero-desc {
+    font-size: 18px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 32px;
+    max-width: 540px;
+}
+
+.tags-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 40px;
+}
+
+.tag-dark {
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--text-muted);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 16px;
+}
+
+/* Hero Right */
+.latest-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.latest-header h2, .latest-header h3 {
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.live-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--primary-green);
+    font-weight: 600;
+}
+
+.dot-green {
+    width: 6px;
+    height: 6px;
+    background-color: var(--primary-green);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--primary-green);
+}
+
+.discussion-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.discussion-list-item {
+    background-color: var(--bg-card-dark);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 12px;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.discussion-list-item:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.category-text {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.discussion-list-item h4 {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 16px;
+    color: var(--text-light);
+}
+
+.item-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: var(--text-muted);
+    font-size: 13px;
+}
+
+.item-meta span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.arrow-icon {
+    margin-left: auto;
+    font-size: 18px;
+    color: var(--text-muted);
+}
+
+.join-promo {
+    background-color: rgba(16, 185, 129, 0.05);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    padding: 20px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.join-promo i {
+    font-size: 24px;
+    color: var(--primary-green);
+}
+
+.join-promo p {
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.4;
+    flex: 1;
+}
+
+/* DISCUSSIONS SECTION */
+.discussions-section {
+    padding: 80px 0;
+    background-color: var(--white);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 40px;
+}
+
+.subtitle {
+    color: var(--primary-green);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    display: block;
+    text-transform: uppercase;
+}
+
+.section-header h2 {
+    font-size: 40px;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+    letter-spacing: -1px;
+}
+
+.section-header p {
+    color: var(--text-dark-muted);
+    font-size: 16px;
+    max-width: 600px;
+}
+
+/* Search Bar */
+.search-bar-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid #e2e8f0;
+    padding: 16px 20px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    transition: var(--transition);
+}
+
+.search-bar-container:focus-within {
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+.search-bar-container i {
+    font-size: 20px;
+    color: var(--text-muted);
+}
+
+.search-bar-container input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-family: inherit;
+    font-size: 15px;
+    color: var(--text-dark);
+}
+
+.search-bar-container input::placeholder {
+    color: var(--text-muted);
+}
+
+/* Filter Pills */
+.filter-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 40px;
+}
+
+.filter-pill {
+    background-color: var(--white);
+    border: 1px solid #e2e8f0;
+    color: var(--text-dark-muted);
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.filter-pill:hover {
+    border-color: var(--text-dark-muted);
+    color: var(--text-dark);
+}
+
+.filter-pill.active {
+    background-color: var(--primary-green);
+    border-color: var(--primary-green);
+    color: var(--white);
+}
+
+/* Cards Grid */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.discussion-card {
+    background-color: var(--white);
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 24px;
+    transition: var(--transition);
+}
+
+.discussion-card:hover {
+    box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.1);
+    border-color: #cbd5e1;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.card-tags {
+    display: flex;
+    gap: 8px;
+}
+
+.tag {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 6px;
+}
+
+.tag-light-green { background-color: rgba(16, 185, 129, 0.1); color: var(--primary-green); }
+.tag-light-yellow { background-color: rgba(234, 179, 8, 0.1); color: var(--accent-yellow); }
+.tag-light-red { background-color: rgba(239, 68, 68, 0.1); color: var(--accent-red); }
+.tag-light-blue { background-color: rgba(59, 130, 246, 0.1); color: var(--accent-blue); }
+
+.tag-pinned {
+    background-color: #f1f5f9;
+    color: var(--text-dark-muted);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.card-stats {
+    display: flex;
+    gap: 16px;
+    color: var(--text-muted);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.card-stats span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.discussion-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.card-excerpt {
+    font-size: 14px;
+    color: var(--text-dark-muted);
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+.hashtag-group {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.hashtag {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 16px;
+}
+
+.author-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.author-info img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.author-info div {
+    display: flex;
+    flex-direction: column;
+}
+
+.author-info strong {
+    font-size: 14px;
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+.author-info span {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.view-comments {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--primary-green);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* FOOTER */
+.footer {
+    background-color: var(--bg-dark);
+    color: var(--text-muted);
+    padding: 80px 0 20px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.footer-brand .logo {
+    color: var(--white);
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.footer-brand p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+    max-width: 300px;
+}
+
+.social-links {
+    display: flex;
+    gap: 12px;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    color: var(--text-light);
+    font-size: 18px;
+    transition: var(--transition);
+}
+
+.social-links a:hover {
+    background-color: var(--primary-green);
+}
+
+.footer-links h4 {
+    color: var(--white);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+.footer-links ul {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-links a {
+    font-size: 14px;
+    transition: var(--transition);
+}
+
+.footer-links a:hover {
+    color: var(--white);
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 13px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .hero-container {
+        grid-template-columns: 1fr;
+    }
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 768px) {
+    /* NAVBAR */
+    .navbar { padding: 16px 20px; }
+    .nav-links { display: none; }
+    .logo span { font-size: 14px; }
+    .btn-nav-social { display: none; }
+
+    /* HERO */
+    .hero-section { padding-bottom: 40px; }
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        margin-top: 32px;
+        padding: 0 20px;
+    }
+    .hero-left h1 { font-size: 32px; line-height: 1.2; }
+    .hero-desc { font-size: 14px; }
+    .tags-group { flex-wrap: wrap; gap: 8px; }
+    .hero-buttons { flex-direction: column; gap: 12px; }
+    .hero-buttons a { width: 100%; justify-content: center; text-align: center; }
+    .btn-primary-large { padding: 14px 20px; font-size: 14px; }
+    .btn-ghost-large { padding: 14px 20px; font-size: 14px; }
+
+    /* HERO RIGHT — hide on mobile, too cluttered */
+    .hero-right { display: none; }
+
+    /* CURRICULUM SECTION */
+    .discussions-section { padding: 40px 0; }
+    .container { padding: 0 16px; }
+    .section-header { flex-direction: column; gap: 16px; }
+    .section-header h2 { font-size: 26px; }
+
+    .module-track-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 18px 16px;
+    }
+    .module-track-left { gap: 12px; }
+    .module-number { font-size: 22px; min-width: 32px; }
+    .module-title { font-size: 15px; }
+    .module-desc { font-size: 12px; }
+    .module-status { font-size: 11px; padding: 5px 10px; }
+
+    .module-post-item {
+        padding: 12px 16px;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+    .post-week { min-width: 48px; font-size: 10px; }
+    .post-title { font-size: 13px; }
+    .post-date { display: none; }
+
+    /* SERIES FOLLOW BAR */
+    .series-follow-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 16px;
+    }
+    .series-follow-bar div:last-child { width: 100%; }
+    .btn-follow-bar { flex: 1; justify-content: center; }
+
+    /* FOOTER */
+    .footer-content {
+        grid-template-columns: 1fr !important;
+        gap: 32px;
+        padding: 32px 20px;
+    }
+    .footer-bottom { flex-direction: column; gap: 12px; text-align: center; padding: 20px; }
+
+    /* MODAL */
+    .modal-box { padding: 28px 20px; margin: 0 16px; }
+}
+
+@media (max-width: 480px) {
+    .hero-left h1 { font-size: 26px; }
+    .founder-name { font-size: 13px; }
+    .founder-title { font-size: 11px; }
+    .pill-badge { font-size: 10px; }
+}
+
+/* Modal and Discussions Page Styles */
+
+.bg-white { background-color: var(--white); }
+.bg-dark-wrapper { background-color: var(--bg-dark); }
+.text-white { color: var(--white) !important; }
+.shadow-sm { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); }
+.standalone { padding-top: 40px; }
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-box {
+    background-color: var(--white);
+    width: 100%;
+    max-width: 550px;
+    border-radius: 16px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+    overflow: hidden;
+}
+
+.modal-overlay.active .modal-box {
+    transform: translateY(0);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.modal-header h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.close-modal {
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-modal:hover { color: var(--text-dark); }
+
+.modal-body {
+    padding: 32px 24px;
+    text-align: center;
+}
+
+.modal-icon-wrapper {
+    width: 64px;
+    height: 64px;
+    background-color: rgba(16, 185, 129, 0.1);
+    color: var(--primary-green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    margin: 0 auto 20px;
+}
+
+.modal-body h4 {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    color: var(--text-dark);
+}
+
+.modal-body p {
+    font-size: 14px;
+    color: var(--text-dark-muted);
+    margin-bottom: 32px;
+    line-height: 1.6;
+}
+
+.membership-form {
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+.highlight-group {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+}
+
+.highlight-group label { color: var(--primary-green); }
+
+.input-with-icon {
+    position: relative;
+}
+
+.input-with-icon i {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    font-size: 18px;
+}
+
+.input-with-icon input {
+    padding-left: 44px;
+}
+
+.form-hint {
+    display: block;
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 8px;
+}
+
+.full-width {
+    width: 100%;
+    padding: 16px;
+    font-size: 16px;
+}
+
+
+/* COURSES PAGE SPECIFIC STYLES */
+
+/* Text Utilities */
+.text-center { text-align: center; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.uppercase { text-transform: uppercase; }
+.font-bold { font-weight: 700; }
+.text-xs { font-size: 11px; letter-spacing: 0.5px; }
+.relative-nav { position: relative; z-index: 10; border-bottom: 1px solid rgba(255,255,255,0.05); }
+
+/* Courses Hero */
+.courses-hero {
+    position: relative;
+    background-image: url('https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=2000&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    color: var(--white);
+    padding-bottom: 80px;
+}
+
+.overlay-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(11, 17, 32, 0.85); /* Dark blue overlay */
+    z-index: 1;
+}
+
+.courses-hero-content {
+    position: relative;
+    z-index: 10;
+    margin-top: 80px;
+    max-width: 900px;
+}
+
+.inline-pill {
+    margin-bottom: 24px;
+    background-color: rgba(16, 185, 129, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.courses-hero-content h1 {
+    font-size: 52px;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
+
+.courses-hero-content .hero-desc {
+    font-size: 18px;
+    color: #cbd5e1;
+    margin-bottom: 48px;
+}
+
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 40px;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.stat-item i {
+    font-size: 24px;
+}
+
+.stat-text {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.stat-text strong {
+    font-size: 16px;
+    color: var(--white);
+    font-weight: 700;
+}
+
+.stat-text span {
+    font-size: 13px;
+    color: #94a3b8;
+}
+
+/* Courses List Section */
+.courses-list-section {
+    padding: 60px 0 100px;
+    background-color: var(--white);
+}
+
+.courses-filter-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.filter-pills-scroll {
+    margin-bottom: 0; /* Override generic margin */
+}
+
+.filter-dropdowns {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.dropdown-select {
+    padding: 8px 32px 8px 16px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--text-dark);
+    background-color: var(--white);
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+}
+
+.courses-count {
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+/* Courses Grid */
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.course-card {
+    background-color: var(--white);
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.course-card:hover {
+    box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.1);
+    border-color: #cbd5e1;
+    transform: translateY(-4px);
+}
+
+.course-img {
+    position: relative;
+    height: 200px;
+}
+
+.course-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.5px;
+}
+
+.badge-blue { background-color: #0ea5e9; }
+.badge-yellow { background-color: #eab308; }
+.badge-red { background-color: #ef4444; }
+.badge.right { left: auto; right: 16px; }
+.badge-dark { background-color: rgba(15, 23, 42, 0.8); backdrop-filter: blur(4px); }
+
+.course-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.course-tags {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.dot-separator {
+    width: 4px;
+    height: 4px;
+    background-color: #cbd5e1;
+    border-radius: 50%;
+}
+
+.tag-level {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.tag-beginner { color: #10b981; background-color: rgba(16, 185, 129, 0.1); }
+.tag-advanced { color: #ef4444; background-color: rgba(239, 68, 68, 0.1); }
+
+.course-content h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    line-height: 1.4;
+    color: var(--text-dark);
+}
+
+.course-excerpt {
+    font-size: 14px;
+    color: var(--text-dark-muted);
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.course-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.course-author img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.course-author div {
+    display: flex;
+    flex-direction: column;
+}
+
+.course-author strong {
+    font-size: 13px;
+    color: var(--text-dark);
+}
+
+.course-author span {
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+.course-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 13px;
+    color: var(--text-dark-muted);
+    margin-bottom: 20px;
+}
+
+.course-meta span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.course-meta strong {
+    color: var(--text-dark);
+}
+
+.course-topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.course-topics span {
+    font-size: 12px;
+    color: var(--text-dark-muted);
+    border: 1px solid #e2e8f0;
+    padding: 4px 10px;
+    border-radius: 20px;
+}
+
+.course-topics .more-topics {
+    border-color: transparent;
+    color: var(--text-muted);
+    padding: 4px 0;
+}
+
+.course-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: auto;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 20px;
+}
+
+.course-price {
+    display: flex;
+    flex-direction: column;
+}
+
+.course-price .current-price {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--text-dark);
+}
+
+.course-price .old-price {
+    font-size: 14px;
+    color: var(--text-muted);
+    text-decoration: line-through;
+    margin-left: 6px;
+}
+
+.course-price .students-count {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+.btn-dark {
+    background-color: var(--bg-dark);
+    color: var(--white);
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+}
+
+.btn-dark:hover {
+    background-color: #1e293b;
+}
+
+/* CTA Section */
+.cta-section {
+    margin-bottom: 80px;
+}
+
+.cta-banner {
+    background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2000&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-banner::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(90deg, rgba(11, 17, 32, 0.9) 0%, rgba(11, 17, 32, 0.7) 100%);
+    z-index: 1;
+}
+
+.cta-content {
+    position: relative;
+    z-index: 2;
+    padding: 60px 80px;
+    max-width: 600px;
+    color: var(--white);
+}
+
+.cta-content h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.cta-content p {
+    font-size: 16px;
+    color: #cbd5e1;
+    margin-bottom: 32px;
+    line-height: 1.6;
+}
+
+@media (max-width: 1024px) {
+    .courses-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero-stats { gap: 24px; }
+}
+
+@media (max-width: 768px) {
+    .courses-grid { grid-template-columns: 1fr; }
+    .courses-hero-content h1 { font-size: 40px; }
+    .courses-filter-bar { flex-direction: column; align-items: flex-start; }
+    .cta-content { padding: 40px; }
+}
+
+/* DASHBOARD STYLES */
+.dashboard-section {
+    padding: 60px 0;
+    background-color: var(--bg-light);
+    min-height: 80vh;
+}
+
+.upload-zone {
+    border: 2px dashed var(--primary-green);
+    border-radius: 16px;
+    padding: 60px 20px;
+    text-align: center;
+    background-color: rgba(16, 185, 129, 0.05);
+    transition: var(--transition);
+    cursor: pointer;
+    margin-bottom: 40px;
+}
+
+.upload-zone:hover, .upload-zone.dragover {
+    background-color: rgba(16, 185, 129, 0.1);
+    transform: translateY(-2px);
+}
+
+.upload-zone i {
+    font-size: 48px;
+    color: var(--primary-green);
+    margin-bottom: 16px;
+}
+
+.upload-zone h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+}
+
+.upload-zone p {
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+.dashboard-hidden {
+    display: none !important;
+}
+
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.kpi-card {
+    background-color: var(--white);
+    padding: 24px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.kpi-title {
+    font-size: 13px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.kpi-value {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--text-dark);
+}
+
+.charts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.chart-container {
+    background-color: var(--white);
+    padding: 24px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    height: 400px;
+    position: relative;
+}
+
+.chart-container h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .charts-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+/* NAV SOCIAL ICONS (shared) */
+.btn-nav-social {
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    color: #94a3b8;
+    font-size: 18px;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+.btn-nav-social:hover { color: #10b981; background: rgba(16,185,129,0.08); }
+
+/* HAMBURGER MENU */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 8px;
+    transition: background 0.2s;
+    flex-shrink: 0;
+}
+
+.hamburger:hover { background: rgba(255,255,255,0.08); }
+
+.hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #cbd5e1;
+    border-radius: 2px;
+    transition: all 0.25s ease;
+}
+
+.hamburger.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+.hamburger.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* MOBILE NAV DRAWER */
+.mobile-nav {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    background: rgba(9, 13, 24, 0.85);
+    -webkit-backdrop-filter: blur(24px) saturate(1.4);
+    backdrop-filter: blur(24px) saturate(1.4);
+    z-index: 999;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.mobile-nav.open {
+    opacity: 1;
+    pointer-events: all;
+    visibility: visible;
+}
+
+/* Staggered link entrance */
+.mobile-nav a {
+    font-size: 34px;
+    font-weight: 800;
+    color: #f8fafc;
+    text-decoration: none;
+    padding: 14px 40px;
+    border-radius: 14px;
+    letter-spacing: -1px;
+    transition: color 0.2s, background 0.2s, transform 0.35s ease, opacity 0.35s ease;
+    transform: translateY(16px);
+    opacity: 0;
+}
+
+.mobile-nav.open a {
+    transform: translateY(0);
+    opacity: 1;
+}
+.mobile-nav.open a:nth-child(2) { transition-delay: 0.06s; }
+.mobile-nav.open a:nth-child(3) { transition-delay: 0.12s; }
+.mobile-nav.open a:nth-child(4) { transition-delay: 0.18s; }
+
+.mobile-nav a:active,
+.mobile-nav a.active {
+    color: #10b981;
+}
+
+.mobile-nav-close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: rgba(255,255,255,0.06);
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    color: #cbd5e1;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.35s ease, opacity 0.35s ease;
+    transform: scale(0.8);
+    opacity: 0;
+}
+.mobile-nav.open .mobile-nav-close {
+    transform: scale(1);
+    opacity: 1;
+    transition-delay: 0.1s;
+}
+.mobile-nav-close:active { background: rgba(255,255,255,0.12); }
+
+.mobile-nav-bottom {
+    position: absolute;
+    bottom: 48px;
+    display: flex;
+    gap: 14px;
+    transform: translateY(16px);
+    opacity: 0;
+    transition: transform 0.35s ease, opacity 0.35s ease;
+}
+.mobile-nav.open .mobile-nav-bottom {
+    transform: translateY(0);
+    opacity: 1;
+    transition-delay: 0.24s;
+}
+
+.mobile-nav-bottom a {
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    padding: 12px 24px !important;
+    border: 1px solid rgba(255,255,255,0.12) !important;
+    border-radius: 10px !important;
+    color: #cbd5e1 !important;
+    background: rgba(255,255,255,0.03) !important;
+    letter-spacing: 0 !important;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transform: none !important;
+    opacity: 1 !important;
+}
+
+@media (max-width: 768px) {
+    .hamburger { display: flex; }
+}
+
+@media (min-width: 769px) {
+    .mobile-nav { display: none !important; }
+}
+
+/* ===== NEW MODAL (Sign-in) — overrides legacy modal for new structure ===== */
+.modal-box {
+    padding: 40px;
+    max-width: 420px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    overflow: visible;
+}
+
+.close-modal {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 22px;
+    color: #94a3b8;
+    cursor: pointer;
+    padding: 4px;
+    line-height: 1;
+}
+
+.modal-box .modal-icon-wrapper {
+    width: 56px;
+    height: 56px;
+    background: #ecfdf5;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 24px;
+    color: #10b981;
+}
+
+.modal-box h4 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0 0 10px;
+}
+
+.modal-box p {
+    font-size: 14px;
+    color: #64748b;
+    line-height: 1.6;
+    margin: 0 0 20px;
+}
+
+.modal-box .modal-note {
+    font-size: 12px;
+    color: #94a3b8;
+    margin-top: 12px;
+    margin-bottom: 0;
+}
+
+.btn-google-signin {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    padding: 13px 20px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #1e293b;
+    background: #fff;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.btn-google-signin:hover {
+    border-color: #cbd5e1;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+}
+
+/* ============ SHARE BUTTONS ============ */
+.share-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.share-bar-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #94a3b8;
+    margin-right: 4px;
+}
+.share-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    height: 38px;
+    padding: 0 14px;
+    border-radius: 9px;
+    border: 1px solid #e2e8f0;
+    background: #fff;
+    color: #475569;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.18s ease;
+    white-space: nowrap;
+}
+.share-btn i { font-size: 17px; }
+.share-btn:hover { transform: translateY(-1px); box-shadow: 0 3px 10px rgba(0,0,0,0.06); }
+.share-btn.linkedin:hover { background: #0a66c2; color: #fff; border-color: #0a66c2; }
+.share-btn.whatsapp:hover { background: #25d366; color: #fff; border-color: #25d366; }
+.share-btn.x:hover { background: #0f172a; color: #fff; border-color: #0f172a; }
+.share-btn.copy:hover { background: #10b981; color: #fff; border-color: #10b981; }
+.share-btn.copied { background: #10b981; color: #fff; border-color: #10b981; }
+
+/* Top share bar sits under the article meta */
+.share-bar-top {
+    padding: 20px 36px;
+    border-bottom: 1px solid #f1f5f9;
+}
+/* Bottom share bar */
+.share-bar-bottom {
+    padding: 28px 36px;
+    border-top: 1px solid #f1f5f9;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+}
+.share-bar-bottom .share-bar-heading {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+.share-bar-bottom .share-row { display: flex; gap: 10px; flex-wrap: wrap; }
+
+@media (max-width: 768px) {
+    .share-bar-top { padding: 16px 20px; }
+    .share-bar-bottom { padding: 22px 20px; }
+    .share-btn { height: 40px; padding: 0 14px; }
+    .share-btn .share-label-text { display: inline; }
+}
+
+
+/* Cross-track references only.
+   NOT `.article-body a` — the share bar, the next-article card, the tags and the
+   paywall CTA all live inside .article-body, and a bare descendant selector
+   underlines all of them. Prose links only ever sit inside a <p>. */
+.article-body p a,
+.track-note a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: var(--primary-green);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 2px;
+    transition: var(--transition);
+}
+.article-body p a:hover,
+.track-note a:hover { color: var(--primary-green-hover); }
+
+
+/* Breadcrumb carries the curriculum name on desktop; hidden on narrow screens
+   because .breadcrumb is a non-wrapping flex row and the longest title is 57 chars. */
+.breadcrumb { flex-wrap: wrap; }
+.crumb-title { color: var(--text-muted); }
+@media (max-width: 768px) { .crumb-title { display: none; } }
+
+
+/* Series sidebar scrolls the whole track. position:relative so the auto-scroll
+   in curriculum.js can measure offsetTop against this box, not a distant parent. */
+.sidebar-scroll {
+    position: relative;
+    max-height: 60vh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 transparent;
+}
+.sidebar-scroll::-webkit-scrollbar { width: 6px; }
+.sidebar-scroll::-webkit-scrollbar-track { background: transparent; }
+.sidebar-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+.sidebar-scroll::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+/* 1024px: makale layout'u tek sütuna düşer ve yan panel makalenin altına yığılır.
+   Kutu yüksekliği eski 5-satırlık görünümle aynı kalsın ki mobil ayak izi büyümesin. */
+@media (max-width: 1024px) { .sidebar-scroll { max-height: 340px; } }
+
+</style>
+    <style>
+        .learn-page {
+            background: var(--bg-light);
+            min-height: 100vh;
+            padding: 48px 0 80px;
+        }
+
+        .learn-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* PAGE HEADER */
+        .learn-header {
+            margin-bottom: 48px;
+        }
+
+        .learn-header-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(16,185,129,0.08);
+            color: #059669;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            padding: 5px 14px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+            border: 1px solid rgba(16,185,129,0.15);
+        }
+
+        .learn-header h1 {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--text-dark);
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .learn-header p {
+            font-size: 16px;
+            color: #64748b;
+            line-height: 1.7;
+            max-width: 580px;
+        }
+
+        .learn-header-meta {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .learn-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .learn-meta-item i {
+            font-size: 16px;
+            color: #10b981;
+        }
+
+        /* MODULE CARDS */
+        .modules-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .module-card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: box-shadow 0.2s;
+        }
+
+        .module-card:hover {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+
+        .module-card-locked {
+            opacity: 0.55;
+        }
+
+        .module-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 28px 32px;
+            gap: 20px;
+        }
+
+        .module-card-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .module-num {
+            font-size: 32px;
+            font-weight: 800;
+            color: #10b981;
+            min-width: 48px;
+            font-variant-numeric: tabular-nums;
+        }
+        .module-tool-icon {
+            font-size: 24px; color: #cbd5e1; min-width: 40px;
+            display: flex; align-items: center;
+        }
+
+        .module-num.locked { color: #cbd5e1; }
+
+        .module-info h2 {
+            font-size: 19px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin: 0 0 6px;
+        }
+
+        .module-info p {
+            font-size: 13px;
+            color: #64748b;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .module-badge {
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .badge-active {
+            background: #ecfdf5;
+            color: #059669;
+        }
+
+        .badge-locked {
+            background: #f1f5f9;
+            color: #94a3b8;
+        }
+
+        .dot-green {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #10b981;
+            display: inline-block;
+        }
+
+        /* TOOLS ROW */
+        .module-tools {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0 32px 20px;
+            flex-wrap: wrap;
+        }
+
+        .tool-tag {
+            font-size: 11px;
+            font-weight: 600;
+            color: #475569;
+            background: #f1f5f9;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        .tool-tag-label {
+            font-size: 11px;
+            color: #94a3b8;
+            margin-right: 4px;
+        }
+
+        /* WEEKS LIST */
+        .module-weeks {
+            border-top: 1px solid #f1f5f9;
+        }
+
+        .week-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 32px;
+            border-bottom: 1px solid #f8fafc;
+            text-decoration: none;
+            color: inherit;
+            transition: background 0.15s;
+        }
+
+        a.week-item:hover { background: #f8fafc; }
+
+        .week-item.upcoming {
+            opacity: 0.4;
+            cursor: default;
+            pointer-events: none;
+        }
+
+        .week-num {
+            font-size: 11px;
+            font-weight: 700;
+            color: #10b981;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            min-width: 64px;
+            flex-shrink: 0;
+        }
+
+        .week-item.upcoming .week-num { color: #94a3b8; }
+
+        .week-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: #1e293b;
+            flex: 1;
+            line-height: 1.4;
+        }
+
+        .week-date {
+            font-size: 12px;
+            color: #94a3b8;
+            white-space: nowrap;
+        }
+
+        .week-new {
+            font-size: 10px;
+            font-weight: 700;
+            color: #fff;
+            background: #10b981;
+            padding: 2px 8px;
+            border-radius: 10px;
+            white-space: nowrap;
+        }
+
+        .week-upcoming-label {
+            font-size: 12px;
+            color: #cbd5e1;
+            white-space: nowrap;
+        }
+
+        .week-arrow {
+            color: #cbd5e1;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        /* PROGRESS BAR */
+        .module-progress {
+            padding: 16px 32px 24px;
+            border-top: 1px solid #f8fafc;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #94a3b8;
+            margin-bottom: 8px;
+        }
+
+        .progress-bar {
+            height: 4px;
+            background: #f1f5f9;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #10b981, #059669);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+
+        /* PHASE DIVIDERS */
+        .phase-divider {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 32px;
+            background: #f8fafc;
+            border-bottom: 1px solid #f1f5f9;
+            border-top: 1px solid #f1f5f9;
+        }
+        .phase-label {
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1.2px;
+            color: #059669;
+        }
+        .phase-weeks-tag {
+            font-size: 10px;
+            color: #94a3b8;
+            font-weight: 600;
+        }
+
+        /* TRACK SECTION HEADERS */
+        .track-header {
+            margin: 8px 0 20px;
+        }
+        .track-header.track-2 { margin-top: 52px; }
+        .track-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            margin-bottom: 14px;
+        }
+        .track-badge.free {
+            color: #059669;
+            background: rgba(16,185,129,0.08);
+            border: 1px solid rgba(16,185,129,0.2);
+        }
+        .track-badge.paid {
+            color: #b45309;
+            background: rgba(245,158,11,0.08);
+            border: 1px solid rgba(245,158,11,0.22);
+        }
+        .track-header h2 {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--text-dark);
+            letter-spacing: -0.5px;
+            margin: 0 0 6px;
+        }
+        .track-header .track-sub {
+            font-size: 15px;
+            color: #64748b;
+            font-weight: 500;
+            margin: 0 0 10px;
+        }
+        .track-header .track-desc {
+            font-size: 14px;
+            color: #475569;
+            line-height: 1.65;
+            max-width: 680px;
+            margin: 0;
+        }
+        .track-note {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin: 20px 0 4px;
+        }
+        .track-note i { color: #10b981; font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+        .track-note p { font-size: 13.5px; color: #166534; line-height: 1.6; margin: 0; }
+        .track-note strong { color: #14532d; }
+
+        @media (max-width: 768px) {
+            .track-header h2 { font-size: 21px; }
+            .track-header.track-2 { margin-top: 40px; }
+        }
+
+        /* ROADMAP TRACKS — future, minimal cards */
+
+        /* Sticky section nav. learn.html is the full curriculum — 69 weeks plus 16
+           phase dividers — so the fix for its length is navigation, not hiding rows.
+           top:72px clears the navbar (16px padding + 40px logo + 16px); z-index stays
+           under the navbar's 500. */
+        .track-jump {
+            position: sticky; top: 72px; z-index: 400;
+            display: flex; gap: 6px; align-items: center;
+            padding: 12px 0; margin-bottom: 4px;
+            background: var(--bg-light);
+            overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+        }
+        .track-jump::-webkit-scrollbar { display: none; }
+        .track-jump-link {
+            flex: 0 0 auto; padding: 7px 14px; border-radius: 20px;
+            font-size: 13px; font-weight: 600; color: #64748b;
+            background: #fff; border: 1px solid #e2e8f0;
+            white-space: nowrap; transition: all 0.18s ease;
+        }
+        .track-jump-link span { color: #94a3b8; font-weight: 500; margin-left: 4px; }
+        .track-jump-link:hover { border-color: #cbd5e1; color: #1e293b; }
+        .track-jump-link.active { background: rgba(16,185,129,0.08); border-color: #10b981; color: #059669; }
+        .track-jump-link.active span { color: #10b981; }
+        /* anchors must clear both sticky bars */
+        #track-1, #track-2, #track-3, #track-4, #track-5, #track-6, #lifecycle, #roadmap, #toolbox { scroll-margin-top: 132px; }
+        @media (max-width: 768px) {
+            .track-jump { top: 72px; padding: 10px 0; }
+            .track-jump-link { font-size: 12px; padding: 6px 12px; }
+        }
+
+
+        /* Track outcomes. Second person on purpose — the same register the
+           Practical insight section uses in all 69 articles. */
+        .track-outcomes {
+            margin: 18px 0 0; padding: 16px 18px;
+            background: rgba(16,185,129,0.04);
+            border: 1px solid rgba(16,185,129,0.18);
+            border-radius: 12px;
+        }
+        .track-outcomes h3 {
+            font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+            text-transform: uppercase; color: #059669; margin: 0 0 10px;
+        }
+        .track-outcomes ul { list-style: none; margin: 0; padding: 0;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 7px 20px; }
+        .track-outcomes li {
+            position: relative; padding-left: 22px;
+            font-size: 13.5px; line-height: 1.45; color: #334155;
+        }
+        .track-outcomes li::before {
+            content: "\2714"; position: absolute; left: 0; top: 0;
+            color: #10b981; font-size: 12px;
+        }
+        @media (max-width: 768px) {
+            .track-outcomes { padding: 14px 16px; }
+            .track-outcomes ul { grid-template-columns: 1fr; gap: 8px; }
+            .track-outcomes li { font-size: 13px; }
+        }
+
+        .roadmap-section { margin-top: 52px; }
+        .roadmap-intro { margin-bottom: 20px; }
+        .roadmap-intro .track-badge.roadmap {
+            color: #475569;
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
+        }
+        .roadmap-intro h2 {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--text-dark);
+            letter-spacing: -0.5px;
+            margin: 0 0 6px;
+        }
+        .roadmap-intro p {
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.65;
+            max-width: 680px;
+            margin: 0;
+        }
+        .roadmap-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin-bottom: 14px;
+        }
+        .roadmap-marker {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            min-width: 48px;
+            border-radius: 12px;
+            background: #f1f5f9;
+            color: #94a3b8;
+            font-size: 24px;
+        }
+        .roadmap-body { flex: 1; }
+        .roadmap-body h3 {
+            font-size: 17px;
+            font-weight: 800;
+            color: #334155;
+            margin: 0 0 4px;
+        }
+        .roadmap-body p {
+            font-size: 13px;
+            color: #94a3b8;
+            line-height: 1.55;
+            margin: 0;
+        }
+        .roadmap-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: #64748b;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 6px 12px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+        .roadmap-badge i { font-size: 13px; }
+        @media (max-width: 768px) {
+            .roadmap-section { margin-top: 40px; }
+            .roadmap-intro h2 { font-size: 21px; }
+            .roadmap-card { flex-direction: column; align-items: flex-start; gap: 12px; padding: 18px 20px; }
+            .roadmap-marker { width: 42px; height: 42px; min-width: 42px; font-size: 21px; }
+        }
+
+        /* MODAL */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+        }
+        .modal-overlay.active { opacity: 1; pointer-events: all; }
+        .modal-box {
+            background: #fff;
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 420px;
+            width: 90%;
+            position: relative;
+            text-align: center;
+        }
+        .close-modal {
+            position: absolute;
+            top: 16px; right: 16px;
+            background: none;
+            border: none;
+            font-size: 22px;
+            color: #94a3b8;
+            cursor: pointer;
+        }
+        .modal-icon-wrapper {
+            width: 56px; height: 56px;
+            background: #ecfdf5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 24px;
+            color: #10b981;
+        }
+        .modal-box h4 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0f172a;
+            margin: 0 0 10px;
+        }
+        .modal-box p {
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.6;
+            margin: 0 0 20px;
+        }
+        .btn-google-signin {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            padding: 13px 20px;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #1e293b;
+            background: #fff;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+        .btn-google-signin:hover {
+            border-color: #cbd5e1;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .modal-note {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-top: 12px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            .learn-page { padding: 32px 0 60px; }
+            .learn-container { padding: 0 16px; }
+            .learn-header { margin-bottom: 32px; }
+            .learn-header h1 { font-size: 22px; }
+            .learn-header p { font-size: 14px; }
+            .learn-header-meta { gap: 12px; }
+            .learn-meta-item { font-size: 12px; }
+            .module-card { border-radius: 14px; }
+            .module-card-header { flex-direction: column; align-items: flex-start; padding: 18px; gap: 12px; }
+            .module-card-left { gap: 12px; }
+            .module-num { font-size: 22px; min-width: 32px; }
+            .module-tool-icon { font-size: 22px; min-width: 32px; }
+            .module-info h2 { font-size: 15px; }
+            .module-info p { font-size: 12px; }
+            .module-badge { font-size: 11px; padding: 5px 10px; }
+            .module-tools { padding: 0 18px 14px; gap: 6px; }
+            .tool-tag { font-size: 10px; padding: 3px 8px; }
+            .week-item { padding: 11px 18px; gap: 10px; }
+            .week-num { min-width: 48px; font-size: 10px; }
+            .week-title { font-size: 13px; }
+            .week-date { display: none; }
+            .week-new { font-size: 10px; padding: 2px 6px; }
+            .module-progress { padding: 12px 18px 18px; }
+            .btn-nav-social { display: none !important; }
+        }
+
+        @media (max-width: 480px) {
+            .learn-header h1 { font-size: 20px; }
+            .module-info h2 { font-size: 14px; }
+        }
+    .logo-mark{vertical-align:middle;display:inline-block;}
+
+        .start-here-card {
+            display: flex; align-items: center; gap: 16px;
+            padding: 20px 24px; margin-bottom: 32px;
+            background: #fff; border: 1px solid #e2e8f0; border-radius: 14px;
+            text-decoration: none; transition: border-color .15s, transform .15s;
+        }
+        .start-here-card:hover { border-color: #10b981; transform: translateY(-1px); }
+        .sh-icon {
+            width: 42px; height: 42px; flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+            background: #ecfdf5; border-radius: 10px;
+        }
+        .sh-icon i { font-size: 22px; color: #059669; }
+        .sh-body { display: flex; flex-direction: column; gap: 3px; }
+        .sh-body strong { font-size: 15px; font-weight: 700; color: #1e293b; }
+        .sh-body span { font-size: 13.5px; color: #64748b; line-height: 1.55; }
+        .sh-arrow { margin-left: auto; font-size: 20px; color: #cbd5e1; flex-shrink: 0; }
+        .start-here-card:hover .sh-arrow { color: #10b981; }
+        @media (max-width: 640px) {
+            .start-here-card { padding: 16px 18px; gap: 13px; }
+            .sh-arrow { display: none; }
+        }
+
+        .layer-intro {
+            padding: 28px 0 4px;
+            margin-top: 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+        .layer-intro h2 {
+            margin: 14px 0 10px;
+            font-size: 22px; font-weight: 800; color: #1e293b; letter-spacing: -0.01em;
+        }
+        .layer-intro p {
+            margin: 0; max-width: 760px;
+            font-size: 15px; color: #64748b; line-height: 1.7;
+        }
+        .layer-intro strong { color: #334155; font-weight: 700; }
+        @media (max-width: 640px) {
+            .layer-intro h2 { font-size: 19px; }
+            .layer-intro p { font-size: 14px; }
+        }
+    </style>
+
+        <!-- Mobile nav toggle — standalone, independent of Firebase -->
+    <script>
+        window.toggleMobileNav = function() {
+            const nav = document.getElementById('mobileNav');
+            const btn = document.getElementById('hamburger');
+            if (!nav) return;
+            nav.classList.toggle('open');
+            if (btn) btn.classList.toggle('open');
+            document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
+        };
+    </script>
+
+    <script type="module">
+        import { signInWithGoogle, logout, onUserChange } from './auth.js';
+
+        let currentUser = null;
+
+        // Prevent auth flash: restore UI instantly from cached state
+        (function() {
+            const hint = localStorage.getItem('pch_auth');
+            let cached = null;
+            try { cached = JSON.parse(hint); } catch(e) {}
+            if (cached && cached.name) {
+                document.getElementById('userMenu').style.display = 'flex';
+                document.getElementById('userName').textContent = cached.name;
+                if (cached.photo) document.getElementById('userAvatar').src = cached.photo;
+            } else {
+                document.getElementById('joinBtn').style.display = 'flex';
+            }
+        })();
+
+        onUserChange((user) => {
+            currentUser = user;
+            const joinBtn = document.getElementById('joinBtn');
+            const userMenu = document.getElementById('userMenu');
+            if (user) {
+                localStorage.setItem('pch_auth', JSON.stringify({
+                    name: user.displayName.split(' ')[0],
+                    photo: user.photoURL || ''
+                }));
+                joinBtn.style.display = 'none';
+                userMenu.style.display = 'flex';
+                document.getElementById('userName').textContent = user.displayName.split(' ')[0];
+                if (user.photoURL) document.getElementById('userAvatar').src = user.photoURL;
+                closeModal();
+            } else {
+                localStorage.removeItem('pch_auth');
+                joinBtn.style.display = 'flex';
+                userMenu.style.display = 'none';
+            }
+        });
+
+        // Gate week links
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('a.week-item[data-gated]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (!currentUser) {
+                        e.preventDefault();
+                        sessionStorage.setItem('pch_intended', this.href);
+                        openModal();
+                    }
+                });
+            });
+
+            document.getElementById('accessModal').addEventListener('click', function(e) {
+                if (e.target === this) closeModal();
+            });
+        });
+
+        window.signInWithGoogleBtn = async function() {
+            try {
+                await signInWithGoogle();
+                // On mobile this redirects away; on desktop the popup resolves here.
+            } catch(e) {
+                // Only show an error for genuine failures, not user-cancelled popups.
+                const code = e && e.code ? e.code : '';
+                if (code !== 'auth/popup-closed-by-user' &&
+                    code !== 'auth/cancelled-popup-request') {
+                    alert('Sign in failed. Please try again.');
+                }
+            }
+        };
+
+        window.logoutUser = async function() { await logout(); };
+        window.openModal = function() {
+            document.getElementById('accessModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        };
+
+        window.closeModal = function() {
+            document.getElementById('accessModal').classList.remove('active');
+            document.body.style.overflow = '';
+        };
+    </script>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+            <a href="index.html" class="logo">
+                <img class="logo-mark" src="" style="display:none" width="40" height="40" alt="" aria-hidden="true" style="object-fit:contain;">
+                <span translate="no">THE PROJECT CONTROL HUB</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="learn.html" class="active">Learn</a>
+                <a href="about.html">About</a>
+            </div>
+            <div class="nav-actions" style="display:flex;align-items:center;gap:10px;">
+                <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+                <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" class="btn-nav-social" translate="no"><i class='bx bxl-linkedin'></i></a>
+                <button id="joinBtn" class="btn btn-primary" style="display:none;" onclick="openModal()"><i class='bx bx-log-in'></i> Sign In</button>
+                <div id="userMenu" style="display:none;align-items:center;gap:10px;">
+                    <img id="userAvatar" src="" style="width:32px;height:32px;border-radius:50%;object-fit:cover;" alt="avatar">
+                    <span id="userName" style="font-size:14px;font-weight:600;color:var(--text-light);"></span>
+                    <button class="btn btn-primary" onclick="logoutUser()" style="padding:8px 14px;font-size:13px;">Sign Out</button>
+                </div>
+            </div>
+        </nav>
+
+    <section class="hero-section" style="padding-bottom:0;">
+    </section>
+
+    <!-- LEARN PAGE -->
+    <div class="learn-page">
+        <div class="learn-container">
+
+            <!-- PAGE HEADER -->
+            <div class="learn-header">
+                <div class="learn-header-badge">
+                    <span class="dot-green"></span> CURRICULUM
+                </div>
+                <h1>Project Controls — The Way It Works on Site</h1>
+                <p>A structured series built for engineers who want to understand project controls the way it actually works on site. Theory first, then the tools that bring it to life.</p>
+                <div class="learn-header-meta">
+                    <span class="learn-meta-item"><i class='bx bx-layer'></i> 7 tracks + a toolbox</span>
+                    <span class="learn-meta-item"><i class='bx bx-time-five'></i> Tracks 1&#8211;5 complete &#183; 117 lessons &#183; Interfaces next</span>
+                    <span class="learn-meta-item"><i class='bx bx-calendar'></i> New lesson every week</span>
+                    <span class="learn-meta-item"><i class='bx bx-lock-open'></i> Fundamentals always free</span>
+                </div>
+            </div>
+
+            <!-- ===== TRACK JUMP NAV ===== -->
+                <nav class="track-jump" aria-label="Jump to a section">
+                    <a href="start-here.html" class="track-jump-link">Start Here</a>
+                    <a href="#track-1" class="track-jump-link" data-jump="track-1">Schedule <span id="jn1">27</span></a>
+                    <a href="#track-2" class="track-jump-link" data-jump="track-2">Cost &amp; Cash <span id="jn2">24</span></a>
+                    <a href="#track-3" class="track-jump-link" data-jump="track-3">Risk <span id="jn3">18</span></a>
+                    <a href="#track-4" class="track-jump-link" data-jump="track-4">Contract <span id="jn4">20</span></a>
+                    <a href="#track-5" class="track-jump-link" data-jump="track-5">Claims <span id="jn5">28</span></a>
+                    <a href="#track-6" class="track-jump-link" data-jump="track-6">Interfaces <span id="jn6">14</span></a>
+                    <a href="#lifecycle" class="track-jump-link" data-jump="lifecycle">Life of a Project <span id="jnlc">52</span></a>
+                    <a href="#roadmap" class="track-jump-link" data-jump="roadmap">Roadmap</a>
+                    <a href="#toolbox" class="track-jump-link" data-jump="toolbox">Toolbox</a>
+                </nav>
+
+                <!-- MODULES -->
+            <div class="modules-list">
+
+                <!-- ===== START HERE ===== -->
+                <a href="start-here.html" class="start-here-card">
+                    <span class="sh-icon"><i class='bx bx-compass'></i></span>
+                    <span class="sh-body">
+                        <strong>New here? Read this first.</strong>
+                        <span>What project controls is, whether this is for you, and the five paths it opens. Ten minutes, no prior knowledge.</span>
+                    </span>
+                    <i class='bx bx-right-arrow-alt sh-arrow'></i>
+                </a>
+
+                <!-- ===== TRACK 1 ===== -->
+                
+                <!-- ===== SECTION: THE LEARNING PATH ===== -->
+<div class="track-header" id="track-1">
+                    <div class="track-badge free"><span class="dot-green"></span> TRACK 1 · FREE · COMPLETE</div>
+                    <h2>Schedule Management</h2>
+                    <p class="track-sub">The logic. Why projects succeed — and why they fail.</p>
+                    <p class="track-desc">A complete 27-week curriculum on how project controls actually works on site — from why projects fail, through the critical path, earned value and forecasting, to forensic analysis and the people who have to act on your numbers. This is the foundation everything else stands on, and it stays free.</p>
+                        <div class="track-outcomes">
+                            <h3>After this track you can</h3>
+                            <ul>
+                            <li>Build a schedule from logic, and defend that logic when somebody questions it</li>
+                            <li>Tell a schedule that has been updated from one that is true</li>
+                            <li>Read SPI and CPI together, and know what each of them hides on its own</li>
+                            <li>Forecast a completion date you can defend in front of a board</li>
+                            <li>Recognise the month a project first told you it was in trouble</li>
+                            <li>Report one model at six altitudes without producing two versions of the truth</li>
+                            </ul>
+                        </div>
+                </div>
+
+                <!-- MODULE 01: SCHEDULE — ACTIVE -->
+                <div class="module-card">
+                    <div class="module-card-header">
+                        <div class="module-card-left">
+                            <span class="module-num">01</span>
+                            <div class="module-info">
+                                <h2>Schedule Management</h2>
+                                <p>Built on the PMI Practice Standard for Scheduling and 8+ years on nuclear, mining, port, and high-rise projects.</p>
+                            </div>
+                        </div>
+                        <span class="module-badge badge-active" id="moduleBadge"><span class="dot-green"></span> In Progress · Week 3 of 27</span>
+                    </div>
+
+                    <div class="module-tools">
+                        <span class="tool-tag-label">Topics:</span>
+                        <span class="tool-tag">Planning</span>
+                        <span class="tool-tag">CPM</span>
+                        <span class="tool-tag">Baseline</span>
+                        <span class="tool-tag">EVM</span>
+                        <span class="tool-tag">Forecasting</span>
+                        <span class="tool-tag">Reporting</span>
+                    </div>
+
+                    <div class="module-weeks" id="moduleWeeks"></div>
+
+                    <div class="module-progress">
+                        <div class="progress-label">
+                            <span id="progressText">27 of 27 published</span>
+                            <span id="progressPct">100%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill" style="width: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== TRACK 2 ===== -->
+                
+                <!-- ===== TRACK 2 — COST & CASH ===== -->
+                <div class="track-header track-2" id="track-2">
+                    <div class="track-badge free"><span class="dot-green"></span> TRACK 2 &#183; FREE &#183; COMPLETE</div>
+                    <h2>Cost &amp; Cash</h2>
+                    <p class="track-sub">The money. Where the numbers come from — and how companies go broke while profitable.</p>
+                    <p class="track-desc">Track 1 taught you to read a project. This one teaches you to read its money. Where a unit rate actually comes from, why the BoQ and the schedule never quite line up, how physical percent is really measured — and the half nobody teaches a planner: <strong>cash</strong>. A contractor doesn&#39;t fail because of a bad CPI. It fails because it ran out of money while turning a profit.</p>
+                        <div class="track-outcomes">
+                            <h3>After this track you can</h3>
+                            <ul>
+                            <li>Trace a number from the estimate through the budget to the invoice without losing it</li>
+                            <li>Say what &#8220;actual cost&#8221; means on your job, and why it is the hardest number to get</li>
+                            <li>Keep contingency, management reserve and the performance measurement baseline apart</li>
+                            <li>Check the measure when the person measuring is the person being paid</li>
+                            <li>Read a cash curve and see the month the job runs out of money</li>
+                            <li>Explain why a profitable job can still go bust</li>
+                            </ul>
+                        </div>
+                    <div class="track-note">
+                        <i class='bx bx-lock-open-alt'></i>
+                        <p><strong>Track 1 ends with two things that need correcting.</strong> In <a href="week-18.html">Schedule Week 18</a> we said actual cost was simple &#8212; just ask accounts. It isn&#39;t, and one day that costs somebody a great deal of money. And <a href="week-20.html">Schedule Week 20</a> forecast the overrun by dividing a million dollars by the cost efficiency &#8212; right method, wrong number, because that million is a selling price with overhead, profit and reserve inside it. Track 2 opens by going back for the first, and takes the second apart in Weeks 5 and 6.</p>
+                    </div>
+                </div>
+
+                <!-- MODULE 02: COST & CASH -->
+                <div class="module-card">
+                    <div class="module-card-header">
+                        <div class="module-card-left">
+                            <span class="module-num">02</span>
+                            <div class="module-info">
+                                <h2>Cost &amp; Cash</h2>
+                                <p>Estimating, budgeting, measurement and cash flow &#8212; built on AACE&#39;s cost engineering framework and the way contractors actually run their books on site.</p>
+                            </div>
+                        </div>
+                        <span class="module-badge badge-active" id="t2ModuleBadge"><span class="dot-green"></span> In Progress</span>
+                    </div>
+                    <div class="module-tools">
+                        <span class="tool-tag-label">Topics:</span>
+                        <span class="tool-tag">Unit Rates</span>
+                        <span class="tool-tag">BoQ</span>
+                        <span class="tool-tag">Budget</span>
+                        <span class="tool-tag">Schedule of Values</span>
+                        <span class="tool-tag">Physical %</span>
+                        <span class="tool-tag">Cash Flow</span>
+                        <span class="tool-tag">Contribution</span>
+                    </div>
+                    <div class="module-weeks" id="track2Weeks"></div>
+                    <div class="module-progress">
+                        <div class="progress-label">
+                            <span id="t2ProgressText">24 of 24 published</span>
+                            <span id="t2ProgressPct">100%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="t2ProgressFill" style="width:100%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== TRACK 3 ===== -->
+
+                <!-- ===== TRACK 3 — RISK ===== -->
+                <div class="track-header" id="track-3">
+                    <div class="track-badge free"><i class='bx bx-shield-quarter'></i> TRACK 3 &#183; FREE &#183; COMPLETE</div>
+                    <h2>Risk</h2>
+                    <p class="track-sub">The future. What has not happened yet &#8212; and who pays for it when it does.</p>
+                    <p class="track-desc">Track 1 taught you to read a project&#39;s time. Track 2 taught you to read its money. Both of them measure something that has already happened. This one is about the only part of project controls that moves before the number does: where the risks on a job actually come from, what a probability is worth when somebody just felt it, how much confidence you are really buying with a contingency &#8212; and the question nobody in a PMI textbook asks, which is whose money pays when the risk arrives.</p>
+                        <div class="track-outcomes">
+                            <h3>After this track you can</h3>
+                            <ul>
+                            <li>Find risks in the project&#39;s own documents instead of in a workshop&#39;s memory</li>
+                            <li>Write a risk as a sentence, not a noun</li>
+                            <li>Say what a probability is worth when somebody simply felt it</li>
+                            <li>Choose a distribution and explain why that shape and not another</li>
+                            <li>Price a response, and recognise the ones worth less than the risk they treat</li>
+                            <li>Say whose money pays when a risk arrives, and find that answer in the contract</li>
+                            </ul>
+                        </div>
+                    <div class="track-note">
+                        <i class='bx bx-lock-open-alt'></i>
+                        <p><strong>Cost &amp; Cash Week 5 showed you a risk register with five lines on it.</strong> It sized the contingency at $47,553 and admitted, in one sentence, that the odds of that money being enough were 49.5% &#8212; a coin flip. Nobody ever asked where those five lines came from. Track 3 opens there, and comes back to that number in <a href="risk-week-12.html">Risk Week 12</a>.</p>
+                    </div>
+                </div>
+
+                <!-- MODULE 03: RISK -->
+                <div class="module-card">
+                    <div class="module-card-header">
+                        <div class="module-card-left">
+                            <span class="module-num">03</span>
+                            <div class="module-info">
+                                <h2>Risk</h2>
+                                <p>Identification, analysis and ownership &#8212; built on the PMI risk standards, the quantitative methods behind them, and the FIDIC conditions that decide who actually carries a risk on site.</p>
+                            </div>
+                        </div>
+                        <span class="module-badge badge-active" id="t3ModuleBadge"><span class="dot-green"></span> In Progress</span>
+                    </div>
+                    <div class="module-tools">
+                        <span class="tool-tag-label">Topics:</span>
+                        <span class="tool-tag">Risk Register</span>
+                        <span class="tool-tag">RBS</span>
+                        <span class="tool-tag">Qualitative</span>
+                        <span class="tool-tag">Quantitative</span>
+                        <span class="tool-tag">Correlation</span>
+                        <span class="tool-tag">P50 / P80</span>
+                        <span class="tool-tag">FIDIC</span>
+                        <span class="tool-tag">Opportunity</span>
+                    </div>
+                    <div class="module-weeks" id="track3Weeks"></div>
+                    <div class="module-progress">
+                        <div class="progress-label">
+                            <span id="t3ProgressText">18 of 18 published</span>
+                            <span id="t3ProgressPct">100%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="t3ProgressFill" style="width: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+
+<!-- ===== TRACK 4 — CONTRACT MANAGEMENT ===== -->
+                    <div class="track-header" id="track-4">
+                        <div class="track-badge free" id="t4TrackBadge"><i class='bx bx-file'></i> TRACK 4 &#183; FREE &#183; COMPLETE</div>
+                        <h2>Contract Management</h2>
+                        <p class="track-sub">The machinery. Whether the money is still yours by the time you ask for it.</p>
+                        <p class="track-desc">Track 3 ended holding a priced risk and a clause number, and one uncomfortable sentence: an entitlement is not the same thing as an entitlement you can still use. This track is the machinery in between &#8212; notices and the periods that kill them, the records that make a right provable rather than arguable, instructions, variations, payment, and what changes when the contract is cost-plus or target cost instead of lump sum. Being right is not the job. Staying entitled is.</p>
+                        <div class="track-outcomes">
+                            <h3>After this track you can</h3>
+                            <ul>
+                            <li>Read a contract and find the clause that governs the situation in front of you</li>
+                            <li>Serve a notice within its period, in its form, to the right recipient</li>
+                            <li>Tell an instruction from a variation, and a variation from a claim</li>
+                            <li>Keep the records that make an entitlement provable rather than arguable</li>
+                            <li>Follow the payment machinery from application to certificate to money</li>
+                            <li>Say what changes when the contract is cost-plus or target cost instead of lump sum</li>
+                            </ul>
+                        </div>
+                        <div class="track-note">
+                            <i class='bx bx-lock-open-alt'></i>
+                            <p><strong>Risk Week 15 found five of your thirteen risks had a contractual mechanism behind them.</strong> It put clause numbers against each one, then noted that a clause is only worth the notice you served under it. The rock is worth $48,450 against a net margin of $48,163 &#8212; Track 4 opens on the letter nobody wrote, in <a href="contract-week-1.html">Contract Week 1</a>.</p>
+                        </div>
+                    </div>
+                    <!-- MODULE 04: CONTRACT MANAGEMENT -->
+                    <div class="module-card">
+                        <div class="module-card-header">
+                            <div class="module-card-left">
+                                <span class="module-num">04</span>
+                                <div class="module-info">
+                                    <h2>Contract Management</h2>
+                                    <p>Notices, records and entitlement &#8212; built on the FIDIC 2017 conditions and the contract administration that decides whether a right survives contact with a programme.</p>
+                                </div>
+                            </div>
+                            <span class="module-badge badge-active" id="t4ModuleBadge"><span class="dot-green"></span> In Progress</span>
+                        </div>
+                        <div class="module-tools">
+                            <span class="tool-tag-label">Topics:</span>
+                            <span class="tool-tag">Notices</span>
+                            <span class="tool-tag">Time Bars</span>
+                            <span class="tool-tag">Entitlement</span>
+                            <span class="tool-tag">Variations</span>
+                            <span class="tool-tag">Payment</span>
+                            <span class="tool-tag">FIDIC</span>
+                            <span class="tool-tag">Contract Types</span>
+                            <span class="tool-tag">NEC4</span>
+                        </div>
+                        <div class="module-weeks" id="track4Weeks"></div>
+                        <div class="module-progress">
+                            <div class="progress-label">
+                                <span id="t4ProgressText">1 of 20 published</span>
+                                <span id="t4ProgressPct">5%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="t4ProgressFill" style="width: 5%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+<!-- ===== TRACK 5 — CLAIMS &amp; DELAY ANALYSIS ===== -->
+                    <div class="track-header" id="track-5">
+                        <div class="track-badge free" id="t5TrackBadge"><i class='bx bx-file-find'></i> TRACK 5 &#183; FREE &#183; COMPLETE</div>
+                        <h2>Claims &amp; Delay Analysis</h2>
+                        <p class="track-sub">The number. What the right you kept is actually worth.</p>
+                        <p class="track-desc">Track 4 ended holding a preserved right, a programme that can be re-run, and the question it deliberately never answered: how much? This track is the answer &#8212; forensic delay methods and why two competent analysts reach different numbers, float and concurrency, disruption and the measured mile, and the quantum that turns an entitlement into an invoice. The method you can use is decided by the records you kept, not by the one you prefer.</p>
+                        <div class="track-outcomes">
+                            <h3>After this track you can</h3>
+                            <ul>
+                            <li>Choose a delay methodology from the records you actually have, and say why the other four would answer differently</li>
+                            <li>Reconstruct an as-built programme and defend it as a finding rather than a record</li>
+                            <li>Argue criticality, float and concurrency without conceding any of them by accident</li>
+                            <li>Prove disruption from a measured mile, and know how much weaker every alternative is</li>
+                            <li>Price prolongation, head office overhead and finance from the contract rather than from a formula you like</li>
+                            <li>Read a claim the way the reviewer will, and fix what they would have found</li>
+                            </ul>
+                        </div>
+                        <div class="track-note">
+                            <i class='bx bx-lock-open-alt'></i>
+                            <p><strong>The rock is worth $48,450 and the net margin on the job is $48,163.</strong> Four tracks have circled that pair without closing it &#8212; <a href="risk-week-5.html">Risk Week 5</a> priced the rock, <a href="contract-week-13.html">Contract Week 13</a> asked whether the contract even calls it a variation. Track 5 opens with the notice served on time, and the argument moved to what it is worth.</p>
+                        </div>
+                    </div>
+                    <!-- MODULE 05: CLAIMS &amp; DELAY ANALYSIS -->
+                    <div class="module-card">
+                        <div class="module-card-header">
+                            <div class="module-card-left">
+                                <span class="module-num">05</span>
+                                <div class="module-info">
+                                    <h2>Claims &amp; Delay Analysis</h2>
+                                    <p>Forensic delay analysis, disruption and quantum &#8212; the methods that turn a preserved entitlement into a number, and the reasons two analysts using two accepted methods disagree.</p>
+                                </div>
+                            </div>
+                            <span class="module-badge badge-active" id="t5ModuleBadge"><span class="dot-green"></span> Complete &#183; 28 weeks</span>
+                        </div>
+                        <div class="module-tools">
+                            <span class="tool-tag-label">Topics:</span>
+                            <span class="tool-tag">Delay Analysis</span>
+                            <span class="tool-tag">Concurrency</span>
+                            <span class="tool-tag">Float</span>
+                            <span class="tool-tag">Windows</span>
+                            <span class="tool-tag">Disruption</span>
+                            <span class="tool-tag">Measured Mile</span>
+                            <span class="tool-tag">Prolongation</span>
+                            <span class="tool-tag">Quantum</span>
+                        </div>
+                        <div class="module-weeks" id="track5Weeks"></div>
+                        <div class="module-progress">
+                            <div class="progress-label">
+                                <span id="t5ProgressText">28 of 28 published</span>
+                                <span id="t5ProgressPct">0%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="t5ProgressFill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ===== SECTION: THE INTEGRATION LAYER ===== -->
+                    <div class="layer-intro">
+                        <div class="track-badge roadmap"><i class='bx bx-layer'></i> THE INTEGRATION LAYER</div>
+                        <h2>Two tracks follow, and neither repeats the five above</h2>
+                        <p>Tracks 1&#8211;5 teach the methods. <strong>Interfaces</strong> shows how those methods change shape under a different contract and a different organisation. <strong>The Life of a Project</strong> shows the order the work actually arrives in, what feeds what, and which record is born where. Three layers, and each one needs the other two.</p>
+                    </div>
+
+<!-- ===== TRACK 6 — INTERFACES ===== -->
+                    <div class="track-header" id="track-6">
+                        <div class="track-badge free" id="t6TrackBadge"><i class='bx bx-git-branch'></i> TRACK 6 &#183; FREE</div>
+                        <h2>Interfaces</h2>
+                        <p class="track-sub">Where the work and the numbers change hands.</p>
+                        <p class="track-desc">Five tracks taught one job: a single contract, a single chain of command, a single team on a single site. Every technique in all of them quietly assumes that shape. This track is what happens when it stops holding &#8212; when the scope sits with somebody else, when the critical path runs through a purchase order, when the work nobody planned appears where two programmes meet, and when the number has more than one owner. Nothing here replaces what came before. It marks the edges of it.</p>
+                        <div class="track-outcomes">
+                            <h3>After this track you can</h3>
+                            <ul>
+                            <li>Say how many contracts a project has, and why that decides more than the payment mechanism</li>
+                            <li>Explain why an EPCM manager instructs people it has no contract with, and what that costs</li>
+                            <li>Argue concurrency when there is no head contract holding the definition</li>
+                            <li>Find the work sitting between two programmes before it becomes somebody&#39;s claim</li>
+                            <li>Reconcile a progress-based number with a valuation-based one without producing two truths</li>
+                            <li>Recognise which of the five tracks stops applying, and say precisely where</li>
+                            </ul>
+                        </div>
+                        <div class="track-note">
+                            <i class='bx bx-lock-open-alt'></i>
+                            <p><strong>The handoff was printed five tracks ago.</strong> <a href="claim-week-28.html">Claims Week 28</a> closed by naming four things this track answers. It opens by naming the assumption all five tracks were built on, and then takes it apart one contract at a time.</p>
+                        </div>
+                    </div>
+
+                    <!-- MODULE 06: INTERFACES -->
+                    <div class="module-card">
+                        <div class="module-card-header">
+                            <div class="module-card-left">
+                                <span class="module-num">06</span>
+                                <div class="module-info">
+                                    <h2>Interfaces</h2>
+                                    <p>Delivery models and who holds the scope, EPCM authority without privity, joint ventures, the critical path through an order, the work between two programmes, and the number with two owners.</p>
+                                </div>
+                            </div>
+                            <span class="module-badge badge-locked" id="t6ModuleBadge"><i class='bx bx-time'></i> Starting soon &#183; 14 weeks</span>
+                        </div>
+                        <div class="module-tools">
+                            <span class="tool-tag-label">Topics:</span>
+                            <span class="tool-tag">Delivery Models</span>
+                            <span class="tool-tag">EPCM</span>
+                            <span class="tool-tag">Joint Ventures</span>
+                            <span class="tool-tag">Concurrency</span>
+                            <span class="tool-tag">Interfaces</span>
+                            <span class="tool-tag">Long Lead</span>
+                            <span class="tool-tag">Document Control</span>
+                        </div>
+                        <div class="module-weeks" id="track6Weeks"></div>
+                        <div class="module-progress">
+                            <div class="progress-label">
+                                <span id="t6ProgressText">0 of 14 published</span>
+                                <span id="t6ProgressPct">0%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="t6ProgressFill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+<!-- ===== THE LIFE OF A PROJECT ===== -->
+                    <div class="track-header" id="lifecycle">
+                        <div class="track-badge free" id="lcTrackBadge"><i class='bx bx-git-repo-forked'></i> THE LIFE OF A PROJECT &#183; FREE</div>
+                        <h2>The Life of a Project</h2>
+                        <p class="track-sub">From the investment decision to the handover certificate &#8212; and what project controls does at every step.</p>
+                        <p class="track-desc">Everything above answers how. This answers when, why and with whom. It follows one EPC job in the order it actually arrives &#8212; the decision made before you were hired, the tender you inherit, the kick-off, the baseline nobody has time for, the six weeks that run the site, the month the curve stops behaving, the punch list, and the archive you hand to whoever starts on Monday. It teaches no new technique. It shows where the ones you have get used, and hands the method back to the track that owns it every time.</p>
+                        <div class="track-outcomes">
+                            <h3>After this you can</h3>
+                            <ul>
+                            <li>Say what happens on a project in what order, and what each stage needs from you</li>
+                            <li>Name every input behind a monthly report, its owner, its unit and its cut-off</li>
+                            <li>Run a constraint register and a look-ahead that a foreman will actually use</li>
+                            <li>Know which record is born at which stage, and which of them anyone reads</li>
+                            <li>Walk into a project on day one and say what you would set up first, and why</li>
+                            <li>Place every technique in Tracks 1&#8211;5 against the moment in the week it is needed</li>
+                            </ul>
+                        </div>
+                        <div class="track-note">
+                            <i class='bx bx-bulb'></i>
+                            <p><strong>Records born here.</strong> Every week ends the same way &#8212; naming the documents that come into existence at that stage, from the clarification log at tender to the lessons learned register at closeout. Learn the job and you learn the paperwork with it, in the order it appears rather than as a list.</p>
+                        </div>
+                    </div>
+
+                    <!-- MODULE 07: THE LIFE OF A PROJECT -->
+                    <div class="module-card">
+                        <div class="module-card-header">
+                            <div class="module-card-left">
+                                <span class="module-num">07</span>
+                                <div class="module-info">
+                                    <h2>The Life of a Project</h2>
+                                    <p>Nine phases from the investment decision to closeout, plus a two-week capstone. The integration layer: the order, the handovers, and the records.</p>
+                                </div>
+                            </div>
+                            <span class="module-badge badge-locked" id="lcModuleBadge"><i class='bx bx-time'></i> On the roadmap &#183; 52 weeks</span>
+                        </div>
+                        <div class="module-tools">
+                            <span class="tool-tag-label">Topics:</span>
+                            <span class="tool-tag">Lifecycle</span>
+                            <span class="tool-tag">Start-up</span>
+                            <span class="tool-tag">Engineering</span>
+                            <span class="tool-tag">Procurement</span>
+                            <span class="tool-tag">Workfront</span>
+                            <span class="tool-tag">Look-ahead</span>
+                            <span class="tool-tag">Governance</span>
+                            <span class="tool-tag">Commissioning</span>
+                            <span class="tool-tag">Registers</span>
+                        </div>
+                        <div class="module-weeks" id="lifecycleWeeks"></div>
+                        <div class="module-progress">
+                            <div class="progress-label">
+                                <span id="lcProgressText">0 of 52 published</span>
+                                <span id="lcProgressPct">0%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="lcProgressFill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="roadmap-section" id="roadmap">
+                    <div class="roadmap-intro">
+                        <div class="track-badge roadmap"><i class='bx bx-map-alt'></i> THE ROADMAP</div>
+                        <h2>After the writing</h2>
+                        <p>The text comes first. The tools come after it, because a tool you can drive but not reason about is worth nothing on a site.</p>
+                    </div>
+
+                    <div class="roadmap-card">
+                        <span class="roadmap-marker"><i class='bx bx-joystick'></i></span>
+                        <div class="roadmap-body">
+                            <h3>The Simulation</h3>
+                            <p>One EPC project, run end to end as a sequence of episodes with a real document pack. The same job as The Life of a Project, played rather than read.</p>
+                        </div>
+                        <span class="roadmap-badge"><i class='bx bx-time'></i> On the roadmap</span>
+                    </div>
+                </div>
+
+                <!-- ===== SECTION: THE TOOLBOX ===== -->
+<div class="track-header track-2" id="toolbox">
+                    <div class="track-badge paid"><i class='bx bx-wrench'></i> THE TOOLBOX</div>
+                    <h2>The Toolbox</h2>
+                    <p class="track-sub">The tools. Take these in any order, whenever you need them.</p>
+                    <p class="track-desc">These aren&#39;t a track &#8212; they&#39;re a shelf. The learning path above teaches you what to think; this is where you learn to build it. Nothing here is a prerequisite for anything else, so start with whatever your Monday morning demands.</p>
+                    <div class="track-note">
+                        <i class='bx bx-lock-open-alt'></i>
+                        <p><strong>Strategy before software.</strong> The fundamentals stay free, and they come first &#8212; a tool you can drive but not reason about is worth nothing on a site. Once the logic is yours, these are the tools that put it to work.</p>
+                    </div>
+                </div>
+
+                <!-- TOOLBOX: EXCEL -->
+                <div class="module-card module-card-locked">
+                    <div class="module-card-header">
+                        <div class="module-card-left">
+                            <span class="module-tool-icon"><i class='bx bx-table'></i></span>
+                            <div class="module-info">
+                                <h2>Excel</h2>
+                                <p>Where everything begins. On day one, it's all Excel — BOQ, material lists, progress, manpower, equipment, daily and concrete reports, the procurement log. Master this before anything else.</p>
+                            </div>
+                        </div>
+                        <span class="module-badge badge-locked"><i class='bx bx-time'></i> After the core</span>
+                    </div>
+                    <div class="module-tools">
+                        <span class="tool-tag-label">You'll learn:</span>
+                        <span class="tool-tag">Tables</span>
+                        <span class="tool-tag">Pivot</span>
+                        <span class="tool-tag">XLOOKUP</span>
+                        <span class="tool-tag">INDEX/MATCH</span>
+                        <span class="tool-tag">Power Query</span>
+                        <span class="tool-tag">Dashboards</span>
+                        <span class="tool-tag">Conditional Formatting</span>
+                    </div>
+                </div>
+
+                <!-- TOOLBOX: PRIMAVERA P6 -->
+                <div class="module-card module-card-locked">
+                    <div class="module-card-header">
+                        <div class="module-card-left">
+                            <span class="module-tool-icon"><i class='bx bx-network-chart'></i></span>
+                            <div class="module-info">
+                                <h2>Primavera P6</h2>
+                                <p>Now we turn data into a plan. With scope, WBS, and activities in hand, this is where the schedule is truly built — the engine every report and forecast runs on.</p>
+                            </div>
+                        </div>
+                        <span class="module-badge badge-locked"><i class='bx bx-time'></i> After the core</span>
+                    </div>
+                    <div class="module-tools">
+                        <span class="tool-tag-label">You'll learn:</span>
+                        <span class="tool-tag">WBS</span>
+                        <span class="tool-tag">Activities</span>
+                        <span class="tool-tag">Logic</span>
+                        <span class="tool-tag">Calendars</span>
+                        <span class="tool-tag">Constraints</span>
+                        <span class="tool-tag">Resources</span>
+                        <span class="tool-tag">Baseline</span>
+                        <span class="tool-tag">Updating</span>
+                    </div>
+                </div>
+
+                <!-- TOOLBOX: POWER BI -->
+                <div class="module-card module-card-locked">
+                    <div class="module-card-header">
+                        <div class="module-card-left">
+                            <span class="module-tool-icon"><i class='bx bx-bar-chart-alt-2'></i></span>
+                            <div class="module-info">
+                                <h2>Power BI</h2>
+                                <p>The plan exists, progress is coming in, and management wants a report. This is where data becomes a decision — live dashboards that show exactly where the project stands.</p>
+                            </div>
+                        </div>
+                        <span class="module-badge badge-locked"><i class='bx bx-time'></i> After the core</span>
+                    </div>
+                    <div class="module-tools">
+                        <span class="tool-tag-label">You'll learn:</span>
+                        <span class="tool-tag">Dashboards</span>
+                        <span class="tool-tag">KPIs</span>
+                        <span class="tool-tag">S-Curve</span>
+                        <span class="tool-tag">SPI</span>
+                        <span class="tool-tag">CPI</span>
+                        <span class="tool-tag">Progress</span>
+                    </div>
+                </div>
+
+                <!-- TOOLBOX: POWER APPS -->
+                <div class="module-card module-card-locked">
+                    <div class="module-card-header">
+                        <div class="module-card-left">
+                            <span class="module-tool-icon"><i class='bx bx-mobile-alt'></i></span>
+                            <div class="module-info">
+                                <h2>Power Platform</h2>
+                                <p>Stop chasing people for numbers. Build the form the foreman fills on his phone at the pour, and the flow that files it, checks it, and tells you when it&#39;s late &#8212; without you opening anything.</p>
+                            </div>
+                        </div>
+                        <span class="module-badge badge-locked"><i class='bx bx-time'></i> On the shelf</span>
+                    </div>
+                    <div class="module-tools">
+                        <span class="tool-tag-label">You&#39;ll learn:</span>
+                        <span class="tool-tag">Power Apps</span>
+                        <span class="tool-tag">Power Automate</span>
+                        <span class="tool-tag">Field Data Capture</span>
+                        <span class="tool-tag">Approvals</span>
+                        <span class="tool-tag">Alerts</span>
+                    </div>
+                </div>
+
+                <!-- TOOLBOX: POWER AUTOMATE -->
+                
+
+                <!-- TOOLBOX: AI -->
+                <div class="module-card module-card-locked">
+                    <div class="module-card-header">
+                        <div class="module-card-left">
+                            <span class="module-tool-icon"><i class='bx bx-transfer-alt'></i></span>
+                            <div class="module-info">
+                                <h2>ERP Integration</h2>
+                                <p>Where your cost data actually lives. Commitments, invoices and accruals sit in SAP, Oracle, IFS or Dynamics &#8212; and until your schedule can talk to them, earned value is a spreadsheet exercise.</p>
+                            </div>
+                        </div>
+                        <span class="module-badge badge-locked"><i class='bx bx-time'></i> On the shelf</span>
+                    </div>
+                    <div class="module-tools">
+                        <span class="tool-tag-label">You&#39;ll learn:</span>
+                        <span class="tool-tag">SAP</span>
+                        <span class="tool-tag">Oracle</span>
+                        <span class="tool-tag">IFS</span>
+                        <span class="tool-tag">Dynamics</span>
+                        <span class="tool-tag">Cost Interfaces</span>
+                    </div>
+                </div>
+
+                <div class="module-card module-card-locked">
+                    <div class="module-card-header">
+                        <div class="module-card-left">
+                            <span class="module-tool-icon"><i class='bx bx-bot'></i></span>
+                            <div class="module-info">
+                                <h2>AI for Project Controls</h2>
+                                <p>Last — because AI does nothing on its own. It becomes powerful only once you know Excel, Primavera, Power BI, and Power Apps. Then it accelerates everything.</p>
+                            </div>
+                        </div>
+                        <span class="module-badge badge-locked"><i class='bx bx-time'></i> After the core</span>
+                    </div>
+                    <div class="module-tools">
+                        <span class="tool-tag-label">You'll learn:</span>
+                        <span class="tool-tag">Delay Analysis</span>
+                        <span class="tool-tag">Report Writing</span>
+                        <span class="tool-tag">Risk Summary</span>
+                        <span class="tool-tag">Meeting Minutes</span>
+                        <span class="tool-tag">Dashboard Explanation</span>
+                    </div>
+                </div>
+
+                
+
+            </div>
+        </div>
+    </div>
+
+    <!-- MOBILE NAV -->
+    <div class="mobile-nav" id="mobileNav">
+        <button class="mobile-nav-close" onclick="toggleMobileNav()"><i class='bx bx-x'></i></button>
+        <a href="index.html" onclick="toggleMobileNav()">Home</a>
+        <a href="learn.html" class="active" onclick="toggleMobileNav()">Learn</a>
+        <a href="about.html" onclick="toggleMobileNav()">About</a>
+        <div class="mobile-nav-bottom">
+            <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" translate="no"><i class='bx bxl-linkedin'></i> LinkedIn</a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-content" style="grid-template-columns: 1fr 1fr;">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <img class="logo-mark" src="" style="display:none" width="40" height="40" alt="" aria-hidden="true" style="object-fit:contain;">
+                    <span translate="no">THE PROJECT CONTROL HUB</span>
+                </a>
+                <p>Field notes on planning & project controls — by Barış Emre Özçelik, PMP.</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" translate="no"><i class='bx bxl-linkedin'></i></a>
+                </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:16px;">
+                <h4 style="font-size:11px;font-weight:700;letter-spacing:1px;color:#64748b;margin:0;">FOLLOW THE SERIES</h4>
+                <p style="font-size:13px;color:#64748b;margin:0;line-height:1.6;">New content every week — follow along so you don't miss the next topic.</p>
+                <div style="display:flex;gap:10px;">
+                    <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank"
+                       style="display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);color:#cbd5e1;text-decoration:none;font-size:13px;font-weight:600;transition:all 0.2s;" translate="no">
+                        <i class='bx bxl-linkedin' style="font-size:17px;"></i> LinkedIn
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 The Project Control Hub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- ACCESS MODAL -->
+    <div class="modal-overlay" id="accessModal">
+        <div class="modal-box">
+            <button class="close-modal" onclick="closeModal()"><i class='bx bx-x'></i></button>
+            <div class="modal-icon-wrapper">
+                <i class='bx bx-book-open'></i>
+            </div>
+            <h4>Free access to all content</h4>
+            <p>Sign in with Google to read the full series and get notified when new topics are published.</p>
+            <button class="btn-google-signin" onclick="signInWithGoogleBtn()">
+                <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z" fill="#4285F4"/><path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/><path d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.711V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/><path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#EA4335"/></svg>
+                Continue with Google
+            </button>
+            <p class="modal-note">No spam. One notification per week when new content drops.</p>
+        </div>
+    </div>
+
+
+    <!-- Curriculum data + renderers -->
+    <script>
+// ============================================================
+// THE PROJECT CONTROL HUB — Central Curriculum
+// ------------------------------------------------------------
+// This is the SINGLE SOURCE OF TRUTH for the whole series.
+// To publish a new week: find its entry below, change
+// "status" from "upcoming" to "live", set the "date", and
+// (optionally) mark it "new: true". That's it — every page
+// (home, learn, and each article sidebar) updates itself.
+//
+// To add a brand-new topic: add an object to the array.
+// To fix a title/typo: change it here, once.
+// ============================================================
+
+const CURRICULUM = {
+  moduleTitle: "Schedule Management",
+  totalWeeks: 27,
+
+  // status: "live" = published & clickable | "upcoming" = greyed out
+  // page:   the html file for that week (only needed when live)
+  // new:    true shows a green "New" badge (use for the latest one)
+  weeks: [
+    // ---- PHASE A — FOUNDATIONS ----
+    { phase: "Phase A — Foundations", n: 1, title: "Why projects fail — and why the answer is never the tools", short: "Why projects fail — and why the answer is never the tools", status: "live", page: "week-1.html", date: "Jun 20, 2026" },
+    { n: 2, title: "The foundations of construction project controls", short: "The foundations of construction project controls", status: "live", page: "week-2.html", date: "Jun 27, 2026" },
+    { n: 3, title: "That Gantt chart on the wall? It's not your schedule.", short: "That Gantt chart? It's not your schedule.", status: "live", page: "week-3.html", date: "Jul 8, 2026" },
+
+    // ---- PHASE B — SCHEDULE STRATEGY · DOMAIN 1 ----
+    { phase: "Phase B — Schedule Strategy", n: 4, title: "Strategy before software — scheduling approach & governance", short: "Strategy before software", status: "live", page: "week-4.html", date: "Jul 15, 2026" },
+    { n: 5, title: "Life cycles: Critical Path, Critical Chain & Rolling Wave", short: "Life cycles: CPM, Critical Chain, Rolling Wave", status: "live", page: "week-5.html", date: "Jul 22, 2026" },
+    { n: 6, title: "From charter to schedule — building the project strategy", short: "From charter to schedule", status: "live", page: "week-6.html", date: "Jul 29, 2026" },
+
+    // ---- PHASE C — SCHEDULE DEVELOPMENT · DOMAIN 2 ----
+    { phase: "Phase C — Schedule Development", n: 7, title: "The 9-step schedule development process", short: "The 9-step development process", status: "live", page: "week-7.html", date: "Aug 5, 2026" },
+    { n: 8, title: "Scheduling components I — activity types, calendars, data", short: "Components I — activities, calendars", status: "live", page: "week-8.html", date: "Aug 12, 2026" },
+    { n: 9, title: "Scheduling components II — scope & schedule performance", short: "Components II — scope & performance", status: "live", page: "week-9.html", date: "Aug 19, 2026" },
+    { n: 10, title: "WBS & baseline development — structure that survives", short: "WBS & baseline development", status: "live", page: "week-10.html", date: "Aug 26, 2026" },
+    { n: 11, title: "Activities & networks — PDM, relationships, leads & lags", short: "Activities & networks — PDM, logic", status: "live", page: "week-11.html", date: "Sep 2, 2026" },
+    { n: 12, title: "Estimating — duration & budget techniques", short: "Estimating — duration & budget", status: "live", page: "week-12.html", date: "Sep 9, 2026" },
+    { n: 13, title: "CPM math — forward pass, backward pass, float", short: "CPM math — forward/backward pass, float", status: "live", page: "week-13.html", date: "Sep 16, 2026" },
+    { n: 14, title: "Resource loading, leveling & schedule compression", short: "Resource loading, leveling & compression", status: "live", page: "week-14.html", date: "Sep 23, 2026" },
+    { n: 15, title: "Schedule risk analysis — Monte Carlo & contingency", short: "Schedule risk analysis — Monte Carlo", status: "live", page: "week-15.html", date: "Sep 30, 2026" },
+
+    // ---- PHASE D — MONITORING & CONTROL · DOMAIN 3 ----
+    { phase: "Phase D — Monitoring & Control", n: 16, title: "Schedule maintenance — actuals & the update cycle", short: "Maintenance — actuals & update cycle", status: "live", page: "week-16.html", date: "Oct 7, 2026" },
+    { n: 17, title: "Model health — constraints, open ends, out-of-sequence logic", short: "Model health — constraints, OOS logic", status: "live", page: "week-17.html", date: "Oct 14, 2026" },
+    { n: 18, title: "EVM fundamentals — PMB, PV, EV, AC", short: "EVM fundamentals — PMB, PV, EV, AC", status: "live", page: "week-18.html", date: "Oct 21, 2026" },
+    { n: 19, title: "EVM analysis — SPI, CPI & variance interpretation", short: "EVM analysis — SPI, CPI, variance", status: "live", page: "week-19.html", date: "Oct 28, 2026" },
+    { n: 20, title: "Forecasting — EAC, ETC, TCPI & Earned Schedule", short: "Forecasting — EAC, ETC, Earned Schedule", status: "live", page: "week-20.html", date: "Nov 4, 2026" },
+    { n: 21, title: "Change control & protecting the baseline", short: "Change control & baseline protection", status: "live", page: "week-21.html", date: "Nov 11, 2026" },
+    { n: 22, title: "The control philosophy — telemetry & managing variances", short: "Control philosophy — telemetry", status: "live", page: "week-22.html", date: "Nov 18, 2026" },
+    { n: 23, title: "Project reviews & the Conformance Index", short: "Project reviews & Conformance Index", status: "live", page: "week-23.html", date: "Nov 25, 2026" },
+
+    // ---- PHASE E — CLOSEOUT & FORENSICS · DOMAIN 4 ----
+    { phase: "Phase E — Closeout & Forensics", n: 24, title: "Forensic schedule analysis — delays, claims, evidence", short: "Forensic schedule analysis — claims", status: "live", page: "week-24.html", date: "Dec 2, 2026" },
+    { n: 25, title: "Closeout & continuous closeout — capturing the data", short: "Closeout & continuous closeout", status: "live", page: "week-25.html", date: "Dec 9, 2026" },
+
+    // ---- PHASE F — COMMUNICATION · DOMAIN 5 ----
+    { phase: "Phase F — Communication", n: 26, title: "Reporting & the altitude concept — right data, right level", short: "Reporting & the altitude concept", status: "live", page: "week-26.html", date: "Dec 16, 2026" },
+    { n: 27, title: "Stakeholder management & schedule communication", short: "Stakeholder management & communication", status: "live", page: "week-27.html", date: "Dec 23, 2026" },
+  ],
+
+  // ---- Derived helpers ----
+  get liveCount() { return this.weeks.filter(w => w.status === "live").length; },
+  get progressPercent() { return Math.round((this.liveCount / this.totalWeeks) * 100); },
+  get latestLiveWeek() {
+    const live = this.weeks.filter(w => w.status === "live");
+    return live.length ? live[live.length - 1] : null;
+  },
+  getWeek(n) { return this.weeks.find(w => w.n === n); }
+};
+
+// ============================================================
+// RENDERERS — build HTML from the data above
+// ============================================================
+
+// Sidebar for article pages. currentWeek = the week number of THIS page.
+function sidebarHTML(track, currentWeek) {
+  // Tüm track'i göster. Eskiden slice(0,5) + sabit bir özet satırı vardı;
+  // üç track de tamamlandığı için o satır hem yanlış hem gereksizdi, ve
+  // 13. haftadaki okur yan panelde kendini bulamıyordu.
+  const label = track.moduleTitle || track.title;
+  const rows = track.weeks.map(function (week) {
+    const isActive = week.n === currentWeek;
+    const isLive = week.status === "live";
+    const badge = (week === track.latestLiveWeek && !isActive)
+      ? '<span class="sidebar-new" translate="no">New</span>' : "";
+    const inner = `<span class="sidebar-week">Week ${week.n}</span>`
+                + `<span class="sidebar-item-title">${week.short}</span>`;
+    if (isActive) {
+      return `<a href="${week.page || '#'}" class="sidebar-series-item active" aria-current="page">${inner}</a>`;
+    }
+    if (isLive) {
+      return `<a href="${week.page}" class="sidebar-series-item">${inner}${badge}</a>`;
+    }
+    if (week.page) {
+      return `<a href="${week.page}" class="sidebar-series-item" data-gated>${inner}${badge}</a>`;
+    }
+    return `<div class="sidebar-series-item upcoming">${inner}</div>`;
+  }).join("");
+
+  return `
+    <div class="sidebar-card-header">
+      <h4 translate="no">${label} &#183; ${track.totalWeeks} Weeks</h4>
+    </div>
+    <div class="sidebar-scroll">${rows}</div>`;
+}
+
+function renderArticleSidebar(currentWeek) { return sidebarHTML(CURRICULUM, currentWeek); }
+function renderTrack2Sidebar(currentWeek)  { return sidebarHTML(TRACK2, currentWeek); }
+function renderTrack3Sidebar(currentWeek)  { return sidebarHTML(TRACK3, currentWeek); }
+
+// Full curriculum for learn.html (with phase dividers + progress)
+function renderLearnCurriculum() {
+  const w = CURRICULUM;
+  let rows = "";
+  w.weeks.forEach((week, idx) => {
+    if (week.phase) {
+      // compute the week range covered by this phase
+      let end = week.n;
+      for (let j = idx + 1; j < w.weeks.length; j++) {
+        if (w.weeks[j].phase) break;
+        end = w.weeks[j].n;
+      }
+      const range = week.n === end ? `Week ${week.n}` : `Weeks ${week.n}\u2013${end}`;
+      rows += `
+        <div class="phase-divider">
+          <span class="phase-label" translate="no">${week.phase.toUpperCase()}</span>
+          <span class="phase-weeks-tag">${range}</span>
+        </div>`;
+    }
+    const isLive = week.status === "live";
+    if (isLive || week.page) {
+      const isLatest = week === w.latestLiveWeek;
+      const dateOrNew = isLatest
+        ? '<span class="week-new" translate="no">New</span>'
+        : (week.date ? `<span class="week-date">${week.date}</span>` : '');
+      const gated = isLive ? "" : " data-gated";
+      rows += `
+        <a href="${week.page}" class="week-item"${gated}>
+          <span class="week-num">Week ${week.n}</span>
+          <span class="week-title">${week.title}</span>
+          ${dateOrNew}
+          <i class='bx bx-right-arrow-alt week-arrow'></i>
+        </a>`;
+    } else {
+      rows += `
+        <div class="week-item upcoming">
+          <span class="week-num">Week ${week.n}</span>
+          <span class="week-title">${week.title}</span>
+          <span class="week-upcoming-label">Coming soon</span>
+        </div>`;
+    }
+  });
+  return rows;
+}
+
+// Progress bar values for learn.html
+function renderLearnProgress() {
+  const w = CURRICULUM;
+  return {
+    text: `${w.liveCount} of ${w.totalWeeks} published`,
+    percent: w.progressPercent
+  };
+}
+
+// Home page compact list (hero panel: latest 3 live)
+function renderHomeLatest() {
+  // Sitedeki EN YENİ üç ders — hangi track'ten gelirse gelsin.
+  // Önceden yalnızca Track 1'e bakıyordu; üç track de bitince ana sayfa
+  // on ay bayat içeriğe "New" rozeti takıyordu.
+  const all = [];
+  [[CURRICULUM, "SCHEDULE"], [TRACK2, "COST & CASH"], [TRACK3, "RISK"]].forEach(function (pair) {
+    pair[0].weeks.filter(function (x) { return x.status === "live" && x.page; })
+      .forEach(function (w) { all.push({ w: w, track: pair[1], t: Date.parse(w.date || "") || 0 }); });
+  });
+  all.sort(function (a, b) { return b.t - a.t; });
+  const top = all.slice(0, 3);
+  let html = "";
+  top.forEach(function (item, i) {
+    const w = item.w;
+    const badge = i === 0 ? '<span class="home-new-pill" translate="no">New</span>' : '';
+    html += `
+      <a href="${w.page}" class="discussion-list-item module-post-item">
+        <span class="category-text text-green">WEEK ${w.n} &#183; ${item.track}</span>
+        <h4>${w.short}</h4>
+        <div class="item-meta">
+          ${w.date ? `<span class="home-date">${w.date}</span>` : ''}
+          ${badge}
+          <i class='bx bx-right-arrow-alt arrow-icon'></i>
+        </div>
+      </a>`;
+  });
+  return html;
+}
+
+// Home page — Module 01 curriculum card (compact, no phase dividers)
+// Shows live weeks as links + first few upcoming, then a summary row.
+var HOME_PREVIEW = 5;
+
+function homeCurriculumHTML(track) {
+  // Ana sayfa müfredatı iştah açar, listelemez. Eskiden bütün canlı haftaları
+  // basıyordu; üç track tamamlanınca 69 satır oldu ve sayfa bitmez hale geldi.
+  // Tam liste zaten learn.html'de ve bölümün başında "Full Curriculum" butonu var.
+  const live = track.weeks.filter(function (x) { return x.status === "live"; });
+  const upcoming = track.weeks.filter(function (x) { return x.status === "upcoming"; });
+  let rows = "";
+
+  live.slice(0, HOME_PREVIEW).forEach(function (week) {
+    const badge = (week === track.latestLiveWeek) ? '<span class="new-badge" translate="no">New</span>' : '';
+    rows += `
+      <a href="${week.page}" class="module-post-item">
+        <span class="post-week">Week ${week.n}</span>
+        <span class="post-title">${week.short}</span>
+        ${week.date ? `<span class="post-date">${week.date}</span>` : ''}
+        ${badge}
+        <i class='bx bx-right-arrow-alt'></i>
+      </a>`;
+  });
+
+  // Henüz yayınlanmamış ilk iki hafta (varsa) — bunlar gerçekten kilitli
+  upcoming.slice(0, 2).forEach(function (week) {
+    if (week.page) {
+      rows += `
+        <a href="${week.page}" class="module-post-item" data-gated>
+          <span class="post-week">Week ${week.n}</span>
+          <span class="post-title">${week.short}</span>
+          <i class='bx bx-right-arrow-alt'></i>
+        </a>`;
+    } else {
+      rows += `
+        <div class="module-post-item upcoming">
+          <span class="post-week">Week ${week.n}</span>
+          <span class="post-title">${week.short}</span>
+          <span class="post-upcoming">Coming soon</span>
+        </div>`;
+    }
+  });
+
+  const rest = live.slice(HOME_PREVIEW);
+  if (rest.length > 0) {
+    let restRows = "";
+    rest.forEach(function (week) {
+      const badge = (week === track.latestLiveWeek) ? '<span class="new-badge" translate="no">New</span>' : '';
+      restRows += `
+        <a href="${week.page}" class="module-post-item">
+          <span class="post-week">Week ${week.n}</span>
+          <span class="post-title">${week.short}</span>
+          ${week.date ? `<span class="post-date">${week.date}</span>` : ''}
+          ${badge}
+          <i class='bx bx-right-arrow-alt'></i>
+        </a>`;
+    });
+    rows += `<div class="module-post-rest" hidden>${restRows}</div>
+      <button type="button" class="module-post-item module-post-more" aria-expanded="false"
+              data-more="Show all ${track.totalWeeks} weeks" data-less="Show fewer" data-count="+${rest.length}">
+        <span class="post-week">+${rest.length}</span>
+        <span class="post-title">Show all ${track.totalWeeks} weeks</span>
+        <i class='bx bx-chevron-down more-chevron'></i>
+      </button>`;
+  }
+  return rows;
+}
+
+function renderHomeCurriculum() { return homeCurriculumHTML(CURRICULUM); }
+function renderHomeTrack2()     { return homeCurriculumHTML(TRACK2); }
+function renderHomeTrack3()     { return homeCurriculumHTML(TRACK3); }
+
+// Module badge text for home
+function badgeText(track) {
+    if (!track) return '';
+    if (track.liveCount >= track.totalWeeks) {
+        return '<span class="dot-green"></span> Complete &#183; ' + track.totalWeeks + ' weeks';
+    }
+    if (track.liveCount === 0) {
+        return "<i class='bx bx-time'></i> Starting soon &#183; " + track.totalWeeks + ' weeks';
+    }
+    var l = track.latestLiveWeek;
+    return '<span class="dot-green"></span> In Progress &#183; Week ' + l.n + ' of ' + track.totalWeeks;
+}
+
+function badgeClass(track) {
+  return (track && track.liveCount === 0) ? 'badge-locked' : 'badge-active';
+}
+
+function renderHomeBadge() {
+  return badgeText(CURRICULUM);
+}
+
+
+// ============================================================
+// TRACK 2 — COST & CASH
+// ------------------------------------------------------------
+// Separate object on purpose: CURRICULUM above is the single
+// source of truth for Track 1 and is read by all 27 article
+// pages. Do not merge them — extend here instead.
+// ============================================================
+
+const TRACK2 = {
+  title: "Cost & Cash",
+  totalWeeks: 24,
+
+  // Titles are written in the same register as Track 1: the topic and its
+  // components. The punchy version of each is the article's own headline.
+  // status: "live" = published & clickable | "upcoming" = greyed out
+  weeks: [
+    // ---- PHASE A — FOUNDATIONS & ESTIMATING ----
+    { phase: "Phase A — Foundations & Estimating", n: 1, title: "Why cost control fails — and why \u201cactual cost\u201d is the hardest number", short: "Why cost control fails", status: "live", page: "cost-week-1.html", date: "Dec 30, 2026" },
+    { n: 2, title: "Unit rates — labour, plant, material & waste", short: "Unit rates — how a price is built", status: "live", page: "cost-week-2.html", date: "Jan 6, 2027" },
+    { n: 3, title: "Estimate classes & the costs not on the drawing — accuracy, indirects & escalation", short: "Estimate classes, indirects & escalation", status: "live", page: "cost-week-3.html", date: "Jan 13, 2027" },
+    { n: 4, title: "The BoQ and the schedule — mapping bill items to activities", short: "Mapping the BoQ to the schedule", status: "live", page: "cost-week-4.html", date: "Jan 20, 2027" },
+    { n: 5, title: "Contingency & management reserve — sizing, ownership & drawdown", short: "Contingency & management reserve", status: "live", page: "cost-week-5.html", date: "Jan 27, 2027" },
+
+    // ---- PHASE B — FROM ESTIMATE TO BUDGET ----
+    { phase: "Phase B — From Estimate to Budget", n: 6, title: "From estimate to budget — the cost breakdown structure & the code of accounts", short: "The CBS & the code of accounts", status: "live", page: "cost-week-6.html", date: "Feb 3, 2027" },
+    { n: 7, title: "Control accounts & work packages — where scope, cost and ownership meet", short: "Control accounts & work packages", status: "live", page: "cost-week-7.html", date: "Feb 10, 2027" },
+    { n: 8, title: "The time-phased baseline — building planned value from unit rates", short: "The time-phased baseline", status: "live", page: "cost-week-8.html", date: "Feb 17, 2027" },
+    { n: 9, title: "The schedule of values — valuation, front-loading & interim payment", short: "The schedule of values", status: "live", page: "cost-week-9.html", date: "Feb 24, 2027" },
+
+    // ---- PHASE C — MEASUREMENT & CHANGE ----
+    { phase: "Phase C — Measurement & Change", n: 10, title: "Cost accounting for planners — commitment, accrual & expenditure", short: "Commitment, accrual & expenditure", status: "live", page: "cost-week-10.html", date: "Mar 3, 2027" },
+    { n: 11, title: "Physical progress measurement — the six methods", short: "Physical progress — the six methods", status: "live", page: "cost-week-11.html", date: "Mar 10, 2027" },
+    { n: 12, title: "Subcontractor cost control — packages, valuations & variations", short: "Subcontractor cost control", status: "live", page: "cost-week-12.html", date: "Mar 17, 2027" },
+    { n: 13, title: "Change & variation pricing — bill rates, star rates, dayworks & disruption", short: "Pricing a change", status: "live", page: "cost-week-13.html", date: "Mar 24, 2027" },
+    { n: 14, title: "Single data capture — one entry, cost and schedule", short: "Single data capture", status: "live", page: "cost-week-14.html", date: "Mar 31, 2027" },
+    { n: 15, title: "Productivity control — factors, indices & earned hours", short: "Productivity & earned hours", status: "live", page: "cost-week-15.html", date: "Apr 7, 2027" },
+
+    // ---- PHASE D — CASH ----
+    { phase: "Phase D — Cash", n: 16, title: "Cash flow fundamentals — the income and requirements curves", short: "Cash flow fundamentals", status: "live", page: "cost-week-16.html", date: "Apr 14, 2027" },
+    { n: 17, title: "The interim payment cycle — valuation, retention & the working capital gap", short: "Interim payment & retention", status: "live", page: "cost-week-17.html", date: "Apr 21, 2027" },
+    { n: 18, title: "Overtrading — why growth destroys profitable contractors", short: "Overtrading — when growth kills", status: "live", page: "cost-week-18.html", date: "Apr 28, 2027" },
+    { n: 19, title: "Cash management — the levers a project actually has", short: "Cash management strategies", status: "live", page: "cost-week-19.html", date: "May 5, 2027" },
+
+    // ---- PHASE E — THE COMPANY ----
+    { phase: "Phase E — The Company", n: 20, title: "Direct, indirect & site overheads — the true cost of being there", short: "Direct, indirect & site overheads", status: "live", page: "cost-week-20.html", date: "May 12, 2027" },
+    { n: 21, title: "The levers — value engineering & the time-cost trade-off", short: "Value engineering & time-cost trade-off", status: "live", page: "cost-week-21.html", date: "May 19, 2027" },
+    { n: 22, title: "Contribution & margin — what the project returns to the business", short: "Contribution & margin", status: "live", page: "cost-week-22.html", date: "May 26, 2027" },
+    { n: 23, title: "Contract cost accounting — revenue recognition & the expected loss rule", short: "Revenue recognition & expected loss", status: "live", page: "cost-week-23.html", date: "Jun 2, 2027" },
+    { n: 24, title: "The commercial planner — speaking the language of money", short: "The commercial planner", status: "live", page: "cost-week-24.html", date: "Jun 9, 2027" },
+  ],
+
+
+  get liveCount() { return this.weeks.filter(w => w.status === "live").length; },
+  get progressPercent() { return Math.round((this.liveCount / this.totalWeeks) * 100); },
+  get latestLiveWeek() {
+    const live = this.weeks.filter(w => w.status === "live");
+    return live.length ? live[live.length - 1] : null;
+  },
+  get phaseCount() { return this.weeks.filter(w => w.phase).length; },
+  getWeek(n) { return this.weeks.find(w => w.n === n); }
+};
+
+// Renderer: Track 2 curriculum for learn.html
+// NOTE: must use the SAME classes as renderLearnCurriculum above,
+// or the rows render as unstyled plain text.
+function renderTrack2Curriculum() {
+  const t = TRACK2;
+  let rows = "";
+  t.weeks.forEach((week, idx) => {
+    if (week.phase) {
+      let end = week.n;
+      for (let j = idx + 1; j < t.weeks.length; j++) {
+        if (t.weeks[j].phase) break;
+        end = t.weeks[j].n;
+      }
+      const range = week.n === end ? `Week ${week.n}` : `Weeks ${week.n}\u2013${end}`;
+      rows += `
+        <div class="phase-divider">
+          <span class="phase-label" translate="no">${week.phase.toUpperCase()}</span>
+          <span class="phase-weeks-tag">${range}</span>
+        </div>`;
+    }
+    if (week.status === "live" && week.page) {
+      const isLatest = week === t.latestLiveWeek;
+      const dateOrNew = isLatest
+        ? '<span class="week-new" translate="no">New</span>'
+        : (week.date ? `<span class="week-date">${week.date}</span>` : '');
+      rows += `
+        <a href="${week.page}" class="week-item">
+          <span class="week-num">Week ${week.n}</span>
+          <span class="week-title">${week.title}</span>
+          ${dateOrNew}
+          <i class='bx bx-right-arrow-alt week-arrow'></i>
+        </a>`;
+    } else {
+      rows += `
+        <div class="week-item upcoming">
+          <span class="week-num">Week ${week.n}</span>
+          <span class="week-title">${week.title}</span>
+          <span class="week-upcoming-label">Coming soon</span>
+        </div>`;
+    }
+  });
+  return rows;
+}
+
+// Progress bar values for the Track 2 card on learn.html
+function renderTrack2Progress() {
+  const t = TRACK2;
+  return {
+    text: `${t.liveCount} of ${t.totalWeeks} published`,
+    percent: t.progressPercent
+  };
+}
+
+// Renderer: Track 2 post list for the home page module card.
+// Mirrors renderHomeCurriculum so the rows pick up the same styling.
+
+// Module badge text for the Track 2 card on home
+function renderHomeTrack2Badge() {
+  return badgeText(TRACK2);
+}
+
+// Sidebar for Track 2 article pages. Mirrors renderArticleSidebar.
+
+
+// ============================================================
+// TRACK 3 — RISK
+// The same $1,000,000 project, third lens. Track 1 measured time,
+// Track 2 measured money, Track 3 measures what has not happened yet.
+// Opens on the five-line risk register from Cost & Cash Week 5 —
+// the one nobody ever audited.
+// ============================================================
+const TRACK3 = {
+  title: "Risk",
+  totalWeeks: 18,
+
+  // Same register as Tracks 1 and 2: the topic and its components.
+  // The punchy version of each is the article's own headline.
+  weeks: [
+    // ---- PHASE A — IDENTIFICATION & THE REGISTER ----
+    { phase: "Phase A — Identification & the Register", n: 1, title: "Risk fundamentals — the register behind the contingency", short: "The register behind the contingency", status: "live", page: "risk-week-1.html", date: "Jun 16, 2027" },
+    { n: 2, title: "Risk identification — where risks actually hide on a construction project", short: "Where risks actually hide", status: "live", page: "risk-week-2.html", date: "Jun 23, 2027" },
+    { n: 3, title: "The risk breakdown structure — a WBS for what can go wrong", short: "The risk breakdown structure", status: "live", page: "risk-week-3.html", date: "Jun 30, 2027" },
+    { n: 4, title: "Writing a risk properly — cause, event, effect", short: "Cause, event, effect", status: "live", page: "risk-week-4.html", date: "Jul 7, 2027" },
+
+    // ---- PHASE B — QUALITATIVE ANALYSIS ----
+    { phase: "Phase B — Qualitative Analysis", n: 5, title: "Qualitative analysis — anchoring probability and impact scales", short: "Anchoring the scales", status: "live", page: "risk-week-5.html", date: "Jul 14, 2027" },
+    { n: 6, title: "The limits of the probability-impact matrix", short: "The limits of the heat map", status: "live", page: "risk-week-6.html", date: "Jul 21, 2027" },
+    { n: 7, title: "Bias, the planning fallacy & reference class forecasting", short: "Bias & reference class forecasting", status: "live", page: "risk-week-7.html", date: "Jul 28, 2027" },
+
+    // ---- PHASE C — QUANTITATIVE ANALYSIS ----
+    { phase: "Phase C — Quantitative Analysis", n: 8, title: "Two kinds of uncertainty — aleatory and epistemic", short: "Aleatory & epistemic uncertainty", status: "live", page: "risk-week-8.html", date: "Aug 4, 2027" },
+    { n: 9, title: "The shape of an estimate — three-point ranges & distributions", short: "Three-point ranges & distributions", status: "live", page: "risk-week-9.html", date: "Aug 11, 2027" },
+    { n: 10, title: "Correlation & common cause effects — why bad days cluster", short: "Correlation & common cause effects", status: "live", page: "risk-week-10.html", date: "Aug 18, 2027" },
+    { n: 11, title: "Cost risk analysis — pointing the machine at money", short: "Cost risk analysis", status: "live", page: "risk-week-11.html", date: "Aug 25, 2027" },
+    { n: 12, title: "Risk appetite & confidence levels — P50, P80 and who decides", short: "Risk appetite & confidence levels", status: "live", page: "risk-week-12.html", date: "Sep 1, 2027" },
+
+    // ---- PHASE D — RISK OWNERSHIP & THE CONTRACT ----
+    { phase: "Phase D — Risk Ownership & the Contract", n: 13, title: "Response strategies — priced, owned, and the decision tree", short: "Response strategies & decision trees", status: "live", page: "risk-week-13.html", date: "Sep 8, 2027" },
+    { n: 14, title: "Contractual risk allocation — FIDIC and the ground risk", short: "FIDIC & the ground risk", status: "live", page: "risk-week-14.html", date: "Sep 15, 2027" },
+    { n: 15, title: "Time, money, or neither — extension of time, exceptional events, insurance & bonds", short: "Transferring risk — insurance & bonds", status: "live", page: "risk-week-15.html", date: "Sep 22, 2027" },
+
+    // ---- PHASE E — LIVING WITH RISK ----
+    { phase: "Phase E — Living with Risk", n: 16, title: "The living register — triggers, reviews & Bayesian revision", short: "The living register", status: "live", page: "risk-week-16.html", date: "Sep 29, 2027" },
+    { n: 17, title: "Opportunity — the half nobody manages", short: "Opportunity management", status: "live", page: "risk-week-17.html", date: "Oct 6, 2027" },
+    { n: 18, title: "The risk-literate planner — acting before the number moves", short: "Acting before the number moves", status: "live", page: "risk-week-18.html", date: "Oct 13, 2027" }
+  ],
+
+  get liveCount() { return this.weeks.filter(w => w.status === "live").length; },
+  get progressPercent() { return Math.round((this.liveCount / this.totalWeeks) * 100); },
+  get latestLiveWeek() {
+    const live = this.weeks.filter(w => w.status === "live");
+    return live.length ? live[live.length - 1] : null;
+  },
+  get phaseCount() { return this.weeks.filter(w => w.phase).length; },
+  getWeek(n) { return this.weeks.find(w => w.n === n); }
+};
+
+
+// ============================================================
+//  TRACK 4 — CONTRACT MANAGEMENT
+//  Split out of the old "Claims & Delay Analysis" on 2026-07-20:
+//  Risk Week 18 sets up contract administration, not forensic delay.
+//  Track 4 preserves an entitlement; Track 5 values one.
+// ============================================================
+const TRACK4 = {
+    title: "Contract Management",
+    totalWeeks: 20,
+    weeks: [
+        // ---- PHASE A — THE CONTRACT AS A SYSTEM ----
+        { phase: "Phase A — The Contract as a System", n: 1, title: "Contract management fundamentals — the notice behind the entitlement", short: "The notice behind the entitlement", status: "live", page: "contract-week-1.html", date: "Oct 20, 2027" },
+        { n: 2, title: "Reading a contract — structure, priority of documents and definitions", short: "Reading a contract", status: "live", page: "contract-week-2.html", date: "Oct 27, 2027" },
+        { n: 3, title: "The Engineer — authority, impartiality and determination", short: "The Engineer", status: "live", page: "contract-week-3.html", date: "Nov 3, 2027" },
+        { n: 4, title: "Contract types — lump sum, remeasurement, cost-plus and target cost", short: "Contract types", status: "live", page: "contract-week-4.html", date: "Nov 10, 2027" },
+
+        // ---- PHASE B — OBLIGATIONS & INSTRUCTIONS ----
+        { phase: "Phase B — Obligations & Instructions", n: 5, title: "Employer and contractor obligations — what each side actually promised", short: "What each side promised", status: "live", page: "contract-week-5.html", date: "Nov 17, 2027" },
+        { n: 6, title: "Instructions — and the ones that are not instructions", short: "Instructions", status: "live", page: "contract-week-6.html", date: "Nov 24, 2027" },
+        { n: 7, title: "Variations — the right to be paid for a change", short: "Variations", status: "live", page: "contract-week-7.html", date: "Dec 1, 2027" },
+        { n: 8, title: "Building entitlement — before a claim exists", short: "Building entitlement", status: "live", page: "contract-week-8.html", date: "Dec 8, 2027" },
+
+        // ---- PHASE C — TIME ----
+        { phase: "Phase C — Time", n: 9, title: "Extension of time — the contractual mechanism", short: "Extension of time", status: "live", page: "contract-week-9.html", date: "Dec 15, 2027" },
+        { n: 10, title: "Notices and time bars — periods, forms and recipients", short: "Notices and time bars", status: "live", page: "contract-week-10.html", date: "Dec 22, 2027" },
+        { n: 11, title: "Programme obligations — the contract's view of your schedule", short: "Programme obligations", status: "live", page: "contract-week-11.html", date: "Dec 29, 2027" },
+
+        // ---- PHASE D — MONEY ----
+        { phase: "Phase D — Money", n: 12, title: "Payment mechanisms — application, certificate and the money", short: "Payment mechanisms", status: "live", page: "contract-week-12.html", date: "Jan 5, 2028" },
+        { n: 13, title: "When the contract says it isn't a variation", short: "When it isn't a variation", status: "live", page: "contract-week-13.html", date: "Jan 12, 2028" },
+        { n: 14, title: "Currency, escalation and price adjustment", short: "Currency and escalation", status: "live", page: "contract-week-14.html", date: "Jan 19, 2028" },
+        { n: 15, title: "Retention, bonds, guarantees and insurance", short: "Retention and securities", status: "live", page: "contract-week-15.html", date: "Jan 26, 2028" },
+
+        // ---- PHASE E — RISK, DISPUTES & OTHER REGIMES ----
+        { phase: "Phase E — Risk, Disputes & Other Regimes", n: 16, title: "Risk allocation across the three books — Red, Yellow and Silver", short: "Across the three books", status: "live", page: "contract-week-16.html", date: "Feb 2, 2028" },
+        { n: 17, title: "Suspension and termination — the contractual exits", short: "Suspension and termination", status: "live", page: "contract-week-17.html", date: "Feb 9, 2028" },
+        { n: 18, title: "Dispute avoidance — the DAAB and the notice of dissatisfaction", short: "Dispute avoidance", status: "live", page: "contract-week-18.html", date: "Feb 16, 2028" },
+        { n: 19, title: "NEC4 — early warning, compensation events and proactive contract management", short: "NEC4", status: "live", page: "contract-week-19.html", date: "Feb 23, 2028" },
+        { n: 20, title: "The contract administrator's year — a calendar of obligations", short: "A calendar of obligations", status: "live", page: "contract-week-20.html", date: "Mar 1, 2028" }
+    ],
+    get liveCount() { return this.weeks.filter(w => w.status === "live").length; },
+    get progressPercent() { return Math.round((this.liveCount / this.totalWeeks) * 100); },
+    get latestLiveWeek() {
+        const live = this.weeks.filter(w => w.status === "live");
+        return live.length ? live[live.length - 1] : null;
+    },
+    get phaseCount() { return this.weeks.filter(w => w.phase).length; },
+    getWeek(n) { return this.weeks.find(w => w.n === n); }
+};
+
+
+// Learn-page curriculum rows. Same classes as renderLearnCurriculum, otherwise
+// the rows render as unstyled text. Shared so a new track needs a wrapper, not a copy.
+function learnCurriculumHTML(t) {
+  let rows = "";
+  t.weeks.forEach((week, idx) => {
+    if (week.phase) {
+      let end = week.n;
+      for (let j = idx + 1; j < t.weeks.length; j++) {
+        if (t.weeks[j].phase) break;
+        end = t.weeks[j].n;
+      }
+      const range = week.n === end ? `Week ${week.n}` : `Weeks ${week.n}\u2013${end}`;
+      rows += `
+        <div class="phase-divider">
+          <span class="phase-label" translate="no">${week.phase.toUpperCase()}</span>
+          <span class="phase-weeks-tag">${range}</span>
+        </div>`;
+    }
+    if (week.status === "live" && week.page) {
+      const isLatest = week === t.latestLiveWeek;
+      const dateOrNew = isLatest
+        ? '<span class="week-new" translate="no">New</span>'
+        : (week.date ? `<span class="week-date">${week.date}</span>` : '');
+      rows += `
+        <a href="${week.page}" class="week-item">
+          <span class="week-num">Week ${week.n}</span>
+          <span class="week-title">${week.title}</span>
+          ${dateOrNew}
+          <i class='bx bx-right-arrow-alt week-arrow'></i>
+        </a>`;
+    } else {
+      rows += `
+        <div class="week-item upcoming">
+          <span class="week-num">Week ${week.n}</span>
+          <span class="week-title">${week.title}</span>
+          <span class="week-upcoming-label">Coming soon</span>
+        </div>`;
+    }
+  });
+  return rows;
+}
+
+function renderTrack4Curriculum() { return learnCurriculumHTML(TRACK4); }
+
+function renderTrack4Sidebar(currentWeek) { return sidebarHTML(TRACK4, currentWeek); }
+function renderHomeTrack4()               { return homeCurriculumHTML(TRACK4); }
+function renderHomeTrack4Badge() {
+  return badgeText(TRACK4);
+}
+
+function renderTrack4Progress() {
+    return { text: `${TRACK4.liveCount} of ${TRACK4.totalWeeks} published`, percent: TRACK4.progressPercent };
+}
+
+
+
+// ===================== TRACK 0 — THE SHAPE OF THE JOB =====================
+// Read before Track 1, written after Track 5. Orientation, not method:
+// it describes the job rather than teaching a technique. Every week must
+// answer "what happens, who does it, what is it called" and hand the
+// method itself to one of the five tracks that follow.
+const TRACK0 = {
+    title: "The Shape of the Job",
+    totalWeeks: 17,
+    weeks: [
+        // ---- PHASE A — THE JOB BEFORE IT IS A JOB ----
+        { phase: "Phase A \u2014 The Job Before It Is a Job", n: 1, title: "The documents that arrive before the work \u2014 charter, contract, scope, BoQ, drawings", short: "The documents that arrive first", status: "upcoming" },
+        { n: 2, title: "Tender to award \u2014 the estimate you inherited and the schedule you did not write", short: "Tender to award", status: "upcoming" },
+        { n: 3, title: "The contract as an organisation chart \u2014 who can instruct whom", short: "Who can instruct whom", status: "upcoming" },
+
+        // ---- PHASE B — BUILDING THE MACHINE ----
+        { phase: "Phase B \u2014 Building the Machine", n: 4, title: "The departments \u2014 what each one produces and what each needs from you", short: "The departments", status: "upcoming" },
+        { n: 5, title: "Where project controls sits \u2014 planning, cost, commercial and the monthly argument", short: "Where project controls sits", status: "upcoming" },
+        { n: 6, title: "Coding before dating \u2014 WBS, OBS, cost codes, areas and systems", short: "Coding before dating", status: "upcoming" },
+        { n: 7, title: "Mobilisation \u2014 the project inside the project", short: "Mobilisation", status: "upcoming" },
+
+        // ---- PHASE C — THE RHYTHM ----
+        { phase: "Phase C \u2014 The Rhythm", n: 8, title: "The project heartbeat \u2014 daily, weekly, monthly and the cut-off dates", short: "The project heartbeat", status: "upcoming" },
+        { n: 9, title: "Nobody gives you data \u2014 measurement, surveys and the sources you chase", short: "Nobody gives you data", status: "upcoming" },
+        { n: 10, title: "The meetings are the machine \u2014 who chairs, who decides, what you are there to do", short: "The meetings are the machine", status: "upcoming" },
+        { n: 11, title: "Four reports, four audiences \u2014 and what happens when you mix them up", short: "Four reports, four audiences", status: "upcoming" },
+
+        // ---- PHASE D — WHERE IT GOES WRONG ----
+        { phase: "Phase D \u2014 Where It Goes Wrong", n: 12, title: "Construction is decided upstream \u2014 engineering, vendor data and expediting", short: "Decided upstream", status: "upcoming" },
+        { n: 13, title: "The vocabulary of change \u2014 instruction, variation, notice, claim", short: "The vocabulary of change", status: "upcoming" },
+        { n: 14, title: "Trouble travels in documents \u2014 NCRs, site instructions and recovery plans", short: "Trouble travels in documents", status: "upcoming" },
+
+        // ---- PHASE E — FINISHING ----
+        { phase: "Phase E \u2014 Finishing", n: 15, title: "Construction complete is not complete \u2014 punch lists, handover, defects liability", short: "Complete is not complete", status: "upcoming" },
+        { n: 16, title: "The job outlives the project \u2014 as-built, final account, archive, lessons learned", short: "The job outlives the project", status: "upcoming" },
+        { n: 17, title: "What you now know you do not know \u2014 a map of the five tracks ahead", short: "A map of the tracks ahead", status: "upcoming" }
+    ],
+    get liveCount() { return this.weeks.filter(w => w.status === "live").length; },
+    get progressPercent() { return Math.round((this.liveCount / this.totalWeeks) * 100); },
+    get latestLiveWeek() {
+        const live = this.weeks.filter(w => w.status === "live");
+        return live.length ? live[live.length - 1] : null;
+    },
+    get phaseCount() { return this.weeks.filter(w => w.phase).length; },
+    getWeek(n) { return this.weeks.find(w => w.n === n); }
+};
+
+function renderTrack0Curriculum() { return learnCurriculumHTML(TRACK0); }
+function renderTrack0Sidebar(currentWeek) { return sidebarHTML(TRACK0, currentWeek); }
+function renderHomeTrack0()               { return homeCurriculumHTML(TRACK0); }
+function renderHomeTrack0Badge()          { return badgeText(TRACK0); }
+function renderTrack0Progress() {
+    return { text: `${TRACK0.liveCount} of ${TRACK0.totalWeeks} published`, percent: TRACK0.progressPercent };
+}
+
+
+// ===================== TRACK 6 — INTERFACES =====================
+// The printed handoff in claim-week-28 names four subjects: the scope sitting
+// with somebody else, the critical path through a purchase order, the work
+// where two programmes meet, and the number with more than one owner. All
+// four appear below. Sources measured 2026-07-31: EPCM 171, interface 284,
+// coordination 140, JV/consortium/alliance/partnering/IPD 249.
+const TRACK6 = {
+    title: "Interfaces",
+    totalWeeks: 14,
+    weeks: [
+        { phase: "Who holds the scope", n: 1, title: "The shape every track has assumed \u2014 one contract, one Engineer, one programme", short: "The shape every track assumed", status: "upcoming" },
+        { n: 2, title: "How many contracts are there \u2014 the axis nobody teaches", short: "How many contracts are there", status: "upcoming" },
+        { n: 3, title: "EPCM \u2014 instructing people you have no contract with", short: "Instructing without a contract", status: "upcoming" },
+        { n: 4, title: "The Engineer, multiplied \u2014 determination when every package has its own", short: "The Engineer, multiplied", status: "upcoming" },
+        { n: 5, title: "Concurrency without a head contract \u2014 the Special Provisions that do not exist", short: "Concurrency with no head contract", status: "upcoming" },
+        { phase: "When the contractor is plural", n: 6, title: "Joint ventures and consortia \u2014 one face, several sets of books", short: "Joint ventures and consortia", status: "upcoming" },
+        { n: 7, title: "Alliancing, partnering and IPD \u2014 contracts built to suppress claims", short: "Alliancing, partnering and IPD", status: "upcoming" },
+        { phase: "The critical path leaves the site", n: 8, title: "Procurement on the critical path \u2014 when the path runs through an order", short: "Procurement on the critical path", status: "upcoming" },
+        { phase: "Where two programmes meet", n: 9, title: "The work in nobody\u2019s scope \u2014 the gap between two risk registers", short: "The work in nobody\u2019s scope", status: "upcoming" },
+        { n: 10, title: "Interface management as a function \u2014 owning a boundary, not reporting one", short: "Interface management", status: "upcoming" },
+        { n: 11, title: "Access, sequencing and the delay that belongs to no one", short: "The delay that belongs to no one", status: "upcoming" },
+        { phase: "The number with more than one owner", n: 12, title: "Progress and valuation collide \u2014 two methods, one monthly number", short: "Progress and valuation collide", status: "upcoming" },
+        { n: 13, title: "The cost that arrives from somebody else\u2019s books \u2014 another ledger, another cut-off", short: "Somebody else\u2019s books", status: "upcoming" },
+        { n: 14, title: "Document control at organisational scale \u2014 six firms, one transmittal", short: "Document control at scale", status: "upcoming" }
+    ],
+    get liveCount() { return this.weeks.filter(w => w.status === "live").length; },
+    get progressPercent() { return Math.round((this.liveCount / this.totalWeeks) * 100); },
+    get latestLiveWeek() { const l = this.weeks.filter(w => w.status === "live"); return l.length ? l[l.length - 1] : null; },
+    getWeek(n) { return this.weeks.find(w => w.n === n); }
+};
+
+// ===================== THE LIFE OF A PROJECT =====================
+// The integration layer. Tracks 1-5 teach the method; Interfaces shows how the
+// method changes shape under a different contract; this shows the order the
+// work actually arrives in, what feeds what, and which record is born where.
+// Rule for every week: teach the occasion, hand the method to the track that
+// owns it. Every week ends with "Records born here".
+const LIFECYCLE = {
+    title: "The Life of a Project",
+    totalWeeks: 52,
+    weeks: [
+        { n: 1, title: "The journey of one drawing \u2014 six hands, six changes, one as-built", short: "The journey of one drawing", status: "upcoming" },
+
+        { phase: "Phase A \u2014 Before the project exists", n: 2, title: "Why a project exists \u2014 business need, investment decision, and who is already committed", short: "Why a project exists", status: "upcoming" },
+        { n: 3, title: "Feasibility \u2014 what gets studied, what gets assumed, and which assumption reaches you", short: "Feasibility", status: "upcoming" },
+        { n: 4, title: "Delivery strategy \u2014 how the owner decided to buy it", short: "Delivery strategy", status: "upcoming" },
+        { n: 5, title: "Packaging and tender strategy \u2014 why the job was split, and what each split costs", short: "Packaging and tender strategy", status: "upcoming" },
+        { n: 6, title: "Tender to award \u2014 ITB, clarification, evaluation, and the estimate you inherit", short: "Tender to award", status: "upcoming" },
+
+        { phase: "Phase B \u2014 Start-up", n: 7, title: "Day one \u2014 the folder, the contract, and the dates you must know by Friday", short: "Day one", status: "upcoming" },
+        { n: 8, title: "The kick-off \u2014 what gets decided, and what gets deferred forever", short: "The kick-off", status: "upcoming" },
+        { n: 9, title: "The project execution plan \u2014 including the communication matrix nobody reads", short: "The project execution plan", status: "upcoming" },
+        { n: 10, title: "Who is who \u2014 client, PMC, EPC, vendors, and the authority behind each name", short: "Who is who", status: "upcoming" },
+        { n: 11, title: "Coding philosophy \u2014 the decisions that cannot be made later", short: "Coding philosophy", status: "upcoming" },
+        { n: 12, title: "Setting up document control \u2014 transmittals, revisions, registers", short: "Setting up document control", status: "upcoming" },
+
+        { phase: "Phase C \u2014 The control system", n: 13, title: "Building the baseline \u2014 the two weeks, not the method", short: "Building the baseline", status: "upcoming" },
+        { n: 14, title: "Rules of credit \u2014 agreeing how progress will be claimed, before it is claimed", short: "Rules of credit", status: "upcoming" },
+        { n: 15, title: "The calendar \u2014 data date, cut-off, and three departments closing on three days", short: "The calendar", status: "upcoming" },
+        { n: 16, title: "The reporting structure \u2014 daily, weekly, monthly, executive", short: "The reporting structure", status: "upcoming" },
+        { n: 17, title: "The meeting structure \u2014 who chairs, who decides, and which ones move blame", short: "The meeting structure", status: "upcoming" },
+
+        { phase: "Phase D \u2014 Engineering", n: 18, title: "How engineering flows \u2014 deliverable lists, disciplines, and the design freeze", short: "How engineering flows", status: "upcoming" },
+        { n: 19, title: "Submittals, IFC and vendor documents \u2014 the approval cycle as a programme input", short: "Submittals, IFC and approvals", status: "upcoming" },
+        { n: 20, title: "Measuring engineering progress \u2014 where percent complete is easiest to fake", short: "Measuring engineering progress", status: "upcoming" },
+
+        { phase: "Phase E \u2014 Procurement", n: 21, title: "The procurement cycle \u2014 requisition to purchase order", short: "The procurement cycle", status: "upcoming" },
+        { n: 22, title: "From approved vendor document to manufacturing release \u2014 and the expediting between", short: "Vendor documents to release", status: "upcoming" },
+        { n: 23, title: "Long lead \u2014 ordering before the design is finished, and the cost of being wrong", short: "Long lead", status: "upcoming" },
+        { n: 24, title: "Material management \u2014 delivered, stored, issued, installed: four quantities", short: "Material management", status: "upcoming" },
+
+        { phase: "Phase F \u2014 Construction", n: 25, title: "Mobilisation \u2014 the project inside the project", short: "Mobilisation", status: "upcoming" },
+        { n: 26, title: "Site logistics and temporary works \u2014 access, laydown, cranes, and a scaffold with its own lead time", short: "Site logistics and temporary works", status: "upcoming" },
+        { n: 27, title: "Work packaging \u2014 dividing scope into something a crew can be handed", short: "Work packaging", status: "upcoming" },
+        { n: 28, title: "Constraints and readiness \u2014 drawing, material, labour, permit, access", short: "Constraints and readiness", status: "upcoming" },
+        { n: 29, title: "Look-ahead planning \u2014 the six weeks that run the site", short: "Look-ahead planning", status: "upcoming" },
+        { n: 30, title: "The week, day by day \u2014 one workable rhythm, not the rhythm", short: "The week, day by day", status: "upcoming" },
+        { n: 31, title: "Daily progress \u2014 who measures, in what unit, on which day", short: "Daily progress", status: "upcoming" },
+        { n: 32, title: "Productivity on site \u2014 where the hours went", short: "Productivity on site", status: "upcoming" },
+        { n: 33, title: "Equipment and resources \u2014 availability, utilisation, crews, camp, shifts", short: "Equipment and resources", status: "upcoming" },
+        { n: 34, title: "Quality as a subtraction \u2014 NCRs, rework, and progress that reverses", short: "Quality as a subtraction", status: "upcoming" },
+        { n: 35, title: "Safety as a stoppage \u2014 permits, holds, stand-downs, and lost time as a delay event", short: "Safety as a stoppage", status: "upcoming" },
+
+        { phase: "Phase G \u2014 Commercial", n: 36, title: "The monthly valuation \u2014 progress versus payment", short: "The monthly valuation", status: "upcoming" },
+        { n: 37, title: "Change on the ground \u2014 instruction to variation to claim, as it happens", short: "Change on the ground", status: "upcoming" },
+        { n: 38, title: "Forecasting \u2014 the number you will be judged on", short: "Forecasting", status: "upcoming" },
+        { n: 39, title: "Trends and the change log \u2014 catching cost before it becomes a variation", short: "Trends and the change log", status: "upcoming" },
+
+        { phase: "Phase H \u2014 Governance", n: 40, title: "Who approves what \u2014 authority, delegation, and the escalation chain", short: "Who approves what", status: "upcoming" },
+        { n: 41, title: "The change control board", short: "The change control board", status: "upcoming" },
+        { n: 42, title: "Risk reviews that change something", short: "Risk reviews that change something", status: "upcoming" },
+        { n: 43, title: "KPIs \u2014 leading, lagging, and the ones that get gamed", short: "KPIs, leading and lagging", status: "upcoming" },
+        { n: 44, title: "The register system \u2014 which record feeds which, and which are actually read", short: "The register system", status: "upcoming" },
+
+        { phase: "Phase I \u2014 Finishing", n: 45, title: "Mechanical completion \u2014 and the birth of the punch list", short: "Mechanical completion", status: "upcoming" },
+        { n: 46, title: "Pre-commissioning and commissioning \u2014 handing the schedule to another discipline", short: "Pre-commissioning and commissioning", status: "upcoming" },
+        { n: 47, title: "Performance tests", short: "Performance tests", status: "upcoming" },
+        { n: 48, title: "Closing the punch list and taking over", short: "Closing the punch list", status: "upcoming" },
+        { n: 49, title: "Demobilisation \u2014 the crane, the camp and the punch list want the same people", short: "Demobilisation", status: "upcoming" },
+        { n: 50, title: "Closeout \u2014 as-built, final account, archive", short: "Closeout", status: "upcoming" },
+
+        { phase: "Capstone", n: 51, title: "Designing a project controls system from nothing", short: "Designing the system from nothing", status: "upcoming" },
+        { n: 52, title: "The first 90 days \u2014 a contract, a BoQ, a drawing set and an empty schedule", short: "The first 90 days", status: "upcoming" }
+    ],
+    get liveCount() { return this.weeks.filter(w => w.status === "live").length; },
+    get progressPercent() { return Math.round((this.liveCount / this.totalWeeks) * 100); },
+    get latestLiveWeek() { const l = this.weeks.filter(w => w.status === "live"); return l.length ? l[l.length - 1] : null; },
+    get phaseCount() { return this.weeks.filter(w => w.phase).length; },
+    getWeek(n) { return this.weeks.find(w => w.n === n); }
+};
+
+function renderTrack6Curriculum()  { return learnCurriculumHTML(TRACK6); }
+function renderTrack6Sidebar(w)    { return sidebarHTML(TRACK6, w); }
+function renderTrack6Progress()    { return { text: `${TRACK6.liveCount} of ${TRACK6.totalWeeks} published`, percent: TRACK6.progressPercent }; }
+
+function renderLifecycleCurriculum() { return learnCurriculumHTML(LIFECYCLE); }
+function renderLifecycleSidebar(w)   { return sidebarHTML(LIFECYCLE, w); }
+function renderLifecycleProgress()   { return { text: `${LIFECYCLE.liveCount} of ${LIFECYCLE.totalWeeks} published`, percent: LIFECYCLE.progressPercent }; }
+
+// ===================== TRACK 5 — CLAIMS & DELAY ANALYSIS =====================
+const TRACK5 = {
+    title: "Claims & Delay Analysis",
+    totalWeeks: 28,
+    weeks: [
+
+        // ---- PHASE A — WHAT A CLAIM HAS TO PROVE ----
+        { phase: "Phase A — What a Claim Has to Prove", n: 1,
+          title: "Claims fundamentals — from preserved right to measured quantum",
+          short: "Claims fundamentals", status: "live", page: "claim-week-1.html",
+          date: "Mar 8, 2028" },
+        { n: 2, title: "Cause and effect — the chain a claim has to close",
+          short: "Cause and effect", status: "live", page: "claim-week-2.html",
+          date: "Mar 15, 2028" },
+        { n: 3, title: "Types of delay — excusable, compensable and the ones that pay nothing",
+          short: "Types of delay", status: "live", page: "claim-week-3.html",
+          date: "Mar 22, 2028" },
+        { n: 4, title: "Criticality and float — what every claim actually argues about",
+          short: "Criticality and float", status: "live", page: "claim-week-4.html",
+          date: "Mar 29, 2028" },
+
+        // ---- PHASE B — THE EVIDENCE THE ANALYSIS RUNS ON ----
+        { phase: "Phase B — The Evidence the Analysis Runs On", n: 5,
+          title: "The as-planned programme — validating a baseline you did not build",
+          short: "The as-planned programme", status: "live", page: "claim-week-5.html",
+          date: "Apr 5, 2028" },
+        { n: 6, title: "The site record — daily reports, allocation sheets and what each one proves",
+          short: "The site record", status: "live", page: "claim-week-6.html",
+          date: "Apr 12, 2028" },
+        { n: 7, title: "The as-built programme — reconstructing what actually happened",
+          short: "The as-built programme", status: "live", page: "claim-week-7.html",
+          date: "Apr 19, 2028" },
+        { n: 8, title: "Programme updates — the contemporaneous record and the gaps in it",
+          short: "Programme updates", status: "live", page: "claim-week-8.html",
+          date: "Apr 26, 2028" },
+
+        // ---- PHASE C — METHODS, BY THE EVIDENCE THEY NEED ----
+        { phase: "Phase C — Methods, by the Evidence They Need", n: 9,
+          title: "Choosing a method — what the SCL and AACE taxonomies are for",
+          short: "Choosing a method", status: "live", page: "claim-week-9.html",
+          date: "May 3, 2028" },
+        { n: 10, title: "Impacted as-planned — delay modelled into a plan that never happened",
+          short: "Impacted as-planned", status: "live", page: "claim-week-10.html",
+          date: "May 10, 2028" },
+        { n: 11, title: "Time impact analysis — fragnets, updates and prospective assessment",
+          short: "Time impact analysis", status: "live", page: "claim-week-11.html",
+          date: "May 17, 2028" },
+        { n: 12, title: "Windows analysis — contemporaneous periods and time slices",
+          short: "Windows analysis", status: "live", page: "claim-week-12.html",
+          date: "May 24, 2028" },
+        { n: 13, title: "As-planned versus as-built — the comparison and its limits",
+          short: "As-planned versus as-built", status: "live", page: "claim-week-13.html",
+          date: "May 31, 2028" },
+        { n: 14, title: "Collapsed as-built — subtraction, and the judgement hidden in it",
+          short: "Collapsed as-built", status: "live", page: "claim-week-14.html",
+          date: "Jun 7, 2028" },
+        { n: 15, title: "Why two analysts disagree — method choice as the real dispute",
+          short: "Why two analysts disagree", status: "live", page: "claim-week-15.html",
+          date: "Jun 14, 2028" },
+
+        // ---- PHASE D — THE HARD ARGUMENTS ----
+        { phase: "Phase D — The Hard Arguments", n: 16,
+          title: "Concurrency — two causes, one delay, and no agreed definition",
+          short: "Concurrency", status: "live", page: "claim-week-16.html",
+          date: "Jun 21, 2028" },
+        { n: 17, title: "Pacing — the delay that answers another delay",
+          short: "Pacing", status: "live", page: "claim-week-17.html",
+          date: "Jun 28, 2028" },
+        { n: 18, title: "Acceleration and mitigation — directed, constructive and unpaid",
+          short: "Acceleration and mitigation", status: "live", page: "claim-week-18.html",
+          date: "Jul 5, 2028" },
+
+        // ---- PHASE E — DISRUPTION ----
+        { phase: "Phase E — Disruption", n: 19,
+          title: "Disruption — the loss that never touches the critical path",
+          short: "Disruption", status: "live", page: "claim-week-19.html",
+          date: "Jul 12, 2028" },
+        { n: 20, title: "The measured mile — comparing the job to itself",
+          short: "The measured mile", status: "live", page: "claim-week-20.html",
+          date: "Jul 19, 2028" },
+        { n: 21, title: "Productivity loss — the methods used when no clean mile exists",
+          short: "Productivity loss", status: "live", page: "claim-week-21.html",
+          date: "Jul 26, 2028" },
+        { n: 22, title: "Global and total cost claims — why they fail",
+          short: "Global and total cost claims", status: "live", page: "claim-week-22.html",
+          date: "Aug 2, 2028" },
+
+        // ---- PHASE F — QUANTUM ----
+        { phase: "Phase F — Quantum", n: 23,
+          title: "Prolongation — the cost of time on site",
+          short: "Prolongation", status: "live", page: "claim-week-23.html",
+          date: "Aug 9, 2028" },
+        { n: 24, title: "Head office overhead and finance — the formulae and their weaknesses",
+          short: "Head office and finance", status: "live", page: "claim-week-24.html",
+          date: "Aug 16, 2028" },
+        { n: 25, title: "Pricing and substantiation — from cost records to a number",
+          short: "Pricing and substantiation", status: "live", page: "claim-week-25.html",
+          date: "Aug 23, 2028" },
+
+        // ---- PHASE G — PRESENTING THE CLAIM ----
+        { phase: "Phase G — Presenting the Claim", n: 26,
+          title: "Assembling a claim — contents, executive summary and appendices",
+          short: "Assembling a claim", status: "live", page: "claim-week-26.html",
+          date: "Aug 30, 2028" },
+        { n: 27, title: "Defending a claim — reading one from the other side",
+          short: "Defending a claim", status: "live", page: "claim-week-27.html",
+          date: "Sep 6, 2028" },
+        { n: 28, title: "What five tracks were for — the claim that never happened",
+          short: "What five tracks were for", status: "live", page: "claim-week-28.html",
+          date: "Sep 13, 2028" }
+    ],
+    get liveCount() { return this.weeks.filter(w => w.status === "live").length; },
+    get progressPercent() { return Math.round((this.liveCount / this.totalWeeks) * 100); },
+    get latestLiveWeek() {
+        const live = this.weeks.filter(w => w.status === "live");
+        return live.length ? live[live.length - 1] : null;
+    },
+    get phaseCount() { return this.weeks.filter(w => w.phase).length; },
+    getWeek(n) { return this.weeks.find(w => w.n === n); }
+};
+
+function renderTrack5Curriculum() { return learnCurriculumHTML(TRACK5); }
+function renderTrack5Sidebar(currentWeek) { return sidebarHTML(TRACK5, currentWeek); }
+function renderHomeTrack5()               { return homeCurriculumHTML(TRACK5); }
+function renderHomeTrack5Badge() {
+  return badgeText(TRACK5);
+}
+
+function renderTrack5Progress() {
+    return { text: `${TRACK5.liveCount} of ${TRACK5.totalWeeks} published`, percent: TRACK5.progressPercent };
+}
+
+// Renderer: Track 3 curriculum for learn.html
+// NOTE: must use the SAME classes as renderLearnCurriculum above,
+// or the rows render as unstyled plain text.
+function renderTrack3Curriculum() {
+  const t = TRACK3;
+  let rows = "";
+  t.weeks.forEach((week, idx) => {
+    if (week.phase) {
+      let end = week.n;
+      for (let j = idx + 1; j < t.weeks.length; j++) {
+        if (t.weeks[j].phase) break;
+        end = t.weeks[j].n;
+      }
+      const range = week.n === end ? `Week ${week.n}` : `Weeks ${week.n}\u2013${end}`;
+      rows += `
+        <div class="phase-divider">
+          <span class="phase-label" translate="no">${week.phase.toUpperCase()}</span>
+          <span class="phase-weeks-tag">${range}</span>
+        </div>`;
+    }
+    if (week.status === "live" && week.page) {
+      const isLatest = week === t.latestLiveWeek;
+      const dateOrNew = isLatest
+        ? '<span class="week-new" translate="no">New</span>'
+        : (week.date ? `<span class="week-date">${week.date}</span>` : '');
+      rows += `
+        <a href="${week.page}" class="week-item">
+          <span class="week-num">Week ${week.n}</span>
+          <span class="week-title">${week.title}</span>
+          ${dateOrNew}
+          <i class='bx bx-right-arrow-alt week-arrow'></i>
+        </a>`;
+    } else {
+      rows += `
+        <div class="week-item upcoming">
+          <span class="week-num">Week ${week.n}</span>
+          <span class="week-title">${week.title}</span>
+          <span class="week-upcoming-label">Coming soon</span>
+        </div>`;
+    }
+  });
+  return rows;
+}
+
+// Progress bar values for the Track 3 card on learn.html
+function renderTrack3Progress() {
+  const t = TRACK3;
+  return {
+    text: `${t.liveCount} of ${t.totalWeeks} published`,
+    percent: t.progressPercent
+  };
+}
+
+// Sidebar for Track 3 article pages. Mirrors renderTrack2Sidebar.
+
+// Renderer: Track 3 post list for the home page module card.
+
+// Module badge text for the Track 3 card on home
+function renderHomeTrack3Badge() {
+  return badgeText(TRACK3);
+}
+
+
+/* Yan panel artık tüm track'i gösteriyor (27/24/18 satır). Okur 13. haftadaysa
+   listenin başında değil, kendi haftasında açılmalı. Bu blok curriculum.js'in
+   sonunda duruyor ama DOMContentLoaded'i dinlediği için sayfanın kendi render
+   çağrısından SONRA çalışır; 69 makaleyi düzenlemeye gerek kalmıyor. */
+(function () {
+  function centreActiveWeek() {
+    var boxes = document.querySelectorAll('.sidebar-scroll');
+    for (var i = 0; i < boxes.length; i++) {
+      var box = boxes[i];
+      var active = box.querySelector('.sidebar-series-item.active');
+      if (!active) continue;
+      var target = active.offsetTop - box.offsetTop
+                 - (box.clientHeight / 2) + (active.offsetHeight / 2);
+      box.scrollTop = target > 0 ? target : 0;
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', centreActiveWeek);
+  } else {
+    centreActiveWeek();
+  }
+})();
+
+
+/* Ana sayfa müfredat kartlarını yerinde açar. Olay delegasyonu kullanıyor:
+   düğmeler render'dan sonra DOM'a giriyor, doğrudan bağlamak yarış koşulu olurdu. */
+document.addEventListener('click', function (e) {
+  var btn = e.target.closest && e.target.closest('.module-post-more');
+  if (!btn) return;
+  var rest = btn.previousElementSibling;
+  if (!rest || !rest.classList.contains('module-post-rest')) return;
+  var isOpen = btn.getAttribute('aria-expanded') === 'true';
+  rest.hidden = isOpen;
+  btn.setAttribute('aria-expanded', String(!isOpen));
+  btn.querySelector('.post-title').textContent =
+    isOpen ? btn.getAttribute('data-more') : btn.getAttribute('data-less');
+  btn.querySelector('.post-week').textContent =
+    isOpen ? btn.getAttribute('data-count') : '';
+});
+
+</script>
+    <script>
+        (function() {
+            if (typeof CURRICULUM === 'undefined') return;
+
+
+
+            // Jump-nav counts computed, never typed — the old markup said
+            // Contract 1/20 long after Contract finished, and omitted Claims.
+            [['jn1', CURRICULUM],
+             ['jn2', typeof TRACK2 !== 'undefined' ? TRACK2 : null],
+             ['jn3', typeof TRACK3 !== 'undefined' ? TRACK3 : null],
+             ['jn4', typeof TRACK4 !== 'undefined' ? TRACK4 : null],
+             ['jn5', typeof TRACK5 !== 'undefined' ? TRACK5 : null],
+             ['jn6', typeof TRACK6 !== 'undefined' ? TRACK6 : null],
+             ['jnlc', typeof LIFECYCLE !== 'undefined' ? LIFECYCLE : null]].forEach(function (p) {
+                var el = document.getElementById(p[0]);
+                if (el && p[1]) el.textContent = p[1].totalWeeks;
+            });
+
+
+            // Track 6 — Interfaces
+            const t6El = document.getElementById('track6Weeks');
+            if (t6El && typeof renderTrack6Curriculum === 'function') {
+                t6El.innerHTML = renderTrack6Curriculum();
+                const p6 = renderTrack6Progress();
+                const s = function (id, v) { const e = document.getElementById(id); if (e) e.textContent = v; };
+                s('t6ProgressText', p6.text); s('t6ProgressPct', p6.percent + '%');
+                const f6 = document.getElementById('t6ProgressFill'); if (f6) f6.style.width = p6.percent + '%';
+            }
+            // The Life of a Project
+            const lcEl = document.getElementById('lifecycleWeeks');
+            if (lcEl && typeof renderLifecycleCurriculum === 'function') {
+                lcEl.innerHTML = renderLifecycleCurriculum();
+                const plc = renderLifecycleProgress();
+                const s2 = function (id, v) { const e = document.getElementById(id); if (e) e.textContent = v; };
+                s2('lcProgressText', plc.text); s2('lcProgressPct', plc.percent + '%');
+                const flc = document.getElementById('lcProgressFill'); if (flc) flc.style.width = plc.percent + '%';
+            }
+            // Badges and header status words computed, never typed
+            [['t6ModuleBadge', 't6TrackBadge', typeof TRACK6 !== 'undefined' ? TRACK6 : null, "<i class='bx bx-git-branch'></i> TRACK 6 \u00b7 FREE"],
+             ['lcModuleBadge', 'lcTrackBadge', typeof LIFECYCLE !== 'undefined' ? LIFECYCLE : null, "<i class='bx bx-git-repo-forked'></i> THE LIFE OF A PROJECT \u00b7 FREE"]]
+            .forEach(function (p) {
+                const t = p[2]; if (!t) return;
+                const mb = document.getElementById(p[0]);
+                if (mb && typeof badgeText === 'function') {
+                    mb.innerHTML = badgeText(t);
+                    mb.className = 'module-badge ' + badgeClass(t);
+                }
+                const hb = document.getElementById(p[1]);
+                if (hb) {
+                    const word = t.liveCount >= t.totalWeeks ? ' \u00b7 COMPLETE'
+                               : t.liveCount === 0 ? ' \u00b7 IN PREPARATION'
+                               : ' \u00b7 WEEK ' + t.latestLiveWeek.n;
+                    hb.innerHTML = p[3] + word;
+                }
+            });
+
+
+            // Track 6 — Interfaces
+            const t6El = document.getElementById('track6Weeks');
+            if (t6El && typeof renderTrack6Curriculum === 'function') {
+                t6El.innerHTML = renderTrack6Curriculum();
+                const p6 = renderTrack6Progress();
+                const s = function (id, v) { const e = document.getElementById(id); if (e) e.textContent = v; };
+                s('t6ProgressText', p6.text); s('t6ProgressPct', p6.percent + '%');
+                const f6 = document.getElementById('t6ProgressFill'); if (f6) f6.style.width = p6.percent + '%';
+            }
+            // The Life of a Project
+            const lcEl = document.getElementById('lifecycleWeeks');
+            if (lcEl && typeof renderLifecycleCurriculum === 'function') {
+                lcEl.innerHTML = renderLifecycleCurriculum();
+                const plc = renderLifecycleProgress();
+                const s2 = function (id, v) { const e = document.getElementById(id); if (e) e.textContent = v; };
+                s2('lcProgressText', plc.text); s2('lcProgressPct', plc.percent + '%');
+                const flc = document.getElementById('lcProgressFill'); if (flc) flc.style.width = plc.percent + '%';
+            }
+            // Badges and header status words computed, never typed
+            [['t6ModuleBadge', 't6TrackBadge', typeof TRACK6 !== 'undefined' ? TRACK6 : null, "<i class='bx bx-git-branch'></i> TRACK 6 \u00b7 FREE"],
+             ['lcModuleBadge', 'lcTrackBadge', typeof LIFECYCLE !== 'undefined' ? LIFECYCLE : null, "<i class='bx bx-git-repo-forked'></i> THE LIFE OF A PROJECT \u00b7 FREE"]]
+            .forEach(function (p) {
+                const t = p[2]; if (!t) return;
+                const mb = document.getElementById(p[0]);
+                if (mb && typeof badgeText === 'function') {
+                    mb.innerHTML = badgeText(t);
+                    mb.className = 'module-badge ' + badgeClass(t);
+                }
+                const hb = document.getElementById(p[1]);
+                if (hb) {
+                    const word = t.liveCount >= t.totalWeeks ? ' \u00b7 COMPLETE'
+                               : t.liveCount === 0 ? ' \u00b7 IN PREPARATION'
+                               : ' \u00b7 WEEK ' + t.latestLiveWeek.n;
+                    hb.innerHTML = p[3] + word;
+                }
+            });
+
+            // Fill weeks
+            const weeksEl = document.getElementById('moduleWeeks');
+            if (weeksEl) weeksEl.innerHTML = renderLearnCurriculum();
+
+            // Track 2 — Cost & Cash
+            const t2El = document.getElementById('track2Weeks');
+            if (t2El && typeof renderTrack2Curriculum === 'function') {
+                t2El.innerHTML = renderTrack2Curriculum();
+                if (typeof renderTrack2Progress === 'function') {
+                    const p2 = renderTrack2Progress();
+                    const t2t = document.getElementById('t2ProgressText');
+                    const t2p = document.getElementById('t2ProgressPct');
+                    const t2f = document.getElementById('t2ProgressFill');
+                    if (t2t) t2t.textContent = p2.text;
+                    if (t2p) t2p.textContent = p2.percent + '%';
+                    if (t2f) t2f.style.width = p2.percent + '%';
+                }
+            }
+
+            // Track 3 — Risk
+            const t3El = document.getElementById('track3Weeks');
+            if (t3El && typeof renderTrack3Curriculum === 'function') {
+                t3El.innerHTML = renderTrack3Curriculum();
+                if (typeof renderTrack3Progress === 'function') {
+                    const p3 = renderTrack3Progress();
+                    const t3t = document.getElementById('t3ProgressText');
+                    const t3p = document.getElementById('t3ProgressPct');
+                    const t3f = document.getElementById('t3ProgressFill');
+                    if (t3t) t3t.textContent = p3.text;
+                    if (t3p) t3p.textContent = p3.percent + '%';
+                    if (t3f) t3f.style.width = p3.percent + '%';
+                }
+            }
+
+            const t4El = document.getElementById('track4Weeks');
+            if (t4El && typeof renderTrack4Curriculum === 'function') {
+                t4El.innerHTML = renderTrack4Curriculum();
+                if (typeof renderTrack4Progress === 'function') {
+                    const p4 = renderTrack4Progress();
+                    const t4t = document.getElementById('t4ProgressText');
+                    const t4p = document.getElementById('t4ProgressPct');
+                    const t4f = document.getElementById('t4ProgressFill');
+                    if (t4t) t4t.textContent = p4.text;
+                    if (t4p) t4p.textContent = p4.percent + '%';
+                    if (t4f) t4f.style.width = p4.percent + '%';
+                }
+            }
+
+            // Progress
+            const prog = renderLearnProgress();
+            const pt = document.getElementById('progressText');
+            const pp = document.getElementById('progressPct');
+            const pf = document.getElementById('progressFill');
+            if (pt) pt.textContent = prog.text;
+            if (pp) pp.textContent = prog.percent + '%';
+            if (pf) pf.style.width = prog.percent + '%';
+
+            // Badge — show latest live week
+            const badge = document.getElementById('moduleBadge');
+            if (badge && typeof badgeText === 'function') badge.innerHTML = badgeText(CURRICULUM);
+            const b2 = document.getElementById('t2ModuleBadge');
+            if (b2 && typeof TRACK2 !== 'undefined' && typeof badgeText === 'function') b2.innerHTML = badgeText(TRACK2);
+            const b3 = document.getElementById('t3ModuleBadge');
+            if (b3 && typeof TRACK3 !== 'undefined' && typeof badgeText === 'function') b3.innerHTML = badgeText(TRACK3);
+            const b4 = document.getElementById('t4ModuleBadge');
+            if (b4 && typeof TRACK4 !== 'undefined' && typeof badgeText === 'function') b4.innerHTML = badgeText(TRACK4);
+
+            const t5El = document.getElementById('track5Weeks');
+            if (t5El && typeof renderTrack5Curriculum === 'function') {
+                t5El.innerHTML = renderTrack5Curriculum();
+                if (typeof renderTrack5Progress === 'function') {
+                    const p5 = renderTrack5Progress();
+                    const t5t = document.getElementById('t5ProgressText');
+                    const t5p = document.getElementById('t5ProgressPct');
+                    const t5f = document.getElementById('t5ProgressFill');
+                    if (t5t) t5t.textContent = p5.text;
+                    if (t5p) t5p.textContent = p5.percent + '%';
+                    if (t5f) t5f.style.width = p5.percent + '%';
+                }
+            }
+            // Track basligindaki durum etiketi: §7'de modul rozetiyle ayni hata
+            // yasandi, bu yuzden bunlar da curriculum.js'ten okunuyor.
+            [['t4TrackBadge', typeof TRACK4 !== 'undefined' ? TRACK4 : null, 'TRACK 4'],
+             ['t5TrackBadge', typeof TRACK5 !== 'undefined' ? TRACK5 : null, 'TRACK 5']]
+              .forEach(function (row) {
+                const el = document.getElementById(row[0]), tr = row[1];
+                if (!el || !tr) return;
+                const state = tr.liveCount === 0 ? 'STARTING SOON'
+                            : tr.liveCount >= tr.totalWeeks ? 'COMPLETE' : 'IN PROGRESS';
+                el.innerHTML = el.innerHTML.replace(
+                    /(TRACK \d+ &#183; FREE &#183; |TRACK \d+ · FREE · ).*$/,
+                    '$1' + state);
+              });
+
+            const b5 = document.getElementById('t5ModuleBadge');
+            if (b5 && typeof renderHomeTrack5Badge === 'function') {
+                b5.innerHTML = renderHomeTrack5Badge();
+                if (typeof badgeClass === 'function' && typeof TRACK5 !== 'undefined') {
+                    b5.className = 'module-badge ' + badgeClass(TRACK5);
+                }
+            }
+
+            // Re-bind gated links
+            document.querySelectorAll('.week-item[data-gated]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (!localStorage.getItem('pch_auth')) {
+                        e.preventDefault();
+                        sessionStorage.setItem('pch_intended', this.href);
+                        if (typeof openModal === 'function') openModal();
+                    }
+                });
+            });
+        })();
+    </script>
+
+
+    <script>
+    /* Highlights the section you are actually looking at. Uses viewport-relative
+       measurement rather than offsetTop, which would be wrong for these nested nodes. */
+    (function () {
+        var links = Array.prototype.slice.call(document.querySelectorAll('.track-jump-link'));
+        if (!links.length) return;
+        var sections = links.map(function (l) {
+            return { link: l, el: document.getElementById(l.getAttribute('data-jump')) };
+        }).filter(function (s) { return s.el; });
+        if (!sections.length) return;
+        var ticking = false;
+        function spy() {
+            var current = sections[0];
+            sections.forEach(function (s) {
+                if (s.el.getBoundingClientRect().top <= 140) current = s;
+            });
+            links.forEach(function (l) { l.classList.remove('active'); });
+            current.link.classList.add('active');
+            ticking = false;
+        }
+        window.addEventListener('scroll', function () {
+            if (!ticking) { ticking = true; window.requestAnimationFrame(spy); }
+        }, { passive: true });
+        spy();
+    })();
+    </script>
+</body>
+</html>

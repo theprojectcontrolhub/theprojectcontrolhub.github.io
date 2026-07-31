@@ -431,7 +431,7 @@
         .track-jump-link.active { background: rgba(16,185,129,0.08); border-color: #10b981; color: #059669; }
         .track-jump-link.active span { color: #10b981; }
         /* anchors must clear both sticky bars */
-        #track-1, #track-2, #track-3, #track-4, #roadmap, #toolbox { scroll-margin-top: 132px; }
+        #track-1, #track-2, #track-3, #track-4, #track-5, #track-6, #lifecycle, #roadmap, #toolbox { scroll-margin-top: 132px; }
         @media (max-width: 768px) {
             .track-jump { top: 72px; padding: 10px 0; }
             .track-jump-link { font-size: 12px; padding: 6px 12px; }
@@ -659,6 +659,48 @@
             .module-info h2 { font-size: 14px; }
         }
     .logo-mark{vertical-align:middle;display:inline-block;}
+
+        .start-here-card {
+            display: flex; align-items: center; gap: 16px;
+            padding: 20px 24px; margin-bottom: 32px;
+            background: #fff; border: 1px solid #e2e8f0; border-radius: 14px;
+            text-decoration: none; transition: border-color .15s, transform .15s;
+        }
+        .start-here-card:hover { border-color: #10b981; transform: translateY(-1px); }
+        .sh-icon {
+            width: 42px; height: 42px; flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+            background: #ecfdf5; border-radius: 10px;
+        }
+        .sh-icon i { font-size: 22px; color: #059669; }
+        .sh-body { display: flex; flex-direction: column; gap: 3px; }
+        .sh-body strong { font-size: 15px; font-weight: 700; color: #1e293b; }
+        .sh-body span { font-size: 13.5px; color: #64748b; line-height: 1.55; }
+        .sh-arrow { margin-left: auto; font-size: 20px; color: #cbd5e1; flex-shrink: 0; }
+        .start-here-card:hover .sh-arrow { color: #10b981; }
+        @media (max-width: 640px) {
+            .start-here-card { padding: 16px 18px; gap: 13px; }
+            .sh-arrow { display: none; }
+        }
+
+        .layer-intro {
+            padding: 28px 0 4px;
+            margin-top: 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+        .layer-intro h2 {
+            margin: 14px 0 10px;
+            font-size: 22px; font-weight: 800; color: #1e293b; letter-spacing: -0.01em;
+        }
+        .layer-intro p {
+            margin: 0; max-width: 760px;
+            font-size: 15px; color: #64748b; line-height: 1.7;
+        }
+        .layer-intro strong { color: #334155; font-weight: 700; }
+        @media (max-width: 640px) {
+            .layer-intro h2 { font-size: 19px; }
+            .layer-intro p { font-size: 14px; }
+        }
     </style>
 
         <!-- Mobile nav toggle — standalone, independent of Firebase -->
@@ -798,8 +840,8 @@
                 <h1>Project Controls — The Way It Works on Site</h1>
                 <p>A structured series built for engineers who want to understand project controls the way it actually works on site. Theory first, then the tools that bring it to life.</p>
                 <div class="learn-header-meta">
-                    <span class="learn-meta-item"><i class='bx bx-layer'></i> 6 tracks + a toolbox</span>
-                    <span class="learn-meta-item"><i class='bx bx-time-five'></i> Tracks 1&#8211;3 complete &#183; Track 4 live &#183; 70 lessons</span>
+                    <span class="learn-meta-item"><i class='bx bx-layer'></i> 7 tracks + a toolbox</span>
+                    <span class="learn-meta-item"><i class='bx bx-time-five'></i> Tracks 1&#8211;5 complete &#183; 117 lessons &#183; Interfaces next</span>
                     <span class="learn-meta-item"><i class='bx bx-calendar'></i> New lesson every week</span>
                     <span class="learn-meta-item"><i class='bx bx-lock-open'></i> Fundamentals always free</span>
                 </div>
@@ -807,16 +849,30 @@
 
             <!-- ===== TRACK JUMP NAV ===== -->
                 <nav class="track-jump" aria-label="Jump to a section">
-                    <a href="#track-1" class="track-jump-link" data-jump="track-1">Schedule <span>27</span></a>
-                    <a href="#track-2" class="track-jump-link" data-jump="track-2">Cost &amp; Cash <span>24</span></a>
-                    <a href="#track-3" class="track-jump-link" data-jump="track-3">Risk <span>18</span></a>
-                    <a href="#track-4" class="track-jump-link" data-jump="track-4">Contract <span>1/20</span></a>
+                    <a href="start-here.html" class="track-jump-link">Start Here</a>
+                    <a href="#track-1" class="track-jump-link" data-jump="track-1">Schedule <span id="jn1">27</span></a>
+                    <a href="#track-2" class="track-jump-link" data-jump="track-2">Cost &amp; Cash <span id="jn2">24</span></a>
+                    <a href="#track-3" class="track-jump-link" data-jump="track-3">Risk <span id="jn3">18</span></a>
+                    <a href="#track-4" class="track-jump-link" data-jump="track-4">Contract <span id="jn4">20</span></a>
+                    <a href="#track-5" class="track-jump-link" data-jump="track-5">Claims <span id="jn5">28</span></a>
+                    <a href="#track-6" class="track-jump-link" data-jump="track-6">Interfaces <span id="jn6">14</span></a>
+                    <a href="#lifecycle" class="track-jump-link" data-jump="lifecycle">Life of a Project <span id="jnlc">52</span></a>
                     <a href="#roadmap" class="track-jump-link" data-jump="roadmap">Roadmap</a>
                     <a href="#toolbox" class="track-jump-link" data-jump="toolbox">Toolbox</a>
                 </nav>
 
                 <!-- MODULES -->
             <div class="modules-list">
+
+                <!-- ===== START HERE ===== -->
+                <a href="start-here.html" class="start-here-card">
+                    <span class="sh-icon"><i class='bx bx-compass'></i></span>
+                    <span class="sh-body">
+                        <strong>New here? Read this first.</strong>
+                        <span>What project controls is, whether this is for you, and the five paths it opens. Ten minutes, no prior knowledge.</span>
+                    </span>
+                    <i class='bx bx-right-arrow-alt sh-arrow'></i>
+                </a>
 
                 <!-- ===== TRACK 1 ===== -->
                 
@@ -996,7 +1052,7 @@
 
 <!-- ===== TRACK 4 — CONTRACT MANAGEMENT ===== -->
                     <div class="track-header" id="track-4">
-                        <div class="track-badge free"><i class='bx bx-file'></i> TRACK 4 &#183; FREE &#183; IN PROGRESS</div>
+                        <div class="track-badge free" id="t4TrackBadge"><i class='bx bx-file'></i> TRACK 4 &#183; FREE &#183; COMPLETE</div>
                         <h2>Contract Management</h2>
                         <p class="track-sub">The machinery. Whether the money is still yours by the time you ask for it.</p>
                         <p class="track-desc">Track 3 ended holding a priced risk and a clause number, and one uncomfortable sentence: an entitlement is not the same thing as an entitlement you can still use. This track is the machinery in between &#8212; notices and the periods that kill them, the records that make a right provable rather than arguable, instructions, variations, payment, and what changes when the contract is cost-plus or target cost instead of lump sum. Being right is not the job. Staying entitled is.</p>
@@ -1053,7 +1109,7 @@
 
 <!-- ===== TRACK 5 — CLAIMS &amp; DELAY ANALYSIS ===== -->
                     <div class="track-header" id="track-5">
-                        <div class="track-badge free"><i class='bx bx-file-find'></i> TRACK 5 &#183; FREE &#183; STARTING SOON</div>
+                        <div class="track-badge free" id="t5TrackBadge"><i class='bx bx-file-find'></i> TRACK 5 &#183; FREE &#183; COMPLETE</div>
                         <h2>Claims &amp; Delay Analysis</h2>
                         <p class="track-sub">The number. What the right you kept is actually worth.</p>
                         <p class="track-desc">Track 4 ended holding a preserved right, a programme that can be re-run, and the question it deliberately never answered: how much? This track is the answer &#8212; forensic delay methods and why two competent analysts reach different numbers, float and concurrency, disruption and the measured mile, and the quantum that turns an entitlement into an invoice. The method you can use is decided by the records you kept, not by the one you prefer.</p>
@@ -1083,7 +1139,7 @@
                                     <p>Forensic delay analysis, disruption and quantum &#8212; the methods that turn a preserved entitlement into a number, and the reasons two analysts using two accepted methods disagree.</p>
                                 </div>
                             </div>
-                            <span class="module-badge badge-locked" id="t5ModuleBadge"><i class='bx bx-time'></i> Starting soon</span>
+                            <span class="module-badge badge-active" id="t5ModuleBadge"><span class="dot-green"></span> Complete &#183; 28 weeks</span>
                         </div>
                         <div class="module-tools">
                             <span class="tool-tag-label">Topics:</span>
@@ -1099,7 +1155,7 @@
                         <div class="module-weeks" id="track5Weeks"></div>
                         <div class="module-progress">
                             <div class="progress-label">
-                                <span id="t5ProgressText">1 of 28 published</span>
+                                <span id="t5ProgressText">28 of 28 published</span>
                                 <span id="t5ProgressPct">0%</span>
                             </div>
                             <div class="progress-bar">
@@ -1108,19 +1164,141 @@
                         </div>
                     </div>
 
+                    <!-- ===== SECTION: THE INTEGRATION LAYER ===== -->
+                    <div class="layer-intro">
+                        <div class="track-badge roadmap"><i class='bx bx-layer'></i> THE INTEGRATION LAYER</div>
+                        <h2>Two tracks follow, and neither repeats the five above</h2>
+                        <p>Tracks 1&#8211;5 teach the methods. <strong>Interfaces</strong> shows how those methods change shape under a different contract and a different organisation. <strong>The Life of a Project</strong> shows the order the work actually arrives in, what feeds what, and which record is born where. Three layers, and each one needs the other two.</p>
+                    </div>
+
+<!-- ===== TRACK 6 — INTERFACES ===== -->
+                    <div class="track-header" id="track-6">
+                        <div class="track-badge free" id="t6TrackBadge"><i class='bx bx-git-branch'></i> TRACK 6 &#183; FREE</div>
+                        <h2>Interfaces</h2>
+                        <p class="track-sub">Where the work and the numbers change hands.</p>
+                        <p class="track-desc">Five tracks taught one job: a single contract, a single chain of command, a single team on a single site. Every technique in all of them quietly assumes that shape. This track is what happens when it stops holding &#8212; when the scope sits with somebody else, when the critical path runs through a purchase order, when the work nobody planned appears where two programmes meet, and when the number has more than one owner. Nothing here replaces what came before. It marks the edges of it.</p>
+                        <div class="track-outcomes">
+                            <h3>After this track you can</h3>
+                            <ul>
+                            <li>Say how many contracts a project has, and why that decides more than the payment mechanism</li>
+                            <li>Explain why an EPCM manager instructs people it has no contract with, and what that costs</li>
+                            <li>Argue concurrency when there is no head contract holding the definition</li>
+                            <li>Find the work sitting between two programmes before it becomes somebody&#39;s claim</li>
+                            <li>Reconcile a progress-based number with a valuation-based one without producing two truths</li>
+                            <li>Recognise which of the five tracks stops applying, and say precisely where</li>
+                            </ul>
+                        </div>
+                        <div class="track-note">
+                            <i class='bx bx-lock-open-alt'></i>
+                            <p><strong>The handoff was printed five tracks ago.</strong> <a href="claim-week-28.html">Claims Week 28</a> closed by naming four things this track answers. It opens by naming the assumption all five tracks were built on, and then takes it apart one contract at a time.</p>
+                        </div>
+                    </div>
+
+                    <!-- MODULE 06: INTERFACES -->
+                    <div class="module-card">
+                        <div class="module-card-header">
+                            <div class="module-card-left">
+                                <span class="module-num">06</span>
+                                <div class="module-info">
+                                    <h2>Interfaces</h2>
+                                    <p>Delivery models and who holds the scope, EPCM authority without privity, joint ventures, the critical path through an order, the work between two programmes, and the number with two owners.</p>
+                                </div>
+                            </div>
+                            <span class="module-badge badge-locked" id="t6ModuleBadge"><i class='bx bx-time'></i> Starting soon &#183; 14 weeks</span>
+                        </div>
+                        <div class="module-tools">
+                            <span class="tool-tag-label">Topics:</span>
+                            <span class="tool-tag">Delivery Models</span>
+                            <span class="tool-tag">EPCM</span>
+                            <span class="tool-tag">Joint Ventures</span>
+                            <span class="tool-tag">Concurrency</span>
+                            <span class="tool-tag">Interfaces</span>
+                            <span class="tool-tag">Long Lead</span>
+                            <span class="tool-tag">Document Control</span>
+                        </div>
+                        <div class="module-weeks" id="track6Weeks"></div>
+                        <div class="module-progress">
+                            <div class="progress-label">
+                                <span id="t6ProgressText">0 of 14 published</span>
+                                <span id="t6ProgressPct">0%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="t6ProgressFill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+<!-- ===== THE LIFE OF A PROJECT ===== -->
+                    <div class="track-header" id="lifecycle">
+                        <div class="track-badge free" id="lcTrackBadge"><i class='bx bx-git-repo-forked'></i> THE LIFE OF A PROJECT &#183; FREE</div>
+                        <h2>The Life of a Project</h2>
+                        <p class="track-sub">From the investment decision to the handover certificate &#8212; and what project controls does at every step.</p>
+                        <p class="track-desc">Everything above answers how. This answers when, why and with whom. It follows one EPC job in the order it actually arrives &#8212; the decision made before you were hired, the tender you inherit, the kick-off, the baseline nobody has time for, the six weeks that run the site, the month the curve stops behaving, the punch list, and the archive you hand to whoever starts on Monday. It teaches no new technique. It shows where the ones you have get used, and hands the method back to the track that owns it every time.</p>
+                        <div class="track-outcomes">
+                            <h3>After this you can</h3>
+                            <ul>
+                            <li>Say what happens on a project in what order, and what each stage needs from you</li>
+                            <li>Name every input behind a monthly report, its owner, its unit and its cut-off</li>
+                            <li>Run a constraint register and a look-ahead that a foreman will actually use</li>
+                            <li>Know which record is born at which stage, and which of them anyone reads</li>
+                            <li>Walk into a project on day one and say what you would set up first, and why</li>
+                            <li>Place every technique in Tracks 1&#8211;5 against the moment in the week it is needed</li>
+                            </ul>
+                        </div>
+                        <div class="track-note">
+                            <i class='bx bx-bulb'></i>
+                            <p><strong>Records born here.</strong> Every week ends the same way &#8212; naming the documents that come into existence at that stage, from the clarification log at tender to the lessons learned register at closeout. Learn the job and you learn the paperwork with it, in the order it appears rather than as a list.</p>
+                        </div>
+                    </div>
+
+                    <!-- MODULE 07: THE LIFE OF A PROJECT -->
+                    <div class="module-card">
+                        <div class="module-card-header">
+                            <div class="module-card-left">
+                                <span class="module-num">07</span>
+                                <div class="module-info">
+                                    <h2>The Life of a Project</h2>
+                                    <p>Nine phases from the investment decision to closeout, plus a two-week capstone. The integration layer: the order, the handovers, and the records.</p>
+                                </div>
+                            </div>
+                            <span class="module-badge badge-locked" id="lcModuleBadge"><i class='bx bx-time'></i> On the roadmap &#183; 52 weeks</span>
+                        </div>
+                        <div class="module-tools">
+                            <span class="tool-tag-label">Topics:</span>
+                            <span class="tool-tag">Lifecycle</span>
+                            <span class="tool-tag">Start-up</span>
+                            <span class="tool-tag">Engineering</span>
+                            <span class="tool-tag">Procurement</span>
+                            <span class="tool-tag">Workfront</span>
+                            <span class="tool-tag">Look-ahead</span>
+                            <span class="tool-tag">Governance</span>
+                            <span class="tool-tag">Commissioning</span>
+                            <span class="tool-tag">Registers</span>
+                        </div>
+                        <div class="module-weeks" id="lifecycleWeeks"></div>
+                        <div class="module-progress">
+                            <div class="progress-label">
+                                <span id="lcProgressText">0 of 52 published</span>
+                                <span id="lcProgressPct">0%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="lcProgressFill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="roadmap-section" id="roadmap">
                     <div class="roadmap-intro">
                         <div class="track-badge roadmap"><i class='bx bx-map-alt'></i> THE ROADMAP</div>
-                        <h2>Track 6</h2>
-                        <p>Risk explains why projects go wrong before they do. The contract decides whether you still have a right when one of them does, and Track 5 decides what that right is worth. One track follows.</p>
+                        <h2>After the writing</h2>
+                        <p>The text comes first. The tools come after it, because a tool you can drive but not reason about is worth nothing on a site.</p>
                     </div>
 
-                    <!-- TRACK 6: THE ASSUMPTIONS THAT STOP HOLDING -->
                     <div class="roadmap-card">
-                        <span class="roadmap-marker"><i class='bx bx-git-branch'></i></span>
+                        <span class="roadmap-marker"><i class='bx bx-joystick'></i></span>
                         <div class="roadmap-body">
-                            <h3>Track 6 &#183; The Assumptions That Stop Holding</h3>
-                            <p>Five tracks taught the job as one contract with one chain of command. Track 6 is what happens when that stops being true &#8212; delivery models and who actually holds the scope, the critical path that runs through a purchase order, the work nobody planned where two programmes meet, the number with more than one owner, and document control at organisational scale.</p>
+                            <h3>The Simulation</h3>
+                            <p>One EPC project, run end to end as a sequence of episodes with a real document pack. The same job as The Life of a Project, played rather than read.</p>
                         </div>
                         <span class="roadmap-badge"><i class='bx bx-time'></i> On the roadmap</span>
                     </div>
@@ -1343,10 +1521,101 @@
 
 
     <!-- Curriculum data + renderers -->
-    <script src="curriculum.js?v=118"></script>
+    <script src="curriculum.js?v=123"></script>
     <script>
         (function() {
             if (typeof CURRICULUM === 'undefined') return;
+
+
+
+            // Jump-nav counts computed, never typed — the old markup said
+            // Contract 1/20 long after Contract finished, and omitted Claims.
+            [['jn1', CURRICULUM],
+             ['jn2', typeof TRACK2 !== 'undefined' ? TRACK2 : null],
+             ['jn3', typeof TRACK3 !== 'undefined' ? TRACK3 : null],
+             ['jn4', typeof TRACK4 !== 'undefined' ? TRACK4 : null],
+             ['jn5', typeof TRACK5 !== 'undefined' ? TRACK5 : null],
+             ['jn6', typeof TRACK6 !== 'undefined' ? TRACK6 : null],
+             ['jnlc', typeof LIFECYCLE !== 'undefined' ? LIFECYCLE : null]].forEach(function (p) {
+                var el = document.getElementById(p[0]);
+                if (el && p[1]) el.textContent = p[1].totalWeeks;
+            });
+
+
+            // Track 6 — Interfaces
+            const t6El = document.getElementById('track6Weeks');
+            if (t6El && typeof renderTrack6Curriculum === 'function') {
+                t6El.innerHTML = renderTrack6Curriculum();
+                const p6 = renderTrack6Progress();
+                const s = function (id, v) { const e = document.getElementById(id); if (e) e.textContent = v; };
+                s('t6ProgressText', p6.text); s('t6ProgressPct', p6.percent + '%');
+                const f6 = document.getElementById('t6ProgressFill'); if (f6) f6.style.width = p6.percent + '%';
+            }
+            // The Life of a Project
+            const lcEl = document.getElementById('lifecycleWeeks');
+            if (lcEl && typeof renderLifecycleCurriculum === 'function') {
+                lcEl.innerHTML = renderLifecycleCurriculum();
+                const plc = renderLifecycleProgress();
+                const s2 = function (id, v) { const e = document.getElementById(id); if (e) e.textContent = v; };
+                s2('lcProgressText', plc.text); s2('lcProgressPct', plc.percent + '%');
+                const flc = document.getElementById('lcProgressFill'); if (flc) flc.style.width = plc.percent + '%';
+            }
+            // Badges and header status words computed, never typed
+            [['t6ModuleBadge', 't6TrackBadge', typeof TRACK6 !== 'undefined' ? TRACK6 : null, "<i class='bx bx-git-branch'></i> TRACK 6 \u00b7 FREE"],
+             ['lcModuleBadge', 'lcTrackBadge', typeof LIFECYCLE !== 'undefined' ? LIFECYCLE : null, "<i class='bx bx-git-repo-forked'></i> THE LIFE OF A PROJECT \u00b7 FREE"]]
+            .forEach(function (p) {
+                const t = p[2]; if (!t) return;
+                const mb = document.getElementById(p[0]);
+                if (mb && typeof badgeText === 'function') {
+                    mb.innerHTML = badgeText(t);
+                    mb.className = 'module-badge ' + badgeClass(t);
+                }
+                const hb = document.getElementById(p[1]);
+                if (hb) {
+                    const word = t.liveCount >= t.totalWeeks ? ' \u00b7 COMPLETE'
+                               : t.liveCount === 0 ? ' \u00b7 IN PREPARATION'
+                               : ' \u00b7 WEEK ' + t.latestLiveWeek.n;
+                    hb.innerHTML = p[3] + word;
+                }
+            });
+
+
+            // Track 6 — Interfaces
+            const t6El = document.getElementById('track6Weeks');
+            if (t6El && typeof renderTrack6Curriculum === 'function') {
+                t6El.innerHTML = renderTrack6Curriculum();
+                const p6 = renderTrack6Progress();
+                const s = function (id, v) { const e = document.getElementById(id); if (e) e.textContent = v; };
+                s('t6ProgressText', p6.text); s('t6ProgressPct', p6.percent + '%');
+                const f6 = document.getElementById('t6ProgressFill'); if (f6) f6.style.width = p6.percent + '%';
+            }
+            // The Life of a Project
+            const lcEl = document.getElementById('lifecycleWeeks');
+            if (lcEl && typeof renderLifecycleCurriculum === 'function') {
+                lcEl.innerHTML = renderLifecycleCurriculum();
+                const plc = renderLifecycleProgress();
+                const s2 = function (id, v) { const e = document.getElementById(id); if (e) e.textContent = v; };
+                s2('lcProgressText', plc.text); s2('lcProgressPct', plc.percent + '%');
+                const flc = document.getElementById('lcProgressFill'); if (flc) flc.style.width = plc.percent + '%';
+            }
+            // Badges and header status words computed, never typed
+            [['t6ModuleBadge', 't6TrackBadge', typeof TRACK6 !== 'undefined' ? TRACK6 : null, "<i class='bx bx-git-branch'></i> TRACK 6 \u00b7 FREE"],
+             ['lcModuleBadge', 'lcTrackBadge', typeof LIFECYCLE !== 'undefined' ? LIFECYCLE : null, "<i class='bx bx-git-repo-forked'></i> THE LIFE OF A PROJECT \u00b7 FREE"]]
+            .forEach(function (p) {
+                const t = p[2]; if (!t) return;
+                const mb = document.getElementById(p[0]);
+                if (mb && typeof badgeText === 'function') {
+                    mb.innerHTML = badgeText(t);
+                    mb.className = 'module-badge ' + badgeClass(t);
+                }
+                const hb = document.getElementById(p[1]);
+                if (hb) {
+                    const word = t.liveCount >= t.totalWeeks ? ' \u00b7 COMPLETE'
+                               : t.liveCount === 0 ? ' \u00b7 IN PREPARATION'
+                               : ' \u00b7 WEEK ' + t.latestLiveWeek.n;
+                    hb.innerHTML = p[3] + word;
+                }
+            });
 
             // Fill weeks
             const weeksEl = document.getElementById('moduleWeeks');
@@ -1428,6 +1697,20 @@
                     if (t5f) t5f.style.width = p5.percent + '%';
                 }
             }
+            // Track basligindaki durum etiketi: §7'de modul rozetiyle ayni hata
+            // yasandi, bu yuzden bunlar da curriculum.js'ten okunuyor.
+            [['t4TrackBadge', typeof TRACK4 !== 'undefined' ? TRACK4 : null, 'TRACK 4'],
+             ['t5TrackBadge', typeof TRACK5 !== 'undefined' ? TRACK5 : null, 'TRACK 5']]
+              .forEach(function (row) {
+                const el = document.getElementById(row[0]), tr = row[1];
+                if (!el || !tr) return;
+                const state = tr.liveCount === 0 ? 'STARTING SOON'
+                            : tr.liveCount >= tr.totalWeeks ? 'COMPLETE' : 'IN PROGRESS';
+                el.innerHTML = el.innerHTML.replace(
+                    /(TRACK \d+ &#183; FREE &#183; |TRACK \d+ · FREE · ).*$/,
+                    '$1' + state);
+              });
+
             const b5 = document.getElementById('t5ModuleBadge');
             if (b5 && typeof renderHomeTrack5Badge === 'function') {
                 b5.innerHTML = renderHomeTrack5Badge();

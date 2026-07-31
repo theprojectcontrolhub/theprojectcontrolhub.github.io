@@ -573,6 +573,181 @@ function renderTrack4Progress() {
 }
 
 
+
+// ===================== TRACK 0 — THE SHAPE OF THE JOB =====================
+// Read before Track 1, written after Track 5. Orientation, not method:
+// it describes the job rather than teaching a technique. Every week must
+// answer "what happens, who does it, what is it called" and hand the
+// method itself to one of the five tracks that follow.
+const TRACK0 = {
+    title: "The Shape of the Job",
+    totalWeeks: 17,
+    weeks: [
+        // ---- PHASE A — THE JOB BEFORE IT IS A JOB ----
+        { phase: "Phase A \u2014 The Job Before It Is a Job", n: 1, title: "The documents that arrive before the work \u2014 charter, contract, scope, BoQ, drawings", short: "The documents that arrive first", status: "upcoming" },
+        { n: 2, title: "Tender to award \u2014 the estimate you inherited and the schedule you did not write", short: "Tender to award", status: "upcoming" },
+        { n: 3, title: "The contract as an organisation chart \u2014 who can instruct whom", short: "Who can instruct whom", status: "upcoming" },
+
+        // ---- PHASE B — BUILDING THE MACHINE ----
+        { phase: "Phase B \u2014 Building the Machine", n: 4, title: "The departments \u2014 what each one produces and what each needs from you", short: "The departments", status: "upcoming" },
+        { n: 5, title: "Where project controls sits \u2014 planning, cost, commercial and the monthly argument", short: "Where project controls sits", status: "upcoming" },
+        { n: 6, title: "Coding before dating \u2014 WBS, OBS, cost codes, areas and systems", short: "Coding before dating", status: "upcoming" },
+        { n: 7, title: "Mobilisation \u2014 the project inside the project", short: "Mobilisation", status: "upcoming" },
+
+        // ---- PHASE C — THE RHYTHM ----
+        { phase: "Phase C \u2014 The Rhythm", n: 8, title: "The project heartbeat \u2014 daily, weekly, monthly and the cut-off dates", short: "The project heartbeat", status: "upcoming" },
+        { n: 9, title: "Nobody gives you data \u2014 measurement, surveys and the sources you chase", short: "Nobody gives you data", status: "upcoming" },
+        { n: 10, title: "The meetings are the machine \u2014 who chairs, who decides, what you are there to do", short: "The meetings are the machine", status: "upcoming" },
+        { n: 11, title: "Four reports, four audiences \u2014 and what happens when you mix them up", short: "Four reports, four audiences", status: "upcoming" },
+
+        // ---- PHASE D — WHERE IT GOES WRONG ----
+        { phase: "Phase D \u2014 Where It Goes Wrong", n: 12, title: "Construction is decided upstream \u2014 engineering, vendor data and expediting", short: "Decided upstream", status: "upcoming" },
+        { n: 13, title: "The vocabulary of change \u2014 instruction, variation, notice, claim", short: "The vocabulary of change", status: "upcoming" },
+        { n: 14, title: "Trouble travels in documents \u2014 NCRs, site instructions and recovery plans", short: "Trouble travels in documents", status: "upcoming" },
+
+        // ---- PHASE E — FINISHING ----
+        { phase: "Phase E \u2014 Finishing", n: 15, title: "Construction complete is not complete \u2014 punch lists, handover, defects liability", short: "Complete is not complete", status: "upcoming" },
+        { n: 16, title: "The job outlives the project \u2014 as-built, final account, archive, lessons learned", short: "The job outlives the project", status: "upcoming" },
+        { n: 17, title: "What you now know you do not know \u2014 a map of the five tracks ahead", short: "A map of the tracks ahead", status: "upcoming" }
+    ],
+    get liveCount() { return this.weeks.filter(w => w.status === "live").length; },
+    get progressPercent() { return Math.round((this.liveCount / this.totalWeeks) * 100); },
+    get latestLiveWeek() {
+        const live = this.weeks.filter(w => w.status === "live");
+        return live.length ? live[live.length - 1] : null;
+    },
+    get phaseCount() { return this.weeks.filter(w => w.phase).length; },
+    getWeek(n) { return this.weeks.find(w => w.n === n); }
+};
+
+function renderTrack0Curriculum() { return learnCurriculumHTML(TRACK0); }
+function renderTrack0Sidebar(currentWeek) { return sidebarHTML(TRACK0, currentWeek); }
+function renderHomeTrack0()               { return homeCurriculumHTML(TRACK0); }
+function renderHomeTrack0Badge()          { return badgeText(TRACK0); }
+function renderTrack0Progress() {
+    return { text: `${TRACK0.liveCount} of ${TRACK0.totalWeeks} published`, percent: TRACK0.progressPercent };
+}
+
+
+// ===================== TRACK 6 — INTERFACES =====================
+// The printed handoff in claim-week-28 names four subjects: the scope sitting
+// with somebody else, the critical path through a purchase order, the work
+// where two programmes meet, and the number with more than one owner. All
+// four appear below. Sources measured 2026-07-31: EPCM 171, interface 284,
+// coordination 140, JV/consortium/alliance/partnering/IPD 249.
+const TRACK6 = {
+    title: "Interfaces",
+    totalWeeks: 14,
+    weeks: [
+        { phase: "Who holds the scope", n: 1, title: "The shape every track has assumed \u2014 one contract, one Engineer, one programme", short: "The shape every track assumed", status: "upcoming" },
+        { n: 2, title: "How many contracts are there \u2014 the axis nobody teaches", short: "How many contracts are there", status: "upcoming" },
+        { n: 3, title: "EPCM \u2014 instructing people you have no contract with", short: "Instructing without a contract", status: "upcoming" },
+        { n: 4, title: "The Engineer, multiplied \u2014 determination when every package has its own", short: "The Engineer, multiplied", status: "upcoming" },
+        { n: 5, title: "Concurrency without a head contract \u2014 the Special Provisions that do not exist", short: "Concurrency with no head contract", status: "upcoming" },
+        { phase: "When the contractor is plural", n: 6, title: "Joint ventures and consortia \u2014 one face, several sets of books", short: "Joint ventures and consortia", status: "upcoming" },
+        { n: 7, title: "Alliancing, partnering and IPD \u2014 contracts built to suppress claims", short: "Alliancing, partnering and IPD", status: "upcoming" },
+        { phase: "The critical path leaves the site", n: 8, title: "Procurement on the critical path \u2014 when the path runs through an order", short: "Procurement on the critical path", status: "upcoming" },
+        { phase: "Where two programmes meet", n: 9, title: "The work in nobody\u2019s scope \u2014 the gap between two risk registers", short: "The work in nobody\u2019s scope", status: "upcoming" },
+        { n: 10, title: "Interface management as a function \u2014 owning a boundary, not reporting one", short: "Interface management", status: "upcoming" },
+        { n: 11, title: "Access, sequencing and the delay that belongs to no one", short: "The delay that belongs to no one", status: "upcoming" },
+        { phase: "The number with more than one owner", n: 12, title: "Progress and valuation collide \u2014 two methods, one monthly number", short: "Progress and valuation collide", status: "upcoming" },
+        { n: 13, title: "The cost that arrives from somebody else\u2019s books \u2014 another ledger, another cut-off", short: "Somebody else\u2019s books", status: "upcoming" },
+        { n: 14, title: "Document control at organisational scale \u2014 six firms, one transmittal", short: "Document control at scale", status: "upcoming" }
+    ],
+    get liveCount() { return this.weeks.filter(w => w.status === "live").length; },
+    get progressPercent() { return Math.round((this.liveCount / this.totalWeeks) * 100); },
+    get latestLiveWeek() { const l = this.weeks.filter(w => w.status === "live"); return l.length ? l[l.length - 1] : null; },
+    getWeek(n) { return this.weeks.find(w => w.n === n); }
+};
+
+// ===================== THE LIFE OF A PROJECT =====================
+// The integration layer. Tracks 1-5 teach the method; Interfaces shows how the
+// method changes shape under a different contract; this shows the order the
+// work actually arrives in, what feeds what, and which record is born where.
+// Rule for every week: teach the occasion, hand the method to the track that
+// owns it. Every week ends with "Records born here".
+const LIFECYCLE = {
+    title: "The Life of a Project",
+    totalWeeks: 52,
+    weeks: [
+        { n: 1, title: "The journey of one drawing \u2014 six hands, six changes, one as-built", short: "The journey of one drawing", status: "upcoming" },
+
+        { phase: "Phase A \u2014 Before the project exists", n: 2, title: "Why a project exists \u2014 business need, investment decision, and who is already committed", short: "Why a project exists", status: "upcoming" },
+        { n: 3, title: "Feasibility \u2014 what gets studied, what gets assumed, and which assumption reaches you", short: "Feasibility", status: "upcoming" },
+        { n: 4, title: "Delivery strategy \u2014 how the owner decided to buy it", short: "Delivery strategy", status: "upcoming" },
+        { n: 5, title: "Packaging and tender strategy \u2014 why the job was split, and what each split costs", short: "Packaging and tender strategy", status: "upcoming" },
+        { n: 6, title: "Tender to award \u2014 ITB, clarification, evaluation, and the estimate you inherit", short: "Tender to award", status: "upcoming" },
+
+        { phase: "Phase B \u2014 Start-up", n: 7, title: "Day one \u2014 the folder, the contract, and the dates you must know by Friday", short: "Day one", status: "upcoming" },
+        { n: 8, title: "The kick-off \u2014 what gets decided, and what gets deferred forever", short: "The kick-off", status: "upcoming" },
+        { n: 9, title: "The project execution plan \u2014 including the communication matrix nobody reads", short: "The project execution plan", status: "upcoming" },
+        { n: 10, title: "Who is who \u2014 client, PMC, EPC, vendors, and the authority behind each name", short: "Who is who", status: "upcoming" },
+        { n: 11, title: "Coding philosophy \u2014 the decisions that cannot be made later", short: "Coding philosophy", status: "upcoming" },
+        { n: 12, title: "Setting up document control \u2014 transmittals, revisions, registers", short: "Setting up document control", status: "upcoming" },
+
+        { phase: "Phase C \u2014 The control system", n: 13, title: "Building the baseline \u2014 the two weeks, not the method", short: "Building the baseline", status: "upcoming" },
+        { n: 14, title: "Rules of credit \u2014 agreeing how progress will be claimed, before it is claimed", short: "Rules of credit", status: "upcoming" },
+        { n: 15, title: "The calendar \u2014 data date, cut-off, and three departments closing on three days", short: "The calendar", status: "upcoming" },
+        { n: 16, title: "The reporting structure \u2014 daily, weekly, monthly, executive", short: "The reporting structure", status: "upcoming" },
+        { n: 17, title: "The meeting structure \u2014 who chairs, who decides, and which ones move blame", short: "The meeting structure", status: "upcoming" },
+
+        { phase: "Phase D \u2014 Engineering", n: 18, title: "How engineering flows \u2014 deliverable lists, disciplines, and the design freeze", short: "How engineering flows", status: "upcoming" },
+        { n: 19, title: "Submittals, IFC and vendor documents \u2014 the approval cycle as a programme input", short: "Submittals, IFC and approvals", status: "upcoming" },
+        { n: 20, title: "Measuring engineering progress \u2014 where percent complete is easiest to fake", short: "Measuring engineering progress", status: "upcoming" },
+
+        { phase: "Phase E \u2014 Procurement", n: 21, title: "The procurement cycle \u2014 requisition to purchase order", short: "The procurement cycle", status: "upcoming" },
+        { n: 22, title: "From approved vendor document to manufacturing release \u2014 and the expediting between", short: "Vendor documents to release", status: "upcoming" },
+        { n: 23, title: "Long lead \u2014 ordering before the design is finished, and the cost of being wrong", short: "Long lead", status: "upcoming" },
+        { n: 24, title: "Material management \u2014 delivered, stored, issued, installed: four quantities", short: "Material management", status: "upcoming" },
+
+        { phase: "Phase F \u2014 Construction", n: 25, title: "Mobilisation \u2014 the project inside the project", short: "Mobilisation", status: "upcoming" },
+        { n: 26, title: "Site logistics and temporary works \u2014 access, laydown, cranes, and a scaffold with its own lead time", short: "Site logistics and temporary works", status: "upcoming" },
+        { n: 27, title: "Work packaging \u2014 dividing scope into something a crew can be handed", short: "Work packaging", status: "upcoming" },
+        { n: 28, title: "Constraints and readiness \u2014 drawing, material, labour, permit, access", short: "Constraints and readiness", status: "upcoming" },
+        { n: 29, title: "Look-ahead planning \u2014 the six weeks that run the site", short: "Look-ahead planning", status: "upcoming" },
+        { n: 30, title: "The week, day by day \u2014 one workable rhythm, not the rhythm", short: "The week, day by day", status: "upcoming" },
+        { n: 31, title: "Daily progress \u2014 who measures, in what unit, on which day", short: "Daily progress", status: "upcoming" },
+        { n: 32, title: "Productivity on site \u2014 where the hours went", short: "Productivity on site", status: "upcoming" },
+        { n: 33, title: "Equipment and resources \u2014 availability, utilisation, crews, camp, shifts", short: "Equipment and resources", status: "upcoming" },
+        { n: 34, title: "Quality as a subtraction \u2014 NCRs, rework, and progress that reverses", short: "Quality as a subtraction", status: "upcoming" },
+        { n: 35, title: "Safety as a stoppage \u2014 permits, holds, stand-downs, and lost time as a delay event", short: "Safety as a stoppage", status: "upcoming" },
+
+        { phase: "Phase G \u2014 Commercial", n: 36, title: "The monthly valuation \u2014 progress versus payment", short: "The monthly valuation", status: "upcoming" },
+        { n: 37, title: "Change on the ground \u2014 instruction to variation to claim, as it happens", short: "Change on the ground", status: "upcoming" },
+        { n: 38, title: "Forecasting \u2014 the number you will be judged on", short: "Forecasting", status: "upcoming" },
+        { n: 39, title: "Trends and the change log \u2014 catching cost before it becomes a variation", short: "Trends and the change log", status: "upcoming" },
+
+        { phase: "Phase H \u2014 Governance", n: 40, title: "Who approves what \u2014 authority, delegation, and the escalation chain", short: "Who approves what", status: "upcoming" },
+        { n: 41, title: "The change control board", short: "The change control board", status: "upcoming" },
+        { n: 42, title: "Risk reviews that change something", short: "Risk reviews that change something", status: "upcoming" },
+        { n: 43, title: "KPIs \u2014 leading, lagging, and the ones that get gamed", short: "KPIs, leading and lagging", status: "upcoming" },
+        { n: 44, title: "The register system \u2014 which record feeds which, and which are actually read", short: "The register system", status: "upcoming" },
+
+        { phase: "Phase I \u2014 Finishing", n: 45, title: "Mechanical completion \u2014 and the birth of the punch list", short: "Mechanical completion", status: "upcoming" },
+        { n: 46, title: "Pre-commissioning and commissioning \u2014 handing the schedule to another discipline", short: "Pre-commissioning and commissioning", status: "upcoming" },
+        { n: 47, title: "Performance tests", short: "Performance tests", status: "upcoming" },
+        { n: 48, title: "Closing the punch list and taking over", short: "Closing the punch list", status: "upcoming" },
+        { n: 49, title: "Demobilisation \u2014 the crane, the camp and the punch list want the same people", short: "Demobilisation", status: "upcoming" },
+        { n: 50, title: "Closeout \u2014 as-built, final account, archive", short: "Closeout", status: "upcoming" },
+
+        { phase: "Capstone", n: 51, title: "Designing a project controls system from nothing", short: "Designing the system from nothing", status: "upcoming" },
+        { n: 52, title: "The first 90 days \u2014 a contract, a BoQ, a drawing set and an empty schedule", short: "The first 90 days", status: "upcoming" }
+    ],
+    get liveCount() { return this.weeks.filter(w => w.status === "live").length; },
+    get progressPercent() { return Math.round((this.liveCount / this.totalWeeks) * 100); },
+    get latestLiveWeek() { const l = this.weeks.filter(w => w.status === "live"); return l.length ? l[l.length - 1] : null; },
+    get phaseCount() { return this.weeks.filter(w => w.phase).length; },
+    getWeek(n) { return this.weeks.find(w => w.n === n); }
+};
+
+function renderTrack6Curriculum()  { return learnCurriculumHTML(TRACK6); }
+function renderTrack6Sidebar(w)    { return sidebarHTML(TRACK6, w); }
+function renderTrack6Progress()    { return { text: `${TRACK6.liveCount} of ${TRACK6.totalWeeks} published`, percent: TRACK6.progressPercent }; }
+
+function renderLifecycleCurriculum() { return learnCurriculumHTML(LIFECYCLE); }
+function renderLifecycleSidebar(w)   { return sidebarHTML(LIFECYCLE, w); }
+function renderLifecycleProgress()   { return { text: `${LIFECYCLE.liveCount} of ${LIFECYCLE.totalWeeks} published`, percent: LIFECYCLE.progressPercent }; }
+
 // ===================== TRACK 5 — CLAIMS & DELAY ANALYSIS =====================
 const TRACK5 = {
     title: "Claims & Delay Analysis",
@@ -675,11 +850,14 @@ const TRACK5 = {
         // ---- PHASE G — PRESENTING THE CLAIM ----
         { phase: "Phase G — Presenting the Claim", n: 26,
           title: "Assembling a claim — contents, executive summary and appendices",
-          short: "Assembling a claim", status: "upcoming" },
+          short: "Assembling a claim", status: "live", page: "claim-week-26.html",
+          date: "Aug 30, 2028" },
         { n: 27, title: "Defending a claim — reading one from the other side",
-          short: "Defending a claim", status: "upcoming" },
+          short: "Defending a claim", status: "live", page: "claim-week-27.html",
+          date: "Sep 6, 2028" },
         { n: 28, title: "What five tracks were for — the claim that never happened",
-          short: "What five tracks were for", status: "upcoming" }
+          short: "What five tracks were for", status: "live", page: "claim-week-28.html",
+          date: "Sep 13, 2028" }
     ],
     get liveCount() { return this.weeks.filter(w => w.status === "live").length; },
     get progressPercent() { return Math.round((this.liveCount / this.totalWeeks) * 100); },
