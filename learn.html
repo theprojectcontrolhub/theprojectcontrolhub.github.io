@@ -414,14 +414,20 @@
            under the navbar's 500. */
         .track-jump {
             position: sticky; top: 72px; z-index: 400;
-            display: flex; gap: 6px; align-items: center;
-            padding: 12px 0; margin-bottom: 4px;
+            display: flex; gap: 5px; align-items: center;
+            padding: 12px 0 14px; margin-bottom: 10px;
             background: var(--bg-light);
             overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+            /* Hairline that fades out at both ends, so the row separates from
+               what follows without drawing a hard rule across the page. The
+               nine chips fit at 900px, so no scroll mask is needed. */
+            border-bottom: 1px solid transparent;
+            border-image: linear-gradient(to right,
+                transparent 0, #e2e8f0 8%, #e2e8f0 92%, transparent 100%) 1;
         }
         .track-jump::-webkit-scrollbar { display: none; }
         .track-jump-link {
-            flex: 0 0 auto; padding: 7px 14px; border-radius: 20px;
+            flex: 0 0 auto; padding: 7px 12px; border-radius: 20px;
             font-size: 13px; font-weight: 600; color: #64748b;
             background: #fff; border: 1px solid #e2e8f0;
             white-space: nowrap; transition: all 0.18s ease;
@@ -431,7 +437,7 @@
         .track-jump-link.active { background: rgba(16,185,129,0.08); border-color: #10b981; color: #059669; }
         .track-jump-link.active span { color: #10b981; }
         /* anchors must clear both sticky bars */
-        #track-1, #track-2, #track-3, #track-4, #track-5, #track-6, #lifecycle, #roadmap, #toolbox { scroll-margin-top: 132px; }
+        #track-1, #track-2, #track-3, #track-4, #track-5, #track-6, #track-7, #lifecycle, #toolbox { scroll-margin-top: 132px; }
         @media (max-width: 768px) {
             .track-jump { top: 72px; padding: 10px 0; }
             .track-jump-link { font-size: 12px; padding: 6px 12px; }
@@ -660,27 +666,7 @@
         }
     .logo-mark{vertical-align:middle;display:inline-block;}
 
-        .start-here-card {
-            display: flex; align-items: center; gap: 16px;
-            padding: 20px 24px; margin-bottom: 32px;
-            background: #fff; border: 1px solid #e2e8f0; border-radius: 14px;
-            text-decoration: none; transition: border-color .15s, transform .15s;
-        }
-        .start-here-card:hover { border-color: #10b981; transform: translateY(-1px); }
-        .sh-icon {
-            width: 42px; height: 42px; flex-shrink: 0;
-            display: flex; align-items: center; justify-content: center;
-            background: #ecfdf5; border-radius: 10px;
-        }
-        .sh-icon i { font-size: 22px; color: #059669; }
-        .sh-body { display: flex; flex-direction: column; gap: 3px; }
-        .sh-body strong { font-size: 15px; font-weight: 700; color: #1e293b; }
-        .sh-body span { font-size: 13.5px; color: #64748b; line-height: 1.55; }
-        .sh-arrow { margin-left: auto; font-size: 20px; color: #cbd5e1; flex-shrink: 0; }
-        .start-here-card:hover .sh-arrow { color: #10b981; }
         @media (max-width: 640px) {
-            .start-here-card { padding: 16px 18px; gap: 13px; }
-            .sh-arrow { display: none; }
         }
 
         .layer-intro {
@@ -700,6 +686,139 @@
         @media (max-width: 640px) {
             .layer-intro h2 { font-size: 19px; }
             .layer-intro p { font-size: 14px; }
+        }
+
+        /* ===== PATH FIGURE =====
+           Four stages, left to right, above the jump nav. Counts come from
+           curriculum.js so the figure cannot drift from the lists below it. */
+        .path-figure {
+            list-style: none; margin: 22px 0 6px; padding: 0;
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 0 18px;
+            position: relative;
+        }
+        .path-figure::before {
+            content: ''; position: absolute; top: 9px;
+            left: 12.5%; right: 12.5%; height: 2px;
+            background: linear-gradient(to right, #10b981 0 25%, #cbd5e1 25%);
+            border-radius: 2px;
+        }
+        .path-step { position: relative; display: flex; flex-direction: column; }
+        .path-dot {
+            width: 20px; height: 20px; border-radius: 50%;
+            background: #fff; border: 2px solid #cbd5e1;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 12px; position: relative; z-index: 1;
+        }
+        .path-step.is-done .path-dot { background: #10b981; border-color: #10b981; }
+        .path-step.is-done .path-dot i { font-size: 13px; color: #fff; }
+        .path-step.is-next .path-dot { border-color: #10b981; box-shadow: 0 0 0 4px rgba(16,185,129,0.12); }
+        .path-title {
+            font-size: 15px; font-weight: 700; color: #1e293b;
+            line-height: 1.3; margin-bottom: 5px;
+        }
+        @media (max-width: 720px) {
+            .path-figure {
+                grid-template-columns: 1fr; gap: 16px 0;
+                margin: 18px 0 4px; padding-left: 30px;
+            }
+            .path-figure::before {
+                top: 6px; bottom: 10px; left: 9px; right: auto;
+                width: 2px; height: auto;
+                background: linear-gradient(to bottom, #10b981 0 25%, #cbd5e1 25%);
+            }
+            .path-step { display: block; }
+            .path-dot { position: absolute; left: -30px; top: 0; margin: 0; }
+            .path-title { display: block; margin-top: 1px; }
+        }
+
+        .path-title a { color: inherit; text-decoration: none; }
+        .path-title a:hover { color: #059669; }
+        .path-tracks { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+        .path-tracks a {
+            font-size: 10.5px; font-weight: 600; color: #475569;
+            background: #fff; border: 1px solid #e2e8f0; border-radius: 5px;
+            padding: 2px 6px; text-decoration: none; white-space: nowrap;
+        }
+        .path-tracks a:hover { border-color: #10b981; color: #059669; }
+
+        .path-tracks.is-plain span {
+            font-size: 10.5px; font-weight: 600; color: #64748b;
+            background: #fff; border: 1px solid #e2e8f0; border-radius: 5px;
+            padding: 2px 6px; white-space: nowrap;
+        }
+
+        /* Milestone chain under each step. Boxes joined by a connector, so the
+           column reads as a route rather than as a row of tags. */
+        .path-chain { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+        .chain-box {
+            position: relative; display: block; text-align: center;
+            padding: 6px 10px; border-radius: 7px;
+            background: #ecfdf5; border: 1px solid #a7f3d0;
+            font-size: 11.5px; font-weight: 600; color: #047857;
+            line-height: 1.35;
+        }
+        .chain-box:not(:last-child)::after {
+            content: ''; position: absolute; left: 50%; bottom: -9px;
+            width: 2px; height: 9px; margin-left: -1px; background: #a7f3d0;
+        }
+
+
+        @media (max-width: 720px) {
+            .path-chain { flex-flow: row wrap; gap: 6px; margin-top: 10px; }
+            .chain-box { padding: 4px 9px; }
+            .chain-box:not(:last-child)::after {
+                left: auto; right: -6px; bottom: auto; top: 50%;
+                width: 6px; height: 2px; transform: translateY(-50%);
+            }
+        }
+
+        .path-figure.is-five { grid-template-columns: repeat(5, 1fr); gap: 0 14px; }
+        .path-figure.is-five::before { left: 10%; right: 10%;
+            background: linear-gradient(to right, #10b981 0 20%, #cbd5e1 20%); }
+        .path-figure.is-five .path-title { font-size: 14px; }
+        .path-figure.is-five .chain-box { font-size: 11px; padding: 5px 8px; }
+        @media (max-width: 720px) {
+            .path-figure.is-five { grid-template-columns: 1fr; }
+            .path-figure.is-five::before { left: 9px; right: auto;
+                background: linear-gradient(to bottom, #10b981 0 20%, #cbd5e1 20%); }
+        }
+
+        /* Rows line up across all five columns regardless of how many lines
+           each description wraps to. Subgrid does it properly; the fallback
+           reserves a fixed height for the description instead. */
+        .path-figure.is-five { grid-template-rows: repeat(3, auto); }
+        .path-figure.is-five .path-step {
+            display: grid; grid-row: span 3;
+            grid-template-rows: subgrid; align-content: start;
+        }
+        @supports not (grid-template-rows: subgrid) {
+            .path-figure.is-five .path-step { display: flex; flex-direction: column; }
+        }
+        @media (max-width: 720px) {
+            .path-figure.is-five .path-step {
+                display: block; grid-row: auto; grid-template-rows: none;
+            }
+        }
+
+        /* Dot and title centred in each column, which also puts the dots on
+           the rail: five equal columns give centres at 10, 30, 50, 70 and 90
+           per cent, and the rail already spans 10 to 90. */
+        .path-figure.is-five .path-dot { justify-self: center; margin-left: 0; margin-right: 0; }
+        .path-figure.is-five .path-title { text-align: center; }
+        @media (max-width: 720px) {
+            .path-figure.is-five .path-dot { justify-self: start; }
+            .path-figure.is-five .path-title { text-align: left; }
+        }
+
+        /* butun kilometre taslari ayni: beyaz zemin, yesil halka, yumusak
+           hale. Ray da tek renk. */
+        .path-figure.is-five .path-dot {
+            background: #fff; border: 2px solid #10b981;
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.12);
+        }
+        .path-figure.is-five::before { background: #cbd5e1; }
+        @media (max-width: 720px) {
+            .path-figure.is-five::before { background: #cbd5e1; }
         }
     </style>
 
@@ -840,39 +959,91 @@
                 <h1>Project Controls — The Way It Works on Site</h1>
                 <p>A structured series built for engineers who want to understand project controls the way it actually works on site. Theory first, then the tools that bring it to life.</p>
                 <div class="learn-header-meta">
-                    <span class="learn-meta-item"><i class='bx bx-layer'></i> 7 tracks + a toolbox</span>
-                    <span class="learn-meta-item"><i class='bx bx-time-five'></i> Tracks 1&#8211;5 complete &#183; 117 lessons &#183; Interfaces next</span>
+                    <span class="learn-meta-item"><i class='bx bx-layer'></i> 8 tracks + a toolbox</span>
+                    <span class="learn-meta-item"><i class='bx bx-time-five'></i> Tracks 1&#8211;5 complete &#183; 117 lessons &#183; Reporting next</span>
                     <span class="learn-meta-item"><i class='bx bx-calendar'></i> New lesson every week</span>
                     <span class="learn-meta-item"><i class='bx bx-lock-open'></i> Fundamentals always free</span>
                 </div>
             </div>
 
             <!-- ===== TRACK JUMP NAV ===== -->
+
+            <ol class="path-figure is-five" aria-label="How the curriculum builds">
+                <li class="path-step is-done">
+                    <span class="path-dot"></span>
+                    <strong class="path-title"><a href="#track-1">The methods</a></strong>
+                    <span class="path-chain">
+                        <span class="chain-box">Schedule</span>
+                        <span class="chain-box">Cost &amp; Cash</span>
+                        <span class="chain-box">Risk</span>
+                        <span class="chain-box">Contract</span>
+                        <span class="chain-box">Claims</span>
+                    </span>
+                </li>
+                <li class="path-step is-next">
+                    <span class="path-dot"></span>
+                    <strong class="path-title"><a href="#track-6">Reporting</a></strong>
+                    <span class="path-chain">
+                        <span class="chain-box">Engineering</span>
+                        <span class="chain-box">Procurement</span>
+                        <span class="chain-box">Construction</span>
+                        <span class="chain-box">QA/QC &amp; HSE</span>
+                        <span class="chain-box">Document control</span>
+                        <span class="chain-box">Reports &amp; registers</span>
+                    </span>
+                </li>
+                <li class="path-step">
+                    <span class="path-dot"></span>
+                    <strong class="path-title"><a href="#track-7">Interfaces</a></strong>
+                    <span class="path-chain">
+                        <span class="chain-box">Delivery models</span>
+                        <span class="chain-box">EPCM</span>
+                        <span class="chain-box">Joint ventures</span>
+                        <span class="chain-box">Work in nobody&#39;s scope</span>
+                        <span class="chain-box">Shared progress</span>
+                        <span class="chain-box">Shared cost</span>
+                    </span>
+                </li>
+                <li class="path-step">
+                    <span class="path-dot"></span>
+                    <strong class="path-title"><a href="#lifecycle">The life of a project</a></strong>
+                    <span class="path-chain">
+                        <span class="chain-box">Tender</span>
+                        <span class="chain-box">Start-up</span>
+                        <span class="chain-box">Engineering</span>
+                        <span class="chain-box">Procurement</span>
+                        <span class="chain-box">Construction</span>
+                        <span class="chain-box">Handover</span>
+                    </span>
+                </li>
+                <li class="path-step">
+                    <span class="path-dot"></span>
+                    <strong class="path-title"><a href="#toolbox">The toolbox</a></strong>
+                    <span class="path-chain">
+                        <span class="chain-box">Excel</span>
+                        <span class="chain-box">Primavera P6</span>
+                        <span class="chain-box">Power BI</span>
+                        <span class="chain-box">Power Platform</span>
+                        <span class="chain-box">ERP</span>
+                        <span class="chain-box">AI</span>
+                    </span>
+                </li>
+            </ol>
+
                 <nav class="track-jump" aria-label="Jump to a section">
-                    <a href="start-here.html" class="track-jump-link">Start Here</a>
-                    <a href="#track-1" class="track-jump-link" data-jump="track-1">Schedule <span id="jn1">27</span></a>
-                    <a href="#track-2" class="track-jump-link" data-jump="track-2">Cost &amp; Cash <span id="jn2">24</span></a>
-                    <a href="#track-3" class="track-jump-link" data-jump="track-3">Risk <span id="jn3">18</span></a>
-                    <a href="#track-4" class="track-jump-link" data-jump="track-4">Contract <span id="jn4">20</span></a>
-                    <a href="#track-5" class="track-jump-link" data-jump="track-5">Claims <span id="jn5">28</span></a>
-                    <a href="#track-6" class="track-jump-link" data-jump="track-6">Interfaces <span id="jn6">14</span></a>
-                    <a href="#lifecycle" class="track-jump-link" data-jump="lifecycle">Life of a Project <span id="jnlc">52</span></a>
-                    <a href="#roadmap" class="track-jump-link" data-jump="roadmap">Roadmap</a>
+                    <a href="#track-1" class="track-jump-link" data-jump="track-1">Schedule</a>
+                    <a href="#track-2" class="track-jump-link" data-jump="track-2">Cost &amp; Cash</a>
+                    <a href="#track-3" class="track-jump-link" data-jump="track-3">Risk</a>
+                    <a href="#track-4" class="track-jump-link" data-jump="track-4">Contract</a>
+                    <a href="#track-5" class="track-jump-link" data-jump="track-5">Claims</a>
+                    <a href="#track-6" class="track-jump-link" data-jump="track-6">Reporting</a>
+                    <a href="#track-7" class="track-jump-link" data-jump="track-7">Interfaces</a>
+                    <a href="#lifecycle" class="track-jump-link" data-jump="lifecycle">Life of a project</a>
                     <a href="#toolbox" class="track-jump-link" data-jump="toolbox">Toolbox</a>
                 </nav>
 
                 <!-- MODULES -->
             <div class="modules-list">
-
-                <!-- ===== START HERE ===== -->
-                <a href="start-here.html" class="start-here-card">
-                    <span class="sh-icon"><i class='bx bx-compass'></i></span>
-                    <span class="sh-body">
-                        <strong>New here? Read this first.</strong>
-                        <span>What project controls is, whether this is for you, and the five paths it opens. Ten minutes, no prior knowledge.</span>
-                    </span>
-                    <i class='bx bx-right-arrow-alt sh-arrow'></i>
-                </a>
 
                 <!-- ===== TRACK 1 ===== -->
                 
@@ -1168,15 +1339,73 @@
                     <div class="layer-intro">
                         <div class="track-badge roadmap"><i class='bx bx-layer'></i> THE INTEGRATION LAYER</div>
                         <h2>Two tracks follow, and neither repeats the five above</h2>
-                        <p>Tracks 1&#8211;5 teach the methods. <strong>Interfaces</strong> shows how those methods change shape under a different contract and a different organisation. <strong>The Life of a Project</strong> shows the order the work actually arrives in, what feeds what, and which record is born where. Three layers, and each one needs the other two.</p>
+                        <p>Tracks 1&#8211;5 teach the methods. <strong>Reporting</strong> follows every number back to the person who produces it and forward to the person who acts on it. <strong>Interfaces</strong> shows how all of it changes shape under more than one contract. <strong>The Life of a Project</strong> shows the order the work actually arrives in, what feeds what, and which record is born where. Three layers, and each one needs the other two.</p>
                     </div>
 
-<!-- ===== TRACK 6 — INTERFACES ===== -->
+<!-- ===== TRACK 6 — REPORTING ===== -->
                     <div class="track-header" id="track-6">
-                        <div class="track-badge free" id="t6TrackBadge"><i class='bx bx-git-branch'></i> TRACK 6 &#183; FREE</div>
+                        <div class="track-badge free" id="t6TrackBadge"><i class='bx bx-line-chart'></i> TRACK 6 &#183; FREE</div>
+                        <h2>Reporting</h2>
+                        <p class="track-sub">Everything that arrives, everything you issue, and what to do when two of them disagree.</p>
+                        <p class="track-desc">Five tracks taught what to do with a number once you have it. None of them said where it came from, who owns it, when it closes, or who reads it afterwards. This track follows every input project controls consumes back to the department that produces it, then follows every document you issue forward to the person who is supposed to act on it. It teaches no new technique. It is the trade around them.</p>
+                        <div class="track-outcomes">
+                            <h3>After this track you can</h3>
+                            <ul>
+                            <li>Name every input behind a monthly report, its owner, its unit and its cut-off date</li>
+                            <li>Work backwards from any deliverable to the data it needs and who holds it</li>
+                            <li>Say what &quot;ready&quot; means in six specific tests, and refuse the word until they are met</li>
+                            <li>Tell whether the drawing the site is building to is the current revision</li>
+                            <li>Write a daily, weekly and monthly report that four different readers can each act on</li>
+                            <li>Reconcile a progress number with a valuation number before either one leaves the office</li>
+                            </ul>
+                        </div>
+                        <div class="track-note">
+                            <i class='bx bx-bulb'></i>
+                            <p><strong>Every week ends the same way.</strong> What arrives &#8212; from whom, in what unit, on which day. What you issue. Who uses it. And the records born there. Learn the trade and you learn the paperwork with it, in the order it actually reaches your desk.</p>
+                        </div>
+                    </div>
+
+                    <!-- MODULE 06: REPORTING -->
+                    <div class="module-card">
+                        <div class="module-card-header">
+                            <div class="module-card-left">
+                                <span class="module-num">06</span>
+                                <div class="module-info">
+                                    <h2>Reporting</h2>
+                                    <p>Fifteen weeks on what each department feeds you and in what unit, then eleven on what you issue back &#8212; daily to executive, dashboards, KPIs, registers, and the report nobody acts on.</p>
+                                </div>
+                            </div>
+                            <span class="module-badge badge-locked" id="t6ModuleBadge"><i class='bx bx-time'></i> Starting soon &#183; 26 weeks</span>
+                        </div>
+                        <div class="module-tools">
+                            <span class="tool-tag-label">Topics:</span>
+                            <span class="tool-tag">Data Sources</span>
+                            <span class="tool-tag">Readiness</span>
+                            <span class="tool-tag">Revision Status</span>
+                            <span class="tool-tag">Cut-off</span>
+                            <span class="tool-tag">Daily / Weekly / Monthly</span>
+                            <span class="tool-tag">Dashboards</span>
+                            <span class="tool-tag">KPIs</span>
+                            <span class="tool-tag">Registers</span>
+                        </div>
+                        <div class="module-weeks" id="track6Weeks"></div>
+                        <div class="module-progress">
+                            <div class="progress-label">
+                                <span id="t6ProgressText">0 of 26 published</span>
+                                <span id="t6ProgressPct">0%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="t6ProgressFill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+<!-- ===== TRACK 7 — INTERFACES ===== -->
+                    <div class="track-header" id="track-7">
+                        <div class="track-badge free" id="t7TrackBadge"><i class='bx bx-git-branch'></i> TRACK 7 &#183; FREE</div>
                         <h2>Interfaces</h2>
                         <p class="track-sub">Where the work and the numbers change hands.</p>
-                        <p class="track-desc">Five tracks taught one job: a single contract, a single chain of command, a single team on a single site. Every technique in all of them quietly assumes that shape. This track is what happens when it stops holding &#8212; when the scope sits with somebody else, when the critical path runs through a purchase order, when the work nobody planned appears where two programmes meet, and when the number has more than one owner. Nothing here replaces what came before. It marks the edges of it.</p>
+                        <p class="track-desc">Six tracks taught one job: a single contract, a single chain of command, a single team on a single site. Every technique in all of them quietly assumes that shape. This track is what happens when it stops holding &#8212; when the scope sits with somebody else, when the critical path runs through a purchase order, when the work nobody planned appears where two programmes meet, and when the number has more than one owner.</p>
                         <div class="track-outcomes">
                             <h3>After this track you can</h3>
                             <ul>
@@ -1184,27 +1413,27 @@
                             <li>Explain why an EPCM manager instructs people it has no contract with, and what that costs</li>
                             <li>Argue concurrency when there is no head contract holding the definition</li>
                             <li>Find the work sitting between two programmes before it becomes somebody&#39;s claim</li>
-                            <li>Reconcile a progress-based number with a valuation-based one without producing two truths</li>
-                            <li>Recognise which of the five tracks stops applying, and say precisely where</li>
+                            <li>Reconcile a number that two organisations both produce and neither owns</li>
+                            <li>Recognise which of the earlier tracks stops applying, and say precisely where</li>
                             </ul>
                         </div>
                         <div class="track-note">
                             <i class='bx bx-lock-open-alt'></i>
-                            <p><strong>The handoff was printed five tracks ago.</strong> <a href="claim-week-28.html">Claims Week 28</a> closed by naming four things this track answers. It opens by naming the assumption all five tracks were built on, and then takes it apart one contract at a time.</p>
+                            <p><strong>The handoff was printed five tracks ago.</strong> <a href="claim-week-28.html">Claims Week 28</a> closed by naming four things this track answers. It opens by naming the assumption every track before it was built on, and then takes it apart one contract at a time.</p>
                         </div>
                     </div>
 
-                    <!-- MODULE 06: INTERFACES -->
+                    <!-- MODULE 07: INTERFACES -->
                     <div class="module-card">
                         <div class="module-card-header">
                             <div class="module-card-left">
-                                <span class="module-num">06</span>
+                                <span class="module-num">08</span>
                                 <div class="module-info">
                                     <h2>Interfaces</h2>
                                     <p>Delivery models and who holds the scope, EPCM authority without privity, joint ventures, the critical path through an order, the work between two programmes, and the number with two owners.</p>
                                 </div>
                             </div>
-                            <span class="module-badge badge-locked" id="t6ModuleBadge"><i class='bx bx-time'></i> Starting soon &#183; 14 weeks</span>
+                            <span class="module-badge badge-locked" id="t7ModuleBadge"><i class='bx bx-time'></i> On the roadmap &#183; 14 weeks</span>
                         </div>
                         <div class="module-tools">
                             <span class="tool-tag-label">Topics:</span>
@@ -1216,19 +1445,19 @@
                             <span class="tool-tag">Long Lead</span>
                             <span class="tool-tag">Document Control</span>
                         </div>
-                        <div class="module-weeks" id="track6Weeks"></div>
+                        <div class="module-weeks" id="track7Weeks"></div>
                         <div class="module-progress">
                             <div class="progress-label">
-                                <span id="t6ProgressText">0 of 14 published</span>
-                                <span id="t6ProgressPct">0%</span>
+                                <span id="t7ProgressText">0 of 14 published</span>
+                                <span id="t7ProgressPct">0%</span>
                             </div>
                             <div class="progress-bar">
-                                <div class="progress-fill" id="t6ProgressFill" style="width: 0%"></div>
+                                <div class="progress-fill" id="t7ProgressFill" style="width: 0%"></div>
                             </div>
                         </div>
                     </div>
 
-<!-- ===== THE LIFE OF A PROJECT ===== -->
+                <!-- ===== THE LIFE OF A PROJECT ===== -->
                     <div class="track-header" id="lifecycle">
                         <div class="track-badge free" id="lcTrackBadge"><i class='bx bx-git-repo-forked'></i> THE LIFE OF A PROJECT &#183; FREE</div>
                         <h2>The Life of a Project</h2>
@@ -1251,11 +1480,11 @@
                         </div>
                     </div>
 
-                    <!-- MODULE 07: THE LIFE OF A PROJECT -->
+                    <!-- MODULE 08: THE LIFE OF A PROJECT -->
                     <div class="module-card">
                         <div class="module-card-header">
                             <div class="module-card-left">
-                                <span class="module-num">07</span>
+                                <span class="module-num">08</span>
                                 <div class="module-info">
                                     <h2>The Life of a Project</h2>
                                     <p>Nine phases from the investment decision to closeout, plus a two-week capstone. The integration layer: the order, the handovers, and the records.</p>
@@ -1286,23 +1515,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="roadmap-section" id="roadmap">
-                    <div class="roadmap-intro">
-                        <div class="track-badge roadmap"><i class='bx bx-map-alt'></i> THE ROADMAP</div>
-                        <h2>After the writing</h2>
-                        <p>The text comes first. The tools come after it, because a tool you can drive but not reason about is worth nothing on a site.</p>
-                    </div>
-
-                    <div class="roadmap-card">
-                        <span class="roadmap-marker"><i class='bx bx-joystick'></i></span>
-                        <div class="roadmap-body">
-                            <h3>The Simulation</h3>
-                            <p>One EPC project, run end to end as a sequence of episodes with a real document pack. The same job as The Life of a Project, played rather than read.</p>
-                        </div>
-                        <span class="roadmap-badge"><i class='bx bx-time'></i> On the roadmap</span>
-                    </div>
-                </div>
 
                 <!-- ===== SECTION: THE TOOLBOX ===== -->
 <div class="track-header track-2" id="toolbox">
@@ -1530,90 +1742,36 @@
 
             // Jump-nav counts computed, never typed — the old markup said
             // Contract 1/20 long after Contract finished, and omitted Claims.
-            [['jn1', CURRICULUM],
-             ['jn2', typeof TRACK2 !== 'undefined' ? TRACK2 : null],
-             ['jn3', typeof TRACK3 !== 'undefined' ? TRACK3 : null],
-             ['jn4', typeof TRACK4 !== 'undefined' ? TRACK4 : null],
-             ['jn5', typeof TRACK5 !== 'undefined' ? TRACK5 : null],
-             ['jn6', typeof TRACK6 !== 'undefined' ? TRACK6 : null],
-             ['jnlc', typeof LIFECYCLE !== 'undefined' ? LIFECYCLE : null]].forEach(function (p) {
-                var el = document.getElementById(p[0]);
-                if (el && p[1]) el.textContent = p[1].totalWeeks;
+
+
+            // Tracks 6 and 7, and the lifecycle module
+            [['track6Weeks', 'renderTrack6Curriculum', 'renderTrack6Progress', 't6ProgressText', 't6ProgressPct', 't6ProgressFill'],
+             ['track7Weeks', 'renderTrack7Curriculum', 'renderTrack7Progress', 't7ProgressText', 't7ProgressPct', 't7ProgressFill'],
+             ['lifecycleWeeks', 'renderLifecycleCurriculum', 'renderLifecycleProgress', 'lcProgressText', 'lcProgressPct', 'lcProgressFill']]
+            .forEach(function (c) {
+                var el = document.getElementById(c[0]);
+                if (!el || typeof window[c[1]] !== 'function') return;
+                el.innerHTML = window[c[1]]();
+                var p = window[c[2]]();
+                var t = document.getElementById(c[3]); if (t) t.textContent = p.text;
+                var q = document.getElementById(c[4]); if (q) q.textContent = p.percent + '%';
+                var f = document.getElementById(c[5]); if (f) f.style.width = p.percent + '%';
             });
-
-
-            // Track 6 — Interfaces
-            const t6El = document.getElementById('track6Weeks');
-            if (t6El && typeof renderTrack6Curriculum === 'function') {
-                t6El.innerHTML = renderTrack6Curriculum();
-                const p6 = renderTrack6Progress();
-                const s = function (id, v) { const e = document.getElementById(id); if (e) e.textContent = v; };
-                s('t6ProgressText', p6.text); s('t6ProgressPct', p6.percent + '%');
-                const f6 = document.getElementById('t6ProgressFill'); if (f6) f6.style.width = p6.percent + '%';
-            }
-            // The Life of a Project
-            const lcEl = document.getElementById('lifecycleWeeks');
-            if (lcEl && typeof renderLifecycleCurriculum === 'function') {
-                lcEl.innerHTML = renderLifecycleCurriculum();
-                const plc = renderLifecycleProgress();
-                const s2 = function (id, v) { const e = document.getElementById(id); if (e) e.textContent = v; };
-                s2('lcProgressText', plc.text); s2('lcProgressPct', plc.percent + '%');
-                const flc = document.getElementById('lcProgressFill'); if (flc) flc.style.width = plc.percent + '%';
-            }
-            // Badges and header status words computed, never typed
-            [['t6ModuleBadge', 't6TrackBadge', typeof TRACK6 !== 'undefined' ? TRACK6 : null, "<i class='bx bx-git-branch'></i> TRACK 6 \u00b7 FREE"],
+            [['t6ModuleBadge', 't6TrackBadge', typeof TRACK6 !== 'undefined' ? TRACK6 : null, "<i class='bx bx-line-chart'></i> TRACK 6 \u00b7 FREE"],
+             ['t7ModuleBadge', 't7TrackBadge', typeof TRACK7 !== 'undefined' ? TRACK7 : null, "<i class='bx bx-git-branch'></i> TRACK 7 \u00b7 FREE"],
              ['lcModuleBadge', 'lcTrackBadge', typeof LIFECYCLE !== 'undefined' ? LIFECYCLE : null, "<i class='bx bx-git-repo-forked'></i> THE LIFE OF A PROJECT \u00b7 FREE"]]
             .forEach(function (p) {
-                const t = p[2]; if (!t) return;
-                const mb = document.getElementById(p[0]);
+                var t = p[2]; if (!t) return;
+                var mb = document.getElementById(p[0]);
                 if (mb && typeof badgeText === 'function') {
                     mb.innerHTML = badgeText(t);
                     mb.className = 'module-badge ' + badgeClass(t);
                 }
-                const hb = document.getElementById(p[1]);
+                var hb = document.getElementById(p[1]);
                 if (hb) {
-                    const word = t.liveCount >= t.totalWeeks ? ' \u00b7 COMPLETE'
-                               : t.liveCount === 0 ? ' \u00b7 IN PREPARATION'
-                               : ' \u00b7 WEEK ' + t.latestLiveWeek.n;
-                    hb.innerHTML = p[3] + word;
-                }
-            });
-
-
-            // Track 6 — Interfaces
-            const t6El = document.getElementById('track6Weeks');
-            if (t6El && typeof renderTrack6Curriculum === 'function') {
-                t6El.innerHTML = renderTrack6Curriculum();
-                const p6 = renderTrack6Progress();
-                const s = function (id, v) { const e = document.getElementById(id); if (e) e.textContent = v; };
-                s('t6ProgressText', p6.text); s('t6ProgressPct', p6.percent + '%');
-                const f6 = document.getElementById('t6ProgressFill'); if (f6) f6.style.width = p6.percent + '%';
-            }
-            // The Life of a Project
-            const lcEl = document.getElementById('lifecycleWeeks');
-            if (lcEl && typeof renderLifecycleCurriculum === 'function') {
-                lcEl.innerHTML = renderLifecycleCurriculum();
-                const plc = renderLifecycleProgress();
-                const s2 = function (id, v) { const e = document.getElementById(id); if (e) e.textContent = v; };
-                s2('lcProgressText', plc.text); s2('lcProgressPct', plc.percent + '%');
-                const flc = document.getElementById('lcProgressFill'); if (flc) flc.style.width = plc.percent + '%';
-            }
-            // Badges and header status words computed, never typed
-            [['t6ModuleBadge', 't6TrackBadge', typeof TRACK6 !== 'undefined' ? TRACK6 : null, "<i class='bx bx-git-branch'></i> TRACK 6 \u00b7 FREE"],
-             ['lcModuleBadge', 'lcTrackBadge', typeof LIFECYCLE !== 'undefined' ? LIFECYCLE : null, "<i class='bx bx-git-repo-forked'></i> THE LIFE OF A PROJECT \u00b7 FREE"]]
-            .forEach(function (p) {
-                const t = p[2]; if (!t) return;
-                const mb = document.getElementById(p[0]);
-                if (mb && typeof badgeText === 'function') {
-                    mb.innerHTML = badgeText(t);
-                    mb.className = 'module-badge ' + badgeClass(t);
-                }
-                const hb = document.getElementById(p[1]);
-                if (hb) {
-                    const word = t.liveCount >= t.totalWeeks ? ' \u00b7 COMPLETE'
-                               : t.liveCount === 0 ? ' \u00b7 IN PREPARATION'
-                               : ' \u00b7 WEEK ' + t.latestLiveWeek.n;
-                    hb.innerHTML = p[3] + word;
+                    hb.innerHTML = p[3] + (t.liveCount >= t.totalWeeks ? ' \u00b7 COMPLETE'
+                                 : t.liveCount === 0 ? ' \u00b7 IN PREPARATION'
+                                 : ' \u00b7 WEEK ' + t.latestLiveWeek.n);
                 }
             });
 

@@ -629,13 +629,58 @@ function renderTrack0Progress() {
 }
 
 
-// ===================== TRACK 6 — INTERFACES =====================
+// ===================== TRACK 6 — REPORTING =====================
+// The trade around the methods. Phase A follows every input back to the
+// department that produces it; Phase B follows every document forward to the
+// person meant to act on it. Every week ends with the same four lines:
+// what arrives, from whom and in what unit, what you issue, who uses it.
+// Source position measured 2026-07-31: this is the thinnest-sourced track on
+// the site. monthly report 0, data date 0, interface register 0, action item
+// 0, constraint log 0, work permit 0, dashboard 2, reconciliation 2. Write it
+// as industry practice, give units and flows, give no figures.
+const TRACK6 = {
+    title: "Reporting",
+    totalWeeks: 26,
+    weeks: [
+        { phase: "Phase A \u2014 What feeds you", n: 1, title: "What project controls produces, and what it must be fed", short: "What it produces, what it needs", status: "upcoming" },
+        { n: 2, title: "Working backwards from a deliverable \u2014 output, inputs, owners, units", short: "Working backwards", status: "upcoming" },
+        { n: 3, title: "Engineering feeds you \u2014 deliverables, IFC, and approved with comments", short: "Engineering feeds you", status: "upcoming" },
+        { n: 4, title: "Engineering progress \u2014 where percent complete is easiest to fake", short: "Engineering progress", status: "upcoming" },
+        { n: 5, title: "Procurement feeds you \u2014 PO status, expediting, shipping, vendor data", short: "Procurement feeds you", status: "upcoming" },
+        { n: 6, title: "Material at site \u2014 delivered, stored, issued, installed", short: "Material at site", status: "upcoming" },
+        { n: 7, title: "Construction: quantities \u2014 three numbers for the same wall", short: "Construction: quantities", status: "upcoming" },
+        { n: 8, title: "Construction: progress \u2014 who measures, in what unit, on which day", short: "Construction: progress", status: "upcoming" },
+        { n: 9, title: "Workfront and the six readiness tests \u2014 drawing, material, access, permit, labour, plant", short: "Workfront and readiness", status: "upcoming" },
+        { n: 10, title: "Construction: hours and plant \u2014 allocation, availability, utilisation, idle time", short: "Hours and plant", status: "upcoming" },
+        { n: 11, title: "QA/QC feeds you \u2014 NCRs, inspection requests, and progress that reverses", short: "QA/QC feeds you", status: "upcoming" },
+        { n: 12, title: "HSE feeds you \u2014 permits, holds, stand-downs and lost time as delay events", short: "HSE feeds you", status: "upcoming" },
+        { n: 13, title: "Document control feeds you \u2014 revision status, and why half the site builds to Rev B", short: "Document control feeds you", status: "upcoming" },
+        { n: 14, title: "Commercial feeds you \u2014 commitments, accruals and invoices on somebody else\u2019s cut-off", short: "Commercial feeds you", status: "upcoming" },
+        { n: 15, title: "The client feeds you \u2014 instructions, approvals, comments: time rather than data", short: "The client feeds you", status: "upcoming" },
+
+        { phase: "Phase B \u2014 What you issue", n: 16, title: "The calendar \u2014 data date, cut-off, and three departments closing on three days", short: "The calendar", status: "upcoming" },
+        { n: 17, title: "The daily report \u2014 the shortest document with the most consequences", short: "The daily report", status: "upcoming" },
+        { n: 18, title: "The weekly report and the look-ahead \u2014 and the only part anyone acts on", short: "Weekly report and look-ahead", status: "upcoming" },
+        { n: 19, title: "The monthly report \u2014 curve, variance, narrative, and the summary read first", short: "The monthly report", status: "upcoming" },
+        { n: 20, title: "Four audiences, four altitudes \u2014 one number told four ways, not four stories", short: "Four audiences, four altitudes", status: "upcoming" },
+        { n: 21, title: "Dashboards \u2014 who reads what, and what a dashboard cannot say", short: "Dashboards", status: "upcoming" },
+        { n: 22, title: "KPIs, leading and lagging \u2014 last month against next month", short: "KPIs, leading and lagging", status: "upcoming" },
+        { n: 23, title: "Minutes, actions and closure \u2014 and the recovery action list under pressure", short: "Minutes, actions and closure", status: "upcoming" },
+        { n: 24, title: "The register system \u2014 assumption, risk, change; interface, constraint, delay", short: "The register system", status: "upcoming" },
+        { n: 25, title: "When two reports disagree \u2014 progress against valuation, reconciled first", short: "When two reports disagree", status: "upcoming" },
+        { n: 26, title: "The report nobody acts on \u2014 the most common failure, and what to change", short: "The report nobody acts on", status: "upcoming" }
+    ],
+    get liveCount() { return this.weeks.filter(w => w.status === "live").length; },
+    get progressPercent() { return Math.round((this.liveCount / this.totalWeeks) * 100); },
+    get latestLiveWeek() { const l = this.weeks.filter(w => w.status === "live"); return l.length ? l[l.length - 1] : null; },
+    getWeek(n) { return this.weeks.find(w => w.n === n); }
+};
+
+// ===================== TRACK 7 — INTERFACES =====================
 // The printed handoff in claim-week-28 names four subjects: the scope sitting
 // with somebody else, the critical path through a purchase order, the work
-// where two programmes meet, and the number with more than one owner. All
-// four appear below. Sources measured 2026-07-31: EPCM 171, interface 284,
-// coordination 140, JV/consortium/alliance/partnering/IPD 249.
-const TRACK6 = {
+// where two programmes meet, and the number with more than one owner.
+const TRACK7 = {
     title: "Interfaces",
     totalWeeks: 14,
     weeks: [
@@ -661,14 +706,13 @@ const TRACK6 = {
 };
 
 // ===================== THE LIFE OF A PROJECT =====================
-// The integration layer. Tracks 1-5 teach the method; Interfaces shows how the
-// method changes shape under a different contract; this shows the order the
-// work actually arrives in, what feeds what, and which record is born where.
-// Rule for every week: teach the occasion, hand the method to the track that
-// owns it. Every week ends with "Records born here".
+// The order the work arrives in. Everything about where a number comes from
+// moved to Reporting; what is left is the job itself. Rule for every week:
+// teach the occasion, hand the method to the track that owns it. Every week
+// ends with "Records born here".
 const LIFECYCLE = {
     title: "The Life of a Project",
-    totalWeeks: 52,
+    totalWeeks: 36,
     weeks: [
         { n: 1, title: "The journey of one drawing \u2014 six hands, six changes, one as-built", short: "The journey of one drawing", status: "upcoming" },
 
@@ -684,54 +728,36 @@ const LIFECYCLE = {
         { n: 10, title: "Who is who \u2014 client, PMC, EPC, vendors, and the authority behind each name", short: "Who is who", status: "upcoming" },
         { n: 11, title: "Coding philosophy \u2014 the decisions that cannot be made later", short: "Coding philosophy", status: "upcoming" },
         { n: 12, title: "Setting up document control \u2014 transmittals, revisions, registers", short: "Setting up document control", status: "upcoming" },
+        { n: 13, title: "Building the baseline \u2014 the two weeks, not the method", short: "Building the baseline", status: "upcoming" },
+        { n: 14, title: "The meeting structure \u2014 who chairs, who decides, and which ones move blame", short: "The meeting structure", status: "upcoming" },
 
-        { phase: "Phase C \u2014 The control system", n: 13, title: "Building the baseline \u2014 the two weeks, not the method", short: "Building the baseline", status: "upcoming" },
-        { n: 14, title: "Rules of credit \u2014 agreeing how progress will be claimed, before it is claimed", short: "Rules of credit", status: "upcoming" },
-        { n: 15, title: "The calendar \u2014 data date, cut-off, and three departments closing on three days", short: "The calendar", status: "upcoming" },
-        { n: 16, title: "The reporting structure \u2014 daily, weekly, monthly, executive", short: "The reporting structure", status: "upcoming" },
-        { n: 17, title: "The meeting structure \u2014 who chairs, who decides, and which ones move blame", short: "The meeting structure", status: "upcoming" },
+        { phase: "Phase C \u2014 Engineering and procurement", n: 15, title: "How engineering flows \u2014 deliverable lists, disciplines, and the design freeze", short: "How engineering flows", status: "upcoming" },
+        { n: 16, title: "The procurement cycle \u2014 requisition to purchase order", short: "The procurement cycle", status: "upcoming" },
+        { n: 17, title: "Long lead \u2014 ordering before the design is finished, and the cost of being wrong", short: "Long lead", status: "upcoming" },
 
-        { phase: "Phase D \u2014 Engineering", n: 18, title: "How engineering flows \u2014 deliverable lists, disciplines, and the design freeze", short: "How engineering flows", status: "upcoming" },
-        { n: 19, title: "Submittals, IFC and vendor documents \u2014 the approval cycle as a programme input", short: "Submittals, IFC and approvals", status: "upcoming" },
-        { n: 20, title: "Measuring engineering progress \u2014 where percent complete is easiest to fake", short: "Measuring engineering progress", status: "upcoming" },
+        { phase: "Phase D \u2014 Construction", n: 18, title: "Mobilisation \u2014 the project inside the project", short: "Mobilisation", status: "upcoming" },
+        { n: 19, title: "Site logistics and temporary works \u2014 access, laydown, cranes, and a scaffold with its own lead time", short: "Site logistics and temporary works", status: "upcoming" },
+        { n: 20, title: "Work packaging \u2014 dividing scope into something a crew can be handed", short: "Work packaging", status: "upcoming" },
+        { n: 21, title: "Clearing the workfront \u2014 constraint removal, and who removes each kind", short: "Clearing the workfront", status: "upcoming" },
+        { n: 22, title: "Look-ahead planning \u2014 the six weeks that run the site", short: "Look-ahead planning", status: "upcoming" },
+        { n: 23, title: "The week, day by day \u2014 one workable rhythm, not the rhythm", short: "The week, day by day", status: "upcoming" },
 
-        { phase: "Phase E \u2014 Procurement", n: 21, title: "The procurement cycle \u2014 requisition to purchase order", short: "The procurement cycle", status: "upcoming" },
-        { n: 22, title: "From approved vendor document to manufacturing release \u2014 and the expediting between", short: "Vendor documents to release", status: "upcoming" },
-        { n: 23, title: "Long lead \u2014 ordering before the design is finished, and the cost of being wrong", short: "Long lead", status: "upcoming" },
-        { n: 24, title: "Material management \u2014 delivered, stored, issued, installed: four quantities", short: "Material management", status: "upcoming" },
+        { phase: "Phase E \u2014 Commercial", n: 24, title: "Change on the ground \u2014 instruction to variation to claim, as it happens", short: "Change on the ground", status: "upcoming" },
+        { n: 25, title: "Forecasting \u2014 the number you will be judged on", short: "Forecasting", status: "upcoming" },
 
-        { phase: "Phase F \u2014 Construction", n: 25, title: "Mobilisation \u2014 the project inside the project", short: "Mobilisation", status: "upcoming" },
-        { n: 26, title: "Site logistics and temporary works \u2014 access, laydown, cranes, and a scaffold with its own lead time", short: "Site logistics and temporary works", status: "upcoming" },
-        { n: 27, title: "Work packaging \u2014 dividing scope into something a crew can be handed", short: "Work packaging", status: "upcoming" },
-        { n: 28, title: "Constraints and readiness \u2014 drawing, material, labour, permit, access", short: "Constraints and readiness", status: "upcoming" },
-        { n: 29, title: "Look-ahead planning \u2014 the six weeks that run the site", short: "Look-ahead planning", status: "upcoming" },
-        { n: 30, title: "The week, day by day \u2014 one workable rhythm, not the rhythm", short: "The week, day by day", status: "upcoming" },
-        { n: 31, title: "Daily progress \u2014 who measures, in what unit, on which day", short: "Daily progress", status: "upcoming" },
-        { n: 32, title: "Productivity on site \u2014 where the hours went", short: "Productivity on site", status: "upcoming" },
-        { n: 33, title: "Equipment and resources \u2014 availability, utilisation, crews, camp, shifts", short: "Equipment and resources", status: "upcoming" },
-        { n: 34, title: "Quality as a subtraction \u2014 NCRs, rework, and progress that reverses", short: "Quality as a subtraction", status: "upcoming" },
-        { n: 35, title: "Safety as a stoppage \u2014 permits, holds, stand-downs, and lost time as a delay event", short: "Safety as a stoppage", status: "upcoming" },
+        { phase: "Phase F \u2014 Governance", n: 26, title: "Who approves what \u2014 authority, delegation, and the escalation chain", short: "Who approves what", status: "upcoming" },
+        { n: 27, title: "The change control board", short: "The change control board", status: "upcoming" },
+        { n: 28, title: "Risk reviews that change something", short: "Risk reviews that change something", status: "upcoming" },
 
-        { phase: "Phase G \u2014 Commercial", n: 36, title: "The monthly valuation \u2014 progress versus payment", short: "The monthly valuation", status: "upcoming" },
-        { n: 37, title: "Change on the ground \u2014 instruction to variation to claim, as it happens", short: "Change on the ground", status: "upcoming" },
-        { n: 38, title: "Forecasting \u2014 the number you will be judged on", short: "Forecasting", status: "upcoming" },
-        { n: 39, title: "Trends and the change log \u2014 catching cost before it becomes a variation", short: "Trends and the change log", status: "upcoming" },
+        { phase: "Phase G \u2014 Finishing", n: 29, title: "Mechanical completion \u2014 and the birth of the punch list", short: "Mechanical completion", status: "upcoming" },
+        { n: 30, title: "Pre-commissioning and commissioning \u2014 handing the schedule to another discipline", short: "Pre-commissioning and commissioning", status: "upcoming" },
+        { n: 31, title: "Performance tests", short: "Performance tests", status: "upcoming" },
+        { n: 32, title: "Closing the punch list and taking over", short: "Closing the punch list", status: "upcoming" },
+        { n: 33, title: "Demobilisation \u2014 the crane, the camp and the punch list want the same people", short: "Demobilisation", status: "upcoming" },
+        { n: 34, title: "Closeout \u2014 as-built, final account, archive", short: "Closeout", status: "upcoming" },
 
-        { phase: "Phase H \u2014 Governance", n: 40, title: "Who approves what \u2014 authority, delegation, and the escalation chain", short: "Who approves what", status: "upcoming" },
-        { n: 41, title: "The change control board", short: "The change control board", status: "upcoming" },
-        { n: 42, title: "Risk reviews that change something", short: "Risk reviews that change something", status: "upcoming" },
-        { n: 43, title: "KPIs \u2014 leading, lagging, and the ones that get gamed", short: "KPIs, leading and lagging", status: "upcoming" },
-        { n: 44, title: "The register system \u2014 which record feeds which, and which are actually read", short: "The register system", status: "upcoming" },
-
-        { phase: "Phase I \u2014 Finishing", n: 45, title: "Mechanical completion \u2014 and the birth of the punch list", short: "Mechanical completion", status: "upcoming" },
-        { n: 46, title: "Pre-commissioning and commissioning \u2014 handing the schedule to another discipline", short: "Pre-commissioning and commissioning", status: "upcoming" },
-        { n: 47, title: "Performance tests", short: "Performance tests", status: "upcoming" },
-        { n: 48, title: "Closing the punch list and taking over", short: "Closing the punch list", status: "upcoming" },
-        { n: 49, title: "Demobilisation \u2014 the crane, the camp and the punch list want the same people", short: "Demobilisation", status: "upcoming" },
-        { n: 50, title: "Closeout \u2014 as-built, final account, archive", short: "Closeout", status: "upcoming" },
-
-        { phase: "Capstone", n: 51, title: "Designing a project controls system from nothing", short: "Designing the system from nothing", status: "upcoming" },
-        { n: 52, title: "The first 90 days \u2014 a contract, a BoQ, a drawing set and an empty schedule", short: "The first 90 days", status: "upcoming" }
+        { phase: "Capstone", n: 35, title: "Designing a project controls system from nothing", short: "Designing the system from nothing", status: "upcoming" },
+        { n: 36, title: "The first 90 days \u2014 a contract, a BoQ, a drawing set and an empty schedule", short: "The first 90 days", status: "upcoming" }
     ],
     get liveCount() { return this.weeks.filter(w => w.status === "live").length; },
     get progressPercent() { return Math.round((this.liveCount / this.totalWeeks) * 100); },
@@ -743,6 +769,10 @@ const LIFECYCLE = {
 function renderTrack6Curriculum()  { return learnCurriculumHTML(TRACK6); }
 function renderTrack6Sidebar(w)    { return sidebarHTML(TRACK6, w); }
 function renderTrack6Progress()    { return { text: `${TRACK6.liveCount} of ${TRACK6.totalWeeks} published`, percent: TRACK6.progressPercent }; }
+
+function renderTrack7Curriculum()  { return learnCurriculumHTML(TRACK7); }
+function renderTrack7Sidebar(w)    { return sidebarHTML(TRACK7, w); }
+function renderTrack7Progress()    { return { text: `${TRACK7.liveCount} of ${TRACK7.totalWeeks} published`, percent: TRACK7.progressPercent }; }
 
 function renderLifecycleCurriculum() { return learnCurriculumHTML(LIFECYCLE); }
 function renderLifecycleSidebar(w)   { return sidebarHTML(LIFECYCLE, w); }

@@ -866,8 +866,8 @@
                         <div class="module-track-left">
                             <span class="module-number locked">06</span>
                             <div>
-                                <h3 class="module-title">Interfaces</h3>
-                                <p class="module-desc">Five tracks taught the job as one contract with one chain of command. What happens when that stops being true &#8212; delivery models and who holds the scope, EPCM authority without a contract, the critical path through a purchase order, the work between two programmes, and the number with more than one owner.</p>
+                                <h3 class="module-title">Reporting</h3>
+                                <p class="module-desc">Five tracks taught what to do with a number once you have it. This one follows every input back to the department that produces it, in what unit and on whose cut-off date &#8212; then follows every report you issue forward to the person who is supposed to act on it.</p>
                             </div>
                         </div>
                         <span class="module-status locked-status" id="homeTrack6Badge"><i class='bx bx-map-alt'></i> On the roadmap</span>
@@ -878,6 +878,19 @@
                     <div class="module-track-header">
                         <div class="module-track-left">
                             <span class="module-number locked">07</span>
+                            <div>
+                                <h3 class="module-title">Interfaces</h3>
+                                <p class="module-desc">Six tracks taught the job as one contract with one chain of command. What happens when that stops being true &#8212; delivery models, EPCM authority without a contract, the critical path through a purchase order, and the number with more than one owner.</p>
+                            </div>
+                        </div>
+                        <span class="module-status locked-status" id="homeTrack7Badge"><i class='bx bx-map-alt'></i> On the roadmap</span>
+                    </div>
+                </div>
+
+                <div class="module-track module-track-locked">
+                    <div class="module-track-header">
+                        <div class="module-track-left">
+                            <span class="module-number locked">08</span>
                             <div>
                                 <h3 class="module-title">The Life of a Project</h3>
                                 <p class="module-desc">Everything above answers how. This answers when, why and with whom &#8212; one EPC job from the investment decision to the handover certificate, the order the work arrives in, what feeds what, and which record is born where.</p>
@@ -1027,6 +1040,7 @@
 
             // Roadmap badges computed from curriculum.js, never typed
             [['homeTrack6Badge', typeof TRACK6 !== 'undefined' ? TRACK6 : null],
+             ['homeTrack7Badge', typeof TRACK7 !== 'undefined' ? TRACK7 : null],
              ['homeTrackLCBadge', typeof LIFECYCLE !== 'undefined' ? LIFECYCLE : null]].forEach(function (p) {
                 var el = document.getElementById(p[0]), t = p[1];
                 if (!el || !t) return;
