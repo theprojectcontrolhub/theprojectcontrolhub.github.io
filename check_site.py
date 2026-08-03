@@ -216,7 +216,8 @@ def check_xref():
                 if len(kw) < 5:
                     continue
                 score = {}
-                for pre in ("week-", "cost-week-", "risk-week-", "contract-week-", "claim-week-"):
+                for pre in ("week-", "cost-week-", "risk-week-", "contract-week-",
+                            "claim-week-", "reporting-week-", "interfaces-week-"):
                     cand = f"{pre}{w}.html"
                     if os.path.exists(cand):
                         tgt = prose(cand).lower()
