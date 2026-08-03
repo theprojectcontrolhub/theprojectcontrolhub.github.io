@@ -19,7 +19,8 @@ CANON = json.load(open("tools/canon.json", encoding="utf-8"))
 QUICK = "--quick" in sys.argv
 
 TRACKS = {"Schedule": ("week-", 27), "Cost & Cash": ("cost-week-", 24), "Risk": ("risk-week-", 18),
-          "Contract": ("contract-week-", 20), "Claims": ("claim-week-", 27)}
+          "Contract": ("contract-week-", 20), "Claims": ("claim-week-", 28),
+          "Reporting": ("reporting-week-", 26), "Interfaces": ("interfaces-week-", 14)}
 # Yayında olan sayfalar. Track 4 parça parça çıkacağı için diskte var olanla
 # sınırlanır; "live ama dosya yok" durumunu check_curriculum ayrıca yakalar.
 PAGES = [f for f in (f"{p}{i}.html" for p, n in TRACKS.values() for i in range(1, n + 1))
@@ -190,12 +191,15 @@ def check_canon():
 
 # ------------------------------------------------------------------ 9. xref
 def check_xref():
-    QUAL = r"(?:Schedule|Cost\s*&(?:amp;)?\s*Cash|Risk|Track\s*[123])"
+    QUAL = r"(?:Schedule|Cost\s*&(?:amp;)?\s*Cash|Risk|Contract(?:\s*Management)?|Claims|Reporting|Interfaces|Track\s*[1-7])"
     cross = 0
     for f in PAGES:
         own_pre = ("cost-week-" if f.startswith("cost-") else
                "risk-week-" if f.startswith("risk-") else
-               "contract-week-" if f.startswith("contract-") else "week-")
+               "contract-week-" if f.startswith("contract-") else
+               "claim-week-" if f.startswith("claim-") else
+               "reporting-week-" if f.startswith("reporting-") else
+               "interfaces-week-" if f.startswith("interfaces-") else "week-")
         n = int(re.search(r"week-(\d+)", f).group(1))
         t = prose(f)
         for m in re.finditer(r"((?:" + QUAL + r")\s+)?Weeks?\s+(\d+)(\s+of\s+(?:Schedule|Cost))?", t):
@@ -212,7 +216,7 @@ def check_xref():
                 if len(kw) < 5:
                     continue
                 score = {}
-                for pre in ("week-", "cost-week-", "risk-week-", "contract-week-"):
+                for pre in ("week-", "cost-week-", "risk-week-", "contract-week-", "claim-week-"):
                     cand = f"{pre}{w}.html"
                     if os.path.exists(cand):
                         tgt = prose(cand).lower()

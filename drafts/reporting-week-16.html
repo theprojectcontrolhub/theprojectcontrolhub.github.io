@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data date and cut-off — the reporting calendar in project controls | The Project Control Hub</title>
+    <meta name="description" content="Cut-off dates are usually inherited rather than designed, and they decide how much of a report was measured. Why three departments closing on three days produces figures that cannot be compared.">
+    <link rel="canonical" href="https://theprojectcontrolhub.com/reporting-week-16.html">
+
+    <!-- Open Graph (LinkedIn, Facebook, WhatsApp) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="The Project Control Hub">
+    <meta property="og:title" content="Three departments, three month-ends">
+    <meta property="og:description" content="Cut-off dates are usually inherited rather than designed, and they decide how much of a report was measured. Why three departments closing on three days produces figures that cannot be compared.">
+    <meta property="og:url" content="https://theprojectcontrolhub.com/reporting-week-16.html">
+    <meta property="og:image" content="https://theprojectcontrolhub.com/og-image.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Three departments, three month-ends">
+    <meta name="twitter:description" content="Cut-off dates are usually inherited rather than designed, and they decide how much of a report was measured. Why three departments closing on three days produces figures that cannot be compared.">
+    <meta name="twitter:image" content="https://theprojectcontrolhub.com/og-image.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=38">
+    <style>
+        /* PAGE LAYOUT */
+        .content-page {
+            background: var(--bg-light);
+            min-height: 100vh;
+            padding: 40px 0 80px;
+        }
+
+        .content-layout {
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 40px;
+            align-items: start;
+        }
+
+        /* BREADCRUMB */
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 28px;
+        }
+        .breadcrumb a {
+            color: var(--primary-green);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .breadcrumb a:hover { text-decoration: underline; }
+
+        /* ARTICLE */
+        .article-card {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .article-meta {
+            padding: 32px 36px 0;
+        }
+
+        .article-week-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(16,185,129,0.08);
+            color: #059669;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            padding: 5px 14px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(16,185,129,0.15);
+        }
+
+        .article-title {
+            font-size: 30px;
+            font-weight: 800;
+            color: var(--text-dark);
+            line-height: 1.25;
+            letter-spacing: -0.5px;
+            margin-bottom: 20px;
+        }
+
+        .article-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #f1f5f9;
+            margin-bottom: 0;
+        }
+
+        .author-avatar-sm {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #10b981, #059669);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .author-details strong {
+            display: block;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .author-details span {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* VIDEO EMBED */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            background: #0f172a;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-placeholder {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            color: #94a3b8;
+        }
+
+        .video-placeholder i { font-size: 48px; color: #10b981; }
+        .video-placeholder p { font-size: 14px; }
+
+        /* ARTICLE CONTENT */
+        .article-body {
+            padding: 36px 36px 0;
+        }
+
+        .article-body p {
+            font-size: 16px;
+            color: #334155;
+            line-height: 1.85;
+            margin-bottom: 20px;
+        }
+
+        .article-body h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin: 32px 0 16px;
+            letter-spacing: -0.3px;
+        }
+
+        .article-body strong { color: var(--text-dark); }
+
+        .article-body ul {
+            margin: 0 0 20px 20px;
+        }
+
+        .article-body ul li {
+            font-size: 16px;
+            color: #334155;
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        /* PAYWALL BLUR */
+        .content-preview {
+            position: relative;
+        }
+
+        .content-blur {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-blur::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 180px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.95) 60%, #fff 100%);
+            pointer-events: none;
+        }
+
+        .content-locked {
+            display: block;
+        }
+
+        /* PAYWALL CTA */
+        .paywall-cta {
+            padding: 32px 36px 36px;
+            text-align: center;
+            border-top: 1px solid #f1f5f9;
+            margin-top: 0;
+        }
+
+        .paywall-cta h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .paywall-cta p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .btn-google-signin {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            max-width: 340px;
+            padding: 14px 20px;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #1e293b;
+            background: #fff;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .btn-google-signin:hover {
+            border-color: #cbd5e1;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+        }
+
+        .paywall-note {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-top: 12px;
+        }
+
+        /* ARTICLE FOOTER (visible after login) */
+        .article-footer {
+            display: none;
+            padding: 28px 36px 36px;
+            border-top: 1px solid #f1f5f9;
+            margin-top: 8px;
+        }
+
+        .article-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .article-tag {
+            font-size: 13px;
+            color: #10b981;
+            background: rgba(16,185,129,0.08);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        /* SIDEBAR */
+        .content-sidebar {
+            position: sticky;
+            top: 24px;
+        }
+
+        .sidebar-card {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 16px;
+        }
+
+        .sidebar-card-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .sidebar-card-header h4 {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0;
+        }
+
+        .sidebar-series-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 20px;
+            border-bottom: 1px solid #f8fafc;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.15s;
+        }
+
+        .sidebar-series-item:hover { background: #f8fafc; }
+
+        .sidebar-series-item.active {
+            background: rgba(16,185,129,0.04);
+            border-left: 3px solid #10b981;
+        }
+
+        .sidebar-series-item.upcoming {
+            opacity: 0.45;
+            cursor: default;
+            pointer-events: none;
+        }
+
+        .sidebar-week {
+            font-size: 10px;
+            font-weight: 700;
+            color: #10b981;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            min-width: 44px;
+            flex-shrink: 0;
+        }
+
+        .sidebar-series-item.upcoming .sidebar-week { color: #94a3b8; }
+
+        .sidebar-item-title {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-dark);
+            line-height: 1.4;
+            flex: 1;
+        }
+
+        .sidebar-series-item.active .sidebar-item-title {
+            font-weight: 700;
+            color: #059669;
+        }
+
+        .sidebar-new {
+            font-size: 10px;
+            font-weight: 700;
+            color: #fff;
+            background: #10b981;
+            padding: 2px 7px;
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+
+        /* AUTHOR CARD */
+        .author-sidebar-card {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 20px;
+        }
+
+        .author-sidebar-top {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .author-sidebar-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #10b981, #059669);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .author-sidebar-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-dark);
+            display: block;
+        }
+
+        .author-sidebar-title {
+            font-size: 12px;
+            color: var(--text-muted);
+            display: block;
+            margin-top: 2px;
+        }
+
+        .author-sidebar-bio {
+            font-size: 13px;
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .btn-linkedin {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #0a66c2;
+            color: #0a66c2;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        /* MODAL */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+        }
+        .modal-overlay.active { opacity: 1; pointer-events: all; }
+        .modal-box {
+            background: #fff;
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 420px;
+            width: 90%;
+            position: relative;
+            text-align: center;
+        }
+        .close-modal {
+            position: absolute;
+            top: 16px; right: 16px;
+            background: none;
+            border: none;
+            font-size: 22px;
+            color: #94a3b8;
+            cursor: pointer;
+        }
+        .modal-icon-wrapper {
+            width: 56px; height: 56px;
+            background: #ecfdf5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 24px;
+            color: #10b981;
+        }
+        .modal-box h4 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0f172a;
+            margin: 0 0 10px;
+        }
+        .modal-box p {
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.6;
+            margin: 0 0 20px;
+        }
+        .modal-note {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-top: 12px;
+        }
+
+        /* NEXT ARTICLE NAV */
+        .next-article {
+            margin-top: 8px;
+            border-top: 1px solid #f1f5f9;
+            padding: 28px 36px 36px;
+        }
+
+        .next-article-label {
+            display: block;
+            width: 100%;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 14px;
+        }
+
+        .next-article-link {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-decoration: none;
+            padding: 16px 20px;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            transition: all 0.2s;
+        }
+
+        .next-article-link:hover {
+            border-color: #10b981;
+            background: rgba(16,185,129,0.02);
+        }
+
+        .next-week-tag {
+            font-size: 11px;
+            font-weight: 700;
+            color: #10b981;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .next-article-link h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-dark);
+            line-height: 1.4;
+            margin: 0;
+            flex: 1;
+        }
+
+        .next-article-link i {
+            font-size: 22px;
+            color: #10b981;
+            flex-shrink: 0;
+        }
+
+        /* MOBILE */
+        @media (max-width: 1024px) {
+            .content-layout { grid-template-columns: 1fr; }
+            .content-sidebar { position: static; }
+        }
+
+        @media (max-width: 768px) {
+            .content-page { padding: 24px 0 60px; }
+            .content-layout { padding: 0 16px; gap: 24px; }
+            .breadcrumb { font-size: 12px; margin-bottom: 16px; }
+            .article-card { border-radius: 14px; }
+            .article-meta { padding: 20px 18px 0; }
+            .article-week-badge { font-size: 10px; padding: 4px 10px; margin-bottom: 14px; }
+            .article-title { font-size: 20px; margin-bottom: 14px; }
+            .article-author { flex-wrap: wrap; gap: 8px; padding-bottom: 16px; }
+            .author-details strong { font-size: 13px; }
+            .author-details span { font-size: 11px; }
+            .article-body { padding: 18px 18px 0; }
+            .article-body p { font-size: 14px; line-height: 1.75; }
+            .article-body h2 { font-size: 17px; margin: 24px 0 12px; }
+            .article-body ul li { font-size: 14px; }
+            .paywall-cta { padding: 20px 18px 24px; }
+            .paywall-cta h3 { font-size: 17px; }
+            .paywall-cta p { font-size: 13px; }
+            .btn-google-signin { font-size: 14px; padding: 12px 16px; }
+            .article-footer { padding: 16px 18px; }
+            .next-article { padding: 16px 18px 20px; }
+            .next-article-link h4 { font-size: 13px; }
+            .sidebar-card-header { padding: 14px 16px; }
+            .sidebar-series-item { padding: 12px 16px; }
+            .sidebar-item-title { font-size: 12px; }
+            .author-sidebar-card { padding: 16px; }
+            .author-sidebar-bio { font-size: 12px; }
+            .btn-nav-social { display: none !important; }
+        }
+
+        @media (max-width: 480px) {
+            .article-title { font-size: 18px; }
+            .article-body p { font-size: 14px; }
+        }
+            figure svg { width: 100%; height: auto; display: block; }
+        @media (max-width: 768px) { figure { padding: 14px !important; } }
+    .logo-mark{vertical-align:middle;display:inline-block;}
+    </style>
+
+        <!-- Share: copy link -->
+    <script>
+        window.copyArticleLink = function(btn) {
+            const url = "https://theprojectcontrolhub.com/reporting-week-16.html";
+            const label = btn.querySelector('i') ? btn.innerHTML : btn.textContent;
+            navigator.clipboard.writeText(url).then(function() {
+                const original = btn.innerHTML;
+                btn.classList.add('copied');
+                btn.innerHTML = "<i class='bx bx-check'></i>" + (btn.textContent.trim() ? " Copied!" : "");
+                setTimeout(function() {
+                    btn.classList.remove('copied');
+                    btn.innerHTML = original;
+                }, 1800);
+            }).catch(function() {
+                // Fallback
+                const t = document.createElement('textarea');
+                t.value = url; document.body.appendChild(t); t.select();
+                try { document.execCommand('copy'); } catch(e) {}
+                document.body.removeChild(t);
+                const original = btn.innerHTML;
+                btn.classList.add('copied');
+                btn.innerHTML = "<i class='bx bx-check'></i>" + (btn.textContent.trim() ? " Copied!" : "");
+                setTimeout(function() { btn.classList.remove('copied'); btn.innerHTML = original; }, 1800);
+            });
+        };
+    </script>
+
+    <!-- Mobile nav toggle — standalone, independent of Firebase -->
+    <script>
+        window.toggleMobileNav = function() {
+            const nav = document.getElementById('mobileNav');
+            const btn = document.getElementById('hamburger');
+            if (!nav) return;
+            nav.classList.toggle('open');
+            if (btn) btn.classList.toggle('open');
+            document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
+        };
+    </script>
+
+    <script type="module">
+        import { signInWithGoogle, logout, onUserChange } from './auth.js';
+
+        let currentUser = null;
+
+        // Prevent auth flash: restore UI instantly from cached state
+        (function() {
+            const hint = localStorage.getItem('pch_auth');
+            let cached = null;
+            try { cached = JSON.parse(hint); } catch(e) {}
+            if (cached && cached.name) {
+                document.getElementById('userMenu').style.display = 'flex';
+                document.getElementById('userName').textContent = cached.name;
+                if (cached.photo) document.getElementById('userAvatar').src = cached.photo;
+            } else {
+                document.getElementById('joinBtn').style.display = 'flex';
+            }
+        })();
+
+        onUserChange((user) => {
+            currentUser = user;
+            const joinBtn = document.getElementById('joinBtn');
+            const userMenu = document.getElementById('userMenu');
+
+            if (user) {
+                localStorage.setItem('pch_auth', JSON.stringify({
+                    name: user.displayName.split(' ')[0],
+                    photo: user.photoURL || ''
+                }));
+                joinBtn.style.display = 'none';
+                userMenu.style.display = 'flex';
+                document.getElementById('userName').textContent = user.displayName.split(' ')[0];
+                if (user.photoURL) document.getElementById('userAvatar').src = user.photoURL;
+                closeModal();
+                unlockContent();
+            } else {
+                localStorage.removeItem('pch_auth');
+                joinBtn.style.display = 'flex';
+                userMenu.style.display = 'none';
+                lockContent();
+            }
+        });
+
+        // Soft paywall: content is always visible. Signed-in users just don't see the invite.
+        function unlockContent() {
+            const cta = document.getElementById('paywallCta');
+            if (cta) cta.style.display = 'none';
+            const footer = document.getElementById('articleFooter');
+            if (footer) footer.style.display = 'block';
+            const next = document.getElementById('nextArticle');
+            if (next) next.style.display = 'flex';
+        }
+
+        function lockContent() {
+            // Content stays open. Show the friendly invite to sign in.
+            const cta = document.getElementById('paywallCta');
+            if (cta) cta.style.display = 'block';
+            const footer = document.getElementById('articleFooter');
+            if (footer) footer.style.display = 'block';
+            const next = document.getElementById('nextArticle');
+            if (next) next.style.display = 'flex';
+        }
+
+        // Sidebar links are open — no gating in soft-paywall mode.
+
+        window.signInWithGoogleBtn = async function() {
+            try {
+                await signInWithGoogle();
+                // On mobile this redirects away; on desktop the popup resolves here.
+            } catch(e) {
+                // Only show an error for genuine failures, not user-cancelled popups.
+                const code = e && e.code ? e.code : '';
+                if (code !== 'auth/popup-closed-by-user' &&
+                    code !== 'auth/cancelled-popup-request') {
+                    alert('Sign in failed. Please try again.');
+                }
+            }
+        };
+
+        window.logoutUser = async function() { await logout(); };
+        window.openModal = function() {
+            document.getElementById('accessModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        };
+
+        window.closeModal = function() {
+            document.getElementById('accessModal').classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('accessModal').addEventListener('click', function(e) {
+                if (e.target === this) closeModal();
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+            <a href="index.html" class="logo">
+                <img class="logo-mark" src="logo-icon.png" width="40" height="40" alt="" aria-hidden="true" style="object-fit:contain;">
+                <span translate="no">THE PROJECT CONTROL HUB</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="learn.html">Learn</a>
+                <a href="about.html">About</a>
+            </div>
+            <div class="nav-actions" style="display:flex;align-items:center;gap:10px;">
+                <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+                <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" class="btn-nav-social" translate="no"><i class='bx bxl-linkedin'></i></a>
+                <button id="joinBtn" class="btn btn-primary" style="display:none;" onclick="openModal()"><i class='bx bx-log-in'></i> Sign In</button>
+                <div id="userMenu" style="display:none;align-items:center;gap:10px;">
+                    <img id="userAvatar" src="" style="width:32px;height:32px;border-radius:50%;object-fit:cover;" alt="avatar">
+                    <span id="userName" style="font-size:14px;font-weight:600;color:var(--text-light);"></span>
+                    <button class="btn btn-primary" onclick="logoutUser()" style="padding:8px 14px;font-size:13px;">Sign Out</button>
+                </div>
+            </div>
+        </nav>
+
+    <section class="hero-section" style="padding-bottom:0;">
+    </section>
+
+    <!-- CONTENT PAGE -->
+    <div class="content-page">
+        <div class="content-layout">
+
+            <!-- LEFT — ARTICLE -->
+            <div>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <i class='bx bx-chevron-right'></i>
+                    <a href="learn.html">Reporting</a>
+                    <i class='bx bx-chevron-right'></i>
+                    <span>Week 8<span class="crumb-title"> &#183; Who measures, in what unit, on which day</span></span>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-meta">
+                        <div class="article-week-badge">
+                            <span class="dot-green" style="width:6px;height:6px;border-radius:50%;background:#10b981;display:inline-block;"></span>
+                            MODULE 06 · REPORTING · WEEK 8
+                        </div>
+                        <h1 class="article-title">Three departments, three month-ends.</h1>
+                        <div class="article-author">
+                            <div class="author-avatar-sm">BE</div>
+                            <div class="author-details">
+                                <strong translate="no">Barış Emre Özçelik</strong>
+                                <span>Planning & Project Controls Lead · Civil Engineer · PMP® · Sep 20, 2028</span>
+                            </div>
+                            <div style="margin-left:auto;display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-muted);">
+                                <i class='bx bx-time-five'></i> 9 min read
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SHARE BAR (top) -->
+                    <div class="share-bar share-bar-top">
+                        <span class="share-bar-label">Share</span>
+                        <a class="share-btn linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftheprojectcontrolhub.com%2Freporting-week-16.html" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><i class='bx bxl-linkedin'></i></a>
+                        <a class="share-btn whatsapp" href="https://wa.me/?text=The%20cut-off%20date%20decides%20how%20much%20of%20your%20report%20was%20measured.%20On%20most%20projects%20nobody%20chose%20it.%20https%3A%2F%2Ftheprojectcontrolhub.com%2Freporting-week-16.html" target="_blank" rel="noopener" aria-label="Share on WhatsApp"><i class='bx bxl-whatsapp'></i></a>
+                        <a class="share-btn x" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftheprojectcontrolhub.com%2Freporting-week-16.html&text=The%20cut-off%20date%20decides%20how%20much%20of%20your%20report%20was%20measured.%20On%20most%20projects%20nobody%20chose%20it." target="_blank" rel="noopener" aria-label="Share on X"><i class='bx bxl-twitter'></i></a>
+                        <button class="share-btn copy" onclick="copyArticleLink(this)" aria-label="Copy link"><i class='bx bx-link'></i></button>
+                    </div>
+
+                    <!-- VIDEO -->
+                    <div class="video-container">
+                        <!-- Replace VIDEO_ID with your YouTube video ID -->
+                        <div class="video-placeholder">
+                            <i class='bx bxl-youtube'></i>
+                            <p>Video coming soon</p>
+                        </div>
+                        <!-- When video is ready, replace above div with:
+                        <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+                        -->
+                    </div>
+
+                    <!-- ARTICLE BODY — PREVIEW (visible to all) -->
+                    <div class="article-body">
+                        <div class="content-preview" id="contentPreview">
+                            <h2 style="margin-top:0;">Three departments, three month-ends</h2>
+                            <p>Ask three people on a project when the month closed and you can get three answers.</p>
+                            <p>Finance closed on one date because the financial calendar says so. Project controls closed on another, because that is when the progress data was cut. The quantity surveyor measured across a period that matches neither, because measurement for payment follows the contract.</p>
+                            <p>Each is defensible on its own terms. The report that combines them describes a month that nobody actually had.</p>
+
+                                <figure style="margin:36px 0;padding:24px;background:#f8fafc;border-radius:16px;border:1px solid #e2e8f0;">
+                                    <svg viewBox="0 0 640 190" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif"><text x="320" y="26" text-anchor="middle" fill="#10b981" font-size="11.5" font-weight="700" letter-spacing="2">ONE MONTH, THREE CLOSING DATES</text><rect x="24" y="52" width="186" height="76" rx="10" fill="#fff" stroke="#cbd5e1"/><text x="117.0" y="78" text-anchor="middle" fill="#334155" font-size="13" font-weight="700">Finance</text><text x="117.0" y="98" text-anchor="middle" fill="#64748b" font-size="11">corporate calendar</text><rect x="226" y="52" width="186" height="76" rx="10" fill="#fff" stroke="#cbd5e1"/><text x="319.0" y="78" text-anchor="middle" fill="#334155" font-size="13" font-weight="700">Project controls</text><text x="319.0" y="98" text-anchor="middle" fill="#64748b" font-size="11">progress cut-off</text><rect x="428" y="52" width="186" height="76" rx="10" fill="#fff" stroke="#cbd5e1"/><text x="521.0" y="78" text-anchor="middle" fill="#334155" font-size="13" font-weight="700">Measurement</text><text x="521.0" y="98" text-anchor="middle" fill="#64748b" font-size="11">contract period</text><text x="320" y="162" text-anchor="middle" fill="#b91c1c" font-size="12.5" font-weight="700">All three defensible. None of them the same month.</text></svg>
+                                    <figcaption style="margin-top:16px;font-size:13px;color:#64748b;line-height:1.6;">Figure 1 &#8212; Nobody chose this. The three dates were inherited separately and have never been looked at on one page.</figcaption>
+                                </figure>
+
+                                <p></p>
+
+                            <!-- LOCKED CONTENT -->
+                            <div class="content-locked">
+                            <p>And almost nowhere was this decided. The dates were inherited, from a previous project or a previous manager or a client requirement that has since lapsed, and they have never been examined together.</p>
+
+                            <h2>The cut-off decides the data</h2>
+                            <p>The hour and the date are not administration. They determine what proportion of the report is a measurement and what proportion is a recollection, for the reason <a href="reporting-week-17.html">Week 17</a> describes at daily level and which applies at every frequency.</p>
+                            <p>Close too early and you have asked people to report work that has not finished producing its own record. Close too late and the report arrives after the meeting it was meant to inform, which is a different kind of failure and just as complete.</p>
+                            <p>Between those there is usually a defensible window, and the useful question is not what the deadline is but why it is where it is. Ask on most projects and the answer is that nobody knows.</p>
+
+                            <h2>Data date is not cut-off</h2>
+                            <p>Two terms get used interchangeably and they are not the same thing.</p>
+                            <p>The data date is the moment the schedule is considered current: everything before it is actual, everything after is plan. It is a property of the schedule.</p>
+                            <p>The cut-off is when data collection stops for a reporting period. It is a property of the process.</p>
+                            <p>They should coincide and often don't, which produces the quiet error where a schedule updated to one date is reported against quantities collected to another. Nothing looks wrong. The progress figure is simply describing a slightly different period from the one on the cover.</p>
+
+                                <figure style="margin:36px 0;padding:24px;background:#f8fafc;border-radius:16px;border:1px solid #e2e8f0;">
+                                    <svg viewBox="0 0 640 180" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif"><text x="320" y="26" text-anchor="middle" fill="#10b981" font-size="11.5" font-weight="700" letter-spacing="2">TWO TERMS THAT ARE NOT THE SAME</text><rect x="40" y="50" width="250" height="72" rx="10" fill="#fff" stroke="#cbd5e1"/><text x="165.0" y="76" text-anchor="middle" fill="#334155" font-size="13" font-weight="700">Data date</text><text x="165.0" y="96" text-anchor="middle" fill="#64748b" font-size="11">a property of the schedule</text><rect x="350" y="50" width="250" height="72" rx="10" fill="#fff" stroke="#cbd5e1"/><text x="475.0" y="76" text-anchor="middle" fill="#334155" font-size="13" font-weight="700">Cut-off</text><text x="475.0" y="96" text-anchor="middle" fill="#64748b" font-size="11">a property of the process</text><text x="320" y="150" text-anchor="middle" fill="#64748b" font-size="11.5">They should coincide. When they don't, nothing looks wrong.</text></svg>
+                                    <figcaption style="margin-top:16px;font-size:13px;color:#64748b;line-height:1.6;">Figure 2 &#8212; A schedule updated to one date and quantities collected to another produce a figure that is quietly about a different period.</figcaption>
+                                </figure>
+
+                                <p></p>
+
+                            <h2>Why the dates are where they are</h2>
+                            <p>It is worth asking, because the answer is usually recoverable and usually surprising.</p>
+                            <p>A deadline set to feed a Monday morning meeting that no longer takes place. A client representative who wanted the report before their own call, and who left the project two years ago. A finance close inherited from a corporate calendar that has nothing to do with construction.</p>
+                            <p>Some of these can't move. Finance answers upwards and measurement answers to the contract. But the ones that belong to the project can move, and moving a collection deadline by three hours sometimes does more for data quality than a year of chasing people.</p>
+                            <p>The precondition is knowing why the hour is the hour. If nobody on the project can answer that, it is not a constraint. It is a habit.</p>
+
+                            <h2>What to write down</h2>
+                            <p>The remedy is a calendar, and it is a page rather than a system.</p>
+                            <p>For each reporting product, four things: when collection closes, who has to have submitted by then, when it is issued, and who receives it. Then the same for the month, including the finance close and the measurement period, so that the three dates sit on one sheet where their differences are visible.</p>
+                            <p>Most of the value appears when it is first written. Three people discover they had assumed different dates, and that conversation is cheaper now than in the reconciliation meeting described in <a href="reporting-week-25.html">Week 25</a>.</p>
+
+                            <h2>The boundary items</h2>
+                            <p>Wherever two dates differ there is a set of items that fall between them: work done after your cut-off but before finance closed, material delivered in the gap, a measurement completed two days late.</p>
+                            <p>These don't need a system. They need a list, made each month, of what crossed the boundary</p>
+
+                                <figure style="margin:36px 0;padding:24px;background:#f8fafc;border-radius:16px;border:1px solid #e2e8f0;">
+                                    <svg viewBox="0 0 640 190" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif"><text x="320" y="26" text-anchor="middle" fill="#10b981" font-size="11.5" font-weight="700" letter-spacing="2">WHAT FALLS BETWEEN TWO DATES</text><rect x="24" y="52" width="186" height="68" rx="10" fill="#fff" stroke="#cbd5e1"/><text x="117.0" y="78" text-anchor="middle" fill="#334155" font-size="13" font-weight="700">Work done after cut-off</text><rect x="226" y="52" width="186" height="68" rx="10" fill="#fff" stroke="#cbd5e1"/><text x="319.0" y="78" text-anchor="middle" fill="#334155" font-size="13" font-weight="700">Material in the gap</text><rect x="428" y="52" width="186" height="68" rx="10" fill="#fff" stroke="#cbd5e1"/><text x="521.0" y="78" text-anchor="middle" fill="#334155" font-size="13" font-weight="700">Late measurement</text><text x="320" y="152" text-anchor="middle" fill="#334155" font-size="12.5" font-weight="700">One list, twenty minutes, most of the argument gone.</text></svg>
+                                    <figcaption style="margin-top:16px;font-size:13px;color:#64748b;line-height:1.6;">Figure 3 &#8212; Without the list each side treats these items by its own logic, correctly, and the difference surfaces later as an apparent error.</figcaption>
+                                </figure>
+
+                                <p> and which period it was counted in. Twenty minutes, and it removes almost all of the argument that would otherwise happen when the two documents disagree.</p>
+                            <p>The alternative is that each side treats boundary items according to its own logic, both correctly, and the difference is discovered by somebody downstream who has no way of knowing it was a calendar effect rather than an error.</p>
+
+                            <h2>System design</h2>
+                            <p>One page, not a system. Written once, it settles the assumptions three departments were each making separately.</p>
+                            <table style="width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px;"><thead><tr><th style="text-align:left;padding:9px 12px;background:#f1f5f9;color:#334155;font-weight:700;border-bottom:1px solid #e2e8f0;">Record</th><th style="text-align:left;padding:9px 12px;background:#f1f5f9;color:#334155;font-weight:700;border-bottom:1px solid #e2e8f0;">Produced by</th><th style="text-align:left;padding:9px 12px;background:#f1f5f9;color:#334155;font-weight:700;border-bottom:1px solid #e2e8f0;">Required quality</th><th style="text-align:left;padding:9px 12px;background:#f1f5f9;color:#334155;font-weight:700;border-bottom:1px solid #e2e8f0;">Verified against</th><th style="text-align:left;padding:9px 12px;background:#f1f5f9;color:#334155;font-weight:700;border-bottom:1px solid #e2e8f0;">Feeds</th></tr></thead><tbody><tr><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Reporting calendar</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Project controls</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">One page holding all three closing dates</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Finance and contract dates</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Every report</td></tr><tr><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Data date</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Project controls</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Coinciding with the collection cut-off</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">The schedule</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Schedule update</td></tr><tr><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Collection cut-off</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Project controls</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Late enough that the site can count, early enough to be read</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">The meeting it feeds</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Report content</td></tr><tr><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Boundary item list</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Both sides</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Made monthly, before publication</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">The two cut-offs</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Reconciliation</td></tr></tbody></table>
+                            <p>The last two rows are not yours and can't be changed. Putting them on the same page as the first three is the point: the gaps become visible, and the boundary items become a list rather than an argument.</p>
+
+                            <h2>Practical insight</h2>
+                            <p>Write down three dates for last month: when your progress data closed, when finance closed, and the end of the measurement period.</p>
+                            <p>If all three are the same, you are in a small minority and it is worth knowing. If they differ, work out by how many days, and then ask one question for each gap: what was going on during those days that would land on one side or the other?</p>
+                            <p>You don't need to change the dates. Changing them is often impossible, because finance answers to a corporate calendar and measurement to the contract. What matters is knowing where the seams are, because every unexplained difference between two reports lives in one of them.</p>
+
+                            <h2>Key takeaways</h2>
+                            <ul class="takeaways">
+                            <li>Three departments can close a month on three different dates, each for a good reason.</li>
+                            <li>The dates are almost always inherited rather than chosen, and rarely examined together.</li>
+                            <li>Cut-off decides how much of a report was measured and how much was remembered.</li>
+                            <li>Data date is a property of the schedule; cut-off is a property of the process. They should coincide.</li>
+                            <li>A reporting calendar is one page: collection closes, who submits, when issued, who receives.</li>
+                            <li>Most of its value appears while writing it, when people discover they assumed different dates.</li>
+                            <li>List the items that fall between two dates each month. It removes most of the argument later.</li>
+                            </ul>
+                            <p style="margin-top:22px;padding:14px 18px;background:#f8fafc;border-left:3px solid #10b981;border-radius:0 8px 8px 0;font-size:13.5px;color:#475569;"><strong style="color:#334155;">Records born here.</strong> Reporting calendar &#183; boundary item list &#183; the agreed data date for each update.</p>
+
+                            <h2>What is coming next</h2>
+                            <p>With the calendar fixed, the outputs start. The first is the shortest document on the project and the one with the longest afterlife.</p>
+                            <p>Next week: the daily report &#8212; what the deadline does to it, and how one day ends up with several versions of itself.</p>
+                            </div>
+                        </div>
+
+                        <!-- PAYWALL CTA -->
+                        <div class="paywall-cta" id="paywallCta">
+                            <div class="soft-cta-inner">
+                                <h3>Enjoyed this lesson?</h3>
+                                <p>Join with Google to get each new lesson the moment it's published — and help me see which topics matter most to you. No spam, one email a week, unsubscribe anytime.</p>
+                                <button class="btn-google-signin" onclick="signInWithGoogleBtn()">
+                                    <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z" fill="#4285F4"/><path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/><path d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/><path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#EA4335"/></svg>
+                                    Continue with Google
+                                </button>
+                                <p class="modal-note">Already following on LinkedIn works too — this is just for the weekly email.</p>
+                            </div>
+                        </div>
+
+                        <!-- ARTICLE FOOTER (after login) -->
+                        <div class="article-footer" id="articleFooter">
+                            <div class="article-tags">
+                                <span class="article-tag">#ProgressReporting</span>
+                                <span class="article-tag">#SiteData</span>
+                                <span class="article-tag">#Reconciliation</span>
+                                <span class="article-tag">#ProjectControls</span>
+                            </div>
+                        </div>
+
+                        <!-- SHARE BAR (bottom) -->
+                        <div class="share-bar share-bar-bottom">
+                            <span class="share-bar-heading">Found this useful? Share it with your team.</span>
+                            <div class="share-row">
+                                <a class="share-btn linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftheprojectcontrolhub.com%2Freporting-week-16.html" target="_blank" rel="noopener"><i class='bx bxl-linkedin'></i> LinkedIn</a>
+                                <a class="share-btn whatsapp" href="https://wa.me/?text=The%20cut-off%20date%20decides%20how%20much%20of%20your%20report%20was%20measured.%20On%20most%20projects%20nobody%20chose%20it.%20https%3A%2F%2Ftheprojectcontrolhub.com%2Freporting-week-16.html" target="_blank" rel="noopener"><i class='bx bxl-whatsapp'></i> WhatsApp</a>
+                                <a class="share-btn x" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftheprojectcontrolhub.com%2Freporting-week-16.html&text=The%20cut-off%20date%20decides%20how%20much%20of%20your%20report%20was%20measured.%20On%20most%20projects%20nobody%20chose%20it." target="_blank" rel="noopener"><i class='bx bxl-twitter'></i> X</a>
+                                <button class="share-btn copy" onclick="copyArticleLink(this)"><i class='bx bx-link'></i> Copy Link</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT — SIDEBAR -->
+            <aside class="content-sidebar">
+
+                                <!-- SERIES NAV (populated from curriculum.js) -->
+                <div class="sidebar-card" id="seriesSidebar" data-current-week="16" data-track="6"></div>
+
+                <!-- AUTHOR CARD -->
+                <div class="author-sidebar-card">
+                    <div class="author-sidebar-top">
+                        <div class="author-sidebar-avatar">BE</div>
+                        <div>
+                            <span class="author-sidebar-name" translate="no">Barış Emre Özçelik</span>
+                            <span class="author-sidebar-title">Planning & Project Controls Lead · Civil Engineer · PMP®</span>
+                        </div>
+                    </div>
+                    <p class="author-sidebar-bio">8+ years in planning & project controls across nuclear, mining, ports, and high-rise projects — currently on the Akkuyu NPP. Writing about what actually works on site.</p>
+                    <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" class="btn-linkedin" translate="no">
+                        <i class='bx bxl-linkedin'></i> Follow on LinkedIn
+                    </a>
+                </div>
+
+            </aside>
+        </div>
+    </div>
+
+    <!-- ACCESS MODAL -->
+    <div class="modal-overlay" id="accessModal">
+        <div class="modal-box">
+            <button class="close-modal" onclick="closeModal()"><i class='bx bx-x'></i></button>
+            <div class="modal-icon-wrapper">
+                <i class='bx bx-book-open'></i>
+            </div>
+            <h4>Free access to all content</h4>
+            <p>Sign in with Google to read the full series and get notified when new topics are published.</p>
+            <button class="btn-google-signin" onclick="signInWithGoogleBtn()">
+                <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z" fill="#4285F4"/><path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/><path d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/><path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#EA4335"/></svg>
+                Continue with Google
+            </button>
+            <p class="modal-note">No spam. One notification per week when new content drops.</p>
+        </div>
+    </div>
+
+    <!-- MOBILE NAV -->
+    <div class="mobile-nav" id="mobileNav">
+        <button class="mobile-nav-close" onclick="toggleMobileNav()"><i class='bx bx-x'></i></button>
+        <a href="index.html" onclick="toggleMobileNav()">Home</a>
+        <a href="learn.html" onclick="toggleMobileNav()">Learn</a>
+        <a href="about.html" onclick="toggleMobileNav()">About</a>
+        <div class="mobile-nav-bottom">
+            <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" translate="no"><i class='bx bxl-linkedin'></i> LinkedIn</a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-content" style="grid-template-columns: 1fr 1fr;">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <img class="logo-mark" src="logo-icon.png" width="40" height="40" alt="" aria-hidden="true" style="object-fit:contain;">
+                    <span translate="no">THE PROJECT CONTROL HUB</span>
+                </a>
+                <p>Field notes on planning & project controls — by Barış Emre Özçelik, PMP.</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" translate="no"><i class='bx bxl-linkedin'></i></a>
+                </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:16px;">
+                <h4 style="font-size:11px;font-weight:700;letter-spacing:1px;color:#64748b;margin:0;">FOLLOW THE SERIES</h4>
+                <p style="font-size:13px;color:#64748b;margin:0;line-height:1.6;">New content every week — follow along so you don't miss the next topic.</p>
+                <div style="display:flex;gap:10px;">
+                    <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank"
+                       style="display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);color:#cbd5e1;text-decoration:none;font-size:13px;font-weight:600;transition:all 0.2s;" translate="no">
+                        <i class='bx bxl-linkedin' style="font-size:17px;"></i> LinkedIn
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 The Project Control Hub. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+    <!-- Curriculum data + sidebar renderer -->
+    <script src="curriculum.js?v=124"></script>
+    <script>
+        (function() {
+            const el = document.getElementById('seriesSidebar');
+            if (el && typeof renderTrack6Sidebar === 'function') {
+                const currentWeek = parseInt(el.getAttribute('data-current-week'), 10);
+                el.innerHTML = renderTrack6Sidebar(currentWeek);
+                // Re-bind gated links after render
+                el.querySelectorAll('.sidebar-series-item[data-gated]').forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        if (!localStorage.getItem('pch_auth')) {
+                            e.preventDefault();
+                            sessionStorage.setItem('pch_intended', this.href);
+                            if (typeof openModal === 'function') openModal();
+                        }
+                    });
+                });
+            }
+        })();
+    </script>
+
+</body>
+</html>
