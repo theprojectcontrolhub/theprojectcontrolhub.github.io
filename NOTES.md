@@ -577,3 +577,242 @@ print). The cheap option, if it is ever wanted, is one orientation piece on
 `learn.html` outside the week sequence — not a track, not a week, nothing that
 promises a next article. Left undecided on purpose: Track 6's opening does the same
 job, just later.
+
+## 10. Reporting &mdash; design decisions *(judgement &mdash; 2026-08-05)*
+
+Written while the track was being drafted, because the articles will survive
+and the reasoning behind them will not.
+
+### The four questions used on every sentence
+
+These were applied throughout and are worth carrying into the other tracks.
+
+1. **Is this the author's voice, or book language?**
+2. **Does it work on site, or only in theory?**
+3. **Is the idea in the right week?** A good idea in the wrong week weakens
+   the article it is in and the one it belongs to.
+4. **Which failure does this principle explain?** A principle that only reads
+   as good practice is weak. One that answers "what goes wrong if this is not
+   done" is teachable.
+
+Two supporting rules, both learned the hard way in drafting:
+
+**Separate what happened from what was concluded.** The memory is the
+author's and is not edited. The conclusion is drawn from it, jointly, and is
+labelled as a conclusion. A composite scene is permitted &mdash; the same
+failure on four projects is stronger evidence than one occurrence &mdash; but
+it may not contain a sentence nobody said.
+
+**Do not mistake the symptom for the problem.** WhatsApp is not the problem;
+an untracked request is. A dashboard is not the problem; the data model is.
+Writing the symptom as the thesis dates the article and misses the cause.
+
+### The subject is not reports
+
+The track is called Reporting and it is not about writing reports. It is about
+where a number comes from, who owns it, what state it has to arrive in, and
+what it feeds afterwards. Writing the document is the smallest part and it
+appears in four weeks out of twenty-five.
+
+This is stated in week 1 so a reader does not spend three weeks expecting
+templates. The thesis under everything: **project controls does not produce
+data, it turns what the organisation produces into something that can be
+relied on.** Week 26 deliberately does not restate it. If the reader has not
+reached it by then, saying it at the end will not help.
+
+### Why the order is sources first, outputs second
+
+Fifteen weeks on what each department feeds you, then eleven on what you
+issue. Not the other way round, and not interleaved.
+
+The alternative &mdash; organising by document, a week per report &mdash; was
+considered and rejected. It teaches the artefact rather than the trade, and
+it makes every week partly about the same collection problem. Organised by
+source, each week has one department, one set of records, one failure mode.
+
+The cost is that the first half has no visible output, which is a real
+weakness. Week 1 and week 2 carry the whole burden of explaining why it is
+worth reading, which is why they are the two longest.
+
+### Why 21 was empty, and what filled it
+
+Week 21 was left out on the first pass. Dashboards had been scoped and the
+material was either taxonomy or already covered &mdash; audience levels are
+week 20, indicator selection is week 22, the tool itself is the digital phase
+&mdash; and no argument was left that a week could carry. A weak week costs
+more than a missing one, so it was skipped, and week 20 was rewritten to hand
+forward to the indicators without naming a number.
+
+The condition written here was that it stayed empty until an argument
+existed. One arrived: **two experienced people leave the same dashboard
+review having reached different conclusions, and neither has misread
+anything.** That is an observed failure, it is not covered by 20 or 22, and
+it passes the test below &mdash; it explains something that goes wrong rather
+than describing good practice.
+
+The week is written to that and nothing else. No tool, no chart design, no
+visualisation. The argument is that a dashboard renders a data model and
+cannot show where the model is weak, so a disagreement about a screen is
+always a disagreement about definitions, cut-offs and ownership. It must not
+re-derive week 1: the principle is shared but the mechanism here is absent
+common definition, not absent ownership of a single figure.
+
+Worth recording for the next time this happens: the week was skipped
+correctly and written correctly, and both decisions used the same test.
+
+### Why one System design table per week, and always the same shape
+
+Every week has exactly one table, five columns, no exceptions:
+`Record | Produced by | Required quality | Verified against | Feeds`.
+
+111 rows across 25 weeks. Taken together they are a data dictionary rather
+than 25 illustrations, and the later modules are meant to sit on it. A
+dictionary whose shape changes per entry is not a dictionary.
+
+`Required quality` answers one question only: **can project controls use this
+as it arrives, without doing anything to it first?** Where the answer is no,
+the cell names what is missing &mdash; "allocated to activities, not just
+totalled", "issued quantity, not delivered quantity", "backed by a document
+or a booking, not last week plus seven". It is a usability definition, not a
+checklist, and it is the part that does not exist anywhere else.
+
+Two temptations were refused. A six-column version with source, frequency and
+consumer: correct, and it reads as a form to be filled rather than a question
+to be answered. And a RACI variant with produced / checked / approved: it
+turns one missing name into three arguments, and the observed failure is that
+nobody owns the number at all, not that ownership is unclear between three
+people.
+
+### Why the same principle recurs, and what counts as repetition
+
+Corroboration appears in six weeks. Closure in three. Ownership in most.
+That is deliberate: on a real project the same principle is met again in
+engineering, in procurement, on site, in quality. Meeting it four times in
+four contexts is how it is learned.
+
+The line is between principle and reasoning. **The principle may recur. The
+same reasoning may not be performed twice.** Two failures of that were found
+on the final read and cut: week 14 was explaining the two-calendar problem
+that is week 16's whole subject, and week 18 was re-narrating week 9's
+mechanism before adding its own. Both now reference and move on.
+
+The mechanical test that caught it: count concept mentions per week. A week
+with a high count is the home; a week with two or three is referencing; a
+second week with a high count is a duplicate.
+
+### Why pattern rather than anecdote
+
+Early drafts asked for single events &mdash; a day, a meeting, a number.
+Wrong instrument. The material is eight years across several countries, and
+the same failure recurring on four projects is stronger evidence than one
+occurrence of it, as well as being more honest to how it was learned.
+
+So the scenes are composites, and they say so: "I have heard all of them, on
+different jobs, in different countries, years apart." The constraint that
+keeps this from becoming invention: **which sentences were said is the
+author's, only the order they appear in is the writing.** A composite may not
+contain anything nobody said.
+
+No company, project or country is named. The subject is process, not any
+organisation, and naming one would change what the piece is doing.
+
+### Why no figures
+
+No quantities anywhere in the track. The paint example is a ratio, not
+litres. The events behind these articles happened on jobs that are not the
+$1M case study, and a precise figure from them is exactly the sentence
+section 1 forbids: one nobody can reproduce. Units and flows carry the
+argument; numbers would only decorate it.
+
+### Why the data model comes before the report
+
+Week 1 and week 2 argue the order: model, then collection, then verification,
+then report. This is why the track opens with ownership and field
+specification rather than with a document.
+
+With one qualification that had to be added and is easy to lose: **almost
+nobody designs the model.** Planners inherit one. Every week that proposes a
+system therefore carries two readings, from scratch and inherited, and the
+inherited case is treated as the normal one because it is. The heading varies
+per week &mdash; "on a project that is already running", "adding rather than
+replacing" &mdash; because nine identical headings read as a template by the
+fourth.
+
+### Density is deliberately uneven
+
+Between 843 and 1,676 words. Two tiers, on purpose.
+
+The load-bearing weeks &mdash; 1, 2, 8, 9, 13, 17, 23, 25 &mdash; are long
+because the argument is theirs. The system weeks are shorter because they
+carry a design decision rather than a case. Padding the second tier to match
+the first would have meant writing filler, and an even series of 1,500-word
+articles is a worse read than an uneven one.
+
+Every week ends with **Records born here**, naming the documents that come
+into existence at that stage. There is no "feeds next" line: which record
+feeds which is week 24's subject, and on most weeks the honest answer would
+have been "the archive".
+
+### Open, and deliberately not closed
+
+- **21** stays empty until an argument exists for it.
+- **Prefix** is `reporting-week-N.html`, unpadded, matching every other page
+  and `check_site.py`'s `week-(\d+)`. Zero-padding was proposed and dropped
+  for that reason.
+- The 25 drafts are in `drafts/` and out of the chain and sitemap. Week 8 was
+  written first because its material was ready; publication order is 1 upward.
+- `check_site.py` registration for Reporting and Interfaces is done. `QUAL`
+  now spans tracks 0&ndash;7.
+
+### Second phase &mdash; a canonical data dictionary *(recorded, not started)*
+
+Deliberately not built. Recorded here so the scope is not re-argued from
+scratch, and so the reasons for the shape are still available.
+
+**What already exists.** The 26 System design tables are the first version of
+this: 115 rows in one fixed shape, `Record | Produced by | Required quality |
+Verified against | Feeds`. The gap is a *why* column. In drafting, the
+strongest examples were always the ones that answered it &mdash; an activity
+ID exists so that an executed quantity can be tied to the programme, and
+without it physical progress is a quantity with nothing to attach to. That
+reasoning currently lives in the article body, not in the table.
+
+**Why it is a separate product and not an appendix.** Reporting is an
+argument: 26 weeks building one idea, read end to end, and it must not repeat
+itself. A data standard is a reference: nobody reads it in order, it is opened
+at the point of need, and it *has* to repeat itself because the reader did not
+see the previous entry. Different products with opposite rules. Appendices at
+the end of each week would break the argument's rhythm; a reference scattered
+through 26 articles cannot be found.
+
+**Field-centric, not table-centric.** `Area`, `WBS`, `Activity ID`,
+`Discipline`, `Revision`, `Status`, `Owner`, `Data date` and `Cut-off` recur
+across most registers. Defining each once and having registers reference it
+avoids writing the same explanation sixteen times, and it produces a data
+dictionary rather than sixteen spreadsheet templates.
+
+Proposed shape per field: purpose, definition, format, owner, required
+quality, validation, downstream consumers, common errors, related fields.
+
+**The one real hazard.** Fields that share a name do not always share a
+meaning. `Status` in a transmittal register and `Status` in a constraint log
+are different concepts. Canonicalising by name merges things that should stay
+separate. The test is the definition, not the label, and any field where two
+registers cannot accept one definition stays split with both versions named.
+
+**What makes it legitimate rather than a column catalogue.** Column lists
+exist in hundreds of places. What does not exist is why the column is there
+and what breaks without it &mdash; which is rule four applied at field level.
+`Common errors` is the column carrying that weight, and a version of this
+without it is the hundred and first column list. Note that a department
+directory and a template library were both closed earlier in these notes for
+exactly the reason this could fail: collecting rather than correcting.
+
+**Scale, honestly.** Roughly sixteen registers, fifteen fields each, nine
+questions per field. Around two thousand cells. Feasible, not a weekend, and
+a half-populated reference is not a reference.
+
+**Sequence.** Publish Reporting first. Which System design tables actually
+get used, which fields readers argue about, and which concepts turn out to be
+missing should set the scope &mdash; not a guess made now.
+

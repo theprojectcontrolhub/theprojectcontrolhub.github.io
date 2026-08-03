@@ -413,7 +413,7 @@
            top:72px clears the navbar (16px padding + 40px logo + 16px); z-index stays
            under the navbar's 500. */
         .track-jump {
-            position: sticky; top: 72px; z-index: 400;
+            position: sticky; top: var(--nav-h, 72px); z-index: 400;
             display: flex; gap: 5px; align-items: center;
             padding: 12px 0 14px; margin-bottom: 10px;
             background: var(--bg-light);
@@ -436,10 +436,15 @@
         .track-jump-link:hover { border-color: #cbd5e1; color: #1e293b; }
         .track-jump-link.active { background: rgba(16,185,129,0.08); border-color: #10b981; color: #059669; }
         .track-jump-link.active span { color: #10b981; }
-        /* anchors must clear both sticky bars */
-        #track-1, #track-2, #track-3, #track-4, #track-5, #track-6, #track-7, #lifecycle, #toolbox { scroll-margin-top: 132px; }
+        /* Anchors must clear both sticky bars. Both heights are measured at
+           runtime rather than assumed: on a phone the logo wraps to two lines
+           and the header is taller than the 72px this used to hardcode, which
+           left every track title sitting under the jump row. */
+        #track-1, #track-2, #track-3, #track-4, #track-5, #track-6, #track-7, #lifecycle, #toolbox {
+            scroll-margin-top: calc(var(--nav-h, 72px) + var(--jump-h, 60px) + 14px);
+        }
         @media (max-width: 768px) {
-            .track-jump { top: 72px; padding: 10px 0; }
+            .track-jump { padding: 10px 0; }
             .track-jump-link { font-size: 12px; padding: 6px 12px; }
         }
 
@@ -764,12 +769,11 @@
 
 
         @media (max-width: 720px) {
-            .path-chain { flex-flow: row wrap; gap: 6px; margin-top: 10px; }
-            .chain-box { padding: 4px 9px; }
-            .chain-box:not(:last-child)::after {
-                left: auto; right: -6px; bottom: auto; top: 50%;
-                width: 6px; height: 2px; transform: translateY(-50%);
-            }
+            /* On a phone the boxes wrap, which leaves connector stubs pointing
+               at nothing and pushes the whole figure past a screen height.
+               The five stages and the rail are the part worth keeping; the
+               detail is in the module cards below. */
+            .path-chain { display: none; }
         }
 
         .path-figure.is-five { grid-template-columns: repeat(5, 1fr); gap: 0 14px; }
@@ -819,6 +823,13 @@
         .path-figure.is-five::before { background: #cbd5e1; }
         @media (max-width: 720px) {
             .path-figure.is-five::before { background: #cbd5e1; }
+        }
+
+        @media (max-width: 720px) {
+            .path-figure.is-five { gap: 0; margin: 16px 0 4px; padding-left: 32px; }
+            .path-figure.is-five .path-step { padding: 6px 0; }
+            .path-figure.is-five .path-title { font-size: 15px; }
+            .path-figure.is-five::before { top: 12px; bottom: 12px; }
         }
     </style>
 
@@ -1269,11 +1280,11 @@
                         <div class="module-weeks" id="track4Weeks"></div>
                         <div class="module-progress">
                             <div class="progress-label">
-                                <span id="t4ProgressText">1 of 20 published</span>
-                                <span id="t4ProgressPct">5%</span>
+                                <span id="t4ProgressText">20 of 20 published</span>
+                                <span id="t4ProgressPct">100%</span>
                             </div>
                             <div class="progress-bar">
-                                <div class="progress-fill" id="t4ProgressFill" style="width: 5%"></div>
+                                <div class="progress-fill" id="t4ProgressFill" style="width: 100%"></div>
                             </div>
                         </div>
                     </div>
@@ -1327,10 +1338,10 @@
                         <div class="module-progress">
                             <div class="progress-label">
                                 <span id="t5ProgressText">28 of 28 published</span>
-                                <span id="t5ProgressPct">0%</span>
+                                <span id="t5ProgressPct">100%</span>
                             </div>
                             <div class="progress-bar">
-                                <div class="progress-fill" id="t5ProgressFill" style="width: 0%"></div>
+                                <div class="progress-fill" id="t5ProgressFill" style="width: 100%"></div>
                             </div>
                         </div>
                     </div>
@@ -1427,7 +1438,7 @@
                     <div class="module-card">
                         <div class="module-card-header">
                             <div class="module-card-left">
-                                <span class="module-num">08</span>
+                                <span class="module-num">07</span>
                                 <div class="module-info">
                                     <h2>Interfaces</h2>
                                     <p>Delivery models and who holds the scope, EPCM authority without privity, joint ventures, the critical path through an order, the work between two programmes, and the number with two owners.</p>
@@ -1507,7 +1518,7 @@
                         <div class="module-weeks" id="lifecycleWeeks"></div>
                         <div class="module-progress">
                             <div class="progress-label">
-                                <span id="lcProgressText">0 of 52 published</span>
+                                <span id="lcProgressText">0 of 36 published</span>
                                 <span id="lcProgressPct">0%</span>
                             </div>
                             <div class="progress-bar">
@@ -1774,6 +1785,24 @@
                                  : ' \u00b7 WEEK ' + t.latestLiveWeek.n);
                 }
             });
+
+
+            // Sticky offsets measured, not assumed. The header is a different
+            // height once the logo wraps, so anything keyed to a fixed 72px
+            // ends up hiding the heading it just scrolled to.
+            (function () {
+                var root = document.documentElement;
+                function measure() {
+                    var nav = document.querySelector('.navbar');
+                    var jump = document.querySelector('.track-jump');
+                    if (nav) root.style.setProperty('--nav-h', Math.round(nav.getBoundingClientRect().height) + 'px');
+                    if (jump) root.style.setProperty('--jump-h', Math.round(jump.getBoundingClientRect().height) + 'px');
+                }
+                measure();
+                window.addEventListener('resize', measure);
+                window.addEventListener('orientationchange', measure);
+                if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+            })();
 
             // Fill weeks
             const weeksEl = document.getElementById('moduleWeeks');
