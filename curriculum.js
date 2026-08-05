@@ -164,12 +164,32 @@ function renderLearnProgress() {
 }
 
 // Home page compact list (hero panel: latest 3 live)
+
+// Her yeni track'te iki ayri listeyi güncellemek gerekiyordu ve ikisi de
+// unutuldu: ana sayfa 69 ders sayıyordu ve "Latest" on sekiz ay eski bir
+// dersi gösteriyordu. Liste artık tanımlı olan track'lerden üretiliyor.
+function allTracks() {
+  return [[typeof CURRICULUM !== "undefined" ? CURRICULUM : null, "SCHEDULE"],
+          [typeof TRACK2 !== "undefined" ? TRACK2 : null, "COST & CASH"],
+          [typeof TRACK3 !== "undefined" ? TRACK3 : null, "RISK"],
+          [typeof TRACK4 !== "undefined" ? TRACK4 : null, "CONTRACT"],
+          [typeof TRACK5 !== "undefined" ? TRACK5 : null, "CLAIMS"],
+          [typeof TRACK6 !== "undefined" ? TRACK6 : null, "REPORTING"],
+          [typeof TRACK7 !== "undefined" ? TRACK7 : null, "INTERFACES"],
+          [typeof LIFECYCLE !== "undefined" ? LIFECYCLE : null, "LIFE OF A PROJECT"]]
+         .filter(function (p) { return p[0]; });
+}
+
+function liveLessonCount() {
+  return allTracks().reduce(function (n, p) { return n + p[0].liveCount; }, 0);
+}
+
 function renderHomeLatest() {
   // Sitedeki EN YENİ üç ders — hangi track'ten gelirse gelsin.
   // Önceden yalnızca Track 1'e bakıyordu; üç track de bitince ana sayfa
   // on ay bayat içeriğe "New" rozeti takıyordu.
   const all = [];
-  [[CURRICULUM, "SCHEDULE"], [TRACK2, "COST & CASH"], [TRACK3, "RISK"]].forEach(function (pair) {
+  allTracks().forEach(function (pair) {
     pair[0].weeks.filter(function (x) { return x.status === "live" && x.page; })
       .forEach(function (w) { all.push({ w: w, track: pair[1], t: Date.parse(w.date || "") || 0 }); });
   });
@@ -766,6 +786,8 @@ const LIFECYCLE = {
     getWeek(n) { return this.weeks.find(w => w.n === n); }
 };
 
+function renderHomeTrack6()       { return homeCurriculumHTML(TRACK6); }
+function renderHomeTrack6Badge()  { return badgeText(TRACK6); }
 function renderTrack6Curriculum()  { return learnCurriculumHTML(TRACK6); }
 function renderTrack6Sidebar(w)    { return sidebarHTML(TRACK6, w); }
 function renderTrack6Progress()    { return { text: `${TRACK6.liveCount} of ${TRACK6.totalWeeks} published`, percent: TRACK6.progressPercent }; }
