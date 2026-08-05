@@ -1009,7 +1009,7 @@
                     <span class="dot-green"></span> CURRICULUM
                 </div>
                 <h1>Project Controls — The Way It Works on Site</h1>
-                <p>A structured series built for engineers who want to understand project controls the way it actually works on site. Theory first, then the tools that bring it to life.</p>
+                <p>A structured series built for engineers who want to understand project controls the way it actually works on site. Theory first, then the tools &#8212; because a tool you can drive but not reason about is worth nothing on a site.</p>
                 <div class="learn-header-meta">
                     <span class="learn-meta-item"><i class='bx bx-layer'></i> 8 tracks + a toolbox</span>
                     <span class="learn-meta-item" id="learnMetaProgress"><i class='bx bx-time-five'></i> Tracks 1&#8211;5 complete &#183; 117 lessons &#183; Reporting next</span>
@@ -1785,7 +1785,7 @@
 
 
     <!-- Curriculum data + renderers -->
-    <script src="curriculum.js?v=129"></script>
+    <script src="curriculum.js?v=136"></script>
     <script>
         (function() {
             if (typeof CURRICULUM === 'undefined') return;
@@ -2091,10 +2091,22 @@
         }).filter(function (s) { return s.el; });
         if (!sections.length) return;
         var ticking = false;
+        // The threshold was hardcoded at 140 while scroll-margin-top is
+        // calc(--nav-h + --jump-h + 14), which lands a clicked section at
+        // about 146. Six pixels short meant the chip you clicked was never
+        // the one that lit up: the section had not crossed the line yet, so
+        // the previous one stayed selected. Both now read the same numbers.
+        function spyThreshold() {
+            var cs = getComputedStyle(document.documentElement);
+            var nav = parseInt(cs.getPropertyValue('--nav-h'), 10) || 72;
+            var jump = parseInt(cs.getPropertyValue('--jump-h'), 10) || 60;
+            return nav + jump + 24;
+        }
         function spy() {
+            var line = spyThreshold();
             var current = sections[0];
             sections.forEach(function (s) {
-                if (s.el.getBoundingClientRect().top <= 140) current = s;
+                if (s.el.getBoundingClientRect().top <= line) current = s;
             });
             links.forEach(function (l) { l.classList.remove('active'); });
             current.link.classList.add('active');
@@ -2103,6 +2115,18 @@
         window.addEventListener('scroll', function () {
             if (!ticking) { ticking = true; window.requestAnimationFrame(spy); }
         }, { passive: true });
+        // Smooth scrolling means the spy keeps firing on the way down and the
+        // highlight walks through every chip it passes. Mark the clicked one
+        // immediately and let the spy take over once the scroll has settled.
+        var settle;
+        links.forEach(function (l) {
+            l.addEventListener('click', function () {
+                links.forEach(function (x) { x.classList.remove('active'); });
+                l.classList.add('active');
+                clearTimeout(settle);
+                settle = setTimeout(spy, 700);
+            });
+        });
         spy();
     })();
     </script>
