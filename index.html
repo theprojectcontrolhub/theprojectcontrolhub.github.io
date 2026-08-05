@@ -860,18 +860,19 @@
                     <div class="module-posts" id="homeTrack5"></div>
                 </div>
 
-                <!-- TRACK 6: THE ASSUMPTIONS THAT STOP HOLDING -->
-                <div class="module-track module-track-locked">
+                <!-- TRACK 6: REPORTING -->
+                <div class="module-track">
                     <div class="module-track-header">
                         <div class="module-track-left">
-                            <span class="module-number locked">06</span>
+                            <span class="module-number">06</span>
                             <div>
                                 <h3 class="module-title">Reporting</h3>
                                 <p class="module-desc">Five tracks taught what to do with a number once you have it. This one follows every input back to the department that produces it, in what unit and on whose cut-off date &#8212; then follows every report you issue forward to the person who is supposed to act on it.</p>
                             </div>
                         </div>
-                        <span class="module-status locked-status" id="homeTrack6Badge"><i class='bx bx-map-alt'></i> On the roadmap</span>
+                        <span class="module-status" id="homeTrack6Badge"><span class="dot-green"></span> Complete &#183; 26 weeks</span>
                     </div>
+                    <div class="module-posts" id="homeTrack6"></div>
                 </div>
 
                 <div class="module-track module-track-locked">
@@ -1027,7 +1028,7 @@
 
 
     <!-- Curriculum data + home renderers -->
-    <script src="curriculum.js?v=125"></script>
+    <script src="curriculum.js?v=129"></script>
     <script>
         (function() {
             if (typeof CURRICULUM === 'undefined') return;
@@ -1039,8 +1040,7 @@
             // Hero live badge
 
             // Roadmap badges computed from curriculum.js, never typed
-            [['homeTrack6Badge', typeof TRACK6 !== 'undefined' ? TRACK6 : null],
-             ['homeTrack7Badge', typeof TRACK7 !== 'undefined' ? TRACK7 : null],
+            [['homeTrack7Badge', typeof TRACK7 !== 'undefined' ? TRACK7 : null],
              ['homeTrackLCBadge', typeof LIFECYCLE !== 'undefined' ? LIFECYCLE : null]].forEach(function (p) {
                 var el = document.getElementById(p[0]), t = p[1];
                 if (!el || !t) return;
@@ -1050,11 +1050,8 @@
             });
 
             const liveBadge = document.getElementById('homeLiveBadge');
-            if (liveBadge) {
-                const total = [CURRICULUM, TRACK2, TRACK3].reduce(function (n, t) {
-                    return n + t.weeks.filter(function (w) { return w.status === 'live'; }).length;
-                }, 0);
-                liveBadge.innerHTML = '<span class="dot-green"></span> ' + total + ' lessons live';
+            if (liveBadge && typeof liveLessonCount === 'function') {
+                liveBadge.innerHTML = '<span class="dot-green"></span> ' + liveLessonCount() + ' lessons live';
             }
 
             // Curriculum card — module 01 weeks
@@ -1102,6 +1099,15 @@
             const t5Badge = document.getElementById('homeTrack5Badge');
             if (t5Badge && typeof renderHomeTrack5Badge === 'function') {
                 t5Badge.innerHTML = renderHomeTrack5Badge();
+            }
+
+            const t6 = document.getElementById('homeTrack6');
+            if (t6 && typeof renderHomeTrack6 === 'function') {
+                t6.innerHTML = renderHomeTrack6();
+            }
+            const t6Badge = document.getElementById('homeTrack6Badge');
+            if (t6Badge && typeof renderHomeTrack6Badge === 'function') {
+                t6Badge.innerHTML = renderHomeTrack6Badge();
             }
 
             // Bind gated links (both hero + curriculum)

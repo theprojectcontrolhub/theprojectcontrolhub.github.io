@@ -831,6 +831,47 @@
             .path-figure.is-five .path-title { font-size: 15px; }
             .path-figure.is-five::before { top: 12px; bottom: 12px; }
         }
+
+        /* Eight modules render 193 week rows, which is about ten thousand
+           pixels of list. The first six of each stay visible so the shape of
+           a track and its phase dividers are still readable; the rest sit
+           behind one row. The count on the button keeps the scope visible,
+           which is the thing a collapsed list would otherwise hide. */
+        .weeks-rest { display: none; }
+        .weeks-rest.is-open { display: block; }
+        /* The row has to read as an action rather than as the end of the
+           list, so it carries the track colour and the count sits in a pill.
+           The fade above it is the part that actually signals there is more:
+           a flat edge reads as the bottom of the list. */
+        .weeks-fade {
+            height: 26px; margin-top: -26px; position: relative; pointer-events: none;
+            background: linear-gradient(to bottom, rgba(255,255,255,0), #fff);
+        }
+        .weeks-rest.is-open + .weeks-fade { display: none; }
+        .weeks-toggle {
+            display: flex; align-items: center; justify-content: center; gap: 9px;
+            width: 100%; padding: 15px 18px;
+            background: #ecfdf5; border: 0; border-top: 1px solid #a7f3d0;
+            font-family: inherit; font-size: 13.5px; font-weight: 700;
+            color: #047857; letter-spacing: 0.01em; cursor: pointer;
+            transition: background .15s;
+        }
+        .weeks-toggle:hover { background: #d1fae5; }
+        .weeks-toggle-count {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-width: 24px; height: 21px; padding: 0 7px; border-radius: 11px;
+            background: #10b981; color: #fff; font-size: 12px; font-weight: 800;
+        }
+        .weeks-toggle i {
+            font-size: 15px; transition: transform .15s;
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 21px; height: 21px; border-radius: 50%;
+            background: #fff; border: 1px solid #a7f3d0;
+        }
+        .weeks-toggle.is-open i { transform: rotate(180deg); }
+        @media (max-width: 640px) {
+            .weeks-toggle { padding: 14px 16px; font-size: 13px; }
+        }
     </style>
 
         <!-- Mobile nav toggle — standalone, independent of Firebase -->
@@ -971,7 +1012,7 @@
                 <p>A structured series built for engineers who want to understand project controls the way it actually works on site. Theory first, then the tools that bring it to life.</p>
                 <div class="learn-header-meta">
                     <span class="learn-meta-item"><i class='bx bx-layer'></i> 8 tracks + a toolbox</span>
-                    <span class="learn-meta-item"><i class='bx bx-time-five'></i> Tracks 1&#8211;5 complete &#183; 117 lessons &#183; Reporting next</span>
+                    <span class="learn-meta-item" id="learnMetaProgress"><i class='bx bx-time-five'></i> Tracks 1&#8211;5 complete &#183; 117 lessons &#183; Reporting next</span>
                     <span class="learn-meta-item"><i class='bx bx-calendar'></i> New lesson every week</span>
                     <span class="learn-meta-item"><i class='bx bx-lock-open'></i> Fundamentals always free</span>
                 </div>
@@ -980,7 +1021,7 @@
             <!-- ===== TRACK JUMP NAV ===== -->
 
             <ol class="path-figure is-five" aria-label="How the curriculum builds">
-                <li class="path-step is-done">
+                <li class="path-step is-done" id="pf-methods">
                     <span class="path-dot"></span>
                     <strong class="path-title"><a href="#track-1">The methods</a></strong>
                     <span class="path-chain">
@@ -991,7 +1032,7 @@
                         <span class="chain-box">Claims</span>
                     </span>
                 </li>
-                <li class="path-step is-next">
+                <li class="path-step is-done" id="pf-reporting">
                     <span class="path-dot"></span>
                     <strong class="path-title"><a href="#track-6">Reporting</a></strong>
                     <span class="path-chain">
@@ -1003,7 +1044,7 @@
                         <span class="chain-box">Reports &amp; registers</span>
                     </span>
                 </li>
-                <li class="path-step">
+                <li class="path-step" id="pf-interfaces">
                     <span class="path-dot"></span>
                     <strong class="path-title"><a href="#track-7">Interfaces</a></strong>
                     <span class="path-chain">
@@ -1015,7 +1056,7 @@
                         <span class="chain-box">Shared cost</span>
                     </span>
                 </li>
-                <li class="path-step">
+                <li class="path-step" id="pf-lifecycle">
                     <span class="path-dot"></span>
                     <strong class="path-title"><a href="#lifecycle">The life of a project</a></strong>
                     <span class="path-chain">
@@ -1027,7 +1068,7 @@
                         <span class="chain-box">Handover</span>
                     </span>
                 </li>
-                <li class="path-step">
+                <li class="path-step" id="pf-tools">
                     <span class="path-dot"></span>
                     <strong class="path-title"><a href="#toolbox">The toolbox</a></strong>
                     <span class="path-chain">
@@ -1060,7 +1101,7 @@
                 
                 <!-- ===== SECTION: THE LEARNING PATH ===== -->
 <div class="track-header" id="track-1">
-                    <div class="track-badge free"><span class="dot-green"></span> TRACK 1 · FREE · COMPLETE</div>
+                    <div class="track-badge free" id="t1TrackBadge"><span class="dot-green"></span> TRACK 1 &#183; FREE &#183; COMPLETE</div>
                     <h2>Schedule Management</h2>
                     <p class="track-sub">The logic. Why projects succeed — and why they fail.</p>
                     <p class="track-desc">A complete 27-week curriculum on how project controls actually works on site — from why projects fail, through the critical path, earned value and forecasting, to forensic analysis and the people who have to act on your numbers. This is the foundation everything else stands on, and it stays free.</p>
@@ -1117,7 +1158,7 @@
                 
                 <!-- ===== TRACK 2 — COST & CASH ===== -->
                 <div class="track-header track-2" id="track-2">
-                    <div class="track-badge free"><span class="dot-green"></span> TRACK 2 &#183; FREE &#183; COMPLETE</div>
+                    <div class="track-badge free" id="t2TrackBadge"><span class="dot-green"></span> TRACK 2 &#183; FREE &#183; COMPLETE</div>
                     <h2>Cost &amp; Cash</h2>
                     <p class="track-sub">The money. Where the numbers come from — and how companies go broke while profitable.</p>
                     <p class="track-desc">Track 1 taught you to read a project. This one teaches you to read its money. Where a unit rate actually comes from, why the BoQ and the schedule never quite line up, how physical percent is really measured — and the half nobody teaches a planner: <strong>cash</strong>. A contractor doesn&#39;t fail because of a bad CPI. It fails because it ran out of money while turning a profit.</p>
@@ -1176,7 +1217,7 @@
 
                 <!-- ===== TRACK 3 — RISK ===== -->
                 <div class="track-header" id="track-3">
-                    <div class="track-badge free"><i class='bx bx-shield-quarter'></i> TRACK 3 &#183; FREE &#183; COMPLETE</div>
+                    <div class="track-badge free" id="t3TrackBadge"><i class='bx bx-shield-quarter'></i> TRACK 3 &#183; FREE &#183; COMPLETE</div>
                     <h2>Risk</h2>
                     <p class="track-sub">The future. What has not happened yet &#8212; and who pays for it when it does.</p>
                     <p class="track-desc">Track 1 taught you to read a project&#39;s time. Track 2 taught you to read its money. Both of them measure something that has already happened. This one is about the only part of project controls that moves before the number does: where the risks on a job actually come from, what a probability is worth when somebody just felt it, how much confidence you are really buying with a contingency &#8212; and the question nobody in a PMI textbook asks, which is whose money pays when the risk arrives.</p>
@@ -1349,8 +1390,8 @@
                     <!-- ===== SECTION: THE INTEGRATION LAYER ===== -->
                     <div class="layer-intro">
                         <div class="track-badge roadmap"><i class='bx bx-layer'></i> THE INTEGRATION LAYER</div>
-                        <h2>Two tracks follow, and neither repeats the five above</h2>
-                        <p>Tracks 1&#8211;5 teach the methods. <strong>Reporting</strong> follows every number back to the person who produces it and forward to the person who acts on it. <strong>Interfaces</strong> shows how all of it changes shape under more than one contract. <strong>The Life of a Project</strong> shows the order the work actually arrives in, what feeds what, and which record is born where. Three layers, and each one needs the other two.</p>
+                        <h2>Three layers, and none of them repeats the methods</h2>
+                        <p>Tracks 1&#8211;5 teach the methods. <strong>Reporting</strong> follows every number back to the person who produces it and forward to the person who acts on it. <strong>Interfaces</strong> shows how all of it changes shape under more than one contract. <strong>The Life of a Project</strong> shows the order the work actually arrives in, what feeds what, and which record is born where. Each one needs the other two.</p>
                     </div>
 
 <!-- ===== TRACK 6 — REPORTING ===== -->
@@ -1386,7 +1427,7 @@
                                     <p>Fifteen weeks on what each department feeds you and in what unit, then eleven on what you issue back &#8212; daily to executive, dashboards, KPIs, registers, and the report nobody acts on.</p>
                                 </div>
                             </div>
-                            <span class="module-badge badge-locked" id="t6ModuleBadge"><i class='bx bx-time'></i> Starting soon &#183; 26 weeks</span>
+                            <span class="module-badge badge-active" id="t6ModuleBadge"><span class="dot-green"></span> Complete &#183; 26 weeks</span>
                         </div>
                         <div class="module-tools">
                             <span class="tool-tag-label">Topics:</span>
@@ -1402,11 +1443,11 @@
                         <div class="module-weeks" id="track6Weeks"></div>
                         <div class="module-progress">
                             <div class="progress-label">
-                                <span id="t6ProgressText">0 of 26 published</span>
-                                <span id="t6ProgressPct">0%</span>
+                                <span id="t6ProgressText">26 of 26 published</span>
+                                <span id="t6ProgressPct">100%</span>
                             </div>
                             <div class="progress-bar">
-                                <div class="progress-fill" id="t6ProgressFill" style="width: 0%"></div>
+                                <div class="progress-fill" id="t6ProgressFill" style="width: 100%"></div>
                             </div>
                         </div>
                     </div>
@@ -1501,7 +1542,7 @@
                                     <p>Nine phases from the investment decision to closeout, plus a two-week capstone. The integration layer: the order, the handovers, and the records.</p>
                                 </div>
                             </div>
-                            <span class="module-badge badge-locked" id="lcModuleBadge"><i class='bx bx-time'></i> On the roadmap &#183; 52 weeks</span>
+                            <span class="module-badge badge-locked" id="lcModuleBadge"><i class='bx bx-time'></i> On the roadmap &#183; 36 weeks</span>
                         </div>
                         <div class="module-tools">
                             <span class="tool-tag-label">Topics:</span>
@@ -1744,7 +1785,7 @@
 
 
     <!-- Curriculum data + renderers -->
-    <script src="curriculum.js?v=125"></script>
+    <script src="curriculum.js?v=129"></script>
     <script>
         (function() {
             if (typeof CURRICULUM === 'undefined') return;
@@ -1802,6 +1843,56 @@
                 window.addEventListener('resize', measure);
                 window.addEventListener('orientationchange', measure);
                 if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+            })();
+
+
+            // Header meta and the track 1-3 badges. Everything here used to be
+            // typed, which is why the page still claimed 117 lessons and five
+            // complete tracks after Reporting was published.
+            (function () {
+                if (typeof allTracks !== 'function') return;
+                var ts = allTracks().map(function (p) { return p[0]; });
+                var complete = ts.filter(function (t) { return t.liveCount >= t.totalWeeks; });
+                var next = ts.find(function (t) { return t.liveCount === 0; });
+                var meta = document.getElementById('learnMetaProgress');
+                if (meta) {
+                    meta.innerHTML = "<i class='bx bx-time-five'></i> Tracks 1&#8211;" + complete.length
+                        + ' complete &#183; ' + liveLessonCount() + ' lessons'
+                        + (next ? ' &#183; ' + next.title + ' next' : '');
+                }
+                [[1, CURRICULUM, '<span class="dot-green"></span>'],
+                 [2, typeof TRACK2 !== 'undefined' ? TRACK2 : null, '<span class="dot-green"></span>'],
+                 [3, typeof TRACK3 !== 'undefined' ? TRACK3 : null, "<i class='bx bx-shield-quarter'></i>"]]
+                .forEach(function (p) {
+                    var el = document.getElementById('t' + p[0] + 'TrackBadge'), t = p[1];
+                    if (!el || !t) return;
+                    var word = t.liveCount >= t.totalWeeks ? 'COMPLETE'
+                             : t.liveCount === 0 ? 'IN PREPARATION'
+                             : 'WEEK ' + t.latestLiveWeek.n;
+                    el.innerHTML = p[2] + ' TRACK ' + p[0] + ' \u00b7 FREE \u00b7 ' + word;
+                });
+            })();
+
+
+            // The figure's done/next state. The static fix marked Reporting
+            // complete but left no step as next, and would have gone stale
+            // again the day Interfaces is published.
+            (function () {
+                if (typeof allTracks !== 'function') return;
+                var steps = [['pf-methods', [CURRICULUM, TRACK2, TRACK3, TRACK4, TRACK5]],
+                             ['pf-reporting', [typeof TRACK6 !== 'undefined' ? TRACK6 : null]],
+                             ['pf-interfaces', [typeof TRACK7 !== 'undefined' ? TRACK7 : null]],
+                             ['pf-lifecycle', [typeof LIFECYCLE !== 'undefined' ? LIFECYCLE : null]]];
+                var seenNext = false;
+                steps.forEach(function (p) {
+                    var el = document.getElementById(p[0]);
+                    var ts = p[1].filter(Boolean);
+                    if (!el || !ts.length) return;
+                    var done = ts.every(function (t) { return t.liveCount >= t.totalWeeks; });
+                    el.classList.remove('is-done', 'is-next');
+                    if (done) el.classList.add('is-done');
+                    else if (!seenNext) { el.classList.add('is-next'); seenNext = true; }
+                });
             })();
 
             // Fill weeks
@@ -1905,6 +1996,75 @@
                     b5.className = 'module-badge ' + badgeClass(TRACK5);
                 }
             }
+
+            // Collapse each week list to its first six rows. Eight modules
+            // render 193 rows, which is roughly ten thousand pixels of list.
+            // The count stays on the button so the scope is still visible.
+            (function () {
+                var LIMIT = 6;
+                document.querySelectorAll('.module-weeks').forEach(function (box) {
+                    if (box.querySelector('.weeks-toggle')) return;
+                    var items = box.querySelectorAll('.week-item');
+                    if (items.length <= LIMIT + 2) return;
+
+                    var rest = document.createElement('div');
+                    rest.className = 'weeks-rest';
+                    var seen = 0, node = box.firstChild, moving = false, queue = [];
+                    while (node) {
+                        var next = node.nextSibling;
+                        if (node.nodeType === 1 && node.classList.contains('week-item')) {
+                            seen++;
+                            if (seen > LIMIT) moving = true;
+                        }
+                        if (moving) queue.push(node);
+                        node = next;
+                    }
+                    queue.forEach(function (n) { rest.appendChild(n); });
+
+                    var btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'weeks-toggle';
+                    btn.setAttribute('aria-expanded', 'false');
+                    var hidden = rest.querySelectorAll('.week-item').length;
+                    var label = function (open) {
+                        return open
+                            ? "Show fewer <i class='bx bx-chevron-down'></i>"
+                            : "Show all " + items.length + " weeks " +
+                              '<span class="weeks-toggle-count">+' + hidden + '</span>' +
+                              " <i class='bx bx-chevron-down'></i>";
+                    };
+                    btn.innerHTML = label(false);
+                    btn.addEventListener('click', function () {
+                        var open = rest.classList.toggle('is-open');
+                        btn.classList.toggle('is-open', open);
+                        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+                        btn.innerHTML = label(open);
+                    });
+                    var fade = document.createElement('div');
+                    fade.className = 'weeks-fade';
+                    box.appendChild(rest);
+                    box.appendChild(fade);
+                    box.appendChild(btn);
+                    box.expandAll = function () { if (!rest.classList.contains('is-open')) btn.click(); };
+                });
+
+                // Arriving from the jump nav must not land on a closed list.
+                function expandFor(hash) {
+                    if (!hash || hash === '#') return;
+                    var sec;
+                    try { sec = document.querySelector(hash); } catch (e) { return; }
+                    if (!sec) return;
+                    var card = sec.nextElementSibling;
+                    for (var i = 0; i < 4 && card; i++, card = card.nextElementSibling) {
+                        var box = card.querySelector && card.querySelector('.module-weeks');
+                        if (box && box.expandAll) { box.expandAll(); return; }
+                    }
+                }
+                expandFor(location.hash);
+                document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+                    a.addEventListener('click', function () { expandFor(a.getAttribute('href')); });
+                });
+            })();
 
             // Re-bind gated links
             document.querySelectorAll('.week-item[data-gated]').forEach(link => {
