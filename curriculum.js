@@ -704,23 +704,23 @@ const TRACK7 = {
     title: "Interfaces",
     totalWeeks: 17,
     weeks: [
-        { phase: "Who holds the scope", n: 1, title: "The shape every track has assumed \u2014 one contract, one Engineer, one programme", short: "The shape every track assumed", status: "upcoming" },
-        { n: 2, title: "How many contracts are there \u2014 the axis nobody teaches", short: "How many contracts are there", status: "upcoming" },
-        { n: 3, title: "EPCM \u2014 instructing people you have no contract with", short: "Instructing without a contract", status: "upcoming" },
-        { n: 4, title: "The Engineer, multiplied \u2014 determination when every package has its own", short: "The Engineer, multiplied", status: "upcoming" },
-        { n: 5, title: "Concurrency without a head contract \u2014 the Special Provisions that do not exist", short: "Concurrency with no head contract", status: "upcoming" },
-        { phase: "When the contractor is plural", n: 6, title: "Joint ventures and consortia \u2014 one face, several sets of books", short: "Joint ventures and consortia", status: "upcoming" },
-        { n: 7, title: "Alliancing, partnering and IPD \u2014 contracts built to suppress claims", short: "Alliancing, partnering and IPD", status: "upcoming" },
-        { phase: "Who decides", n: 8, title: "Governance across organisations \u2014 the decision three companies need", short: "Governance across organisations", status: "upcoming" },
-        { n: 9, title: "When the employer is a vehicle \u2014 PPP, concession and the lender\u2019s adviser", short: "When the employer is a vehicle", status: "upcoming" },
-        { phase: "Where two programmes meet", n: 10, title: "The work in nobody\u2019s scope \u2014 the gap between two risk registers", short: "The work in nobody\u2019s scope", status: "upcoming" },
-        { n: 11, title: "Interface management as a function \u2014 owning a boundary, not reporting one", short: "Interface management", status: "upcoming" },
-        { n: 12, title: "Three programmes, one project \u2014 detail, data dates and calendars that differ", short: "Three programmes, one project", status: "upcoming" },
-        { n: 13, title: "Access, sequencing and the delay that belongs to no one", short: "The delay that belongs to no one", status: "upcoming" },
-        { phase: "The critical path leaves the site", n: 14, title: "Procurement on the critical path \u2014 when the path runs through an order", short: "Procurement on the critical path", status: "upcoming" },
-        { phase: "The number with more than one owner", n: 15, title: "Progress and valuation when two companies both produce it", short: "Progress and valuation collide", status: "upcoming" },
-        { n: 16, title: "The cost that arrives from another company\u2019s ledger", short: "Another company\u2019s ledger", status: "upcoming" },
-        { n: 17, title: "Document control across six firms \u2014 distribution, not transmittals", short: "Document control at scale", status: "upcoming" }
+        { phase: "Who holds the scope", n: 1, title: "The shape every track has assumed \u2014 one contract, one Engineer, one programme", short: "The shape every track assumed", status: "live", page: "interfaces-week-1.html", date: "Mar 21, 2029" },
+        { n: 2, title: "How many contracts are there \u2014 the axis nobody teaches", short: "How many contracts are there", status: "live", page: "interfaces-week-2.html", date: "Mar 28, 2029" },
+        { n: 3, title: "EPCM \u2014 instructing people you have no contract with", short: "Instructing without a contract", status: "live", page: "interfaces-week-3.html", date: "Apr 4, 2029" },
+        { n: 4, title: "The Engineer, multiplied \u2014 determination when every package has its own", short: "The Engineer, multiplied", status: "live", page: "interfaces-week-4.html", date: "Apr 11, 2029" },
+        { n: 5, title: "Concurrency without a head contract \u2014 the Special Provisions that do not exist", short: "Concurrency with no head contract", status: "live", page: "interfaces-week-5.html", date: "Apr 18, 2029" },
+        { phase: "When the contractor is plural", n: 6, title: "Joint ventures and consortia \u2014 one face, several sets of books", short: "Joint ventures and consortia", status: "live", page: "interfaces-week-6.html", date: "Apr 25, 2029" },
+        { n: 7, title: "Alliancing, partnering and IPD \u2014 contracts built to suppress claims", short: "Alliancing, partnering and IPD", status: "live", page: "interfaces-week-7.html", date: "May 2, 2029" },
+        { phase: "Who decides", n: 8, title: "Governance across organisations \u2014 the decision three companies need", short: "Governance across organisations", status: "live", page: "interfaces-week-8.html", date: "May 9, 2029" },
+        { n: 9, title: "When the employer is a vehicle \u2014 PPP, concession and the lender\u2019s adviser", short: "When the employer is a vehicle", status: "live", page: "interfaces-week-9.html", date: "May 16, 2029" },
+        { phase: "Where two programmes meet", n: 10, title: "The work in nobody\u2019s scope \u2014 the gap between two risk registers", short: "The work in nobody\u2019s scope", status: "live", page: "interfaces-week-10.html", date: "May 23, 2029" },
+        { n: 11, title: "Interface management as a function \u2014 owning a boundary, not reporting one", short: "Interface management", status: "live", page: "interfaces-week-11.html", date: "May 30, 2029" },
+        { n: 12, title: "Three programmes, one project \u2014 detail, data dates and calendars that differ", short: "Three programmes, one project", status: "live", page: "interfaces-week-12.html", date: "Jun 6, 2029" },
+        { n: 13, title: "Access, sequencing and the delay that belongs to no one", short: "The delay that belongs to no one", status: "live", page: "interfaces-week-13.html", date: "Jun 13, 2029" },
+        { phase: "The critical path leaves the site", n: 14, title: "Procurement on the critical path \u2014 when the path runs through an order", short: "Procurement on the critical path", status: "live", page: "interfaces-week-14.html", date: "Jun 20, 2029" },
+        { phase: "The number with more than one owner", n: 15, title: "Progress and valuation when two companies both produce it", short: "Progress and valuation collide", status: "live", page: "interfaces-week-15.html", date: "Jun 27, 2029" },
+        { n: 16, title: "The cost that arrives from another company\u2019s ledger", short: "Another company\u2019s ledger", status: "live", page: "interfaces-week-16.html", date: "Jul 4, 2029" },
+        { n: 17, title: "Document control across six firms \u2014 distribution, not transmittals", short: "Document control at scale", status: "live", page: "interfaces-week-17.html", date: "Jul 11, 2029" }
     ],
     get liveCount() { return this.weeks.filter(w => w.status === "live").length; },
     get progressPercent() { return Math.round((this.liveCount / this.totalWeeks) * 100); },
@@ -791,6 +791,9 @@ const LIFECYCLE = {
 
 function renderHomeTrack6()       { return homeCurriculumHTML(TRACK6); }
 function renderHomeTrack6Badge()  { return badgeText(TRACK6); }
+function renderHomeTrack7()       { return homeCurriculumHTML(TRACK7); }
+function renderHomeTrack7Badge()  { return badgeText(TRACK7); }
+function renderHomeTrackLCBadge() { return badgeText(LIFECYCLE); }
 function renderTrack6Curriculum()  { return learnCurriculumHTML(TRACK6); }
 function renderTrack6Sidebar(w)    { return sidebarHTML(TRACK6, w); }
 function renderTrack6Progress()    { return { text: `${TRACK6.liveCount} of ${TRACK6.totalWeeks} published`, percent: TRACK6.progressPercent }; }
