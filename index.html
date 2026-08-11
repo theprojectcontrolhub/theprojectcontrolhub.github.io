@@ -757,7 +757,7 @@
             <div class="hero-right">
                 <div class="latest-header">
                     <h2 class="section-eyebrow">Latest from the series</h2>
-                    <span class="live-badge" id="homeLiveBadge"><span class="dot-green"></span> 69 lessons live</span>
+                    <span class="live-badge" id="homeLiveBadge"><span class="dot-green"></span> 160 lessons live</span>
                 </div>
 
                 <div class="discussion-list" id="homeLatest"></div>
@@ -883,14 +883,15 @@
                 <div class="module-track module-track-locked">
                     <div class="module-track-header">
                         <div class="module-track-left">
-                            <span class="module-number locked">07</span>
+                            <span class="module-number">07</span>
                             <div>
                                 <h3 class="module-title">Interfaces</h3>
                                 <p class="module-desc">What changes when a job has more than one contract and no single chain of command giving the instructions.</p>
                             </div>
                         </div>
-                        <span class="module-status locked-status" id="homeTrack7Badge"><i class='bx bx-map-alt'></i> On the roadmap</span>
+                        <span class="module-status" id="homeTrack7Badge"><span class="dot-green"></span> Complete &#183; 17 weeks</span>
                     </div>
+                    <div class="module-posts" id="homeTrack7"></div>
                 </div>
 
                 <div class="module-track module-track-locked">
@@ -902,7 +903,7 @@
                                 <p class="module-desc">The order the work actually arrives in, from the investment decision to the archive, and which record is born at each stage.</p>
                             </div>
                         </div>
-                        <span class="module-status locked-status" id="homeTrackLCBadge"><i class='bx bx-map-alt'></i> On the roadmap</span>
+                        <span class="module-status locked-status" id="homeTrackLCBadge"><i class='bx bx-time'></i> Starting soon &#183; 36 weeks</span>
                     </div>
                 </div>
 
@@ -1033,7 +1034,7 @@
 
 
     <!-- Curriculum data + home renderers -->
-    <script src="curriculum.js?v=137"></script>
+    <script src="curriculum.js?v=141"></script>
     <script>
         (function() {
             if (typeof CURRICULUM === 'undefined') return;
@@ -1044,14 +1045,28 @@
 
             // Hero live badge
 
-            // Roadmap badges computed from curriculum.js, never typed
-            [['homeTrack7Badge', typeof TRACK7 !== 'undefined' ? TRACK7 : null],
-             ['homeTrackLCBadge', typeof LIFECYCLE !== 'undefined' ? LIFECYCLE : null]].forEach(function (p) {
+            // Roadmap badges. The previous version handled empty and
+            // in-progress and had no case for a finished track, so Interfaces
+            // read "Week 17 of 17" on the day it completed. badgeText covers
+            // all three states and is what every other card already uses.
+            [['homeTrack7Badge', typeof TRACK7 !== 'undefined' ? TRACK7 : null,
+              'homeTrack7', typeof renderHomeTrack7 === 'function' ? renderHomeTrack7 : null],
+             ['homeTrackLCBadge', typeof LIFECYCLE !== 'undefined' ? LIFECYCLE : null, null, null]]
+            .forEach(function (p) {
                 var el = document.getElementById(p[0]), t = p[1];
                 if (!el || !t) return;
-                el.innerHTML = t.liveCount === 0
-                    ? "<i class='bx bx-map-alt'></i> On the roadmap \u00b7 " + t.totalWeeks + " weeks"
-                    : '<span class="dot-green"></span> Week ' + t.latestLiveWeek.n + ' of ' + t.totalWeeks;
+                el.innerHTML = typeof badgeText === 'function'
+                    ? badgeText(t)
+                    : "<i class='bx bx-map-alt'></i> On the roadmap \u00b7 " + t.totalWeeks + " weeks";
+
+                // A track with articles is no longer locked, and its week list fills
+                if (t.liveCount > 0) {
+                    el.classList.remove('locked-status');
+                    var card = el.closest('.module-track');
+                    if (card) card.classList.remove('module-track-locked');
+                    var box = document.getElementById(p[2]);
+                    if (box && p[3]) box.innerHTML = p[3]();
+                }
             });
 
 
