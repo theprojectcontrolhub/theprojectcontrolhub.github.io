@@ -20,7 +20,7 @@ QUICK = "--quick" in sys.argv
 
 TRACKS = {"Schedule": ("week-", 27), "Cost & Cash": ("cost-week-", 24), "Risk": ("risk-week-", 18),
           "Contract": ("contract-week-", 20), "Claims": ("claim-week-", 28),
-          "Reporting": ("reporting-week-", 26), "Interfaces": ("interfaces-week-", 14)}
+          "Reporting": ("reporting-week-", 26), "Interfaces": ("interfaces-week-", 17)}
 # Yayında olan sayfalar. Track 4 parça parça çıkacağı için diskte var olanla
 # sınırlanır; "live ama dosya yok" durumunu check_curriculum ayrıca yakalar.
 PAGES = [f for f in (f"{p}{i}.html" for p, n in TRACKS.values() for i in range(1, n + 1))
@@ -166,6 +166,81 @@ def check_curriculum():
     if "function badgeText" not in js:
         bad("curriculum", "badgeText() yok — rozetler bayatlayabilir")
     return " · ".join(out)
+
+
+
+# --------------------------------------------------------- 8b. stale numbers
+def check_stale():
+    """Numbers written into HTML by hand, compared against curriculum.js.
+
+    Six of these were found and fixed by hand while Reporting was published:
+    the jump-nav week counts, the homepage lesson total, the "latest" list,
+    the learn header, the path-figure state and the scroll-spy threshold.
+    Every one was correct on the day it was typed and wrong from the next
+    publication onwards, and none of the other checks can see them — a link
+    to a page that exists is not broken because the sentence around it lies.
+
+    Only the article number check is exact. The rest are per-track counts,
+    where a figure written on a page has to appear in curriculum.js as a
+    real total or live count for some track.
+    """
+    js = read("curriculum.js")
+    totals, lives = {}, {}
+    for name, (pre, total) in TRACKS.items():
+        totals[name] = total
+        lives[name] = len(re.findall(
+            r'status:\s*"live",\s*page:\s*"' + re.escape(pre) + r'\d+\.html"', js))
+    lessons = sum(lives.values())
+    complete = sum(1 for n in TRACKS if lives[n] and lives[n] >= totals[n])
+    n_tracks = len(re.findall(r"^const (?:CURRICULUM|TRACK\d+|LIFECYCLE) = \{", js, re.M))
+
+    issues = 0
+    for f in ["index.html", "learn.html", "start-here.html"]:
+        if not os.path.exists(f):
+            continue
+        t = prose(f)
+
+        for m in re.finditer(r"(\d+)\s+lessons\b", t):
+            if int(m.group(1)) != lessons:
+                bad("bayat", f"{f} '{m.group(0)}' — curriculum.js {lessons} diyor")
+                issues += 1
+
+        for m in re.finditer(r"Tracks 1[\u2013-](\d+) complete", t):
+            if int(m.group(1)) != complete:
+                bad("bayat", f"{f} '{m.group(0)}' — tamamlanan {complete}")
+                issues += 1
+
+        for m in re.finditer(r"(\d+) tracks\b", t):
+            if int(m.group(1)) != n_tracks:
+                bad("bayat", f"{f} '{m.group(0)}' — curriculum.js {n_tracks} track tanimliyor")
+                issues += 1
+
+        known = set(totals.values()) | set(lives.values())
+        for m in re.finditer(r"(\d+) weeks\b", t):
+            if int(m.group(1)) not in known:
+                bad("bayat", f"{f} '{m.group(0)}' — hicbir track'in hafta sayisi degil")
+                issues += 1
+
+    # an article's own number, in the places it is written out
+    for f in PAGES:
+        m = re.search(r"-(\d+)\.html$", f)
+        if not m:
+            continue
+        n = m.group(1)
+        s_ = read(f)
+        for pat, label in ((r'<span>Week (\d+)<span class="crumb-title"', "breadcrumb"),
+                           (r"REPORTING · WEEK (\d+)", "rozet"),
+                           (r'data-current-week="(\d+)"', "data-current-week")):
+            g = re.search(pat, s_)
+            if g and g.group(1) != n:
+                bad("bayat", f"{f} {label} 'Week {g.group(1)}' diyor")
+                issues += 1
+        for g in re.finditer(r'<a href="[a-z-]*week-(\d+)\.html">Week (\d+)</a>', s_):
+            if g.group(1) != g.group(2):
+                bad("bayat", f"{f} link {g.group(1)} ama metin Week {g.group(2)}")
+                issues += 1
+
+    return "elle yazilan sayilar tutarli" if not issues else f"{issues} bayat sayi"
 
 
 # ----------------------------------------------------------------- 8. canon
@@ -363,7 +438,7 @@ def check_copyright():
 
 CHECKS = [("linkler", check_links), ("etiketler", check_tags), ("zincir", check_chain),
           ("meta", check_meta), ("sitemap", check_sitemap), ("cache", check_cache),
-          ("müfredat", check_curriculum), ("KANON", check_canon), ("atıflar", check_xref),
+          ("müfredat", check_curriculum), ("bayat", check_stale), ("KANON", check_canon), ("atıflar", check_xref),
           ("ses", check_voice)]
 if not QUICK:
     CHECKS.append(("telif", check_copyright))
