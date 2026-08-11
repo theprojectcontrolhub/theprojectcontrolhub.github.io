@@ -702,7 +702,7 @@ const TRACK6 = {
 // where two programmes meet, and the number with more than one owner.
 const TRACK7 = {
     title: "Interfaces",
-    totalWeeks: 14,
+    totalWeeks: 17,
     weeks: [
         { phase: "Who holds the scope", n: 1, title: "The shape every track has assumed \u2014 one contract, one Engineer, one programme", short: "The shape every track assumed", status: "upcoming" },
         { n: 2, title: "How many contracts are there \u2014 the axis nobody teaches", short: "How many contracts are there", status: "upcoming" },
@@ -711,13 +711,16 @@ const TRACK7 = {
         { n: 5, title: "Concurrency without a head contract \u2014 the Special Provisions that do not exist", short: "Concurrency with no head contract", status: "upcoming" },
         { phase: "When the contractor is plural", n: 6, title: "Joint ventures and consortia \u2014 one face, several sets of books", short: "Joint ventures and consortia", status: "upcoming" },
         { n: 7, title: "Alliancing, partnering and IPD \u2014 contracts built to suppress claims", short: "Alliancing, partnering and IPD", status: "upcoming" },
-        { phase: "The critical path leaves the site", n: 8, title: "Procurement on the critical path \u2014 when the path runs through an order", short: "Procurement on the critical path", status: "upcoming" },
-        { phase: "Where two programmes meet", n: 9, title: "The work in nobody\u2019s scope \u2014 the gap between two risk registers", short: "The work in nobody\u2019s scope", status: "upcoming" },
-        { n: 10, title: "Interface management as a function \u2014 owning a boundary, not reporting one", short: "Interface management", status: "upcoming" },
-        { n: 11, title: "Access, sequencing and the delay that belongs to no one", short: "The delay that belongs to no one", status: "upcoming" },
-        { phase: "The number with more than one owner", n: 12, title: "Progress and valuation collide \u2014 two methods, one monthly number", short: "Progress and valuation collide", status: "upcoming" },
-        { n: 13, title: "The cost that arrives from somebody else\u2019s books \u2014 another ledger, another cut-off", short: "Somebody else\u2019s books", status: "upcoming" },
-        { n: 14, title: "Document control at organisational scale \u2014 six firms, one transmittal", short: "Document control at scale", status: "upcoming" }
+        { phase: "Who decides", n: 8, title: "Governance across organisations \u2014 the decision three companies need", short: "Governance across organisations", status: "upcoming" },
+        { n: 9, title: "When the employer is a vehicle \u2014 PPP, concession and the lender\u2019s adviser", short: "When the employer is a vehicle", status: "upcoming" },
+        { phase: "Where two programmes meet", n: 10, title: "The work in nobody\u2019s scope \u2014 the gap between two risk registers", short: "The work in nobody\u2019s scope", status: "upcoming" },
+        { n: 11, title: "Interface management as a function \u2014 owning a boundary, not reporting one", short: "Interface management", status: "upcoming" },
+        { n: 12, title: "Three programmes, one project \u2014 detail, data dates and calendars that differ", short: "Three programmes, one project", status: "upcoming" },
+        { n: 13, title: "Access, sequencing and the delay that belongs to no one", short: "The delay that belongs to no one", status: "upcoming" },
+        { phase: "The critical path leaves the site", n: 14, title: "Procurement on the critical path \u2014 when the path runs through an order", short: "Procurement on the critical path", status: "upcoming" },
+        { phase: "The number with more than one owner", n: 15, title: "Progress and valuation when two companies both produce it", short: "Progress and valuation collide", status: "upcoming" },
+        { n: 16, title: "The cost that arrives from another company\u2019s ledger", short: "Another company\u2019s ledger", status: "upcoming" },
+        { n: 17, title: "Document control across six firms \u2014 distribution, not transmittals", short: "Document control at scale", status: "upcoming" }
     ],
     get liveCount() { return this.weeks.filter(w => w.status === "live").length; },
     get progressPercent() { return Math.round((this.liveCount / this.totalWeeks) * 100); },
