@@ -94,21 +94,60 @@ Measured across the full pool on 2026-07-31.
 | `IPD` | 19 | thin |
 | `document control` | 31 | thin |
 | `transmittal` | 28 | thin |
-| `long lead` | 10 | weak |
+| `long lead` (both spellings) | 12 | weak |
 | `prime contractor` | 22 | weak |
-| `multi-prime` | **0** | absent |
+| `multiprime` / `multiple-prime` | **13** | adequate &mdash; two numbered sections, corrected 2026-08-12 |
 | `revision control` | **0** | absent |
 
 Three consequences:
 
 - **Weeks 1–7 are well sourced.** Delivery models, EPCM, the Engineer, and the
   collaborative forms all have real backing.
-- **Do not build a week on `multi-prime`.** The term does not exist in the
-  corpus. The same subject is reachable through `prime contractor` and
-  `nominated subcontractor`, and it should be written that way.
+- **The `multi-prime` reading was wrong, and the error was in the search.**
+  Re-measured 2026-08-12: the corpus spells it `multiprime` and
+  `multiple-prime`, never with the hyphen that was searched for. Both
+  occurrences are numbered section headings, not passing mentions, and one of
+  them states this track's thesis more directly than anything else in the
+  pool: the employer contracts with each trade, nobody in the chain
+  coordinates anyone, and each prime may run a critical path that differs
+  from the project's. The subject is also reachable through `prime
+  contractor` and `nominated subcontractor` (94, never used), but it does not
+  have to be.
 - **Week 8 (procurement on the critical path) is the weakest sourced.** `long
-  lead` at 10 will not carry it alone. The workaround that worked in Reporting
+  lead` at 12 will not carry it alone. The workaround that worked in Reporting
   is to widen the frame: `purchase order` 27, `expediting` 25, `lead time` 9.
+
+**Method, added 2026-08-12 after the `multi-prime` correction.** Search every
+term three ways &mdash; hyphenated, closed and spaced &mdash; and record the
+sum. One false zero cost this track its best-sourced subject and was only
+found when the articles were compared against the pool after publication. The
+same defect moved `long lead` from 10 to 12. A count that has not been run
+through all three spellings is not a measurement, it is one spelling's
+frequency.
+
+**Terms never measured, added 2026-08-12.** `interface agreement` 35 &middot;
+`expedit*` 119 as a stem, of which `expediting` alone is 18 &middot;
+`nominated subcontractor` 94 &middot; `step-in
+rights` 69 &middot; `SPV`/`project company` 32 &middot; `JV Undertaking` 22
+&middot; `CM at-risk` 16 &middot; `jointly and severally` 15 &middot;
+`back-to-back` 15. The first of those is the instrument week 11 was missing;
+the last three are what week 6 was missing.
+
+**Revised the same day, after weeks 12, 13 and 17 were compared against the
+pool a second time.** Week 12 is not one of these. Its interface milestone has a
+contractual form carried by one of the standard forms, running to 221 occurrences
+across two sources under a name nobody had thought to search &mdash; the third
+false negative of the same kind after `multiprime` and `interface agreement`, and
+the third time the term list rather than the subject was the limit. Week 17 keeps a
+thin position on its own subject, but the horizontal duty to provide information is
+in the pool and is now used. The entry below stands for week 9 alone.
+
+**Weeks written from practice rather than from the pool, recorded 2026-08-12.**
+Week 9. The table above scores what was measured, not what the
+weeks are built on, and it has since been read as if it did the second. The
+adviser the lenders appoint returns 0 under every variant tried. Rule 1 permits an
+article written from memory. It does not permit a record that implies the pool
+backed it.
 
 Worth acquiring before writing weeks 2–4: **FIDIC White Book** (the
 client/consultant appointment, which is where an EPCM manager's authority

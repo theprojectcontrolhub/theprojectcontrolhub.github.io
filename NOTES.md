@@ -337,7 +337,13 @@ a bare *Week 20* is not).
   and entitlement*. Contract Management now takes 4, Claims & Delay Analysis moves
   to 5, Project Controls Leadership to 6. Nothing was written for any of them, so
   the change cost nothing &mdash; that window is now closed
-- **There is no Reporting & Analytics track, on purpose.** Schedule Week 26 already
+- **Superseded 2026-08-12 &mdash; there is no Reporting & Analytics track, on
+  purpose.** There is: Track 6, twenty-six weeks, published. The reasoning below
+  is kept because it is still the right argument against the *shape* that was
+  being refused &mdash; reporting as a stage after the controls work &mdash; and
+  Track 6 was written the other way, from the data model outwards. What was wrong
+  was the conclusion that the subject could not carry a track.
+  Schedule Week 26 already
   is one, and states it better: *one model, six altitudes &mdash; two versions of
   the truth is a system failure*. A separate reporting track would say the opposite,
   that reporting is a stage after the controls work. The genuinely missing pieces
@@ -478,7 +484,14 @@ since the account the track is working from, and any future article touching it 
 which edition. If the two documents are ever obtained, Weeks 9, 11 and 16 are the three
 to revisit.
 
-### Track 6 — the assumptions that stop holding — **next**
+### Track 6 — the assumptions that stop holding — **superseded 2026-08-12**
+
+This plan was written when the next track was going to be numbered 6. It became
+**Track 7, Interfaces**, published 17/17; Track 6 is Reporting. The five subjects
+below map onto it: 1 became weeks 2–4, 2 became week 14, 3 became weeks 10–13,
+4 became weeks 15–16, 5 became week 17. The counts quoted are pre-Reporting and
+pre-Interfaces, so every "still 0 across 117 articles" in this section is now
+false. Kept for the reasoning, which held, and for the framing that was rejected.
 
 **This supersedes the earlier one-line plan** (portfolio data governance, KPI
 thresholds, management by exception). Those were three topics, not a track. The
