@@ -1,0 +1,12 @@
+# Working files. These are not part of the site.
+#
+# The build scripts and notes are written in Turkish, and with 66 of them
+# sitting in the repository root a reader concluded the site itself was a
+# Turkish-language platform. They also contain the canon figures and candid
+# notes on which weeks are weak.
+tools/
+drafts/
+NOTES.md
+*-KICKOFF.md
+*-preview.html
+__pycache__/

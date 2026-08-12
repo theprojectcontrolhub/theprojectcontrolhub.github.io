@@ -1,4 +1,16 @@
 User-agent: *
 Allow: /
 
+# Working files, if they are ever published alongside the site.
+# They are not content: the build scripts and notes are in Turkish,
+# which has already caused this site to be described as a
+# Turkish-language platform. The real fix is keeping them out of
+# the repository; this is the fallback.
+Disallow: /tools/
+Disallow: /drafts/
+Disallow: /NOTES.md
+Disallow: /*-KICKOFF.md
+Disallow: /*-preview.html
+Disallow: /*.py$
+
 Sitemap: https://theprojectcontrolhub.com/sitemap.xml
