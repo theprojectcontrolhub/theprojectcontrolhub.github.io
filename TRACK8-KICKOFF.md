@@ -88,6 +88,15 @@ the week is probably re-telling something.
 
 ---
 
+> **Superseded 2026-08-19 by `TRACK8-SOURCES.md`.** The sources are now on
+> disk and were measured with one stated method. Three of this section's
+> judgements were wrong: performance tests are contract-sourced (*Tests on
+> Completion* 177, *Tests after Completion* 98), demobilisation is
+> contract-sourced (*Clearance of Site*, FIDIC 11.11), and `as-built` was two
+> subjects counted as one. The week list in §4 was rebuilt on the new
+> measurement. This section is kept as written because the addendum argues
+> against it and both arguments matter.
+
 ## 3. The source position — good at both ends, thin in the middle
 
 Measured across the full pool on 2026-08-12.
@@ -149,6 +158,11 @@ during Reporting and neither was bought. They are the difference between a
 commissioning week written from practice and one written from nothing.
 
 ---
+
+> **Superseded 2026-08-19.** `curriculum.js` now carries 39 weeks in eight
+> phases. The five weaknesses listed below were the right list; four of them
+> are settled in `TRACK8-SOURCES.md` §4 and the fifth (forecasting) survives
+> reframed.
 
 ## 4. The proposed 36 weeks
 
@@ -212,24 +226,43 @@ Three questions worth asking before week 7:
   `check_site.py`** — `TRACKS`, `own_pre`, the candidate-prefix tuple in the
   xref check, and `QUAL` (currently tracks 1–7) all need it *before* the first
   article. A half registration cost half a day on Reporting.
-- **Article shape:** unchanged. 1,200–1,700 words, three figures, System
-  design, Practical insight, Key takeaways, Records born here.
+- **Article shape:** unchanged. **1,400–1,600 words**, three figures, System
+  design, Practical insight, Key takeaways, Records born here. This file
+  originally said 1,200–1,700 and `NOTES.md` §5 said 1,400–1,600; settled
+  2026-08-19 in favour of §5, because 160 published articles were written to
+  it and a wider band on track 8 would show as a break in rhythm rather than
+  as freedom.
 - **The data dictionary continues.** Columns fixed: `Record | Produced by |
   Required quality | Verified against | Feeds`. 186 rows exist across Reporting
   and Interfaces; this track extends the same table.
 - **Voice:** contractions 5–9 per thousand, second person in Practical insight
   40–50 per thousand. `check_site.py` reports both.
 - **No figures.** No invented quantities anywhere.
-- **Case study:** the $1M job, re-let as packages for Track 7. For Track 8 it
-  reverts to a single contract unless a week needs otherwise. Decide before
-  week 2, because the front-end weeks describe how it was bought.
+- **Case study — decided 2026-08-19: single contract, one Employer, one
+  Engineer.** The $1M job returns to the shape Tracks 1–6 assumed, and Track
+  7's package re-let is treated as the variant it was. Three reasons, in
+  order of weight. The front-end weeks have to describe *one* investment
+  decision and *one* award, and a packaged job has several of each, which
+  turns weeks 3 to 7 into interface weeks that Track 7 has already written.
+  The finishing weeks turn on a single Taking-Over Certificate and a single
+  Performance Certificate; under packages there is one per package and the
+  argument becomes Track 7's again. And the reader arriving from Interfaces
+  has just spent seventeen weeks on plurality — returning to one contract is
+  what makes the lifecycle visible rather than the boundaries.
+  **The exception is week 32**, taking over in parts, where the whole subject
+  is that one contract produces several handover dates. That is partial
+  taking-over under a single contract, not several contracts, so the case
+  study holds.
 - **Dates:** Interfaces ends 11 Jul 2029. Week 1 would be 18 Jul 2029.
 
 ---
 
 ## 7. Publishing checklist
 
-Copied from what Reporting and Interfaces actually needed, in order.
+**This list and `NOTES.md` §6 are the same list.** They had drifted apart —
+§6 ended at `check_site.py` and this one did not have
+`check_status_strings.py` at all, which the addendum §3 asked for. Merged
+2026-08-19. Change one, change the other, or delete one.
 
 1. Article written to `drafts/`, passing the voice metrics.
 2. `curriculum.js`: `status: "live"`, `page`, `date`. **The list on
@@ -238,12 +271,23 @@ Copied from what Reporting and Interfaces actually needed, in order.
 3. Chain: the previous article's `next-article` block points at the new one.
    Interfaces week 17 currently points at `learn.html`.
 4. `sitemap.xml`.
-5. Cache bump on `curriculum.js?v=` across every page.
-6. `check_site.py --quick`.
-7. `tools/fix_article_meta.py` — see §8.
-8. `drafts/` removed once the articles are at the root.
-
----
+5. Cache bump on `curriculum.js?v=` across every page. Bump with a direct
+   write, not through the build script's `write()` — see `NOTES.md` §6 for
+   why, and verify with `grep -o "curriculum.js?v=[0-9]*" index.html` rather
+   than trusting the console.
+6. `python3 tools/fix_article_meta.py` — breadcrumb, `data-track`, date.
+7. `python3 tools/check_site.py --quick`.
+8. `python3 tools/check_status_strings.py`. The only thing that catches a
+   stale hand-written status string; `start-here.html` sat wrong for three
+   tracks because nothing did.
+9. Run the build script a second time. It must report `0 dosya`.
+   **Only for the newest article.** Each build sets its own `next-article` to
+   `learn.html` and the following week's script repoints it, so re-running an
+   older script always reports `1 dosya` and the pipeline is only stable after
+   the whole sequence has run in order. Verified 2026-08-20: running weeks
+   8, 9, 10 twice gives `1, 1, 0` both times, which is convergence rather
+   than a defect.
+10. `drafts/` removed once the articles are at the root.
 
 ## 8. The defect this project keeps producing
 

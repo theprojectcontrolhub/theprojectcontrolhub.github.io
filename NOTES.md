@@ -221,6 +221,9 @@ H3 "Enjoyed this lesson?"
 1,400–1,600 words
 ```
 
+Binding across all tracks. `TRACK8-KICKOFF.md` §6 said 1,200–1,700 until
+2026-08-19; it now points here.
+
 New articles are built by a Python script that takes the previous week's page as
 a template. **Write those scripts idempotently** — they get run twice more often
 than you would expect, and a second run should be a no-op rather than an error.
@@ -229,13 +232,20 @@ than you would expect, and a second run should be a no-op rather than an error.
 
 ## 6. Publishing a week
 
-1. Build the page from the previous week's template
+**This list and `TRACK8-KICKOFF.md` §7 are the same list.** They drifted
+apart once and the addendum's `check_status_strings.py` line reached only one
+of them. Merged 2026-08-19. Change one, change the other.
+
+1. Build the page from the previous week's template, into `drafts/`
 2. Point the previous week's `next-article` at it
 3. Set the week `live` in `curriculum.js` with `page` and `date`
 4. Add the URL to `sitemap.xml`
 5. Bump `curriculum.js?v=N` across every page
-6. `python3 tools/check_site.py`
-7. Zip
+6. `python3 tools/fix_article_meta.py`
+7. `python3 tools/check_site.py`
+8. `python3 tools/check_status_strings.py`
+9. Run the build script again — it must report `0 dosya`
+10. Zip
 
 Module badges are driven by `badgeText()` in `curriculum.js` and flip to
 "Complete · N weeks" on their own once `liveCount` reaches `totalWeeks`. Do not

@@ -1187,7 +1187,7 @@
 
 
     <!-- Curriculum data + sidebar renderer -->
-    <script src="curriculum.js?v=144"></script>
+    <script src="curriculum.js?v=172"></script>
     <script>
         (function() {
             const el = document.getElementById('seriesSidebar');
@@ -1198,7 +1198,7 @@
             const byTrack = {
                 1: 'renderArticleSidebar', 2: 'renderTrack2Sidebar', 3: 'renderTrack3Sidebar',
                 4: 'renderTrack4Sidebar', 5: 'renderTrack5Sidebar', 6: 'renderTrack6Sidebar',
-                7: 'renderTrack7Sidebar'
+                7: 'renderTrack7Sidebar', 8: 'renderLifecycleSidebar'
             };
             const fn = el && window[byTrack[parseInt(el.getAttribute('data-track'), 10)]];
             if (el && typeof fn === 'function') {
