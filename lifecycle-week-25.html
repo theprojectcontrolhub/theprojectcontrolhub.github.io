@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The change control board, and the risk review that changes something | The Project Control Hub</title>
+    <meta name="description" content="A board decides from papers written by the people affected, sees changes one at a time, and meets at a rate the site does not generate them at.">
+    <link rel="canonical" href="https://theprojectcontrolhub.com/lifecycle-week-25.html">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Open Graph (LinkedIn, Facebook, WhatsApp) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="The Project Control Hub">
+    <meta property="og:title" content="Changes arrive daily. The board meets monthly">
+    <meta property="og:description" content="A board decides from papers written by the people affected, sees changes one at a time, and meets at a rate the site does not generate them at.">
+    <meta property="og:url" content="https://theprojectcontrolhub.com/lifecycle-week-25.html">
+    <meta property="og:image" content="https://theprojectcontrolhub.com/og-image.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Changes arrive daily. The board meets monthly">
+    <meta name="twitter:description" content="A board decides from papers written by the people affected, sees changes one at a time, and meets at a rate the site does not generate them at.">
+    <meta name="twitter:image" content="https://theprojectcontrolhub.com/og-image.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=38">
+    <style>
+        /* PAGE LAYOUT */
+        .content-page {
+            background: var(--bg-light);
+            min-height: 100vh;
+            padding: 40px 0 80px;
+        }
+
+        .content-layout {
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 40px;
+            align-items: start;
+        }
+
+        /* BREADCRUMB */
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 28px;
+        }
+        .breadcrumb a {
+            color: var(--primary-green);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .breadcrumb a:hover { text-decoration: underline; }
+
+        /* ARTICLE */
+        .article-card {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .article-meta {
+            padding: 32px 36px 0;
+        }
+
+        .article-week-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(16,185,129,0.08);
+            color: #059669;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            padding: 5px 14px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(16,185,129,0.15);
+        }
+
+        .article-title {
+            font-size: 30px;
+            font-weight: 800;
+            color: var(--text-dark);
+            line-height: 1.25;
+            letter-spacing: -0.5px;
+            margin-bottom: 20px;
+        }
+
+        .article-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #f1f5f9;
+            margin-bottom: 0;
+        }
+
+        .author-avatar-sm {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #10b981, #059669);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .author-details strong {
+            display: block;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .author-details span {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* VIDEO EMBED */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            background: #0f172a;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-placeholder {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            color: #94a3b8;
+        }
+
+        .video-placeholder i { font-size: 48px; color: #10b981; }
+        .video-placeholder p { font-size: 14px; }
+
+        /* ARTICLE CONTENT */
+        .article-body {
+            padding: 36px 36px 0;
+        }
+
+        .article-body p {
+            font-size: 16px;
+            color: #334155;
+            line-height: 1.85;
+            margin-bottom: 20px;
+        }
+
+        .article-body h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin: 32px 0 16px;
+            letter-spacing: -0.3px;
+        }
+
+        .article-body strong { color: var(--text-dark); }
+
+        .article-body ul {
+            margin: 0 0 20px 20px;
+        }
+
+        .article-body ul li {
+            font-size: 16px;
+            color: #334155;
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        /* PAYWALL BLUR */
+        .content-preview {
+            position: relative;
+        }
+
+        .content-blur {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-blur::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 180px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.95) 60%, #fff 100%);
+            pointer-events: none;
+        }
+
+        .content-locked {
+            display: block;
+        }
+
+        /* PAYWALL CTA */
+        .paywall-cta {
+            padding: 32px 36px 36px;
+            text-align: center;
+            border-top: 1px solid #f1f5f9;
+            margin-top: 0;
+        }
+
+        .paywall-cta h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .paywall-cta p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .btn-google-signin {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            max-width: 340px;
+            padding: 14px 20px;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #1e293b;
+            background: #fff;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .btn-google-signin:hover {
+            border-color: #cbd5e1;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+        }
+
+        .paywall-note {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-top: 12px;
+        }
+
+        /* ARTICLE FOOTER (visible after login) */
+        .article-footer {
+            display: none;
+            padding: 28px 36px 36px;
+            border-top: 1px solid #f1f5f9;
+            margin-top: 8px;
+        }
+
+        .article-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .article-tag {
+            font-size: 13px;
+            color: #10b981;
+            background: rgba(16,185,129,0.08);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        /* SIDEBAR */
+        .content-sidebar {
+            position: sticky;
+            top: 24px;
+        }
+
+        .sidebar-card {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 16px;
+        }
+
+        .sidebar-card-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .sidebar-card-header h4 {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0;
+        }
+
+        .sidebar-series-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 20px;
+            border-bottom: 1px solid #f8fafc;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.15s;
+        }
+
+        .sidebar-series-item:hover { background: #f8fafc; }
+
+        .sidebar-series-item.active {
+            background: rgba(16,185,129,0.04);
+            border-left: 3px solid #10b981;
+        }
+
+        .sidebar-series-item.upcoming {
+            opacity: 0.45;
+            cursor: default;
+            pointer-events: none;
+        }
+
+        .sidebar-week {
+            font-size: 10px;
+            font-weight: 700;
+            color: #10b981;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            min-width: 44px;
+            flex-shrink: 0;
+        }
+
+        .sidebar-series-item.upcoming .sidebar-week { color: #94a3b8; }
+
+        .sidebar-item-title {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-dark);
+            line-height: 1.4;
+            flex: 1;
+        }
+
+        .sidebar-series-item.active .sidebar-item-title {
+            font-weight: 700;
+            color: #059669;
+        }
+
+        .sidebar-new {
+            font-size: 10px;
+            font-weight: 700;
+            color: #fff;
+            background: #10b981;
+            padding: 2px 7px;
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+
+        /* AUTHOR CARD */
+        .author-sidebar-card {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 20px;
+        }
+
+        .author-sidebar-top {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .author-sidebar-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #10b981, #059669);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .author-sidebar-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-dark);
+            display: block;
+        }
+
+        .author-sidebar-title {
+            font-size: 12px;
+            color: var(--text-muted);
+            display: block;
+            margin-top: 2px;
+        }
+
+        .author-sidebar-bio {
+            font-size: 13px;
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .btn-linkedin {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #0a66c2;
+            color: #0a66c2;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        /* MODAL */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+        }
+        .modal-overlay.active { opacity: 1; pointer-events: all; }
+        .modal-box {
+            background: #fff;
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 420px;
+            width: 90%;
+            position: relative;
+            text-align: center;
+        }
+        .close-modal {
+            position: absolute;
+            top: 16px; right: 16px;
+            background: none;
+            border: none;
+            font-size: 22px;
+            color: #94a3b8;
+            cursor: pointer;
+        }
+        .modal-icon-wrapper {
+            width: 56px; height: 56px;
+            background: #ecfdf5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 24px;
+            color: #10b981;
+        }
+        .modal-box h4 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0f172a;
+            margin: 0 0 10px;
+        }
+        .modal-box p {
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.6;
+            margin: 0 0 20px;
+        }
+        .modal-note {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-top: 12px;
+        }
+
+        /* NEXT ARTICLE NAV */
+        .next-article {
+            margin-top: 8px;
+            border-top: 1px solid #f1f5f9;
+            padding: 28px 36px 36px;
+        }
+
+        .next-article-label {
+            display: block;
+            width: 100%;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 14px;
+        }
+
+        .next-article-link {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-decoration: none;
+            padding: 16px 20px;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            transition: all 0.2s;
+        }
+
+        .next-article-link:hover {
+            border-color: #10b981;
+            background: rgba(16,185,129,0.02);
+        }
+
+        .next-week-tag {
+            font-size: 11px;
+            font-weight: 700;
+            color: #10b981;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .next-article-link h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-dark);
+            line-height: 1.4;
+            margin: 0;
+            flex: 1;
+        }
+
+        .next-article-link i {
+            font-size: 22px;
+            color: #10b981;
+            flex-shrink: 0;
+        }
+
+        /* MOBILE */
+        @media (max-width: 1024px) {
+            .content-layout { grid-template-columns: 1fr; }
+            .content-sidebar { position: static; }
+        }
+
+        @media (max-width: 768px) {
+            .content-page { padding: 24px 0 60px; }
+            .content-layout { padding: 0 16px; gap: 24px; }
+            .breadcrumb { font-size: 12px; margin-bottom: 16px; }
+            .article-card { border-radius: 14px; }
+            .article-meta { padding: 20px 18px 0; }
+            .article-week-badge { font-size: 10px; padding: 4px 10px; margin-bottom: 14px; }
+            .article-title { font-size: 20px; margin-bottom: 14px; }
+            .article-author { flex-wrap: wrap; gap: 8px; padding-bottom: 16px; }
+            .author-details strong { font-size: 13px; }
+            .author-details span { font-size: 11px; }
+            .article-body { padding: 18px 18px 0; }
+            .article-body p { font-size: 14px; line-height: 1.75; }
+            .article-body h2 { font-size: 17px; margin: 24px 0 12px; }
+            .article-body ul li { font-size: 14px; }
+            .paywall-cta { padding: 20px 18px 24px; }
+            .paywall-cta h3 { font-size: 17px; }
+            .paywall-cta p { font-size: 13px; }
+            .btn-google-signin { font-size: 14px; padding: 12px 16px; }
+            .article-footer { padding: 16px 18px; }
+            .next-article { padding: 16px 18px 20px; }
+            .next-article-link h4 { font-size: 13px; }
+            .sidebar-card-header { padding: 14px 16px; }
+            .sidebar-series-item { padding: 12px 16px; }
+            .sidebar-item-title { font-size: 12px; }
+            .author-sidebar-card { padding: 16px; }
+            .author-sidebar-bio { font-size: 12px; }
+            .btn-nav-social { display: none !important; }
+        }
+
+        @media (max-width: 480px) {
+            .article-title { font-size: 18px; }
+            .article-body p { font-size: 14px; }
+        }
+            figure svg { width: 100%; height: auto; display: block; }
+        @media (max-width: 768px) { figure { padding: 14px !important; } }
+    .logo-mark{vertical-align:middle;display:inline-block;}
+    </style>
+
+        <!-- Share: copy link -->
+    <script>
+        window.copyArticleLink = function(btn) {
+            const url = "https://theprojectcontrolhub.com/lifecycle-week-25.html";
+            const label = btn.querySelector('i') ? btn.innerHTML : btn.textContent;
+            navigator.clipboard.writeText(url).then(function() {
+                const original = btn.innerHTML;
+                btn.classList.add('copied');
+                btn.innerHTML = "<i class='bx bx-check'></i>" + (btn.textContent.trim() ? " Copied!" : "");
+                setTimeout(function() {
+                    btn.classList.remove('copied');
+                    btn.innerHTML = original;
+                }, 1800);
+            }).catch(function() {
+                // Fallback
+                const t = document.createElement('textarea');
+                t.value = url; document.body.appendChild(t); t.select();
+                try { document.execCommand('copy'); } catch(e) {}
+                document.body.removeChild(t);
+                const original = btn.innerHTML;
+                btn.classList.add('copied');
+                btn.innerHTML = "<i class='bx bx-check'></i>" + (btn.textContent.trim() ? " Copied!" : "");
+                setTimeout(function() { btn.classList.remove('copied'); btn.innerHTML = original; }, 1800);
+            });
+        };
+    </script>
+
+    <!-- Mobile nav toggle — standalone, independent of Firebase -->
+    <script>
+        window.toggleMobileNav = function() {
+            const nav = document.getElementById('mobileNav');
+            const btn = document.getElementById('hamburger');
+            if (!nav) return;
+            nav.classList.toggle('open');
+            if (btn) btn.classList.toggle('open');
+            document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
+        };
+    </script>
+
+    <script type="module">
+        import { signInWithGoogle, logout, onUserChange } from './auth.js';
+
+        let currentUser = null;
+
+        // Prevent auth flash: restore UI instantly from cached state
+        (function() {
+            const hint = localStorage.getItem('pch_auth');
+            let cached = null;
+            try { cached = JSON.parse(hint); } catch(e) {}
+            if (cached && cached.name) {
+                document.getElementById('userMenu').style.display = 'flex';
+                document.getElementById('userName').textContent = cached.name;
+                if (cached.photo) document.getElementById('userAvatar').src = cached.photo;
+            } else {
+                document.getElementById('joinBtn').style.display = 'flex';
+            }
+        })();
+
+        onUserChange((user) => {
+            currentUser = user;
+            const joinBtn = document.getElementById('joinBtn');
+            const userMenu = document.getElementById('userMenu');
+
+            if (user) {
+                localStorage.setItem('pch_auth', JSON.stringify({
+                    name: user.displayName.split(' ')[0],
+                    photo: user.photoURL || ''
+                }));
+                joinBtn.style.display = 'none';
+                userMenu.style.display = 'flex';
+                document.getElementById('userName').textContent = user.displayName.split(' ')[0];
+                if (user.photoURL) document.getElementById('userAvatar').src = user.photoURL;
+                closeModal();
+                unlockContent();
+            } else {
+                localStorage.removeItem('pch_auth');
+                joinBtn.style.display = 'flex';
+                userMenu.style.display = 'none';
+                lockContent();
+            }
+        });
+
+        // Soft paywall: content is always visible. Signed-in users just don't see the invite.
+        function unlockContent() {
+            const cta = document.getElementById('paywallCta');
+            if (cta) cta.style.display = 'none';
+            const footer = document.getElementById('articleFooter');
+            if (footer) footer.style.display = 'block';
+            const next = document.getElementById('nextArticle');
+            if (next) next.style.display = 'flex';
+        }
+
+        function lockContent() {
+            // Content stays open. Show the friendly invite to sign in.
+            const cta = document.getElementById('paywallCta');
+            if (cta) cta.style.display = 'block';
+            const footer = document.getElementById('articleFooter');
+            if (footer) footer.style.display = 'block';
+            const next = document.getElementById('nextArticle');
+            if (next) next.style.display = 'flex';
+        }
+
+        // Sidebar links are open — no gating in soft-paywall mode.
+
+        window.signInWithGoogleBtn = async function() {
+            try {
+                await signInWithGoogle();
+                // On mobile this redirects away; on desktop the popup resolves here.
+            } catch(e) {
+                // Only show an error for genuine failures, not user-cancelled popups.
+                const code = e && e.code ? e.code : '';
+                if (code !== 'auth/popup-closed-by-user' &&
+                    code !== 'auth/cancelled-popup-request') {
+                    alert('Sign in failed. Please try again.');
+                }
+            }
+        };
+
+        window.logoutUser = async function() { await logout(); };
+        window.openModal = function() {
+            document.getElementById('accessModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        };
+
+        window.closeModal = function() {
+            document.getElementById('accessModal').classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('accessModal').addEventListener('click', function(e) {
+                if (e.target === this) closeModal();
+            });
+        });
+    </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The change control board, and the risk review that changes something",
+  "description": "A board decides from papers written by the people affected, sees changes one at a time, and meets at a rate the site does not generate them at.",
+  "inLanguage": "en",
+  "url": "https://theprojectcontrolhub.com/lifecycle-week-25.html",
+  "datePublished": "2030-01-02",
+  "author": {
+    "@type": "Person",
+    "name": "Barış Emre Özçelik",
+    "url": "https://theprojectcontrolhub.com/about.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "The Project Control Hub",
+    "url": "https://theprojectcontrolhub.com/"
+  },
+  "isPartOf": {
+    "@type": "Course",
+    "name": "The Life of a Project",
+    "provider": {
+      "@type": "Organization",
+      "name": "The Project Control Hub"
+    }
+  },
+  "isAccessibleForFree": true
+}
+</script>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+            <a href="index.html" class="logo">
+                <img class="logo-mark" src="logo-icon.png" width="40" height="40" alt="" aria-hidden="true" style="object-fit:contain;">
+                <span translate="no">THE PROJECT CONTROL HUB</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="learn.html">The Life of a Project</a>
+                <a href="about.html">About</a>
+            </div>
+            <div class="nav-actions" style="display:flex;align-items:center;gap:10px;">
+                <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+                <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" class="btn-nav-social" translate="no"><i class='bx bxl-linkedin'></i></a>
+                <button id="joinBtn" class="btn btn-primary" style="display:none;" onclick="openModal()"><i class='bx bx-log-in'></i> Sign In</button>
+                <div id="userMenu" style="display:none;align-items:center;gap:10px;">
+                    <img id="userAvatar" src="" style="width:32px;height:32px;border-radius:50%;object-fit:cover;" alt="avatar">
+                    <span id="userName" style="font-size:14px;font-weight:600;color:var(--text-light);"></span>
+                    <button class="btn btn-primary" onclick="logoutUser()" style="padding:8px 14px;font-size:13px;">Sign Out</button>
+                </div>
+            </div>
+        </nav>
+
+    <section class="hero-section" style="padding-bottom:0;">
+    </section>
+
+    <!-- CONTENT PAGE -->
+    <div class="content-page">
+        <div class="content-layout">
+
+            <!-- LEFT — ARTICLE -->
+            <div>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <i class='bx bx-chevron-right'></i>
+                    <a href="learn.html">Interfaces</a>
+                    <i class='bx bx-chevron-right'></i>
+                    <span>Week 25<span class="crumb-title"> &#183; The change control board</span></span>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-meta">
+                        <div class="article-week-badge">
+                            <span class="dot-green" style="width:6px;height:6px;border-radius:50%;background:#10b981;display:inline-block;"></span>
+                            MODULE 08 · THE LIFE OF A PROJECT · WEEK 25
+                        </div>
+                        <h1 class="article-title">Changes arrive daily. The board meets monthly.</h1>
+                        <div class="article-author">
+                            <div class="author-avatar-sm">BE</div>
+                            <div class="author-details">
+                                <strong translate="no">Barış Emre Özçelik</strong>
+                                <span>Planning & Project Controls Lead · Civil Engineer · PMP® · Jan 2, 2030</span>
+                            </div>
+                            <div style="margin-left:auto;display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-muted);">
+                                <i class='bx bx-time-five'></i> 9 min read
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SHARE BAR (top) -->
+                    <div class="share-bar share-bar-top">
+                        <span class="share-bar-label">Share</span>
+                        <a class="share-btn linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftheprojectcontrolhub.com%2Flifecycle-week-25.html" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><i class='bx bxl-linkedin'></i></a>
+                        <a class="share-btn whatsapp" href="https://wa.me/?text=A%20board%20can%20only%20choose%20between%20the%20options%20somebody%20wrote%20up.%20The%20authority%20is%20in%20who%20decides%20what%20reaches%20the%20agenda%2C%20and%20that%20person%20is%20not%20exercising%20it%20knowingly.%20https%3A%2F%2Ftheprojectcontrolhub.com%2Flifecycle-week-25.html" target="_blank" rel="noopener" aria-label="Share on WhatsApp"><i class='bx bxl-whatsapp'></i></a>
+                        <a class="share-btn x" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftheprojectcontrolhub.com%2Flifecycle-week-25.html&text=A%20board%20can%20only%20choose%20between%20the%20options%20somebody%20wrote%20up.%20The%20authority%20is%20in%20who%20decides%20what%20reaches%20the%20agenda%2C%20and%20that%20person%20is%20not%20exercising%20it%20knowingly." target="_blank" rel="noopener" aria-label="Share on X"><i class='bx bxl-twitter'></i></a>
+                        <button class="share-btn copy" onclick="copyArticleLink(this)" aria-label="Copy link"><i class='bx bx-link'></i></button>
+                    </div>
+
+                    <!-- VIDEO -->
+                    <div class="video-container">
+                        <!-- Replace VIDEO_ID with your YouTube video ID -->
+                        <div class="video-placeholder">
+                            <i class='bx bxl-youtube'></i>
+                            <p>Video coming soon</p>
+                        </div>
+                        <!-- When video is ready, replace above div with:
+                        <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+                        -->
+                    </div>
+
+                    <!-- ARTICLE BODY — PREVIEW (visible to all) -->
+                    <div class="article-body">
+                        <div class="content-preview" id="contentPreview">
+                            <h2 style="margin-top:0;">Changes arrive daily. The board meets monthly</h2>
+                            <p>Somewhere above the individual approvals sits a body that decides the changes nobody else can. It has a membership, a cycle and a set of papers.</p>
+                            <p>The site generates changes continuously. The board processes them in batches, once a month, in a meeting with an agenda somebody had to close a week beforehand.</p>
+                            <p>That rate difference isn&#39;t a fault in the board and won&#39;t be fixed by meeting more often. It&#39;s a property of putting a batch process in front of a continuous one, and everything else in this week follows from it.</p>
+                            <p>The site&#39;s response to the mismatch is the interesting part. Work doesn't stop while a board convenes, so the change gets made and the paper follows it. So some of what a board approves has already been built, and on those items its function has quietly moved from deciding to recording.</p>
+
+                            <!-- LOCKED CONTENT -->
+                            <div class="content-locked">
+                            <h2>The decision is made in the paper</h2>
+                            <p>A board knows what it is told. Its members weren&#39;t present when the change arose, have other jobs, and read the paper shortly before the meeting.</p>
+                            <p>That is the correct arrangement. A board of people who had been present would be a board of people too close to the item to weigh it, which is the thing a board exists to avoid.</p>
+                            <p>So everything that will be decided has already been shaped: which options were listed, how each was described, which consequences were quantified and which were mentioned in a sentence. The person who wrote the paper made all of those choices, and they made most of them without noticing that they were choices.</p>
+                            <p>None of that is manipulation, and treating it as such gets you nowhere. Writing a paper requires selecting, and selecting is deciding. It does mean that the room where the decision looks like it happens is downstream of the room where it actually did.</p>
+
+                                <figure style="margin:36px 0;padding:24px;background:#f8fafc;border-radius:16px;border:1px solid #e2e8f0;">
+                                    <svg viewBox="0 0 640 222" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif"><text x="320" y="26" text-anchor="middle" fill="#10b981" font-size="11.5" font-weight="700" letter-spacing="2">WHERE THE DECIDING HAPPENS</text><rect x="20" y="56" width="268" height="70" rx="10" fill="#ecfdf5" stroke="#a7f3d0"/><text x="154.0" y="80" text-anchor="middle" fill="#047857" font-size="12.5" font-weight="700">Preparing the paper</text><text x="154.0" y="98" text-anchor="middle" fill="#059669" font-size="10.5">options chosen, framing set</text><rect x="352" y="56" width="268" height="70" rx="10" fill="#fff" stroke="#cbd5e1"/><text x="486.0" y="80" text-anchor="middle" fill="#334155" font-size="12.5" font-weight="700">The board</text><text x="486.0" y="98" text-anchor="middle" fill="#64748b" font-size="10.5">picks from what is on the page</text><line x1="288" y1="91" x2="352" y2="91" stroke="#cbd5e1" stroke-width="2"/><text x="320" y="164" text-anchor="middle" fill="#64748b" font-size="11.5">The left box has no delegation limit, no minutes, and no name against it.</text><text x="320" y="190" text-anchor="middle" fill="#64748b" font-size="11.5">Selecting is deciding, and writing a paper requires selecting.</text></svg>
+                                    <figcaption style="margin-top:16px;font-size:13px;color:#64748b;line-height:1.6;">Figure 1 &#8212; Nothing improper is happening on the left. It is what writing a paper consists of, and it is where the range of possible outcomes gets fixed.</figcaption>
+                                </figure>
+
+                                <p></p>
+
+                            <h2>A board can only pick from what it was shown</h2>
+                            <p>Follow that further and it produces the sharpest claim of the week.</p>
+                            <p>A board can approve, reject, defer, or ask for more. What it can't do is choose an option nobody wrote up. The alternative that would have been better, but which the author considered and dismissed on a Tuesday, isn't available in the room &#8212; as far as the meeting is concerned it never existed.</p>
+                            <p>And a board that asks for more information gets more information about the options in front of it. The question that would surface the missing one &#8212; <em>what else did you look at</em> &#8212; has to come from somebody who suspects there was something else.</p>
+                            <p>Which places the real authority with whoever decides what reaches the agenda and in what form. That person can be junior, isn't thinking of themselves as exercising authority, and has no delegation limit governing what they do. The formal structure from <a href="lifecycle-week-25.html">last week</a> measures the value of the decision and says nothing at all about the framing of it.</p>
+
+                            <h2>Seen one at a time, experienced together</h2>
+                            <p>Each paper covers one change. Each change is assessed on its own merits, and a change reaching a board has already survived somebody deciding it was worth writing up, which is a filter of its own.</p>
+                            <p>The site doesn&#39;t experience them one at a time. Twelve approved changes land in the same three months, in overlapping areas, against a programme that absorbed each one on the assumption that the others weren&#39;t happening.</p>
+                            <p>Each of those assumptions was reasonable when it was made. All twelve of them together were never assessed by anybody, because there was no document in which all twelve appear.</p>
+                            <p>No paper covers more than one item, so nothing in the process holds the aggregate. This is the same blindness <a href="lifecycle-week-25.html">week 24</a> found in splitting beneath a threshold, arriving for a different reason: there it was the shape of a limit, here it is the shape of an agenda.</p>
+                            <p>And the aggregate is the thing that matters. Individually approved changes are how a programme becomes undeliverable without any single decision being wrong.</p>
+
+                                <figure style="margin:36px 0;padding:24px;background:#f8fafc;border-radius:16px;border:1px solid #e2e8f0;">
+                                    <svg viewBox="0 0 640 234" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif"><text x="320" y="26" text-anchor="middle" fill="#10b981" font-size="11.5" font-weight="700" letter-spacing="2">SEEN SINGLY, LANDING TOGETHER</text><rect x="24" y="52" width="84" height="34" rx="6" fill="#ecfdf5" stroke="#a7f3d0"/><text x="66" y="74" text-anchor="middle" fill="#047857" font-size="10">approved</text><rect x="124" y="52" width="84" height="34" rx="6" fill="#ecfdf5" stroke="#a7f3d0"/><text x="166" y="74" text-anchor="middle" fill="#047857" font-size="10">approved</text><rect x="224" y="52" width="84" height="34" rx="6" fill="#ecfdf5" stroke="#a7f3d0"/><text x="266" y="74" text-anchor="middle" fill="#047857" font-size="10">approved</text><rect x="324" y="52" width="84" height="34" rx="6" fill="#ecfdf5" stroke="#a7f3d0"/><text x="366" y="74" text-anchor="middle" fill="#047857" font-size="10">approved</text><rect x="424" y="52" width="84" height="34" rx="6" fill="#ecfdf5" stroke="#a7f3d0"/><text x="466" y="74" text-anchor="middle" fill="#047857" font-size="10">approved</text><rect x="524" y="52" width="84" height="34" rx="6" fill="#ecfdf5" stroke="#a7f3d0"/><text x="566" y="74" text-anchor="middle" fill="#047857" font-size="10">approved</text><line x1="66" y1="86" x2="320" y2="140" stroke="#cbd5e1" stroke-width="1"/><line x1="166" y1="86" x2="320" y2="140" stroke="#cbd5e1" stroke-width="1"/><line x1="266" y1="86" x2="320" y2="140" stroke="#cbd5e1" stroke-width="1"/><line x1="366" y1="86" x2="320" y2="140" stroke="#cbd5e1" stroke-width="1"/><line x1="466" y1="86" x2="320" y2="140" stroke="#cbd5e1" stroke-width="1"/><line x1="566" y1="86" x2="320" y2="140" stroke="#cbd5e1" stroke-width="1"/><rect x="180" y="140" width="280" height="56" rx="10" fill="#fef2f2" stroke="#fca5a5"/><text x="320.0" y="164" text-anchor="middle" fill="#b91c1c" font-size="12.5" font-weight="700">one area, one quarter</text><text x="320" y="220" text-anchor="middle" fill="#64748b" font-size="11.5">Each was justified. No paper covered more than one of them.</text></svg>
+                                    <figcaption style="margin-top:16px;font-size:13px;color:#64748b;line-height:1.6;">Figure 2 &#8212; The aggregate is the thing that decides deliverability, and it is the one quantity the process is structurally incapable of producing.</figcaption>
+                                </figure>
+
+                                <p></p>
+
+                            <h2>Approving isn't absorbing</h2>
+                            <p>A board approves scope and cost. It has no mechanism for the other half, and nothing in the paper tells it there is one.</p>
+                            <p>Absorbing a change means resequencing work, revising a package boundary, re-briefing a crew, moving an inspection, possibly re-erecting a scaffold. That work is real, it lands on site, and it carries no paper because the paper stopped at the approval.</p>
+                            <p>It also lands on people who had no part in the decision. The crew being re-briefed wasn't consulted, the supervisor resequencing the week wasn't in the room, and neither of them has a mechanism for saying what it cost.</p>
+                            <p>So the cost recorded against a change is the cost of the change. The cost of accommodating it appears somewhere else entirely, as productivity, and it arrives without a label.</p>
+                            <p>Which is why a project can approve twelve modest changes and find its rates deteriorating for reasons the cost report attributes to labour. The money went where the paper pointed. The disruption went where nothing was pointing.</p>
+
+                            <h2>The other body in the same layer</h2>
+                            <p>Alongside the change board runs the project&#39;s risk review, and <a href="risk-week-16.html">Risk Week 16</a> takes that apart properly &#8212; what makes a trigger visible, how lines actually get closed, and why releasing money is a decision in its own right.</p>
+                            <p>What belongs here is only the relationship between the two. One body decides about things that have happened; the other about things that haven't. They sit in the same governance layer, share members, and are connected by nothing.</p>
+
+                                <figure style="margin:36px 0;padding:24px;background:#f8fafc;border-radius:16px;border:1px solid #e2e8f0;">
+                                    <svg viewBox="0 0 640 212" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif"><text x="320" y="26" text-anchor="middle" fill="#10b981" font-size="11.5" font-weight="700" letter-spacing="2">TWO BODIES, ONE LAYER, NO WIRE</text><rect x="24" y="56" width="264" height="66" rx="10" fill="#fff" stroke="#cbd5e1"/><text x="156.0" y="80" text-anchor="middle" fill="#334155" font-size="12.5" font-weight="700">Change board</text><text x="156.0" y="98" text-anchor="middle" fill="#64748b" font-size="10.5">things that have happened</text><rect x="352" y="56" width="264" height="66" rx="10" fill="#fff" stroke="#cbd5e1"/><text x="484.0" y="80" text-anchor="middle" fill="#334155" font-size="12.5" font-weight="700">Risk review</text><text x="484.0" y="98" text-anchor="middle" fill="#64748b" font-size="10.5">things that haven't</text><line x1="288" y1="89" x2="352" y2="89" stroke="#fca5a5" stroke-width="2" stroke-dasharray="5 4"/><text x="320" y="156" text-anchor="middle" fill="#64748b" font-size="11.5">An approved change alters the risk profile. A risk that lands becomes a change.</text><text x="320" y="182" text-anchor="middle" fill="#dc2626" font-size="11.5">The item crosses by being raised again from nothing.</text></svg>
+                                    <figcaption style="margin-top:16px;font-size:13px;color:#64748b;line-height:1.6;">Figure 3 &#8212; Both bodies are correct and both are well run. The traffic between them has no route, so it travels as a fresh submission each time.</figcaption>
+                                </figure>
+
+                                <p></p>
+                            <p>Which is worth noticing because the traffic between them is real. An approved change alters the risk profile. A risk that materialises becomes a change. Two bodies, both correct, and the item crosses between them by being raised again from scratch.</p>
+                            <p>The cost of that is a fortnight and a repetition, and it falls on items that are by definition the significant ones &#8212; a risk large enough to have been on a register, now real.</p>
+
+                            <h2>System design</h2>
+                            <p>Row three is the entry nobody expects to see in a dictionary of records, and it is the one this week argues for hardest. Closing an agenda decides which changes get decided this month, which is authority by any definition, and it is currently exercised without a name attached.</p>
+                            <table style="width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px;"><thead><tr><th style="text-align:left;padding:9px 12px;background:#f1f5f9;color:#334155;font-weight:700;border-bottom:1px solid #e2e8f0;">Record</th><th style="text-align:left;padding:9px 12px;background:#f1f5f9;color:#334155;font-weight:700;border-bottom:1px solid #e2e8f0;">Produced by</th><th style="text-align:left;padding:9px 12px;background:#f1f5f9;color:#334155;font-weight:700;border-bottom:1px solid #e2e8f0;">Required quality</th><th style="text-align:left;padding:9px 12px;background:#f1f5f9;color:#334155;font-weight:700;border-bottom:1px solid #e2e8f0;">Verified against</th><th style="text-align:left;padding:9px 12px;background:#f1f5f9;color:#334155;font-weight:700;border-bottom:1px solid #e2e8f0;">Feeds</th></tr></thead><tbody><tr><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Board terms of reference</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">The project, at start-up</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">States what the board may decide and what it may not</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">The delegation schedule above it</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">What has to go higher</td></tr><tr><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">The paper</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Whoever prepares it</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Lists the options considered, not only the one recommended</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">What was actually available</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Everything the board can choose from</td></tr><tr><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Agenda decision</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Whoever closes the agenda</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Recorded, because it is an exercise of authority nobody calls one</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">What was raised but held over</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Which changes get decided this month</td></tr><tr><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Cumulative sheet</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">You, after each board</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Cost and programme effect per change, sorted by area</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">The approved papers</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Whether the aggregate is deliverable</td></tr><tr><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Absorption work</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Site, after approval</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Booked against the change rather than against productivity</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">What actually had to be redone</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">The true cost of the change</td></tr></tbody></table>
+                            <p>Row two asks papers to carry the options that were rejected. It costs three lines and it is the only way a board can tell whether it is choosing or ratifying &#8212; and the only way anybody later can see what was available at the time.</p>
+
+                            <h2>Practical insight</h2>
+                            <p>Keep the cumulative sheet yourself. One page, every approved change on it, updated the week after each board sits.</p>
+                            <p>Four columns: what it was, the approved cost, the effect on your programme in days, and the area or package it lands in. Your first two come off the paper. Your second two are yours alone, and nobody else on the project is producing them.</p>
+                            <p>Your fourth column pays before the third does. Sort by area and you see in one glance that six of the last nine changes land in the same part of the works &#8212; a fact about your job that no individual paper could have contained, and one that changes how you sequence.</p>
+                            <p>Then take your sheet to the board once, without a request attached to it. Not to object to anything and not to ask for anything. A board that has approved twelve changes and never seen them on one page will react to seeing them, and that reaction is worth more than any argument you could make about a single item.</p>
+
+                            <h2>Key takeaways</h2>
+                            <ul class="takeaways">
+                            <li>The site generates changes continuously and the board processes them in monthly batches, which is a rate mismatch rather than a fault.</li>
+                            <li>Meeting more often doesn't remove it, because it comes from putting a batch process in front of a continuous one.</li>
+                            <li>A board knows what it is told, and everything decided was shaped when the paper was written.</li>
+                            <li>Writing a paper requires selecting, and selecting is deciding, so the room where the decision looks like it happens is downstream of where it did.</li>
+                            <li>A board can approve, reject, defer or ask for more, and can't choose an option nobody wrote up.</li>
+                            <li>So the real authority is in who decides what reaches the agenda, and that person has no delegation limit governing it.</li>
+                            <li>Each paper covers one change and each is justified on its own merits.</li>
+                            <li>The site experiences twelve of them together, in overlapping areas, against a programme that absorbed each assuming the others were not happening.</li>
+                            <li>Nothing in the process holds the aggregate, which is how a programme becomes undeliverable without any single decision being wrong.</li>
+                            <li>A board approves scope and cost; absorbing the change is separate work with no paper, and it arrives later as productivity.</li>
+                            <li>The change board and the risk review sit in the same layer, share members, and are connected by nothing.</li>
+                            </ul>
+                            <p style="margin-top:22px;padding:14px 18px;background:#f8fafc;border-left:3px solid #10b981;border-radius:0 8px 8px 0;font-size:13.5px;color:#475569;"><strong style="color:#334155;">Records born here.</strong> The board&#8217;s terms of reference and its cycle &#183; each paper, with the options considered and not only the one recommended &#183; who set the agenda &#183; the decision and its date &#183; the cumulative sheet of approved changes, by area &#183; the absorption work each change created, and where it was booked.</p>
+
+                            <h2>What is coming next</h2>
+                            <p>Every one of those approved changes moves a number, and once a month somebody assembles all the numbers into a statement of where the project will end up.</p>
+                            <p>That statement starts as an estimate and becomes something else. At some point in the life of a project the forecast stops being a prediction the team makes and becomes the figure the team is measured against, and nobody announces the moment it changes.</p>
+                            </div>
+                        </div>
+
+                        <!-- NEXT ARTICLE NAV (after login) -->
+                        <div class="next-article" id="nextArticle" style="display:none;">
+                            <div class="next-article-label">Next in this module</div>
+                            <a href="lifecycle-week-26.html" class="next-article-link">
+                                <div>
+                                    <span class="next-week-tag">The Life of a Project &#183; Week 26</span>
+                                    <h4>Forecasting</h4>
+                                </div>
+                                <i class='bx bx-right-arrow-alt'></i>
+                            </a>
+                        </div>
+
+                        <!-- PAYWALL CTA -->
+                        <div class="paywall-cta" id="paywallCta">
+                            <div class="soft-cta-inner">
+                                <h3>Enjoyed this lesson?</h3>
+                                <p>Join with Google to get each new lesson the moment it's published — and help me see which topics matter most to you. No spam, one email a week, unsubscribe anytime.</p>
+                                <button class="btn-google-signin" onclick="signInWithGoogleBtn()">
+                                    <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z" fill="#4285F4"/><path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/><path d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/><path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#EA4335"/></svg>
+                                    Continue with Google
+                                </button>
+                                <p class="modal-note">Already following on LinkedIn works too — this is just for the weekly email.</p>
+                            </div>
+                        </div>
+
+                        <!-- ARTICLE FOOTER (after login) -->
+                        <div class="article-footer" id="articleFooter">
+                            <div class="article-tags">
+                                <span class="article-tag">#ProjectLifecycle</span>
+                                <span class="article-tag">#AsBuilt</span>
+                                <span class="article-tag">#DesignToSite</span>
+                                <span class="article-tag">#ProjectControls</span>
+                            </div>
+                        </div>
+
+                        <!-- SHARE BAR (bottom) -->
+                        <div class="share-bar share-bar-bottom">
+                            <span class="share-bar-heading">Found this useful? Share it with your team.</span>
+                            <div class="share-row">
+                                <a class="share-btn linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftheprojectcontrolhub.com%2Flifecycle-week-25.html" target="_blank" rel="noopener"><i class='bx bxl-linkedin'></i> LinkedIn</a>
+                                <a class="share-btn whatsapp" href="https://wa.me/?text=A%20board%20can%20only%20choose%20between%20the%20options%20somebody%20wrote%20up.%20The%20authority%20is%20in%20who%20decides%20what%20reaches%20the%20agenda%2C%20and%20that%20person%20is%20not%20exercising%20it%20knowingly.%20https%3A%2F%2Ftheprojectcontrolhub.com%2Flifecycle-week-25.html" target="_blank" rel="noopener"><i class='bx bxl-whatsapp'></i> WhatsApp</a>
+                                <a class="share-btn x" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftheprojectcontrolhub.com%2Flifecycle-week-25.html&text=A%20board%20can%20only%20choose%20between%20the%20options%20somebody%20wrote%20up.%20The%20authority%20is%20in%20who%20decides%20what%20reaches%20the%20agenda%2C%20and%20that%20person%20is%20not%20exercising%20it%20knowingly." target="_blank" rel="noopener"><i class='bx bxl-twitter'></i> X</a>
+                                <button class="share-btn copy" onclick="copyArticleLink(this)"><i class='bx bx-link'></i> Copy Link</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT — SIDEBAR -->
+            <aside class="content-sidebar">
+
+                                <!-- SERIES NAV (populated from curriculum.js) -->
+                <div class="sidebar-card" id="seriesSidebar" data-current-week="25" data-track="8"></div>
+
+                <!-- AUTHOR CARD -->
+                <div class="author-sidebar-card">
+                    <div class="author-sidebar-top">
+                        <div class="author-sidebar-avatar">BE</div>
+                        <div>
+                            <span class="author-sidebar-name" translate="no">Barış Emre Özçelik</span>
+                            <span class="author-sidebar-title">Planning & Project Controls Lead · Civil Engineer · PMP®</span>
+                        </div>
+                    </div>
+                    <p class="author-sidebar-bio">8+ years in planning & project controls across nuclear, mining, ports, and high-rise projects — currently on the Akkuyu NPP. Writing about what actually works on site.</p>
+                    <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" class="btn-linkedin" translate="no">
+                        <i class='bx bxl-linkedin'></i> Follow on LinkedIn
+                    </a>
+                </div>
+
+            </aside>
+        </div>
+    </div>
+
+    <!-- ACCESS MODAL -->
+    <div class="modal-overlay" id="accessModal">
+        <div class="modal-box">
+            <button class="close-modal" onclick="closeModal()"><i class='bx bx-x'></i></button>
+            <div class="modal-icon-wrapper">
+                <i class='bx bx-book-open'></i>
+            </div>
+            <h4>Free access to all content</h4>
+            <p>Sign in with Google to read the full series and get notified when new topics are published.</p>
+            <button class="btn-google-signin" onclick="signInWithGoogleBtn()">
+                <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z" fill="#4285F4"/><path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/><path d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/><path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#EA4335"/></svg>
+                Continue with Google
+            </button>
+            <p class="modal-note">No spam. One notification per week when new content drops.</p>
+        </div>
+    </div>
+
+    <!-- MOBILE NAV -->
+    <div class="mobile-nav" id="mobileNav">
+        <button class="mobile-nav-close" onclick="toggleMobileNav()"><i class='bx bx-x'></i></button>
+        <a href="index.html" onclick="toggleMobileNav()">Home</a>
+        <a href="learn.html" onclick="toggleMobileNav()">Learn</a>
+        <a href="about.html" onclick="toggleMobileNav()">About</a>
+        <div class="mobile-nav-bottom">
+            <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" translate="no"><i class='bx bxl-linkedin'></i> LinkedIn</a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-content" style="grid-template-columns: 1fr 1fr;">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <img class="logo-mark" src="logo-icon.png" width="40" height="40" alt="" aria-hidden="true" style="object-fit:contain;">
+                    <span translate="no">THE PROJECT CONTROL HUB</span>
+                </a>
+                <p>Field notes on planning & project controls — by Barış Emre Özçelik, PMP.</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" translate="no"><i class='bx bxl-linkedin'></i></a>
+                </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:16px;">
+                <h4 style="font-size:11px;font-weight:700;letter-spacing:1px;color:#64748b;margin:0;">FOLLOW THE SERIES</h4>
+                <p style="font-size:13px;color:#64748b;margin:0;line-height:1.6;">New content every week — follow along so you don't miss the next topic.</p>
+                <div style="display:flex;gap:10px;">
+                    <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank"
+                       style="display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);color:#cbd5e1;text-decoration:none;font-size:13px;font-weight:600;transition:all 0.2s;" translate="no">
+                        <i class='bx bxl-linkedin' style="font-size:17px;"></i> LinkedIn
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 The Project Control Hub. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+    <!-- Curriculum data + sidebar renderer -->
+    <script src="curriculum.js?v=172"></script>
+    <script>
+        (function() {
+            const el = document.getElementById('seriesSidebar');
+            // The function used to be named here, which meant an article built
+            // from another track's page rendered that track's week list. It is
+            // looked up from data-track instead, so the page cannot disagree
+            // with itself about which track it belongs to.
+            const byTrack = {
+                1: 'renderArticleSidebar', 2: 'renderTrack2Sidebar', 3: 'renderTrack3Sidebar',
+                4: 'renderTrack4Sidebar', 5: 'renderTrack5Sidebar', 6: 'renderTrack6Sidebar',
+                7: 'renderTrack7Sidebar', 8: 'renderLifecycleSidebar'
+            };
+            const fn = el && window[byTrack[parseInt(el.getAttribute('data-track'), 10)]];
+            if (el && typeof fn === 'function') {
+                const currentWeek = parseInt(el.getAttribute('data-current-week'), 10);
+                el.innerHTML = fn(currentWeek);
+                // Re-bind gated links after render
+                el.querySelectorAll('.sidebar-series-item[data-gated]').forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        if (!localStorage.getItem('pch_auth')) {
+                            e.preventDefault();
+                            sessionStorage.setItem('pch_intended', this.href);
+                            if (typeof openModal === 'function') openModal();
+                        }
+                    });
+                });
+            }
+        })();
+    </script>
+
+</body>
+</html>

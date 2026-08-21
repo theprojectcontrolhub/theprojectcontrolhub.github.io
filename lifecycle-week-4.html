@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feasibility — what gets studied, what gets assumed, and which assumption reaches you | The Project Control Hub</title>
+    <meta name="description" content="A feasibility study knows which of its sentences were measured and which were assumed. The tender pack presents both as site data, and the label never comes back.">
+    <link rel="canonical" href="https://theprojectcontrolhub.com/lifecycle-week-4.html">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Open Graph (LinkedIn, Facebook, WhatsApp) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="The Project Control Hub">
+    <meta property="og:title" content="An assumption arrives labelled as data">
+    <meta property="og:description" content="A feasibility study knows which of its sentences were measured and which were assumed. The tender pack presents both as site data, and the label never comes back.">
+    <meta property="og:url" content="https://theprojectcontrolhub.com/lifecycle-week-4.html">
+    <meta property="og:image" content="https://theprojectcontrolhub.com/og-image.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="An assumption arrives labelled as data">
+    <meta name="twitter:description" content="A feasibility study knows which of its sentences were measured and which were assumed. The tender pack presents both as site data, and the label never comes back.">
+    <meta name="twitter:image" content="https://theprojectcontrolhub.com/og-image.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=38">
+    <style>
+        /* PAGE LAYOUT */
+        .content-page {
+            background: var(--bg-light);
+            min-height: 100vh;
+            padding: 40px 0 80px;
+        }
+
+        .content-layout {
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 40px;
+            align-items: start;
+        }
+
+        /* BREADCRUMB */
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 28px;
+        }
+        .breadcrumb a {
+            color: var(--primary-green);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .breadcrumb a:hover { text-decoration: underline; }
+
+        /* ARTICLE */
+        .article-card {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .article-meta {
+            padding: 32px 36px 0;
+        }
+
+        .article-week-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(16,185,129,0.08);
+            color: #059669;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            padding: 5px 14px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(16,185,129,0.15);
+        }
+
+        .article-title {
+            font-size: 30px;
+            font-weight: 800;
+            color: var(--text-dark);
+            line-height: 1.25;
+            letter-spacing: -0.5px;
+            margin-bottom: 20px;
+        }
+
+        .article-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #f1f5f9;
+            margin-bottom: 0;
+        }
+
+        .author-avatar-sm {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #10b981, #059669);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .author-details strong {
+            display: block;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .author-details span {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* VIDEO EMBED */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            background: #0f172a;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-placeholder {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            color: #94a3b8;
+        }
+
+        .video-placeholder i { font-size: 48px; color: #10b981; }
+        .video-placeholder p { font-size: 14px; }
+
+        /* ARTICLE CONTENT */
+        .article-body {
+            padding: 36px 36px 0;
+        }
+
+        .article-body p {
+            font-size: 16px;
+            color: #334155;
+            line-height: 1.85;
+            margin-bottom: 20px;
+        }
+
+        .article-body h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin: 32px 0 16px;
+            letter-spacing: -0.3px;
+        }
+
+        .article-body strong { color: var(--text-dark); }
+
+        .article-body ul {
+            margin: 0 0 20px 20px;
+        }
+
+        .article-body ul li {
+            font-size: 16px;
+            color: #334155;
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        /* PAYWALL BLUR */
+        .content-preview {
+            position: relative;
+        }
+
+        .content-blur {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-blur::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 180px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.95) 60%, #fff 100%);
+            pointer-events: none;
+        }
+
+        .content-locked {
+            display: block;
+        }
+
+        /* PAYWALL CTA */
+        .paywall-cta {
+            padding: 32px 36px 36px;
+            text-align: center;
+            border-top: 1px solid #f1f5f9;
+            margin-top: 0;
+        }
+
+        .paywall-cta h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .paywall-cta p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .btn-google-signin {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            max-width: 340px;
+            padding: 14px 20px;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #1e293b;
+            background: #fff;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .btn-google-signin:hover {
+            border-color: #cbd5e1;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+        }
+
+        .paywall-note {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-top: 12px;
+        }
+
+        /* ARTICLE FOOTER (visible after login) */
+        .article-footer {
+            display: none;
+            padding: 28px 36px 36px;
+            border-top: 1px solid #f1f5f9;
+            margin-top: 8px;
+        }
+
+        .article-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .article-tag {
+            font-size: 13px;
+            color: #10b981;
+            background: rgba(16,185,129,0.08);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        /* SIDEBAR */
+        .content-sidebar {
+            position: sticky;
+            top: 24px;
+        }
+
+        .sidebar-card {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 16px;
+        }
+
+        .sidebar-card-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .sidebar-card-header h4 {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0;
+        }
+
+        .sidebar-series-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 20px;
+            border-bottom: 1px solid #f8fafc;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.15s;
+        }
+
+        .sidebar-series-item:hover { background: #f8fafc; }
+
+        .sidebar-series-item.active {
+            background: rgba(16,185,129,0.04);
+            border-left: 3px solid #10b981;
+        }
+
+        .sidebar-series-item.upcoming {
+            opacity: 0.45;
+            cursor: default;
+            pointer-events: none;
+        }
+
+        .sidebar-week {
+            font-size: 10px;
+            font-weight: 700;
+            color: #10b981;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            min-width: 44px;
+            flex-shrink: 0;
+        }
+
+        .sidebar-series-item.upcoming .sidebar-week { color: #94a3b8; }
+
+        .sidebar-item-title {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-dark);
+            line-height: 1.4;
+            flex: 1;
+        }
+
+        .sidebar-series-item.active .sidebar-item-title {
+            font-weight: 700;
+            color: #059669;
+        }
+
+        .sidebar-new {
+            font-size: 10px;
+            font-weight: 700;
+            color: #fff;
+            background: #10b981;
+            padding: 2px 7px;
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+
+        /* AUTHOR CARD */
+        .author-sidebar-card {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 20px;
+        }
+
+        .author-sidebar-top {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .author-sidebar-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #10b981, #059669);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .author-sidebar-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-dark);
+            display: block;
+        }
+
+        .author-sidebar-title {
+            font-size: 12px;
+            color: var(--text-muted);
+            display: block;
+            margin-top: 2px;
+        }
+
+        .author-sidebar-bio {
+            font-size: 13px;
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .btn-linkedin {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #0a66c2;
+            color: #0a66c2;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        /* MODAL */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+        }
+        .modal-overlay.active { opacity: 1; pointer-events: all; }
+        .modal-box {
+            background: #fff;
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 420px;
+            width: 90%;
+            position: relative;
+            text-align: center;
+        }
+        .close-modal {
+            position: absolute;
+            top: 16px; right: 16px;
+            background: none;
+            border: none;
+            font-size: 22px;
+            color: #94a3b8;
+            cursor: pointer;
+        }
+        .modal-icon-wrapper {
+            width: 56px; height: 56px;
+            background: #ecfdf5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 24px;
+            color: #10b981;
+        }
+        .modal-box h4 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0f172a;
+            margin: 0 0 10px;
+        }
+        .modal-box p {
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.6;
+            margin: 0 0 20px;
+        }
+        .modal-note {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-top: 12px;
+        }
+
+        /* NEXT ARTICLE NAV */
+        .next-article {
+            margin-top: 8px;
+            border-top: 1px solid #f1f5f9;
+            padding: 28px 36px 36px;
+        }
+
+        .next-article-label {
+            display: block;
+            width: 100%;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 14px;
+        }
+
+        .next-article-link {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-decoration: none;
+            padding: 16px 20px;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            transition: all 0.2s;
+        }
+
+        .next-article-link:hover {
+            border-color: #10b981;
+            background: rgba(16,185,129,0.02);
+        }
+
+        .next-week-tag {
+            font-size: 11px;
+            font-weight: 700;
+            color: #10b981;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .next-article-link h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-dark);
+            line-height: 1.4;
+            margin: 0;
+            flex: 1;
+        }
+
+        .next-article-link i {
+            font-size: 22px;
+            color: #10b981;
+            flex-shrink: 0;
+        }
+
+        /* MOBILE */
+        @media (max-width: 1024px) {
+            .content-layout { grid-template-columns: 1fr; }
+            .content-sidebar { position: static; }
+        }
+
+        @media (max-width: 768px) {
+            .content-page { padding: 24px 0 60px; }
+            .content-layout { padding: 0 16px; gap: 24px; }
+            .breadcrumb { font-size: 12px; margin-bottom: 16px; }
+            .article-card { border-radius: 14px; }
+            .article-meta { padding: 20px 18px 0; }
+            .article-week-badge { font-size: 10px; padding: 4px 10px; margin-bottom: 14px; }
+            .article-title { font-size: 20px; margin-bottom: 14px; }
+            .article-author { flex-wrap: wrap; gap: 8px; padding-bottom: 16px; }
+            .author-details strong { font-size: 13px; }
+            .author-details span { font-size: 11px; }
+            .article-body { padding: 18px 18px 0; }
+            .article-body p { font-size: 14px; line-height: 1.75; }
+            .article-body h2 { font-size: 17px; margin: 24px 0 12px; }
+            .article-body ul li { font-size: 14px; }
+            .paywall-cta { padding: 20px 18px 24px; }
+            .paywall-cta h3 { font-size: 17px; }
+            .paywall-cta p { font-size: 13px; }
+            .btn-google-signin { font-size: 14px; padding: 12px 16px; }
+            .article-footer { padding: 16px 18px; }
+            .next-article { padding: 16px 18px 20px; }
+            .next-article-link h4 { font-size: 13px; }
+            .sidebar-card-header { padding: 14px 16px; }
+            .sidebar-series-item { padding: 12px 16px; }
+            .sidebar-item-title { font-size: 12px; }
+            .author-sidebar-card { padding: 16px; }
+            .author-sidebar-bio { font-size: 12px; }
+            .btn-nav-social { display: none !important; }
+        }
+
+        @media (max-width: 480px) {
+            .article-title { font-size: 18px; }
+            .article-body p { font-size: 14px; }
+        }
+            figure svg { width: 100%; height: auto; display: block; }
+        @media (max-width: 768px) { figure { padding: 14px !important; } }
+    .logo-mark{vertical-align:middle;display:inline-block;}
+    </style>
+
+        <!-- Share: copy link -->
+    <script>
+        window.copyArticleLink = function(btn) {
+            const url = "https://theprojectcontrolhub.com/lifecycle-week-4.html";
+            const label = btn.querySelector('i') ? btn.innerHTML : btn.textContent;
+            navigator.clipboard.writeText(url).then(function() {
+                const original = btn.innerHTML;
+                btn.classList.add('copied');
+                btn.innerHTML = "<i class='bx bx-check'></i>" + (btn.textContent.trim() ? " Copied!" : "");
+                setTimeout(function() {
+                    btn.classList.remove('copied');
+                    btn.innerHTML = original;
+                }, 1800);
+            }).catch(function() {
+                // Fallback
+                const t = document.createElement('textarea');
+                t.value = url; document.body.appendChild(t); t.select();
+                try { document.execCommand('copy'); } catch(e) {}
+                document.body.removeChild(t);
+                const original = btn.innerHTML;
+                btn.classList.add('copied');
+                btn.innerHTML = "<i class='bx bx-check'></i>" + (btn.textContent.trim() ? " Copied!" : "");
+                setTimeout(function() { btn.classList.remove('copied'); btn.innerHTML = original; }, 1800);
+            });
+        };
+    </script>
+
+    <!-- Mobile nav toggle — standalone, independent of Firebase -->
+    <script>
+        window.toggleMobileNav = function() {
+            const nav = document.getElementById('mobileNav');
+            const btn = document.getElementById('hamburger');
+            if (!nav) return;
+            nav.classList.toggle('open');
+            if (btn) btn.classList.toggle('open');
+            document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
+        };
+    </script>
+
+    <script type="module">
+        import { signInWithGoogle, logout, onUserChange } from './auth.js';
+
+        let currentUser = null;
+
+        // Prevent auth flash: restore UI instantly from cached state
+        (function() {
+            const hint = localStorage.getItem('pch_auth');
+            let cached = null;
+            try { cached = JSON.parse(hint); } catch(e) {}
+            if (cached && cached.name) {
+                document.getElementById('userMenu').style.display = 'flex';
+                document.getElementById('userName').textContent = cached.name;
+                if (cached.photo) document.getElementById('userAvatar').src = cached.photo;
+            } else {
+                document.getElementById('joinBtn').style.display = 'flex';
+            }
+        })();
+
+        onUserChange((user) => {
+            currentUser = user;
+            const joinBtn = document.getElementById('joinBtn');
+            const userMenu = document.getElementById('userMenu');
+
+            if (user) {
+                localStorage.setItem('pch_auth', JSON.stringify({
+                    name: user.displayName.split(' ')[0],
+                    photo: user.photoURL || ''
+                }));
+                joinBtn.style.display = 'none';
+                userMenu.style.display = 'flex';
+                document.getElementById('userName').textContent = user.displayName.split(' ')[0];
+                if (user.photoURL) document.getElementById('userAvatar').src = user.photoURL;
+                closeModal();
+                unlockContent();
+            } else {
+                localStorage.removeItem('pch_auth');
+                joinBtn.style.display = 'flex';
+                userMenu.style.display = 'none';
+                lockContent();
+            }
+        });
+
+        // Soft paywall: content is always visible. Signed-in users just don't see the invite.
+        function unlockContent() {
+            const cta = document.getElementById('paywallCta');
+            if (cta) cta.style.display = 'none';
+            const footer = document.getElementById('articleFooter');
+            if (footer) footer.style.display = 'block';
+            const next = document.getElementById('nextArticle');
+            if (next) next.style.display = 'flex';
+        }
+
+        function lockContent() {
+            // Content stays open. Show the friendly invite to sign in.
+            const cta = document.getElementById('paywallCta');
+            if (cta) cta.style.display = 'block';
+            const footer = document.getElementById('articleFooter');
+            if (footer) footer.style.display = 'block';
+            const next = document.getElementById('nextArticle');
+            if (next) next.style.display = 'flex';
+        }
+
+        // Sidebar links are open — no gating in soft-paywall mode.
+
+        window.signInWithGoogleBtn = async function() {
+            try {
+                await signInWithGoogle();
+                // On mobile this redirects away; on desktop the popup resolves here.
+            } catch(e) {
+                // Only show an error for genuine failures, not user-cancelled popups.
+                const code = e && e.code ? e.code : '';
+                if (code !== 'auth/popup-closed-by-user' &&
+                    code !== 'auth/cancelled-popup-request') {
+                    alert('Sign in failed. Please try again.');
+                }
+            }
+        };
+
+        window.logoutUser = async function() { await logout(); };
+        window.openModal = function() {
+            document.getElementById('accessModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        };
+
+        window.closeModal = function() {
+            document.getElementById('accessModal').classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('accessModal').addEventListener('click', function(e) {
+                if (e.target === this) closeModal();
+            });
+        });
+    </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Feasibility — what gets studied, what gets assumed, and which assumption reaches you",
+  "description": "A feasibility study knows which of its sentences were measured and which were assumed. The tender pack presents both as site data, and the label never comes back.",
+  "inLanguage": "en",
+  "url": "https://theprojectcontrolhub.com/lifecycle-week-4.html",
+  "datePublished": "2029-08-08",
+  "author": {
+    "@type": "Person",
+    "name": "Barış Emre Özçelik",
+    "url": "https://theprojectcontrolhub.com/about.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "The Project Control Hub",
+    "url": "https://theprojectcontrolhub.com/"
+  },
+  "isPartOf": {
+    "@type": "Course",
+    "name": "The Life of a Project",
+    "provider": {
+      "@type": "Organization",
+      "name": "The Project Control Hub"
+    }
+  },
+  "isAccessibleForFree": true
+}
+</script>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+            <a href="index.html" class="logo">
+                <img class="logo-mark" src="logo-icon.png" width="40" height="40" alt="" aria-hidden="true" style="object-fit:contain;">
+                <span translate="no">THE PROJECT CONTROL HUB</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="learn.html">The Life of a Project</a>
+                <a href="about.html">About</a>
+            </div>
+            <div class="nav-actions" style="display:flex;align-items:center;gap:10px;">
+                <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+                <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" class="btn-nav-social" translate="no"><i class='bx bxl-linkedin'></i></a>
+                <button id="joinBtn" class="btn btn-primary" style="display:none;" onclick="openModal()"><i class='bx bx-log-in'></i> Sign In</button>
+                <div id="userMenu" style="display:none;align-items:center;gap:10px;">
+                    <img id="userAvatar" src="" style="width:32px;height:32px;border-radius:50%;object-fit:cover;" alt="avatar">
+                    <span id="userName" style="font-size:14px;font-weight:600;color:var(--text-light);"></span>
+                    <button class="btn btn-primary" onclick="logoutUser()" style="padding:8px 14px;font-size:13px;">Sign Out</button>
+                </div>
+            </div>
+        </nav>
+
+    <section class="hero-section" style="padding-bottom:0;">
+    </section>
+
+    <!-- CONTENT PAGE -->
+    <div class="content-page">
+        <div class="content-layout">
+
+            <!-- LEFT — ARTICLE -->
+            <div>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <i class='bx bx-chevron-right'></i>
+                    <a href="learn.html">Interfaces</a>
+                    <i class='bx bx-chevron-right'></i>
+                    <span>Week 4<span class="crumb-title"> &#183; Feasibility</span></span>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-meta">
+                        <div class="article-week-badge">
+                            <span class="dot-green" style="width:6px;height:6px;border-radius:50%;background:#10b981;display:inline-block;"></span>
+                            MODULE 08 · THE LIFE OF A PROJECT · WEEK 4
+                        </div>
+                        <h1 class="article-title">An assumption arrives labelled as data.</h1>
+                        <div class="article-author">
+                            <div class="author-avatar-sm">BE</div>
+                            <div class="author-details">
+                                <strong translate="no">Barış Emre Özçelik</strong>
+                                <span>Planning & Project Controls Lead · Civil Engineer · PMP® · Aug 8, 2029</span>
+                            </div>
+                            <div style="margin-left:auto;display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-muted);">
+                                <i class='bx bx-time-five'></i> 9 min read
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SHARE BAR (top) -->
+                    <div class="share-bar share-bar-top">
+                        <span class="share-bar-label">Share</span>
+                        <a class="share-btn linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftheprojectcontrolhub.com%2Flifecycle-week-4.html" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><i class='bx bxl-linkedin'></i></a>
+                        <a class="share-btn whatsapp" href="https://wa.me/?text=The%20study%20knew%20which%20numbers%20it%20had%20measured%20and%20which%20it%20had%20assumed.%20The%20tender%20pack%20calls%20both%20of%20them%20site%20data%2C%20and%20the%20distinction%20never%20comes%20back.%20https%3A%2F%2Ftheprojectcontrolhub.com%2Flifecycle-week-4.html" target="_blank" rel="noopener" aria-label="Share on WhatsApp"><i class='bx bxl-whatsapp'></i></a>
+                        <a class="share-btn x" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftheprojectcontrolhub.com%2Flifecycle-week-4.html&text=The%20study%20knew%20which%20numbers%20it%20had%20measured%20and%20which%20it%20had%20assumed.%20The%20tender%20pack%20calls%20both%20of%20them%20site%20data%2C%20and%20the%20distinction%20never%20comes%20back." target="_blank" rel="noopener" aria-label="Share on X"><i class='bx bxl-twitter'></i></a>
+                        <button class="share-btn copy" onclick="copyArticleLink(this)" aria-label="Copy link"><i class='bx bx-link'></i></button>
+                    </div>
+
+                    <!-- VIDEO -->
+                    <div class="video-container">
+                        <!-- Replace VIDEO_ID with your YouTube video ID -->
+                        <div class="video-placeholder">
+                            <i class='bx bxl-youtube'></i>
+                            <p>Video coming soon</p>
+                        </div>
+                        <!-- When video is ready, replace above div with:
+                        <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+                        -->
+                    </div>
+
+                    <!-- ARTICLE BODY — PREVIEW (visible to all) -->
+                    <div class="article-body">
+                        <div class="content-preview" id="contentPreview">
+                            <h2 style="margin-top:0;">An assumption arrives labelled as data</h2>
+                            <p>A feasibility study is an honest document. It says which things it measured and which it assumed, because the people writing it need that distinction to do their own job — you can't run a sensitivity analysis without knowing which of your inputs is soft.</p>
+                            <p>By the time the same numbers reach a tender pack, they are in a folder called site data, and the folder has one label on it.</p>
+                            <p>This week is about that moment. Not about who pays when the ground turns out different — <a href="risk-week-14.html">Risk Week 14</a> takes the allocation apart across all three standard forms and there is nothing to add to it. The lifecycle question is narrower and comes earlier: at what point did a hedged statement stop being hedged, and who took the hedge off?</p>
+
+                            <!-- LOCKED CONTENT -->
+                            <div class="content-locked">
+                            <h2>What the study was actually for</h2>
+                            <p>The total cost management framework describes feasibility analysis as a step that rates and ranks alternative ideas against criteria the team establishes before it starts rating anything. Cost and value engineers are among those who lead it, and it applies scheduling, estimating and risk work to a scope defined only at conceptual level.</p>
+                            <p>Read that as a job description and one thing stands out: the output is a ranking. The study exists to say <em>this option rather than those options</em>, and everything in it is shaped by that purpose.</p>
+                            <p>An assumption that would be dangerous in a contract can be perfectly sound in a comparison, as long as it is applied evenly to every option. If you assume the same ground for all four sites, the ground assumption doesn't change which site wins. It has done its job. It is also now sitting in a document that will outlive the comparison it was made for.</p>
+
+                            <h2>Two kinds of sentence, and only one of them was tested</h2>
+                            <p>Open any feasibility report and the sentences fall into two classes.</p>
+                            <p>Some describe something somebody went and found: a borehole log, a survey, a metered demand, a quoted tariff. Others describe something the team adopted so the work could continue: a rock head level between two known points, a haul route nobody has driven, a connection date the utility has yet to confirm, a labour rate from a neighbouring region.</p>
+                            <p>The study tests which of the second class matters, by moving each one and seeing what happens to the answer. That test is the most valuable thing in the document and it is the first thing lost, because its output is a statement about <em>uncertainty</em> and the tender pack has no field for one.</p>
+
+                                <figure style="margin:36px 0;padding:24px;background:#f8fafc;border-radius:16px;border:1px solid #e2e8f0;">
+                                    <svg viewBox="0 0 640 224" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif"><text x="320" y="26" text-anchor="middle" fill="#10b981" font-size="11.5" font-weight="700" letter-spacing="2">TWO CLASSES OF STATEMENT, ONE FOLDER</text><rect x="24" y="54" width="264" height="62" rx="10" fill="#ecfdf5" stroke="#a7f3d0"/><text x="156.0" y="78" text-anchor="middle" fill="#047857" font-size="12.5" font-weight="700">Measured</text><text x="156.0" y="96" text-anchor="middle" fill="#059669" font-size="10.5">borehole &#183; survey &#183; tariff</text><rect x="352" y="54" width="264" height="62" rx="10" fill="#fef2f2" stroke="#fca5a5"/><text x="484.0" y="78" text-anchor="middle" fill="#b91c1c" font-size="12.5" font-weight="700">Assumed</text><text x="484.0" y="96" text-anchor="middle" fill="#dc2626" font-size="10.5">rock head &#183; haul route &#183; rate</text><line x1="156" y1="116" x2="290" y2="152" stroke="#cbd5e1" stroke-width="2"/><line x1="484" y1="116" x2="350" y2="152" stroke="#cbd5e1" stroke-width="2"/><rect x="220" y="152" width="200" height="46" rx="10" fill="#fff" stroke="#cbd5e1"/><text x="320.0" y="176" text-anchor="middle" fill="#334155" font-size="12.5" font-weight="700">Site data</text><text x="320" y="216" text-anchor="middle" fill="#64748b" font-size="11.5">One label. The class of each statement is no longer recorded anywhere.</text></svg>
+                                    <figcaption style="margin-top:16px;font-size:13px;color:#64748b;line-height:1.6;">Figure 1 &#8212; The distinction exists in the study because the study needs it. It has no carrier downstream, so it isn't deleted &#8212; it is simply not passed on.</figcaption>
+                                </figure>
+
+                                <p></p>
+
+                            <h2>Where the label comes off</h2>
+                            <p>The path is short and nobody on it does anything wrong.</p>
+                            <p>The study is written with its hedges intact. The design consultant appointed afterwards works from its conclusions, because the conclusions are what was approved. Their drawings carry a level, a route, a rate — not a range, because a drawing can't carry a range. The tender documents then assemble what is available about the site and issue it as information, which under the standard forms is exactly what the Employer is required to do.</p>
+                            <p>At no point does anybody delete a caveat. The caveat simply has nowhere to go at each step, and after three steps it is gone.</p>
+
+                                <figure style="margin:36px 0;padding:24px;background:#f8fafc;border-radius:16px;border:1px solid #e2e8f0;">
+                                    <svg viewBox="0 0 640 210" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif"><text x="320" y="26" text-anchor="middle" fill="#10b981" font-size="11.5" font-weight="700" letter-spacing="2">THREE ORDINARY STEPS</text><rect x="14" y="58" width="190" height="66" rx="10" fill="#ecfdf5" stroke="#a7f3d0"/><text x="109.0" y="82" text-anchor="middle" fill="#047857" font-size="12.5" font-weight="700">Study</text><text x="109.0" y="100" text-anchor="middle" fill="#059669" font-size="10.5">hedges intact</text><rect x="226" y="58" width="190" height="66" rx="10" fill="#fff" stroke="#cbd5e1"/><text x="321.0" y="82" text-anchor="middle" fill="#334155" font-size="12.5" font-weight="700">Reference design</text><text x="321.0" y="100" text-anchor="middle" fill="#64748b" font-size="10.5">a level, not a range</text><rect x="438" y="58" width="188" height="66" rx="10" fill="#fef2f2" stroke="#fca5a5"/><text x="532.0" y="82" text-anchor="middle" fill="#b91c1c" font-size="12.5" font-weight="700">Tender pack</text><text x="532.0" y="100" text-anchor="middle" fill="#dc2626" font-size="10.5">issued as information</text><line x1="204" y1="91" x2="226" y2="91" stroke="#cbd5e1" stroke-width="2"/><line x1="416" y1="91" x2="438" y2="91" stroke="#cbd5e1" stroke-width="2"/><text x="320" y="164" text-anchor="middle" fill="#64748b" font-size="11.5">Each handover is correct. The caveat has no field in the next document.</text></svg>
+                                    <figcaption style="margin-top:16px;font-size:13px;color:#64748b;line-height:1.6;">Figure 2 &#8212; No step in this chain is a mistake, which is why looking for the person who removed the hedge never finds one.</figcaption>
+                                </figure>
+
+                                <p></p>
+                            <p>This matters for how the problem gets investigated later. When a condition turns out different and somebody goes looking for the origin of the number, the search assumes there was a decision to find. There was none. There were three transfers between document types, each of which preserved everything the receiving format was capable of holding.</p>
+                            <p>Which is also why the defence is a format rather than a person. Nobody needs to be more careful. Something downstream needs a field the caveat can survive in.</p>
+
+                            <h2>What the contract deems, and what it never asks</h2>
+                            <p>The Employer makes site data available. The Contractor is then made responsible for interpreting all of it, is deemed to have inspected the site and satisfied itself before tendering, and the accepted price is deemed to have been based on that interpretation. That is the architecture, and it is the same architecture in all three books with the balance shifted.</p>
+                            <p>What the contract doesn't ask, anywhere, is which of the data was measured.</p>
+                            <p>That silence is deliberate and defensible. A contract allocates a risk; it doesn't audit the provenance of every figure it hands over, and a form that tried to would be unusable. But the consequence is that the class of a statement stops being recorded at precisely the point where money attaches to it, and from that point onwards it can only be reconstructed by argument.</p>
+                            <p>Foreseeability is judged against what an experienced contractor could reasonably have worked out as at the Base Date — and the Base Date, from <a href="lifecycle-week-2.html">week 2</a>, sits 28 days before tenders are due. So the test is applied to a moment when the only thing in existence was the study and whatever the tender pack had made of it. An assumption made three years earlier, for a comparison that is finished and forgotten, is the material the reasonable contractor is deemed to have reasoned from.</p>
+
+                            <h2>Putting the label back on</h2>
+                            <p>There is an instrument for this and it is well established in tunnelling and heavy civils. A geotechnical baseline report states, as a contractual reference, what the ground is to be taken to be. Not what it is — what it is <em>deemed</em> to be for pricing. Encounter something worse and the departure is measurable against a stated line rather than argued against a folder.</p>
+                            <p>The international contract law literature records a case where the whole baseline came down to ten key parameters in a simple table, and singles out that clarity as what made it work. Ten rows. The instrument isn't expensive; it is unusual.</p>
+
+                                <figure style="margin:36px 0;padding:24px;background:#f8fafc;border-radius:16px;border:1px solid #e2e8f0;">
+                                    <svg viewBox="0 0 640 216" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif"><text x="320" y="26" text-anchor="middle" fill="#10b981" font-size="11.5" font-weight="700" letter-spacing="2">A FOLDER, OR A LINE TO MEASURE FROM</text><rect x="24" y="56" width="264" height="68" rx="10" fill="#fef2f2" stroke="#fca5a5"/><text x="156.0" y="80" text-anchor="middle" fill="#b91c1c" font-size="12.5" font-weight="700">Site data</text><text x="156.0" y="98" text-anchor="middle" fill="#dc2626" font-size="10.5">argue about what it implied</text><rect x="352" y="56" width="264" height="68" rx="10" fill="#ecfdf5" stroke="#a7f3d0"/><text x="484.0" y="80" text-anchor="middle" fill="#047857" font-size="12.5" font-weight="700">Stated baseline</text><text x="484.0" y="98" text-anchor="middle" fill="#059669" font-size="10.5">measure the departure</text><text x="320" y="160" text-anchor="middle" fill="#64748b" font-size="11.5">Same investigation. The difference is whether a number was declared to price against.</text><text x="320" y="186" text-anchor="middle" fill="#64748b" font-size="11.5">Allocation is still a separate question, and it belongs to Risk Week 14.</text></svg>
+                                    <figcaption style="margin-top:16px;font-size:13px;color:#64748b;line-height:1.6;">Figure 3 &#8212; A baseline doesn't decide who pays. It decides whether the argument has a measurable subject, which is a different and earlier problem.</figcaption>
+                                </figure>
+
+                                <p></p>
+                            <p>And its real function is the one this week is about. A baseline is a place to write down the assumption, at the only moment when writing it down still costs nothing.</p>
+
+                            <h2>System design</h2>
+                            <p>The second row is the one the current project management standard names outright and the industry mostly doesn't keep. An assumption register is a list of sentences that aren't yet true, each with the thing that would settle it &#8212; and it is the only record in this table whose value goes up the longer the project runs.</p>
+                            <table style="width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px;"><thead><tr><th style="text-align:left;padding:9px 12px;background:#f1f5f9;color:#334155;font-weight:700;border-bottom:1px solid #e2e8f0;">Record</th><th style="text-align:left;padding:9px 12px;background:#f1f5f9;color:#334155;font-weight:700;border-bottom:1px solid #e2e8f0;">Produced by</th><th style="text-align:left;padding:9px 12px;background:#f1f5f9;color:#334155;font-weight:700;border-bottom:1px solid #e2e8f0;">Required quality</th><th style="text-align:left;padding:9px 12px;background:#f1f5f9;color:#334155;font-weight:700;border-bottom:1px solid #e2e8f0;">Verified against</th><th style="text-align:left;padding:9px 12px;background:#f1f5f9;color:#334155;font-weight:700;border-bottom:1px solid #e2e8f0;">Feeds</th></tr></thead><tbody><tr><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Feasibility report</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">The study team, before appointment</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Every input marked measured or assumed, and the mark carried forward</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">The investigations behind it</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">The case &#183; the reference design</td></tr><tr><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Assumption register</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">The same team, as it works</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">One line per assumption: who adopted it, when, and what would disprove it</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">The document the figure came from</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Sensitivity &#183; the baseline &#183; your queries</td></tr><tr><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Sensitivity result</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Feasibility analysis</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Names which assumptions the answer actually turns on</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">The ranking it was testing</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Where investigation money should go</td></tr><tr><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Site investigation report</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">The Employer, before tender</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Extent and date stated, so gaps are visible as gaps</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">The physical ground</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Site data &#183; the tender price</td></tr><tr><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Baseline of record</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">The Employer, in the tender documents</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">States the parameter that governs, in a form a departure can be measured against</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">The investigation it rests on</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Pricing &#183; every later argument about conditions</td></tr></tbody></table>
+                            <p>Read the <em>Required quality</em> column on rows one and two together. Both ask for the same discipline: mark the class of the statement, and carry the mark. Neither costs anything at the time, and after award neither can be reconstructed.</p>
+
+                            <h2>Practical insight</h2>
+                            <p>Ask for the feasibility study, and ask for it differently from how you asked for the business case last week. The business case is commercially sensitive and you may be refused. A ground investigation report or a route study sits in a different category, and the request is ordinary.</p>
+                            <p>What you are looking for isn't the conclusions. It is the section where the study says what it assumed, and the sensitivity work if there is any. Those two pages tell you which numbers in your tender pack have something behind them, and which are somebody&#39;s reasonable adoption from years before you were appointed.</p>
+                            <p>Then do the cheap thing. Take the five or six inputs that most affect your programme — ground, access, a utility connection, a permit, a delivery route — and for each one write one line saying where the figure came from and whether anybody measured it. Half will trace to a document. The rest will trace to nothing you can find, and those are the ones to raise while raising them is still a clarification rather than a claim. That list is your week-four deliverable and nobody else on your job will produce it.</p>
+                            <p>You won't get this done in month nine. The window is the first six weeks, when asking where a number came from still reads as somebody getting up to speed.</p>
+
+                            <h2>Key takeaways</h2>
+                            <ul class="takeaways">
+                            <li>A feasibility study distinguishes what it measured from what it assumed, because it needs that distinction to test its own answer.</li>
+                            <li>The study exists to rank options against criteria set beforehand, so an assumption applied evenly to every option is sound for that purpose.</li>
+                            <li>The same assumption isn't sound as a contract input, and nothing in the process marks the change of purpose.</li>
+                            <li>Sensitivity work is the most valuable thing in the study and the first thing lost, because its output is a statement about uncertainty.</li>
+                            <li>The label comes off in three ordinary steps &#8212; conclusions approved, drawings drawn, data issued &#8212; and nobody deletes a caveat at any of them.</li>
+                            <li>The Employer makes site data available; the Contractor is made responsible for interpreting it and the price is deemed to rest on that interpretation.</li>
+                            <li>The contract never asks which of the data was measured, so the class of a statement stops being recorded at exactly the point money attaches to it.</li>
+                            <li>Foreseeability is judged as at the Base Date, from material an earlier study produced for a different purpose.</li>
+                            <li>A baseline states what the ground is deemed to be for pricing, which makes a departure measurable instead of arguable.</li>
+                            <li>Writing an assumption down is free while it is still an assumption and expensive afterwards.</li>
+                            </ul>
+                            <p style="margin-top:22px;padding:14px 18px;background:#f8fafc;border-left:3px solid #10b981;border-radius:0 8px 8px 0;font-size:13.5px;color:#475569;"><strong style="color:#334155;">Records born here.</strong> The feasibility report and its assumption register &#183; the alternatives compared and why one won &#183; the sensitivity result &#183; the site investigation report &#183; the basis of estimate &#183; the baseline stating which parameter governs.</p>
+
+                            <h2>What is coming next</h2>
+                            <p>The study didn't simply end. It was presented at a gate, and somebody with authority decided it was complete enough to spend the next tranche against.</p>
+                            <p>Those gates come with a price attached — each one is expected to produce an estimate of a stated accuracy, and the accuracy tightens as the gates pass. The number you will be handed at award has a class, that class was fixed at a meeting held before your company was on anybody&#39;s list, and it is the reason a variance can appear in month three that nobody on the job caused.</p>
+                            </div>
+                        </div>
+
+                        <!-- NEXT ARTICLE NAV (after login) -->
+                        <div class="next-article" id="nextArticle" style="display:none;">
+                            <div class="next-article-label">Next in this module</div>
+                            <a href="lifecycle-week-5.html" class="next-article-link">
+                                <div>
+                                    <span class="next-week-tag">The Life of a Project &#183; Week 5</span>
+                                    <h4>The stage gate you never attended</h4>
+                                </div>
+                                <i class='bx bx-right-arrow-alt'></i>
+                            </a>
+                        </div>
+
+                        <!-- PAYWALL CTA -->
+                        <div class="paywall-cta" id="paywallCta">
+                            <div class="soft-cta-inner">
+                                <h3>Enjoyed this lesson?</h3>
+                                <p>Join with Google to get each new lesson the moment it's published — and help me see which topics matter most to you. No spam, one email a week, unsubscribe anytime.</p>
+                                <button class="btn-google-signin" onclick="signInWithGoogleBtn()">
+                                    <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z" fill="#4285F4"/><path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/><path d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/><path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#EA4335"/></svg>
+                                    Continue with Google
+                                </button>
+                                <p class="modal-note">Already following on LinkedIn works too — this is just for the weekly email.</p>
+                            </div>
+                        </div>
+
+                        <!-- ARTICLE FOOTER (after login) -->
+                        <div class="article-footer" id="articleFooter">
+                            <div class="article-tags">
+                                <span class="article-tag">#ProjectLifecycle</span>
+                                <span class="article-tag">#AsBuilt</span>
+                                <span class="article-tag">#DesignToSite</span>
+                                <span class="article-tag">#ProjectControls</span>
+                            </div>
+                        </div>
+
+                        <!-- SHARE BAR (bottom) -->
+                        <div class="share-bar share-bar-bottom">
+                            <span class="share-bar-heading">Found this useful? Share it with your team.</span>
+                            <div class="share-row">
+                                <a class="share-btn linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftheprojectcontrolhub.com%2Flifecycle-week-4.html" target="_blank" rel="noopener"><i class='bx bxl-linkedin'></i> LinkedIn</a>
+                                <a class="share-btn whatsapp" href="https://wa.me/?text=The%20study%20knew%20which%20numbers%20it%20had%20measured%20and%20which%20it%20had%20assumed.%20The%20tender%20pack%20calls%20both%20of%20them%20site%20data%2C%20and%20the%20distinction%20never%20comes%20back.%20https%3A%2F%2Ftheprojectcontrolhub.com%2Flifecycle-week-4.html" target="_blank" rel="noopener"><i class='bx bxl-whatsapp'></i> WhatsApp</a>
+                                <a class="share-btn x" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftheprojectcontrolhub.com%2Flifecycle-week-4.html&text=The%20study%20knew%20which%20numbers%20it%20had%20measured%20and%20which%20it%20had%20assumed.%20The%20tender%20pack%20calls%20both%20of%20them%20site%20data%2C%20and%20the%20distinction%20never%20comes%20back." target="_blank" rel="noopener"><i class='bx bxl-twitter'></i> X</a>
+                                <button class="share-btn copy" onclick="copyArticleLink(this)"><i class='bx bx-link'></i> Copy Link</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT — SIDEBAR -->
+            <aside class="content-sidebar">
+
+                                <!-- SERIES NAV (populated from curriculum.js) -->
+                <div class="sidebar-card" id="seriesSidebar" data-current-week="4" data-track="8"></div>
+
+                <!-- AUTHOR CARD -->
+                <div class="author-sidebar-card">
+                    <div class="author-sidebar-top">
+                        <div class="author-sidebar-avatar">BE</div>
+                        <div>
+                            <span class="author-sidebar-name" translate="no">Barış Emre Özçelik</span>
+                            <span class="author-sidebar-title">Planning & Project Controls Lead · Civil Engineer · PMP®</span>
+                        </div>
+                    </div>
+                    <p class="author-sidebar-bio">8+ years in planning & project controls across nuclear, mining, ports, and high-rise projects — currently on the Akkuyu NPP. Writing about what actually works on site.</p>
+                    <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" class="btn-linkedin" translate="no">
+                        <i class='bx bxl-linkedin'></i> Follow on LinkedIn
+                    </a>
+                </div>
+
+            </aside>
+        </div>
+    </div>
+
+    <!-- ACCESS MODAL -->
+    <div class="modal-overlay" id="accessModal">
+        <div class="modal-box">
+            <button class="close-modal" onclick="closeModal()"><i class='bx bx-x'></i></button>
+            <div class="modal-icon-wrapper">
+                <i class='bx bx-book-open'></i>
+            </div>
+            <h4>Free access to all content</h4>
+            <p>Sign in with Google to read the full series and get notified when new topics are published.</p>
+            <button class="btn-google-signin" onclick="signInWithGoogleBtn()">
+                <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z" fill="#4285F4"/><path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/><path d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/><path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#EA4335"/></svg>
+                Continue with Google
+            </button>
+            <p class="modal-note">No spam. One notification per week when new content drops.</p>
+        </div>
+    </div>
+
+    <!-- MOBILE NAV -->
+    <div class="mobile-nav" id="mobileNav">
+        <button class="mobile-nav-close" onclick="toggleMobileNav()"><i class='bx bx-x'></i></button>
+        <a href="index.html" onclick="toggleMobileNav()">Home</a>
+        <a href="learn.html" onclick="toggleMobileNav()">Learn</a>
+        <a href="about.html" onclick="toggleMobileNav()">About</a>
+        <div class="mobile-nav-bottom">
+            <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" translate="no"><i class='bx bxl-linkedin'></i> LinkedIn</a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-content" style="grid-template-columns: 1fr 1fr;">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <img class="logo-mark" src="logo-icon.png" width="40" height="40" alt="" aria-hidden="true" style="object-fit:contain;">
+                    <span translate="no">THE PROJECT CONTROL HUB</span>
+                </a>
+                <p>Field notes on planning & project controls — by Barış Emre Özçelik, PMP.</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" translate="no"><i class='bx bxl-linkedin'></i></a>
+                </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:16px;">
+                <h4 style="font-size:11px;font-weight:700;letter-spacing:1px;color:#64748b;margin:0;">FOLLOW THE SERIES</h4>
+                <p style="font-size:13px;color:#64748b;margin:0;line-height:1.6;">New content every week — follow along so you don't miss the next topic.</p>
+                <div style="display:flex;gap:10px;">
+                    <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank"
+                       style="display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);color:#cbd5e1;text-decoration:none;font-size:13px;font-weight:600;transition:all 0.2s;" translate="no">
+                        <i class='bx bxl-linkedin' style="font-size:17px;"></i> LinkedIn
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 The Project Control Hub. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+    <!-- Curriculum data + sidebar renderer -->
+    <script src="curriculum.js?v=172"></script>
+    <script>
+        (function() {
+            const el = document.getElementById('seriesSidebar');
+            // The function used to be named here, which meant an article built
+            // from another track's page rendered that track's week list. It is
+            // looked up from data-track instead, so the page cannot disagree
+            // with itself about which track it belongs to.
+            const byTrack = {
+                1: 'renderArticleSidebar', 2: 'renderTrack2Sidebar', 3: 'renderTrack3Sidebar',
+                4: 'renderTrack4Sidebar', 5: 'renderTrack5Sidebar', 6: 'renderTrack6Sidebar',
+                7: 'renderTrack7Sidebar', 8: 'renderLifecycleSidebar'
+            };
+            const fn = el && window[byTrack[parseInt(el.getAttribute('data-track'), 10)]];
+            if (el && typeof fn === 'function') {
+                const currentWeek = parseInt(el.getAttribute('data-current-week'), 10);
+                el.innerHTML = fn(currentWeek);
+                // Re-bind gated links after render
+                el.querySelectorAll('.sidebar-series-item[data-gated]').forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        if (!localStorage.getItem('pch_auth')) {
+                            e.preventDefault();
+                            sessionStorage.setItem('pch_intended', this.href);
+                            if (typeof openModal === 'function') openModal();
+                        }
+                    });
+                });
+            }
+        })();
+    </script>
+
+</body>
+</html>

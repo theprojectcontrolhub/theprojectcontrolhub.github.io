@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The week, day by day — one workable rhythm, and who hands over each constraint | The Project Control Hub</title>
+    <meta name="description" content="Every function runs its own weekly cycle and nobody set them relative to each other. A constraint's elapsed time is the sum of the waits for each next cycle, not the sum of the work.">
+    <link rel="canonical" href="https://theprojectcontrolhub.com/lifecycle-week-22.html">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Open Graph (LinkedIn, Facebook, WhatsApp) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="The Project Control Hub">
+    <meta property="og:title" content="Monday was decided last Thursday">
+    <meta property="og:description" content="Every function runs its own weekly cycle and nobody set them relative to each other. A constraint's elapsed time is the sum of the waits for each next cycle, not the sum of the work.">
+    <meta property="og:url" content="https://theprojectcontrolhub.com/lifecycle-week-22.html">
+    <meta property="og:image" content="https://theprojectcontrolhub.com/og-image.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Monday was decided last Thursday">
+    <meta name="twitter:description" content="Every function runs its own weekly cycle and nobody set them relative to each other. A constraint's elapsed time is the sum of the waits for each next cycle, not the sum of the work.">
+    <meta name="twitter:image" content="https://theprojectcontrolhub.com/og-image.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=38">
+    <style>
+        /* PAGE LAYOUT */
+        .content-page {
+            background: var(--bg-light);
+            min-height: 100vh;
+            padding: 40px 0 80px;
+        }
+
+        .content-layout {
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 40px;
+            align-items: start;
+        }
+
+        /* BREADCRUMB */
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 28px;
+        }
+        .breadcrumb a {
+            color: var(--primary-green);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .breadcrumb a:hover { text-decoration: underline; }
+
+        /* ARTICLE */
+        .article-card {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .article-meta {
+            padding: 32px 36px 0;
+        }
+
+        .article-week-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(16,185,129,0.08);
+            color: #059669;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            padding: 5px 14px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(16,185,129,0.15);
+        }
+
+        .article-title {
+            font-size: 30px;
+            font-weight: 800;
+            color: var(--text-dark);
+            line-height: 1.25;
+            letter-spacing: -0.5px;
+            margin-bottom: 20px;
+        }
+
+        .article-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #f1f5f9;
+            margin-bottom: 0;
+        }
+
+        .author-avatar-sm {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #10b981, #059669);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .author-details strong {
+            display: block;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .author-details span {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* VIDEO EMBED */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            background: #0f172a;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-placeholder {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            color: #94a3b8;
+        }
+
+        .video-placeholder i { font-size: 48px; color: #10b981; }
+        .video-placeholder p { font-size: 14px; }
+
+        /* ARTICLE CONTENT */
+        .article-body {
+            padding: 36px 36px 0;
+        }
+
+        .article-body p {
+            font-size: 16px;
+            color: #334155;
+            line-height: 1.85;
+            margin-bottom: 20px;
+        }
+
+        .article-body h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin: 32px 0 16px;
+            letter-spacing: -0.3px;
+        }
+
+        .article-body strong { color: var(--text-dark); }
+
+        .article-body ul {
+            margin: 0 0 20px 20px;
+        }
+
+        .article-body ul li {
+            font-size: 16px;
+            color: #334155;
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        /* PAYWALL BLUR */
+        .content-preview {
+            position: relative;
+        }
+
+        .content-blur {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-blur::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 180px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.95) 60%, #fff 100%);
+            pointer-events: none;
+        }
+
+        .content-locked {
+            display: block;
+        }
+
+        /* PAYWALL CTA */
+        .paywall-cta {
+            padding: 32px 36px 36px;
+            text-align: center;
+            border-top: 1px solid #f1f5f9;
+            margin-top: 0;
+        }
+
+        .paywall-cta h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .paywall-cta p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .btn-google-signin {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            max-width: 340px;
+            padding: 14px 20px;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #1e293b;
+            background: #fff;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .btn-google-signin:hover {
+            border-color: #cbd5e1;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+        }
+
+        .paywall-note {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-top: 12px;
+        }
+
+        /* ARTICLE FOOTER (visible after login) */
+        .article-footer {
+            display: none;
+            padding: 28px 36px 36px;
+            border-top: 1px solid #f1f5f9;
+            margin-top: 8px;
+        }
+
+        .article-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .article-tag {
+            font-size: 13px;
+            color: #10b981;
+            background: rgba(16,185,129,0.08);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        /* SIDEBAR */
+        .content-sidebar {
+            position: sticky;
+            top: 24px;
+        }
+
+        .sidebar-card {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 16px;
+        }
+
+        .sidebar-card-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .sidebar-card-header h4 {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0;
+        }
+
+        .sidebar-series-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 20px;
+            border-bottom: 1px solid #f8fafc;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.15s;
+        }
+
+        .sidebar-series-item:hover { background: #f8fafc; }
+
+        .sidebar-series-item.active {
+            background: rgba(16,185,129,0.04);
+            border-left: 3px solid #10b981;
+        }
+
+        .sidebar-series-item.upcoming {
+            opacity: 0.45;
+            cursor: default;
+            pointer-events: none;
+        }
+
+        .sidebar-week {
+            font-size: 10px;
+            font-weight: 700;
+            color: #10b981;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            min-width: 44px;
+            flex-shrink: 0;
+        }
+
+        .sidebar-series-item.upcoming .sidebar-week { color: #94a3b8; }
+
+        .sidebar-item-title {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-dark);
+            line-height: 1.4;
+            flex: 1;
+        }
+
+        .sidebar-series-item.active .sidebar-item-title {
+            font-weight: 700;
+            color: #059669;
+        }
+
+        .sidebar-new {
+            font-size: 10px;
+            font-weight: 700;
+            color: #fff;
+            background: #10b981;
+            padding: 2px 7px;
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+
+        /* AUTHOR CARD */
+        .author-sidebar-card {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 20px;
+        }
+
+        .author-sidebar-top {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .author-sidebar-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #10b981, #059669);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .author-sidebar-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-dark);
+            display: block;
+        }
+
+        .author-sidebar-title {
+            font-size: 12px;
+            color: var(--text-muted);
+            display: block;
+            margin-top: 2px;
+        }
+
+        .author-sidebar-bio {
+            font-size: 13px;
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .btn-linkedin {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #0a66c2;
+            color: #0a66c2;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        /* MODAL */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+        }
+        .modal-overlay.active { opacity: 1; pointer-events: all; }
+        .modal-box {
+            background: #fff;
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 420px;
+            width: 90%;
+            position: relative;
+            text-align: center;
+        }
+        .close-modal {
+            position: absolute;
+            top: 16px; right: 16px;
+            background: none;
+            border: none;
+            font-size: 22px;
+            color: #94a3b8;
+            cursor: pointer;
+        }
+        .modal-icon-wrapper {
+            width: 56px; height: 56px;
+            background: #ecfdf5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 24px;
+            color: #10b981;
+        }
+        .modal-box h4 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0f172a;
+            margin: 0 0 10px;
+        }
+        .modal-box p {
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.6;
+            margin: 0 0 20px;
+        }
+        .modal-note {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-top: 12px;
+        }
+
+        /* NEXT ARTICLE NAV */
+        .next-article {
+            margin-top: 8px;
+            border-top: 1px solid #f1f5f9;
+            padding: 28px 36px 36px;
+        }
+
+        .next-article-label {
+            display: block;
+            width: 100%;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 14px;
+        }
+
+        .next-article-link {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-decoration: none;
+            padding: 16px 20px;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            transition: all 0.2s;
+        }
+
+        .next-article-link:hover {
+            border-color: #10b981;
+            background: rgba(16,185,129,0.02);
+        }
+
+        .next-week-tag {
+            font-size: 11px;
+            font-weight: 700;
+            color: #10b981;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .next-article-link h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-dark);
+            line-height: 1.4;
+            margin: 0;
+            flex: 1;
+        }
+
+        .next-article-link i {
+            font-size: 22px;
+            color: #10b981;
+            flex-shrink: 0;
+        }
+
+        /* MOBILE */
+        @media (max-width: 1024px) {
+            .content-layout { grid-template-columns: 1fr; }
+            .content-sidebar { position: static; }
+        }
+
+        @media (max-width: 768px) {
+            .content-page { padding: 24px 0 60px; }
+            .content-layout { padding: 0 16px; gap: 24px; }
+            .breadcrumb { font-size: 12px; margin-bottom: 16px; }
+            .article-card { border-radius: 14px; }
+            .article-meta { padding: 20px 18px 0; }
+            .article-week-badge { font-size: 10px; padding: 4px 10px; margin-bottom: 14px; }
+            .article-title { font-size: 20px; margin-bottom: 14px; }
+            .article-author { flex-wrap: wrap; gap: 8px; padding-bottom: 16px; }
+            .author-details strong { font-size: 13px; }
+            .author-details span { font-size: 11px; }
+            .article-body { padding: 18px 18px 0; }
+            .article-body p { font-size: 14px; line-height: 1.75; }
+            .article-body h2 { font-size: 17px; margin: 24px 0 12px; }
+            .article-body ul li { font-size: 14px; }
+            .paywall-cta { padding: 20px 18px 24px; }
+            .paywall-cta h3 { font-size: 17px; }
+            .paywall-cta p { font-size: 13px; }
+            .btn-google-signin { font-size: 14px; padding: 12px 16px; }
+            .article-footer { padding: 16px 18px; }
+            .next-article { padding: 16px 18px 20px; }
+            .next-article-link h4 { font-size: 13px; }
+            .sidebar-card-header { padding: 14px 16px; }
+            .sidebar-series-item { padding: 12px 16px; }
+            .sidebar-item-title { font-size: 12px; }
+            .author-sidebar-card { padding: 16px; }
+            .author-sidebar-bio { font-size: 12px; }
+            .btn-nav-social { display: none !important; }
+        }
+
+        @media (max-width: 480px) {
+            .article-title { font-size: 18px; }
+            .article-body p { font-size: 14px; }
+        }
+            figure svg { width: 100%; height: auto; display: block; }
+        @media (max-width: 768px) { figure { padding: 14px !important; } }
+    .logo-mark{vertical-align:middle;display:inline-block;}
+    </style>
+
+        <!-- Share: copy link -->
+    <script>
+        window.copyArticleLink = function(btn) {
+            const url = "https://theprojectcontrolhub.com/lifecycle-week-22.html";
+            const label = btn.querySelector('i') ? btn.innerHTML : btn.textContent;
+            navigator.clipboard.writeText(url).then(function() {
+                const original = btn.innerHTML;
+                btn.classList.add('copied');
+                btn.innerHTML = "<i class='bx bx-check'></i>" + (btn.textContent.trim() ? " Copied!" : "");
+                setTimeout(function() {
+                    btn.classList.remove('copied');
+                    btn.innerHTML = original;
+                }, 1800);
+            }).catch(function() {
+                // Fallback
+                const t = document.createElement('textarea');
+                t.value = url; document.body.appendChild(t); t.select();
+                try { document.execCommand('copy'); } catch(e) {}
+                document.body.removeChild(t);
+                const original = btn.innerHTML;
+                btn.classList.add('copied');
+                btn.innerHTML = "<i class='bx bx-check'></i>" + (btn.textContent.trim() ? " Copied!" : "");
+                setTimeout(function() { btn.classList.remove('copied'); btn.innerHTML = original; }, 1800);
+            });
+        };
+    </script>
+
+    <!-- Mobile nav toggle — standalone, independent of Firebase -->
+    <script>
+        window.toggleMobileNav = function() {
+            const nav = document.getElementById('mobileNav');
+            const btn = document.getElementById('hamburger');
+            if (!nav) return;
+            nav.classList.toggle('open');
+            if (btn) btn.classList.toggle('open');
+            document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
+        };
+    </script>
+
+    <script type="module">
+        import { signInWithGoogle, logout, onUserChange } from './auth.js';
+
+        let currentUser = null;
+
+        // Prevent auth flash: restore UI instantly from cached state
+        (function() {
+            const hint = localStorage.getItem('pch_auth');
+            let cached = null;
+            try { cached = JSON.parse(hint); } catch(e) {}
+            if (cached && cached.name) {
+                document.getElementById('userMenu').style.display = 'flex';
+                document.getElementById('userName').textContent = cached.name;
+                if (cached.photo) document.getElementById('userAvatar').src = cached.photo;
+            } else {
+                document.getElementById('joinBtn').style.display = 'flex';
+            }
+        })();
+
+        onUserChange((user) => {
+            currentUser = user;
+            const joinBtn = document.getElementById('joinBtn');
+            const userMenu = document.getElementById('userMenu');
+
+            if (user) {
+                localStorage.setItem('pch_auth', JSON.stringify({
+                    name: user.displayName.split(' ')[0],
+                    photo: user.photoURL || ''
+                }));
+                joinBtn.style.display = 'none';
+                userMenu.style.display = 'flex';
+                document.getElementById('userName').textContent = user.displayName.split(' ')[0];
+                if (user.photoURL) document.getElementById('userAvatar').src = user.photoURL;
+                closeModal();
+                unlockContent();
+            } else {
+                localStorage.removeItem('pch_auth');
+                joinBtn.style.display = 'flex';
+                userMenu.style.display = 'none';
+                lockContent();
+            }
+        });
+
+        // Soft paywall: content is always visible. Signed-in users just don't see the invite.
+        function unlockContent() {
+            const cta = document.getElementById('paywallCta');
+            if (cta) cta.style.display = 'none';
+            const footer = document.getElementById('articleFooter');
+            if (footer) footer.style.display = 'block';
+            const next = document.getElementById('nextArticle');
+            if (next) next.style.display = 'flex';
+        }
+
+        function lockContent() {
+            // Content stays open. Show the friendly invite to sign in.
+            const cta = document.getElementById('paywallCta');
+            if (cta) cta.style.display = 'block';
+            const footer = document.getElementById('articleFooter');
+            if (footer) footer.style.display = 'block';
+            const next = document.getElementById('nextArticle');
+            if (next) next.style.display = 'flex';
+        }
+
+        // Sidebar links are open — no gating in soft-paywall mode.
+
+        window.signInWithGoogleBtn = async function() {
+            try {
+                await signInWithGoogle();
+                // On mobile this redirects away; on desktop the popup resolves here.
+            } catch(e) {
+                // Only show an error for genuine failures, not user-cancelled popups.
+                const code = e && e.code ? e.code : '';
+                if (code !== 'auth/popup-closed-by-user' &&
+                    code !== 'auth/cancelled-popup-request') {
+                    alert('Sign in failed. Please try again.');
+                }
+            }
+        };
+
+        window.logoutUser = async function() { await logout(); };
+        window.openModal = function() {
+            document.getElementById('accessModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        };
+
+        window.closeModal = function() {
+            document.getElementById('accessModal').classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('accessModal').addEventListener('click', function(e) {
+                if (e.target === this) closeModal();
+            });
+        });
+    </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The week, day by day — one workable rhythm, and who hands over each constraint",
+  "description": "Every function runs its own weekly cycle and nobody set them relative to each other. A constraint's elapsed time is the sum of the waits for each next cycle, not the sum of the work.",
+  "inLanguage": "en",
+  "url": "https://theprojectcontrolhub.com/lifecycle-week-22.html",
+  "datePublished": "2029-12-12",
+  "author": {
+    "@type": "Person",
+    "name": "Barış Emre Özçelik",
+    "url": "https://theprojectcontrolhub.com/about.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "The Project Control Hub",
+    "url": "https://theprojectcontrolhub.com/"
+  },
+  "isPartOf": {
+    "@type": "Course",
+    "name": "The Life of a Project",
+    "provider": {
+      "@type": "Organization",
+      "name": "The Project Control Hub"
+    }
+  },
+  "isAccessibleForFree": true
+}
+</script>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+            <a href="index.html" class="logo">
+                <img class="logo-mark" src="logo-icon.png" width="40" height="40" alt="" aria-hidden="true" style="object-fit:contain;">
+                <span translate="no">THE PROJECT CONTROL HUB</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="learn.html">The Life of a Project</a>
+                <a href="about.html">About</a>
+            </div>
+            <div class="nav-actions" style="display:flex;align-items:center;gap:10px;">
+                <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+                <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" class="btn-nav-social" translate="no"><i class='bx bxl-linkedin'></i></a>
+                <button id="joinBtn" class="btn btn-primary" style="display:none;" onclick="openModal()"><i class='bx bx-log-in'></i> Sign In</button>
+                <div id="userMenu" style="display:none;align-items:center;gap:10px;">
+                    <img id="userAvatar" src="" style="width:32px;height:32px;border-radius:50%;object-fit:cover;" alt="avatar">
+                    <span id="userName" style="font-size:14px;font-weight:600;color:var(--text-light);"></span>
+                    <button class="btn btn-primary" onclick="logoutUser()" style="padding:8px 14px;font-size:13px;">Sign Out</button>
+                </div>
+            </div>
+        </nav>
+
+    <section class="hero-section" style="padding-bottom:0;">
+    </section>
+
+    <!-- CONTENT PAGE -->
+    <div class="content-page">
+        <div class="content-layout">
+
+            <!-- LEFT — ARTICLE -->
+            <div>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <i class='bx bx-chevron-right'></i>
+                    <a href="learn.html">Interfaces</a>
+                    <i class='bx bx-chevron-right'></i>
+                    <span>Week 22<span class="crumb-title"> &#183; The week, day by day</span></span>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-meta">
+                        <div class="article-week-badge">
+                            <span class="dot-green" style="width:6px;height:6px;border-radius:50%;background:#10b981;display:inline-block;"></span>
+                            MODULE 08 · THE LIFE OF A PROJECT · WEEK 22
+                        </div>
+                        <h1 class="article-title">Monday was decided last Thursday.</h1>
+                        <div class="article-author">
+                            <div class="author-avatar-sm">BE</div>
+                            <div class="author-details">
+                                <strong translate="no">Barış Emre Özçelik</strong>
+                                <span>Planning & Project Controls Lead · Civil Engineer · PMP® · Dec 12, 2029</span>
+                            </div>
+                            <div style="margin-left:auto;display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-muted);">
+                                <i class='bx bx-time-five'></i> 9 min read
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SHARE BAR (top) -->
+                    <div class="share-bar share-bar-top">
+                        <span class="share-bar-label">Share</span>
+                        <a class="share-btn linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftheprojectcontrolhub.com%2Flifecycle-week-22.html" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><i class='bx bxl-linkedin'></i></a>
+                        <a class="share-btn whatsapp" href="https://wa.me/?text=Three%20functions%2C%20three%20weekly%20cycles%2C%20nobody%20phased%20them.%20A%20constraint%20crossing%20all%20three%20waits%20eleven%20days%20for%20four%20hours%20of%20work.%20https%3A%2F%2Ftheprojectcontrolhub.com%2Flifecycle-week-22.html" target="_blank" rel="noopener" aria-label="Share on WhatsApp"><i class='bx bxl-whatsapp'></i></a>
+                        <a class="share-btn x" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftheprojectcontrolhub.com%2Flifecycle-week-22.html&text=Three%20functions%2C%20three%20weekly%20cycles%2C%20nobody%20phased%20them.%20A%20constraint%20crossing%20all%20three%20waits%20eleven%20days%20for%20four%20hours%20of%20work." target="_blank" rel="noopener" aria-label="Share on X"><i class='bx bxl-twitter'></i></a>
+                        <button class="share-btn copy" onclick="copyArticleLink(this)" aria-label="Copy link"><i class='bx bx-link'></i></button>
+                    </div>
+
+                    <!-- VIDEO -->
+                    <div class="video-container">
+                        <!-- Replace VIDEO_ID with your YouTube video ID -->
+                        <div class="video-placeholder">
+                            <i class='bx bxl-youtube'></i>
+                            <p>Video coming soon</p>
+                        </div>
+                        <!-- When video is ready, replace above div with:
+                        <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+                        -->
+                    </div>
+
+                    <!-- ARTICLE BODY — PREVIEW (visible to all) -->
+                    <div class="article-body">
+                        <div class="content-preview" id="contentPreview">
+                            <h2 style="margin-top:0;">Monday was decided last Thursday</h2>
+                            <p>A crew standing at a work face on Monday morning is the end of a sequence that started the previous week.</p>
+                            <p>Somebody committed the labour. Material was called off a store or ordered. Plant was booked. A permit was raised, and somebody countersigned it. Access was confirmed with whoever else wanted the same space.</p>
+                            <p>None of that happened on Monday. It happened while the crew was doing something else, in offices the crew doesn&#39;t visit, and it&#39;s finished before they arrive.</p>
+                            <p>Each of those has its own notice period, and the longest of them sets a horizon. Past that point Monday is fixed &#8212; not because anybody declared it fixed, but because the things that would have to change take longer to change than the time remaining.</p>
+
+                                <figure style="margin:36px 0;padding:24px;background:#f8fafc;border-radius:16px;border:1px solid #e2e8f0;">
+                                    <svg viewBox="0 0 640 200" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif"><text x="320" y="26" text-anchor="middle" fill="#10b981" font-size="11.5" font-weight="700" letter-spacing="2">THE HORIZON THAT EXISTS WITHOUT BEING SET</text><rect x="40" y="58" width="48" height="26" rx="5" fill="#fff" stroke="#cbd5e1"/><text x="64" y="76" text-anchor="middle" fill="#94a3b8" font-size="9.5">Mon</text><rect x="97" y="58" width="48" height="26" rx="5" fill="#fff" stroke="#cbd5e1"/><text x="121" y="76" text-anchor="middle" fill="#94a3b8" font-size="9.5">Tue</text><rect x="154" y="58" width="48" height="26" rx="5" fill="#fff" stroke="#cbd5e1"/><text x="178" y="76" text-anchor="middle" fill="#94a3b8" font-size="9.5">Wed</text><rect x="211" y="58" width="48" height="26" rx="5" fill="#fff" stroke="#cbd5e1"/><text x="235" y="76" text-anchor="middle" fill="#94a3b8" font-size="9.5">Thu</text><rect x="268" y="58" width="48" height="26" rx="5" fill="#fff" stroke="#cbd5e1"/><text x="292" y="76" text-anchor="middle" fill="#94a3b8" font-size="9.5">Fri</text><rect x="325" y="58" width="48" height="26" rx="5" fill="#10b981" stroke="#10b981"/><text x="349" y="76" text-anchor="middle" fill="#fff" font-size="9.5">Mon</text><rect x="382" y="58" width="48" height="26" rx="5" fill="#fff" stroke="#cbd5e1"/><text x="406" y="76" text-anchor="middle" fill="#94a3b8" font-size="9.5">Tue</text><rect x="439" y="58" width="48" height="26" rx="5" fill="#fff" stroke="#cbd5e1"/><text x="463" y="76" text-anchor="middle" fill="#94a3b8" font-size="9.5">Wed</text><rect x="496" y="58" width="48" height="26" rx="5" fill="#fff" stroke="#cbd5e1"/><text x="520" y="76" text-anchor="middle" fill="#94a3b8" font-size="9.5">Thu</text><rect x="553" y="58" width="48" height="26" rx="5" fill="#fff" stroke="#cbd5e1"/><text x="577" y="76" text-anchor="middle" fill="#94a3b8" font-size="9.5">Fri</text><line x1="211" y1="48" x2="211" y2="120" stroke="#dc2626" stroke-width="2" stroke-dasharray="4 3"/><text x="203" y="140" text-anchor="end" fill="#dc2626" font-size="11">changes possible</text><text x="219" y="140" fill="#64748b" font-size="11">committed</text><text x="320" y="172" text-anchor="middle" fill="#64748b" font-size="11.5">The line sits wherever the longest notice period puts it, whether or not it is written down.</text></svg>
+                                    <figcaption style="margin-top:16px;font-size:13px;color:#64748b;line-height:1.6;">Figure 1 &#8212; Nobody declares this. It is the arithmetic of moving a gang, and it is the reason a Friday discovery gets an answer that sounds like an excuse.</figcaption>
+                                </figure>
+
+                                <p></p>
+
+                            <!-- LOCKED CONTENT -->
+                            <div class="content-locked">
+                            <h2>The horizon nobody states</h2>
+                            <p>Every project has this horizon. Nothing in the process produces a document that states it, which is why the same argument keeps happening.</p>
+                            <p>Something turns up on Friday. It&#39;s real, it matters, and it changes what should happen on Monday. So it gets raised, and the answer that comes back is that the crews are already committed. That answer is correct and it sounds like an excuse, because the thing it rests on &#8212; the notice period for moving a gang &#8212; has never been stated by anybody.</p>
+                            <p>Writing it down converts a recurring irritation into a piece of information. If moving a crew needs three working days, then Wednesday is the last day a discovery can affect the following Monday, and everybody can be told that once rather than discovering it individually.</p>
+
+                            <h2>Every function&#39;s week starts on a different day</h2>
+                            <p>Here is the part that costs the most and gets the least attention.</p>
+                            <p>The crews aren't the only people running a weekly cycle. Engineering answers queries in a meeting on one day. Procurement reviews requisitions on another. A permit desk issues on Thursdays. The client&#39;s representative visits on Tuesdays and signs things while present. A subcontractor&#39;s own planner produces their look-ahead on a Friday.</p>
+                            <p>Each of those cycles is weekly, each is sensible on its own, and no two of them were set relative to each other. <a href="lifecycle-week-14.html">Week 14</a> established why: the meeting set accumulated rather than being designed, one item at a time, each added by somebody solving their own problem.</p>
+                            <p>So the phases are arbitrary. And a constraint doesn&#39;t stay inside one function &#8212; it crosses two or three of them on its way to being cleared.</p>
+                            <p>Which means the relationship between the cycles is a real property of the project that nobody owns. Each function can describe its own; there&#39;s no document anywhere that puts them side by side.</p>
+
+                            <h2>The elapsed time is phase, not work</h2>
+                            <p>Follow one constraint through and the arithmetic becomes visible.</p>
+                            <p>A dimension on a drawing conflicts with something built. The site raises a query on Tuesday. Engineering&#39;s query meeting was that morning, so it waits until the following Wednesday, when it is answered in twenty minutes. The answer needs a materials change, and procurement reviews on Mondays, so it waits again. The revised item needs a permit, and permits issue on Thursdays.</p>
+                            <p>Total work: perhaps four hours across three people. Total elapsed: eleven days, almost all of it spent waiting for the next cycle to come round.</p>
+                            <p>And the eleven days aren't a worst case. Raise the same query a day earlier and it catches that morning&#39;s meeting; the whole thing closes in four days. The difference between the two outcomes is the day of the week the site engineer noticed something, which isn't a thing anybody manages.</p>
+                            <p>Nobody in that chain was slow. Each function handled the item promptly once it reached them. The delay is entirely in the gaps between cycles that were never phased, and it is invisible in every report, because each function measures its own turnaround and every one of them looks good.</p>
+
+                                <figure style="margin:36px 0;padding:24px;background:#f8fafc;border-radius:16px;border:1px solid #e2e8f0;">
+                                    <svg viewBox="0 0 640 254" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif"><text x="320" y="26" text-anchor="middle" fill="#10b981" font-size="11.5" font-weight="700" letter-spacing="2">THREE CYCLES, NOBODY PHASED THEM</text><text x="30" y="74" text-anchor="end" fill="#64748b" font-size="10">site</text><rect x="40" y="58" width="48" height="26" rx="5" fill="#fff" stroke="#cbd5e1"/><text x="64" y="76" text-anchor="middle" fill="#94a3b8" font-size="9.5">Mon</text><rect x="97" y="58" width="48" height="26" rx="5" fill="#94a3b8" stroke="#94a3b8"/><text x="121" y="76" text-anchor="middle" fill="#fff" font-size="9.5">Tue</text><rect x="154" y="58" width="48" height="26" rx="5" fill="#fff" stroke="#cbd5e1"/><text x="178" y="76" text-anchor="middle" fill="#94a3b8" font-size="9.5">Wed</text><rect x="211" y="58" width="48" height="26" rx="5" fill="#fff" stroke="#cbd5e1"/><text x="235" y="76" text-anchor="middle" fill="#94a3b8" font-size="9.5">Thu</text><rect x="268" y="58" width="48" height="26" rx="5" fill="#fff" stroke="#cbd5e1"/><text x="292" y="76" text-anchor="middle" fill="#94a3b8" font-size="9.5">Fri</text><rect x="325" y="58" width="48" height="26" rx="5" fill="#fff" stroke="#cbd5e1"/><text x="349" y="76" text-anchor="middle" fill="#94a3b8" font-size="9.5">Mon</text><rect x="382" y="58" width="48" height="26" rx="5" fill="#fff" stroke="#cbd5e1"/><text x="406" y="76" text-anchor="middle" fill="#94a3b8" font-size="9.5">Tue</text><rect x="439" y="58" width="48" height="26" rx="5" fill="#fff" stroke="#cbd5e1"/><text x="463" y="76" text-anchor="middle" fill="#94a3b8" font-size="9.5">Wed</text><rect x="496" y="58" width="48" height="26" rx="5" fill="#fff" stroke="#cbd5e1"/><text x="520" y="76" text-anchor="middle" fill="#94a3b8" font-size="9.5">Thu</text><rect x="553" y="58" width="48" height="26" rx="5" fill="#fff" stroke="#cbd5e1"/><text x="577" y="76" text-anchor="middle" fill="#94a3b8" font-size="9.5">Fri</text><text x="30" y="126" text-anchor="end" fill="#64748b" font-size="10">engineering</text><rect x="40" y="110" width="48" height="26" rx="5" fill="#fff" stroke="#cbd5e1"/><text x="64" y="128" text-anchor="middle" fill="#94a3b8" font-size="9.5">Mon</text><rect x="97" y="110" width="48" height="26" rx="5" fill="#fff" stroke="#cbd5e1"/><text x="121" y="128" text-anchor="middle" fill="#94a3b8" font-size="9.5">Tue</text><rect x="154" y="110" width="48" height="26" rx="5" fill="#dc2626" stroke="#dc2626"/><text x="178" y="128" text-anchor="middle" fill="#fff" font-size="9.5">Wed</text><rect x="211" y="110" width="48" height="26" rx="5" fill="#fff" stroke="#cbd5e1"/><text x="235" y="128" text-anchor="middle" fill="#94a3b8" font-size="9.5">Thu</text><rect x="268" y="110" width="48" height="26" rx="5" fill="#fff" stroke="#cbd5e1"/><text x="292" y="128" text-anchor="middle" fill="#94a3b8" font-size="9.5">Fri</text><rect x="325" y="110" width="48" height="26" rx="5" fill="#fff" stroke="#cbd5e1"/><text x="349" y="128" text-anchor="middle" fill="#94a3b8" font-size="9.5">Mon</text><rect x="382" y="110" width="48" height="26" rx="5" fill="#fff" stroke="#cbd5e1"/><text x="406" y="128" text-anchor="middle" fill="#94a3b8" font-size="9.5">Tue</text><rect x="439" y="110" width="48" height="26" rx="5" fill="#dc2626" stroke="#dc2626"/><text x="463" y="128" text-anchor="middle" fill="#fff" font-size="9.5">Wed</text><rect x="496" y="110" width="48" height="26" rx="5" fill="#fff" stroke="#cbd5e1"/><text x="520" y="128" text-anchor="middle" fill="#94a3b8" font-size="9.5">Thu</text><rect x="553" y="110" width="48" height="26" rx="5" fill="#fff" stroke="#cbd5e1"/><text x="577" y="128" text-anchor="middle" fill="#94a3b8" font-size="9.5">Fri</text><text x="30" y="178" text-anchor="end" fill="#64748b" font-size="10">procurement</text><rect x="40" y="162" width="48" height="26" rx="5" fill="#dc2626" stroke="#dc2626"/><text x="64" y="180" text-anchor="middle" fill="#fff" font-size="9.5">Mon</text><rect x="97" y="162" width="48" height="26" rx="5" fill="#fff" stroke="#cbd5e1"/><text x="121" y="180" text-anchor="middle" fill="#94a3b8" font-size="9.5">Tue</text><rect x="154" y="162" width="48" height="26" rx="5" fill="#fff" stroke="#cbd5e1"/><text x="178" y="180" text-anchor="middle" fill="#94a3b8" font-size="9.5">Wed</text><rect x="211" y="162" width="48" height="26" rx="5" fill="#fff" stroke="#cbd5e1"/><text x="235" y="180" text-anchor="middle" fill="#94a3b8" font-size="9.5">Thu</text><rect x="268" y="162" width="48" height="26" rx="5" fill="#fff" stroke="#cbd5e1"/><text x="292" y="180" text-anchor="middle" fill="#94a3b8" font-size="9.5">Fri</text><rect x="325" y="162" width="48" height="26" rx="5" fill="#dc2626" stroke="#dc2626"/><text x="349" y="180" text-anchor="middle" fill="#fff" font-size="9.5">Mon</text><rect x="382" y="162" width="48" height="26" rx="5" fill="#fff" stroke="#cbd5e1"/><text x="406" y="180" text-anchor="middle" fill="#94a3b8" font-size="9.5">Tue</text><rect x="439" y="162" width="48" height="26" rx="5" fill="#fff" stroke="#cbd5e1"/><text x="463" y="180" text-anchor="middle" fill="#94a3b8" font-size="9.5">Wed</text><rect x="496" y="162" width="48" height="26" rx="5" fill="#fff" stroke="#cbd5e1"/><text x="520" y="180" text-anchor="middle" fill="#94a3b8" font-size="9.5">Thu</text><rect x="553" y="162" width="48" height="26" rx="5" fill="#fff" stroke="#cbd5e1"/><text x="577" y="180" text-anchor="middle" fill="#94a3b8" font-size="9.5">Fri</text><text x="320" y="216" text-anchor="middle" fill="#64748b" font-size="11.5">Raised Tuesday, just after the engineering meeting. Answered the following Wednesday.</text><text x="320" y="240" text-anchor="middle" fill="#dc2626" font-size="11.5">Four hours of work, eleven days of calendar.</text></svg>
+                                    <figcaption style="margin-top:16px;font-size:13px;color:#64748b;line-height:1.6;">Figure 2 &#8212; Each cycle is weekly and sensible on its own. What nobody owns is the relationship between them, because the meeting set was never designed as a set.</figcaption>
+                                </figure>
+
+                                <p></p>
+
+                            <h2>What handing over a constraint actually is</h2>
+                            <p>Given that, the moment a constraint moves between functions is worth treating as an event rather than as a formality.</p>
+                            <p>Three things have to be true for the handover to work. Somebody has to receive it &#8212; a named person, not a mailbox. The receiving function&#39;s next cycle has to be known, so the sender can tell whether the answer will arrive in time or not. And the sender has to keep it, because a constraint handed over is still theirs until it comes back.</p>
+                            <p>That last one runs against instinct. Passing something to the right person feels like completing an action, and in a routing sense it is. In a delivery sense it&#39;s the start of a wait whose length the sender can predict and the receiver has no reason to mention.</p>
+                            <p>Which is worth saying plainly, because it changes what a handover looks like. &#8220;Sent to engineering&#8221; is a status. &#8220;Sent to engineering Tuesday, their meeting is Wednesday week, so expect an answer on the 14th&#8221; is a forecast, and it is available at the moment of sending.</p>
+
+                            <h2>The day inside the week</h2>
+                            <p>The same shape appears one level down and it is worth naming because the remedy is different.</p>
+                            <p>A day has one decision point, in the morning, when crews are directed. After that the cost of moving people rises sharply &#8212; a gang redirected at eleven has lost most of a shift to travel, briefing and setting up, and will lose part of tomorrow going back.</p>
+                            <p>So a constraint discovered at nine can be worked around today. The same constraint discovered at eleven can&#39;t be, and the honest response is to fix tomorrow rather than rescue today. A project that tries to rescue every day spends its supervision on part-shifts and gets neither.</p>
+
+                            <h2>System design</h2>
+                            <p>Row three is the only change this week asks for and it is three extra columns on a log that exists. A log carrying two timestamps, raised and closed, hides the phase problem inside a single number &#8212; which is the pair almost every log carries.</p>
+                            <table style="width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px;"><thead><tr><th style="text-align:left;padding:9px 12px;background:#f1f5f9;color:#334155;font-weight:700;border-bottom:1px solid #e2e8f0;">Record</th><th style="text-align:left;padding:9px 12px;background:#f1f5f9;color:#334155;font-weight:700;border-bottom:1px solid #e2e8f0;">Produced by</th><th style="text-align:left;padding:9px 12px;background:#f1f5f9;color:#334155;font-weight:700;border-bottom:1px solid #e2e8f0;">Required quality</th><th style="text-align:left;padding:9px 12px;background:#f1f5f9;color:#334155;font-weight:700;border-bottom:1px solid #e2e8f0;">Verified against</th><th style="text-align:left;padding:9px 12px;background:#f1f5f9;color:#334155;font-weight:700;border-bottom:1px solid #e2e8f0;">Feeds</th></tr></thead><tbody><tr><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Commitment horizon</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Site, stated once</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Expressed in working days, and known by everybody who raises things</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">How long moving a gang actually takes</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Whether a discovery can change Monday</td></tr><tr><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Cycle day per function</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">You, from the diary</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">The day each function actually decides, not the day it is meant to</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Where items sat last month</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Which pairs are out of phase</td></tr><tr><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Constraint log</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Whoever raises it</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Five timestamps &#8212; found, sent, received, answered, cleared</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">The emails behind each</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">The split between work and waiting</td></tr><tr><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Working time against waiting time</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">You, once</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Separated, because no function measures the second</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">One month of logged constraints</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">The case for moving a meeting</td></tr><tr><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Daily direction</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">The supervisor, each morning</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Recorded as given, so a redirection at eleven is visible as one</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">What the crews actually did</td><td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#475569;">Whether shifts are being part-spent</td></tr></tbody></table>
+                            <p>Row two is stranger than it looks. The day a function <em>actually</em> decides can differ from the day its meeting is scheduled, because decisions get made when the person who can make them is available. It is recoverable by looking at where items sat, and from nowhere else.</p>
+
+                            <h2>Practical insight</h2>
+                            <p>Take one constraint from last month and time it end to end, from records you already hold.</p>
+                            <p>Five stamps: when you found it, when you sent it, when it was received, when it was answered, when it was cleared on site. You can recover most of those from your own emails and a log, and it costs you an hour.</p>
+                            <p>Then split your elapsed time into two columns &#8212; time somebody was working on it, and time it spent waiting for a cycle. Your second column will be larger than you expect and larger than anybody has reported, because no function measures it: each one measures from receipt to answer, and the waiting happens before receipt.</p>
+                            <p>That one number is your case for the only fix available, and the fix isn't working faster. It is moving one meeting by a day so two cycles line up. A query meeting the morning after site raises queries, rather than the morning before, removes a week from every item that crosses it &#8212; and it costs a diary change you can ask for with one number in your hand.</p>
+
+                                <figure style="margin:36px 0;padding:24px;background:#f8fafc;border-radius:16px;border:1px solid #e2e8f0;">
+                                    <svg viewBox="0 0 640 206" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif"><text x="320" y="26" text-anchor="middle" fill="#10b981" font-size="11.5" font-weight="700" letter-spacing="2">THE ONLY CHEAP FIX</text><rect x="24" y="56" width="264" height="62" rx="10" fill="#fef2f2" stroke="#fca5a5"/><text x="156.0" y="80" text-anchor="middle" fill="#b91c1c" font-size="12.5" font-weight="700">Work faster</text><text x="156.0" y="98" text-anchor="middle" fill="#dc2626" font-size="10.5">no capacity, no effect</text><rect x="352" y="56" width="264" height="62" rx="10" fill="#ecfdf5" stroke="#a7f3d0"/><text x="484.0" y="80" text-anchor="middle" fill="#047857" font-size="12.5" font-weight="700">Move one meeting</text><text x="484.0" y="98" text-anchor="middle" fill="#059669" font-size="10.5">a diary change</text><text x="320" y="152" text-anchor="middle" fill="#64748b" font-size="11.5">Turnaround inside each function is already good. The waiting is between them.</text><text x="320" y="178" text-anchor="middle" fill="#64748b" font-size="11.5">Which is why effort applied inside a function changes almost nothing.</text></svg>
+                                    <figcaption style="margin-top:16px;font-size:13px;color:#64748b;line-height:1.6;">Figure 3 &#8212; The delay lives in the gaps rather than in the work, so the intervention that works is a change to phase rather than to effort.</figcaption>
+                                </figure>
+
+                                <p></p>
+
+                            <h2>Key takeaways</h2>
+                            <ul class="takeaways">
+                            <li>A crew at a work face on Monday is the end of a sequence that started the previous week &#8212; labour, material, plant, permit, access.</li>
+                            <li>The longest of those notice periods sets a horizon past which Monday is fixed, whether or not anybody says so.</li>
+                            <li>Writing that horizon down turns a recurring argument into a fact everybody can plan around.</li>
+                            <li>Crews aren't the only weekly cycle: engineering, procurement, permits and client attendance each run one.</li>
+                            <li>Each cycle is sensible alone and none was set relative to the others, because the meeting set accumulated rather than being designed.</li>
+                            <li>A constraint crosses two or three of those cycles before it is cleared.</li>
+                            <li>Its elapsed time is the sum of waits for the next cycle, not the sum of the work.</li>
+                            <li>Nobody in the chain is slow, and every function&#8217;s own turnaround measure looks good, which is why the delay is invisible.</li>
+                            <li>A handover needs a named receiver, a known next cycle, and a sender who keeps the item until it returns.</li>
+                            <li>A day has one decision point, and a constraint found at eleven is a case for fixing tomorrow rather than rescuing today.</li>
+                            <li>The available fix isn't working faster. It is moving one meeting by a day so that two cycles line up.</li>
+                            </ul>
+                            <p style="margin-top:22px;padding:14px 18px;background:#f8fafc;border-left:3px solid #10b981;border-radius:0 8px 8px 0;font-size:13.5px;color:#475569;"><strong style="color:#334155;">Records born here.</strong> The commitment horizon, stated in working days &#183; the cycle day of every function a constraint has to cross &#183; the constraint log, with five timestamps rather than two &#183; the split between working time and waiting time &#183; the named receiver for each kind of constraint &#183; the daily direction, recorded as given.</p>
+
+                            <h2>What is coming next</h2>
+                            <p>Some of what stops a crew is a constraint to be cleared. Some of it is a change, and the difference isn't obvious at the moment it happens.</p>
+                            <p>Somebody senior says do it this way instead. Work proceeds, because the person saying it is the person who says things. What comes next is what has just happened contractually, why it looks like nothing at the time, and how a sequence of those becomes an argument two years later that turns entirely on what was written down in the first hour.</p>
+                            </div>
+                        </div>
+
+                        <!-- NEXT ARTICLE NAV (after login) -->
+                        <div class="next-article" id="nextArticle" style="display:none;">
+                            <div class="next-article-label">Next in this module</div>
+                            <a href="lifecycle-week-23.html" class="next-article-link">
+                                <div>
+                                    <span class="next-week-tag">The Life of a Project &#183; Week 23</span>
+                                    <h4>Change on the ground</h4>
+                                </div>
+                                <i class='bx bx-right-arrow-alt'></i>
+                            </a>
+                        </div>
+
+                        <!-- PAYWALL CTA -->
+                        <div class="paywall-cta" id="paywallCta">
+                            <div class="soft-cta-inner">
+                                <h3>Enjoyed this lesson?</h3>
+                                <p>Join with Google to get each new lesson the moment it's published — and help me see which topics matter most to you. No spam, one email a week, unsubscribe anytime.</p>
+                                <button class="btn-google-signin" onclick="signInWithGoogleBtn()">
+                                    <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z" fill="#4285F4"/><path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/><path d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/><path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#EA4335"/></svg>
+                                    Continue with Google
+                                </button>
+                                <p class="modal-note">Already following on LinkedIn works too — this is just for the weekly email.</p>
+                            </div>
+                        </div>
+
+                        <!-- ARTICLE FOOTER (after login) -->
+                        <div class="article-footer" id="articleFooter">
+                            <div class="article-tags">
+                                <span class="article-tag">#ProjectLifecycle</span>
+                                <span class="article-tag">#AsBuilt</span>
+                                <span class="article-tag">#DesignToSite</span>
+                                <span class="article-tag">#ProjectControls</span>
+                            </div>
+                        </div>
+
+                        <!-- SHARE BAR (bottom) -->
+                        <div class="share-bar share-bar-bottom">
+                            <span class="share-bar-heading">Found this useful? Share it with your team.</span>
+                            <div class="share-row">
+                                <a class="share-btn linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftheprojectcontrolhub.com%2Flifecycle-week-22.html" target="_blank" rel="noopener"><i class='bx bxl-linkedin'></i> LinkedIn</a>
+                                <a class="share-btn whatsapp" href="https://wa.me/?text=Three%20functions%2C%20three%20weekly%20cycles%2C%20nobody%20phased%20them.%20A%20constraint%20crossing%20all%20three%20waits%20eleven%20days%20for%20four%20hours%20of%20work.%20https%3A%2F%2Ftheprojectcontrolhub.com%2Flifecycle-week-22.html" target="_blank" rel="noopener"><i class='bx bxl-whatsapp'></i> WhatsApp</a>
+                                <a class="share-btn x" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftheprojectcontrolhub.com%2Flifecycle-week-22.html&text=Three%20functions%2C%20three%20weekly%20cycles%2C%20nobody%20phased%20them.%20A%20constraint%20crossing%20all%20three%20waits%20eleven%20days%20for%20four%20hours%20of%20work." target="_blank" rel="noopener"><i class='bx bxl-twitter'></i> X</a>
+                                <button class="share-btn copy" onclick="copyArticleLink(this)"><i class='bx bx-link'></i> Copy Link</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT — SIDEBAR -->
+            <aside class="content-sidebar">
+
+                                <!-- SERIES NAV (populated from curriculum.js) -->
+                <div class="sidebar-card" id="seriesSidebar" data-current-week="22" data-track="8"></div>
+
+                <!-- AUTHOR CARD -->
+                <div class="author-sidebar-card">
+                    <div class="author-sidebar-top">
+                        <div class="author-sidebar-avatar">BE</div>
+                        <div>
+                            <span class="author-sidebar-name" translate="no">Barış Emre Özçelik</span>
+                            <span class="author-sidebar-title">Planning & Project Controls Lead · Civil Engineer · PMP®</span>
+                        </div>
+                    </div>
+                    <p class="author-sidebar-bio">8+ years in planning & project controls across nuclear, mining, ports, and high-rise projects — currently on the Akkuyu NPP. Writing about what actually works on site.</p>
+                    <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" class="btn-linkedin" translate="no">
+                        <i class='bx bxl-linkedin'></i> Follow on LinkedIn
+                    </a>
+                </div>
+
+            </aside>
+        </div>
+    </div>
+
+    <!-- ACCESS MODAL -->
+    <div class="modal-overlay" id="accessModal">
+        <div class="modal-box">
+            <button class="close-modal" onclick="closeModal()"><i class='bx bx-x'></i></button>
+            <div class="modal-icon-wrapper">
+                <i class='bx bx-book-open'></i>
+            </div>
+            <h4>Free access to all content</h4>
+            <p>Sign in with Google to read the full series and get notified when new topics are published.</p>
+            <button class="btn-google-signin" onclick="signInWithGoogleBtn()">
+                <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z" fill="#4285F4"/><path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/><path d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/><path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#EA4335"/></svg>
+                Continue with Google
+            </button>
+            <p class="modal-note">No spam. One notification per week when new content drops.</p>
+        </div>
+    </div>
+
+    <!-- MOBILE NAV -->
+    <div class="mobile-nav" id="mobileNav">
+        <button class="mobile-nav-close" onclick="toggleMobileNav()"><i class='bx bx-x'></i></button>
+        <a href="index.html" onclick="toggleMobileNav()">Home</a>
+        <a href="learn.html" onclick="toggleMobileNav()">Learn</a>
+        <a href="about.html" onclick="toggleMobileNav()">About</a>
+        <div class="mobile-nav-bottom">
+            <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" translate="no"><i class='bx bxl-linkedin'></i> LinkedIn</a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-content" style="grid-template-columns: 1fr 1fr;">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <img class="logo-mark" src="logo-icon.png" width="40" height="40" alt="" aria-hidden="true" style="object-fit:contain;">
+                    <span translate="no">THE PROJECT CONTROL HUB</span>
+                </a>
+                <p>Field notes on planning & project controls — by Barış Emre Özçelik, PMP.</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" translate="no"><i class='bx bxl-linkedin'></i></a>
+                </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:16px;">
+                <h4 style="font-size:11px;font-weight:700;letter-spacing:1px;color:#64748b;margin:0;">FOLLOW THE SERIES</h4>
+                <p style="font-size:13px;color:#64748b;margin:0;line-height:1.6;">New content every week — follow along so you don't miss the next topic.</p>
+                <div style="display:flex;gap:10px;">
+                    <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank"
+                       style="display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);color:#cbd5e1;text-decoration:none;font-size:13px;font-weight:600;transition:all 0.2s;" translate="no">
+                        <i class='bx bxl-linkedin' style="font-size:17px;"></i> LinkedIn
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 The Project Control Hub. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+    <!-- Curriculum data + sidebar renderer -->
+    <script src="curriculum.js?v=172"></script>
+    <script>
+        (function() {
+            const el = document.getElementById('seriesSidebar');
+            // The function used to be named here, which meant an article built
+            // from another track's page rendered that track's week list. It is
+            // looked up from data-track instead, so the page cannot disagree
+            // with itself about which track it belongs to.
+            const byTrack = {
+                1: 'renderArticleSidebar', 2: 'renderTrack2Sidebar', 3: 'renderTrack3Sidebar',
+                4: 'renderTrack4Sidebar', 5: 'renderTrack5Sidebar', 6: 'renderTrack6Sidebar',
+                7: 'renderTrack7Sidebar', 8: 'renderLifecycleSidebar'
+            };
+            const fn = el && window[byTrack[parseInt(el.getAttribute('data-track'), 10)]];
+            if (el && typeof fn === 'function') {
+                const currentWeek = parseInt(el.getAttribute('data-current-week'), 10);
+                el.innerHTML = fn(currentWeek);
+                // Re-bind gated links after render
+                el.querySelectorAll('.sidebar-series-item[data-gated]').forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        if (!localStorage.getItem('pch_auth')) {
+                            e.preventDefault();
+                            sessionStorage.setItem('pch_intended', this.href);
+                            if (typeof openModal === 'function') openModal();
+                        }
+                    });
+                });
+            }
+        })();
+    </script>
+
+</body>
+</html>
