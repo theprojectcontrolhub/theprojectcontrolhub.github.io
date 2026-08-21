@@ -728,59 +728,74 @@ const TRACK7 = {
     getWeek(n) { return this.weeks.find(w => w.n === n); }
 };
 
-// ===================== THE LIFE OF A PROJECT =====================
+// ===================== TRACK 8 — THE LIFE OF A PROJECT =====================
 // The order the work arrives in. Everything about where a number comes from
 // moved to Reporting; what is left is the job itself. Rule for every week:
 // teach the occasion, hand the method to the track that owns it. Every week
 // ends with "Records born here".
+//
+// Week list rebuilt 2026-08-19 against the source measurement in
+// TRACK8-SOURCES.md, which corrected three judgements the kickoff had made
+// on a count taken in the wrong form:
+//   - performance tests are not unsourced; the contract calls them Tests on
+//     Completion (177) and Tests after Completion (98)
+//   - demobilisation is not unsourced; FIDIC 11.11 calls it Clearance of Site
+//   - as-built 568 is two subjects: 284 forensic programme, 166 closeout
+//     record. Only the second belongs to this track.
+// Cut on the same evidence: constraint removal and look-ahead (a third pass
+// over Reporting 9 and Interfaces 13, and last planner 8 / weekly work plan 1
+// behind them), and standalone document control (third pass, transmittal 15).
 const LIFECYCLE = {
     title: "The Life of a Project",
-    totalWeeks: 36,
+    totalWeeks: 39,
     weeks: [
-        { n: 1, title: "The journey of one drawing \u2014 six hands, six changes, one as-built", short: "The journey of one drawing", status: "upcoming" },
+        { n: 1, title: "The journey of one drawing \u2014 six hands, six changes, one as-built record", short: "The journey of one drawing", status: "live", page: "lifecycle-week-1.html", date: "Jul 18, 2029" },
 
-        { phase: "Phase A \u2014 Before the project exists", n: 2, title: "Why a project exists \u2014 business need, investment decision, and who is already committed", short: "Why a project exists", status: "upcoming" },
-        { n: 3, title: "Feasibility \u2014 what gets studied, what gets assumed, and which assumption reaches you", short: "Feasibility", status: "upcoming" },
-        { n: 4, title: "Delivery strategy \u2014 how the owner decided to buy it", short: "Delivery strategy", status: "upcoming" },
-        { n: 5, title: "Packaging and tender strategy \u2014 why the job was split, and what each split costs", short: "Packaging and tender strategy", status: "upcoming" },
-        { n: 6, title: "Tender to award \u2014 ITB, clarification, evaluation, and the estimate you inherit", short: "Tender to award", status: "upcoming" },
+        { phase: "Phase A \u2014 Before the project exists", n: 2, title: "Three life cycles, one project \u2014 why your day one is somebody else\u2019s year three", short: "Three life cycles, one project", status: "live", page: "lifecycle-week-2.html", date: "Jul 25, 2029" },
+        { n: 3, title: "Why a project exists \u2014 business need, investment decision, and who is already committed", short: "Why a project exists", status: "live", page: "lifecycle-week-3.html", date: "Aug 1, 2029" },
+        { n: 4, title: "Feasibility \u2014 what gets studied, what gets assumed, and which assumption reaches you", short: "Feasibility", status: "live", page: "lifecycle-week-4.html", date: "Aug 8, 2029" },
+        { n: 5, title: "The stage gate you never attended \u2014 and the estimate class you inherit from it", short: "The stage gate you never attended", status: "live", page: "lifecycle-week-5.html", date: "Aug 15, 2029" },
+        { n: 6, title: "Delivery strategy \u2014 how the owner decided to buy it, and why the job was split", short: "Delivery strategy", status: "live", page: "lifecycle-week-6.html", date: "Aug 22, 2029" },
+        { n: 7, title: "Tender to award \u2014 ITB, clarification, evaluation, and the estimate you inherit", short: "Tender to award", status: "live", page: "lifecycle-week-7.html", date: "Aug 29, 2029" },
 
-        { phase: "Phase B \u2014 Start-up", n: 7, title: "Day one \u2014 the folder, the contract, and the dates you must know by Friday", short: "Day one", status: "upcoming" },
-        { n: 8, title: "The kick-off \u2014 what gets decided, and what gets deferred forever", short: "The kick-off", status: "upcoming" },
-        { n: 9, title: "The project execution plan \u2014 including the communication matrix nobody reads", short: "The project execution plan", status: "upcoming" },
-        { n: 10, title: "Who is who \u2014 client, PMC, EPC, vendors, and the authority behind each name", short: "Who is who", status: "upcoming" },
-        { n: 11, title: "Coding philosophy \u2014 the decisions that cannot be made later", short: "Coding philosophy", status: "upcoming" },
-        { n: 12, title: "Setting up document control \u2014 transmittals, revisions, registers", short: "Setting up document control", status: "upcoming" },
-        { n: 13, title: "Building the baseline \u2014 the two weeks, not the method", short: "Building the baseline", status: "upcoming" },
-        { n: 14, title: "The meeting structure \u2014 who chairs, who decides, and which ones move blame", short: "The meeting structure", status: "upcoming" },
+        { phase: "Phase B \u2014 Start-up", n: 8, title: "Day one \u2014 the folder, the contract, and the dates you must know by Friday", short: "Day one", status: "live", page: "lifecycle-week-8.html", date: "Sep 5, 2029" },
+        { n: 9, title: "The kick-off \u2014 what gets decided, and what gets deferred forever", short: "The kick-off", status: "live", page: "lifecycle-week-9.html", date: "Sep 12, 2029" },
+        { n: 10, title: "The project execution plan \u2014 including the communication matrix nobody reads", short: "The project execution plan", status: "live", page: "lifecycle-week-10.html", date: "Sep 19, 2029" },
+        { n: 11, title: "Who is who \u2014 client, PMC, EPC, vendors, and the authority behind each name", short: "Who is who", status: "live", page: "lifecycle-week-11.html", date: "Sep 26, 2029" },
+        { n: 12, title: "Coding philosophy \u2014 the structures and registers that cannot be opened later", short: "Coding philosophy", status: "live", page: "lifecycle-week-12.html", date: "Oct 3, 2029" },
+        { n: 13, title: "Building the baseline \u2014 the two weeks, not the method", short: "Building the baseline", status: "live", page: "lifecycle-week-13.html", date: "Oct 10, 2029" },
+        { n: 14, title: "The meeting structure \u2014 who chairs, who decides, and which ones move blame", short: "The meeting structure", status: "live", page: "lifecycle-week-14.html", date: "Oct 17, 2029" },
 
-        { phase: "Phase C \u2014 Engineering and procurement", n: 15, title: "How engineering flows \u2014 deliverable lists, disciplines, and the design freeze", short: "How engineering flows", status: "upcoming" },
-        { n: 16, title: "The procurement cycle \u2014 requisition to purchase order", short: "The procurement cycle", status: "upcoming" },
-        { n: 17, title: "Long lead \u2014 ordering before the design is finished, and the cost of being wrong", short: "Long lead", status: "upcoming" },
+        { phase: "Phase C \u2014 Engineering and procurement", n: 15, title: "How engineering flows \u2014 deliverable lists, disciplines, and the freeze nobody calls one", short: "How engineering flows", status: "live", page: "lifecycle-week-15.html", date: "Oct 24, 2029" },
+        { n: 16, title: "The procurement cycle \u2014 from a line on a drawing to a purchase order", short: "The procurement cycle", status: "live", page: "lifecycle-week-16.html", date: "Oct 31, 2029" },
+        { n: 17, title: "Expediting \u2014 the activity with no drawing, no work face and no percent complete", short: "Expediting", status: "live", page: "lifecycle-week-17.html", date: "Nov 7, 2029" },
+        { n: 18, title: "Long lead \u2014 ordering before the design is finished, and the cost of being wrong", short: "Long lead", status: "live", page: "lifecycle-week-18.html", date: "Nov 14, 2029" },
 
-        { phase: "Phase D \u2014 Construction", n: 18, title: "Mobilisation \u2014 the project inside the project", short: "Mobilisation", status: "upcoming" },
-        { n: 19, title: "Site logistics and temporary works \u2014 access, laydown, cranes, and a scaffold with its own lead time", short: "Site logistics and temporary works", status: "upcoming" },
-        { n: 20, title: "Work packaging \u2014 dividing scope into something a crew can be handed", short: "Work packaging", status: "upcoming" },
-        { n: 21, title: "Clearing the workfront \u2014 constraint removal, and who removes each kind", short: "Clearing the workfront", status: "upcoming" },
-        { n: 22, title: "Look-ahead planning \u2014 the six weeks that run the site", short: "Look-ahead planning", status: "upcoming" },
-        { n: 23, title: "The week, day by day \u2014 one workable rhythm, not the rhythm", short: "The week, day by day", status: "upcoming" },
+        { phase: "Phase D \u2014 Construction", n: 19, title: "Mobilisation \u2014 priced as a payment item before it was ever planned", short: "Mobilisation", status: "live", page: "lifecycle-week-19.html", date: "Nov 21, 2029" },
+        { n: 20, title: "Site logistics and temporary works \u2014 access, laydown, cranes, and a scaffold with its own lead time", short: "Site logistics and temporary works", status: "live", page: "lifecycle-week-20.html", date: "Nov 28, 2029" },
+        { n: 21, title: "Work packaging \u2014 dividing scope into something a crew can be handed", short: "Work packaging", status: "live", page: "lifecycle-week-21.html", date: "Dec 5, 2029" },
+        { n: 22, title: "The week, day by day \u2014 one workable rhythm, and who hands over each constraint", short: "The week, day by day", status: "live", page: "lifecycle-week-22.html", date: "Dec 12, 2029" },
+        { n: 23, title: "Change on the ground \u2014 instruction to variation to claim, as it happens", short: "Change on the ground", status: "live", page: "lifecycle-week-23.html", date: "Dec 19, 2029" },
 
-        { phase: "Phase E \u2014 Commercial", n: 24, title: "Change on the ground \u2014 instruction to variation to claim, as it happens", short: "Change on the ground", status: "upcoming" },
-        { n: 25, title: "Forecasting \u2014 the number you will be judged on", short: "Forecasting", status: "upcoming" },
+        { phase: "Phase E \u2014 Governance", n: 24, title: "Who approves what \u2014 authority, delegation, and the escalation chain", short: "Who approves what", status: "live", page: "lifecycle-week-24.html", date: "Dec 26, 2029" },
+        { n: 25, title: "The change control board, and the risk review that changes something", short: "The change control board", status: "live", page: "lifecycle-week-25.html", date: "Jan 2, 2030" },
+        { n: 26, title: "Forecasting \u2014 the month the estimate becomes the number you are judged on", short: "Forecasting", status: "live", page: "lifecycle-week-26.html", date: "Jan 9, 2030", new: true },
 
-        { phase: "Phase F \u2014 Governance", n: 26, title: "Who approves what \u2014 authority, delegation, and the escalation chain", short: "Who approves what", status: "upcoming" },
-        { n: 27, title: "The change control board", short: "The change control board", status: "upcoming" },
-        { n: 28, title: "Risk reviews that change something", short: "Risk reviews that change something", status: "upcoming" },
+        { phase: "Phase F \u2014 Finishing", n: 27, title: "The completion boundary \u2014 four contracts draw it in four places", short: "The completion boundary", status: "upcoming" },
+        { n: 28, title: "The punch list \u2014 outstanding work, and who decides what counts as finished", short: "The punch list", status: "upcoming" },
+        { n: 29, title: "Commissioning \u2014 handing the schedule to a discipline that counts systems, not areas", short: "Commissioning", status: "upcoming" },
+        { n: 30, title: "Tests on Completion \u2014 pass or fail replaces percent complete", short: "Tests on Completion", status: "upcoming" },
+        { n: 31, title: "Taking over \u2014 the certificate, and everything its date starts and stops", short: "Taking over", status: "upcoming" },
+        { n: 32, title: "Taking over in parts \u2014 operating inside a site you are still working in", short: "Taking over in parts", status: "upcoming" },
+        { n: 33, title: "Tests after Completion \u2014 the other party runs them and you still carry the risk", short: "Tests after Completion", status: "upcoming" },
+        { n: 34, title: "The defects period \u2014 access after handover, and the certificate that ends the job", short: "The defects period", status: "upcoming" },
 
-        { phase: "Phase G \u2014 Finishing", n: 29, title: "Mechanical completion \u2014 and the birth of the punch list", short: "Mechanical completion", status: "upcoming" },
-        { n: 30, title: "Pre-commissioning and commissioning \u2014 handing the schedule to another discipline", short: "Pre-commissioning and commissioning", status: "upcoming" },
-        { n: 31, title: "Performance tests", short: "Performance tests", status: "upcoming" },
-        { n: 32, title: "Closing the punch list and taking over", short: "Closing the punch list", status: "upcoming" },
-        { n: 33, title: "Demobilisation \u2014 the crane, the camp and the punch list want the same people", short: "Demobilisation", status: "upcoming" },
-        { n: 34, title: "Closeout \u2014 as-built, final account, archive", short: "Closeout", status: "upcoming" },
+        { phase: "Phase G \u2014 Closure", n: 35, title: "Clearance of site \u2014 the crane, the camp and the punch list want the same people", short: "Clearance of site", status: "upcoming" },
+        { n: 36, title: "The final account \u2014 statement at completion, final statement, discharge", short: "The final account", status: "upcoming" },
+        { n: 37, title: "The records that outlive the project \u2014 as-built, O&M, archive, lessons learned", short: "The records that outlive it", status: "upcoming" },
 
-        { phase: "Capstone", n: 35, title: "Designing a project controls system from nothing", short: "Designing the system from nothing", status: "upcoming" },
-        { n: 36, title: "The first 90 days \u2014 a contract, a BoQ, a drawing set and an empty schedule", short: "The first 90 days", status: "upcoming" }
+        { phase: "Capstone", n: 38, title: "Designing a project controls system from nothing", short: "Designing the system from nothing", status: "upcoming" },
+        { n: 39, title: "The first 90 days \u2014 a contract, a BoQ, a drawing set and an empty schedule", short: "The first 90 days", status: "upcoming" }
     ],
     get liveCount() { return this.weeks.filter(w => w.status === "live").length; },
     get progressPercent() { return Math.round((this.liveCount / this.totalWeeks) * 100); },
