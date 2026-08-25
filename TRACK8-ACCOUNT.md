@@ -441,3 +441,12 @@ attaches to a daily or weekly rhythm — turns out to be a statement about
 meetings, since the recurring meeting set is the only rhythm a project has.
 That connection carried the week and the named example is no longer needed for
 it. It would still improve week 39.
+
+**Week 39 was written without it too, 2026-08-24, and the track is complete.**
+The example never surfaced and was not dug for, which was the condition §5
+attached to it. Week 39 closed on a different idea — sequencing the first
+ninety days by what expires rather than by what matters — and the perishable
+list it is built on comes from records this track had already asked for, so it
+needed no new material. The gap is now closed as unfilled rather than
+outstanding. If the example ever arrives in conversation, it belongs in week
+14 or week 39 as a revision, not as a reason to have waited.

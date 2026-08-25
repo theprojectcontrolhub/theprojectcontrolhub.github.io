@@ -779,23 +779,23 @@ const LIFECYCLE = {
 
         { phase: "Phase E \u2014 Governance", n: 24, title: "Who approves what \u2014 authority, delegation, and the escalation chain", short: "Who approves what", status: "live", page: "lifecycle-week-24.html", date: "Dec 26, 2029" },
         { n: 25, title: "The change control board, and the risk review that changes something", short: "The change control board", status: "live", page: "lifecycle-week-25.html", date: "Jan 2, 2030" },
-        { n: 26, title: "Forecasting \u2014 the month the estimate becomes the number you are judged on", short: "Forecasting", status: "live", page: "lifecycle-week-26.html", date: "Jan 9, 2030", new: true },
+        { n: 26, title: "Forecasting \u2014 the month the estimate becomes the number you are judged on", short: "Forecasting", status: "live", page: "lifecycle-week-26.html", date: "Jan 9, 2030" },
 
-        { phase: "Phase F \u2014 Finishing", n: 27, title: "The completion boundary \u2014 four contracts draw it in four places", short: "The completion boundary", status: "upcoming" },
-        { n: 28, title: "The punch list \u2014 outstanding work, and who decides what counts as finished", short: "The punch list", status: "upcoming" },
-        { n: 29, title: "Commissioning \u2014 handing the schedule to a discipline that counts systems, not areas", short: "Commissioning", status: "upcoming" },
-        { n: 30, title: "Tests on Completion \u2014 pass or fail replaces percent complete", short: "Tests on Completion", status: "upcoming" },
-        { n: 31, title: "Taking over \u2014 the certificate, and everything its date starts and stops", short: "Taking over", status: "upcoming" },
-        { n: 32, title: "Taking over in parts \u2014 operating inside a site you are still working in", short: "Taking over in parts", status: "upcoming" },
-        { n: 33, title: "Tests after Completion \u2014 the other party runs them and you still carry the risk", short: "Tests after Completion", status: "upcoming" },
-        { n: 34, title: "The defects period \u2014 access after handover, and the certificate that ends the job", short: "The defects period", status: "upcoming" },
+        { phase: "Phase F \u2014 Finishing", n: 27, title: "The completion boundary \u2014 four contracts draw it in four places", short: "The completion boundary", status: "live", page: "lifecycle-week-27.html", date: "Jan 16, 2030" },
+        { n: 28, title: "The punch list \u2014 outstanding work, and who decides what counts as finished", short: "The punch list", status: "live", page: "lifecycle-week-28.html", date: "Jan 23, 2030" },
+        { n: 29, title: "Commissioning \u2014 handing the schedule to a discipline that counts systems, not areas", short: "Commissioning", status: "live", page: "lifecycle-week-29.html", date: "Jan 30, 2030" },
+        { n: 30, title: "Tests on Completion \u2014 pass or fail replaces percent complete", short: "Tests on Completion", status: "live", page: "lifecycle-week-30.html", date: "Feb 6, 2030" },
+        { n: 31, title: "Taking over \u2014 the certificate, and everything its date starts and stops", short: "Taking over", status: "live", page: "lifecycle-week-31.html", date: "Feb 13, 2030" },
+        { n: 32, title: "Taking over in parts \u2014 operating inside a site you are still working in", short: "Taking over in parts", status: "live", page: "lifecycle-week-32.html", date: "Feb 20, 2030" },
+        { n: 33, title: "Tests after Completion \u2014 the other party runs them and you still carry the risk", short: "Tests after Completion", status: "live", page: "lifecycle-week-33.html", date: "Feb 27, 2030" },
+        { n: 34, title: "The defects period \u2014 access after handover, and the certificate that ends the job", short: "The defects period", status: "live", page: "lifecycle-week-34.html", date: "Mar 6, 2030" },
 
-        { phase: "Phase G \u2014 Closure", n: 35, title: "Clearance of site \u2014 the crane, the camp and the punch list want the same people", short: "Clearance of site", status: "upcoming" },
-        { n: 36, title: "The final account \u2014 statement at completion, final statement, discharge", short: "The final account", status: "upcoming" },
-        { n: 37, title: "The records that outlive the project \u2014 as-built, O&M, archive, lessons learned", short: "The records that outlive it", status: "upcoming" },
+        { phase: "Phase G \u2014 Closure", n: 35, title: "Clearance of site \u2014 the crane, the camp and the punch list want the same people", short: "Clearance of site", status: "live", page: "lifecycle-week-35.html", date: "Mar 13, 2030" },
+        { n: 36, title: "The final account \u2014 statement at completion, final statement, discharge", short: "The final account", status: "live", page: "lifecycle-week-36.html", date: "Mar 20, 2030" },
+        { n: 37, title: "The records that outlive the project \u2014 as-built, O&M, archive, lessons learned", short: "The records that outlive it", status: "live", page: "lifecycle-week-37.html", date: "Mar 27, 2030" },
 
-        { phase: "Capstone", n: 38, title: "Designing a project controls system from nothing", short: "Designing the system from nothing", status: "upcoming" },
-        { n: 39, title: "The first 90 days \u2014 a contract, a BoQ, a drawing set and an empty schedule", short: "The first 90 days", status: "upcoming" }
+        { phase: "Capstone", n: 38, title: "Designing a project controls system from nothing", short: "Designing the system from nothing", status: "live", page: "lifecycle-week-38.html", date: "Apr 3, 2030" },
+        { n: 39, title: "The first 90 days \u2014 a contract, a BoQ, a drawing set and an empty schedule", short: "The first 90 days", status: "live", page: "lifecycle-week-39.html", date: "Apr 10, 2030", new: true }
     ],
     get liveCount() { return this.weeks.filter(w => w.status === "live").length; },
     get progressPercent() { return Math.round((this.liveCount / this.totalWeeks) * 100); },
