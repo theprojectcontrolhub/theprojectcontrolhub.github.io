@@ -353,3 +353,44 @@ and had to be rewritten as structural claims. Watch for that word.
 
 **Do not mistake the symptom for the problem.** WhatsApp was not the problem;
 an untracked request was. A dashboard was not the problem; the data model was.
+
+## 11. Full-track audit, 2026-08-25
+
+`tools/audit_track8.py` was written after the track was complete and run
+across all thirty-nine articles. It covers what `check_site.py` does not:
+per-week metrics against the §6 bands, inference-based frequency claims,
+forward and dead links inside the body, structural completeness, and repeated
+phrasing across weeks.
+
+**What it found, and what it cost to fix.**
+
+*The word count had drifted and nobody was watching the floor.* Twenty-three
+weeks (15–38) sat between 1,289 and 1,398 words of body prose, under the
+1,400 floor §6 makes binding, and two (8 and 9) sat over the 1,600 ceiling.
+The drift began at week 15 and ran unbroken to week 38, which is the signature
+of a check being reported rather than applied: each week was measured, the
+number was read, and "in band" was said about a number that was not. Fixed by
+adding one or two substantive paragraphs to a named thin section in each
+affected week and trimming weeks 8 and 9. All thirty-nine now sit between
+1,400 and 1,615.
+
+*Eight genuine frequency claims survived publication*, in weeks 1, 3, 31, 36
+and 39 — the same defect the per-week measurement step was created to catch,
+appearing in the weeks written before that step was routine and in three
+written after it. Three more were introduced by the audit's own repair
+paragraphs and caught on the second pass.
+
+*Week 1 carried nine takeaways* against the 10–13 convention. One added.
+
+**Calibration.** The first run reported 166 findings of which 89 survived a
+false-positive pass and 3 were real once scope words were separated from
+frequency claims. Three detectors were wrong and are now documented in the
+script: `<p style=...>` was not counted as an opening tag; the `next-article`
+navigation link was read as a forward reference; and `everybody` / `every
+time` were treated as frequency claims when they describe a defined situation
+rather than a rate. Week 1's six-row table is deliberate — one row per record
+born along the drawing's journey — and is now excepted by name.
+
+**Run it after any edit to a Track 8 article.** `python3
+tools/audit_track8.py` prints a metrics table and a categorised finding list;
+zero findings is the passing state.
