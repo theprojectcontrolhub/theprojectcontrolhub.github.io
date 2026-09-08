@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Learn — The Project Control Hub</title>
-    <meta name="description" content="A 27-week curriculum on schedule management — from why projects fail to CPM, EVM, forensic delay analysis, and reporting. Built on the PMI Practice Standard and 8+ years in the field.">
+    <meta name="description" content="A 27-topic curriculum on schedule management — from why projects fail to CPM, EVM, forensic delay analysis, and reporting. Built on the PMI Practice Standard and 8+ years in the field.">
     <link rel="canonical" href="https://theprojectcontrolhub.com/learn.html">
     <meta property="og:locale" content="en_US">
 
@@ -12,14 +12,14 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="The Project Control Hub">
     <meta property="og:title" content="Curriculum — The Project Control Hub">
-    <meta property="og:description" content="A 27-week curriculum on schedule management — from why projects fail to CPM, EVM, forensic delay analysis, and reporting. Built on the PMI Practice Standard and 8+ years in the field.">
+    <meta property="og:description" content="A 27-topic curriculum on schedule management — from why projects fail to CPM, EVM, forensic delay analysis, and reporting. Built on the PMI Practice Standard and 8+ years in the field.">
     <meta property="og:url" content="https://theprojectcontrolhub.com/learn.html">
     <meta property="og:image" content="https://theprojectcontrolhub.com/og-image.png">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Curriculum — The Project Control Hub">
-    <meta name="twitter:description" content="A 27-week curriculum on schedule management — from why projects fail to CPM, EVM, forensic delay analysis, and reporting. Built on the PMI Practice Standard and 8+ years in the field.">
+    <meta name="twitter:description" content="A 27-topic curriculum on schedule management — from why projects fail to CPM, EVM, forensic delay analysis, and reporting. Built on the PMI Practice Standard and 8+ years in the field.">
     <meta name="twitter:image" content="https://theprojectcontrolhub.com/og-image.png">
 
     <!-- Favicon -->
@@ -224,7 +224,7 @@
             border-top: 1px solid #f1f5f9;
         }
 
-        .week-item {
+        .topic-item {
             display: flex;
             align-items: center;
             gap: 16px;
@@ -235,15 +235,15 @@
             transition: background 0.15s;
         }
 
-        a.week-item:hover { background: #f8fafc; }
+        a.topic-item:hover { background: #f8fafc; }
 
-        .week-item.upcoming {
+        .topic-item.upcoming {
             opacity: 0.4;
             cursor: default;
             pointer-events: none;
         }
 
-        .week-num {
+        .topic-num {
             font-size: 11px;
             font-weight: 700;
             color: #10b981;
@@ -253,9 +253,9 @@
             flex-shrink: 0;
         }
 
-        .week-item.upcoming .week-num { color: #94a3b8; }
+        .topic-item.upcoming .topic-num { color: #94a3b8; }
 
-        .week-title {
+        .topic-title {
             font-size: 14px;
             font-weight: 500;
             color: #1e293b;
@@ -263,13 +263,7 @@
             line-height: 1.4;
         }
 
-        .week-date {
-            font-size: 12px;
-            color: #94a3b8;
-            white-space: nowrap;
-        }
-
-        .week-new {
+        .topic-new {
             font-size: 10px;
             font-weight: 700;
             color: #fff;
@@ -279,7 +273,7 @@
             white-space: nowrap;
         }
 
-        .week-upcoming-label {
+        .topic-upcoming-label {
             font-size: 12px;
             color: #cbd5e1;
             white-space: nowrap;
@@ -657,11 +651,10 @@
             .module-badge { font-size: 11px; padding: 5px 10px; }
             .module-tools { padding: 0 18px 14px; gap: 6px; }
             .tool-tag { font-size: 10px; padding: 3px 8px; }
-            .week-item { padding: 11px 18px; gap: 10px; }
-            .week-num { min-width: 48px; font-size: 10px; }
-            .week-title { font-size: 13px; }
-            .week-date { display: none; }
-            .week-new { font-size: 10px; padding: 2px 6px; }
+            .topic-item { padding: 11px 18px; gap: 10px; }
+            .topic-num { min-width: 48px; font-size: 10px; }
+            .topic-title { font-size: 13px; }
+            .topic-new { font-size: 10px; padding: 2px 6px; }
             .module-progress { padding: 12px 18px 18px; }
             .btn-nav-social { display: none !important; }
         }
@@ -929,7 +922,7 @@
 
         // Gate week links
         document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('a.week-item[data-gated]').forEach(link => {
+            document.querySelectorAll('a.topic-item[data-gated]').forEach(link => {
                 link.addEventListener('click', function(e) {
                     if (!currentUser) {
                         e.preventDefault();
@@ -1105,7 +1098,7 @@
                     <div class="track-badge free" id="t1TrackBadge"><span class="dot-green"></span> TRACK 1 &#183; FREE &#183; COMPLETE</div>
                     <h2>Schedule Management</h2>
                     <p class="track-sub">The logic. Why projects succeed — and why they fail.</p>
-                    <p class="track-desc">A complete 27-week curriculum on how project controls actually works on site — from why projects fail, through the critical path, earned value and forecasting, to forensic analysis and the people who have to act on your numbers. This is the foundation everything else stands on, and it stays free.</p>
+                    <p class="track-desc">A complete 27-topic curriculum on how project controls actually works on site — from why projects fail, through the critical path, earned value and forecasting, to forensic analysis and the people who have to act on your numbers. This is the foundation everything else stands on, and it stays free.</p>
                         <div class="track-outcomes">
                             <h3>After this track you can</h3>
                             <ul>
@@ -1146,7 +1139,7 @@
 
                     <div class="module-progress">
                         <div class="progress-label">
-                            <span id="progressText">27 of 27 published</span>
+                            <span id="progressText">27 of 27 complete</span>
                             <span id="progressPct">100%</span>
                         </div>
                         <div class="progress-bar">
@@ -1176,7 +1169,7 @@
                         </div>
                     <div class="track-note">
                         <i class='bx bx-lock-open-alt'></i>
-                        <p><strong>Track 1 ends with two things that need correcting.</strong> In <a href="week-18.html">Schedule Week 18</a> we said actual cost was simple &#8212; just ask accounts. It isn&#39;t, and one day that costs somebody a great deal of money. And <a href="week-20.html">Schedule Week 20</a> forecast the overrun by dividing a million dollars by the cost efficiency &#8212; right method, wrong number, because that million is a selling price with overhead, profit and reserve inside it. Track 2 opens by going back for the first, and takes the second apart in Weeks 5 and 6.</p>
+                        <p><strong>Track 1 ends with two things that need correcting.</strong> In <a href="week-18.html">Schedule Topic 18</a> we said actual cost was simple &#8212; just ask accounts. It isn&#39;t, and one day that costs somebody a great deal of money. And <a href="week-20.html">Schedule Topic 20</a> forecast the overrun by dividing a million dollars by the cost efficiency &#8212; right method, wrong number, because that million is a selling price with overhead, profit and reserve inside it. Track 2 opens by going back for the first, and takes the second apart in Topics 5 and 6.</p>
                     </div>
                 </div>
 
@@ -1190,7 +1183,7 @@
                                 <p>Estimating, budgeting, measurement and cash flow &#8212; built on AACE&#39;s cost engineering framework and the way contractors actually run their books on site.</p>
                             </div>
                         </div>
-                        <span class="module-badge badge-active" id="t2ModuleBadge"><span class="dot-green"></span> In Progress</span>
+                        <span class="module-badge badge-active" id="t2ModuleBadge"><span class="dot-green"></span> COMPLETE</span>
                     </div>
                     <div class="module-tools">
                         <span class="tool-tag-label">Topics:</span>
@@ -1205,7 +1198,7 @@
                     <div class="module-weeks" id="track2Weeks"></div>
                     <div class="module-progress">
                         <div class="progress-label">
-                            <span id="t2ProgressText">24 of 24 published</span>
+                            <span id="t2ProgressText">24 of 24 complete</span>
                             <span id="t2ProgressPct">100%</span>
                         </div>
                         <div class="progress-bar">
@@ -1235,7 +1228,7 @@
                         </div>
                     <div class="track-note">
                         <i class='bx bx-lock-open-alt'></i>
-                        <p><strong>Cost &amp; Cash Week 5 showed you a risk register with five lines on it.</strong> It sized the contingency at $47,553 and admitted, in one sentence, that the odds of that money being enough were 49.5% &#8212; a coin flip. Nobody ever asked where those five lines came from. Track 3 opens there, and comes back to that number in <a href="risk-week-12.html">Risk Week 12</a>.</p>
+                        <p><strong>Cost &amp; Cash Topic 5 showed you a risk register with five lines on it.</strong> It sized the contingency at $47,553 and admitted, in one sentence, that the odds of that money being enough were 49.5% &#8212; a coin flip. Nobody ever asked where those five lines came from. Track 3 opens there, and comes back to that number in <a href="risk-week-12.html">Risk Topic 12</a>.</p>
                     </div>
                 </div>
 
@@ -1249,7 +1242,7 @@
                                 <p>Identification, analysis and ownership &#8212; built on the PMI risk standards, the quantitative methods behind them, and the FIDIC conditions that decide who actually carries a risk on site.</p>
                             </div>
                         </div>
-                        <span class="module-badge badge-active" id="t3ModuleBadge"><span class="dot-green"></span> In Progress</span>
+                        <span class="module-badge badge-active" id="t3ModuleBadge"><span class="dot-green"></span> COMPLETE</span>
                     </div>
                     <div class="module-tools">
                         <span class="tool-tag-label">Topics:</span>
@@ -1265,7 +1258,7 @@
                     <div class="module-weeks" id="track3Weeks"></div>
                     <div class="module-progress">
                         <div class="progress-label">
-                            <span id="t3ProgressText">18 of 18 published</span>
+                            <span id="t3ProgressText">18 of 18 complete</span>
                             <span id="t3ProgressPct">100%</span>
                         </div>
                         <div class="progress-bar">
@@ -1293,7 +1286,7 @@
                         </div>
                         <div class="track-note">
                             <i class='bx bx-lock-open-alt'></i>
-                            <p><strong>Risk Week 15 found five of your thirteen risks had a contractual mechanism behind them.</strong> It put clause numbers against each one, then noted that a clause is only worth the notice you served under it. The rock is worth $48,450 against a net margin of $48,163 &#8212; Track 4 opens on the letter nobody wrote, in <a href="contract-week-1.html">Contract Week 1</a>.</p>
+                            <p><strong>Risk Topic 15 found five of your thirteen risks had a contractual mechanism behind them.</strong> It put clause numbers against each one, then noted that a clause is only worth the notice you served under it. The rock is worth $48,450 against a net margin of $48,163 &#8212; Track 4 opens on the letter nobody wrote, in <a href="contract-week-1.html">Contract Topic 1</a>.</p>
                         </div>
                     </div>
                     <!-- MODULE 04: CONTRACT MANAGEMENT -->
@@ -1306,7 +1299,7 @@
                                     <p>Notices, records and entitlement &#8212; built on the FIDIC 2017 conditions and the contract administration that decides whether a right survives contact with a programme.</p>
                                 </div>
                             </div>
-                            <span class="module-badge badge-active" id="t4ModuleBadge"><span class="dot-green"></span> In Progress</span>
+                            <span class="module-badge badge-active" id="t4ModuleBadge"><span class="dot-green"></span> COMPLETE</span>
                         </div>
                         <div class="module-tools">
                             <span class="tool-tag-label">Topics:</span>
@@ -1322,7 +1315,7 @@
                         <div class="module-weeks" id="track4Weeks"></div>
                         <div class="module-progress">
                             <div class="progress-label">
-                                <span id="t4ProgressText">20 of 20 published</span>
+                                <span id="t4ProgressText">20 of 20 complete</span>
                                 <span id="t4ProgressPct">100%</span>
                             </div>
                             <div class="progress-bar">
@@ -1350,7 +1343,7 @@
                         </div>
                         <div class="track-note">
                             <i class='bx bx-lock-open-alt'></i>
-                            <p><strong>The rock is worth $48,450 and the net margin on the job is $48,163.</strong> Four tracks have circled that pair without closing it &#8212; <a href="risk-week-5.html">Risk Week 5</a> priced the rock, <a href="contract-week-13.html">Contract Week 13</a> asked whether the contract even calls it a variation. Track 5 opens with the notice served on time, and the argument moved to what it is worth.</p>
+                            <p><strong>The rock is worth $48,450 and the net margin on the job is $48,163.</strong> Four tracks have circled that pair without closing it &#8212; <a href="risk-week-5.html">Risk Topic 5</a> priced the rock, <a href="contract-week-13.html">Contract Topic 13</a> asked whether the contract even calls it a variation. Track 5 opens with the notice served on time, and the argument moved to what it is worth.</p>
                         </div>
                     </div>
                     <!-- MODULE 05: CLAIMS &amp; DELAY ANALYSIS -->
@@ -1363,7 +1356,7 @@
                                     <p>Forensic delay analysis, disruption and quantum &#8212; the methods that turn a preserved entitlement into a number, and the reasons two analysts using two accepted methods disagree.</p>
                                 </div>
                             </div>
-                            <span class="module-badge badge-active" id="t5ModuleBadge"><span class="dot-green"></span> Complete &#183; 28 weeks</span>
+                            <span class="module-badge badge-active" id="t5ModuleBadge"><span class="dot-green"></span> Complete &#183; 28 topics</span>
                         </div>
                         <div class="module-tools">
                             <span class="tool-tag-label">Topics:</span>
@@ -1379,7 +1372,7 @@
                         <div class="module-weeks" id="track5Weeks"></div>
                         <div class="module-progress">
                             <div class="progress-label">
-                                <span id="t5ProgressText">28 of 28 published</span>
+                                <span id="t5ProgressText">28 of 28 complete</span>
                                 <span id="t5ProgressPct">100%</span>
                             </div>
                             <div class="progress-bar">
@@ -1428,7 +1421,7 @@
                                     <p>Fifteen weeks on what each department feeds you and in what unit, then eleven on what you issue back &#8212; daily to executive, dashboards, KPIs, registers, and the report nobody acts on.</p>
                                 </div>
                             </div>
-                            <span class="module-badge badge-active" id="t6ModuleBadge"><span class="dot-green"></span> Complete &#183; 26 weeks</span>
+                            <span class="module-badge badge-active" id="t6ModuleBadge"><span class="dot-green"></span> Complete &#183; 26 topics</span>
                         </div>
                         <div class="module-tools">
                             <span class="tool-tag-label">Topics:</span>
@@ -1444,7 +1437,7 @@
                         <div class="module-weeks" id="track6Weeks"></div>
                         <div class="module-progress">
                             <div class="progress-label">
-                                <span id="t6ProgressText">26 of 26 published</span>
+                                <span id="t6ProgressText">26 of 26 complete</span>
                                 <span id="t6ProgressPct">100%</span>
                             </div>
                             <div class="progress-bar">
@@ -1472,7 +1465,7 @@
                         </div>
                         <div class="track-note">
                             <i class='bx bx-lock-open-alt'></i>
-                            <p><strong>The handoff was printed five tracks ago.</strong> <a href="claim-week-28.html">Claims Week 28</a> closed by naming four things this track answers. It opens by naming the assumption every track before it was built on, and then takes it apart one contract at a time.</p>
+                            <p><strong>The handoff was printed five tracks ago.</strong> <a href="claim-week-28.html">Claims Topic 28</a> closed by naming four things this track answers. It opens by naming the assumption every track before it was built on, and then takes it apart one contract at a time.</p>
                         </div>
                     </div>
 
@@ -1486,7 +1479,7 @@
                                     <p>Delivery models and who holds the scope, EPCM authority without privity, joint ventures, the critical path through an order, the work between two programmes, and the number with two owners.</p>
                                 </div>
                             </div>
-                            <span class="module-badge badge-locked" id="t7ModuleBadge"><i class='bx bx-time'></i> Complete &#183; 17 weeks</span>
+                            <span class="module-badge badge-locked" id="t7ModuleBadge"><span class="dot-green"></span> COMPLETE</span>
                         </div>
                         <div class="module-tools">
                             <span class="tool-tag-label">Topics:</span>
@@ -1501,7 +1494,7 @@
                         <div class="module-weeks" id="track7Weeks"></div>
                         <div class="module-progress">
                             <div class="progress-label">
-                                <span id="t7ProgressText">17 of 17 published</span>
+                                <span id="t7ProgressText">17 of 17 complete</span>
                                 <span id="t7ProgressPct">100%</span>
                             </div>
                             <div class="progress-bar">
@@ -1560,7 +1553,7 @@
                         <div class="module-weeks" id="lifecycleWeeks"></div>
                         <div class="module-progress">
                             <div class="progress-label">
-                                <span id="lcProgressText">0 of 39 published</span>
+                                <span id="lcProgressText">0 of 39 complete</span>
                                 <span id="lcProgressPct">0%</span>
                             </div>
                             <div class="progress-bar">
@@ -1786,7 +1779,7 @@
 
 
     <!-- Curriculum data + renderers -->
-    <script src="curriculum.js?v=197"></script>
+    <script src="curriculum.js?v=222"></script>
     <script>
         (function() {
             if (typeof CURRICULUM === 'undefined') return;
@@ -1822,9 +1815,9 @@
                 }
                 var hb = document.getElementById(p[1]);
                 if (hb) {
-                    hb.innerHTML = p[3] + (t.liveCount >= t.totalWeeks ? ' \u00b7 COMPLETE'
+                    hb.innerHTML = p[3] + (t.liveCount >= t.totalTopics ? ' \u00b7 COMPLETE'
                                  : t.liveCount === 0 ? ' \u00b7 IN PREPARATION'
-                                 : ' \u00b7 WEEK ' + t.latestLiveWeek.n);
+                                 : ' \u00b7 WEEK ' + t.latestLiveTopic.n);
                 }
             });
 
@@ -1853,7 +1846,7 @@
             (function () {
                 if (typeof allTracks !== 'function') return;
                 var ts = allTracks().map(function (p) { return p[0]; });
-                var complete = ts.filter(function (t) { return t.liveCount >= t.totalWeeks; });
+                var complete = ts.filter(function (t) { return t.liveCount >= t.totalTopics; });
                 var next = ts.find(function (t) { return t.liveCount === 0; });
                 var meta = document.getElementById('learnMetaProgress');
                 if (meta) {
@@ -1867,9 +1860,9 @@
                 .forEach(function (p) {
                     var el = document.getElementById('t' + p[0] + 'TrackBadge'), t = p[1];
                     if (!el || !t) return;
-                    var word = t.liveCount >= t.totalWeeks ? 'COMPLETE'
+                    var word = t.liveCount >= t.totalTopics ? 'COMPLETE'
                              : t.liveCount === 0 ? 'IN PREPARATION'
-                             : 'WEEK ' + t.latestLiveWeek.n;
+                             : 'WEEK ' + t.latestLiveTopic.n;
                     el.innerHTML = p[2] + ' TRACK ' + p[0] + ' \u00b7 FREE \u00b7 ' + word;
                 });
             })();
@@ -1889,7 +1882,7 @@
                     var el = document.getElementById(p[0]);
                     var ts = p[1].filter(Boolean);
                     if (!el || !ts.length) return;
-                    var done = ts.every(function (t) { return t.liveCount >= t.totalWeeks; });
+                    var done = ts.every(function (t) { return t.liveCount >= t.totalTopics; });
                     el.classList.remove('is-done', 'is-next');
                     if (done) el.classList.add('is-done');
                     else if (!seenNext) { el.classList.add('is-next'); seenNext = true; }
@@ -1984,7 +1977,7 @@
                 const el = document.getElementById(row[0]), tr = row[1];
                 if (!el || !tr) return;
                 const state = tr.liveCount === 0 ? 'STARTING SOON'
-                            : tr.liveCount >= tr.totalWeeks ? 'COMPLETE' : 'IN PROGRESS';
+                            : tr.liveCount >= tr.totalTopics ? 'COMPLETE' : 'IN PROGRESS';
                 el.innerHTML = el.innerHTML.replace(
                     /(TRACK \d+ &#183; FREE &#183; |TRACK \d+ · FREE · ).*$/,
                     '$1' + state);
@@ -2004,8 +1997,8 @@
             (function () {
                 var LIMIT = 6;
                 document.querySelectorAll('.module-weeks').forEach(function (box) {
-                    if (box.querySelector('.weeks-toggle')) return;
-                    var items = box.querySelectorAll('.week-item');
+                    if (box.querySelector('.topics-toggle')) return;
+                    var items = box.querySelectorAll('.topic-item');
                     if (items.length <= LIMIT + 2) return;
 
                     var rest = document.createElement('div');
@@ -2013,7 +2006,7 @@
                     var seen = 0, node = box.firstChild, moving = false, queue = [];
                     while (node) {
                         var next = node.nextSibling;
-                        if (node.nodeType === 1 && node.classList.contains('week-item')) {
+                        if (node.nodeType === 1 && node.classList.contains('topic-item')) {
                             seen++;
                             if (seen > LIMIT) moving = true;
                         }
@@ -2026,7 +2019,7 @@
                     btn.type = 'button';
                     btn.className = 'weeks-toggle';
                     btn.setAttribute('aria-expanded', 'false');
-                    var hidden = rest.querySelectorAll('.week-item').length;
+                    var hidden = rest.querySelectorAll('.topic-item').length;
                     var label = function (open) {
                         return open
                             ? "Show fewer <i class='bx bx-chevron-down'></i>"
@@ -2068,7 +2061,7 @@
             })();
 
             // Re-bind gated links
-            document.querySelectorAll('.week-item[data-gated]').forEach(link => {
+            document.querySelectorAll('.topic-item[data-gated]').forEach(link => {
                 link.addEventListener('click', function(e) {
                     if (!localStorage.getItem('pch_auth')) {
                         e.preventDefault();
