@@ -150,6 +150,23 @@ Run it after any change to class names on either side.
     python3 tools/audit_track8.py           # Track 8 prose metrics
     node tools/check_runtime_links.js       # curriculum links resolve
     node tools/check_render_classes.js      # renderer and pages agree
+    node tools/check_dom_render.js          # lists actually appear (needs jsdom)
 
 `check_site.py --quick` skips the copyright scan, which needs the source
 corpus. A quick pass is not a full pass.
+
+## Does it actually appear?
+
+Every check above tests a file. `check_dom_render.js` tests the page: it loads
+`learn.html` in jsdom with `curriculum.js` inlined in document order, runs the
+page's own scripts, and counts the lesson rows that reach the DOM. It expects
+27, 24, 18, 20, 28, 26, 17 and 39 — 199 rows.
+
+This exists because a class rename left the lists rendering into the DOM with
+no styling and no collapse, so they were invisible on the page while every
+file-level check passed. A visitor asks one question — does the list appear —
+and until this check there was nothing that answered it.
+
+If the site looks empty in production and this check passes locally, the fault
+is deployment, not code: confirm `curriculum.js` returns 200 at the versioned
+URL in the page source.
