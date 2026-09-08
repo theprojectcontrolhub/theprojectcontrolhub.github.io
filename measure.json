@@ -1,0 +1,261 @@
+{
+ "handover": {
+  "handover": 0,
+  "hand-over": 0,
+  "hand over": 0,
+  "taking over": 0,
+  "taking-over": 0,
+  "taking-over certificate": 0,
+  "taking over certificate": 0
+ },
+ "commissioning": {
+  "commissioning": 0,
+  "pre-commissioning": 0,
+  "precommissioning": 0,
+  "pre commissioning": 0
+ },
+ "mechanical completion": {
+  "mechanical completion": 0,
+  "mechanical-completion": 0,
+  "mechanicalcompletion": 0,
+  "systems completion": 0,
+  "static completion": 0,
+  "construction completion": 0,
+  "practical completion": 0,
+  "substantial completion": 0
+ },
+ "performance test": {
+  "performance test": 0,
+  "performance-test": 0,
+  "tests on completion": 0,
+  "tests after completion": 0,
+  "reliability run": 0,
+  "trial operation": 0,
+  "performance guarantee": 0
+ },
+ "punch list": {
+  "punch list": 0,
+  "punch-list": 0,
+  "punchlist": 0,
+  "snag list": 0,
+  "snagging": 0,
+  "outstanding work": 0,
+  "defects list": 0
+ },
+ "as-built": {
+  "as-built": 0,
+  "as built": 0,
+  "asbuilt": 0,
+  "record drawing": 0
+ },
+ "defects": {
+  "defects liability": 0,
+  "defects notification": 0,
+  "defects liability period": 0,
+  "defects notification period": 0,
+  "maintenance period": 0,
+  "warranty period": 0
+ },
+ "demobilisation": {
+  "demobilisation": 0,
+  "demobilization": 0,
+  "demobilise": 0,
+  "demobilize": 0,
+  "de-mobilisation": 0,
+  "de-mobilization": 0,
+  "removal of contractor's equipment": 0
+ },
+ "mobilisation": {
+  "mobilisation": 0,
+  "mobilization": 0,
+  "mobilise": 0,
+  "mobilize": 0
+ },
+ "closeout": {
+  "closeout": 0,
+  "close-out": 0,
+  "close out": 0,
+  "closure": 0,
+  "final account": 0,
+  "final payment certificate": 0,
+  "final statement": 0,
+  "performance certificate": 0
+ },
+ "archive": {
+  "archive": 0,
+  "archiving": 0,
+  "records retention": 0,
+  "record retention": 0
+ },
+ "lessons learned": {
+  "lessons learned": 0,
+  "lessons learnt": 0,
+  "lesson learned": 0
+ },
+ "investment decision": {
+  "investment decision": 0,
+  "final investment decision": 0,
+  "fid ": 0,
+  "capital appropriation": 0,
+  "sanction": 0
+ },
+ "feasibility": {
+  "feasibility": 0,
+  "pre-feasibility": 0,
+  "prefeasibility": 0
+ },
+ "business case": {
+  "business case": 0,
+  "business-case": 0
+ },
+ "front end": {
+  "front end": 0,
+  "front-end": 0,
+  "frontend": 0,
+  "feed ": 0,
+  "front end loading": 0,
+  "front-end loading": 0,
+  "fel ": 0
+ },
+ "design freeze": {
+  "design freeze": 0,
+  "design-freeze": 0,
+  "freeze the design": 0,
+  "frozen design": 0,
+  "design lock": 0
+ },
+ "requisition": {
+  "requisition": 0,
+  "material requisition": 0,
+  "purchase requisition": 0
+ },
+ "purchase order": {
+  "purchase order": 0,
+  "purchase-order": 0
+ },
+ "long lead": {
+  "long lead": 0,
+  "long-lead": 0,
+  "longlead": 0,
+  "long lead item": 0,
+  "long-lead item": 0
+ },
+ "expediting": {
+  "expedit": 0,
+  "expediting": 0,
+  "expediter": 0,
+  "expeditor": 0
+ },
+ "vendor data": {
+  "vendor data": 0,
+  "vendor drawing": 0,
+  "vendor document": 0,
+  "supplier document": 0
+ },
+ "work package": {
+  "work package": 0,
+  "work-package": 0,
+  "workpackage": 0
+ },
+ "work breakdown": {
+  "work breakdown": 0,
+  "work-breakdown": 0,
+  "wbs": 0
+ },
+ "execution plan": {
+  "execution plan": 0,
+  "project execution plan": 0,
+  "pep ": 0
+ },
+ "kick-off": {
+  "kick-off": 0,
+  "kickoff": 0,
+  "kick off": 0
+ },
+ "look ahead": {
+  "look ahead": 0,
+  "look-ahead": 0,
+  "lookahead": 0,
+  "short term programme": 0,
+  "short-term programme": 0,
+  "weekly work plan": 0
+ },
+ "constraint removal": {
+  "constraint removal": 0,
+  "constraint-free": 0,
+  "make ready": 0,
+  "make-ready": 0,
+  "removing constraints": 0,
+  "clearing constraints": 0
+ },
+ "temporary works": {
+  "temporary works": 0,
+  "temporary-works": 0
+ },
+ "site logistics": {
+  "site logistics": 0,
+  "site layout": 0,
+  "laydown": 0,
+  "lay-down": 0,
+  "lay down area": 0,
+  "site establishment": 0
+ },
+ "change control board": {
+  "change control board": 0,
+  "change board": 0,
+  "change control committee": 0,
+  "change review board": 0,
+  "configuration control board": 0
+ },
+ "document control": {
+  "document control": 0,
+  "transmittal": 0,
+  "document register": 0
+ },
+ "coding": {
+  "coding structure": 0,
+  "code of accounts": 0,
+  "cost breakdown structure": 0,
+  "cbs": 0,
+  "obs": 0,
+  "organisational breakdown": 0,
+  "organizational breakdown": 0
+ },
+ "authority": {
+  "delegation of authority": 0,
+  "authority matrix": 0,
+  "limits of authority": 0,
+  "approval authority": 0,
+  "signature authority": 0
+ },
+ "risk review": {
+  "risk review": 0,
+  "risk workshop": 0,
+  "risk register review": 0
+ },
+ "forecast": {
+  "forecast": 0
+ },
+ "tender": {
+  "tender": 0,
+  "invitation to bid": 0,
+  "itb ": 0,
+  "invitation to tender": 0,
+  "request for proposal": 0
+ },
+ "delivery strategy": {
+  "procurement strategy": 0,
+  "delivery strategy": 0,
+  "contracting strategy": 0,
+  "packaging strategy": 0,
+  "procurement route": 0
+ },
+ "commissioning plan": {
+  "commissioning plan": 0,
+  "start-up plan": 0,
+  "startup plan": 0,
+  "commissioning procedure": 0,
+  "system turnover": 0,
+  "turnover package": 0
+ }
+}
