@@ -263,12 +263,6 @@
             line-height: 1.4;
         }
 
-        .week-date {
-            font-size: 12px;
-            color: #94a3b8;
-            white-space: nowrap;
-        }
-
         .week-new {
             font-size: 10px;
             font-weight: 700;
@@ -409,7 +403,7 @@
 
         /* ROADMAP TRACKS — future, minimal cards */
 
-        /* Sticky section nav. learn.html is the full curriculum — 69 weeks plus 16
+        /* Sticky section nav. learn.html is the full curriculum — 199 topics plus 16
            phase dividers — so the fix for its length is navigation, not hiding rows.
            top:72px clears the navbar (16px padding + 40px logo + 16px); z-index stays
            under the navbar's 500. */
@@ -649,7 +643,6 @@
             .week-item { padding: 11px 18px; gap: 10px; }
             .week-num { min-width: 48px; font-size: 10px; }
             .week-title { font-size: 13px; }
-            .week-date { display: none; }
             .week-new { font-size: 10px; padding: 2px 6px; }
             .module-progress { padding: 12px 18px 18px; }
             .btn-nav-social { display: none !important; }
@@ -889,7 +882,7 @@
                                 <p>You own time. You build the schedule, keep it honest as the job changes, and tell everyone what the current date really is. The most common entry point, and the one closest to the site.</p>
                             </div>
                         </div>
-                        <span class="module-badge badge-active"><span class="dot-green"></span> Track 1 &#183; <span id="p1Weeks">27</span> weeks</span>
+                        <span class="module-badge badge-active"><span class="dot-green"></span> Track 1 &#183; <span id="p1Weeks">27</span> topics</span>
                     </div>
                 </div>
 
@@ -902,7 +895,7 @@
                                 <p>You own money. Budgets, commitments, earned value and the cash the project needs next month. Closer to the commercial team, and the path that leads most directly toward project management.</p>
                             </div>
                         </div>
-                        <span class="module-badge badge-active"><span class="dot-green"></span> Track 2 &#183; <span id="p2Weeks">24</span> weeks</span>
+                        <span class="module-badge badge-active"><span class="dot-green"></span> Track 2 &#183; <span id="p2Weeks">24</span> topics</span>
                     </div>
                 </div>
 
@@ -915,7 +908,7 @@
                                 <p>You own what has not happened yet. Registers, quantification, contingency and the Monte Carlo run behind a completion date. The most analytical of the five, and the smallest job market.</p>
                             </div>
                         </div>
-                        <span class="module-badge badge-active"><span class="dot-green"></span> Track 3 &#183; <span id="p3Weeks">18</span> weeks</span>
+                        <span class="module-badge badge-active"><span class="dot-green"></span> Track 3 &#183; <span id="p3Weeks">18</span> topics</span>
                     </div>
                 </div>
 
@@ -928,7 +921,7 @@
                                 <p>You own entitlement. Notices, variations, extensions of time, and proving a delay was not yours. Two tracks, because reading the contract and proving the delay are different skills.</p>
                             </div>
                         </div>
-                        <span class="module-badge badge-active"><span class="dot-green"></span> Tracks 4&#8211;5 &#183; <span id="p45Weeks">48</span> weeks</span>
+                        <span class="module-badge badge-active"><span class="dot-green"></span> Tracks 4&#8211;5 &#183; <span id="p45Weeks">48</span> topics</span>
                     </div>
                 </div>
 
@@ -960,9 +953,9 @@
                     <div class="track-badge free"><i class='bx bx-map'></i> FIVE</div>
                     <h2>How to Work Through This</h2>
                     <p class="track-sub">There is a reading order, and there is permission to ignore it.</p>
-                    <p class="track-desc">Track 1 is where to start. It is the foundation the other seven stand on, and it assumes no software and no prior planning experience. If a term is unfamiliar, it gets defined the week it is first needed.</p>
+                    <p class="track-desc">Track 1 is where to start. It is the foundation the other seven stand on, and it assumes no software and no prior planning experience. If a term is unfamiliar, it gets defined the first time it is needed.</p>
                     <p class="track-desc">Track 1 is the foundation everything else stands on. Cost, risk, contract, claims, reporting, interfaces and the life of a project all assume it. After Track 1 the order is genuinely yours, because those seven are independent of each other and each says so where it depends on something you have not read yet.</p>
-                    <p class="track-desc">Every lesson is a single article of roughly seven minutes, published one week at a time, each one building on the last. There is nothing to install and no exercise you have to complete before the next one opens. The fundamentals are free and stay free. The digital phase, when it arrives, is where the tools are taught, and it comes last because it depends on everything before it.</p>
+                    <p class="track-desc">Every lesson is a single article of roughly seven minutes, arranged as a progressive sequence of topics, each one building on the last. There is nothing to install and no exercise you have to complete before the next one opens. The fundamentals are free and stay free. The digital phase, when it arrives, is where the tools are taught, and it comes last because it depends on everything before it.</p>
                     <div class="track-note">
                         <i class='bx bx-lock-open-alt'></i>
                         <p><strong>What you are looking at.</strong> <span id="shCounts">Eight tracks complete, 199 lessons published</span>, and a toolbox next. Written by one planning lead, from the field, and corrected wherever the field disagreed with the book.</p>
@@ -982,7 +975,7 @@
 
     <!-- MOBILE NAV -->
     <div class="mobile-nav" id="mobileNav">
-        <button class="mobile-nav-close" onclick="toggleMobileNav()"><i class='bx bx-x'></i></button>
+        <button class="mobile-nav-close" onclick="toggleMobileNav()" aria-label="Close menu"><i class='bx bx-x'></i></button>
         <a href="index.html" onclick="toggleMobileNav()">Home</a>
         <a href="learn.html" class="active" onclick="toggleMobileNav()">Learn</a>
         <a href="about.html" onclick="toggleMobileNav()">About</a>
@@ -1023,7 +1016,7 @@
     <!-- ACCESS MODAL -->
     <div class="modal-overlay" id="accessModal">
         <div class="modal-box">
-            <button class="close-modal" onclick="closeModal()"><i class='bx bx-x'></i></button>
+            <button class="close-modal" onclick="closeModal()" aria-label="Close"><i class='bx bx-x'></i></button>
             <div class="modal-icon-wrapper">
                 <i class='bx bx-book-open'></i>
             </div>
@@ -1039,7 +1032,7 @@
 
 
     <!-- Curriculum data + renderers -->
-    <script src="curriculum.js?v=196"></script>
+    <script src="curriculum.js?v=220"></script>
     <script>
         // Counts come from curriculum.js so this page cannot go stale.
         (function () {
@@ -1048,17 +1041,17 @@
                 var el = document.getElementById(id);
                 if (el) el.textContent = val;
             };
-            set('p1Weeks', CURRICULUM.totalWeeks);
-            if (typeof TRACK2 !== 'undefined') set('p2Weeks', TRACK2.totalWeeks);
-            if (typeof TRACK3 !== 'undefined') set('p3Weeks', TRACK3.totalWeeks);
+            set('p1Weeks', CURRICULUM.totalTopics);
+            if (typeof TRACK2 !== 'undefined') set('p2Weeks', TRACK2.totalTopics);
+            if (typeof TRACK3 !== 'undefined') set('p3Weeks', TRACK3.totalTopics);
             if (typeof TRACK4 !== 'undefined' && typeof TRACK5 !== 'undefined') {
-                set('p45Weeks', TRACK4.totalWeeks + TRACK5.totalWeeks);
+                set('p45Weeks', TRACK4.totalTopics + TRACK5.totalTopics);
             }
             var tracks = [CURRICULUM, TRACK2, TRACK3, TRACK4, TRACK5,
                           typeof TRACK6 !== 'undefined' ? TRACK6 : null,
                           typeof TRACK7 !== 'undefined' ? TRACK7 : null,
                           typeof LIFECYCLE !== 'undefined' ? LIFECYCLE : null].filter(Boolean);
-            var done = tracks.filter(function (t) { return t.liveCount >= t.totalWeeks; }).length;
+            var done = tracks.filter(function (t) { return t.liveCount >= t.totalTopics; }).length;
             var lessons = tracks.reduce(function (a, t) { return a + t.liveCount; }, 0);
             set('shCounts', done + ' tracks complete, ' + lessons + ' lessons published');
         })();
