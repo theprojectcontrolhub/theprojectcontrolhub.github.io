@@ -107,10 +107,13 @@ resolves every link it produces. Run both before any release.
 
 Three directories, and the split is the point.
 
-`tools/` holds the eleven scripts and two checkers that work against the
-current model: the five checks, the three repair tools, the source
-measurement, the figure normaliser and `prepare_publish.py`. Every one of them
-runs clean against the site as it stands.
+`tools/` holds the sixteen files that work against the current model: seven
+checks (`check_site.py`, `check_status_strings.py`, `check_figures.py`,
+`audit_track8.py`, `check_runtime_links.js`, `check_render_classes.js`,
+`check_dom_render.js`), a browser console snippet, three repair tools, the
+source measurement, the figure normaliser, the paragraph helper,
+`prepare_publish.py` and `render_check.js`. Every one runs clean against the
+site as it stands.
 
 `tools/oneshot/` holds 22 content fixes already applied — a crumb corrected, a
 figure chain rebuilt, a number restated. They do not touch the curriculum
@@ -170,3 +173,11 @@ and until this check there was nothing that answered it.
 If the site looks empty in production and this check passes locally, the fault
 is deployment, not code: confirm `curriculum.js` returns 200 at the versioned
 URL in the page source.
+
+## Checking the live site
+
+`check_dom_render.js` needs jsdom and tests the local copy. To check what is
+actually deployed, open `learn.html` in a browser, open the console, and paste
+`tools/console-check.js`. It counts the rendered rows per track and expects
+199. A zero anywhere means `curriculum.js` did not load or did not run — check
+that the versioned URL in the page source returns 200.

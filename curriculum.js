@@ -19,7 +19,6 @@ const CURRICULUM = {
 
   // status: "live" = published & clickable | "upcoming" = greyed out
   // page:   the html file for that topic (only needed when live)
-  // new:    true shows a green "New" badge (use for the latest one)
   topics: [
     // ---- PHASE A — FOUNDATIONS ----
     { phase: "Phase A — Foundations", n: 1, title: "Why projects fail — and why the answer is never the tools", short: "Why projects fail — and why the answer is never the tools", status: "live", page: "week-1.html" },
@@ -84,8 +83,7 @@ function sidebarHTML(track, currentWeek) {
   const rows = track.topics.map(function (topic) {
     const isActive = topic.n === currentWeek;
     const isLive = topic.status === "live";
-    const badge = (topic === track.latestLiveTopic && !isActive)
-      ? '<span class="sidebar-new" translate="no">New</span>' : "";
+    const badge = "";  // no "New": a fixed curriculum has no newest topic
     const inner = `<span class="sidebar-topic">Topic ${topic.n}</span>`
                 + `<span class="sidebar-item-title">${topic.short}</span>`;
     if (isActive) {
@@ -132,16 +130,11 @@ function renderLearnCurriculum() {
     }
     const isLive = topic.status === "live";
     if (isLive || topic.page) {
-      const isLatest = topic === w.latestLiveTopic;
-      const dateOrNew = isLatest
-        ? '<span class="topic-new" translate="no">New</span>'
-        : '';
       const gated = isLive ? "" : " data-gated";
       rows += `
         <a href="${topic.page}" class="topic-item"${gated}>
           <span class="topic-num">Topic ${topic.n}</span>
           <span class="topic-title">${topic.title}</span>
-          ${dateOrNew}
           <i class='bx bx-right-arrow-alt topic-arrow'></i>
         </a>`;
     } else {
@@ -233,7 +226,7 @@ function homeCurriculumHTML(track) {
   let rows = "";
 
   live.slice(0, HOME_PREVIEW).forEach(function (topic) {
-    const badge = (topic === track.latestLiveTopic) ? '<span class="new-badge" translate="no">New</span>' : '';
+    const badge = "";  // no "New": a fixed curriculum has no newest topic
     rows += `
       <a href="${topic.page}" class="module-post-item">
         <span class="post-topic">Topic ${topic.n}</span>
@@ -267,7 +260,7 @@ function homeCurriculumHTML(track) {
   if (rest.length > 0) {
     let restRows = "";
     rest.forEach(function (topic) {
-      const badge = (topic === track.latestLiveTopic) ? '<span class="new-badge" translate="no">New</span>' : '';
+      const badge = "";  // no "New": a fixed curriculum has no newest topic
       restRows += `
         <a href="${topic.page}" class="module-post-item">
           <span class="post-topic">Topic ${topic.n}</span>
@@ -397,15 +390,10 @@ function renderTrack2Curriculum() {
         </div>`;
     }
     if (topic.status === "live" && topic.page) {
-      const isLatest = topic === t.latestLiveTopic;
-      const dateOrNew = isLatest
-        ? '<span class="topic-new" translate="no">New</span>'
-        : '';
       rows += `
         <a href="${topic.page}" class="topic-item">
           <span class="topic-num">Topic ${topic.n}</span>
           <span class="topic-title">${topic.title}</span>
-          ${dateOrNew}
           <i class='bx bx-right-arrow-alt topic-arrow'></i>
         </a>`;
     } else {
@@ -564,15 +552,10 @@ function learnCurriculumHTML(t) {
         </div>`;
     }
     if (topic.status === "live" && topic.page) {
-      const isLatest = topic === t.latestLiveTopic;
-      const dateOrNew = isLatest
-        ? '<span class="topic-new" translate="no">New</span>'
-        : '';
       rows += `
         <a href="${topic.page}" class="topic-item">
           <span class="topic-num">Topic ${topic.n}</span>
           <span class="topic-title">${topic.title}</span>
-          ${dateOrNew}
           <i class='bx bx-right-arrow-alt topic-arrow'></i>
         </a>`;
     } else {
@@ -953,15 +936,10 @@ function renderTrack3Curriculum() {
         </div>`;
     }
     if (topic.status === "live" && topic.page) {
-      const isLatest = topic === t.latestLiveTopic;
-      const dateOrNew = isLatest
-        ? '<span class="topic-new" translate="no">New</span>'
-        : '';
       rows += `
         <a href="${topic.page}" class="topic-item">
           <span class="topic-num">Topic ${topic.n}</span>
           <span class="topic-title">${topic.title}</span>
-          ${dateOrNew}
           <i class='bx bx-right-arrow-alt topic-arrow'></i>
         </a>`;
     } else {
