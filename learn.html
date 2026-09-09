@@ -263,16 +263,6 @@
             line-height: 1.4;
         }
 
-        .topic-new {
-            font-size: 10px;
-            font-weight: 700;
-            color: #fff;
-            background: #10b981;
-            padding: 2px 8px;
-            border-radius: 10px;
-            white-space: nowrap;
-        }
-
         .topic-upcoming-label {
             font-size: 12px;
             color: #cbd5e1;
@@ -403,7 +393,7 @@
 
         /* ROADMAP TRACKS — future, minimal cards */
 
-        /* Sticky section nav. learn.html is the full curriculum — 69 weeks plus 16
+        /* Sticky section nav. learn.html is the full curriculum — 199 topics plus 16
            phase dividers — so the fix for its length is navigation, not hiding rows.
            top:72px clears the navbar (16px padding + 40px logo + 16px); z-index stays
            under the navbar's 500. */
@@ -654,7 +644,6 @@
             .topic-item { padding: 11px 18px; gap: 10px; }
             .topic-num { min-width: 48px; font-size: 10px; }
             .topic-title { font-size: 13px; }
-            .topic-new { font-size: 10px; padding: 2px 6px; }
             .module-progress { padding: 12px 18px 18px; }
             .btn-nav-social { display: none !important; }
         }
@@ -1779,7 +1768,7 @@
 
 
     <!-- Curriculum data + renderers -->
-    <script src="curriculum.js?v=222"></script>
+    <script src="curriculum.js?v=225"></script>
     <script>
         (function() {
             if (typeof CURRICULUM === 'undefined') return;
@@ -1817,7 +1806,7 @@
                 if (hb) {
                     hb.innerHTML = p[3] + (t.liveCount >= t.totalTopics ? ' \u00b7 COMPLETE'
                                  : t.liveCount === 0 ? ' \u00b7 IN PREPARATION'
-                                 : ' \u00b7 WEEK ' + t.latestLiveTopic.n);
+                                 : ' \u00b7 TOPIC ' + t.latestLiveTopic.n);
                 }
             });
 
@@ -1862,7 +1851,7 @@
                     if (!el || !t) return;
                     var word = t.liveCount >= t.totalTopics ? 'COMPLETE'
                              : t.liveCount === 0 ? 'IN PREPARATION'
-                             : 'WEEK ' + t.latestLiveTopic.n;
+                             : 'TOPIC ' + t.latestLiveTopic.n;
                     el.innerHTML = p[2] + ' TRACK ' + p[0] + ' \u00b7 FREE \u00b7 ' + word;
                 });
             })();
@@ -2023,7 +2012,7 @@
                     var label = function (open) {
                         return open
                             ? "Show fewer <i class='bx bx-chevron-down'></i>"
-                            : "Show all " + items.length + " weeks " +
+                            : "Show all " + items.length + " topics " +
                               '<span class="weeks-toggle-count">+' + hidden + '</span>' +
                               " <i class='bx bx-chevron-down'></i>";
                     };
