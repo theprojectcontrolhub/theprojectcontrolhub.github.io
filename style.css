@@ -152,7 +152,7 @@ ul {
     align-items: center;
     text-decoration: none;
     cursor: pointer;
-    gap: 12px;
+    gap: 6px;
     font-weight: 800;
     font-size: 18px;
     letter-spacing: 0.5px;
@@ -164,12 +164,33 @@ ul {
     color: var(--primary-green);
 }
 
+/* The mark is 1.26:1, not square, so its height is set and the width follows.
+   Measured against the PMI lockup, which the wordmark is modelled on: the text
+   block is exactly as tall as the mark, aligned top and bottom, with a gap of
+   about 13% of that height. Anything looser and the two stop reading as one
+   object. */
 .logo-mark {
     flex-shrink: 0;
     display: block;
-    width: 40px;
-    height: 40px;
+    height: 44px;
+    width: auto;
 }
+
+/* Three-line wordmark beside the mark. The name is long enough that one line
+   pushed the nav across; stacked it reads as a block and matches the two-row
+   shape of the logo itself. */
+.logo-words {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1;
+    font-weight: 800;
+    font-size: 16px;
+    letter-spacing: 0.2px;
+    text-transform: none;
+    height: 44px;
+}
+
 
 
 .nav-links {
@@ -712,6 +733,8 @@ ul {
     .navbar { padding: 16px 20px; }
     .nav-links { display: none; }
     .logo span { font-size: 14px; }
+    .logo-words { font-size: 14px; height: 38px; }
+    .logo-mark { height: 38px; width: auto; }
     .btn-nav-social { display: none; }
 
     /* HERO */
