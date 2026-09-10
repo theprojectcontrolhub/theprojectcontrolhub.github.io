@@ -14,13 +14,13 @@
     <meta property="og:title" content="The Project Control Hub — Planning & Project Controls, Explained">
     <meta property="og:description" content="Learn planning and project controls the way it actually works on site. 199 lessons by Bar&#305;&#351; Emre &#214;z&#231;elik, PMP &#8212; schedule, cost, risk, contract, claims, reporting, interfaces and the life of a project. Complete and free to read.">
     <meta property="og:url" content="https://theprojectcontrolhub.com/">
-    <meta property="og:image" content="https://theprojectcontrolhub.com/og-image.png">
+    <meta property="og:image" content="https://theprojectcontrolhub.com/og-image.jpg">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="The Project Control Hub — Planning & Project Controls, Explained">
     <meta name="twitter:description" content="Learn planning and project controls the way it actually works on site. 199 lessons by Bar&#305;&#351; Emre &#214;z&#231;elik, PMP &#8212; schedule, cost, risk, contract, claims, reporting, interfaces and the life of a project. Complete and free to read.">
-    <meta name="twitter:image" content="https://theprojectcontrolhub.com/og-image.png">
+    <meta name="twitter:image" content="https://theprojectcontrolhub.com/og-image.jpg">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -30,7 +30,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Icons -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=40">
+    <link rel="stylesheet" href="style.css?v=42">
     <style>
         /* Founder intro block */
         .founder-intro {
@@ -793,7 +793,7 @@
         <div class="hero-container">
             <div class="hero-left">
                 <div class="pill-badge">
-                    <span class="dot"></span> <span class="logo-words" translate="no"><span>the Project</span><span>Control</span><span>Hub</span></span>
+                    <span class="dot"></span> <span translate="no">THE PROJECT CONTROL HUB</span>
                 </div>
 
                 <p class="hero-eyebrow">Nuclear &#183; mining &#183; port &#183; high-rise</p>
@@ -826,8 +826,17 @@
             </div>
 
             <div class="hero-right">
-                <img class="hero-photo" src="hero-photo.jpg" width="1200" height="990"
-                     alt="Bar&#305;&#351; Emre &#214;z&#231;elik on site" loading="eager" decoding="async">
+                <picture>
+                    <source type="image/webp"
+                            srcset="hero-photo-half.webp 690w, hero-photo.webp 1380w"
+                            sizes="(max-width: 1100px) 100vw, 46vw">
+                    <source type="image/jpeg"
+                            srcset="hero-photo-half.jpg 690w, hero-photo.jpg 1380w"
+                            sizes="(max-width: 1100px) 100vw, 46vw">
+                    <img class="hero-photo" src="hero-photo.jpg" width="1380" height="1140"
+                         alt="Bar&#305;&#351; Emre &#214;z&#231;elik at a desk on site, cranes behind"
+                         loading="eager" decoding="async" fetchpriority="high">
+                </picture>
                 <div class="hero-credit">
                     <span class="founder-name" translate="no">Bar&#305;&#351; Emre &#214;z&#231;elik</span>
                     <span class="founder-title">Planning &amp; Project Controls Lead<br>Civil Engineer &#183; PMP&#174;</span>
@@ -1110,7 +1119,7 @@
 
 
     <!-- Curriculum data + home renderers -->
-    <script src="curriculum.js?v=230"></script>
+    <script src="curriculum.js?v=232"></script>
     <script>
         (function() {
             if (typeof CURRICULUM === 'undefined') return;
