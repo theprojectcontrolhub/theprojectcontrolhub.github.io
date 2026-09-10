@@ -179,42 +179,11 @@ function liveLessonCount() {
   return allTracks().reduce(function (n, p) { return n + p[0].liveCount; }, 0);
 }
 
-function renderHomeFeatured() {
-  // Three topics to start from, taken in curriculum order.
-  //
-  // This used to sort by publication date and badge the newest one "New".
-  // The site no longer carries dates — they were a planned schedule rather
-  // than real publication dates — so every entry sorted equal and "newest"
-  // stopped meaning anything. A fixed, complete curriculum has no newest
-  // item, so the panel now shows where to start instead.
-  const picks = [
-    [CURRICULUM, "Schedule Management", 1],
-    [typeof LIFECYCLE !== "undefined" ? LIFECYCLE : null, "The Life of a Project", 1],
-    [typeof TRACK2 !== "undefined" ? TRACK2 : null, "Cost & Cash", 1]
-  ];
-  let html = "";
-  picks.forEach(function (p) {
-    const track = p[0];
-    if (!track) return;
-    const w = track.topics.filter(function (x) { return x.status === "live" && x.page; })
-                         .filter(function (x) { return x.n === p[2]; })[0];
-    if (!w) return;
-    html += `
-      <a href="${w.page}" class="discussion-list-item module-post-item">
-        <span class="category-text text-green">TOPIC ${w.n} &#183; ${p[1]}</span>
-        <h4>${w.short}</h4>
-        <div class="item-meta">
-          <i class='bx bx-right-arrow-alt arrow-icon'></i>
-        </div>
-      </a>`;
-  });
-  return html;
-}
+// renderHomeFeatured() was removed with the hero panel it fed. The home
+// page now opens on a photograph and the curriculum cards below it.
 
-// How many live topics the home page previews per track before the "Full
-// Curriculum" link takes over. Used by homeCurriculumHTML below, which was
-// referencing it without it ever being declared — so the home curriculum card
-// threw a ReferenceError and rendered empty. Caught 2026-09-08.
+// How many live topics the home page previews per track before the
+// "Full Curriculum" link takes over.
 const HOME_PREVIEW = 4;
 
 function homeCurriculumHTML(track) {

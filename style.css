@@ -184,7 +184,7 @@ ul {
     flex-direction: column;
     justify-content: center;
     line-height: 1;
-    font-weight: 800;
+    font-weight: 500;
     font-size: 16px;
     letter-spacing: 0.2px;
     text-transform: none;
@@ -732,7 +732,7 @@ ul {
     /* NAVBAR */
     .navbar { padding: 16px 20px; }
     .nav-links { display: none; }
-    .logo span { font-size: 14px; }
+    .logo > span:not(.logo-words) { font-size: 14px; }
     .logo-words { font-size: 14px; height: 38px; }
     .logo-mark { height: 38px; width: auto; }
     .btn-nav-social { display: none; }
@@ -1856,3 +1856,106 @@ ul {
 /* 1024px: makale layout'u tek sütuna düşer ve yan panel makalenin altına yığılır.
    Kutu yüksekliği eski 5-satırlık görünümle aynı kalsın ki mobil ayak izi büyümesin. */
 @media (max-width: 1024px) { .sidebar-scroll { max-height: 340px; } }
+
+/* ---------- Hero, rebuilt around a photograph ---------------------------
+   The old hero was text on a dark panel. Nobody knew who was writing, which
+   is the one question a reader has on a site that is also a CV. The picture
+   answers it before a word is read. Everything else is arranged around it. */
+
+.hero-container { align-items: center; }
+
+.hero-eyebrow {
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--primary-green);
+    margin: 0 0 14px;
+}
+
+.hero-right { position: relative; }
+
+.hero-photo {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 18px;
+    /* The photograph is a portrait against a site; fading its lower edge into
+       the section background stops it reading as a pasted rectangle. */
+    -webkit-mask-image: linear-gradient(180deg, #000 78%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 78%, transparent 100%);
+}
+
+.hero-credit {
+    position: absolute;
+    left: 22px;
+    bottom: 26px;
+    padding-left: 14px;
+    border-left: 3px solid var(--primary-green);
+    line-height: 1.35;
+}
+.hero-credit .founder-name {
+    display: block;
+    font-weight: 700;
+    font-size: 16px;
+    color: #fff;
+}
+.hero-credit .founder-title {
+    display: block;
+    font-size: 13px;
+    color: #cbd5e1;
+}
+
+/* Three numbers the site can actually stand behind. */
+.hero-stats {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+.hero-stat { display: flex; align-items: center; gap: 11px; }
+.hero-stat + .hero-stat { padding-left: 30px; border-left: 1px solid #1e293b; }
+.hero-stat i { font-size: 30px; color: var(--primary-green); }
+.hero-stat strong { display: block; font-size: 23px; font-weight: 800; color: #fff; line-height: 1.1; }
+.hero-stat span { font-size: 13px; color: #94a3b8; }
+
+/* The eight tracks, so the scope is visible without scrolling. */
+.hero-tracks {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    border-top: 1px solid #1e293b;
+    margin-top: 46px;
+}
+.hero-track {
+    padding: 22px 16px;
+    text-decoration: none;
+    border-right: 1px solid #1e293b;
+    transition: background .15s;
+}
+.hero-track:last-child { border-right: 0; }
+.hero-track:hover { background: #111c33; }
+.hero-track i { font-size: 26px; color: var(--primary-green); display: block; margin-bottom: 10px; }
+.hero-track strong {
+    display: block;
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 5px;
+}
+.hero-track span { font-size: 12.5px; color: #94a3b8; line-height: 1.45; }
+
+@media (max-width: 1024px) {
+    .hero-tracks { grid-template-columns: repeat(4, 1fr); }
+    .hero-track:nth-child(4) { border-right: 0; }
+}
+@media (max-width: 640px) {
+    .hero-tracks { grid-template-columns: repeat(2, 1fr); }
+    .hero-track:nth-child(4) { border-right: 1px solid #1e293b; }
+    .hero-track:nth-child(2n) { border-right: 0; }
+    .hero-stats { gap: 18px; }
+    .hero-stat + .hero-stat { padding-left: 18px; }
+    .hero-credit { left: 14px; bottom: 16px; }
+}
