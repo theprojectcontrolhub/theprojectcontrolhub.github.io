@@ -1960,18 +1960,65 @@ ul {
     .hero-credit { left: 14px; bottom: 16px; }
 }
 
-/* ---------- Hero layout corrections ------------------------------------
-   The photograph was taking about two thirds of the row, which squeezed the
-   left column until the headline broke as "Planning is / not a / poster on /
-   the wall" and both buttons wrapped onto two lines. The text column needs
-   enough width to set the headline in two lines, so the split is close to
-   even and the headline is stopped from breaking anywhere else. */
-.hero-container {
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    align-items: center;
+/* ---------- Hero: photograph to the edge --------------------------------
+   The photograph occupies the right side of the band, full height, running
+   off the right edge of the viewport. It is not a card: a contained image
+   with rounded corners left the row reading as two thirds empty. The text
+   sits on the dark half, and the photograph fades into that dark on its left
+   so there is no seam between them. */
+
+.hero-section { position: relative; overflow: hidden; }
+
+.hero-photo-bleed {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 58%;
+    height: 100%;
+    z-index: 0;
 }
-.hero-left { min-width: 0; }
+.hero-photo-bleed picture { display: block; height: 100%; }
+.hero-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 60% 35%;
+    display: block;
+    border-radius: 0;
+    /* fade into the dark panel on the left, and soften the bottom edge into
+       the track strip below */
+    -webkit-mask-image:
+        linear-gradient(90deg, transparent 0%, #000 34%),
+        linear-gradient(180deg, #000 82%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-image:
+        linear-gradient(90deg, transparent 0%, #000 34%),
+        linear-gradient(180deg, #000 82%, transparent 100%);
+    mask-composite: intersect;
+}
+
+.hero-credit {
+    position: absolute;
+    left: 38%;
+    bottom: 68px;
+    padding-left: 14px;
+    border-left: 3px solid var(--primary-green);
+    line-height: 1.35;
+    z-index: 2;
+}
+.hero-credit .founder-name { display: block; font-weight: 700; font-size: 16px; color: #fff; }
+.hero-credit .founder-title { display: block; font-size: 13px; color: #cbd5e1; }
+
+/* Text column: one half of the band, above the photograph. */
+.hero-container {
+    position: relative;
+    z-index: 1;
+    display: block;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 84px 24px 76px;
+}
+.hero-left { max-width: 560px; }
 .hero-left h1 {
     font-size: clamp(36px, 4vw, 52px);
     line-height: 1.08;
@@ -1981,7 +2028,24 @@ ul {
 .hero-buttons .btn { white-space: nowrap; }
 
 @media (max-width: 1100px) {
-    .hero-container { grid-template-columns: 1fr; gap: 34px; }
-    .hero-right { order: -1; }
-    .hero-photo { max-height: 420px; object-fit: cover; object-position: center 20%; }
+    .hero-photo-bleed { position: relative; width: 100%; height: 340px; }
+    .hero-photo {
+        -webkit-mask-image: linear-gradient(180deg, #000 74%, transparent 100%);
+        mask-image: linear-gradient(180deg, #000 74%, transparent 100%);
+        object-position: center 28%;
+    }
+    .hero-credit { left: 24px; bottom: 24px; }
+    .hero-container { padding: 30px 24px 56px; }
+    .hero-left { max-width: none; }
 }
+
+/* An icon name that does not exist in the set renders as nothing, and the
+   row it sits in loses its top alignment — which is how the Claims card came
+   to sit lower than the other seven with no icon above it. Reserving the
+   line box keeps the grid honest whether or not the glyph resolves. */
+.hero-track i {
+    display: block;
+    min-height: 30px;
+    line-height: 30px;
+}
+.hero-track { display: flex; flex-direction: column; align-items: flex-start; }
