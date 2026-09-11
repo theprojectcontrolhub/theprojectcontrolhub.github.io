@@ -30,7 +30,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Icons -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=42">
+    <link rel="stylesheet" href="style.css?v=43">
     <style>
         /* Founder intro block */
         .founder-intro {
@@ -789,7 +789,27 @@
 
     <section class="hero-section">
 
-        <!-- Hero Content -->
+        <!-- The photograph runs to the right edge and the full height of the
+             band; the text sits on the dark half. A contained card left the
+             row looking half empty. -->
+        <div class="hero-photo-bleed">
+            <picture>
+                <source type="image/webp"
+                        srcset="hero-photo-half.webp 690w, hero-photo.webp 1380w"
+                        sizes="(max-width: 1100px) 100vw, 58vw">
+                <source type="image/jpeg"
+                        srcset="hero-photo-half.jpg 690w, hero-photo.jpg 1380w"
+                        sizes="(max-width: 1100px) 100vw, 58vw">
+                <img class="hero-photo" src="hero-photo.jpg" width="1380" height="1140"
+                     alt="Bar&#305;&#351; Emre &#214;z&#231;elik at a desk on site, cranes behind"
+                     loading="eager" decoding="async" fetchpriority="high">
+            </picture>
+            <div class="hero-credit">
+                <span class="founder-name" translate="no">Bar&#305;&#351; Emre &#214;z&#231;elik</span>
+                <span class="founder-title">Planning &amp; Project Controls Lead<br>Civil Engineer &#183; PMP&#174;</span>
+            </div>
+        </div>
+
         <div class="hero-container">
             <div class="hero-left">
                 <div class="pill-badge">
@@ -812,7 +832,7 @@
                 <div class="hero-stats">
                     <div class="hero-stat">
                         <i class='bx bxs-graduation'></i>
-                        <div><strong id="heroStatTopics">199</strong><span>Topics</span></div>
+                        <div><strong>199</strong><span>Topics</span></div>
                     </div>
                     <div class="hero-stat">
                         <i class='bx bxs-layer'></i>
@@ -824,33 +844,14 @@
                     </div>
                 </div>
             </div>
-
-            <div class="hero-right">
-                <picture>
-                    <source type="image/webp"
-                            srcset="hero-photo-half.webp 690w, hero-photo.webp 1380w"
-                            sizes="(max-width: 1100px) 100vw, 46vw">
-                    <source type="image/jpeg"
-                            srcset="hero-photo-half.jpg 690w, hero-photo.jpg 1380w"
-                            sizes="(max-width: 1100px) 100vw, 46vw">
-                    <img class="hero-photo" src="hero-photo.jpg" width="1380" height="1140"
-                         alt="Bar&#305;&#351; Emre &#214;z&#231;elik at a desk on site, cranes behind"
-                         loading="eager" decoding="async" fetchpriority="high">
-                </picture>
-                <div class="hero-credit">
-                    <span class="founder-name" translate="no">Bar&#305;&#351; Emre &#214;z&#231;elik</span>
-                    <span class="founder-title">Planning &amp; Project Controls Lead<br>Civil Engineer &#183; PMP&#174;</span>
-                </div>
-            </div>
         </div>
 
-        <!-- Eight tracks, at a glance -->
         <div class="hero-tracks">
             <a href="learn.html#track-1" class="hero-track"><i class='bx bx-calendar'></i><strong>Schedule</strong><span>Keep the project on track.</span></a>
             <a href="learn.html#track-2" class="hero-track"><i class='bx bx-coin-stack'></i><strong>Cost</strong><span>Control the numbers.</span></a>
             <a href="learn.html#track-3" class="hero-track"><i class='bx bx-error'></i><strong>Risk</strong><span>Be ready.</span></a>
             <a href="learn.html#track-4" class="hero-track"><i class='bx bx-file'></i><strong>Contract</strong><span>Know the rules.</span></a>
-            <a href="learn.html#track-5" class="hero-track"><i class='bx bx-gavel'></i><strong>Claims</strong><span>Protect your position.</span></a>
+            <a href="learn.html#track-5" class="hero-track"><i class='bx bx-shield-quarter'></i><strong>Claims</strong><span>Protect your position.</span></a>
             <a href="learn.html#track-6" class="hero-track"><i class='bx bx-bar-chart-alt-2'></i><strong>Reporting</strong><span>Turn data into insight.</span></a>
             <a href="learn.html#track-7" class="hero-track"><i class='bx bx-group'></i><strong>Interfaces</strong><span>Work together.</span></a>
             <a href="learn.html#lifecycle" class="hero-track"><i class='bx bx-flag'></i><strong>Life of a Project</strong><span>From start to finish.</span></a>
@@ -1119,7 +1120,7 @@
 
 
     <!-- Curriculum data + home renderers -->
-    <script src="curriculum.js?v=232"></script>
+    <script src="curriculum.js?v=233"></script>
     <script>
         (function() {
             if (typeof CURRICULUM === 'undefined') return;
