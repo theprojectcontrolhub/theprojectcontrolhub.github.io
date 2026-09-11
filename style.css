@@ -1960,92 +1960,59 @@ ul {
     .hero-credit { left: 14px; bottom: 16px; }
 }
 
-/* ---------- Hero: photograph to the edge --------------------------------
-   The photograph occupies the right side of the band, full height, running
-   off the right edge of the viewport. It is not a card: a contained image
-   with rounded corners left the row reading as two thirds empty. The text
-   sits on the dark half, and the photograph fades into that dark on its left
-   so there is no seam between them. */
+/* ---------- Hero --------------------------------------------------------
+   The illustration's own background is the site's background, so it needs no
+   mask and no rounded frame: placed against the panel it simply continues it.
+   Earlier versions faded a photograph into the dark with a gradient; that is
+   unnecessary here and a gradient over a matching colour only dulls it. */
 
-.hero-section { position: relative; overflow: hidden; }
+.hero-section { position: relative; }
+.hero-band { position: relative; overflow: hidden; min-height: 520px; }
 
 .hero-photo-bleed {
     position: absolute;
-    top: 0;
     right: 0;
-    width: 58%;
+    bottom: 0;
+    width: 56%;
     height: 100%;
     z-index: 0;
+    pointer-events: none;
 }
 .hero-photo-bleed picture { display: block; height: 100%; }
 .hero-photo {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 60% 35%;
+    /* the desk edge sits on the bottom of the band, as in the reference */
+    object-position: 62% 100%;
     display: block;
     border-radius: 0;
-    /* fade into the dark panel on the left, and soften the bottom edge into
-       the track strip below */
-    -webkit-mask-image:
-        linear-gradient(90deg, transparent 0%, #000 34%),
-        linear-gradient(180deg, #000 82%, transparent 100%);
-    -webkit-mask-composite: source-in;
-    mask-image:
-        linear-gradient(90deg, transparent 0%, #000 34%),
-        linear-gradient(180deg, #000 82%, transparent 100%);
-    mask-composite: intersect;
 }
 
-.hero-credit {
-    position: absolute;
-    left: 38%;
-    bottom: 68px;
-    padding-left: 14px;
-    border-left: 3px solid var(--primary-green);
-    line-height: 1.35;
-    z-index: 2;
-}
-.hero-credit .founder-name { display: block; font-weight: 700; font-size: 16px; color: #fff; }
-.hero-credit .founder-title { display: block; font-size: 13px; color: #cbd5e1; }
-
-/* Text column: one half of the band, above the photograph. */
 .hero-container {
     position: relative;
     z-index: 1;
     display: block;
     max-width: 1280px;
     margin: 0 auto;
-    padding: 84px 24px 76px;
+    padding: 76px 24px 64px;
 }
-.hero-left { max-width: 560px; }
+.hero-left { max-width: 540px; }
 .hero-left h1 {
-    font-size: clamp(36px, 4vw, 52px);
+    font-size: clamp(34px, 3.6vw, 48px);
     line-height: 1.08;
     text-wrap: balance;
 }
 .hero-desc { max-width: 46ch; }
 .hero-buttons .btn { white-space: nowrap; }
 
+/* Opaque, above the band: nothing from the illustration can reach it. */
+.hero-tracks { position: relative; z-index: 3; background: #0f172a; }
+
 @media (max-width: 1100px) {
-    .hero-photo-bleed { position: relative; width: 100%; height: 340px; }
-    .hero-photo {
-        -webkit-mask-image: linear-gradient(180deg, #000 74%, transparent 100%);
-        mask-image: linear-gradient(180deg, #000 74%, transparent 100%);
-        object-position: center 28%;
-    }
-    .hero-credit { left: 24px; bottom: 24px; }
-    .hero-container { padding: 30px 24px 56px; }
+    .hero-band { min-height: 0; }
+    .hero-photo-bleed { position: relative; width: 100%; height: 300px; }
+    .hero-photo { object-position: center 100%; }
+    .hero-container { padding: 28px 24px 48px; }
     .hero-left { max-width: none; }
 }
-
-/* An icon name that does not exist in the set renders as nothing, and the
-   row it sits in loses its top alignment — which is how the Claims card came
-   to sit lower than the other seven with no icon above it. Reserving the
-   line box keeps the grid honest whether or not the glyph resolves. */
-.hero-track i {
-    display: block;
-    min-height: 30px;
-    line-height: 30px;
-}
-.hero-track { display: flex; flex-direction: column; align-items: flex-start; }
