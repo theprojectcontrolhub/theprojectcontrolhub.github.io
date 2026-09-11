@@ -30,7 +30,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Icons -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=45">
+    <link rel="stylesheet" href="style.css?v=47">
     <style>
         /* Founder intro block */
         .founder-intro {
@@ -796,15 +796,19 @@
         <div class="hero-photo-bleed">
             <picture>
                 <source type="image/webp"
-                        srcset="hero-photo-half.webp 720w, hero-photo.webp 1411w"
+                        srcset="hero-photo-half.webp 600w, hero-photo.webp 1180w"
                         sizes="(max-width: 1100px) 100vw, 58vw">
                 <source type="image/jpeg"
-                        srcset="hero-photo-half.jpg 720w, hero-photo.jpg 1411w"
+                        srcset="hero-photo-half.jpg 600w, hero-photo.jpg 1180w"
                         sizes="(max-width: 1100px) 100vw, 58vw">
-                <img class="hero-photo" src="hero-photo.jpg" width="1411" height="920"
+                <img class="hero-photo" src="hero-photo.jpg" width="1180" height="1333"
                      alt="Bar&#305;&#351; Emre &#214;z&#231;elik at a desk with drawings and a laptop, a site behind"
                      loading="eager" decoding="async" fetchpriority="high">
             </picture>
+            <div class="hero-credit">
+                <span class="founder-name" translate="no">Bar&#305;&#351; Emre &#214;z&#231;elik</span>
+                <span class="founder-title">Planning &amp; Project Controls Lead<br>Civil Engineer &#183; PMP&#174;</span>
+            </div>
         </div>
 
         <div class="hero-container">
@@ -1118,7 +1122,7 @@
 
 
     <!-- Curriculum data + home renderers -->
-    <script src="curriculum.js?v=235"></script>
+    <script src="curriculum.js?v=237"></script>
     <script>
         (function() {
             if (typeof CURRICULUM === 'undefined') return;
