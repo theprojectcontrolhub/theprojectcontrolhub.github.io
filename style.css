@@ -1961,19 +1961,21 @@ ul {
 }
 
 /* ---------- Hero --------------------------------------------------------
-   The illustration's own background is the site's background, so it needs no
-   mask and no rounded frame: placed against the panel it simply continues it.
-   Earlier versions faded a photograph into the dark with a gradient; that is
-   unnecessary here and a gradient over a matching colour only dulls it. */
+   The portrait is taller than it is wide, so it takes a narrower column than
+   the earlier wide illustration and is anchored to the bottom of the band.
+   Its background was a lighter blue than the panel; it has been pulled most
+   of the way to #0f172a in the asset itself, and the last of the difference
+   is hidden by a fade on the left edge rather than by a heavier colour shift,
+   which would have flattened the shirt into the background. */
 
 .hero-section { position: relative; }
-.hero-band { position: relative; overflow: hidden; min-height: 520px; }
+.hero-band { position: relative; overflow: hidden; min-height: 560px; }
 
 .hero-photo-bleed {
     position: absolute;
     right: 0;
     bottom: 0;
-    width: 56%;
+    width: 46%;
     height: 100%;
     z-index: 0;
     pointer-events: none;
@@ -1983,11 +1985,24 @@ ul {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* the desk edge sits on the bottom of the band, as in the reference */
-    object-position: 62% 100%;
+    object-position: 50% 0%;
     display: block;
     border-radius: 0;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 26%);
+    mask-image: linear-gradient(90deg, transparent 0%, #000 26%);
 }
+
+.hero-credit {
+    position: absolute;
+    left: 58%;
+    bottom: 40px;
+    padding-left: 14px;
+    border-left: 3px solid var(--primary-green);
+    line-height: 1.35;
+    z-index: 2;
+}
+.hero-credit .founder-name { display: block; font-weight: 700; font-size: 16px; color: #fff; }
+.hero-credit .founder-title { display: block; font-size: 13px; color: #cbd5e1; }
 
 .hero-container {
     position: relative;
@@ -2006,13 +2021,17 @@ ul {
 .hero-desc { max-width: 46ch; }
 .hero-buttons .btn { white-space: nowrap; }
 
-/* Opaque, above the band: nothing from the illustration can reach it. */
 .hero-tracks { position: relative; z-index: 3; background: #0f172a; }
 
 @media (max-width: 1100px) {
     .hero-band { min-height: 0; }
-    .hero-photo-bleed { position: relative; width: 100%; height: 300px; }
-    .hero-photo { object-position: center 100%; }
-    .hero-container { padding: 28px 24px 48px; }
+    .hero-photo-bleed { position: relative; width: 100%; height: 320px; }
+    .hero-photo {
+        object-position: 50% 12%;
+        -webkit-mask-image: linear-gradient(180deg, #000 76%, transparent 100%);
+        mask-image: linear-gradient(180deg, #000 76%, transparent 100%);
+    }
+    .hero-credit { position: static; margin: 14px 24px 0; border-left-width: 3px; }
+    .hero-container { padding: 24px 24px 48px; }
     .hero-left { max-width: none; }
 }
