@@ -14,13 +14,13 @@
     <meta property="og:title" content="The Project Control Hub — Planning & Project Controls, Explained">
     <meta property="og:description" content="Learn planning and project controls the way it actually works on site. 199 lessons by Bar&#305;&#351; Emre &#214;z&#231;elik, PMP &#8212; schedule, cost, risk, contract, claims, reporting, interfaces and the life of a project. Complete and free to read.">
     <meta property="og:url" content="https://theprojectcontrolhub.com/">
-    <meta property="og:image" content="https://theprojectcontrolhub.com/og-image.jpg">
+    <meta property="og:image" content="https://theprojectcontrolhub.com/og-image.png">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="The Project Control Hub — Planning & Project Controls, Explained">
     <meta name="twitter:description" content="Learn planning and project controls the way it actually works on site. 199 lessons by Bar&#305;&#351; Emre &#214;z&#231;elik, PMP &#8212; schedule, cost, risk, contract, claims, reporting, interfaces and the life of a project. Complete and free to read.">
-    <meta name="twitter:image" content="https://theprojectcontrolhub.com/og-image.jpg">
+    <meta name="twitter:image" content="https://theprojectcontrolhub.com/og-image.png">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -30,7 +30,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Icons -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=47">
+    <link rel="stylesheet" href="style.css?v=38">
     <style>
         /* Founder intro block */
         .founder-intro {
@@ -356,11 +356,7 @@
 
         @media (max-width: 768px) {
             .btn-nav-social { display: none !important; }
-            .logo > span:not(.logo-words) { font-size: 13px !important; }
-        /* The three-line wordmark sets its own size; the old blanket rule
-           carried !important and silently overrode it. */
-        .logo-words { font-size: 16px !important; }
-        .logo-words span { font-size: inherit !important; }
+            .logo span { font-size: 13px !important; }
             .hero-buttons { flex-direction: column; gap: 10px; }
             .hero-buttons a { width: 100%; justify-content: center; }
             .founder-name { font-size: 14px; }
@@ -766,7 +762,7 @@
     <nav class="navbar">
             <a href="index.html" class="logo">
                 <img class="logo-mark" src="logo-icon.png" width="56" height="44" alt="" aria-hidden="true" style="object-fit:contain;height:44px;width:auto;">
-                <span class="logo-words" translate="no"><span>the Project</span><span>Control</span><span>Hub</span></span>
+                <span class="logo-words" translate="no"><span>The Project</span><span>Control</span><span>Hub</span></span>
             </a>
             <div class="nav-links">
                 <a href="index.html" class="active">Home</a>
@@ -789,74 +785,56 @@
 
     <section class="hero-section">
 
-        <!-- The photograph fills this band only. The track strip below is a
-             sibling, not a child: when it sat inside, the picture covered the
-             last three cards and the credit line landed on top of them. -->
-        <div class="hero-band">
-        <div class="hero-photo-bleed">
-            <picture>
-                <source type="image/webp"
-                        srcset="hero-photo-half.webp 600w, hero-photo.webp 1180w"
-                        sizes="(max-width: 1100px) 100vw, 58vw">
-                <source type="image/jpeg"
-                        srcset="hero-photo-half.jpg 600w, hero-photo.jpg 1180w"
-                        sizes="(max-width: 1100px) 100vw, 58vw">
-                <img class="hero-photo" src="hero-photo.jpg" width="1180" height="1333"
-                     alt="Bar&#305;&#351; Emre &#214;z&#231;elik at a desk with drawings and a laptop, a site behind"
-                     loading="eager" decoding="async" fetchpriority="high">
-            </picture>
-            <div class="hero-credit">
-                <span class="founder-name" translate="no">Bar&#305;&#351; Emre &#214;z&#231;elik</span>
-                <span class="founder-title">Planning &amp; Project Controls Lead<br>Civil Engineer &#183; PMP&#174;</span>
-            </div>
-        </div>
-
+        <!-- Hero Content -->
         <div class="hero-container">
             <div class="hero-left">
                 <div class="pill-badge">
-                    <span class="dot"></span> <span translate="no">THE PROJECT CONTROL HUB</span>
+                    <span class="dot"></span> <span class="logo-words" translate="no"><span>The Project</span><span>Control</span><span>Hub</span></span>
                 </div>
 
-                <p class="hero-eyebrow">Nuclear &#183; mining &#183; port &#183; high-rise</p>
+                <!-- Founder intro -->
+                <div class="founder-intro">
+                    <div class="founder-avatar-wrap">
+                        <div class="founder-avatar-fallback" style="display:flex;">
+                            <span>BE</span>
+                        </div>
+                    </div>
+                    <div class="founder-meta">
+                        <span class="founder-name" translate="no">Barış Emre Özçelik</span>
+                        <span class="founder-title">Planning &amp; Project Controls Lead · Civil Engineer · PMP®</span>
+                    </div>
+                </div>
 
                 <h1>Planning is not a <br><span class="text-green">poster on the wall.</span></h1>
-
                 <p class="hero-desc">
-                    A written curriculum in project controls, for engineers who want to understand the job the way it works on site rather than the way it is described in a textbook.
+                    A written curriculum in project controls, for engineers who want to understand the job the way it works on site rather than the way it is described in a textbook. Schedule, cost, risk, contract, claims and reporting — eight tracks, in order, complete and free.
                 </p>
+                <p class="hero-desc hero-desc-sub">
+                    Written by a Planning &amp; Project Controls Lead with eight years on nuclear, mining, port and high-rise projects.
+                </p>
+                
 
                 <div class="hero-buttons">
                     <a href="start-here.html" class="btn btn-primary-large"><i class='bx bx-compass'></i> Start here</a>
-                    <a href="learn.html" class="btn btn-ghost-large"><i class='bx bx-book-open'></i> See the curriculum</a>
+                    <a href="week-1.html" class="btn btn-ghost-large"><i class='bx bx-play'></i> Straight to Topic 1</a>
+                </div>
+            </div>
+
+            <div class="hero-right">
+                <div class="latest-header">
+                    <h2 class="section-eyebrow">Where to start</h2>
+                    <span class="live-badge" id="homeLiveBadge"><span class="dot-green"></span> 199 lessons live</span>
                 </div>
 
-                <div class="hero-stats">
-                    <div class="hero-stat">
-                        <i class='bx bxs-graduation'></i>
-                        <div><strong>199</strong><span>Topics</span></div>
-                    </div>
-                    <div class="hero-stat">
-                        <i class='bx bxs-layer'></i>
-                        <div><strong>8</strong><span>Tracks</span></div>
-                    </div>
-                    <div class="hero-stat">
-                        <i class='bx bx-book-open'></i>
-                        <div><strong>100%</strong><span>Free</span></div>
+                <div class="discussion-list" id="homeFeatured"></div>
+
+                <div class="hero-follow-cta">
+                    <p>All 199 lessons are live.</p>
+                    <div style="display:flex;gap:8px;">
+                        <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" rel="noopener noreferrer" class="btn-follow" translate="no"><i class='bx bxl-linkedin'></i> LinkedIn</a>
                     </div>
                 </div>
             </div>
-        </div>
-        </div>
-
-        <div class="hero-tracks">
-            <a href="learn.html#track-1" class="hero-track"><i class='bx bx-calendar'></i><strong>Schedule</strong><span>Keep the project on track.</span></a>
-            <a href="learn.html#track-2" class="hero-track"><i class='bx bx-coin-stack'></i><strong>Cost</strong><span>Control the numbers.</span></a>
-            <a href="learn.html#track-3" class="hero-track"><i class='bx bx-error'></i><strong>Risk</strong><span>Be ready.</span></a>
-            <a href="learn.html#track-4" class="hero-track"><i class='bx bx-file'></i><strong>Contract</strong><span>Know the rules.</span></a>
-            <a href="learn.html#track-5" class="hero-track"><i class='bx bx-shield-quarter'></i><strong>Claims</strong><span>Protect your position.</span></a>
-            <a href="learn.html#track-6" class="hero-track"><i class='bx bx-bar-chart-alt-2'></i><strong>Reporting</strong><span>Turn data into insight.</span></a>
-            <a href="learn.html#track-7" class="hero-track"><i class='bx bx-group'></i><strong>Interfaces</strong><span>Work together.</span></a>
-            <a href="learn.html#lifecycle" class="hero-track"><i class='bx bx-flag'></i><strong>Life of a Project</strong><span>From start to finish.</span></a>
         </div>
     </section>
 
@@ -1096,7 +1074,7 @@
             <div class="footer-brand">
                 <a href="index.html" class="logo">
                     <img class="logo-mark" src="logo-icon.png" width="56" height="44" alt="" aria-hidden="true" style="object-fit:contain;height:44px;width:auto;">
-                    <span class="logo-words" translate="no"><span>the Project</span><span>Control</span><span>Hub</span></span>
+                    <span class="logo-words" translate="no"><span>The Project</span><span>Control</span><span>Hub</span></span>
                 </a>
                 <p>Field notes on planning & project controls — by Barış Emre Özçelik, PMP.</p>
                 <div class="social-links">
@@ -1122,14 +1100,16 @@
 
 
     <!-- Curriculum data + home renderers -->
-    <script src="curriculum.js?v=237"></script>
+    <script src="curriculum.js?v=228"></script>
     <script>
         (function() {
             if (typeof CURRICULUM === 'undefined') return;
 
-            // The hero is a photograph now, not a panel of links: the
-            // "where to start" list and the live badge it used to render were
-            // removed with it.
+            // Hero panel — where to start
+            const latest = document.getElementById('homeFeatured');
+            if (latest) latest.innerHTML = renderHomeFeatured();
+
+            // Hero live badge
 
             // Roadmap badges. The previous version handled empty and
             // in-progress and had no case for a finished track, so Interfaces
@@ -1154,6 +1134,15 @@
                     if (box && p[3]) box.innerHTML = p[3]();
                 }
             });
+
+
+
+
+
+            const liveBadge = document.getElementById('homeLiveBadge');
+            if (liveBadge && typeof liveLessonCount === 'function') {
+                liveBadge.innerHTML = '<span class="dot-green"></span> ' + liveLessonCount() + ' lessons live';
+            }
 
             // Curriculum card — module 01 weeks
             const curr = document.getElementById('homeCurriculum');
@@ -1221,7 +1210,7 @@
             }
 
             // Bind gated links (both hero + curriculum)
-            document.querySelectorAll('.module-post-item[data-gated]').forEach(link => {
+            document.querySelectorAll('.module-post-item[data-gated], #homeFeatured a').forEach(link => {
                 link.addEventListener('click', function(e) {
                     if (this.hasAttribute('data-gated') && !localStorage.getItem('pch_auth')) {
                         e.preventDefault();
