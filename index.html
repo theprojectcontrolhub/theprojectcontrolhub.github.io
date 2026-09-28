@@ -29,7 +29,7 @@
     <!-- Modern Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Icons -->
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link href="vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css?v=38">
     <style>
         /* Founder intro block */
@@ -488,6 +488,237 @@
         }
         @media (max-width: 640px) {
         }
+
+        /* ================= HOME HERO (2026-09 redesign) =================
+           One section, three blocks. Desktop: intro | tiles, then the
+           start strip full width. Phone: intro, start strip, tiles — so a
+           new reader meets the first lesson before eight track cards. */
+        .home-hero {
+            background: var(--bg-dark);
+            color: var(--text-light);
+            padding: 56px 0 0;
+        }
+        .home-grid {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 0 32px;
+            display: grid;
+            grid-template-columns: minmax(0, 11fr) minmax(0, 12fr);
+            grid-template-areas: "intro tiles" "start start";
+            column-gap: 48px;
+        }
+        .home-grid > * { min-width: 0; }
+        .home-intro { grid-area: intro; padding-top: 28px; }
+        .home-tracks { grid-area: tiles; }
+        .home-tracks-title {
+            position: absolute; width: 1px; height: 1px; overflow: hidden;
+            clip: rect(0 0 0 0); white-space: nowrap;
+        }
+        .home-start { grid-area: start; }
+
+        .home-kicker {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: #94a3b8;
+            margin: 0 0 18px;
+        }
+        .home-title {
+            font-size: clamp(36px, 4.1vw, 58px);
+            line-height: 1.04;
+            font-weight: 800;
+            letter-spacing: -0.035em;
+            color: #f8fafc;
+            margin: 0;
+        }
+        .home-title span { display: block; color: var(--primary-green); }
+        .home-stroke {
+            display: block;
+            width: min(100%, 470px);
+            height: 14px;
+            margin: 14px 0 28px;
+            color: var(--primary-green);
+        }
+        .home-lead {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #cbd5e1;
+            max-width: 34em;
+            margin: 0 0 30px;
+        }
+        .home-author { margin: 0 0 32px; }
+        .home-author strong {
+            display: block;
+            font-size: 17px;
+            font-weight: 700;
+            color: #f8fafc;
+            margin-bottom: 4px;
+        }
+        .home-author span { font-size: 15px; color: #94a3b8; }
+        .home-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--primary-green);
+            color: #04211a;
+            font-weight: 700;
+            font-size: 17px;
+            padding: 16px 30px;
+            border-radius: 8px;
+            transition: background-color .15s ease;
+        }
+        .home-cta:hover { background: #34d399; }
+        .home-cta i { font-size: 22px; }
+        .home-count { margin: 16px 0 0; font-size: 14px; color: #94a3b8; }
+
+        .home-tiles {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 14px;
+        }
+        .home-tile {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            padding: 20px 18px 46px;
+            background: rgba(30, 41, 59, 0.45);
+            border: 1px solid rgba(148, 163, 184, 0.16);
+            border-radius: 12px;
+            color: inherit;
+            transition: border-color .15s ease, background-color .15s ease;
+        }
+        .home-tile:hover { border-color: rgba(16, 185, 129, 0.6); background: rgba(30, 41, 59, 0.75); }
+        .home-tile-icon {
+            width: 58px;
+            height: 58px;
+            display: grid;
+            place-items: center;
+            border-radius: 12px;
+            margin-bottom: 18px;
+        }
+        .home-tile-icon svg { width: 34px; height: 34px; display: block; }
+        /* One colour per track, each on a dark tint of itself. */
+        .ic-teal   { color: #2dd4bf; background: rgba(20, 184, 166, 0.18); }
+        .ic-sky    { color: #38bdf8; background: rgba(2, 132, 199, 0.26); }
+        .ic-orange { color: #fb923c; background: rgba(234, 88, 12, 0.24); }
+        .ic-violet { color: #a78bfa; background: rgba(124, 58, 237, 0.26); }
+        .ic-red    { color: #f43f5e; background: rgba(225, 29, 72, 0.24); }
+        .ic-blue   { color: #60a5fa; background: rgba(37, 99, 235, 0.28); }
+        .ic-purple { color: #c084fc; background: rgba(147, 51, 234, 0.26); }
+        .home-tile h3 {
+            font-size: 17px;
+            line-height: 1.25;
+            font-weight: 700;
+            color: #f8fafc;
+            margin: 0 0 10px;
+        }
+        .home-tile p { font-size: 14px; line-height: 1.5; color: #94a3b8; margin: 0; }
+        .home-tile-go {
+            position: absolute;
+            right: 18px;
+            bottom: 16px;
+            font-size: 22px;
+            color: var(--primary-green);
+        }
+
+        .home-start {
+            margin-top: 64px;
+            padding: 40px 0 56px;
+            border-top: 1px solid rgba(148, 163, 184, 0.14);
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
+            gap: 40px;
+            align-items: start;
+        }
+        .home-start h2 { font-size: 30px; font-weight: 800; letter-spacing: -0.02em; color: #f8fafc; margin: 0 0 10px; }
+        .home-start > div > p { font-size: 16px; line-height: 1.55; color: #94a3b8; margin: 0; }
+        .home-steps {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+        }
+        .home-step {
+            display: grid;
+            grid-template-columns: auto minmax(0, 1fr);
+            gap: 18px;
+            height: 100%;
+            padding: 20px 22px;
+            border: 1px solid rgba(148, 163, 184, 0.16);
+            border-radius: 12px;
+            color: inherit;
+            transition: border-color .15s ease;
+        }
+        .home-step:hover { border-color: rgba(16, 185, 129, 0.6); }
+        .home-step-n {
+            font-size: 30px;
+            font-weight: 800;
+            line-height: 1;
+            color: var(--primary-green);
+            padding-right: 18px;
+            border-right: 1px solid rgba(148, 163, 184, 0.16);
+            font-variant-numeric: tabular-nums;
+        }
+        .home-step h3 { font-size: 15.5px; line-height: 1.4; font-weight: 700; color: #f8fafc; margin: 0 0 12px; }
+        .home-step-meta { display: flex; justify-content: space-between; align-items: center; font-size: 13.5px; color: #94a3b8; }
+        .home-step-meta i { font-size: 20px; color: var(--primary-green); }
+
+        .home-tile:focus-visible, .home-step:focus-visible, .home-cta:focus-visible {
+            outline: 2px solid #6ee7b7;
+            outline-offset: 3px;
+        }
+
+        @media (max-width: 1200px) {
+            .home-grid { grid-template-columns: minmax(0, 1fr); grid-template-areas: "intro" "start" "tiles"; }
+            .home-title { font-size: 50px; }
+            .home-start { margin-top: 48px; padding-bottom: 0; grid-template-columns: minmax(0, 1fr); gap: 20px; }
+            .home-tracks { margin: 48px 0 56px; }
+            .home-tracks-title {
+                position: static; width: auto; height: auto; overflow: visible; clip: auto; white-space: normal;
+                font-size: 30px; font-weight: 800; letter-spacing: -0.02em; color: #f8fafc; margin: 0 0 18px;
+            }
+        }
+        @media (max-width: 860px) {
+            .home-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .home-steps { grid-template-columns: minmax(0, 1fr); }
+        }
+        @media (max-width: 640px) {
+            .home-hero { padding-top: 28px; }
+            .home-title { font-size: clamp(34px, 10vw, 44px); }
+            .home-grid { padding: 0 20px; grid-template-areas: "intro" "start" "tiles"; }
+            .home-intro { padding-top: 0; }
+            .home-kicker { font-size: 11px; margin-bottom: 14px; }
+            .home-stroke { margin: 10px 0 20px; }
+            .home-lead { font-size: 16px; margin-bottom: 22px; }
+            .home-author { margin-bottom: 24px; }
+            .home-cta { width: 100%; justify-content: center; }
+            .home-start { margin-top: 40px; padding: 32px 0 8px; }
+            .home-start h2, .home-tracks-title { font-size: 24px; }
+            .home-tracks { margin: 40px 0 48px; }
+            .home-tiles { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+            .home-tile {
+                min-height: 0;
+                display: grid;
+                grid-template-columns: auto minmax(0, 1fr);
+                column-gap: 16px;
+                padding: 16px 44px 16px 16px;
+            }
+            .home-tile-icon { grid-row: span 2; margin: 0; width: 46px; height: 46px; }
+            .home-tile-icon svg { width: 28px; height: 28px; }
+            .home-tile h3 { font-size: 16px; margin-bottom: 4px; }
+            .home-tile p { font-size: 13.5px; }
+            .home-tile-go { top: 50%; bottom: auto; transform: translateY(-50%); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .home-tile, .home-step, .home-cta { transition: none; }
+        }
     </style>
 
         <!-- Mobile nav toggle — standalone, independent of Firebase -->
@@ -516,8 +747,6 @@
                 document.getElementById('userMenu').style.display = 'flex';
                 document.getElementById('userName').textContent = cached.name;
                 if (cached.photo) document.getElementById('userAvatar').src = cached.photo;
-            } else {
-                document.getElementById('joinBtn').style.display = 'flex';
             }
         })();
 
@@ -543,7 +772,6 @@
                 }
             } else {
                 localStorage.removeItem('pch_auth');
-                joinBtn.style.display = 'flex';
                 userMenu.style.display = 'none';
             }
         });
@@ -773,7 +1001,7 @@
                 <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Menu">
                     <span></span><span></span><span></span>
                 </button>
-                <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" rel="noopener noreferrer" class="btn-nav-social" translate="no"><i class='bx bxl-linkedin'></i></a>
+                <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" rel="noopener noreferrer" class="btn-nav-social" translate="no" aria-label="LinkedIn"><i class='bx bxl-linkedin'></i></a>
                 <button id="joinBtn" class="btn btn-primary" style="display:none;" onclick="openModal()"><i class='bx bx-log-in'></i> Sign In</button>
                 <div id="userMenu" style="display:none; align-items:center; gap:10px;">
                     <img id="userAvatar" src="" style="width:32px;height:32px;border-radius:50%;object-fit:cover;" alt="avatar">
@@ -783,58 +1011,106 @@
             </div>
         </nav>
 
-    <section class="hero-section">
+    <section class="home-hero">
+        <div class="home-grid">
 
-        <!-- Hero Content -->
-        <div class="hero-container">
-            <div class="hero-left">
-                <div class="pill-badge">
-                    <span class="dot"></span> <span class="logo-words" translate="no"><span>The Project</span><span>Control</span><span>Hub</span></span>
+            <div class="home-intro">
+                <p class="home-kicker">A written curriculum in project controls</p>
+                <h1 class="home-title">Planning is not a <span>poster on the wall.</span></h1>
+                <svg class="home-stroke" viewBox="0 0 470 14" preserveAspectRatio="none" aria-hidden="true"><path d="M3 10 C 120 4, 300 3, 467 7" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></svg>
+                <p class="home-lead">Learn project controls the way it works on site &mdash; not just in a textbook. Eight tracks, in order, complete and free.</p>
+                <p class="home-author">
+                    <strong translate="no">By Barış Emre Özçelik, PMP</strong>
+                    <span>8+ years on nuclear, mining, port and high-rise projects</span>
+                </p>
+                <a href="start-here.html" class="home-cta">Start learning <i class='bx bx-right-arrow-alt' aria-hidden="true"></i></a>
+                <p class="home-count" id="homeCount">199 lessons in 8 tracks, all free to read.</p>
+            </div>
+
+            <div class="home-tracks">
+            <h2 class="home-tracks-title">The eight tracks</h2>
+            <ul class="home-tiles">
+                <li><a class="home-tile" href="learn.html#track-1">
+                    <span class="home-tile-icon ic-teal" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18M8 3v4M16 3v4"/><g fill="currentColor" stroke="none"><rect x="6.4" y="12.6" width="2.4" height="2.1" rx=".5"/><rect x="10.8" y="12.6" width="2.4" height="2.1" rx=".5"/><rect x="15.2" y="12.6" width="2.4" height="2.1" rx=".5"/><rect x="6.4" y="16.3" width="2.4" height="2.1" rx=".5"/><rect x="10.8" y="16.3" width="2.4" height="2.1" rx=".5"/><rect x="15.2" y="16.3" width="2.4" height="2.1" rx=".5"/></g></svg></span>
+                    <h3>Schedule</h3>
+                    <p>Logic, CPM, earned value and forecasting.</p>
+                    <i class='bx bx-right-arrow-alt home-tile-go' aria-hidden="true"></i>
+                </a></li>
+                <li><a class="home-tile" href="learn.html#track-2">
+                    <span class="home-tile-icon ic-sky" aria-hidden="true"><svg viewBox="0 0 24 24"><g fill="currentColor" stroke="#0f172a" stroke-width="1.1"><path d="M2.5 5v9.6a6.3 2.7 0 0 0 12.6 0V5z"/><ellipse cx="8.8" cy="5" rx="6.3" ry="2.7"/></g><g fill="none" stroke="#0f172a" stroke-width="1.1"><path d="M2.5 8.2a6.3 2.7 0 0 0 12.6 0M2.5 11.4a6.3 2.7 0 0 0 12.6 0"/></g><g fill="currentColor" stroke="#0f172a" stroke-width="1.1"><path d="M11 13.2v6.3a5.4 2.4 0 0 0 10.8 0v-6.3z"/><ellipse cx="16.4" cy="13.2" rx="5.4" ry="2.4"/></g><path d="M11 16.4a5.4 2.4 0 0 0 10.8 0" fill="none" stroke="#0f172a" stroke-width="1.1"/></svg></span>
+                    <h3>Cost &amp; Cash</h3>
+                    <p>Unit rates, baselines, cash flow and margin.</p>
+                    <i class='bx bx-right-arrow-alt home-tile-go' aria-hidden="true"></i>
+                </a></li>
+                <li><a class="home-tile" href="learn.html#track-3">
+                    <span class="home-tile-icon ic-orange" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.9 18a2 2 0 0 0 1.7 3h16.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4.5"/><circle cx="12" cy="17.3" r=".6" fill="currentColor"/></svg></span>
+                    <h3>Risk</h3>
+                    <p>Risk registers, assessment, responses and what money can&rsquo;t buy.</p>
+                    <i class='bx bx-right-arrow-alt home-tile-go' aria-hidden="true"></i>
+                </a></li>
+                <li><a class="home-tile" href="learn.html#track-4">
+                    <span class="home-tile-icon ic-violet" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6M9 9h2"/></svg></span>
+                    <h3>Contract</h3>
+                    <p>Contract types, key clauses, variations and entitlements.</p>
+                    <i class='bx bx-right-arrow-alt home-tile-go' aria-hidden="true"></i>
+                </a></li>
+                <li><a class="home-tile" href="learn.html#track-5">
+                    <span class="home-tile-icon ic-red" aria-hidden="true"><svg viewBox="0 0 24 24"><g transform="rotate(45 13 9)" fill="currentColor"><rect x="7.5" y="5.2" width="11" height="5.6" rx="1"/><rect x="6.3" y="4" width="2.4" height="8" rx=".8"/><rect x="17.3" y="4" width="2.4" height="8" rx=".8"/><rect x="11.8" y="10.8" width="2.4" height="11" rx="1.1"/></g><path d="M2.5 21.5h8.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span>
+                    <h3>Claims</h3>
+                    <p>Delay analysis, concurrency, disruption and claim preparation.</p>
+                    <i class='bx bx-right-arrow-alt home-tile-go' aria-hidden="true"></i>
+                </a></li>
+                <li><a class="home-tile" href="learn.html#track-6">
+                    <span class="home-tile-icon ic-blue" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="3.5" y="13" width="4.4" height="8" rx="1.2"/><rect x="9.8" y="8.5" width="4.4" height="12.5" rx="1.2"/><rect x="16.1" y="3.5" width="4.4" height="17.5" rx="1.2"/></svg></span>
+                    <h3>Reporting</h3>
+                    <p>Progress measurement, reporting and turning data into insight.</p>
+                    <i class='bx bx-right-arrow-alt home-tile-go' aria-hidden="true"></i>
+                </a></li>
+                <li><a class="home-tile" href="learn.html#track-7">
+                    <span class="home-tile-icon ic-teal" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.6"/><circle cx="5" cy="18.5" r="2.6"/><circle cx="19" cy="18.5" r="2.6"/><path d="M10.7 7.3 6.3 16.2M13.3 7.3l4.4 8.9M7.6 18.5h8.8"/></svg></span>
+                    <h3>Interfaces</h3>
+                    <p>Multiple contracts, joint ventures and the work in nobody&rsquo;s scope.</p>
+                    <i class='bx bx-right-arrow-alt home-tile-go' aria-hidden="true"></i>
+                </a></li>
+                <li><a class="home-tile" href="learn.html#lifecycle">
+                    <span class="home-tile-icon ic-purple" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M1.5 21 9 9.5l3.6 5 2.6-3.4L22.5 21z" fill="currentColor"/><path d="m6.2 13.8 1.6.9 1.2-1.6 1.5 1.8" fill="none" stroke="#0f172a" stroke-width="1.1" stroke-linejoin="round"/><path d="M15.2 11.1V2.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M15.2 3h5.6l-1.6 2 1.6 2h-5.6z" fill="currentColor"/></svg></span>
+                    <h3>The Life of a Project</h3>
+                    <p>Feasibility to final account, in the order it happens.</p>
+                    <i class='bx bx-right-arrow-alt home-tile-go' aria-hidden="true"></i>
+                </a></li>
+            </ul>
+            </div>
+
+            <div class="home-start">
+                <div>
+                    <h2>Where to start?</h2>
+                    <p>New to project controls? Start with these three lessons, in order.</p>
                 </div>
-
-                <!-- Founder intro -->
-                <div class="founder-intro">
-                    <div class="founder-avatar-wrap">
-                        <div class="founder-avatar-fallback" style="display:flex;">
-                            <span>BE</span>
+                <ol class="home-steps">
+                    <li><a class="home-step" href="week-1.html" data-home-step>
+                        <span class="home-step-n">01</span>
+                        <div>
+                            <h3>Why projects fail — and why the answer is never the tools</h3>
+                            <span class="home-step-meta"><span data-readtime>7 min read</span><i class='bx bx-right-arrow-alt' aria-hidden="true"></i></span>
                         </div>
-                    </div>
-                    <div class="founder-meta">
-                        <span class="founder-name" translate="no">Barış Emre Özçelik</span>
-                        <span class="founder-title">Planning &amp; Project Controls Lead · Civil Engineer · PMP®</span>
-                    </div>
-                </div>
-
-                <h1>Planning is not a <br><span class="text-green">poster on the wall.</span></h1>
-                <p class="hero-desc">
-                    A written curriculum in project controls, for engineers who want to understand the job the way it works on site rather than the way it is described in a textbook. Schedule, cost, risk, contract, claims and reporting — eight tracks, in order, complete and free.
-                </p>
-                <p class="hero-desc hero-desc-sub">
-                    Written by a Planning &amp; Project Controls Lead with eight years on nuclear, mining, port and high-rise projects.
-                </p>
-                
-
-                <div class="hero-buttons">
-                    <a href="start-here.html" class="btn btn-primary-large"><i class='bx bx-compass'></i> Start here</a>
-                    <a href="week-1.html" class="btn btn-ghost-large"><i class='bx bx-play'></i> Straight to Topic 1</a>
-                </div>
+                    </a></li>
+                    <li><a class="home-step" href="week-2.html" data-home-step>
+                        <span class="home-step-n">02</span>
+                        <div>
+                            <h3>The foundations of construction project controls</h3>
+                            <span class="home-step-meta"><span data-readtime>9 min read</span><i class='bx bx-right-arrow-alt' aria-hidden="true"></i></span>
+                        </div>
+                    </a></li>
+                    <li><a class="home-step" href="week-3.html" data-home-step>
+                        <span class="home-step-n">03</span>
+                        <div>
+                            <h3>That Gantt chart on the wall? It&rsquo;s not your schedule.</h3>
+                            <span class="home-step-meta"><span data-readtime>6 min read</span><i class='bx bx-right-arrow-alt' aria-hidden="true"></i></span>
+                        </div>
+                    </a></li>
+                </ol>
             </div>
 
-            <div class="hero-right">
-                <div class="latest-header">
-                    <h2 class="section-eyebrow">Where to start</h2>
-                    <span class="live-badge" id="homeLiveBadge"><span class="dot-green"></span> 199 lessons live</span>
-                </div>
-
-                <div class="discussion-list" id="homeFeatured"></div>
-
-                <div class="hero-follow-cta">
-                    <p>All 199 lessons are live.</p>
-                    <div style="display:flex;gap:8px;">
-                        <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" rel="noopener noreferrer" class="btn-follow" translate="no"><i class='bx bxl-linkedin'></i> LinkedIn</a>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -1052,7 +1328,7 @@
                     <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z" fill="#4285F4"/><path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/><path d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/><path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#EA4335"/></svg>
                     Continue with Google
                 </button>
-                <p class="modal-note">No spam. One email when something new is published.</p>
+                <p class="modal-note">No spam, and nothing you have to sign in to read. <a href="privacy.html">What signing in stores</a>.</p>
             </div>
         </div>
     </div>
@@ -1078,7 +1354,7 @@
                 </a>
                 <p>Field notes on planning & project controls — by Barış Emre Özçelik, PMP.</p>
                 <div class="social-links">
-                    <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" rel="noopener noreferrer" translate="no"><i class='bx bxl-linkedin'></i></a>
+                    <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" rel="noopener noreferrer" translate="no" aria-label="LinkedIn"><i class='bx bxl-linkedin'></i></a>
                 </div>
             </div>
 
@@ -1094,13 +1370,13 @@
             </div>
         </div>
         <div class="container footer-bottom">
-            <p>&copy; 2026 The Project Control Hub. All rights reserved.</p>
+            <p>&copy; 2026 The Project Control Hub. All rights reserved. &middot; <a href="privacy.html" style="color:inherit;">Privacy</a></p>
         </div>
     </footer>
 
 
     <!-- Curriculum data + home renderers -->
-    <script src="curriculum.js?v=228"></script>
+    <script src="curriculum.js?v=229"></script>
     <script>
         (function() {
             if (typeof CURRICULUM === 'undefined') return;
@@ -1138,6 +1414,17 @@
 
 
 
+
+            // Hero count — computed from the curriculum, never written by hand.
+            const countEl = document.getElementById('homeCount');
+            if (countEl && typeof liveLessonCount === 'function') {
+                const tracks = [CURRICULUM,
+                    typeof TRACK2 !== 'undefined' ? TRACK2 : null, typeof TRACK3 !== 'undefined' ? TRACK3 : null,
+                    typeof TRACK4 !== 'undefined' ? TRACK4 : null, typeof TRACK5 !== 'undefined' ? TRACK5 : null,
+                    typeof TRACK6 !== 'undefined' ? TRACK6 : null, typeof TRACK7 !== 'undefined' ? TRACK7 : null,
+                    typeof LIFECYCLE !== 'undefined' ? LIFECYCLE : null].filter(Boolean);
+                countEl.textContent = liveLessonCount() + ' lessons in ' + tracks.length + ' tracks, all free to read.';
+            }
 
             const liveBadge = document.getElementById('homeLiveBadge');
             if (liveBadge && typeof liveLessonCount === 'function') {
