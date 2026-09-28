@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Start Here — The Project Control Hub</title>
-    <meta name="description" content="What project controls is, who this curriculum is for, the five career paths it opens, and how to work through it. Written by a planning lead with 8+ years on nuclear, mining, port and high-rise projects.">
+    <meta name="description" content="New to project controls? What the job is, whether this is for you, a map of the eight tracks, and the first three lessons to read.">
     <link rel="canonical" href="https://theprojectcontrolhub.com/start-here.html">
     <meta property="og:locale" content="en_US">
 
@@ -12,14 +12,14 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="The Project Control Hub">
     <meta property="og:title" content="Start Here — The Project Control Hub">
-    <meta property="og:description" content="What project controls is, who this curriculum is for, the five career paths it opens, and how to work through it. Written by a planning lead with 8+ years on nuclear, mining, port and high-rise projects.">
+    <meta property="og:description" content="New to project controls? What the job is, whether this is for you, a map of the eight tracks, and the first three lessons to read.">
     <meta property="og:url" content="https://theprojectcontrolhub.com/start-here.html">
     <meta property="og:image" content="https://theprojectcontrolhub.com/og-image.png">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Start Here — The Project Control Hub">
-    <meta name="twitter:description" content="What project controls is, who this curriculum is for, the five career paths it opens, and how to work through it. Written by a planning lead with 8+ years on nuclear, mining, port and high-rise projects.">
+    <meta name="twitter:description" content="New to project controls? What the job is, whether this is for you, a map of the eight tracks, and the first three lessons to read.">
     <meta name="twitter:image" content="https://theprojectcontrolhub.com/og-image.png">
 
     <!-- Favicon -->
@@ -27,8 +27,7 @@
     <link rel="alternate icon" href="favicon.ico">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=40">
+    <link rel="stylesheet" href="style.css?v=41">
     <style>
         .learn-page {
             background: var(--bg-light);
@@ -665,6 +664,167 @@
             .start-here-card { padding: 16px 18px; gap: 13px; }
             .sh-arrow { display: none; }
         }
+
+        /* ================= START HERE (2026-09 redesign) ================= */
+        .sh-page { background: var(--bg-light); color: #0f172a; }
+        .sh-wrap { max-width: 1180px; margin: 0 auto; padding: 44px 32px 72px; }
+        .sh-hero { max-width: 720px; margin-bottom: 30px; }
+        .sh-pill {
+            display: inline-block; margin: 0 0 14px; padding: 5px 13px; border-radius: 999px;
+            background: #d1fae5; color: #047857; font-size: 13px; font-weight: 700;
+        }
+        .sh-hero h1 { font-size: clamp(36px, 5vw, 54px); line-height: 1.05; letter-spacing: -0.035em; font-weight: 800; margin: 0 0 14px; }
+        .sh-hero h1 span { color: var(--primary-green); }
+        .sh-lead { font-size: 19px; line-height: 1.55; color: #475569; margin: 0; }
+
+        /* colour families: icon colour + light tint, shared by every card type */
+        .c-teal   { --c: #0d9488; --t: #ccfbf1; --w: #f0fdfa; }
+        .c-green  { --c: #059669; --t: #d1fae5; --w: #ecfdf5; }
+        .c-sky    { --c: #0284c7; --t: #e0f2fe; --w: #f0f9ff; }
+        .c-orange { --c: #ea580c; --t: #ffedd5; --w: #fff7ed; }
+        .c-violet { --c: #7c3aed; --t: #ede9fe; --w: #f5f3ff; }
+        .c-red    { --c: #e11d48; --t: #ffe4e6; --w: #fff1f2; }
+        .c-blue   { --c: #2563eb; --t: #dbeafe; --w: #eff6ff; }
+        .c-purple { --c: #9333ea; --t: #f3e8ff; --w: #faf5ff; }
+        .sh-ico {
+            width: 44px; height: 44px; flex: none; display: grid; place-items: center;
+            border-radius: 11px; color: var(--c); background: var(--t);
+        }
+        .sh-ico svg { width: 25px; height: 25px; display: block; }
+
+        .sh-intro { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+        .sh-intro-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 22px; }
+        .sh-intro-card h2 { font-size: 17px; font-weight: 700; margin: 16px 0 6px; letter-spacing: -0.01em; }
+        .sh-intro-card p { font-size: 14.5px; line-height: 1.55; color: #64748b; margin: 0; }
+
+        .sh-section { margin-top: 56px; padding-top: 44px; border-top: 1px solid #e2e8f0; }
+        .sh-section-head {
+            display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 32px;
+            align-items: end; margin-bottom: 26px;
+        }
+        .sh-section-head h2 { font-size: clamp(26px, 3vw, 34px); line-height: 1.15; letter-spacing: -0.025em; font-weight: 800; margin: 0; }
+        .sh-section-head > p { font-size: 15px; line-height: 1.55; color: #64748b; margin: 0; }
+        .sh-kicker { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #64748b; margin: 0 0 8px; }
+
+        /* map: the foundation, then the seven */
+        .sh-map { display: grid; grid-template-columns: minmax(0, 1fr) 56px minmax(0, 2.7fr); align-items: stretch; }
+        .sh-base {
+            display: flex; flex-direction: column; gap: 10px; padding: 24px;
+            border-radius: 16px; background: var(--w); border: 2px solid var(--c); color: #0f172a;
+            transition: box-shadow .15s ease;
+        }
+        .sh-base:hover { box-shadow: 0 0 0 4px var(--t); }
+        .sh-base-tag {
+            align-self: flex-start; font-size: 12px; font-weight: 700; color: #fff; background: var(--c);
+            padding: 4px 10px; border-radius: 999px; margin-bottom: 6px;
+        }
+        .sh-base .sh-ico { width: 56px; height: 56px; }
+        .sh-base .sh-ico svg { width: 32px; height: 32px; }
+        .sh-base strong { font-size: 24px; letter-spacing: -0.02em; margin-top: 6px; }
+        .sh-base > span:last-child { font-size: 14.5px; line-height: 1.55; color: #475569; }
+        .sh-map-link { position: relative; display: grid; place-items: center; color: #94a3b8; }
+        .sh-map-link span { position: absolute; left: 6px; right: 6px; top: 50%; border-top: 2px dashed #cbd5e1; }
+        .sh-map-link svg { position: relative; width: 26px; height: 26px; background: var(--bg-light); padding: 2px; }
+        .sh-rest-label { font-size: 13px; font-weight: 600; color: #64748b; margin: 0 0 10px; }
+        .sh-tracks { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+        .sh-wide { grid-column: span 2; }
+        .sh-track {
+            display: flex; flex-direction: column; gap: 12px; height: 100%; padding: 16px;
+            background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; color: #0f172a;
+            transition: border-color .15s ease, background-color .15s ease;
+        }
+        .sh-track:hover { border-color: var(--c); background: var(--w); }
+        .sh-track strong { display: block; font-size: 15px; margin-bottom: 3px; }
+        .sh-track span span { display: block; font-size: 13px; line-height: 1.45; color: #64748b; }
+
+        /* starting points */
+        .sh-choices { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+        .sh-choice {
+            display: flex; flex-direction: column; justify-content: space-between; gap: 22px;
+            padding: 22px; border-radius: 14px; background: var(--w); border: 1px solid var(--t);
+        }
+        .sh-choice-head { display: flex; gap: 14px; }
+        .sh-choice h3 { font-size: 17px; font-weight: 700; margin: 2px 0 6px; }
+        .sh-choice p { font-size: 14.5px; line-height: 1.55; color: #475569; margin: 0; }
+        .sh-btn {
+            display: flex; align-items: center; justify-content: center; gap: 8px; padding: 13px 18px;
+            border-radius: 9px; background: var(--c); color: #fff; font-weight: 700; font-size: 15px;
+            transition: filter .15s ease;
+        }
+        .sh-btn:hover { filter: brightness(1.08); }
+        .sh-btn svg { width: 19px; height: 19px; }
+
+        /* first three reads */
+        .sh-reads { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+        .sh-read {
+            display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 18px; height: 100%;
+            padding: 22px; background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; color: #0f172a;
+            transition: border-color .15s ease;
+        }
+        .sh-read:hover { border-color: var(--primary-green); }
+        .sh-read-n {
+            font-size: 30px; font-weight: 800; line-height: 1; color: var(--primary-green);
+            padding-right: 18px; border-right: 1px solid #e2e8f0; font-variant-numeric: tabular-nums;
+        }
+        .sh-read h3 { font-size: 16px; line-height: 1.4; font-weight: 700; margin: 0 0 16px; }
+        .sh-read-meta { display: flex; justify-content: space-between; align-items: center; color: #64748b; font-size: 13.5px; }
+        .sh-read-time { display: flex; align-items: center; gap: 8px; }
+        .sh-read-meta svg { width: 19px; height: 19px; }
+        .sh-read-meta > svg { color: var(--primary-green); }
+
+        /* the full orientation, folded */
+        .sh-more { margin-top: 56px; background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; }
+        .sh-more summary {
+            list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+            gap: 20px; padding: 20px 24px; font-size: 14.5px; color: #64748b;
+        }
+        .sh-more summary::-webkit-details-marker { display: none; }
+        .sh-more summary strong { display: block; font-size: 17px; color: #0f172a; margin-bottom: 2px; }
+        .sh-more summary::after {
+            content: ""; flex: none; width: 10px; height: 10px; margin-left: 4px;
+            border-right: 2px solid #64748b; border-bottom: 2px solid #64748b; transform: rotate(45deg) translateY(-3px);
+            transition: transform .15s ease;
+        }
+        .sh-more[open] summary::after { transform: rotate(-135deg); }
+        .sh-more-time { margin-left: auto; white-space: nowrap; font-size: 13.5px; }
+        .sh-more-body { border-top: 1px solid #e2e8f0; padding: 8px 24px 24px; }
+        .sh-essay { max-width: none; padding: 0; margin: 0; }
+
+        .sh-page a:focus-visible, .sh-more summary:focus-visible { outline: 2px solid var(--primary-green); outline-offset: 3px; }
+
+        @media (max-width: 1080px) {
+            .sh-map { grid-template-columns: minmax(0, 1fr); }
+            .sh-map-link { height: 44px; }
+            .sh-map-link span { left: 50%; right: auto; top: 6px; bottom: 6px; border-top: 0; border-left: 2px dashed #cbd5e1; }
+            .sh-map-link svg { transform: rotate(90deg); }
+            .sh-base { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 18px; row-gap: 4px; align-items: center; }
+            .sh-base-tag { grid-column: 1 / -1; justify-self: start; }
+            .sh-base .sh-ico { grid-row: span 2; }
+            .sh-base strong { margin: 0; }
+        }
+        @media (max-width: 900px) {
+            .sh-intro, .sh-choices, .sh-reads { grid-template-columns: minmax(0, 1fr); }
+            .sh-section-head { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+            .sh-tracks { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        @media (max-width: 640px) {
+            .sh-wrap { padding: 28px 20px 56px; }
+            .sh-lead { font-size: 17px; }
+            .sh-section { margin-top: 40px; padding-top: 32px; }
+            .sh-intro-card { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 14px; padding: 18px; }
+            .sh-intro-card .sh-ico { grid-row: span 2; }
+            .sh-intro-card h2 { margin: 0 0 4px; }
+            .sh-track { flex-direction: row; align-items: center; padding: 14px; }
+            .sh-tracks { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+            .sh-wide { grid-column: auto; }
+            .sh-base { padding: 18px; }
+            .sh-more summary { padding: 18px; flex-wrap: wrap; }
+            .sh-more-time { margin-left: 0; }
+            .sh-more-body { padding: 4px 18px 18px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .sh-base, .sh-track, .sh-btn, .sh-read, .sh-more summary::after { transition: none; }
+        }
     </style>
 
         <!-- Mobile nav toggle — standalone, independent of Firebase -->
@@ -789,26 +949,166 @@
             </div>
         </nav>
 
-    <section class="hero-section" style="padding-bottom:0;">
-    </section>
 
     <!-- START HERE PAGE -->
-    <div class="learn-page">
-        <div class="learn-container">
+    <main class="sh-page">
+        <div class="sh-wrap">
 
-            <div class="learn-header">
-                <div class="learn-header-badge">
-                    <i class='bx bx-compass'></i> START HERE
+            <header class="sh-hero">
+                <p class="sh-pill">Start here</p>
+                <h1>New here? <span>Start here.</span></h1>
+                <p class="sh-lead">Project controls is not a software skill. It is how you understand what is happening on a project, and how you keep it on track.</p>
+            </header>
+
+            <div class="sh-intro">
+                <div class="sh-intro-card">
+                    <span class="sh-ico c-teal" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.7.6 1.1 1.3 1.1 2.2h5c0-.9.4-1.6 1.1-2.2A6 6 0 0 0 12 3z"/><path d="M12 7v4M10.5 9.5 12 11l1.5-1.5"/></svg></span>
+                    <h2>What is project controls?</h2>
+                    <p>The instruments of a project. It measures what the job is doing, compares it with what was promised, and says where it is heading.</p>
                 </div>
-                <h1>New Here? Read This First.</h1>
-                <p>Five short answers before you start. What project controls is, whether this is written for you, where it can take you, and how to work through it. Seven minutes, and then you will know which track to open.</p>
-                <div class="learn-header-meta">
-                    <span class="learn-meta-item"><i class='bx bx-time-five'></i> 7 min read</span>
-                    <span class="learn-meta-item"><i class='bx bx-book-open'></i> No prior knowledge assumed</span>
-                    <span class="learn-meta-item"><i class='bx bx-lock-open'></i> Free, and it stays free</span>
+                <div class="sh-intro-card">
+                    <span class="sh-ico c-blue" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="3"/><circle cx="5" cy="9" r="2.2"/><circle cx="19" cy="9" r="2.2"/><path d="M6.5 20v-1.5a5.5 5.5 0 0 1 11 0V20M1.5 19v-.8a3.5 3.5 0 0 1 4.3-3.4M22.5 19v-.8a3.5 3.5 0 0 0-4.3-3.4"/></svg></span>
+                    <h2>Is this for you?</h2>
+                    <p>Engineers moving toward planning or controls, site and cost engineers, and planners who learned the software but not the reasoning.</p>
+                </div>
+                <div class="sh-intro-card">
+                    <span class="sh-ico c-violet" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5 9 4l6 2.5L21 4v13.5L15 20l-6-2.5L3 20z"/><path d="M9 4v13.5M15 6.5V20"/></svg></span>
+                    <h2>How does the Hub work?</h2>
+                    <p><span id="shIntroCount">199</span> short lessons in eight tracks, all free. Start with Track 1; after that, the order is yours.</p>
                 </div>
             </div>
 
+            <section class="sh-section" aria-labelledby="shMapTitle">
+                <div class="sh-section-head">
+                    <div>
+                        <p class="sh-kicker">The project controls map</p>
+                        <h2 id="shMapTitle">Eight tracks. One foundation.</h2>
+                    </div>
+                    <p>Schedule comes first because every other track builds on it. After Track 1 the other seven stand on their own, so read them in any order.</p>
+                </div>
+                <div class="sh-map">
+                    <a class="sh-base c-teal" href="learn.html#track-1">
+                        <span class="sh-base-tag">Track 1 &middot; start here</span>
+                        <span class="sh-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18M8 3v4M16 3v4"/><g fill="currentColor" stroke="none"><rect x="6.4" y="12.6" width="2.4" height="2.1" rx=".5"/><rect x="10.8" y="12.6" width="2.4" height="2.1" rx=".5"/><rect x="15.2" y="12.6" width="2.4" height="2.1" rx=".5"/><rect x="6.4" y="16.3" width="2.4" height="2.1" rx=".5"/><rect x="10.8" y="16.3" width="2.4" height="2.1" rx=".5"/><rect x="15.2" y="16.3" width="2.4" height="2.1" rx=".5"/></g></svg></span>
+                        <strong>Schedule</strong>
+                        <span>Logic, CPM, earned value, forecasts. The foundation the other seven stand on.</span>
+                    </a>
+                    <div class="sh-map-link" aria-hidden="true"><span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+                    <div class="sh-rest">
+                        <p class="sh-rest-label">Then any of these, in any order</p>
+                        <ul class="sh-tracks">
+                        <li><a class="sh-track c-sky" href="learn.html#track-2">
+                            <span class="sh-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><g fill="currentColor" stroke="#ffffff" stroke-width="1.1"><path d="M2.5 5v9.6a6.3 2.7 0 0 0 12.6 0V5z"/><ellipse cx="8.8" cy="5" rx="6.3" ry="2.7"/></g><path d="M2.5 8.2a6.3 2.7 0 0 0 12.6 0M2.5 11.4a6.3 2.7 0 0 0 12.6 0" fill="none" stroke="#ffffff" stroke-width="1.1"/><g fill="currentColor" stroke="#ffffff" stroke-width="1.1"><path d="M11 13.2v6.3a5.4 2.4 0 0 0 10.8 0v-6.3z"/><ellipse cx="16.4" cy="13.2" rx="5.4" ry="2.4"/></g><path d="M11 16.4a5.4 2.4 0 0 0 10.8 0" fill="none" stroke="#ffffff" stroke-width="1.1"/></svg></span>
+                            <span><strong>Cost &amp; Cash</strong><span>Unit rates, baselines, cash flow.</span></span>
+                        </a></li>
+                        <li><a class="sh-track c-orange" href="learn.html#track-3">
+                            <span class="sh-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.9 18a2 2 0 0 0 1.7 3h16.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4.5"/><circle cx="12" cy="17.3" r=".6" fill="currentColor"/></svg></span>
+                            <span><strong>Risk</strong><span>Registers, ranges, responses.</span></span>
+                        </a></li>
+                        <li><a class="sh-track c-violet" href="learn.html#track-4">
+                            <span class="sh-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6M9 9h2"/></svg></span>
+                            <span><strong>Contract</strong><span>Clauses, variations, entitlement.</span></span>
+                        </a></li>
+                        <li><a class="sh-track c-red" href="learn.html#track-5">
+                            <span class="sh-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><g transform="rotate(45 13 9)" fill="currentColor"><rect x="7.5" y="5.2" width="11" height="5.6" rx="1"/><rect x="6.3" y="4" width="2.4" height="8" rx=".8"/><rect x="17.3" y="4" width="2.4" height="8" rx=".8"/><rect x="11.8" y="10.8" width="2.4" height="11" rx="1.1"/></g><path d="M2.5 21.5h8.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span>
+                            <span><strong>Claims</strong><span>Delay, concurrency, disruption.</span></span>
+                        </a></li>
+                        <li><a class="sh-track c-blue" href="learn.html#track-6">
+                            <span class="sh-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="3.5" y="13" width="4.4" height="8" rx="1.2"/><rect x="9.8" y="8.5" width="4.4" height="12.5" rx="1.2"/><rect x="16.1" y="3.5" width="4.4" height="17.5" rx="1.2"/></svg></span>
+                            <span><strong>Reporting</strong><span>Progress in, reports out.</span></span>
+                        </a></li>
+                        <li><a class="sh-track c-teal" href="learn.html#track-7">
+                            <span class="sh-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.6"/><circle cx="5" cy="18.5" r="2.6"/><circle cx="19" cy="18.5" r="2.6"/><path d="M10.7 7.3 6.3 16.2M13.3 7.3l4.4 8.9M7.6 18.5h8.8"/></svg></span>
+                            <span><strong>Interfaces</strong><span>Contracts, JVs, nobody&rsquo;s scope.</span></span>
+                        </a></li>
+                        <li class="sh-wide"><a class="sh-track c-purple" href="learn.html#lifecycle">
+                            <span class="sh-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M1.5 21 9 9.5l3.6 5 2.6-3.4L22.5 21z" fill="currentColor"/><path d="m6.2 13.8 1.6.9 1.2-1.6 1.5 1.8" fill="none" stroke="#ffffff" stroke-width="1.1" stroke-linejoin="round"/><path d="M15.2 11.1V2.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M15.2 3h5.6l-1.6 2 1.6 2h-5.6z" fill="currentColor"/></svg></span>
+                            <span><strong>The Life of a Project</strong><span>Feasibility to final account.</span></span>
+                        </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="sh-section" aria-labelledby="shChoiceTitle">
+                <div class="sh-section-head">
+                    <h2 id="shChoiceTitle">Choose your starting point</h2>
+                    <p>Pick the one that sounds like you.</p>
+                </div>
+                <div class="sh-choices">
+                <div class="sh-choice c-green">
+                    <div class="sh-choice-head">
+                        <span class="sh-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4C9 4 4 9 4 16c0 1.4.3 2.7.8 4 8.2-.3 15.2-5 15.2-16z"/><path d="M4.8 20C8 15 11.5 12 15 10"/></svg></span>
+                        <div>
+                            <h3>I&rsquo;m new to project controls</h3>
+                            <p>Begin at Topic 1. Nothing is assumed, and every term is explained the first time it appears.</p>
+                        </div>
+                    </div>
+                    <a class="sh-btn" href="week-1.html">Start Topic 1 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </div>
+                <div class="sh-choice c-blue">
+                    <div class="sh-choice-head">
+                        <span class="sh-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 3.5v17h17"/><rect x="7" y="6" width="7" height="3" rx="1" fill="currentColor" stroke="none"/><rect x="10" y="10.5" width="8" height="3" rx="1" fill="currentColor" stroke="none"/><rect x="13" y="15" width="6" height="3" rx="1" fill="currentColor" stroke="none"/></svg></span>
+                        <div>
+                            <h3>I already work as a planner</h3>
+                            <p>Skim Track 1 for the reasoning behind the software, then open whichever track your job needs.</p>
+                        </div>
+                    </div>
+                    <a class="sh-btn" href="learn.html#track-1">Browse Track 1 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </div>
+                <div class="sh-choice c-violet">
+                    <div class="sh-choice-head">
+                        <span class="sh-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="3.5" y="13" width="4.4" height="8" rx="1.2"/><rect x="9.8" y="8.5" width="4.4" height="12.5" rx="1.2"/><rect x="16.1" y="3.5" width="4.4" height="17.5" rx="1.2"/></svg></span>
+                        <div>
+                            <h3>I want to see everything first</h3>
+                            <p>All eight tracks and every lesson title on one page.</p>
+                        </div>
+                    </div>
+                    <a class="sh-btn" href="learn.html">Open the full curriculum <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </div>
+                </div>
+            </section>
+
+            <section class="sh-section" aria-labelledby="shReadsTitle">
+                <div class="sh-section-head">
+                    <div>
+                        <p class="sh-kicker">Your first three reads</p>
+                        <h2 id="shReadsTitle">Start with these lessons.</h2>
+                    </div>
+                    <p>Topics 1 to 3 of Schedule, in order. Together they show what this hub is about and how it teaches.</p>
+                </div>
+                <ol class="sh-reads">
+                <li><a class="sh-read" href="week-1.html">
+                    <span class="sh-read-n">01</span>
+                    <div>
+                        <h3>Why projects fail — and why the answer is never the tools</h3>
+                        <span class="sh-read-meta"><span class="sh-read-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5.5c3-1.3 6-1.3 9 .8 3-2.1 6-2.1 9-.8V19c-3-1.3-6-1.3-9 .8-3-2.1-6-2.1-9-.8z"/><path d="M12 6.3v13.5"/></svg><span data-readtime>7 min read</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+                    </div>
+                </a></li>
+                <li><a class="sh-read" href="week-2.html">
+                    <span class="sh-read-n">02</span>
+                    <div>
+                        <h3>The foundations of construction project controls</h3>
+                        <span class="sh-read-meta"><span class="sh-read-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5.5c3-1.3 6-1.3 9 .8 3-2.1 6-2.1 9-.8V19c-3-1.3-6-1.3-9 .8-3-2.1-6-2.1-9-.8z"/><path d="M12 6.3v13.5"/></svg><span data-readtime>9 min read</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+                    </div>
+                </a></li>
+                <li><a class="sh-read" href="week-3.html">
+                    <span class="sh-read-n">03</span>
+                    <div>
+                        <h3>That Gantt chart on the wall? It&rsquo;s not your schedule.</h3>
+                        <span class="sh-read-meta"><span class="sh-read-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5.5c3-1.3 6-1.3 9 .8 3-2.1 6-2.1 9-.8V19c-3-1.3-6-1.3-9 .8-3-2.1-6-2.1-9-.8z"/><path d="M12 6.3v13.5"/></svg><span data-readtime>6 min read</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+                    </div>
+                </a></li>
+                </ol>
+            </section>
+
+            <details class="sh-more" id="orientation">
+                <summary>
+                    <span><strong>Read the full orientation</strong> What the job is, who it is for, the five career paths, and how to work through the tracks.</span>
+                    <span class="sh-more-time">7 min read</span>
+                </summary>
+                <div class="sh-more-body">
+                <div class="learn-container sh-essay">
             <nav class="track-jump" aria-label="Jump to a section">
                 <a href="#what" class="track-jump-link" data-jump="what">What it is</a>
                 <a href="#who" class="track-jump-link" data-jump="who">Is this for you</a>
@@ -851,7 +1151,7 @@
                         </ul>
                     </div>
                     <p class="track-desc">It is not written for someone who needs to produce a Primavera file by Friday. That is a legitimate need and there are faster answers to it elsewhere. What is here is slower and more durable: the reasoning underneath the file. The tools come later, after the reasoning, because a tool you can drive but not reason about is worth nothing on a site.</p>
-                    <p class="track-desc">One more thing worth saying plainly. This is written from eight years on nuclear, mining, port and high-rise projects, and it reflects how those projects actually behave rather than how a textbook says they should. Where the two disagree, the field wins and the disagreement gets explained.</p>
+                    <p class="track-desc">One more thing worth saying plainly. This is written from work on nuclear, mining, port and high-rise projects, and it reflects how those projects actually behave rather than how a textbook says they should. Where the two disagree, the field wins and the disagreement gets explained.</p>
                 </div>
 
                 <!-- 3 -->
@@ -959,8 +1259,12 @@
                 </div>
 
             </div>
+                </div>
+                </div>
+            </details>
+
         </div>
-    </div>
+    </main>
 
     <!-- MOBILE NAV -->
     <div class="mobile-nav" id="mobileNav">
@@ -1032,6 +1336,21 @@
             var done = tracks.filter(function (t) { return t.liveCount >= t.totalTopics; }).length;
             var lessons = tracks.reduce(function (a, t) { return a + t.liveCount; }, 0);
             set('shCounts', done + ' tracks complete, ' + lessons + ' lessons published');
+            set('shIntroCount', lessons);
+        })();
+
+        // Links to #what, #who, #paths, #ladder or #how land inside the folded
+        // orientation; open it first so the target is visible.
+        (function () {
+            var more = document.getElementById('orientation');
+            if (!more) return;
+            function openFor(hash) {
+                if (!hash || hash.length < 2) return;
+                var t = document.getElementById(hash.slice(1));
+                if (t && more.contains(t)) { more.open = true; t.scrollIntoView(); }
+            }
+            openFor(location.hash);
+            window.addEventListener('hashchange', function () { openFor(location.hash); });
         })();
     </script>
 </body>
