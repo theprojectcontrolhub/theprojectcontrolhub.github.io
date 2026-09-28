@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy — The Project Control Hub</title>
+    <meta name="description" content="What The Project Control Hub stores when you sign in with Google, why, and how to have it deleted. Reading the site needs no account.">
+    <link rel="canonical" href="https://theprojectcontrolhub.com/privacy.html">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Open Graph (LinkedIn, Facebook, WhatsApp) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="The Project Control Hub">
+    <meta property="og:title" content="Privacy — The Project Control Hub">
+    <meta property="og:description" content="What The Project Control Hub stores when you sign in with Google, why, and how to have it deleted. Reading the site needs no account.">
+    <meta property="og:url" content="https://theprojectcontrolhub.com/privacy.html">
+    <meta property="og:image" content="https://theprojectcontrolhub.com/og-image.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Privacy — The Project Control Hub">
+    <meta name="twitter:description" content="What The Project Control Hub stores when you sign in with Google, why, and how to have it deleted. Reading the site needs no account.">
+    <meta name="twitter:image" content="https://theprojectcontrolhub.com/og-image.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=38">
+    <style>
+        .about-page {
+            background: var(--bg-light);
+            min-height: 100vh;
+            padding: 48px 0 80px;
+        }
+
+        .about-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* PAGE HEADER — same as learn */
+        .about-header {
+            margin-bottom: 40px;
+        }
+
+        .about-header-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(16,185,129,0.08);
+            color: #059669;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            padding: 5px 14px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+            border: 1px solid rgba(16,185,129,0.15);
+        }
+
+        .about-header h1 {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--text-dark);
+            letter-spacing: -0.5px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .about-lead {
+            font-size: 18px;
+            color: #64748b;
+            line-height: 1.7;
+            max-width: 680px;
+            margin: 0;
+        }
+        .about-lead strong { color: var(--text-dark); }
+        .about-name {
+            color: #334155 !important;
+            font-weight: 700;
+        }
+
+        /* Sector strip sits below the header, full width */
+        .about-figure {
+            margin: 32px 0 40px;
+            padding: 24px 28px;
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+        }
+        .about-figure svg { width: 100%; height: auto; display: block; }
+
+        /* Each section is a white card, like a module card */
+        .about-card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            padding: 36px 40px;
+            margin-bottom: 24px;
+        }
+
+        .about-card h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-dark);
+            letter-spacing: -0.3px;
+            margin: 0 0 16px;
+        }
+
+        .about-card p {
+            font-size: 16px;
+            color: #334155;
+            line-height: 1.85;
+            margin: 0 0 16px;
+        }
+        .about-card p:last-child { margin-bottom: 0; }
+        .about-card strong { color: var(--text-dark); font-weight: 700; }
+        .about-card em { color: #475569; }
+
+        /* Philosophy pull-quote — inside its card */
+        .about-pullquote {
+            margin: 4px 0;
+            padding: 4px 0 4px 24px;
+            border-left: 4px solid #10b981;
+        }
+        .about-pullquote p {
+            font-size: 22px !important;
+            line-height: 1.4 !important;
+            font-weight: 700;
+            color: var(--text-dark) !important;
+            margin: 0 0 8px !important;
+            letter-spacing: -0.4px;
+        }
+        .about-pullquote p:last-child {
+            color: #64748b !important;
+            margin-bottom: 0 !important;
+        }
+
+        /* HERO */
+        .about-hero { margin-bottom: 8px; }
+
+        .about-greeting {
+            font-size: 15px;
+            color: #10b981;
+            font-weight: 600;
+            margin: 0 0 6px;
+        }
+
+        .about-hero h1 {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--text-dark);
+            letter-spacing: -0.5px;
+            margin: 0 0 8px;
+            line-height: 1.15;
+        }
+
+        .about-role {
+            font-size: 15px;
+            color: #64748b;
+            margin: 0 0 24px;
+        }
+
+        .about-hero p {
+            font-size: 16px;
+            color: #334155;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        /* DIVIDER */
+        .about-divider {
+            height: 1px;
+            background: #e2e8f0;
+            margin: 40px 0;
+        }
+
+        /* SECTIONS */
+        .about-section { margin-bottom: 40px; }
+
+        .about-section h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-dark);
+            letter-spacing: -0.3px;
+            margin: 0 0 16px;
+        }
+
+        .about-section p {
+            font-size: 16px;
+            color: #334155;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .about-section p:last-child { margin-bottom: 0; }
+
+        .about-section em {
+            color: #059669;
+            font-style: italic;
+        }
+
+        /* EXPERIENCE */
+        .xp { margin-bottom: 28px; }
+        .xp:last-child { margin-bottom: 0; }
+
+        .xp-sector {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #10b981;
+            margin: 0 0 4px !important;
+        }
+
+        .xp-role {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin: 0 0 6px !important;
+        }
+
+        .xp p:last-child {
+            color: #64748b;
+            margin: 0;
+        }
+
+        /* CERTIFICATIONS */
+        .about-certs-list {
+            line-height: 2.2 !important;
+            color: #334155;
+        }
+
+        /* CONNECT */
+        .about-connect {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .connect-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 11px 20px;
+            border-radius: 9px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .connect-btn-linkedin {
+            background: #0a66c2;
+            color: #fff;
+            border: 1.5px solid #0a66c2;
+        }
+
+        .connect-btn-youtube {
+            background: #fff;
+            color: #334155;
+            border: 1.5px solid #e2e8f0;
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            .about-page { padding: 32px 0 60px; }
+            .about-container { padding: 0 16px; }
+            .about-header h1 { font-size: 27px; }
+            .about-lead { font-size: 16px; }
+            .about-figure { padding: 18px 16px; margin: 24px 0 20px; }
+            .about-card { padding: 24px 22px; border-radius: 14px; margin-bottom: 16px; }
+            .about-card h2 { font-size: 20px; }
+            .about-card p { font-size: 15px; line-height: 1.8; }
+            .about-pullquote { padding-left: 18px; }
+            .about-pullquote p { font-size: 18px !important; }
+            .about-connect { flex-direction: column; }
+            .connect-btn { justify-content: center; }
+            .btn-nav-social { display: none !important; }
+        }
+
+    .logo-mark{vertical-align:middle;display:inline-block;}
+    </style>
+
+        <!-- Mobile nav toggle — standalone, independent of Firebase -->
+    <script>
+        window.toggleMobileNav = function() {
+            const nav = document.getElementById('mobileNav');
+            const btn = document.getElementById('hamburger');
+            if (!nav) return;
+            nav.classList.toggle('open');
+            if (btn) btn.classList.toggle('open');
+            document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
+        };
+    </script>
+
+    <script type="module">
+        import { signInWithGoogle, logout, onUserChange } from './auth.js';
+
+        let currentUser = null;
+
+        // Prevent auth flash: restore UI instantly from cached state
+        (function() {
+            const hint = localStorage.getItem('pch_auth');
+            let cached = null;
+            try { cached = JSON.parse(hint); } catch(e) {}
+            if (cached && cached.name) {
+                document.getElementById('userMenu').style.display = 'flex';
+                document.getElementById('userName').textContent = cached.name;
+                if (cached.photo) document.getElementById('userAvatar').src = cached.photo;
+            } else {
+                document.getElementById('joinBtn').style.display = 'flex';
+            }
+        })();
+
+        onUserChange((user) => {
+            currentUser = user;
+            const joinBtn = document.getElementById('joinBtn');
+            const userMenu = document.getElementById('userMenu');
+            if (user) {
+                localStorage.setItem('pch_auth', JSON.stringify({
+                    name: user.displayName.split(' ')[0],
+                    photo: user.photoURL || ''
+                }));
+                joinBtn.style.display = 'none';
+                userMenu.style.display = 'flex';
+                document.getElementById('userName').textContent = user.displayName.split(' ')[0];
+                if (user.photoURL) document.getElementById('userAvatar').src = user.photoURL;
+            } else {
+                localStorage.removeItem('pch_auth');
+                joinBtn.style.display = 'flex';
+                userMenu.style.display = 'none';
+            }
+        });
+
+        window.signInWithGoogleBtn = async function() {
+            try {
+                await signInWithGoogle();
+                // On mobile this redirects away; on desktop the popup resolves here.
+            } catch(e) {
+                // Only show an error for genuine failures, not user-cancelled popups.
+                const code = e && e.code ? e.code : '';
+                if (code !== 'auth/popup-closed-by-user' &&
+                    code !== 'auth/cancelled-popup-request') {
+                    alert('Sign in failed. Please try again.');
+                }
+            }
+        };
+
+        window.logoutUser = async function() { await logout(); };
+        window.openModal = function() {
+            document.getElementById('accessModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        };
+
+        window.closeModal = function() {
+            document.getElementById('accessModal').classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('accessModal').addEventListener('click', function(e) {
+                if (e.target === this) closeModal();
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+            <a href="index.html" class="logo">
+                <img class="logo-mark" src="logo-icon.png" width="56" height="44" alt="" aria-hidden="true" style="object-fit:contain;height:44px;width:auto;">
+                <span class="logo-words" translate="no"><span>The Project</span><span>Control</span><span>Hub</span></span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="learn.html">Learn</a>
+                <a href="about.html">About</a>
+            </div>
+            <div class="nav-actions" style="display:flex;align-items:center;gap:10px;">
+                <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+                <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" rel="noopener noreferrer" class="btn-nav-social" translate="no" aria-label="LinkedIn"><i class='bx bxl-linkedin'></i></a>
+                <button id="joinBtn" class="btn btn-primary" style="display:none;" onclick="openModal()"><i class='bx bx-log-in'></i> Sign In</button>
+                <div id="userMenu" style="display:none;align-items:center;gap:10px;">
+                    <img id="userAvatar" src="" style="width:32px;height:32px;border-radius:50%;object-fit:cover;" alt="avatar">
+                    <span id="userName" style="font-size:14px;font-weight:600;color:var(--text-light);"></span>
+                    <button class="btn btn-primary" onclick="logoutUser()" style="padding:8px 14px;font-size:13px;">Sign Out</button>
+                </div>
+            </div>
+        </nav>
+
+    <section class="hero-section" style="padding-bottom:0;">
+    </section>
+
+    <!-- PRIVACY PAGE -->
+    <div class="about-page">
+        <div class="about-container">
+
+            <div class="about-header">
+                <div class="about-header-badge">
+                    <span class="dot-green"></span> PRIVACY
+                </div>
+                <h1>What this site stores about you</h1>
+                <p class="about-lead">Short version: nothing, unless you choose to sign in. Every lesson is free to read without an account.</p>
+            </div>
+
+            <div class="about-card">
+                <h2>If you only read</h2>
+                <p>Reading the site does not create an account and does not set any analytics or advertising cookies. The pages load fonts from Google Fonts, and your browser contacts Google's servers to fetch them, which means Google receives your IP address as part of that request.</p>
+            </div>
+
+            <div class="about-card">
+                <h2>If you sign in with Google</h2>
+                <p>Sign-in is handled by Google Firebase Authentication. When you sign in, Firebase stores your name, email address, profile picture link, a user ID and the dates you signed in. Your browser also keeps a sign-in token so you stay signed in between visits.</p>
+                <p>The only purpose is to know who has asked to hear about new work. There is no mailing list running yet. Nothing is sold, shared with advertisers or used for anything else. If a mailing list starts, this page will say so before anything is sent.</p>
+                <p>Firebase is operated by Google, so the data is processed on Google's servers, which may be outside your country.</p>
+            </div>
+
+            <div class="about-card">
+                <h2>Deleting your data</h2>
+                <p>Sign out at any time from the button in the top bar. To have your account record deleted, send a message on LinkedIn asking for it, and it will be removed from Firebase.</p>
+                <div class="about-connect" style="margin-top:24px;">
+                    <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" rel="noopener noreferrer" class="connect-btn connect-btn-linkedin" translate="no">
+                        <i class='bx bxl-linkedin'></i> Message on LinkedIn
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="mobile-nav" id="mobileNav">
+        <button class="mobile-nav-close" onclick="toggleMobileNav()" aria-label="Close menu"><i class='bx bx-x'></i></button>
+        <a href="index.html" onclick="toggleMobileNav()">Home</a>
+        <a href="learn.html" onclick="toggleMobileNav()">Learn</a>
+        <a href="about.html" onclick="toggleMobileNav()">About</a>
+        <div class="mobile-nav-bottom">
+            <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" rel="noopener noreferrer" translate="no"><i class='bx bxl-linkedin'></i> LinkedIn</a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-content" style="grid-template-columns: 1fr 1fr;">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <img class="logo-mark" src="logo-icon.png" width="56" height="44" alt="" aria-hidden="true" style="object-fit:contain;height:44px;width:auto;">
+                    <span class="logo-words" translate="no"><span>The Project</span><span>Control</span><span>Hub</span></span>
+                </a>
+                <p>Field notes on planning & project controls — by Barış Emre Özçelik, PMP.</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" rel="noopener noreferrer" translate="no" aria-label="LinkedIn"><i class='bx bxl-linkedin'></i></a>
+                </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:16px;">
+                <h4 style="font-size:11px;font-weight:700;letter-spacing:1px;color:#64748b;margin:0;">FOLLOW THE SERIES</h4>
+                <p style="font-size:13px;color:#64748b;margin:0;line-height:1.6;">The full series is live. Follow along for what comes next.</p>
+                <div style="display:flex;gap:10px;">
+                    <a href="https://www.linkedin.com/in/barisemreozcelik" target="_blank" rel="noopener noreferrer"
+                       style="display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);color:#cbd5e1;text-decoration:none;font-size:13px;font-weight:600;transition:all 0.2s;" translate="no">
+                        <i class='bx bxl-linkedin' style="font-size:17px;"></i> LinkedIn
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 The Project Control Hub. All rights reserved. &middot; <a href="privacy.html" style="color:inherit;">Privacy</a></p>
+        </div>
+    </footer>
+
+    <!-- ACCESS MODAL -->
+    <div class="modal-overlay" id="accessModal">
+        <div class="modal-box">
+            <button class="close-modal" onclick="closeModal()" aria-label="Close"><i class='bx bx-x'></i></button>
+            <div class="modal-icon-wrapper">
+                <i class='bx bx-book-open'></i>
+            </div>
+            <h4>Follow the series</h4>
+            <p>Every lesson is already free to read. Sign in with Google so new work reaches you when it is published.</p>
+            <button class="btn-google-signin" onclick="signInWithGoogleBtn()">
+                <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z" fill="#4285F4"/><path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/><path d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/><path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#EA4335"/></svg>
+                Continue with Google
+            </button>
+            <p class="modal-note">No spam, and nothing you have to sign in to read. <a href="privacy.html">What signing in stores</a>.</p>
+        </div>
+    </div>
+
+</body>
+</html>
