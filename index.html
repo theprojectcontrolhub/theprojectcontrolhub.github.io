@@ -499,17 +499,17 @@
             padding: 56px 0 0;
         }
         .home-grid {
-            max-width: 1320px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 32px;
             display: grid;
-            grid-template-columns: minmax(0, 11fr) minmax(0, 12fr);
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
             grid-template-areas: "intro tiles" "start start";
             column-gap: 48px;
         }
         .home-grid > * { min-width: 0; }
         .home-intro { grid-area: intro; padding-top: 28px; }
-        .home-tracks { grid-area: tiles; }
+        .home-tracks { grid-area: tiles; align-self: center; }
         .home-tracks-title {
             position: absolute; width: 1px; height: 1px; overflow: hidden;
             clip: rect(0 0 0 0); white-space: nowrap;
@@ -569,7 +569,6 @@
             transition: background-color .15s ease;
         }
         .home-cta:hover { background: #34d399; }
-        .home-cta i { font-size: 22px; }
         .home-count { margin: 16px 0 0; font-size: 14px; color: #94a3b8; }
 
         .home-tiles {
@@ -584,24 +583,26 @@
             position: relative;
             display: flex;
             flex-direction: column;
-            height: 100%;
-            padding: 20px 18px 46px;
+            aspect-ratio: 1 / 1;
+            padding: 16px;
             background: rgba(30, 41, 59, 0.45);
             border: 1px solid rgba(148, 163, 184, 0.16);
             border-radius: 12px;
             color: inherit;
+            overflow: hidden;
             transition: border-color .15s ease, background-color .15s ease;
         }
         .home-tile:hover { border-color: rgba(16, 185, 129, 0.6); background: rgba(30, 41, 59, 0.75); }
         .home-tile-icon {
-            width: 58px;
-            height: 58px;
+            width: 44px;
+            height: 44px;
+            flex: none;
             display: grid;
             place-items: center;
-            border-radius: 12px;
-            margin-bottom: 18px;
+            border-radius: 11px;
+            margin-bottom: auto;
         }
-        .home-tile-icon svg { width: 34px; height: 34px; display: block; }
+        .home-tile-icon svg { width: 26px; height: 26px; display: block; }
         /* One colour per track, each on a dark tint of itself. */
         .ic-teal   { color: #2dd4bf; background: rgba(20, 184, 166, 0.18); }
         .ic-sky    { color: #38bdf8; background: rgba(2, 132, 199, 0.26); }
@@ -611,19 +612,35 @@
         .ic-blue   { color: #60a5fa; background: rgba(37, 99, 235, 0.28); }
         .ic-purple { color: #c084fc; background: rgba(147, 51, 234, 0.26); }
         .home-tile h3 {
-            font-size: 17px;
+            font-size: 15px;
             line-height: 1.25;
             font-weight: 700;
             color: #f8fafc;
-            margin: 0 0 10px;
+            margin: 10px 0 5px;
         }
-        .home-tile p { font-size: 14px; line-height: 1.5; color: #94a3b8; margin: 0; }
+        .home-tile p { font-size: 12.5px; line-height: 1.4; color: #94a3b8; margin: 0; }
         .home-tile-go {
             position: absolute;
-            right: 18px;
-            bottom: 16px;
-            font-size: 22px;
+            top: 16px;
+            right: 14px;
             color: var(--primary-green);
+            opacity: .75;
+        }
+        .home-tile:hover .home-tile-go { opacity: 1; }
+        .ico-arrow { width: 20px; height: 20px; display: block; }
+        .home-cta .ico-arrow { width: 22px; height: 22px; }
+
+        /* Everything inside a tile scales with the tile, so the square holds
+           its text at every width. Pixel values above are the fallback. */
+        @supports (container-type: inline-size) {
+            .home-tiles > li { container-type: inline-size; }
+            .home-tile { padding: 10cqw; }
+            .home-tile-icon { width: 25cqw; height: 25cqw; border-radius: 7cqw; }
+            .home-tile-icon svg { width: 15cqw; height: 15cqw; }
+            .home-tile h3 { font-size: 9.4cqw; line-height: 1.15; margin: 6cqw 0 3cqw; }
+            .home-tile p { font-size: 7.8cqw; line-height: 1.35; }
+            .home-tile-go { top: 10cqw; right: 9cqw; }
+            .home-tile-go .ico-arrow { width: 12cqw; height: 12cqw; }
         }
 
         .home-start {
@@ -668,7 +685,7 @@
         }
         .home-step h3 { font-size: 15.5px; line-height: 1.4; font-weight: 700; color: #f8fafc; margin: 0 0 12px; }
         .home-step-meta { display: flex; justify-content: space-between; align-items: center; font-size: 13.5px; color: #94a3b8; }
-        .home-step-meta i { font-size: 20px; color: var(--primary-green); }
+        .home-step-meta .ico-arrow { color: var(--primary-green); }
 
         .home-tile:focus-visible, .home-step:focus-visible, .home-cta:focus-visible {
             outline: 2px solid #6ee7b7;
@@ -680,14 +697,17 @@
             .home-title { font-size: 50px; }
             .home-start { margin-top: 48px; padding-bottom: 0; grid-template-columns: minmax(0, 1fr); gap: 20px; }
             .home-tracks { margin: 48px 0 56px; }
+            .home-tiles { max-width: 760px; }
             .home-tracks-title {
                 position: static; width: auto; height: auto; overflow: visible; clip: auto; white-space: normal;
                 font-size: 30px; font-weight: 800; letter-spacing: -0.02em; color: #f8fafc; margin: 0 0 18px;
             }
         }
         @media (max-width: 860px) {
-            .home-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .home-steps { grid-template-columns: minmax(0, 1fr); }
+        }
+        @media (max-width: 760px) {
+            .home-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 460px; }
         }
         @media (max-width: 640px) {
             .home-hero { padding-top: 28px; }
@@ -702,19 +722,8 @@
             .home-start { margin-top: 40px; padding: 32px 0 8px; }
             .home-start h2, .home-tracks-title { font-size: 24px; }
             .home-tracks { margin: 40px 0 48px; }
-            .home-tiles { grid-template-columns: minmax(0, 1fr); gap: 10px; }
-            .home-tile {
-                min-height: 0;
-                display: grid;
-                grid-template-columns: auto minmax(0, 1fr);
-                column-gap: 16px;
-                padding: 16px 44px 16px 16px;
-            }
-            .home-tile-icon { grid-row: span 2; margin: 0; width: 46px; height: 46px; }
-            .home-tile-icon svg { width: 28px; height: 28px; }
-            .home-tile h3 { font-size: 16px; margin-bottom: 4px; }
-            .home-tile p { font-size: 13.5px; }
-            .home-tile-go { top: 50%; bottom: auto; transform: translateY(-50%); }
+            .home-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+
         }
         @media (prefers-reduced-motion: reduce) {
             .home-tile, .home-step, .home-cta { transition: none; }
@@ -1023,7 +1032,7 @@
                     <strong translate="no">By Barış Emre Özçelik, PMP</strong>
                     <span>8+ years on nuclear, mining, port and high-rise projects</span>
                 </p>
-                <a href="start-here.html" class="home-cta">Start learning <i class='bx bx-right-arrow-alt' aria-hidden="true"></i></a>
+                <a href="start-here.html" class="home-cta">Start learning <svg class="ico-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
                 <p class="home-count" id="homeCount">199 lessons in 8 tracks, all free to read.</p>
             </div>
 
@@ -1031,52 +1040,52 @@
             <h2 class="home-tracks-title">The eight tracks</h2>
             <ul class="home-tiles">
                 <li><a class="home-tile" href="learn.html#track-1">
+                    <span class="home-tile-go"><svg class="ico-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
                     <span class="home-tile-icon ic-teal" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18M8 3v4M16 3v4"/><g fill="currentColor" stroke="none"><rect x="6.4" y="12.6" width="2.4" height="2.1" rx=".5"/><rect x="10.8" y="12.6" width="2.4" height="2.1" rx=".5"/><rect x="15.2" y="12.6" width="2.4" height="2.1" rx=".5"/><rect x="6.4" y="16.3" width="2.4" height="2.1" rx=".5"/><rect x="10.8" y="16.3" width="2.4" height="2.1" rx=".5"/><rect x="15.2" y="16.3" width="2.4" height="2.1" rx=".5"/></g></svg></span>
                     <h3>Schedule</h3>
-                    <p>Logic, CPM, earned value and forecasting.</p>
-                    <i class='bx bx-right-arrow-alt home-tile-go' aria-hidden="true"></i>
+                    <p>Logic, CPM, earned value, forecasts.</p>
                 </a></li>
                 <li><a class="home-tile" href="learn.html#track-2">
+                    <span class="home-tile-go"><svg class="ico-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
                     <span class="home-tile-icon ic-sky" aria-hidden="true"><svg viewBox="0 0 24 24"><g fill="currentColor" stroke="#0f172a" stroke-width="1.1"><path d="M2.5 5v9.6a6.3 2.7 0 0 0 12.6 0V5z"/><ellipse cx="8.8" cy="5" rx="6.3" ry="2.7"/></g><g fill="none" stroke="#0f172a" stroke-width="1.1"><path d="M2.5 8.2a6.3 2.7 0 0 0 12.6 0M2.5 11.4a6.3 2.7 0 0 0 12.6 0"/></g><g fill="currentColor" stroke="#0f172a" stroke-width="1.1"><path d="M11 13.2v6.3a5.4 2.4 0 0 0 10.8 0v-6.3z"/><ellipse cx="16.4" cy="13.2" rx="5.4" ry="2.4"/></g><path d="M11 16.4a5.4 2.4 0 0 0 10.8 0" fill="none" stroke="#0f172a" stroke-width="1.1"/></svg></span>
                     <h3>Cost &amp; Cash</h3>
-                    <p>Unit rates, baselines, cash flow and margin.</p>
-                    <i class='bx bx-right-arrow-alt home-tile-go' aria-hidden="true"></i>
+                    <p>Unit rates, baselines, cash flow.</p>
                 </a></li>
                 <li><a class="home-tile" href="learn.html#track-3">
+                    <span class="home-tile-go"><svg class="ico-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
                     <span class="home-tile-icon ic-orange" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.9 18a2 2 0 0 0 1.7 3h16.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4.5"/><circle cx="12" cy="17.3" r=".6" fill="currentColor"/></svg></span>
                     <h3>Risk</h3>
-                    <p>Risk registers, assessment, responses and what money can&rsquo;t buy.</p>
-                    <i class='bx bx-right-arrow-alt home-tile-go' aria-hidden="true"></i>
+                    <p>Registers, ranges, responses.</p>
                 </a></li>
                 <li><a class="home-tile" href="learn.html#track-4">
+                    <span class="home-tile-go"><svg class="ico-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
                     <span class="home-tile-icon ic-violet" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6M9 9h2"/></svg></span>
                     <h3>Contract</h3>
-                    <p>Contract types, key clauses, variations and entitlements.</p>
-                    <i class='bx bx-right-arrow-alt home-tile-go' aria-hidden="true"></i>
+                    <p>Clauses, variations, entitlement.</p>
                 </a></li>
                 <li><a class="home-tile" href="learn.html#track-5">
+                    <span class="home-tile-go"><svg class="ico-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
                     <span class="home-tile-icon ic-red" aria-hidden="true"><svg viewBox="0 0 24 24"><g transform="rotate(45 13 9)" fill="currentColor"><rect x="7.5" y="5.2" width="11" height="5.6" rx="1"/><rect x="6.3" y="4" width="2.4" height="8" rx=".8"/><rect x="17.3" y="4" width="2.4" height="8" rx=".8"/><rect x="11.8" y="10.8" width="2.4" height="11" rx="1.1"/></g><path d="M2.5 21.5h8.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span>
                     <h3>Claims</h3>
-                    <p>Delay analysis, concurrency, disruption and claim preparation.</p>
-                    <i class='bx bx-right-arrow-alt home-tile-go' aria-hidden="true"></i>
+                    <p>Delay, concurrency, disruption.</p>
                 </a></li>
                 <li><a class="home-tile" href="learn.html#track-6">
+                    <span class="home-tile-go"><svg class="ico-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
                     <span class="home-tile-icon ic-blue" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="3.5" y="13" width="4.4" height="8" rx="1.2"/><rect x="9.8" y="8.5" width="4.4" height="12.5" rx="1.2"/><rect x="16.1" y="3.5" width="4.4" height="17.5" rx="1.2"/></svg></span>
                     <h3>Reporting</h3>
-                    <p>Progress measurement, reporting and turning data into insight.</p>
-                    <i class='bx bx-right-arrow-alt home-tile-go' aria-hidden="true"></i>
+                    <p>Progress in, reports out.</p>
                 </a></li>
                 <li><a class="home-tile" href="learn.html#track-7">
+                    <span class="home-tile-go"><svg class="ico-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
                     <span class="home-tile-icon ic-teal" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.6"/><circle cx="5" cy="18.5" r="2.6"/><circle cx="19" cy="18.5" r="2.6"/><path d="M10.7 7.3 6.3 16.2M13.3 7.3l4.4 8.9M7.6 18.5h8.8"/></svg></span>
                     <h3>Interfaces</h3>
-                    <p>Multiple contracts, joint ventures and the work in nobody&rsquo;s scope.</p>
-                    <i class='bx bx-right-arrow-alt home-tile-go' aria-hidden="true"></i>
+                    <p>Contracts, JVs, nobody&rsquo;s scope.</p>
                 </a></li>
                 <li><a class="home-tile" href="learn.html#lifecycle">
+                    <span class="home-tile-go"><svg class="ico-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
                     <span class="home-tile-icon ic-purple" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M1.5 21 9 9.5l3.6 5 2.6-3.4L22.5 21z" fill="currentColor"/><path d="m6.2 13.8 1.6.9 1.2-1.6 1.5 1.8" fill="none" stroke="#0f172a" stroke-width="1.1" stroke-linejoin="round"/><path d="M15.2 11.1V2.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M15.2 3h5.6l-1.6 2 1.6 2h-5.6z" fill="currentColor"/></svg></span>
                     <h3>The Life of a Project</h3>
-                    <p>Feasibility to final account, in the order it happens.</p>
-                    <i class='bx bx-right-arrow-alt home-tile-go' aria-hidden="true"></i>
+                    <p>Feasibility to final account.</p>
                 </a></li>
             </ul>
             </div>
@@ -1091,21 +1100,21 @@
                         <span class="home-step-n">01</span>
                         <div>
                             <h3>Why projects fail — and why the answer is never the tools</h3>
-                            <span class="home-step-meta"><span data-readtime>7 min read</span><i class='bx bx-right-arrow-alt' aria-hidden="true"></i></span>
+                            <span class="home-step-meta"><span data-readtime>7 min read</span><svg class="ico-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
                         </div>
                     </a></li>
                     <li><a class="home-step" href="week-2.html" data-home-step>
                         <span class="home-step-n">02</span>
                         <div>
                             <h3>The foundations of construction project controls</h3>
-                            <span class="home-step-meta"><span data-readtime>9 min read</span><i class='bx bx-right-arrow-alt' aria-hidden="true"></i></span>
+                            <span class="home-step-meta"><span data-readtime>9 min read</span><svg class="ico-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
                         </div>
                     </a></li>
                     <li><a class="home-step" href="week-3.html" data-home-step>
                         <span class="home-step-n">03</span>
                         <div>
                             <h3>That Gantt chart on the wall? It&rsquo;s not your schedule.</h3>
-                            <span class="home-step-meta"><span data-readtime>6 min read</span><i class='bx bx-right-arrow-alt' aria-hidden="true"></i></span>
+                            <span class="home-step-meta"><span data-readtime>6 min read</span><svg class="ico-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
                         </div>
                     </a></li>
                 </ol>
