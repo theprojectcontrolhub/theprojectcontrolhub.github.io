@@ -1856,3 +1856,100 @@ ul {
 /* 1024px: makale layout'u tek sütuna düşer ve yan panel makalenin altına yığılır.
    Kutu yüksekliği eski 5-satırlık görünümle aynı kalsın ki mobil ayak izi büyümesin. */
 @media (max-width: 1024px) { .sidebar-scroll { max-height: 340px; } }
+
+/* SITE FOOTER — one slim band, shared by every page (2026-09-28). */
+.site-footer {
+    background: var(--bg-darker);
+    border-top: 1px solid rgba(148, 163, 184, 0.14);
+    color: #94a3b8;
+}
+.sf-inner {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 30px 40px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+.sf-brand {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    padding-right: 32px;
+    border-right: 1px solid rgba(148, 163, 184, 0.16);
+    color: #f1f5f9;
+    flex: none;
+}
+.sf-brand img { height: 56px; width: auto; object-fit: contain; }
+.sf-words {
+    padding-left: 22px;
+    border-left: 1px solid rgba(148, 163, 184, 0.16);
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.3;
+}
+.sf-about {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.55;
+    color: #cbd5e1;
+}
+.sf-about > span { display: block; color: #64748b; }
+.sf-end {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex: none;
+}
+.sf-linkedin {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding-right: 28px;
+    border-right: 1px solid rgba(148, 163, 184, 0.16);
+    font-size: 14px;
+    font-weight: 600;
+    color: #f1f5f9;
+}
+.sf-in {
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    background: rgba(148, 163, 184, 0.1);
+    transition: background-color .15s ease, color .15s ease;
+}
+.sf-in svg { width: 22px; height: 22px; }
+.sf-linkedin:hover .sf-in { background: #0a66c2; color: #fff; }
+.sf-legal {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 14px;
+    color: #cbd5e1;
+    white-space: nowrap;
+}
+.sf-legal a { color: #cbd5e1; }
+.sf-legal a:hover { color: var(--primary-green); }
+.sf-sep { width: 1px; height: 14px; background: rgba(148, 163, 184, 0.3); }
+.site-footer a:focus-visible { outline: 2px solid #6ee7b7; outline-offset: 3px; border-radius: 4px; }
+
+@media (max-width: 1100px) {
+    .sf-inner { flex-wrap: wrap; row-gap: 22px; }
+    .sf-end { margin-left: 0; width: 100%; justify-content: space-between; padding-top: 22px; border-top: 1px solid rgba(148, 163, 184, 0.12); }
+    .sf-linkedin { padding-right: 0; border-right: 0; }
+}
+@media (max-width: 640px) {
+    .sf-inner { padding: 28px 20px; flex-direction: column; align-items: flex-start; gap: 18px; }
+    .sf-brand { padding-right: 0; border-right: 0; gap: 16px; }
+    .sf-brand img { height: 46px; }
+    .sf-words { padding-left: 16px; }
+    .sf-about { font-size: 14px; }
+    .sf-end { flex-direction: column; align-items: flex-start; gap: 16px; padding-top: 18px; }
+    .sf-linkedin { padding-right: 0; border-right: 0; }
+    .sf-legal { font-size: 13px; }
+}
+@media (prefers-reduced-motion: reduce) { .sf-in { transition: none; } }
