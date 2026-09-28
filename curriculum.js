@@ -584,61 +584,6 @@ function renderTrack4Progress() {
 
 
 
-// ===================== TRACK 0 — THE SHAPE OF THE JOB =====================
-// Read before Track 1, written after Track 5. Orientation, not method:
-// it describes the job rather than teaching a technique. Every topic must
-// answer "what happens, who does it, what is it called" and hand the
-// method itself to one of the five tracks that follow.
-const TRACK0 = {
-    title: "The Shape of the Job",
-    totalTopics: 17,
-    topics: [
-        // ---- PHASE A — THE JOB BEFORE IT IS A JOB ----
-        { phase: "Phase A \u2014 The Job Before It Is a Job", n: 1, title: "The documents that arrive before the work \u2014 charter, contract, scope, BoQ, drawings", short: "The documents that arrive first", status: "upcoming" },
-        { n: 2, title: "Tender to award \u2014 the estimate you inherited and the schedule you did not write", short: "Tender to award", status: "upcoming" },
-        { n: 3, title: "The contract as an organisation chart \u2014 who can instruct whom", short: "Who can instruct whom", status: "upcoming" },
-
-        // ---- PHASE B — BUILDING THE MACHINE ----
-        { phase: "Phase B \u2014 Building the Machine", n: 4, title: "The departments \u2014 what each one produces and what each needs from you", short: "The departments", status: "upcoming" },
-        { n: 5, title: "Where project controls sits \u2014 planning, cost, commercial and the monthly argument", short: "Where project controls sits", status: "upcoming" },
-        { n: 6, title: "Coding before dating \u2014 WBS, OBS, cost codes, areas and systems", short: "Coding before dating", status: "upcoming" },
-        { n: 7, title: "Mobilisation \u2014 the project inside the project", short: "Mobilisation", status: "upcoming" },
-
-        // ---- PHASE C — THE RHYTHM ----
-        { phase: "Phase C \u2014 The Rhythm", n: 8, title: "The project heartbeat \u2014 daily, weekly, monthly and the cut-off dates", short: "The project heartbeat", status: "upcoming" },
-        { n: 9, title: "Nobody gives you data \u2014 measurement, surveys and the sources you chase", short: "Nobody gives you data", status: "upcoming" },
-        { n: 10, title: "The meetings are the machine \u2014 who chairs, who decides, what you are there to do", short: "The meetings are the machine", status: "upcoming" },
-        { n: 11, title: "Four reports, four audiences \u2014 and what happens when you mix them up", short: "Four reports, four audiences", status: "upcoming" },
-
-        // ---- PHASE D — WHERE IT GOES WRONG ----
-        { phase: "Phase D \u2014 Where It Goes Wrong", n: 12, title: "Construction is decided upstream \u2014 engineering, vendor data and expediting", short: "Decided upstream", status: "upcoming" },
-        { n: 13, title: "The vocabulary of change \u2014 instruction, variation, notice, claim", short: "The vocabulary of change", status: "upcoming" },
-        { n: 14, title: "Trouble travels in documents \u2014 NCRs, site instructions and recovery plans", short: "Trouble travels in documents", status: "upcoming" },
-
-        // ---- PHASE E — FINISHING ----
-        { phase: "Phase E \u2014 Finishing", n: 15, title: "Construction complete is not complete \u2014 punch lists, handover, defects liability", short: "Complete is not complete", status: "upcoming" },
-        { n: 16, title: "The job outlives the project \u2014 as-built, final account, archive, lessons learned", short: "The job outlives the project", status: "upcoming" },
-        { n: 17, title: "What you now know you do not know \u2014 a map of the five tracks ahead", short: "A map of the tracks ahead", status: "upcoming" }
-    ],
-    get liveCount() { return this.topics.filter(w => w.status === "live").length; },
-    get progressPercent() { return Math.round((this.liveCount / this.totalTopics) * 100); },
-    get latestLiveTopic() {
-        const live = this.topics.filter(w => w.status === "live");
-        return live.length ? live[live.length - 1] : null;
-    },
-    get phaseCount() { return this.topics.filter(w => w.phase).length; },
-    getTopic(n) { return this.topics.find(w => w.n === n); }
-};
-
-function renderTrack0Curriculum() { return learnCurriculumHTML(TRACK0); }
-function renderTrack0Sidebar(currentWeek) { return sidebarHTML(TRACK0, currentWeek); }
-function renderHomeTrack0()               { return homeCurriculumHTML(TRACK0); }
-function renderHomeTrack0Badge()          { return badgeText(TRACK0); }
-function renderTrack0Progress() {
-    return { text: `${TRACK0.liveCount} of ${TRACK0.totalTopics} complete`, percent: TRACK0.progressPercent };
-}
-
-
 // ===================== TRACK 6 — REPORTING =====================
 // The trade around the methods. Phase A follows every input back to the
 // department that produces it; Phase B follows every document forward to the

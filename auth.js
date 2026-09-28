@@ -57,7 +57,7 @@ export async function signInWithGoogle() {
       return null;
     }
 
-    console.error("Giriş hatası:", error);
+    console.error("Sign-in error:", error);
     throw error;
   }
 }
@@ -66,7 +66,7 @@ export async function logout() {
   try {
     await signOut(auth);
   } catch (error) {
-    console.error("Çıkış hatası:", error);
+    console.error("Sign-out error:", error);
   }
 }
 
