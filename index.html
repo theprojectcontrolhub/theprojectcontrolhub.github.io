@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Project Control Hub &#8212; Planning &amp; Project Controls, Explained</title>
-    <meta name="description" content="Learn planning and project controls the way it actually works on site. 199 lessons by Bar&#305;&#351; Emre &#214;z&#231;elik, PMP &#8212; schedule, cost, risk, contract, claims, reporting, interfaces and the life of a project. Complete and free to read.">
+    <meta name="description" content="The Project Control Hub: learn planning and project controls the way they work on site. 199 free lessons across schedule, cost, risk, contract, claims, reporting, interfaces and the life of a project, plus project controls, contracts and claims advisory.">
     <link rel="canonical" href="https://theprojectcontrolhub.com/">
     <meta property="og:locale" content="en_US">
 
@@ -12,14 +12,14 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="The Project Control Hub">
     <meta property="og:title" content="The Project Control Hub — Planning & Project Controls, Explained">
-    <meta property="og:description" content="Learn planning and project controls the way it actually works on site. 199 lessons by Bar&#305;&#351; Emre &#214;z&#231;elik, PMP &#8212; schedule, cost, risk, contract, claims, reporting, interfaces and the life of a project. Complete and free to read.">
+    <meta property="og:description" content="The Project Control Hub: learn planning and project controls the way they work on site. 199 free lessons across schedule, cost, risk, contract, claims, reporting, interfaces and the life of a project, plus project controls, contracts and claims advisory.">
     <meta property="og:url" content="https://theprojectcontrolhub.com/">
     <meta property="og:image" content="https://theprojectcontrolhub.com/og-image.png">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="The Project Control Hub — Planning & Project Controls, Explained">
-    <meta name="twitter:description" content="Learn planning and project controls the way it actually works on site. 199 lessons by Bar&#305;&#351; Emre &#214;z&#231;elik, PMP &#8212; schedule, cost, risk, contract, claims, reporting, interfaces and the life of a project. Complete and free to read.">
+    <meta name="twitter:description" content="The Project Control Hub: learn planning and project controls the way they work on site. 199 free lessons across schedule, cost, risk, contract, claims, reporting, interfaces and the life of a project, plus project controls, contracts and claims advisory.">
     <meta name="twitter:image" content="https://theprojectcontrolhub.com/og-image.png">
 
     <!-- Favicon -->
@@ -29,7 +29,7 @@
     <!-- Modern Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Icons -->
-    <link rel="stylesheet" href="style.css?v=44">
+    <link rel="stylesheet" href="style.css?v=51">
     <style>
 
         @media (max-width: 768px) {
@@ -96,7 +96,7 @@
         }
         .modal-note {
             font-size: 12px !important;
-            color: #94a3b8 !important;
+            color: #64748b !important;
             margin-top: 12px !important;
             margin-bottom: 0 !important;
         }
@@ -183,17 +183,6 @@
             max-width: 34em;
             margin: 0 0 30px;
         }
-        .home-author { margin: 0 0 32px; }
-        .home-author strong {
-            display: block;
-            font-size: 17px;
-            font-weight: 700;
-            color: #f8fafc;
-            margin-bottom: 4px;
-        }
-        .home-author > span { font-size: 15px; color: #94a3b8; }
-        .home-author strong span { font-size: inherit; color: inherit; }
-        .home-author .nw { white-space: nowrap; }
         .home-cta {
             display: inline-flex;
             align-items: center;
@@ -355,16 +344,103 @@
             .home-kicker { font-size: 11px; margin-bottom: 14px; }
             .home-stroke { margin: 10px 0 20px; }
             .home-lead { font-size: 16px; margin-bottom: 22px; }
-            .home-author { margin-bottom: 24px; }
-            .home-cta { width: 100%; justify-content: center; }
+                .home-cta { width: 100%; justify-content: center; }
             .home-start { margin-top: 40px; padding: 32px 0 40px; }
             .home-start h2, .home-tracks-title { font-size: 24px; }
             .home-tracks { margin: 40px 0 0; }
             .home-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 
         }
+        /* Second path: services. Outlined, so it never competes with Start learning. */
+        .home-svc { max-width: 1400px; margin: 0 auto; padding: 0 32px 48px; }
+        .home-svc-inner {
+            display: flex; align-items: center; justify-content: space-between; gap: 20px 32px; flex-wrap: wrap;
+            padding: 24px 28px; border: 1px solid rgba(148, 163, 184, 0.18); border-radius: 14px;
+            background: rgba(30, 41, 59, 0.35);
+        }
+        .home-svc h2 { font-size: 21px; font-weight: 800; letter-spacing: -0.01em; color: #f8fafc; margin: 0 0 4px; }
+        .home-svc p { font-size: 15px; line-height: 1.5; color: #94a3b8; margin: 0; }
+        .home-svc-btn {
+            display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 11px 20px; border-radius: 8px;
+            border: 1.5px solid var(--primary-green); color: #6ee7b7; font-weight: 700; font-size: 15px; white-space: nowrap;
+            transition: background-color .15s ease, color .15s ease;
+        }
+        .home-svc-btn:hover { background: var(--primary-green); color: #04211a; }
+        .home-svc-btn:focus-visible { outline: 2px solid #6ee7b7; outline-offset: 3px; }
+        .home-svc-btn .ico-arrow { width: 19px; height: 19px; }
+        .home-start { padding-bottom: 40px; }
+        @media (max-width: 640px) {
+            .home-svc { padding: 0 20px 40px; }
+            .home-svc-inner { padding: 20px; }
+            .home-svc-btn { width: 100%; justify-content: center; }
+        }
         @media (prefers-reduced-motion: reduce) {
-            .home-tile, .home-step, .home-cta { transition: none; }
+            .home-tile, .home-step, .home-cta, .home-svc-btn { transition: none; }
+        }
+
+        /* ================= LIGHT HOME (2026-10) =================
+           Same layout and words; light surface like every other page.
+           Navbar and footer stay dark, as site-wide. */
+        .home-hero { position: relative; background: #f8fafc; color: #0f172a; overflow: hidden; }
+        .home-hero::before { content: ""; position: absolute; inset: 0; pointer-events: none;
+            background-image: linear-gradient(#e2e8f0 1px, transparent 1px), linear-gradient(90deg, #e2e8f0 1px, transparent 1px);
+            background-size: 36px 36px; opacity: .55;
+            -webkit-mask-image: radial-gradient(ellipse 70% 60% at 30% 25%, #000 0%, transparent 75%);
+                    mask-image: radial-gradient(ellipse 70% 60% at 30% 25%, #000 0%, transparent 75%); }
+        .home-grid, .home-svc { position: relative; }
+        .home-kicker { color: #64748b; }
+        .home-title { color: #0f172a; }
+        .home-title span { color: #059669; }
+        .home-stroke { color: #10b981; }
+        .home-lead { color: #475569; }
+        .home-count { color: #64748b; }
+        .home-cta { box-shadow: 0 10px 24px -10px rgba(5, 150, 105, .6); transition: background-color .15s ease, transform .2s ease, box-shadow .2s ease; }
+        .home-cta:hover { transform: translateY(-2px); box-shadow: 0 14px 28px -10px rgba(5, 150, 105, .7); }
+
+        .home-tile { background: #fff; border: 1px solid #e2e8f0; box-shadow: 0 1px 2px rgba(15, 23, 42, .04);
+            transition: transform .25s cubic-bezier(.2,.7,.2,1), box-shadow .25s ease, border-color .25s ease; }
+        .home-tile::before { content: ""; position: absolute; inset: 0 0 auto; height: 4px; background: var(--c); }
+        .home-tile:hover { background: #fff; transform: translateY(-4px); border-color: color-mix(in srgb, var(--c) 45%, #e2e8f0);
+            box-shadow: 0 16px 30px -14px color-mix(in srgb, var(--c) 50%, transparent); }
+        .home-tile .home-tile-icon { color: var(--c2); background: var(--cs); transition: transform .3s cubic-bezier(.3,1.6,.5,1); }
+        .home-tile:hover .home-tile-icon { transform: rotate(-8deg) scale(1.08); }
+        .home-tile h3 { color: #0f172a; }
+        .home-tile p { color: #64748b; }
+        .home-tile-go { color: var(--c2); opacity: .55; transition: opacity .2s, transform .2s; }
+        .home-tile:hover .home-tile-go { opacity: 1; transform: translateX(3px); }
+
+        .home-start { border-top-color: #e2e8f0; }
+        .home-start h2, .home-tracks-title { color: #0f172a; }
+        .home-start > div > p { color: #64748b; }
+        .home-step { background: #fff; border-color: #e2e8f0; transition: border-color .2s ease, transform .25s ease, box-shadow .25s ease; }
+        .home-step:hover { border-color: #6ee7b7; transform: translateY(-3px); box-shadow: 0 14px 28px -16px rgba(5, 150, 105, .5); }
+        .home-step-n { color: #059669; border-right-color: #e2e8f0; }
+        .home-step h3 { color: #0f172a; }
+        .home-step-meta { color: #64748b; }
+        .home-step-meta .ico-arrow { color: #047857; }
+
+        .home-hero .home-svc-inner { background: #ecfdf5; border-color: #a7f3d0; }
+        .home-svc h2 { color: #0f172a; }
+        .home-svc p { color: #475569; }
+        .home-svc-btn { color: #047857; border-color: #10b981; background: #fff; }
+        .home-svc-btn:hover { background: #047857; border-color: #047857; color: #fff; }
+
+        .home-tile:focus-visible, .home-step:focus-visible, .home-cta:focus-visible, .home-svc-btn:focus-visible { outline-color: #047857; }
+
+        /* Light motion: tiles and lesson cards rise in, in order. */
+        @keyframes home-rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+        .home-tiles > li { animation: home-rise .55s cubic-bezier(.2,.7,.2,1) calc(.15s + var(--i, 0) * .06s) backwards; }
+        .home-tiles > li:nth-child(1) { --i: 0; } .home-tiles > li:nth-child(2) { --i: 1; } .home-tiles > li:nth-child(3) { --i: 2; }
+        .home-tiles > li:nth-child(4) { --i: 3; } .home-tiles > li:nth-child(5) { --i: 4; } .home-tiles > li:nth-child(6) { --i: 5; }
+        .home-tiles > li:nth-child(7) { --i: 6; } .home-tiles > li:nth-child(8) { --i: 7; }
+        .home-intro > * { animation: home-rise .6s cubic-bezier(.2,.7,.2,1) backwards; }
+        .home-intro > :nth-child(2) { animation-delay: .05s; } .home-intro > :nth-child(3) { animation-delay: .1s; }
+        .home-intro > :nth-child(4) { animation-delay: .15s; } .home-intro > :nth-child(n+5) { animation-delay: .2s; }
+        .home-stroke path { stroke-dasharray: 480; animation: home-draw 1.1s cubic-bezier(.45,.1,.3,1) .35s backwards; }
+        @keyframes home-draw { from { stroke-dashoffset: 480; } to { stroke-dashoffset: 0; } }
+        @media (prefers-reduced-motion: reduce) {
+            .home-tiles > li, .home-intro > *, .home-stroke path { animation: none; }
+            .home-tile:hover, .home-step:hover, .home-cta:hover { transform: none; }
         }
     </style>
 
@@ -468,8 +544,7 @@
       "@type": "Person",
       "@id": "https://theprojectcontrolhub.com/#person",
       "name": "Barış Emre Özçelik",
-      "jobTitle": "Planning & Project Controls Lead",
-      "description": "Planning & Project Controls Lead and civil engineer working on large-scale construction and engineering projects, including nuclear.",
+      "description": "Civil engineer and PMP working on large-scale construction and engineering projects.",
       "url": "https://theprojectcontrolhub.com/about.html",
       "sameAs": [
         "https://www.linkedin.com/in/barisemreozcelik"
@@ -485,9 +560,6 @@
       "@id": "https://theprojectcontrolhub.com/#organization",
       "name": "The Project Control Hub",
       "url": "https://theprojectcontrolhub.com/",
-      "founder": {
-        "@id": "https://theprojectcontrolhub.com/#person"
-      },
       "description": "A written curriculum in project controls, in English: 199 lessons across 8 tracks, complete and free to read.",
       "inLanguage": "en"
     },
@@ -633,9 +705,8 @@
             </a>
             <div class="nav-links">
                 <a href="index.html" class="active">Home</a>
-                <a href="learn.html">Learn</a>
+                <a href="learn.html">Learn Project Controls</a>
                 <a href="services.html">Services</a>
-                <a href="projects.html">Projects</a>
                 <a href="resources.html">Resources</a>
                 <a href="about.html">About</a>
                 <a href="contact.html">Contact</a>
@@ -679,10 +750,6 @@
                 <h1 class="home-title">Planning is not a <span>poster on the wall.</span></h1>
                 <svg class="home-stroke" viewBox="0 0 470 14" preserveAspectRatio="none" aria-hidden="true"><path d="M3 10 C 120 4, 300 3, 467 7" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></svg>
                 <p class="home-lead">Learn project controls the way it works on site &mdash; not just in a textbook. Eight tracks, in order, complete and free.</p>
-                <p class="home-author">
-                    <strong>By <span translate="no">Barış Emre Özçelik</span></strong>
-                    <span><span class="nw">PMP&reg;</span> | <span class="nw">Planning &amp; Project Controls Lead</span> | <span class="nw">Civil Engineer</span></span>
-                </p>
                 <a href="start-here.html" class="home-cta">Start learning <svg class="ico-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
                 <p class="home-count" id="homeCount">199 lessons in 8 tracks, all free to read.</p>
             </div>
@@ -690,49 +757,49 @@
             <div class="home-tracks">
             <h2 class="home-tracks-title">The eight tracks</h2>
             <ul class="home-tiles">
-                <li><a class="home-tile" href="learn.html#track-1">
+                <li><a class="home-tile" style="--c:#14b8a6;--c2:#0f766e;--cs:#ccfbf1;--i:0" href="learn.html#track-1">
                     <span class="home-tile-go"><svg class="ico-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
                     <span class="home-tile-icon ic-teal" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18M8 3v4M16 3v4"/><g fill="currentColor" stroke="none"><rect x="6.4" y="12.6" width="2.4" height="2.1" rx=".5"/><rect x="10.8" y="12.6" width="2.4" height="2.1" rx=".5"/><rect x="15.2" y="12.6" width="2.4" height="2.1" rx=".5"/><rect x="6.4" y="16.3" width="2.4" height="2.1" rx=".5"/><rect x="10.8" y="16.3" width="2.4" height="2.1" rx=".5"/><rect x="15.2" y="16.3" width="2.4" height="2.1" rx=".5"/></g></svg></span>
                     <h3>Schedule</h3>
                     <p>Logic, CPM, earned value, forecasts.</p>
                 </a></li>
-                <li><a class="home-tile" href="learn.html#track-2">
+                <li><a class="home-tile" style="--c:#0ea5e9;--c2:#0369a1;--cs:#e0f2fe;--i:1" href="learn.html#track-2">
                     <span class="home-tile-go"><svg class="ico-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
                     <span class="home-tile-icon ic-sky" aria-hidden="true"><svg viewBox="0 0 24 24"><g fill="currentColor" stroke="#0f172a" stroke-width="1.1"><path d="M2.5 5v9.6a6.3 2.7 0 0 0 12.6 0V5z"/><ellipse cx="8.8" cy="5" rx="6.3" ry="2.7"/></g><g fill="none" stroke="#0f172a" stroke-width="1.1"><path d="M2.5 8.2a6.3 2.7 0 0 0 12.6 0M2.5 11.4a6.3 2.7 0 0 0 12.6 0"/></g><g fill="currentColor" stroke="#0f172a" stroke-width="1.1"><path d="M11 13.2v6.3a5.4 2.4 0 0 0 10.8 0v-6.3z"/><ellipse cx="16.4" cy="13.2" rx="5.4" ry="2.4"/></g><path d="M11 16.4a5.4 2.4 0 0 0 10.8 0" fill="none" stroke="#0f172a" stroke-width="1.1"/></svg></span>
                     <h3>Cost &amp; Cash</h3>
                     <p>Unit rates, baselines, cash flow.</p>
                 </a></li>
-                <li><a class="home-tile" href="learn.html#track-3">
+                <li><a class="home-tile" style="--c:#f97316;--c2:#c2410c;--cs:#ffedd5;--i:2" href="learn.html#track-3">
                     <span class="home-tile-go"><svg class="ico-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
                     <span class="home-tile-icon ic-orange" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.9 18a2 2 0 0 0 1.7 3h16.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4.5"/><circle cx="12" cy="17.3" r=".6" fill="currentColor"/></svg></span>
                     <h3>Risk</h3>
                     <p>Registers, ranges, responses.</p>
                 </a></li>
-                <li><a class="home-tile" href="learn.html#track-4">
+                <li><a class="home-tile" style="--c:#8b5cf6;--c2:#6d28d9;--cs:#ede9fe;--i:3" href="learn.html#track-4">
                     <span class="home-tile-go"><svg class="ico-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
                     <span class="home-tile-icon ic-violet" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6M9 9h2"/></svg></span>
                     <h3>Contract</h3>
                     <p>Clauses, variations, entitlement.</p>
                 </a></li>
-                <li><a class="home-tile" href="learn.html#track-5">
+                <li><a class="home-tile" style="--c:#f43f5e;--c2:#be123c;--cs:#ffe4e6;--i:4" href="learn.html#track-5">
                     <span class="home-tile-go"><svg class="ico-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
                     <span class="home-tile-icon ic-red" aria-hidden="true"><svg viewBox="0 0 24 24"><g transform="rotate(45 13 9)" fill="currentColor"><rect x="7.5" y="5.2" width="11" height="5.6" rx="1"/><rect x="6.3" y="4" width="2.4" height="8" rx=".8"/><rect x="17.3" y="4" width="2.4" height="8" rx=".8"/><rect x="11.8" y="10.8" width="2.4" height="11" rx="1.1"/></g><path d="M2.5 21.5h8.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span>
                     <h3>Claims</h3>
                     <p>Delay, concurrency, disruption.</p>
                 </a></li>
-                <li><a class="home-tile" href="learn.html#track-6">
+                <li><a class="home-tile" style="--c:#3b82f6;--c2:#1d4ed8;--cs:#dbeafe;--i:5" href="learn.html#track-6">
                     <span class="home-tile-go"><svg class="ico-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
                     <span class="home-tile-icon ic-blue" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="3.5" y="13" width="4.4" height="8" rx="1.2"/><rect x="9.8" y="8.5" width="4.4" height="12.5" rx="1.2"/><rect x="16.1" y="3.5" width="4.4" height="17.5" rx="1.2"/></svg></span>
                     <h3>Reporting</h3>
                     <p>Progress in, reports out.</p>
                 </a></li>
-                <li><a class="home-tile" href="learn.html#track-7">
+                <li><a class="home-tile" style="--c:#f59e0b;--c2:#b45309;--cs:#fef3c7;--i:6" href="learn.html#track-7">
                     <span class="home-tile-go"><svg class="ico-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-                    <span class="home-tile-icon ic-teal" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.6"/><circle cx="5" cy="18.5" r="2.6"/><circle cx="19" cy="18.5" r="2.6"/><path d="M10.7 7.3 6.3 16.2M13.3 7.3l4.4 8.9M7.6 18.5h8.8"/></svg></span>
+                    <span class="home-tile-icon ic-amber" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.6"/><circle cx="5" cy="18.5" r="2.6"/><circle cx="19" cy="18.5" r="2.6"/><path d="M10.7 7.3 6.3 16.2M13.3 7.3l4.4 8.9M7.6 18.5h8.8"/></svg></span>
                     <h3>Interfaces</h3>
                     <p>Contracts, JVs, nobody&rsquo;s scope.</p>
                 </a></li>
-                <li><a class="home-tile" href="learn.html#lifecycle">
+                <li><a class="home-tile" style="--c:#d946ef;--c2:#a21caf;--cs:#fae8ff;--i:7" href="learn.html#lifecycle">
                     <span class="home-tile-go"><svg class="ico-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
                     <span class="home-tile-icon ic-purple" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M1.5 21 9 9.5l3.6 5 2.6-3.4L22.5 21z" fill="currentColor"/><path d="m6.2 13.8 1.6.9 1.2-1.6 1.5 1.8" fill="none" stroke="#0f172a" stroke-width="1.1" stroke-linejoin="round"/><path d="M15.2 11.1V2.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M15.2 3h5.6l-1.6 2 1.6 2h-5.6z" fill="currentColor"/></svg></span>
                     <h3>The Life of a Project</h3>
@@ -772,6 +839,16 @@
             </div>
 
         </div>
+
+        <div class="home-svc">
+            <div class="home-svc-inner">
+                <div>
+                    <h2>Need help on a live project?</h2>
+                    <p>Project controls and training, and contracts, claims and tender advisory.</p>
+                </div>
+                <a class="home-svc-btn" href="services.html">Explore services <svg class="ico-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </div>
+        </div>
     </section>
 
     <!-- ACCESS MODAL — Google Sign In -->
@@ -782,8 +859,8 @@
                 <div class="modal-icon-wrapper">
                     <i class='bx bx-book-open'></i>
                 </div>
-                <h4>Follow the series</h4>
-                <p>Every lesson is already free to read. Sign in with Google so new work reaches you when it is published.</p>
+                <h2 class="modal-title">Sign in with Google</h2>
+                <p>Every lesson is already free to read. Signing in only records your name and email as interest in new work. There is no mailing list yet, so nothing is sent.</p>
                 <button class="btn-google-signin" onclick="signInWithGoogleBtn()">
                     <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z" fill="#4285F4"/><path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/><path d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/><path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#EA4335"/></svg>
                     Continue with Google
@@ -797,9 +874,8 @@
     <div class="mobile-nav" id="mobileNav">
         <button class="mobile-nav-close" onclick="toggleMobileNav()" aria-label="Close menu"><i class='bx bx-x'></i></button>
         <a href="index.html" class="active" onclick="toggleMobileNav()">Home</a>
-        <a href="learn.html" onclick="toggleMobileNav()">Learn</a>
+        <a href="learn.html" onclick="toggleMobileNav()">Learn Project Controls</a>
         <a href="services.html" onclick="toggleMobileNav()">Services</a>
-        <a href="projects.html" onclick="toggleMobileNav()">Projects</a>
         <a href="resources.html" onclick="toggleMobileNav()">Resources</a>
         <a href="about.html" onclick="toggleMobileNav()">About</a>
         <a href="contact.html" onclick="toggleMobileNav()">Contact</a>

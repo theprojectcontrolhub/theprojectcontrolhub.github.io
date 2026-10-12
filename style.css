@@ -2108,3 +2108,101 @@ ul {
 .mobile-nav.open a:nth-child(6) { transition-delay: 0.30s; }
 .mobile-nav.open a:nth-child(7) { transition-delay: 0.36s; }
 .mobile-nav.open a:nth-child(8) { transition-delay: 0.42s; }
+
+/* Services in two groups, one per person (2026-10-10) */
+.pg-group + .pg-group { margin-top: 40px; }
+.pg-group-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px 24px; flex-wrap: wrap; margin-bottom: 16px; }
+.pg-group-head h2 { font-size: clamp(22px, 2.6vw, 28px); letter-spacing: -0.02em; font-weight: 800; margin: 0; }
+.pg-group-head p { font-size: 14.5px; color: #64748b; margin: 0; }
+.pg-group-head strong { color: #0f172a; }
+
+/* Featured service card and its note/link (2026-10-10) */
+.pg-card-feature { border: 2px solid var(--c); box-shadow: 0 0 0 4px var(--t); }
+.pg-card-note { font-size: 13px !important; color: #64748b; margin-top: auto !important; padding-top: 4px; }
+.pg-card-link { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: var(--c); }
+.pg-card-link svg { width: 16px; height: 16px; }
+.pg-card-link:hover { text-decoration: underline; text-underline-offset: 2px; }
+.pg-c-red { --c: #e11d48; --t: #ffe4e6; --w: #fff1f2; }
+.pg-card-out { font-size: 13.5px !important; line-height: 1.5; color: #475569 !important; padding-top: 12px; border-top: 1px solid #f1f5f9; }
+.pg-card-out strong { color: #0f172a; font-weight: 600; }
+
+/* Headings in order (2026-10-10): the sign-in dialog title is an h2 and the
+   lesson pager titles are link text, not headings. Same look as before. */
+.modal-box h2.modal-title { font-size: 20px; font-weight: 700; color: #0f172a; margin: 0 0 10px; line-height: 1.3; }
+
+/* ================= ACCESSIBILITY (2026-10-10) =================
+   Contrast to WCAG AA on light surfaces only. Dark surfaces (navbar, home
+   hero, footer, mobile menu) keep the bright brand green, where it passes.
+   `html body` lifts these above the per-page <style> blocks, which load later. */
+
+/* 1. Dark text on green buttons (white on #10b981 is 2.5:1; dark is 7.7:1) */
+html body .btn-primary,
+html body .weeks-toggle-count,
+html body .ab-cta,
+html body .pg-btn,
+html body .sh-choice.c-green .sh-btn { color: #04211a; }
+html body .sh-base.c-teal .sh-base-tag { color: #fff; }   /* teal is now the dark #0f766e (2026-10) */
+html body .ab-cta-in, html body .pg-btn-in { background: rgba(4, 33, 26, 0.12); }
+
+/* 2. Small green text on light surfaces: #047857 (5.5:1 on white) */
+html body .breadcrumb a,
+html body .next-week-tag,
+html body .sidebar-topic,
+html body .topic-num,
+html body .learn-header-badge,
+html body .track-badge.free,
+html body .about-header-badge,
+html body .article-week-badge,
+html body .module-badge.badge-active,
+html body .track-jump-link.active,
+html body .track-jump-link.active span,
+html body .track-outcomes h3,
+html body .phase-label,
+html body .sidebar-series-item.active .sidebar-item-title,
+html body .content-locked strong,
+html body .ab-lead-quote span { color: #047857; }
+html body .ab-prof.c-green { --c: #047857; }
+html body .ab-prof.c-blue  { --c: #1d4ed8; }
+
+/* 3. Large green text: #059669 (3.8:1, large text needs 3:1) */
+html body .sh-hero h1 span,
+html body .ab-hero h1 span,
+html body .pg-hero h1 span,
+html body .module-num,
+html body .sh-read-n { color: #059669; }
+
+/* 4. Muted grey on light surfaces: #64748b (4.7:1 on white) */
+html body .modal-note,
+html body .modal-box .modal-note,
+html body .tool-tag-label,
+html body .phase-weeks-tag,
+html body .progress-label,
+html body .breadcrumb,
+html body .crumb-title,
+html body .author-details span,
+html body .share-bar-label,
+html body .paywall-cta p,
+html body .paywall-note,
+html body .next-article-label,
+html body .sidebar-card-header h4,
+html body .author-sidebar-title { color: #64748b; }
+html body .article-author > div[style] { color: #64748b !important; }
+html body .module-badge.badge-locked { color: #475569; }
+
+/* 5. Visible keyboard focus everywhere */
+:focus-visible { outline: 2px solid #047857; outline-offset: 2px; }
+.navbar :focus-visible,
+.home-hero :focus-visible,
+.site-footer :focus-visible,
+.mobile-nav :focus-visible { outline-color: #6ee7b7; }
+
+/* 6. Larger tap targets for small links, without moving anything */
+.nav-links a { padding: 8px 0; }
+.sf-legal a { display: inline-block; padding: 4px 0; }
+.breadcrumb a { display: inline-block; padding: 3px 0; }
+.pg-card-link { padding: 4px 0; }
+
+/* Mobile menu: "Learn Project Controls" is long; keep every item centred, and
+   a size smaller on very narrow phones so it stays on one line. */
+.mobile-nav a { text-align: center; max-width: 92vw; }
+@media (max-width: 380px) { .mobile-nav a { font-size: 24px; } }
