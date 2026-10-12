@@ -548,3 +548,16 @@
         figure svg { width: 100%; height: auto; display: block; }
     @media (max-width: 768px) { figure { padding: 14px !important; } }
 .logo-mark{vertical-align:middle;display:inline-block;}
+
+/* LESSON PAGER — previous and next (2026-10-10). Always visible: it used to be
+   hidden until Firebase answered, so a blocked script hid the next lesson. */
+.lesson-pager { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-items: end; }
+.lesson-pager .pager-next { grid-column: 2; }
+.lesson-pager .next-article-link { height: 100%; }
+.prev-article-link .pager-arrow { width: 22px; height: 22px; flex-shrink: 0; color: #10b981; }
+@media (max-width: 640px) {
+    .lesson-pager { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+    .lesson-pager .pager-next { grid-column: auto; order: -1; }
+}
+.next-article-link .pager-title { display: block; font-size: 14px; font-weight: 600; color: var(--text-dark); line-height: 1.4; margin: 0; flex: 1; }
+@media (max-width: 768px) { .next-article-link .pager-title { font-size: 13px; } }

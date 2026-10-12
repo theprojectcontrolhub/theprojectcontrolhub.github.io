@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resources — The Project Control Hub</title>
-    <meta name="description" content="Everything free on The Project Control Hub in one place: the orientation, the first three lessons, the eight tracks and the reference lessons people come back to.">
+    <title>Free Templates — Resources — The Project Control Hub</title>
+    <meta name="description" content="Free project controls templates: weekly and daily reports, a risk register, an earned value calculator, a cash flow S-curve, a notice calendar, an update checklist and an action log. Blank and worked example.">
     <link rel="canonical" href="https://theprojectcontrolhub.com/resources.html">
     <meta property="og:locale" content="en_US">
 
@@ -12,14 +12,14 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="The Project Control Hub">
     <meta property="og:title" content="Resources — The Project Control Hub">
-    <meta property="og:description" content="Everything free on The Project Control Hub in one place: the orientation, the first three lessons, the eight tracks and the reference lessons people come back to.">
+    <meta property="og:description" content="Free project controls templates: weekly and daily reports, a risk register, an earned value calculator, a cash flow S-curve, a notice calendar, an update checklist and an action log. Blank and worked example.">
     <meta property="og:url" content="https://theprojectcontrolhub.com/resources.html">
     <meta property="og:image" content="https://theprojectcontrolhub.com/og-image.png">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Resources — The Project Control Hub">
-    <meta name="twitter:description" content="Everything free on The Project Control Hub in one place: the orientation, the first three lessons, the eight tracks and the reference lessons people come back to.">
+    <meta name="twitter:description" content="Free project controls templates: weekly and daily reports, a risk register, an earned value calculator, a cash flow S-curve, a notice calendar, an update checklist and an action log. Blank and worked example.">
     <meta name="twitter:image" content="https://theprojectcontrolhub.com/og-image.png">
 
     <!-- Favicon -->
@@ -27,7 +27,7 @@
     <link rel="alternate icon" href="favicon.ico">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=44">
+    <link rel="stylesheet" href="style.css?v=51">
     <style>
         .about-page {
             background: var(--bg-light);
@@ -282,6 +282,128 @@
         }
 
     .logo-mark{vertical-align:middle;display:inline-block;}
+
+        /* RESOURCES CSS */
+        .pg-wrap { max-width: 1320px; }
+        .rs-foot { margin: 22px 0 0; font-size: 13.5px; line-height: 1.6; color: #475569; max-width: 60em; }
+        .rs-filter { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 22px; }
+        .rs-chip { --c: #0f172a; --c2: #0f172a; --cs: #f1f5f9; display: inline-flex; align-items: center; gap: 7px; font: inherit; font-size: 13.5px; font-weight: 600;
+            padding: 8px 14px; border-radius: 999px; border: 1.5px solid #e2e8f0; background: #fff; color: #334155; cursor: pointer;
+            transition: background .2s, border-color .2s, color .2s, transform .15s; }
+        .rs-chip i { width: 9px; height: 9px; border-radius: 50%; background: var(--c); }
+        .rs-chip span { font-size: 11.5px; color: #475569; font-weight: 700; }
+        .rs-chip:hover { border-color: var(--c); transform: translateY(-1px); }
+        .rs-chip[aria-pressed="true"] { background: var(--c2); border-color: var(--c2); color: #fff; }
+        .rs-chip[aria-pressed="true"] span { color: rgba(255,255,255,.8); }
+        .rs-chip[aria-pressed="true"] i { background: #fff; }
+
+        .rs-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+        .rs-card { position: relative; display: flex; flex-direction: column; gap: 12px; padding: 20px 18px 18px; background: #fff;
+            border: 1px solid #e2e8f0; border-radius: 14px; overflow: hidden;
+            transition: transform .25s cubic-bezier(.2,.7,.2,1), box-shadow .25s, border-color .25s, opacity .22s; }
+        .rs-card::before { content: ""; position: absolute; inset: 0 0 auto; height: 4px; background: var(--c); transform-origin: left;
+            transition: transform .6s cubic-bezier(.2,.7,.2,1) calc(var(--d) + .1s); }
+        .rs-card:hover { transform: translateY(-5px); border-color: color-mix(in srgb, var(--c) 45%, #e2e8f0);
+            box-shadow: 0 16px 34px -14px color-mix(in srgb, var(--c) 45%, transparent); }
+        .rs-card.out { opacity: 0; transform: scale(.96); }
+        .rs-card[hidden] { display: none; }
+
+        .rs-top { display: flex; align-items: center; gap: 11px; min-height: 44px; }
+        .rs-ico { flex: none; width: 42px; height: 42px; border-radius: 11px; display: grid; place-items: center; background: var(--cs); color: var(--c2);
+            transition: transform .3s cubic-bezier(.3,1.6,.5,1); }
+        .rs-ico svg { width: 22px; height: 22px; }
+        .rs-card:hover .rs-ico { transform: rotate(-8deg) scale(1.08); }
+        .rs-head { min-width: 0; flex: 1; }
+        .rs-track { display: block; font-size: 10.5px; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; color: var(--c2); margin-bottom: 2px; }
+        .rs-head h3 { margin: 0; font-size: 15.5px; line-height: 1.25; }
+        .rs-type { flex: none; align-self: flex-start; font-size: 10px; font-weight: 800; letter-spacing: .05em; padding: 3px 6px; border-radius: 5px; background: #f1f5f9; color: #475569; }
+        .rs-card > p { margin: 0; font-size: 13.5px; line-height: 1.5; color: #475569; min-height: 40px; }
+
+        .mini { border: 1px solid #eef2f6; border-radius: 10px; background: var(--cs); padding: 8px; height: 124px; overflow: hidden; font-size: 11.5px; }
+        .mini-table { display: grid; gap: 3px; align-content: start; }
+        .mini-table > div { display: grid; grid-template-columns: 1.7fr repeat(calc(var(--cols) - 1), 1fr); gap: 6px; padding: 5px 7px; background: #fff; border-radius: 5px; color: #0f172a; }
+        .mini-table span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .mini-table > div span:not(:first-child) { text-align: right; font-variant-numeric: tabular-nums; }
+        .mini-table .mh { background: transparent; color: #475569; font-weight: 700; font-size: 10px; text-transform: uppercase; letter-spacing: .04em; }
+        .mini-table .hot { background: var(--c2); color: #fff; font-weight: 700; }
+
+        .mini-bars { display: grid; gap: 7px; align-content: start; }
+        .bl { display: flex; gap: 12px; font-size: 10px; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: .04em; }
+        .bl span { display: inline-flex; align-items: center; gap: 5px; }
+        .bl i { width: 10px; height: 6px; border-radius: 3px; }
+        .kp { background: color-mix(in srgb, var(--c) 28%, #fff); } .ka { background: var(--c); }
+        .br { display: grid; grid-template-columns: 92px 1fr 40px; align-items: center; gap: 8px; color: #0f172a; }
+        .bn { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .bt { position: relative; height: 10px; background: #fff; border-radius: 5px; overflow: hidden; }
+        .bt i { position: absolute; left: 0; top: 0; bottom: 0; width: var(--w); border-radius: 5px;
+            transition: width .9s cubic-bezier(.2,.7,.2,1) calc(var(--d) + .3s + var(--i) * .12s); }
+        .bp { background: color-mix(in srgb, var(--c) 28%, #fff); }
+        .ba { background: var(--c); top: 2px !important; bottom: 2px !important; }
+        .br.late .ba { background: #e11d48; }
+        .bv { text-align: right; font-size: 10.5px; color: #475569; white-space: nowrap; font-variant-numeric: tabular-nums; }
+        .bv b { color: #0f172a; } .br.late .bv b { color: #be123c; }
+
+        .mini-ev { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; align-items: center; }
+        .mini-ev div { background: #fff; border-radius: 8px; padding: 16px 4px; text-align: center; }
+        .mini-ev small { display: block; color: #475569; font-size: 10px; font-weight: 700; text-transform: uppercase; margin-bottom: 4px; }
+        .mini-ev strong { font-size: 15px; color: #0f172a; font-variant-numeric: tabular-nums; white-space: nowrap; }
+        .mini-ev .neg strong { color: #be123c; }
+
+        .mini-curve { padding: 6px; } .mini-curve svg { display: block; width: 100%; height: 110px; }
+        .cv-line { stroke: var(--c2); stroke-dasharray: 1; stroke-dashoffset: 0; transition: stroke-dashoffset 1.5s cubic-bezier(.45,.1,.3,1) calc(var(--d) + .3s); }
+        .cv-dot { transition: opacity .4s calc(var(--d) + 1s); }
+        .pulse { fill: #e11d48; opacity: .25; transform-origin: 88px 80px; animation: pulse 1.8s ease-out infinite; }
+        @keyframes pulse { 0% { transform: scale(.5); opacity: .45; } 100% { transform: scale(1.8); opacity: 0; } }
+
+        .mini-notice { display: grid; gap: 7px; align-content: start; }
+        .nt { background: #fff; border-radius: 7px; padding: 8px 9px 9px; color: #0f172a; }
+        .ntl { display: flex; justify-content: space-between; gap: 8px; margin-bottom: 6px; white-space: nowrap; }
+        .ntl > span:first-child { font-weight: 700; overflow: hidden; text-overflow: ellipsis; }
+        .ntd { color: #475569; font-size: 10.5px; } .ntd b { color: #0f172a; font-size: 12px; font-variant-numeric: tabular-nums; }
+        .nt.hot .ntd b { color: #be123c; }
+        .ntb { display: block; height: 6px; border-radius: 3px; background: #f1f5f9; overflow: hidden; }
+        .ntb i { display: block; height: 100%; width: var(--w); background: var(--c); border-radius: 3px;
+            transition: width 1.4s cubic-bezier(.45,.1,.3,1) calc(var(--d) + .3s + var(--i) * .15s); }
+        .nt.hot .ntb i { background: #e11d48; }
+
+        .mini-check { display: grid; gap: 5px; align-content: start; }
+        .ck { display: flex; gap: 8px; align-items: center; background: #fff; border-radius: 5px; padding: 7px 8px; color: #0f172a; }
+        .ck b { width: 15px; height: 15px; border: 1.5px solid #94a3b8; border-radius: 4px; flex: none; display: grid; place-items: center;
+            transition: background .25s calc(var(--d) + .4s + var(--i) * .35s), border-color .25s calc(var(--d) + .4s + var(--i) * .35s); }
+        .ck svg { width: 11px; height: 11px; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; opacity: 0; }
+        .ck.done b { background: var(--c2); border-color: var(--c2); }
+        .ck.done svg { opacity: 1; transform: scale(1); transition: transform .3s cubic-bezier(.3,1.6,.5,1) calc(var(--d) + .5s + var(--i) * .35s), opacity .1s calc(var(--d) + .5s + var(--i) * .35s); }
+
+        .mini-table .row, .br, .nt, .ck { transition: opacity .4s calc(var(--d) + .2s + var(--i) * .1s), transform .4s cubic-bezier(.2,.7,.2,1) calc(var(--d) + .2s + var(--i) * .1s); }
+
+        .rs-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: auto; }
+        .rs-btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 8px; border-radius: 9px; font-size: 13px; font-weight: 700;
+            background: #047857; color: #fff; border: 1.5px solid #047857; text-decoration: none; transition: filter .2s, background .2s; }
+        .rs-btn:hover { filter: brightness(1.1); }
+        .rs-btn svg, .rs-lesson svg { width: 15px; height: 15px; flex: none; }
+        .rs-btn:hover .dl { animation: drop .7s ease-in-out infinite; }
+        @keyframes drop { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(3px); } }
+        .rs-btn-alt { background: #fff; color: #047857; border-color: #10b981; }
+        .rs-btn-alt:hover { background: #ecfdf5; filter: none; }
+        .rs-lesson { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 700; color: var(--c2); padding-top: 11px; border-top: 1px solid #f1f5f9; text-decoration: none; }
+        .rs-lesson svg { transition: transform .2s; } .rs-lesson:hover svg { transform: translateX(4px); }
+
+        /* start states, only when motion is allowed and JS is running */
+        .rs-motion .rs-card:not(.in) { opacity: 0; transform: translateY(22px); }
+        .rs-motion .rs-card.in { animation: rise .6s cubic-bezier(.2,.7,.2,1) var(--d) backwards; }
+        @keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+        .rs-motion .rs-card:not(.in)::before { transform: scaleX(0); }
+        .rs-motion .rs-card:not(.in) .bt i, .rs-motion .rs-card:not(.in) .ntb i { width: 0; }
+        .rs-motion .rs-card:not(.in) .ntb i { width: 100%; }
+        .rs-motion .rs-card:not(.in) .cv-line { stroke-dashoffset: 1; }
+        .rs-motion .rs-card:not(.in) .cv-dot { opacity: 0; }
+        .rs-motion .rs-card:not(.in) .ck.done b { background: #fff; border-color: #94a3b8; }
+        .rs-motion .rs-card:not(.in) .ck.done svg { opacity: 0; transform: scale(.3); }
+        .rs-motion .rs-card:not(.in) :is(.mini-table .row, .br, .nt, .ck) { opacity: 0; transform: translateX(-10px); }
+
+        @media (max-width: 1100px) { .rs-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+        @media (max-width: 640px) { .rs-grid { grid-template-columns: minmax(0, 1fr); } .rs-filter { flex-wrap: nowrap; overflow-x: auto; margin-right: -16px; padding-right: 16px; scrollbar-width: none; } .rs-chip { flex: none; } }
+        @media (prefers-reduced-motion: reduce) { .rs-card, .rs-card *, .rs-card::before, .rs-chip { animation: none !important; transition: none !important; } .rs-card:hover { transform: none; } }
     </style>
 
         <!-- Mobile nav toggle — standalone, independent of Firebase -->
@@ -377,9 +499,8 @@
             </a>
             <div class="nav-links">
                 <a href="index.html">Home</a>
-                <a href="learn.html">Learn</a>
+                <a href="learn.html">Learn Project Controls</a>
                 <a href="services.html">Services</a>
-                <a href="projects.html">Projects</a>
                 <a href="resources.html" class="active">Resources</a>
                 <a href="about.html">About</a>
                 <a href="contact.html">Contact</a>
@@ -404,55 +525,128 @@
     <!-- RESOURCES PAGE -->
     <main class="pg-page">
         <div class="pg-wrap">
-
             <header class="pg-hero">
                 <p class="pg-pill">Resources</p>
-                <h1>Free resources, <span>all in one place.</span></h1>
-                <p class="pg-lead">Everything here is free to read, with no account needed. Start with the orientation, or jump to the reference lessons people come back to.</p>
+                <h1>Templates you can <span>use tomorrow.</span></h1>
+                <p class="pg-lead">Each one comes blank, filled in with the example project, and with the lesson that explains it.</p>
             </header>
-
-            <section class="pg-section" aria-labelledby="pgStart">
-                <h2 id="pgStart">Getting started</h2>
-                <p>New to project controls? These four pages are the way in.</p>
-                <ul class="pg-links">
-                    <li><a class="pg-link" href="start-here.html"><span><strong>Start here</strong><span>The map of the eight tracks and where to begin</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
-                    <li><a class="pg-link" href="week-1.html"><span><strong>Why projects fail — and why the answer is never the tools</strong><span>Schedule, Topic 1</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
-                    <li><a class="pg-link" href="week-2.html"><span><strong>The foundations of construction project controls</strong><span>Schedule, Topic 2</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
-                    <li><a class="pg-link" href="week-3.html"><span><strong>That Gantt chart on the wall? It&rsquo;s not your schedule.</strong><span>Schedule, Topic 3</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
-                </ul>
-            </section>
-
-            <section class="pg-section" aria-labelledby="pgRef">
-                <h2 id="pgRef">Reference lessons</h2>
-                <p>Worked numbers you can reuse, each built step by step.</p>
-                <ul class="pg-links">
-                    <li><a class="pg-link" href="week-18.html"><span><strong>Spending is not progress.</strong><span>Earned value, Schedule Topic 18</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
-                    <li><a class="pg-link" href="week-19.html"><span><strong>Two numbers, one diagnosis.</strong><span>CPI and SPI read together, Schedule Topic 19</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
-                    <li><a class="pg-link" href="cost-week-4.html"><span><strong>Your bill and your schedule have never met.</strong><span>Building the controlled budget</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
-                    <li><a class="pg-link" href="cost-week-5.html"><span><strong>The pot everybody raids.</strong><span>Contingency and the performance baseline</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
-                    <li><a class="pg-link" href="cost-week-16.html"><span><strong>You can go bust making a profit.</strong><span>The cash curve on a profitable job</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
-                    <li><a class="pg-link" href="risk-week-8.html"><span><strong>Two kinds of not knowing. Only one of them shrinks.</strong><span>The fourteen-risk register</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
-                </ul>
-            </section>
-
-            <section class="pg-section" aria-labelledby="pgAll">
-                <h2 id="pgAll">The whole curriculum</h2>
-                <p>Eight tracks and every lesson title on one page, plus the project every lesson is built on.</p>
-                <ul class="pg-links">
-                    <li><a class="pg-link" href="learn.html"><span><strong>The full curriculum</strong><span>All eight tracks, every lesson</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
-                    <li><a class="pg-link" href="projects.html"><span><strong>The $1M job</strong><span>The fictional project behind every lesson</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
-                </ul>
-            </section>
-
+            <div class="rs-filter" role="group" aria-label="Filter templates by track"><button type="button" class="rs-chip" data-f="all" aria-pressed="true">All <span>8</span></button><button type="button" class="rs-chip" data-f="reporting" aria-pressed="false" style="--c:#3b82f6;--c2:#1d4ed8;--cs:#eff6ff"><i></i>Reporting <span>3</span></button><button type="button" class="rs-chip" data-f="schedule" aria-pressed="false" style="--c:#14b8a6;--c2:#0f766e;--cs:#f0fdfa"><i></i>Schedule <span>2</span></button><button type="button" class="rs-chip" data-f="risk" aria-pressed="false" style="--c:#f97316;--c2:#c2410c;--cs:#fff7ed"><i></i>Risk <span>1</span></button><button type="button" class="rs-chip" data-f="cost" aria-pressed="false" style="--c:#0ea5e9;--c2:#0369a1;--cs:#f0f9ff"><i></i>Cost &amp; Cash <span>1</span></button><button type="button" class="rs-chip" data-f="contract" aria-pressed="false" style="--c:#8b5cf6;--c2:#6d28d9;--cs:#f5f3ff"><i></i>Contract <span>1</span></button></div>
+            <ul class="rs-grid">
+                <li class="rs-card" data-track="reporting" style="--c:#3b82f6;--c2:#1d4ed8;--cs:#eff6ff;--d:0.00s">
+                    <div class="rs-top"><span class="rs-ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="3.5" y="13" width="4.4" height="8" rx="1.2"/><rect x="9.8" y="8.5" width="4.4" height="12.5" rx="1.2"/><rect x="16.1" y="3.5" width="4.4" height="17.5" rx="1.2"/></svg></span>
+                        <div class="rs-head"><span class="rs-track">Reporting</span><h3>Weekly progress report</h3></div>
+                        <span class="rs-type">XLSX</span></div>
+                    <div class="mini mini-bars"><div class="bl"><span><i class="ka"></i>Readiness tests passed</span></div><div class="br" style="--i:0"><span class="bn">Piles P18&ndash;24</span><span class="bt"><i class="bp" style="--w:100%"></i><i class="ba" style="--w:100%"></i></span><span class="bv"><b>6</b> / 6</span></div><div class="br late" style="--i:1"><span class="bn">Caps PC1&ndash;3</span><span class="bt"><i class="bp" style="--w:100%"></i><i class="ba" style="--w:67%"></i></span><span class="bv"><b>4</b> / 6</span></div><div class="br late" style="--i:2"><span class="bn">Raft, bay 2</span><span class="bt"><i class="bp" style="--w:100%"></i><i class="ba" style="--w:83%"></i></span><span class="bv"><b>5</b> / 6</span></div></div>
+                    <p>Exceptions, float this week against last, and a look-ahead that tests readiness.</p>
+                    <div class="rs-actions">
+                        <a class="rs-btn" href="files/weekly-progress-report-blank.xlsx" download aria-label="Download the blank Weekly progress report (XLSX)"><svg class="dl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg> Blank</a>
+                        <a class="rs-btn rs-btn-alt" href="files/weekly-progress-report-example.xlsx" download aria-label="Download the Weekly progress report filled in with the example project (XLSX)"><svg class="dl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg> Example</a>
+                    </div>
+                    <a class="rs-lesson" href="reporting-week-18.html">Explained in Topic 18 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </li>
+                <li class="rs-card" data-track="risk" style="--c:#f97316;--c2:#c2410c;--cs:#fff7ed;--d:0.09s">
+                    <div class="rs-top"><span class="rs-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.9 18a2 2 0 0 0 1.7 3h16.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4.5"/><circle cx="12" cy="17.3" r=".6" fill="currentColor"/></svg></span>
+                        <div class="rs-head"><span class="rs-track">Risk</span><h3>Risk register</h3></div>
+                        <span class="rs-type">XLSX</span></div>
+                    <div class="mini mini-table" style="--cols:2"><div class="mh"><span>Risk</span><span>Expected</span></div><div class="row hot" style="--i:0"><span>Rock in pile bores</span><span>$24,000</span></div><div class="row" style="--i:1"><span>Steel escalation</span><span>$15,000</span></div><div class="row" style="--i:2"><span>Late detailing</span><span>$11,000</span></div></div>
+                    <p>Filled with the example project&rsquo;s fourteen risks.</p>
+                    <div class="rs-actions">
+                        <a class="rs-btn" href="files/risk-register-blank.xlsx" download aria-label="Download the blank Risk register (XLSX)"><svg class="dl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg> Blank</a>
+                        <a class="rs-btn rs-btn-alt" href="files/risk-register-example.xlsx" download aria-label="Download the Risk register filled in with the example project (XLSX)"><svg class="dl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg> Example</a>
+                    </div>
+                    <a class="rs-lesson" href="risk-week-8.html">Explained in Topic 8 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </li>
+                <li class="rs-card" data-track="schedule" style="--c:#14b8a6;--c2:#0f766e;--cs:#f0fdfa;--d:0.18s">
+                    <div class="rs-top"><span class="rs-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 17.5a8.5 8.5 0 1 1 17 0"/><path d="M12 17.5l4.2-5.2"/><circle cx="12" cy="17.5" r="1.3" fill="currentColor"/></svg></span>
+                        <div class="rs-head"><span class="rs-track">Schedule</span><h3>Earned value calculator</h3></div>
+                        <span class="rs-type">XLSX</span></div>
+                    <div class="mini mini-ev"><div><small>CPI</small><strong data-from="1" data-to="0.79" data-fmt="d2">0.79</strong></div>
+<div><small>EAC</small><strong data-from="1" data-to="1.27" data-fmt="m">$1.27M</strong></div>
+<div class="neg"><small>Overrun</small><strong data-from="0" data-to="-267" data-fmt="k">&#8722;$267k</strong></div></div>
+                    <p>PV, EV and AC in; CPI, SPI and the forecast out.</p>
+                    <div class="rs-actions">
+                        <a class="rs-btn" href="files/earned-value-calculator-blank.xlsx" download aria-label="Download the blank Earned value calculator (XLSX)"><svg class="dl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg> Blank</a>
+                        <a class="rs-btn rs-btn-alt" href="files/earned-value-calculator-example.xlsx" download aria-label="Download the Earned value calculator filled in with the example project (XLSX)"><svg class="dl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg> Example</a>
+                    </div>
+                    <a class="rs-lesson" href="week-20.html">Explained in Topics 18&ndash;20 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </li>
+                <li class="rs-card" data-track="cost" style="--c:#0ea5e9;--c2:#0369a1;--cs:#f0f9ff;--d:0.27s">
+                    <div class="rs-top"><span class="rs-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20.5h18M3 3.5v17"/><path d="M5 13c3 0 4 5 7.5 2S17 6 21 5"/></svg></span>
+                        <div class="rs-head"><span class="rs-track">Cost &amp; Cash</span><h3>Cash flow and S&#8209;curve</h3></div>
+                        <span class="rs-type">XLSX</span></div>
+                    <div class="mini mini-curve"><svg viewBox="0 0 220 92" aria-hidden="true">
+<line x1="8" y1="34" x2="212" y2="34" stroke="#cbd5e1" stroke-dasharray="3 3"/>
+<path class="cv-fill" d="M8 34 C 40 46, 60 82, 92 80 S 150 40, 212 14 L212 34 L8 34z" fill="none"/>
+<path class="cv-line" pathLength="1" d="M8 34 C 40 46, 60 82, 92 80 S 150 40, 212 14" fill="none" stroke-width="2.6" stroke-linecap="round"/>
+<g class="cv-dot"><circle cx="88" cy="80" r="9" class="pulse"/><circle cx="88" cy="80" r="4" fill="#e11d48"/>
+<text x="100" y="91" font-size="10" fill="#be123c" font-weight="700">&#8722;$60,462</text></g>
+<text x="10" y="28" font-size="9" fill="#64748b">cash 0</text></svg></div>
+                    <p>See the month a profitable job runs out of money.</p>
+                    <div class="rs-actions">
+                        <a class="rs-btn" href="files/cash-flow-s-curve-blank.xlsx" download aria-label="Download the blank Cash flow and S&#8209;curve (XLSX)"><svg class="dl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg> Blank</a>
+                        <a class="rs-btn rs-btn-alt" href="files/cash-flow-s-curve-example.xlsx" download aria-label="Download the Cash flow and S&#8209;curve filled in with the example project (XLSX)"><svg class="dl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg> Example</a>
+                    </div>
+                    <a class="rs-lesson" href="cost-week-16.html">Explained in Topic 16 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </li>
+                <li class="rs-card" data-track="contract" style="--c:#8b5cf6;--c2:#6d28d9;--cs:#f5f3ff;--d:0.00s">
+                    <div class="rs-top"><span class="rs-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13.5" r="7.5"/><path d="M12 9.5v4l2.8 1.8M9.5 2.5h5"/></svg></span>
+                        <div class="rs-head"><span class="rs-track">Contract</span><h3>Notice and time-bar calendar</h3></div>
+                        <span class="rs-type">XLSX</span></div>
+                    <div class="mini mini-notice"><div class="nt hot" style="--i:0"><div class="ntl"><span>Notice of Claim &middot; 28 d</span><span class="ntd"><b data-from="28" data-to="-13" data-fmt="i">&#8722;13</b> days left</span></div><span class="ntb"><i style="--w:0%"></i></span></div><div class="nt" style="--i:1"><div class="ntl"><span>Detailed claim &middot; 84 d</span><span class="ntd"><b data-from="84" data-to="43" data-fmt="i">43</b> days left</span></div><span class="ntb"><i style="--w:51%"></i></span></div></div>
+                    <p>Every clock in the contract, and the days left on it.</p>
+                    <div class="rs-actions">
+                        <a class="rs-btn" href="files/notice-time-bar-calendar-blank.xlsx" download aria-label="Download the blank Notice and time-bar calendar (XLSX)"><svg class="dl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg> Blank</a>
+                        <a class="rs-btn rs-btn-alt" href="files/notice-time-bar-calendar-example.xlsx" download aria-label="Download the Notice and time-bar calendar filled in with the example project (XLSX)"><svg class="dl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg> Example</a>
+                    </div>
+                    <a class="rs-lesson" href="contract-week-10.html">Explained in Topic 10 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </li>
+                <li class="rs-card" data-track="reporting" style="--c:#3b82f6;--c2:#1d4ed8;--cs:#eff6ff;--d:0.09s">
+                    <div class="rs-top"><span class="rs-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 2.5h6v3.5H9zM8.5 11.5h7M8.5 15.5h5"/></svg></span>
+                        <div class="rs-head"><span class="rs-track">Reporting</span><h3>Daily site report</h3></div>
+                        <span class="rs-type">XLSX</span></div>
+                    <div class="mini mini-table" style="--cols:2"><div class="mh"><span>Item</span><span>Today</span></div><div class="row" style="--i:0"><span>Labour on site</span><span>28</span></div><div class="row" style="--i:1"><span>Plant working</span><span>3</span></div><div class="row hot" style="--i:2"><span>Event</span><span>Rock at P17</span></div></div>
+                    <p>Labour, plant, work done and events, with a revision log.</p>
+                    <div class="rs-actions">
+                        <a class="rs-btn" href="files/daily-site-report-blank.xlsx" download aria-label="Download the blank Daily site report (XLSX)"><svg class="dl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg> Blank</a>
+                        <a class="rs-btn rs-btn-alt" href="files/daily-site-report-example.xlsx" download aria-label="Download the Daily site report filled in with the example project (XLSX)"><svg class="dl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg> Example</a>
+                    </div>
+                    <a class="rs-lesson" href="reporting-week-17.html">Explained in Topic 17 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </li>
+                <li class="rs-card" data-track="schedule" style="--c:#14b8a6;--c2:#0f766e;--cs:#f0fdfa;--d:0.18s">
+                    <div class="rs-top"><span class="rs-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 6.5h10M10 12h10M10 17.5h10"/><path d="m3.5 6.5 1.5 1.5L8 5M3.5 12l1.5 1.5L8 10.5"/><circle cx="5.5" cy="17.5" r="1.4"/></svg></span>
+                        <div class="rs-head"><span class="rs-track">Schedule</span><h3>Schedule update checklist</h3></div>
+                        <span class="rs-type">PDF</span></div>
+                    <div class="mini mini-check"><div class="ck done" style="--i:0"><b><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2 5 8.6l4.6-5"/></svg></b><span>Retained logic, not override</span></div><div class="ck done" style="--i:1"><b><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2 5 8.6l4.6-5"/></svg></b><span>Every constraint justified</span></div><div class="ck" style="--i:2"><b><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2 5 8.6l4.6-5"/></svg></b><span>An owner for each slipping path</span></div></div>
+                    <p>What to check before a programme update goes out.</p>
+                    <div class="rs-actions">
+                        <a class="rs-btn" href="files/schedule-update-checklist-blank.pdf" download aria-label="Download the blank Schedule update checklist (PDF)"><svg class="dl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg> Blank</a>
+                        <a class="rs-btn rs-btn-alt" href="files/schedule-update-checklist-example.pdf" download aria-label="Download the Schedule update checklist filled in with the example project (PDF)"><svg class="dl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg> Example</a>
+                    </div>
+                    <a class="rs-lesson" href="week-16.html">Explained in Topic 16 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </li>
+                <li class="rs-card" data-track="reporting" style="--c:#3b82f6;--c2:#1d4ed8;--cs:#eff6ff;--d:0.27s">
+                    <div class="rs-top"><span class="rs-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M8 12.3l2.7 2.7L16.2 9.5"/></svg></span>
+                        <div class="rs-head"><span class="rs-track">Reporting</span><h3>Action log</h3></div>
+                        <span class="rs-type">XLSX</span></div>
+                    <div class="mini mini-table" style="--cols:3"><div class="mh"><span>Action</span><span>Owner</span><span>Due</span></div><div class="row hot" style="--i:0"><span>Issue wayleave letter</span><span>Ahmet</span><span>14 Mar</span></div><div class="row" style="--i:1"><span>Two boreholes</span><span>Engineer</span><span>20 Mar</span></div></div>
+                    <p>Minutes that end in an owner and a date.</p>
+                    <div class="rs-actions">
+                        <a class="rs-btn" href="files/action-log-blank.xlsx" download aria-label="Download the blank Action log (XLSX)"><svg class="dl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg> Blank</a>
+                        <a class="rs-btn rs-btn-alt" href="files/action-log-example.xlsx" download aria-label="Download the Action log filled in with the example project (XLSX)"><svg class="dl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg> Example</a>
+                    </div>
+                    <a class="rs-lesson" href="reporting-week-23.html">Explained in Topic 23 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </li>
+            </ul>
+            <p class="rs-foot">Free, with nothing to sign in to. The Excel files open in Excel, Google Sheets or LibreOffice;
+                yellow cells are yours to fill in, the rest are formulas. Each file starts with a Read me sheet.</p>
         </div>
     </main>
 
     <div class="mobile-nav" id="mobileNav">
         <button class="mobile-nav-close" onclick="toggleMobileNav()" aria-label="Close menu"><i class='bx bx-x'></i></button>
         <a href="index.html" onclick="toggleMobileNav()">Home</a>
-        <a href="learn.html" onclick="toggleMobileNav()">Learn</a>
+        <a href="learn.html" onclick="toggleMobileNav()">Learn Project Controls</a>
         <a href="services.html" onclick="toggleMobileNav()">Services</a>
-        <a href="projects.html" onclick="toggleMobileNav()">Projects</a>
         <a href="resources.html" class="active" onclick="toggleMobileNav()">Resources</a>
         <a href="about.html" onclick="toggleMobileNav()">About</a>
         <a href="contact.html" onclick="toggleMobileNav()">Contact</a>
@@ -486,8 +680,8 @@
             <div class="modal-icon-wrapper">
                 <i class='bx bx-book-open'></i>
             </div>
-            <h4>Follow the series</h4>
-            <p>Every lesson is already free to read. Sign in with Google so new work reaches you when it is published.</p>
+            <h2 class="modal-title">Sign in with Google</h2>
+            <p>Every lesson is already free to read. Signing in only records your name and email as interest in new work. There is no mailing list yet, so nothing is sent.</p>
             <button class="btn-google-signin" onclick="signInWithGoogleBtn()">
                 <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z" fill="#4285F4"/><path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/><path d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/><path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#EA4335"/></svg>
                 Continue with Google
@@ -496,5 +690,41 @@
         </div>
     </div>
 
+
+    <script>
+    (function () {
+        var grid = document.querySelector('.rs-grid'); if (!grid) return;
+        var cards = [].slice.call(grid.querySelectorAll('.rs-card'));
+        var calm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var fmt = { d2: function (v) { return v.toFixed(2); }, m: function (v) { return '$' + v.toFixed(2) + 'M'; },
+            k: function (v) { return (v < 0 ? '−' : '') + '$' + Math.abs(Math.round(v)) + 'k'; }, i: function (v) { var n = Math.round(v); return (n < 0 ? '\u2212' : '') + Math.abs(n); } };
+        function count(card) {
+            card.querySelectorAll('[data-to]').forEach(function (el) {
+                var a = +el.dataset.from, b = +el.dataset.to, f = fmt[el.dataset.fmt], t0 = null;
+                var delay = parseFloat(getComputedStyle(card).getPropertyValue('--d')) * 1000 + 350, dur = 1300;
+                el.textContent = f(a);
+                setTimeout(function () { requestAnimationFrame(function step(t) {
+                    if (t0 === null) t0 = t; var k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+                    el.textContent = f(a + (b - a) * e); if (k < 1) requestAnimationFrame(step); }); }, delay);
+            });
+        }
+        if (!calm && 'IntersectionObserver' in window) {
+            document.documentElement.classList.add('rs-motion');
+            var io = new IntersectionObserver(function (es) { es.forEach(function (e) {
+                if (e.isIntersecting) { e.target.classList.add('in'); count(e.target); io.unobserve(e.target); } }); }, { threshold: 0.2 });
+            cards.forEach(function (c) { io.observe(c); });
+        }
+        var chips = [].slice.call(document.querySelectorAll('.rs-chip'));
+        chips.forEach(function (chip) { chip.addEventListener('click', function () {
+            var f = chip.dataset.f;
+            chips.forEach(function (c) { c.setAttribute('aria-pressed', c === chip ? 'true' : 'false'); });
+            cards.forEach(function (c) {
+                var show = f === 'all' || c.dataset.track === f;
+                if (show) { c.hidden = false; requestAnimationFrame(function () { c.classList.remove('out'); }); }
+                else { c.classList.add('out'); setTimeout(function () { if (c.classList.contains('out')) c.hidden = true; }, calm ? 0 : 220); }
+            });
+        }); });
+    })();
+    </script>
 </body>
 </html>
