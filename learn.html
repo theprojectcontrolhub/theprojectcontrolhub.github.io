@@ -27,7 +27,7 @@
     <link rel="alternate icon" href="favicon.ico">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=44">
+    <link rel="stylesheet" href="style.css?v=51">
     <style>
         .learn-page {
             background: var(--bg-light);
@@ -364,6 +364,14 @@
             font-weight: 500;
             margin: 0 0 10px;
         }
+        .learn-more-links { display: flex; flex-wrap: wrap; gap: 6px 12px; margin: 18px 0 0; font-size: 14.5px; }
+        .learn-more-links a { color: #047857; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; padding: 3px 0; }
+        .learn-more-links span { color: #64748b; }
+        .track-header .track-for {
+            font-size: 14px; line-height: 1.55; color: #334155; margin: 0 0 12px;
+            padding: 8px 12px; background: #f1f5f9; border-radius: 8px; max-width: 46em;
+        }
+        .track-header .track-for strong { color: #047857; font-weight: 700; }
         .track-header .track-desc {
             font-size: 14px;
             color: #475569;
@@ -854,6 +862,18 @@
         @media (max-width: 640px) {
             .weeks-toggle { padding: 14px 16px; font-size: 13px; }
         }
+
+        /* TRACK COLOURS (2026-10): one colour per track, same as the home tiles. */
+        .track-header[style] h2::before { content: ""; display: inline-block; width: 12px; height: 12px; border-radius: 3px;
+            background: var(--c); margin-right: 10px; vertical-align: middle; transform: translateY(-2px); }
+        .track-header[style] .track-for { background: var(--cs); }
+        .track-header[style] .track-for strong { color: var(--c2); }
+        .module-card[style] { box-shadow: inset 0 4px 0 var(--c); }
+        .module-card[style]:hover { box-shadow: inset 0 4px 0 var(--c), 0 4px 20px rgba(0,0,0,0.06); }
+        .module-card[style] .module-num { color: var(--c2); }
+        .track-jump-link[style]::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%;
+            background: var(--c); margin-right: 7px; vertical-align: 1px; }
+        .track-jump-link[style].active { background: var(--cs); border-color: var(--c); color: var(--c2); }
     </style>
 
         <!-- Mobile nav toggle — standalone, independent of Firebase -->
@@ -961,9 +981,8 @@
             </a>
             <div class="nav-links">
                 <a href="index.html">Home</a>
-                <a href="learn.html" class="active">Learn</a>
+                <a href="learn.html" class="active">Learn Project Controls</a>
                 <a href="services.html">Services</a>
-                <a href="projects.html">Projects</a>
                 <a href="resources.html">Resources</a>
                 <a href="about.html">About</a>
                 <a href="contact.html">Contact</a>
@@ -1002,6 +1021,7 @@
                     <span class="learn-meta-item"><i class='bx bx-calendar'></i> All 199 lessons live</span>
                     <span class="learn-meta-item"><i class='bx bx-lock-open'></i> Fundamentals always free</span>
                 </div>
+                <p class="learn-more-links"><a href="start-here.html">Start here</a><span aria-hidden="true">&middot;</span><a href="projects.html">The example project</a><span aria-hidden="true">&middot;</span><a href="resources.html">Resources</a></p>
             </div>
 
             <!-- ===== TRACK JUMP NAV ===== -->
@@ -1069,14 +1089,14 @@
             </ol>
 
                 <nav class="track-jump" aria-label="Jump to a section">
-                    <a href="#track-1" class="track-jump-link" data-jump="track-1">Schedule</a>
-                    <a href="#track-2" class="track-jump-link" data-jump="track-2">Cost &amp; Cash</a>
-                    <a href="#track-3" class="track-jump-link" data-jump="track-3">Risk</a>
-                    <a href="#track-4" class="track-jump-link" data-jump="track-4">Contract</a>
-                    <a href="#track-5" class="track-jump-link" data-jump="track-5">Claims</a>
-                    <a href="#track-6" class="track-jump-link" data-jump="track-6">Reporting</a>
-                    <a href="#track-7" class="track-jump-link" data-jump="track-7">Interfaces</a>
-                    <a href="#lifecycle" class="track-jump-link" data-jump="lifecycle">Life of a project</a>
+                    <a href="#track-1" class="track-jump-link" data-jump="track-1" style="--c:#14b8a6;--c2:#0f766e;--cs:#ccfbf1">Schedule</a>
+                    <a href="#track-2" class="track-jump-link" data-jump="track-2" style="--c:#0ea5e9;--c2:#0369a1;--cs:#e0f2fe">Cost &amp; Cash</a>
+                    <a href="#track-3" class="track-jump-link" data-jump="track-3" style="--c:#f97316;--c2:#c2410c;--cs:#ffedd5">Risk</a>
+                    <a href="#track-4" class="track-jump-link" data-jump="track-4" style="--c:#8b5cf6;--c2:#6d28d9;--cs:#ede9fe">Contract</a>
+                    <a href="#track-5" class="track-jump-link" data-jump="track-5" style="--c:#f43f5e;--c2:#be123c;--cs:#ffe4e6">Claims</a>
+                    <a href="#track-6" class="track-jump-link" data-jump="track-6" style="--c:#3b82f6;--c2:#1d4ed8;--cs:#dbeafe">Reporting</a>
+                    <a href="#track-7" class="track-jump-link" data-jump="track-7" style="--c:#f59e0b;--c2:#b45309;--cs:#fef3c7">Interfaces</a>
+                    <a href="#lifecycle" class="track-jump-link" data-jump="lifecycle" style="--c:#d946ef;--c2:#a21caf;--cs:#fae8ff">Life of a project</a>
                     <a href="#toolbox" class="track-jump-link" data-jump="toolbox">Toolbox</a>
                 </nav>
 
@@ -1086,10 +1106,11 @@
                 <!-- ===== TRACK 1 ===== -->
                 
                 <!-- ===== SECTION: THE LEARNING PATH ===== -->
-<div class="track-header" id="track-1">
+<div class="track-header" id="track-1" style="--c:#14b8a6;--c2:#0f766e;--cs:#ccfbf1">
                     <div class="track-badge free" id="t1TrackBadge"><span class="dot-green"></span> TRACK 1 &#183; FREE &#183; COMPLETE</div>
                     <h2>Schedule Management</h2>
                     <p class="track-sub">The logic. Why projects succeed — and why they fail.</p>
+                    <p class="track-for"><strong>Who it is for:</strong> Everyone, and the place to start. No software and no planning experience is assumed.</p>
                     <p class="track-desc">A complete 27-topic curriculum on how project controls actually works on site — from why projects fail, through the critical path, earned value and forecasting, to forensic analysis and the people who have to act on your numbers. This is the foundation everything else stands on, and it stays free.</p>
                         <div class="track-outcomes">
                             <h3>After this track you can</h3>
@@ -1105,7 +1126,7 @@
                 </div>
 
                 <!-- MODULE 01: SCHEDULE — ACTIVE -->
-                <div class="module-card">
+                <div class="module-card" style="--c:#14b8a6;--c2:#0f766e;--cs:#ccfbf1">
                     <div class="module-card-header">
                         <div class="module-card-left">
                             <span class="module-num">01</span>
@@ -1143,10 +1164,11 @@
                 <!-- ===== TRACK 2 ===== -->
                 
                 <!-- ===== TRACK 2 — COST & CASH ===== -->
-                <div class="track-header track-2" id="track-2">
+                <div class="track-header track-2" id="track-2" style="--c:#0ea5e9;--c2:#0369a1;--cs:#e0f2fe">
                     <div class="track-badge free" id="t2TrackBadge"><span class="dot-green"></span> TRACK 2 &#183; FREE &#183; COMPLETE</div>
                     <h2>Cost &amp; Cash</h2>
                     <p class="track-sub">The money. Where the numbers come from — and how companies go broke while profitable.</p>
+                    <p class="track-for"><strong>Who it is for:</strong> Planners moving toward cost and commercial work, and cost engineers who want the schedule side. Read after Track 1.</p>
                     <p class="track-desc">Track 1 taught you to read a project. This one teaches you to read its money. Where a unit rate actually comes from, why the BoQ and the schedule never quite line up, how physical percent is really measured — and the half nobody teaches a planner: <strong>cash</strong>. A contractor doesn&#39;t fail because of a bad CPI. It fails because it ran out of money while turning a profit.</p>
                         <div class="track-outcomes">
                             <h3>After this track you can</h3>
@@ -1166,7 +1188,7 @@
                 </div>
 
                 <!-- MODULE 02: COST & CASH -->
-                <div class="module-card">
+                <div class="module-card" style="--c:#0ea5e9;--c2:#0369a1;--cs:#e0f2fe">
                     <div class="module-card-header">
                         <div class="module-card-left">
                             <span class="module-num">02</span>
@@ -1202,10 +1224,11 @@
                 <!-- ===== TRACK 3 ===== -->
 
                 <!-- ===== TRACK 3 — RISK ===== -->
-                <div class="track-header" id="track-3">
+                <div class="track-header" id="track-3" style="--c:#f97316;--c2:#c2410c;--cs:#ffedd5">
                     <div class="track-badge free" id="t3TrackBadge"><i class='bx bx-shield-quarter'></i> TRACK 3 &#183; FREE &#183; COMPLETE</div>
                     <h2>Risk</h2>
                     <p class="track-sub">The future. What has not happened yet &#8212; and who pays for it when it does.</p>
+                    <p class="track-for"><strong>Who it is for:</strong> Planners and cost engineers who keep or rely on a risk register or a contingency figure. Read after Track 1.</p>
                     <p class="track-desc">Track 1 taught you to read a project&#39;s time. Track 2 taught you to read its money. Both of them measure something that has already happened. This one is about the only part of project controls that moves before the number does: where the risks on a job actually come from, what a probability is worth when somebody just felt it, how much confidence you are really buying with a contingency &#8212; and the question nobody in a PMI textbook asks, which is whose money pays when the risk arrives.</p>
                         <div class="track-outcomes">
                             <h3>After this track you can</h3>
@@ -1225,7 +1248,7 @@
                 </div>
 
                 <!-- MODULE 03: RISK -->
-                <div class="module-card">
+                <div class="module-card" style="--c:#f97316;--c2:#c2410c;--cs:#ffedd5">
                     <div class="module-card-header">
                         <div class="module-card-left">
                             <span class="module-num">03</span>
@@ -1260,10 +1283,11 @@
                 </div>
 
 <!-- ===== TRACK 4 — CONTRACT MANAGEMENT ===== -->
-                    <div class="track-header" id="track-4">
+                    <div class="track-header" id="track-4" style="--c:#8b5cf6;--c2:#6d28d9;--cs:#ede9fe">
                         <div class="track-badge free" id="t4TrackBadge"><i class='bx bx-file'></i> TRACK 4 &#183; FREE &#183; COMPLETE</div>
                         <h2>Contract Management</h2>
                         <p class="track-sub">The machinery. Whether the money is still yours by the time you ask for it.</p>
+                        <p class="track-for"><strong>Who it is for:</strong> Planners and engineers who work under FIDIC or NEC clauses on live jobs. Read after Track 1.</p>
                         <p class="track-desc">Track 3 ended holding a priced risk and a clause number, and one uncomfortable sentence: an entitlement is not the same thing as an entitlement you can still use. This track is the machinery in between &#8212; notices and the periods that kill them, the records that make a right provable rather than arguable, instructions, variations, payment, and what changes when the contract is cost-plus or target cost instead of lump sum. Being right is not the job. Staying entitled is.</p>
                         <div class="track-outcomes">
                             <h3>After this track you can</h3>
@@ -1282,7 +1306,7 @@
                         </div>
                     </div>
                     <!-- MODULE 04: CONTRACT MANAGEMENT -->
-                    <div class="module-card">
+                    <div class="module-card" style="--c:#8b5cf6;--c2:#6d28d9;--cs:#ede9fe">
                         <div class="module-card-header">
                             <div class="module-card-left">
                                 <span class="module-num">04</span>
@@ -1317,10 +1341,11 @@
                     </div>
 
 <!-- ===== TRACK 5 — CLAIMS &amp; DELAY ANALYSIS ===== -->
-                    <div class="track-header" id="track-5">
+                    <div class="track-header" id="track-5" style="--c:#f43f5e;--c2:#be123c;--cs:#ffe4e6">
                         <div class="track-badge free" id="t5TrackBadge"><i class='bx bx-file-find'></i> TRACK 5 &#183; FREE &#183; COMPLETE</div>
                         <h2>Claims &amp; Delay Analysis</h2>
                         <p class="track-sub">The number. What the right you kept is actually worth.</p>
+                        <p class="track-for"><strong>Who it is for:</strong> Planners preparing or defending delay and disruption claims, and anyone asked to prove a delay was not theirs. Read after Track 1.</p>
                         <p class="track-desc">Track 4 ended holding a preserved right, a programme that can be re-run, and the question it deliberately never answered: how much? This track is the answer &#8212; forensic delay methods and why two competent analysts reach different numbers, float and concurrency, disruption and the measured mile, and the quantum that turns an entitlement into an invoice. The method you can use is decided by the records you kept, not by the one you prefer.</p>
                         <div class="track-outcomes">
                             <h3>After this track you can</h3>
@@ -1339,7 +1364,7 @@
                         </div>
                     </div>
                     <!-- MODULE 05: CLAIMS &amp; DELAY ANALYSIS -->
-                    <div class="module-card">
+                    <div class="module-card" style="--c:#f43f5e;--c2:#be123c;--cs:#ffe4e6">
                         <div class="module-card-header">
                             <div class="module-card-left">
                                 <span class="module-num">05</span>
@@ -1381,10 +1406,11 @@
                     </div>
 
 <!-- ===== TRACK 6 — REPORTING ===== -->
-                    <div class="track-header" id="track-6">
+                    <div class="track-header" id="track-6" style="--c:#3b82f6;--c2:#1d4ed8;--cs:#dbeafe">
                         <div class="track-badge free" id="t6TrackBadge"><i class='bx bx-line-chart'></i> TRACK 6 &#183; FREE &#183; COMPLETE</div>
                         <h2>Reporting</h2>
                         <p class="track-sub">Everything that arrives, everything you issue, and what to do when two of them disagree.</p>
+                        <p class="track-for"><strong>Who it is for:</strong> Anyone who produces or reads daily, weekly or monthly project reports. Read after Track 1.</p>
                         <p class="track-desc">Five tracks taught what to do with a number once you have it. None of them said where it came from, who owns it, when it closes, or who reads it afterwards. This track follows every input project controls consumes back to the department that produces it, then follows every document you issue forward to the person who is supposed to act on it. It teaches no new technique. It is the trade around them.</p>
                         <div class="track-outcomes">
                             <h3>After this track you can</h3>
@@ -1404,7 +1430,7 @@
                     </div>
 
                     <!-- MODULE 06: REPORTING -->
-                    <div class="module-card">
+                    <div class="module-card" style="--c:#3b82f6;--c2:#1d4ed8;--cs:#dbeafe">
                         <div class="module-card-header">
                             <div class="module-card-left">
                                 <span class="module-num">06</span>
@@ -1439,10 +1465,11 @@
                     </div>
 
 <!-- ===== TRACK 7 — INTERFACES ===== -->
-                    <div class="track-header" id="track-7">
+                    <div class="track-header" id="track-7" style="--c:#f59e0b;--c2:#b45309;--cs:#fef3c7">
                         <div class="track-badge free" id="t7TrackBadge"><i class='bx bx-git-branch'></i> TRACK 7 &#183; FREE &#183; COMPLETE</div>
                         <h2>Interfaces</h2>
                         <p class="track-sub">Where the work and the numbers change hands.</p>
+                        <p class="track-for"><strong>Who it is for:</strong> Teams working across several contracts, joint ventures or an EPCM set-up. Read after Track 1.</p>
                         <p class="track-desc">Six tracks taught one job: a single contract, a single chain of command, a single team on a single site. Every technique in all of them quietly assumes that shape. This track is what happens when it stops holding &#8212; when the scope sits with somebody else, when the critical path runs through a purchase order, when the work nobody planned appears where two programmes meet, and when the number has more than one owner.</p>
                         <div class="track-outcomes">
                             <h3>After this track you can</h3>
@@ -1462,7 +1489,7 @@
                     </div>
 
                     <!-- MODULE 07: INTERFACES -->
-                    <div class="module-card">
+                    <div class="module-card" style="--c:#f59e0b;--c2:#b45309;--cs:#fef3c7">
                         <div class="module-card-header">
                             <div class="module-card-left">
                                 <span class="module-num">07</span>
@@ -1496,10 +1523,11 @@
                     </div>
 
                 <!-- ===== THE LIFE OF A PROJECT ===== -->
-                    <div class="track-header" id="lifecycle">
+                    <div class="track-header" id="lifecycle" style="--c:#d946ef;--c2:#a21caf;--cs:#fae8ff">
                         <div class="track-badge free" id="lcTrackBadge"><i class='bx bx-git-repo-forked'></i> THE LIFE OF A PROJECT &#183; FREE</div>
                         <h2>The Life of a Project</h2>
                         <p class="track-sub">From the investment decision to the handover certificate &#8212; and what project controls does at every step.</p>
+                        <p class="track-for"><strong>Who it is for:</strong> Engineers who know the methods and want to see when each one is used, from feasibility to final account. Read after Track 1.</p>
                         <p class="track-desc">Everything above answers how. This answers when, why and with whom. It follows one EPC job in the order it actually arrives &#8212; the decision made before you were hired, the tender you inherit, the kick-off, the baseline nobody has time for, the six weeks that run the site, the month the curve stops behaving, the punch list, and the archive you hand to whoever starts on Monday. It teaches no new technique. It shows where the ones you have get used, and hands the method back to the track that owns it every time.</p>
                         <div class="track-outcomes">
                             <h3>After this you can</h3>
@@ -1519,7 +1547,7 @@
                     </div>
 
                     <!-- MODULE 08: THE LIFE OF A PROJECT -->
-                    <div class="module-card">
+                    <div class="module-card" style="--c:#d946ef;--c2:#a21caf;--cs:#fae8ff">
                         <div class="module-card-header">
                             <div class="module-card-left">
                                 <span class="module-num">08</span>
@@ -1716,9 +1744,8 @@
     <div class="mobile-nav" id="mobileNav">
         <button class="mobile-nav-close" onclick="toggleMobileNav()" aria-label="Close menu"><i class='bx bx-x'></i></button>
         <a href="index.html" onclick="toggleMobileNav()">Home</a>
-        <a href="learn.html" class="active" onclick="toggleMobileNav()">Learn</a>
+        <a href="learn.html" class="active" onclick="toggleMobileNav()">Learn Project Controls</a>
         <a href="services.html" onclick="toggleMobileNav()">Services</a>
-        <a href="projects.html" onclick="toggleMobileNav()">Projects</a>
         <a href="resources.html" onclick="toggleMobileNav()">Resources</a>
         <a href="about.html" onclick="toggleMobileNav()">About</a>
         <a href="contact.html" onclick="toggleMobileNav()">Contact</a>
@@ -1752,8 +1779,8 @@
             <div class="modal-icon-wrapper">
                 <i class='bx bx-book-open'></i>
             </div>
-            <h4>Follow the series</h4>
-            <p>Every lesson is already free to read. Sign in with Google so new work reaches you when it is published.</p>
+            <h2 class="modal-title">Sign in with Google</h2>
+            <p>Every lesson is already free to read. Signing in only records your name and email as interest in new work. There is no mailing list yet, so nothing is sent.</p>
             <button class="btn-google-signin" onclick="signInWithGoogleBtn()">
                 <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z" fill="#4285F4"/><path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/><path d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.711V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/><path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#EA4335"/></svg>
                 Continue with Google
